@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoft tag -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <meta charset="UTF-8">
+
+ <!--基本のメタタグ-->
+ <meta name="description" content="注意したい独自ドメイン設定手順とルール手順について書いています。">
+ <meta name="keywords" content="個人サイト, 独自ドメイン, URL">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="注意したい独自ドメイン設定手順とルール">
+ <meta property="og:description" content="注意したい独自ドメイン設定手順とルール手順について書いています。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/domain.html">
+
+ <!--検索ヒット時のアイコン-->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "注意したい独自ドメイン設定手順とルール",
+  "url": "https://feinatelier.org/contents/domain.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+}
+</script>
+
+ <!--レスポンシブデザイン-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!--CSS-->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/album.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!--JavaScript-->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/album.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/brython.js"></script>
+ <script src="/script/brython_stdlib.js"></script>
+ <!-- gsapの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <!-- prismの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+ <!-- google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!--ページタイトル-->
+ <title>注意したい独自ドメイン設定手順とルール</title>
+
+ <!--ASノーナのファビコン-->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">注意したい独自ドメイン設定手順とルール</li>
+   </ol>
+  </div>
+
+  <!--google検索-->
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <p class="feintag">工事中だけど文章は整えてあります</p><br>
+
+  <button id="generate-headings" data-open-text="注意したい独自ドメイン設定手順とルールの目次を開く ▼"
+   data-close-text="注意したい独自ドメイン設定手順とルールの目次を閉じる ▲">注意したい独自ドメイン設定手順とルールの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>注意したい独自ドメイン設定手順とルール</span></h1>
+  <p>自分のサイトのURLを独自ドメインにしたい人は多いかと。<br>
+   ただ、気分的な問題と言うより、ある程度の規模とトラフィックがあるサイトなら、独自ドメインにした方が良いと考えています。<br>
+   信頼性とプロフェッショナルな印象を与えつつ、サイトのアイデンティティを強化できます。<br>
+   SEOにも効果があり、自分のニーズに合わせたメールアドレスやサブドメインも作成できる。</p>
+
+  <p>このページでは、独自ドメインを設定する際、どのような手順を踏めば良いか、また注意点等を書いています。<br>
+   加えて、当サイトが.orgドメインにしている意図であるとか、そういったものもお伝えしていきます。</p>
+
+  <h2>基礎的な独自ドメインの設定手順</h2>
+  <p>一般的な手順としては、次のようなものでしょう。<br>
+   ただ、独自ドメインがなければサイトを作れないわけではありません。<br>
+   むしろ私としては、初めのうちはホスティングサービスの付属URLでしばらく続けてみるのをお勧めしたいです。<br>
+   続くかどうか分からないからね。</p>
+
+  <p class="gra">独自ドメインの取得</p>
+  <p>まず、独自ドメインを取得する必要があります。</p>
+  <dl>
+   <dt>1. ドメインレジストラを選ぶ</dt>
+   <dd>ドメインレジストラにアクセスします。</dd>
+   <dt>2. 希望のドメイン名を検索</dt>
+   <dd>利用可能なドメイン名を検索します。</dd>
+   <dt>3. ドメインを購入</dt>
+   <dd>希望のドメイン名が利用可能であれば、購入手続きを行います。</dd>
+  </dl>
+
+  <p class="gra">ホスティングサービスの選択</p>
+  <p>次に、サイトをホストするためのホスティングサービスを選びます。</p>
+  <dl>
+   <dt>1. ホスティングプロバイダを選ぶ</dt>
+   <dd>ホスティングプロバイダを選びます。</dd>
+   <dt>2. ホスティングプランを選択</dt>
+   <dd>サイトの規模や必要に応じたホスティングプランを選びます。</dd>
+   <dt>3. アカウントを作成</dt>
+   <dd>ホスティングプロバイダでアカウントを作成し、ホスティングプランを購入します。</dd>
+  </dl>
+
+  <p class="gra">ドメインとホスティングを結びつける</p>
+  <p>ドメインとホスティングを結びつけるための手順です。</p>
+  <dl>
+   <dt>1. DNS設定を変更</dt>
+   <dd>ドメインレジストラの管理画面にログインし、DNS設定を変更します。<br>
+    ホスティングプロバイダが提供するネームサーバーを設定します。</dd>
+   <dt>2. ホスティングプロバイダでドメインを設定</dt>
+   <dd>ホスティングプロバイダの管理画面にログインし、購入した独自ドメインを追加します。</dd>
+  </dl>
+
+  <p class="gra">ウェブサイトのファイルをアップロード</p>
+  <p>最後に、ウェブサイトのファイルをホスティングプロバイダにアップロードします。</p>
+  <dl>
+   <dt>1. ファイルマネージャまたはFTPを使用</dt>
+   <dd>ホスティングプロバイダのファイルマネージャまたはFTPクライアントを使用して、ウェブサイトのファイルをアップロードします。</dd>
+   <dt>2. サイトの公開</dt>
+   <dd>ファイルがアップロードされると、独自ドメインでウェブサイトが公開されます。</dd>
+  </dl>
+  <p>まずはサーっと基礎的な流れを把握していただいて。<br>
+   実際には細かくいろいろあります。<br>
+   このサイトは2025年3月から独自ドメインを設定したので、その時のことを例にとってご紹介します。</p>
+
+  <h2>【重要】URLを決める時に守るべきルール</h2>
+  <p>独自ドメインを決める際には、いくつかのルールやベストプラクティスがあります。<br>
+   全てを守る必要はありませんが、最低限の事柄くらいはあるのですよ。<br>
+   参考までに、私のWebサイトのURLである <a href="https://feinatelier.org">https://feinatelier.org</a> を例にとってみますね。</p>
+
+  <dl>
+   <dt>1. シンプルで覚えやすいものにする</dt>
+   <dd>短く、記憶に残りやすいURLを選びましょう。</dd>
+   <dd>スペルが簡単で間違いにくいものが理想です。</dd>
+   <dd>私のURLはおおよそ満たしていますが、feinはドイツ語圏やユダヤ系の人々に多く見られる人名であり、atelierはフランス語です。<br>
+    日本人にはちょっと分かりにくいかもしれませんね😅</dd>
+
+   <dt>2. 関連性のあるキーワードを含める</dt>
+   <dd>ウェブサイトの内容やブランドに関連するキーワードを含めることで、SEO（検索エンジン最適化）にも有利です。</dd>
+   <dd>私のURLはまったく満たしていません😆ww<br>
+    どっちみち息の長いページで埋まった巨大なサイトにするつもりだから、あまり考えてないですね。</dd>
+
+   <dt>3. ハイフンの使い方</dt>
+   <dd>読みやすくするためにハイフンを使うことがありますが、あまり多用しないようにしましょう。例: example-site.com</dd>
+   <dd>私のURLは付けていません。fein-atelierとすることもできたでしょうけど、個別の単語の意味は重要ではなかったからです。<br>
+    必要がないなら、文字数は減らした方がいいと思います。</dd>
+
+   <dt>4. 著作権や商標に注意</dt>
+   <dd>他社の商標や著作権を侵害しないように注意が必要です。</dd>
+   <dd>これ…たまに見るよ？<br>
+    特別に詳しく後述します。</dd>
+
+   <dt>5. トップレベルドメイン（TLD）の選択</dt>
+   <dd>.com、.net、.orgなど、信頼性の高いTLDを選ぶことが一般的です。地域別のTLD（例: .jp）も検討できます。</dd>
+   <dd>私のURLは.orgですね。詳しくは後述します。</dd>
+
+   <dt>6. 数字の使用</dt>
+   <dd>数字の使用は避けるか、必要最低限にとどめましょう。数字はスペルミスや誤解の原因になりやすいです。</dd>
+   <dd>私のURLに数字は含まれていません。数字を含むURLは同じ名前の異なるバリエーションを生み出しやすく、ユーザーが正確なURLを思い出すのが難しくなります。<br>
+    また、スパムやフィッシングサイトは、しばしば数字を多用したURLを使用するため、ユーザーが信頼性に疑問を抱くことがあります。</dd>
+
+   <dt>7. 特殊文字の回避</dt>
+   <dd>アンダースコア（_）やその他の特殊文字は避けましょう。ブラウザやユーザーにとって扱いにくいです。</dd>
+   <dd>私のURLに_や特殊文字は入っていません。単純な話で、打ちにくいでしょ？<br>
+    特にモバイルデバイスからアクセスされることが多いのですから、スマホで入力しにくい文字は避けたほうが良いです。</dd>
+  </dl>
+
+  <p>独自ドメインを決める際にこのようなルールを守ることで、ユーザーにとってアクセスしやすく、SEOにも有利なドメインを取得することができます。<br>
+   次はURLの文字列と商標・著作権の話ですね…</p>
+
+  <h2>URLの文字列と商標・著作権</h2>
+  <p>初心者さんはWebサイトのアクセス数を強く意識しがちであり、他人のふんどしで相撲を取るようなURLも稀に見られます。<br>
+   小規模な絵日記ブログ程度であれば良いですが ─ 良くないけど ─、度が過ぎるとWebサイトを廃棄せざる得ない状況になります。<br>
+   知らなかったでは済まされないタイプの知識ですから、独自ドメインを取ろうとする方は、ぜひともご検討をお願いします。<br>
+   ていうか、Webサイト制作とか、関連する書籍に書いてあります。<br>
+   私もさんざん勉強させられた😵‍💫</p>
+
+  <p>他社の商標や著作権を侵害しないように注意することは、独自ドメインを選ぶ際に非常に重要なポイントなのです。<br>
+   これを怠ると、法的な問題や信頼性の低下、最悪の場合、損害賠償請求などの深刻な事態に発展する可能性があります。<br>
+   このセクションでは、その理由と具体的な対策について詳しく解説いたします。</p>
+
+  <p class="gra">1. 商標侵害のリスク</p>
+  <p>商標というのは、企業が自社の商品やサービスを他社と区別するために使用するマークや名称、ロゴなどを指します。<br>
+   特許庁に登録されることで法的に保護され、無断使用は商標権の侵害となります。<br>
+   商標侵害になるケースとしては、次のようなものがあるでしょう。</p>
+
+  <dl>
+   <dt>同一または類似の名称の使用</dt>
+   <dd>他社が登録した商標と全く同じ、または類似したドメイン名を使用すると、消費者の混同を招く恐れがあります。</dd>
+
+   <dt>意図的な模倣</dt>
+   <dd>有名ブランドや企業名を連想させるドメイン名は、商標権者からの訴訟リスクが高まります。</dd>
+  </dl>
+
+  <p>ドメイン名とは、ウェブサイトの住所のことです。<br>
+   例えば example.com と書くだけで、誰でもそのサイトにアクセスできます。<br>
+   試しに私のサイトで実験して良いですよ？<br>
+   「feinatelier.org」と、ブラウザのアドレスバーに入力してください。私のサイトが出てきます。<br>
+   ちなみに、住所を英語にすると address です。</p>
+
+  <p>商標侵害のリスクによって、法的措置やドメイン名の喪失に繋がる可能性も否定できません。<br>
+   商標権者から使用差し止めや損害賠償の請求を受ける可能性がありますし、紛争解決手続きにより、ドメイン名の登録が取り消されることがあります。</p>
+
+  <p class="gra">2. 著作権侵害のリスク</p>
+  <p>著作権は、言うまでもなく文学、音楽、芸術作品などの創作物を保護するための権利です。<br>
+   他人が創作した独自の名称やキャッチフレーズをドメイン名に使用すると、著作権侵害となる可能性があります。<br>
+   著作権者から損害賠償や是正措置を求められる事態に発展することがあり、信用を大きく損ないます。</p>
+
+  <p class="gra">3. 避けるべきURL</p>
+  <p>まず、有名企業やブランド名の使用はやめましょう。<br>
+   ユーザーが公式サイトと誤認する可能性があります。<br>
+   これは意図的な誤誘導と解釈されるリスクがあり、信頼を損なうだけでなく、度が過ぎれば何かしらの責任を問われる事態に発展しかねません。<br>
+   スペルを少し変えただけでも、発音や見た目が似ていれば問題となる場合があります。</p>
+
+  <p>高額なものではありませんが、独自ドメインはお金がかかります。<br>
+   しかも愛着を持って長年に渡って使うものなのですから、事前にきちんと確認しましょう。</p>
+
+
+  <p class="gra">4. 商標・著作権侵害を防ぐために</p>
+  <p>完璧にやるのは難しいでしょう。<br>
+   でも、次のように事前調査の徹底を心がけると良いです。<br>
+   どーしても心配なら…<br>
+   ちゃんとお金を支払って弁理士や知的財産に詳しい弁護士に相談するのが最も安全です。<br>
+   法的なリスクを正確に把握し、適切なアドバイスを受けることができます。</p>
+
+  <dl>
+   <dt>J-PlatPat（特許情報プラットフォーム）</dt>
+   <dd>URL: <a href="https://www.j-platpat.inpit.go.jp/">https://www.j-platpat.inpit.go.jp/</a></dd>
+   <dd>特許情報プラットフォーム（J-PlatPat）を利用して、希望する名称が商標登録されていないか確認します。</dd>
+
+
+   <dt>JPNIC WHOISサービス</dt>
+   <dd>URL: <a href="https://whois.jprs.jp/">https://whois.jprs.jp/</a></dd>
+   <dd>ドメイン名の登録情報を確認し、既存の登録と重複していないかチェックします。</dd>
+
+
+   <dt>オリジナルの名称を創作</dt>
+   <dd>他者の権利を侵害しない、独自性の高い名称を考案します。</dd>
+   <dd>これはブランド戦略というか、普通のSEOとしても有効ですね。</dd>
+  </dl>
+
+  <p>せっかくの独自ドメインです。<br>
+   独自のブランド価値を高めるためにも、唯一無二の名称を目指しましょう！<br>
+   人のふんどしで相撲を取るより、たとえ拙くとも自分だけのURLのほうが、何倍もカッコいいですよ？<br>
+   私のURLはありきたりなものですが、サイトの規模が拡大するにつれて「フェインアトリエ」といろんな人が覚えてくれるでしょう。
+  </p>
+
+  <p class="gra">5. 信頼のおける情報源と参照サイト</p>
+  <p>独自ドメイン取得や商標・著作権に関する詳細な情報は、次のような公的機関や専門団体のサイトで入手できます。</p>
+
+  <dl>
+   <dt>特許庁</dt>
+   <dd>商標制度や手続きに関する情報を提供しています。</dd>
+   <dd>URL: <a href="https://www.jpo.go.jp/">https://www.jpo.go.jp/</a></dd>
+
+   <dt>経済産業省 知的財産政策室</dt>
+   <dd>知的財産に関する政策や法令情報を掲載しています。</dd>
+   <dd>URL: <a href="https://www.meti.go.jp/policy/ipr/">https://www.meti.go.jp/policy/ipr/</a></dd>
+
+   <dt>文化庁 著作権法</dt>
+   <dd>著作権に関する法令やガイドラインを提供しています。</dd>
+   <dd>URL: <a href="https://www.bunka.go.jp/seisaku/chosakuken/">https://www.bunka.go.jp/seisaku/chosakuken/</a></dd>
+
+   <dt>一般社団法人日本ドメイン名協会（JDNAA）</dt>
+   <dd>ドメイン名に関する情報やガイドラインを提供しています。</dd>
+   <dd>URL: <a href="https://www.jdnaa.jp/">https://www.jdnaa.jp/</a></dd>
+
+   <dt>日本ネットワークインフォメーションセンター（JPNIC）</dt>
+   <dd>ドメイン名登録やインターネットに関する情報を提供しています。</dd>
+   <dd>URL: <a href="https://www.nic.ad.jp/ja/">https://www.nic.ad.jp/ja/</a></dd>
+  </dl>
+
+  <p>独自ドメインはウェブサイトの顔とも言える重要な要素です。<br>
+   法的な問題を避け、信頼性の高いサイトを運営するためにも、商標や著作権の侵害には十分な注意が必要です。</p>
+
+  <h5>とは言え、ぶっちゃけ…</h5>
+  <p>微妙なラインを攻めてるようなドメインもしばしばあるけどね？<br>
+   例えば私なら、「LIFEBOOKfein」とか「FMVfein」とか、そういう感じのURLにしても、いきなり富士通様から訴えられるようなことはない…と、思います。─ 根拠なき推測です。絶対にやらないでください。 ─<br>
+   あるいは、富士通に直接問い合わせをしても、温厚かつ控えめな回答を頂けるのかもしれませんね？<br>
+   しかし、いくら富士通パソコンのファンだからと言って、商標登録された富士通の商品名称を独自ドメインのURLに使って良いとはなりません。</p>
+
+  <p>守るべきラインは守る。<br>
+   これをやってこそ、長年に渡って成長し続けるサイト構築ができると私は思います。</p>
+
+  <h4>独自ドメイン購入は後回しでもいい</h4>
+  <p>いきなり暗い話題なのですが…<br>
+   ネットデブリ、いわゆる「Webサイトの廃墟化」は残念な現象です。<br>
+   個人でWebサイトを続けていく場合、そもそも話題選びにコツがあると私は考えています。<br>
+   そのコツが自分なりに掴めれば良いのですが、そうでない場合に悪循環へ陥るんですよね。<br>
+   技術的な課題や時間とリソースの不足、そこへ経済的要因が重なりモチベーションの低下へ繋がります。<br>
+   そして個人運営のサイトが次第に更新されなくなり、ネットデブリ化してしまうことが多い。</p>
+
+  <p>継続的なサイト運営って、言うほど簡単ではないと私は思っているのです。<br>
+   ちょっと勉強して見栄えの良いWebサイトを作るまでは、意外にも簡単なんですよ。<br>
+   でもそれを続けるとなると、話がぜんぜん違ってくる。<br>
+   まずは自分に向いているかどうかを見極めてから、独自ドメインを購入した方が良いと思います。</p>
+
+
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/domain.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://sites.google.com/view/feins-portal/">fein's
+     portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://sites.google.com/view/feins-portal/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
