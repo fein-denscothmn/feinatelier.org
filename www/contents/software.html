@@ -598,7 +598,7 @@ function openFeinsApp() {
 }
 
 function openFeinsPortal() {
- const command = '"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" https://sites.google.com/view/feins-portal/';
+ const command = '"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" https://portal.feinatelier.org/';
  exec(command, (error, stdout, stderr) => {
   if (error) {
    console.error(`Error opening Fein's Portal: ${error.message}`);
@@ -789,7 +789,7 @@ function openFeinsApp() {
   <div class="code-container">
    <pre><code class="language-javascript">
 function openFeinsPortal() {
-  const command = '"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" https://sites.google.com/view/feins-portal/';
+  const command = '"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" https://portal.feinatelier.org/';
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error opening Fein's Portal: ${error.message}`);
@@ -1757,7 +1757,7 @@ electron-packager . myapp --platform=win32 --arch=x64 --out=dist
 
    <div class="spacer"></div>
    <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
-     site</a> は、2023/7/4に開設された <a href="https://sites.google.com/view/feins-portal/">fein's portal</a>
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
     を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
    <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -1766,7 +1766,7 @@ electron-packager . myapp --platform=win32 --arch=x64 --out=dist
      const month = String(today.getMonth() + 1).padStart(2, '0');
      const day = String(today.getDate()).padStart(2, '0');
      const dateElement = document.getElementById('updated-date');
-     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://sites.google.com/view/feins-portal/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
     });
    </script>
 

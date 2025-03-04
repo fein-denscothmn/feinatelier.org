@@ -3,13 +3,13 @@
 
 # URL
 https://feinatelier.org/<br>
-https://sites.google.com/view/feins-portal/
+https://portal.feinatelier.org/
 
 ## 概要
 いわゆる「プログレッシブウェブアプリ」です。<br>
 基礎的なフロントエンド技術と、PythonのFlaskを使用して構築されています。<br>
 [Progressive Web Application（PWA）](https://feinatelier.org/)<br>
-[Portal Site](https://sites.google.com/view/feins-portal/)
+[Portal Site](https://portal.feinatelier.org/)
 
 ### 仕様
 | 項目 | 説明 |
