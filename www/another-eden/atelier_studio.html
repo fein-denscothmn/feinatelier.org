@@ -553,35 +553,36 @@ for container in document.select('.atelier-container'):
 
   <div class="code-container">
    <pre><code class="language-txt">
-FEIN-SITES-DEV1/
-│  app.yaml          # App Engine の設定ファイル。デプロイと実行環境の設定を定義
-│  main.py           # Flask アプリケーションのメインファイル。ルートやサーバーの設定が含まれる
-│  README.md         # プロジェクトの概要や使い方を記述する説明ファイル
-│  requirements.txt  # アプリケーションが依存する Python パッケージをリストアップするファイル
-│
-├─static/            # 静的ファイル（CSS, JavaScript, 画像など）を配置するディレクトリ
-│   ├─ images/       # 画像ファイルを保存するサブディレクトリ
-│   │     example.jpg  # サンプル画像ファイル
-│   ├─ css/          # CSS ファイルを保存するサブディレクトリ
-│   │     pstyle.css   # プロジェクトのスタイルシート
-│   ├─ js/           # JavaScript ファイルを保存するサブディレクトリ
-│   │     pscript.js   # プロジェクトのスクリプト
-│   └─その他のディレクトリや静的ファイル  # 普通のWebサイトの構造となっている
-│
-├─templates/         # Flask のテンプレートファイル（HTML ファイル）を配置するディレクトリ
-│      top.html      # Flask アプリの動的コンテンツ用 HTML テンプレート
+FEIN-SITES-DEV1
+│  app.yaml           # メインサービスの App Engine 設定ファイル（ランタイム・ルート定義など）
+│  dispatch.yaml      # サービス間のルーティング規則を定義するファイル
+│  main.py            # Flask アプリケーションのエントリポイント（ルートや動的機能の設定）
+│  README.md          # プロジェクトの概要や使い方を説明するドキュメント
+│  requirements.txt   # アプリで必要な Python パッケージ（依存関係）のリスト
+├─redirect-service    # リダイレクト専用サービスのディレクトリ
+│      app.yaml       # リダイレクト用サービスの App Engine 設定ファイル
+│      redirect.py    # リダイレクト処理を記述した Flask アプリケーション
+│      requirements.txt # リダイレクト用サービスで必要な Python パッケージのリスト
+├─static              # 静的ファイルを保存するディレクトリ（CSS, JavaScript, 画像など）
+│  ├─css              # スタイルシート（デザイン）を格納
+│  ├─js               # JavaScript（インタラクションや動作制御）のスクリプトを格納
+│  └─menu             # メニュー関連のリソースを保存
+├─templates           # Flask 用の HTML テンプレートを保存
+│      top.html       # `/top` ルート用の動的コンテンツテンプレート
 │
 │   【上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。】
 │   【下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。】
 │
-└─www/               # 静的ウェブサイトのルートディレクトリ。静的な HTML ファイルを配置
-    │  index.html      # 静的ウェブサイトのホームページ
-    │  .hintrc         # HTMLHint の設定ファイル（コード品質チェック用）
-    │  favicon.ico     # ブラウザのタブに表示されるアイコン
-    │  manifest.json   # PWA の設定ファイル。アプリのメタデータを定義
-    │  robots.txt      # 検索エンジンに対するクローリング設定ファイル
-    │  service-worker.js # PWA のサービスワーカー。オフライン対応やキャッシュ管理を実現
-    └─その他のディレクトリや静的ファイル  # 普通のWebサイトの構造となっている
+└─www                 # 静的ウェブサイトのルートディレクトリ（主にフロントエンド用）
+    │  favicon.ico    # ブラウザのタブに表示されるアイコン
+    │  index.html     # 静的ウェブサイトのホームページ
+    │  manifest.json  # PWA（Progressive Web App）の設定ファイル
+    │  robots.txt     # 検索エンジンによるクローリング設定ファイル
+    │  service-worker.js # PWA 用のサービスワーカー（キャッシュ管理やオフライン対応）
+    ├─contents        # コンテンツ関連のファイルやデータを格納
+    ├─css             # 静的ウェブサイト専用のスタイルシートを保存
+    ├─fish            # 画像やリソース用ディレクトリ
+    ├─script          # フロントエンド用 JavaScript を格納
 
 </code></pre>
   </div>
@@ -1723,15 +1724,20 @@ hr.atelierflower::before {
    <div class="flowerfade-out">
     <img src="/flower3/pinkflower.jpg" alt="フェードアウト効果の草花写真">
    </div>
+   <p>これが当サイトのリダイレクト設定を管理するコードです。</p>
+   <ul>
+    <li><a href="/contents/domain.html#redirect_python">リダイレクト設定を行うredirect.py</a></li>
+    <li><a href="/contents/domain.html#redirect_dispatch">リダイレクト設定を行うdispatch.yaml</a></li>
+    <li><a href="/contents/domain.html#redirect_requirements">リダイレクト設定に使うrequirements.txt</a></li>
+    <li><a href="/contents/domain.html#redirect_app">リダイレクト設定を行うapp.yaml</a></li>
+   </ul>
+
    <p>下記に「アナザーエデン・ファンサイトのご案内」というセクションがあります。<br>
-    例えばこういったサイトに独自ドメインを設定したいと考えた時、どのような手順を踏めば良いでしょうか。<br>
-    また、どういった注意点があるでしょうか。<br>
+    例えばこういったサイトに独自ドメインを設定したいと考えた時、どのような手順と注意点があるでしょうか。<br>
     独自ドメインはお金がかかります。<br>
-    <a href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a> には、個人サイト制作で話題になりやすい事柄についても、併せて記載しています。
+    <a href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a> には、このように個人サイト制作で話題になりやすい事柄についても、併せて記載しています。
    </p>
   </div>
-
-
 
   <h2>アナザーエデン・ファンサイトのご案内</h2>
   <p>これは、私がTwitterにあった各種のコンテンツを全てWebサイトへ移行させた時に作ったものです。<br>

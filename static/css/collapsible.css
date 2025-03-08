@@ -2,31 +2,68 @@
 
 /* ●折り畳みエリア● */
 .collapsible {
-  background-color: #f1f1f1;
-  color: #444;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 10px; /* 角を丸める */
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  font-family: 'Noto Sans JP', sans-serif;
-  transition: background-color 0.3s ease;
+ background-color: #f1f1f1;
+ color: #444;
+ cursor: pointer;
+ padding: 10px;
+ width: 100%;
+ border: none;
+ border-radius: 10px;
+ /* 角を丸める */
+ text-align: left;
+ outline: none;
+ font-size: 15px;
+ font-family: 'Noto Sans JP', sans-serif;
+ transition: background-color 0.3s ease;
 }
 
 .collapsiblecontent {
-  padding: 0 10px;
-  max-height: 0;
-  overflow: hidden;
-  background-color: #f9f9f9;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-  border-radius: 10px; /* 角を丸める */
+ padding: 0 10px;
+ max-height: 0;
+ overflow: hidden;
+ background-color: #f9f9f9;
+ transition: max-height 0.3s ease, opacity 0.3s ease;
+ opacity: 0;
+ border-radius: 10px;
+ /* 角を丸める */
 }
 
 .collapsiblecontent.show {
-  max-height: 2000px;
-  opacity: 1;
+ max-height: 2000px;
+ opacity: 1;
+}
+
+/* カードのデザイン */
+.feinorg-container {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+ justify-content: flex-start;
+ padding: 10px;
+}
+
+.feinorg-card {
+ background: #fff;
+ border: 1px solid #ddd;
+ padding: 2px 15px;
+ border-radius: 12px;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ width: 90%;
+ max-width: 800px;
+ box-sizing: border-box;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feinorg-row {
+ color: #333;
+ margin-bottom: 8px;
+ line-height: 1.6;
+ text-align: left;
+}
+
+.feinorg-label {
+ font-weight: 600;
+ color: #0078d4;
+ margin-right: 5px;
+ text-align: left;
 }

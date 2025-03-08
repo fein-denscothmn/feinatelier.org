@@ -1,0 +1,16 @@
+runtime: python312
+service: redirect-service
+
+instance_class: F1
+env: standard
+
+automatic_scaling:
+  min_idle_instances: 0
+  max_idle_instances: 2
+  max_concurrent_requests: 200
+
+handlers:
+- url: /(.*)
+  script: auto
+
+entrypoint: gunicorn -b :$PORT redirect:app

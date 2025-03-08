@@ -68,8 +68,8 @@
  <link rel="stylesheet" type="text/css" href="/css/menu.css">
  <link rel="stylesheet" type="text/css" href="/css/flower.css">
  <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
  <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
- <link rel="stylesheet" type="text/css" href="/css/album.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
 
@@ -78,8 +78,6 @@
  <script src="/script/feinfade.js"></script>
  <script src="/script/album.js"></script>
  <script src="/script/feinScroll.js"></script>
- <script src="/script/brython.js"></script>
- <script src="/script/brython_stdlib.js"></script>
  <!-- gsapの読み込み -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
  <!-- prismの読み込み -->
@@ -87,6 +85,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
  <!-- google fonts -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +162,6 @@
   <button id="generate-headings" data-open-text="注意したい独自ドメイン設定手順とルールの目次を開く ▼"
    data-close-text="注意したい独自ドメイン設定手順とルールの目次を閉じる ▲">注意したい独自ドメイン設定手順とルールの目次を開く
    ▼</button><!--目次の自動生成-->
-  <div class="spacer"></div>
   <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
 
   <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
@@ -266,13 +264,17 @@
    <dd>私のURLは.orgですね。詳しくは後述します。</dd>
 
    <dt>6. 数字の使用</dt>
-   <dd>数字の使用は避けるか、必要最低限にとどめましょう。数字はスペルミスや誤解の原因になりやすいです。</dd>
-   <dd>私のURLに数字は含まれていません。数字を含むURLは同じ名前の異なるバリエーションを生み出しやすく、ユーザーが正確なURLを思い出すのが難しくなります。<br>
+   <dd>数字の使用は避けるか、必要最低限にとどめましょう。<br>
+    数字はスペルミスや誤解の原因になりやすいです。</dd>
+   <dd>私のURLに数字は含まれていません。<br>
+    数字を含むURLは同じ名前の異なるバリエーションを生み出しやすく、ユーザーが正確なURLを思い出すのが難しくなります。<br>
     また、スパムやフィッシングサイトは、しばしば数字を多用したURLを使用するため、ユーザーが信頼性に疑問を抱くことがあります。</dd>
 
    <dt>7. 特殊文字の回避</dt>
-   <dd>アンダースコア（_）やその他の特殊文字は避けましょう。ブラウザやユーザーにとって扱いにくいです。</dd>
-   <dd>私のURLに_や特殊文字は入っていません。単純な話で、打ちにくいでしょ？<br>
+   <dd>アンダースコア（_）やその他の特殊文字は避けましょう。<br>
+    ブラウザやユーザーにとって扱いにくいです。</dd>
+   <dd>私のURLに_や特殊文字は入っていません。<br>
+    単純な話で、打ちにくいでしょ？<br>
     特にモバイルデバイスからアクセスされることが多いのですから、スマホで入力しにくい文字は避けたほうが良いです。</dd>
   </dl>
 
@@ -406,6 +408,166 @@
    でもそれを続けるとなると、話がぜんぜん違ってくる。<br>
    まずは自分に向いているかどうかを見極めてから、独自ドメインを購入した方が良いと思います。</p>
 
+
+  <h2>AIの言いなりでDNS設定はNG</h2>
+  <p>ここで、AIについて言及しないといけないです。<br>
+   Webサイト構築においてAIを使っても良いでしょうけど、それはあくまでも、既に知識のある人が有効活用して開発スピードを加速させるために使うものです。<br>
+   私だってAIは使っていませんよ？<br>
+   私はまだまだ半人前ですし、このサイトにある数多のコードや文章は、ほぼ全て学生時代のノートからの引用です。<br>
+   このサイト構築は良い復習の機会となっていますね。</p>
+
+  <p>DNSの設定はドメインやウェブサイトの運用に密接に関係しています。<br>
+   ここの知識はとっても重要であり、よく分からないまま設定を触ると様々なリスクや問題が出てきます。<br>
+   ここでは、インターネット初心者がAIの指示だけでDNS設定を変更した場合の影響を説明します。</p>
+
+  <dl>
+   <dt>障害発生の原因になる</dt>
+   <dd>
+    DNSレコードは、ウェブサイトやメールサーバーの正しい動作を保証します。<br>
+    例えば、AレコードやCNAMEを誤って設定すると、ウェブサイトが表示されなくなったり、メールが受信できなくなることがあります。<br>
+    特にNS（ネームサーバー）やSOAレコードを誤って変更すると、ドメイン全体が無効になりかねません。
+   </dd>
+
+   <dt>トラブルシューティングが困難</dt>
+   <dd>DNSの仕組みを理解していないと、問題が発生しても原因を特定できません。<br>
+    その結果、ウェブサイトが長時間にわたって停止する可能性があります。</dd>
+
+   <dt>セキュリティリスク</dt>
+   <dd>不適切なTXTレコードの設定（例えばSPFやDKIM）が原因で、スパムやフィッシングの問題が発生する可能性があります。</dd>
+
+   <dt>パフォーマンスへの悪影響</dt>
+   <dd>TTL（Time To Live）の設定を適切にしないと、不要な負荷がサーバーにかかる場合があります。</dd>
+  </dl>
+
+  <p>自分でググって調べて、多少なりとも意味が分かった上で操作するなら、無事に設定できるケースが多いのです。<br>
+   でもAIの言いなりというのは、何も知らないまま重要な部品を触っていることになります。<br>
+   独自ドメインはお金がかかっていますし、とてもリスクが高いです。</p>
+
+  <dl>
+   <dt>意図しない変更のリスク</dt>
+   <dd>AIが提供するアドバイスが正しくても、初心者がその影響を理解していない場合、無意識のうちに重要な設定を上書きしてしまう可能性があります。</dd>
+
+   <dt>予期せぬサービス停止</dt>
+   <dd>NSやAレコードを誤って変更すると、ウェブサイトやメールが使用できなくなることがあります。<br>
+    このような状況では、元の設定を復元するための知識が必要になります。<br>
+    バックアップがあればいいのですが、たいてい、やってないことが多いよね…
+   </dd>
+
+   <dt>依存の危険性</dt>
+   <dd>AIに頼りすぎると、管理者自身が問題解決のスキルを身に付ける機会を失い、長期的な運用に支障をきたす可能性があります。</dd>
+  </dl>
+
+  <p>知識ゼロでもガイドしてくれることが多いですが、間違えたときにサポート待ちの状態になってしまうんです。<br>
+   そしてサポートする側も他人が触ったDNSレコードを読み解かないといけないから、すごく大変なのです。<br>
+   ミスをできるだけ避けたいエリアなんだよね。<br>
+   例えば、次のようになります。</p>
+
+  <dl>
+   <dt>Aレコードを削除した場合</dt>
+   <dd>ウェブサイトが表示されなくなります。<br>
+    例えばAAAAレコードの <span class="codecolor">2001:db8::1234</span> を間違えると、そのサーバーへの接続ができなくなります。</dd>
+
+   <dt>NSレコードを変更した場合</dt>
+   <dd>ドメインの名前解決が行われなくなり、すべてのDNS機能が停止します。</dd>
+
+   <dt>TXTレコードを誤設定した場合</dt>
+   <dd>Googleサイトの所有権確認やSPF設定が失敗し、メールがスパム扱いされる可能性があります。</dd>
+  </dl>
+
+  <h3>独自ドメイン設定に失敗しないために</h3>
+  <p>あまりにも一般的な内容に過ぎますが、次の3つを守っていれば、円滑な独自ドメイン設定が可能となるでしょう。</p>
+
+  <dl>
+   <dt>知識の習得</dt>
+   <dd>設定を変更する前に、DNSレコードの種類や役割（Aレコード、CNAME、TXTなど）を理解することが重要です。</dd>
+
+   <dt>バックアップ</dt>
+   <dd>設定を触る前に、現在のレコードをバックアップ（コピー）しておくことで、誤って変更した場合にも復旧が可能です。</dd>
+
+   <dt>専門家に相談</dt>
+   <dd>自信がない場合は、プロバイダのサポートや専門家に相談するのが最善です。</dd>
+  </dl>
+
+  <p>適切な知識を持ち慎重に扱えば、独自ドメインとDNS設定はウェブ運営に欠かせない、非常に便利なツールなのですよ。<br>
+   次はDNS設定後の、このサイトの状況のお話です。</p>
+
+  <h2>独自ドメイン設定が完了した当サイトの状況</h2>
+  <p>私のサイトは現在、次のような独自ドメイン設定となっています。<br>
+   難しいことはやっていません。<br>
+   でも、十分な事前準備と移行期間を確保して行いました。</p>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p><a href="https://feinatelier.org/">https://feinatelier.org/</a></p>
+    <p>これがメインサイトのURLであるルートドメインです。─ 今ご覧になっているサイトです ─<br>
+     従来の https://fein-sites-dev1.ew.r.appspot.com/ も引き続き使えます。<br>
+     こちらは Google App Engine というクラウドの Paas へデプロイされているため、私自身によるリダイレクト設定が可能です。<br>
+     https://fein-sites-dev1.ew.r.appspot.com/ へアクセスしようとすると、自動的に https://feinatelier.org/ へ変移します。<br>
+     利用者は何か意識する必要はありません。</p>
+    </p>
+   </div>
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p><a href="https://portal.feinatelier.org/">https://portal.feinatelier.org/</a></p>
+    <p>これがポータルサイトのURLであるサブドメインです。<br>
+     従来の https://sites.google.com/view/feins-portal/ も引き続き使えます。<br>
+     こちらは Google Sites というクラウドの Saas で作っているので、私がリダイレクト設定を行うことはできません。<br>
+     同じく、利用者は何も意識する必要はありません。</p>
+    </p>
+   </div>
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p><a href="https://bsky.app/profile/feinatelier.org">https://bsky.app/profile/feinatelier.org</a></p>
+    これがBlueskyのURLです。<br>
+    こっちはサブドメインではありませんよ？<br>
+    Blueskyデフォルトの https://bsky.app/profile/feindenscothmn.bsky.social
+    はアクセス不可となっていますが、このSNSへのリンクは書き換えてあるため、同じように利用者が何か意識する必要はありません。<br>
+    いわゆる公式アカウントってやつですね😆ww
+    </p>
+   </div>
+  </div>
+
+  <p>リダイレクト設定に関しては、従来のURLも使えるため利用者には関係ありません。<br>
+   でもシステム的に可能であれば、やっておくと良いですね。─ 後述します ─</p>
+
+  <h2>.org ドメインにした理由</h2>
+  <p>理由というか、そもそも学生時代からの構想みたいなもんだよ。<br>
+   次に大規模なWebサイトを作るときには.org ドメインでやろうと思ってました。<br>
+   私のアカウントは既に Google AdSense の審査も通過していますが、いろんな意味で個人レベルでのマネタイズは、労力に見合わないんだよね。<br>
+   効果的に広告を入れなきゃいけないから、自分の思う通りに作れないのです。</p>
+
+  <p>Eロン禍でSNS業界が不安定になり、AI学習を嫌って「個人サイト欲しい」と言う人が増えてきました。<br>
+   特にクリエイター系の人たちはその傾向が強いですね。<br>
+   そういう個人サイトを作ろうとしている人のために、あの手この手でシステム開発して拡散している人もいます。<br>
+   そんな中で私は、単純素朴なソースコードを書くタイプの、自由なWebアプリケーションの作り方を書いてます。</p>
+
+  <p>いろんな巡り合わせで、リアルSEになったことだし。<br>
+   プライベートで作りたいものを好きなように作って、それが見知らぬ人の役に立つというだけで、十分過ぎると思いませんか？<br>
+   自分が勉強してきた技術の活かし方として、これ以上のものはないと思います。<br>
+   だから .org ドメインなのですよ。</p>
+
+  <p>個人でやってる非営利活動だからさ。<br>
+   サブのサイトでゲームや釣りのことを書いてたっていいじゃん？<br>
+   お金のために自分がしたいことを犠牲にせずに済む、理想の形なのです。</p>
+
+  <p class="gra">.orgドメインの一般的な解説</p>
+  <p>.org ドメインは、その名前が示すとおり「organization」の略で、インターネットの黎明期から存在する歴史あるトップレベルドメインです。<br>
+   当初は非営利組織や団体向けに設計されていて、営利企業は .com、教育機関は .edu、政府機関は .gov
+   といった具合に使い分けられていました。<br>
+   しかしインターネットの普及と共に、これらのドメインの登録ポリシーが緩和されてきました。<br>
+   正式には .orgドメインを登録するための厳格な制限がなかったため、個人や営利企業でも自由に取得できるようになったんです。</p>
+
+  <p>このドメインを使用することで、サイト訪問者に対して親近感や信頼感を伝えることができます。<br>
+   営利目的ではない、純粋な情報提供やコミュニティの価値観といったものの強調と言えば良いでしょうか。<br>
+   社会的に意義ある情報を発信したい、またはコミュニティとのつながりを深めたいと考えているのであれば、.org ドメインはその思いを表現する手段になるでしょう。</p>
+
   <h2>独自ドメインに関連する知識</h2>
   <p>IT系の中でもネットワークは特に難しく、全てを完璧に網羅するのは難しいです。<br>
    ただ、ある程度の基礎くらいは押さえておくと、いざ設定画面がでてきても安心して必要事項を入力できるでしょう。</p>
@@ -438,10 +600,62 @@
 
   <p>このように、ICANNやJPNIC、PIR、ドメイン登録機関が連携してインターネット上のドメイン名を管理し、DNSがドメイン名とIPアドレスを結び付けることで、スムーズなウェブアクセスが実現しています。</p>
 
-  <h3>ネームサーバ (Name Server)</h3>
-  <p>ネームサーバはDNSの一部で、特定のドメイン名に対するDNSレコードを管理します。<br>
-   ネームサーバにドメイン名を問い合わせると、そのドメインのIPアドレスを教えてくれます<br>。
-   たとえば、ドメイン名example.comに対応するIPアドレスを返す役割があります。</p>
+  <h4>DNSサーバーとネームサーバー</h4>
+  <p>DNSサーバーとネームサーバーは関連していますが、厳密には違う概念です。<br>
+   実際のDNSレコードを見る前に、ここで改めて整理しておきましょう。</p>
+
+  <p class="gra">DNSサーバー</p>
+  <dl>
+   <dt>役割</dt>
+   <dd>DNSサーバーは、インターネット上のドメイン名（このサイトなら feinatelier.org）をIPアドレス（例えば: 192.0.2.1）に変換するシステムを管理・提供するサーバーです。</dd>
+   <dt>用途</dt>
+   <dd>ドメイン名を入力したときに、その名前がどのサーバーに対応するかを解決する仕組みです。たとえば、ウェブサイトの閲覧やメールの送受信で使われます。</dd>
+   <dt>例</dt>
+   <dd>キャッシュDNSサーバー（プロバイダー提供のものなど）は、ユーザーがアクセスするリクエストを一時保存し、アクセスを高速化します。</dd>
+  </dl>
+
+  <p class="gra">ネームサーバー</p>
+  <dl>
+   <dt>役割</dt>
+   <dd>ネームサーバーは、特定のドメインに関するDNS情報を保持しているサーバーです。<br>
+    たとえば、feinatelier.org にどんなDNSレコード（A、MX、CNAMEなど）が設定されているかを指し示します。</dd>
+   <dt>用途</dt>
+   <dd>「このドメインの詳細なDNS情報はどこにありますか？」と尋ねられたときに、その場所を教える役割を果たします。</dd>
+   <dt>例</dt>
+   <dd>ns1.dns.ne.jpやns2.dns.ne.jpのようなものです。</dd>
+  </dl>
+
+  <div class="custom-table-container">
+   <table class="weapon-table">
+    <caption>DNSサーバー / ネームサーバー</caption>
+    <thead>
+     <tr class="weapon-table header-blue">
+      <th>項目</th>
+      <th>DNSサーバー</th>
+      <th>ネームサーバー</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>役割</td>
+      <td>ドメイン名をIPアドレスに変換</td>
+      <td>特定ドメインのDNS情報を管理</td>
+     </tr>
+     <tr>
+      <td>範囲</td>
+      <td>全体的なインターネットの名前解決を処理</td>
+      <td>ドメインごとの設定に特化</td>
+     </tr>
+     <tr>
+      <td>例</td>
+      <td>Google Public DNS（8.8.8.8）</td>
+      <td>ns1.example.com, ns2.example.com</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+
+  <p>つまり、ネームサーバーは、特定のドメインについての情報源を指す役割を持っており、DNSサーバーはその情報をもとに問い合わせを処理するものと言えます。</p>
 
   <h3>自分のサイトの所有権</h3>
   <p>ドメインの所有権を証明するためには、特定の方法でドメインを確認する必要があります。</p>
@@ -496,10 +710,10 @@
   <p>まずレジストリとは、ドメイン名システム (DNS) の一部として、特定のトップレベルドメイン (TLD) に関するドメイン名の登録管理を行う組織を指します。<br>
    ドメイン名のデータベースを管理し、登録、更新、および削除に関する手続きを担当します。</p>
 
-  <p>たとえば、Public Interest Registry (PIR) は .org ドメインのレジストリであり、全ての登録情報の管理を行っています。<br>
+  <p>たとえば、Public Interest Registry (PIR) は .org ドメインのレジストリでもあり、登録情報の管理を行っています。<br>
    このレジストリは Internet Society (ISOC) によって2002年に設立され、.org ドメインはインターネットの初期から存在する主要な gTLD の一つとして運用されてきました。<br>
    元々は全米科学財団 (NSF) の委託契約の下、Network Solutions社（後に Verisign 社に買収）によってレジストリ業務が行われていましたが、2002年に PIR が .org
-   ドメインのレジストリとして選定され、その管理を引き継ぎました。</p>
+   ドメインのレジストリとして選定され、その管理を引き継いだのです。</p>
 
   <p>また、PIR は新 gTLD プログラムによって追加された複数の TLD の管理も担当しており、.org 以外に非政府組織を意味する .ngo や .ong、さらには各国語で .org を表す国際化ドメイン名 (IDN) TLD
    なども含まれます。<br>
@@ -514,7 +728,67 @@
    <li><a href="https://www.iana.org/domains/root/db">Root Zone Database</a></li>
   </ul>
 
-  <h2>ルートドメインとサブドメイン</h2>
+  <h2>ドメイン名の構成</h2>
+  <p>例えば、このサイトの feinatelier.org があります。<br>
+   このドメインは次のような構成となっています。</p>
+
+  <dl>
+   <dt>.org</dt>
+   <dd>これはトップレベルドメイン（TLD）と呼ばれます。<br>
+    TLDはドメイン名の最後の部分であり、インターネット上の大まかなカテゴリや地域を示します。<br>
+    .org は非営利団体に関連することが多い一般的なTLDですが、現在では幅広い用途で使用されています。</dd>
+   <dt>feinatelier</dt>
+   <dd>これはセカンドレベルドメイン（SLD）と呼ばれます。<br>
+    SLDはトップレベルドメインのすぐ左に位置する部分であり、通常は企業や組織の名前、ブランド名などが使用されます。<br>
+    セカンドレベルドメインは、ドメインの一意性を保つための主要な識別子です。<br>
+    だから、他者の文字列をそのままパクるようなドメインがダメなんです。</dd>
+  </dl>
+
+  <p>この理解はとても重要です。<br>
+   一方、サブドメインはセカンドレベルドメインのさらに左に位置する部分で、ルートドメインの特定の部分を指します。<br>
+   例えば www、mail、blog などがよく見るサブドメインです。<br>
+   ここに「<a href="portal.feinatelier.org">portal.feinatelier.org</a>」というURLがあります。<br>
+   私のポータルサイトのURLです。<br>
+   このURLは次のような構成となっています。</p>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">.org</span> トップレベルドメイン（TLD）<br>
+     <span class="feinorg-label">feinatelier</span> セカンドレベルドメイン（SLD）<br>
+     <span class="feinorg-label">portal</span> サブドメイン
+    </p>
+   </div>
+  </div>
+
+  <p>サブドメインは下記のような用途で使われることが多いですね。<br>
+   ちなみに当サイトは支部なんて持っておりません😆ww</p>
+
+  <dl>
+   <dt>異なるサービスの運用</dt>
+   <dd>サブドメインを使って、異なるサービスを運用することができます。<br>
+    例えば、blog.feinatelier.orgはブログサービス、mail.feinatelier.orgはメールサービス、shop.feinatelier.orgはオンラインショップを示します。</dd>
+   <dt>異なる部門や地域の管理</dt>
+   <dd>大企業や組織では、サブドメインを使って異なる部門や地域を管理することができます。<br>
+    例えば、us.feinatelier.orgはアメリカ支部、jp.feinatelier.orgは日本支部を示します。</dd>
+   <dt>テスト環境の作成</dt>
+   <dd>サブドメインを使って、テスト環境や開発環境を作成することができます。<br>
+    例えば、test.feinatelier.orgやdev.feinatelier.orgはテスト環境や開発環境を示します。</dd>
+  </dl>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">www.feinatelier.org</span> ウェブサイトを指す一般的なサブドメイン<br>
+     <span class="feinorg-label">mail.feinatelier.org</span> メールサービスを指すサブドメイン<br>
+     <span class="feinorg-label">shop.feinatelier.org</span> オンラインショップを指すサブドメイン
+    </p>
+   </div>
+  </div>
+
+  <p>このように、サブドメインは特定のサービスや部門を示すために使用され、ドメイン名全体の管理を柔軟に行うことができます。</p>
+
+  <h2>ルートドメイン / サブドメインのDNS設定</h2>
   <p>ここでは、ルートドメインとサブドメインに関するDNSレコードの一般的な設定方法について説明します。<br>
    ルートドメインは通常TXTレコードが使用され、ドメインの所有権確認やメールのセキュリティに役立ちます。<br>
    一方、サブドメインは通常CNAMEレコードが使用され、別名として他のドメイン名を指すことができます。<br>
@@ -549,39 +823,8 @@
    <li>設定を保存します。</li>
   </ol>
 
-
   <p class="feintag">ここからは当サイトでの設定事例です</p><br>
-
-  <h2>.org ドメインにした理由</h2>
-  <p>理由というか、そもそも学生時代からの構想みたいなもんだよ。<br>
-   次に大規模なWebサイトを作るときには.org ドメインでやろうと思ってました。<br>
-   私のアカウントは既に Google AdSense の審査も通過していますが、いろんな意味で個人レベルでのマネタイズは、労力に見合わないんだよね。<br>
-   効果的に広告を入れなきゃいけないから、自分の思う通りに作れないのです。</p>
-
-  <p>Eロン禍でSNS業界が不安定になり、AI学習を嫌って「個人サイト欲しい」と言う人が増えてきました。<br>
-   特にクリエイター系の人たちはその傾向が強いですね。<br>
-   そういう個人サイトを作ろうとしている人のために、あの手この手でシステム開発して拡散している人もいます。<br>
-   そんな中で私は、単純素朴なソースコードを書くタイプの、自由なWebアプリケーションの作り方を書いてます。</p>
-
-  <p>いろんな巡り合わせで、リアルSEになったことだし。<br>
-   プライベートで作りたいものを好きなように作って、それが見知らぬ人の役に立つというだけで、十分過ぎると思いませんか？<br>
-   自分が勉強してきた技術の活かし方として、これ以上のものはないと思います。<br>
-   だから .org ドメインなのですよ。</p>
-
-  <p>個人でやってる非営利活動だからさ。<br>
-   サブのサイトでゲームや釣りのことを書いてたっていいじゃん？<br>
-   お金のために自分がしたいことを犠牲にせずに済む、理想の形なのです。</p>
-
-  <p class="gra">.orgドメインの一般的な解説</p>
-  <p>.org ドメインは、その名前が示すとおり「organization」の略で、インターネットの黎明期から存在する歴史あるトップレベルドメインです。<br>
-   当初は非営利組織や団体向けに設計されていて、営利企業は .com、教育機関は .edu、政府機関は .gov
-   といった具合に使い分けられていました。<br>
-   しかしインターネットの普及と共に、これらのドメインの登録ポリシーが緩和されてきました。<br>
-   正式には .orgドメインを登録するための厳格な制限がなかったため、個人や営利企業でも自由に取得できるようになったんです。</p>
-
-  <p>このドメインを使用することで、サイト訪問者に対して親近感や信頼感を伝えることができます。<br>
-   営利目的ではない、純粋な情報提供やコミュニティの価値観といったものの強調と言えば良いでしょうか。<br>
-   社会的に意義ある情報を発信したい、またはコミュニティとのつながりを深めたいと考えているのであれば、.org ドメインはその思いを表現する手段になるでしょう。</p>
+  <p>実際の設定を見ながら、DNS設定に必要な事柄を見ていきます。</p>
 
   <h3>Google App Engineでカスタムドメインを設定する</h3>
   <p>特に難しいことはないですよ？<br>
@@ -628,7 +871,8 @@
   <p>Google App Engineは、Google Cloud Platformの一部で、アプリケーションやウェブサイトをホストするためのサービスです。<br>
    Google Cloud
    Consoleを使用して管理し、ウェブサイトの設定やデプロイを行います。<br>
-   Google Cloud Consoleでは、すでにウェブサイトがGoogleアカウントに紐づけられているため、追加の所有権の証明は必要ありません。</p>
+   Google Cloud Consoleでは、すでにウェブサイトがGoogleアカウントに紐づけられているため、追加の所有権の証明は必要ありません。<br>
+   ただし、サブドメインの www については、改めてSearch Consoleで所有権を確認するプロセスを挟む必要があります。</p>
 
   <h4>2. Google Sitesによる静的ウェブサイト</h4>
   <p>Google Sitesは、ユーザーが簡単にウェブサイトを作成できるツールです。<br>
@@ -639,34 +883,1301 @@
   <h3>さくらのドメインコントロールパネル</h3>
   <p>さくらのドメインにおける「ゾーン情報」とは、ドメインのDNS設定全体を指す用語です。<br>
    そのドメインに関連付けられたDNSレコード（Aレコード、CNAMEレコード、MXレコード、TXTレコードなど）の集合体を管理・表示するための情報となります。</p>
+  <p>2025年3月現在、メインコントロールパネル登録情報・ゾーン情報のレコード設定・SOAレコードの3つに分かれています。</p>
 
-  <p class="gra">1. ドメインとIPアドレスの関連付け</p>
+  <h3>メインコントロールパネル登録情報</h3>
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">ドメイン名:</span> feinatelier.org<br>
+     <span class="feinorg-label">サービスコード:</span> xxxxxxxxxxx<br>
+     <span class="feinorg-label">レジストラ:</span> JPRS（日本レジストリサービス）<br>
+     <span class="feinorg-label">ドメインの利用状態:</span> 利用中
+    </p>
+   </div>
+  </div>
+
+  <p>ここは分かりやすいでしょうね。<br>
+   サービスコードはドメインや契約に紐づいた固有の識別子です。<br>
+   問い合わせやサポート時に特定の契約情報を確認するために使われるため、あるいはノートなどに書いておくと良いかも。<br>
+   レジストラは上述したように、ドメイン名を登録・管理する企業や組織のことです。<br>
+   JPRS（日本レジストリサービス）は日本のドメイン名の管理を担っている主要な機関となっています。<br>
+   ドメイン名の登録情報や利用ルールを統括している組織です。</p>
+
+  <h3>ゾーン情報のレコード設定</h3>
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> @<br>
+     <span class="feinorg-label">タイプ:</span> NS<br>
+     <span class="feinorg-label">データ:</span> ns1.dns.ne.jp<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> @<br>
+     <span class="feinorg-label">タイプ:</span> NS<br>
+     <span class="feinorg-label">データ:</span> ns2.dns.ne.jp.<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> @<br>
+     <span class="feinorg-label">タイプ:</span> TXT<br>
+     <span class="feinorg-label">データ:</span> "google-site-verification=example1234567890"<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row"><span class="feinorg-label">エントリ名:</span> @<br>
+     <span class="feinorg-label">タイプ:</span> A<br>
+     <span class="feinorg-label">データ:</span> 123.123.123.123<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> @<br>
+     <span class="feinorg-label">タイプ:</span> AAAA<br>
+     <span class="feinorg-label">データ:</span> 2001:db8::1234<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> www<br>
+     <span class="feinorg-label">タイプ:</span> CNAME<br>
+     <span class="feinorg-label">データ:</span> ghs.googlehosted.com.<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> portal<br>
+     <span class="feinorg-label">タイプ:</span> CNAME<br>
+     <span class="feinorg-label">データ:</span> ghs.googlehosted.com.<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> example123<br>
+     <span class="feinorg-label">タイプ:</span> CNAME<br>
+     <span class="feinorg-label">データ:</span> example-placeholder.googlehosted.com<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> _atproto<br>
+     <span class="feinorg-label">タイプ:</span> TXT<br>
+     <span class="feinorg-label">データ:</span> "did=<br>
+     did:plc:exampleplaceholder1234"<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+  </div>
+
+  <h5>エントリ名: @、タイプ: NS</h5>
+  <p>この設定は、ドメインの名前解決（DNS）に関するものです。<br>
+   NS（Name Server）レコードは、ドメイン名に関連付けられたネームサーバーを指定するためのDNSレコードです。<br>
+   ネームサーバーは、インターネット上で「このドメインの情報はどこにあるか」を教える役割を果たします。<br>
+   しかし、ここでns1とns2があります。<br>
+   なぜ2つあるのでしょうか。</p>
+
   <dl>
-   <dt>Aレコード</dt>
-   <dd>ドメイン名をIPv4アドレスにマッピングします。</dd>
+   <dt>冗長性（Redundancy）</dt>
+   <dd>ネームサーバーが複数ある理由は、1つのサーバーがダウンした場合でも、もう1つのサーバーが機能することで、ドメインの名前解決が継続できるようにするためです。</dd>
+   <dd>例えば、ns1.dns.ne.jpが一時的に利用できなくなった場合でも、ns2.dns.ne.jpがバックアップとして機能します。</dd>
 
-   <dt>AAAAレコード</dt>
-   <dd>ドメイン名をIPv6アドレスにマッピングします。</dd>
+   <dt>地理的分散</dt>
+   <dd>ネームサーバーは異なる場所に配置されることが多く、これによりアクセス速度が向上し、障害の影響を最小限に抑えることができます。</dd>
   </dl>
 
-  <p class="gra">2. サブドメインの設定</p>
+  <p>さくらインターネットのようなドメイン管理サービスでは、ドメインを購入した際に、デフォルトでそのサービスのネームサーバーが設定されます。<br>
+   ユーザーが特に設定を変更しなくても、基本的なDNS機能が利用できるようになっているわけです。<br>
+   通常、特別な理由がない限り、この設定を変更する必要はありません。<br>
+   ただし、独自のネームサーバーを使用したい場合や、特定のDNSプロバイダーを利用したい場合には、これらのNSレコードを変更することがあります。</p>
+
+  <h5>エントリ名: @、タイプ: TXT</h5>
+  <p>これはドメインの所有権を確認するための、Googleのサイト確認レコードです。<br>
+   TXT（Text）レコードは、ドメインに関する補足情報を記述するためのDNSレコードです。<br>
+   主に認証や確認目的で使われます。<br>
+   特定のサービス、このWebサイトの場合はGoogleに対して、ドメインが私の管理下にあることを証明するために設定されます。</p>
+
+  <p>google-site-verification=example1234567890 は Google が提供する文字列です。<br>
+   これをTXTレコードとして設定することで、Googleがそのドメインの所有権を確認します。<br>
+   GoogleサーチコンソールやGoogle広告などのツールを利用する際、この確認プロセスを通じてドメインが正しく管理者のものであることを証明します。</p>
+
+  <p>「@」はそのドメイン自体、つまり feinatelier.org を指します。<br>
+   このレコードはTXTタイプですよね。<br>
+   そして、データの「google-site-verification=example1234567890」は、上述のようにGoogleが提供した確認コード。<br>
+   このコードがGoogle側で一致すると、所有権が確認されます。<br>
+   TTLは通常、キャッシュの有効期限を指定しますが、「-」となっているのでデフォルト値が利用されます。</p>
+
+  <p>ここの意味がちょっと分かりにくいのですよ。<br>
+   いろんなWebサービスを経由するからね。<br>
+   Googleサービスを利用する際に、ドメイン所有者であることを証明することが求められるのです。<br>
+   このTXTレコードを登録することで、Googleがこのドメインが私のものであることを、確認できるということです。</p>
+
+  <h4>複数のTXTレコードを設定するケース</h4>
+  <p>DNSレコードには複数の TXT（テキスト）レコードを設定することが可能です。<br>
+   ドメインの所有者は、一つのドメインに対して複数の TXT レコードを追加して、異なる用途に利用できます。<br>
+   このTXTレコードが含む情報として、次のようなケースが考えられるでしょう。</p>
+
   <dl>
-   <dt>CNAMEレコード</dt>
-   <dd>サブドメインを他のドメイン名にエイリアス（別名）として設定します。</dd>
+   <dt>ドメインの所有権検証</dt>
+   <dd>ドメインの所有権を確認するために、サイトの設定やサードパーティのサービスから指定されたTXT レコードを追加することがあります。<br>
+    ここで言うサードパーティーのサービスとは、Google Search Console や Office 365 などです。<br>
+    例えばこのサイトの独自ドメインなら、Google Search Console が該当します。</dd>
+   <dt>SPF（Sender Policy Framework）</dt>
+   <dd>電子メールの送信者が正当なものであることを確認するための SPF レコードが含まれます。</dd>
+   <dt>DKIM（DomainKeys Identified Mail）</dt>
+   <dd>メールの改ざんを防止するために DKIM レコードが設定されることがあります。</dd>
+   <dt>DMARC（Domain-based Message Authentication, Reporting, and Conformance）</dt>
+   <dd>メールのなりすましを防ぐための DMARC レコードも TXT レコードとして設定されます。</dd>
   </dl>
 
-  <p class="gra">3. メールの送受信設定</p>
+  <h5>エントリ名: @、タイプ: AとAAAA</h5>
+  <p>「A」や「AAAA」といった名前は、DNS（ドメインネームシステム）の設計時に、それぞれのレコードタイプが果たす役割をシンプルに表現するための命名規則として採用されました。<br>
+   「A」は、Address（アドレス）を意味します。<br>
+   ドメイン名に関連付けられたIPv4アドレスを解決するための、最も基本的なDNSレコードとして設計されたためです。<br>
+   初期のDNS設計時に、もっとも重要な役割である「アドレス解決」を担当するレコードとして「A」という簡単な文字が割り当てられました。<br>
+   「AAAA」は、IPv6アドレスを表します。<br>
+   IPv6アドレスは、IPv4に比べて長いアドレス形式（128ビット）を使用するため、「4倍のA（Address）」という意味で「AAAA」と名付けられています。</p>
+
+  <p>私の場合、Aレコードが4つあり、IPアドレスが4つ入力されます。<br>
+   Google App Engineにデプロイされた静的ウェブサイトでIPアドレスが複数ある理由は、スケーラブルで信頼性の高いウェブサイトホスティングを実現するためです。<br>
+   次のような特徴があるんですよね。</p>
+
   <dl>
-   <dt>MXレコード</dt>
-   <dd>メールサーバの指定を行います。</dd>
+   <dt>1. 負荷分散</dt>
+   <dd>Googleは、トラフィックを効率的に処理するために、複数のIPアドレスを使用してリクエストを分散します。<br>
+    特定のサーバーに負荷が集中するのを防ぎ、ウェブサイトのパフォーマンスを向上させます。</dd>
+
+   <dt>2. 高可用性</dt>
+   <dd>複数のIPアドレスを使用することで、障害が発生した場合でも他のIPアドレスを通じてサービスを継続できます。<br>
+    ダウンタイムを最小限に抑え、信頼性の高いサービスを提供します。</dd>
+
+   <dt>3. 地理的分散</dt>
+   <dd>Googleのインフラストラクチャは世界中に分散しており、ユーザーに最も近いデータセンターを通じてリクエストを処理します。<br>
+    遅延を減らし、より高速な応答を実現します。</dd>
+
+   <dt>4. DNSラウンドロビン</dt>
+   <dd>DNS設定で複数のIPアドレスを登録することで、リクエストが順番に異なるIPアドレスに振り分けられます。<br>
+    これも負荷分散の一環です。</dd>
   </dl>
 
-  <p class="gra">4. ドメインの所有権確認やセキュリティ設定</p>
+  <p>IPv6の場合、アドレス空間が非常に広大なので、複数のアドレスを用いてこれらの効果を強化しつつ、より最新のインフラストラクチャとネットワーク設計に対応しているという特徴もあります。<br>
+   IPv4とIPv6が両方同時に使われているのも、デバイスやネットワークによってIPv4しか使えない場合があるため、互換性を維持するためですね。</p>
+
+  <h5>エントリ名: www、タイプ: CNAME</h5>
+  <p>こういうところ、重要なポイントです。<br>
+   このCNAMEレコード（<span class="codecolor">www</span> →
+   <span class="codecolor">ghs.googlehosted.com.</span>）は、<span class="codecolor">www.feinatelier.org</span>が<span
+    class="codecolor">feinatelier.org</span>とは別のサブドメインとして扱われ、Google App
+   Engineのホスティングに対応させるための設定です。
+  </p>
+
+  <p>CNAME（Canonical Name）レコードは、あるドメイン名を別のドメイン名に紐づけるDNSレコードです。<br>
+   <span class="codecolor">www.feinatelier.org</span>は、<span
+    class="codecolor">ghs.googlehosted.com.</span>（Googleのホスティングサービス、ここではapp engine）にマッピングされています。<br>
+   この設定により、<span class="codecolor">www.feinatelier.org</span>にアクセスしたユーザーは、自動的にGoogleの指定されたホスティングサービスにリダイレクトされます。
+  </p>
+
+  <p>ここで、すでに<span class="codecolor">feinatelier.org</span>があるのに、なぜ<span
+    class="codecolor">www.feinatelier.org</span>が必要なのか、考えていきます。</p>
+
   <dl>
-   <dt>TXTレコード</dt>
-   <dd>ドメインの所有権確認やSPF設定、DKIM、DMARCなどのセキュリティ設定に使用されます。</dd>
+   <dt><span class="codecolor">www</span>サブドメインの独立性</dt>
+   <dd>
+    通常、<span class="codecolor">feinatelier.org</span>（ルートドメイン）と
+    <span class="codecolor">www.feinatelier.org</span>（サブドメイン）は別物として扱われます。
+   </dd>
+   <dd>
+    ユーザーが<span class="codecolor">www.feinatelier.org</span>にアクセスした場合、それがどこに向かうべきかを明示するため、CNAMEレコードが必要です。
+   </dd>
+
+   <dt>アクセスの分散</dt>
+   <dd>
+    一部のユーザーは、<span class="codecolor">www</span>を省略せず、
+    <span class="codecolor">www.feinatelier.org</span>を直接入力する傾向があります。
+   </dd>
+   <dd>
+    そのため、この設定をすることで、<span class="codecolor">www</span>を利用するユーザーも問題なくGoogle App Engineの静的サイトに接続できます。
+   </dd>
+
+   <dt>互換性と信頼性</dt>
+   <dd>
+    古いブラウザやシステムでは、<span class="codecolor">www</span>付きのURLにアクセスするケースが多いです。
+   </dd>
+   <dd>
+    こうしたユーザー体験を損なわないため、<span class="codecolor">www</span>も明確に設定されています。
+   </dd>
   </dl>
 
+  <p>このように、Google App Engineや他のホスティングサービスは、ルートドメイン（<span class="codecolor">feinatelier.org</span>）と<span
+    class="codecolor">www</span>サブドメインを個別に設定することが一般的です。<br>
+   各サブドメインを独自に扱うことで、DNSエラーやリダイレクトの問題を防げます。<br>
+   <span class="codecolor">feinatelier.org</span>だけでなく、<span
+    class="codecolor">www.feinatelier.org</span>もホスティングに結びつけることで、ユーザーのアクセスパターン全般をカバーできるということです。
+  </p>
+
+  <h5>エントリ名: portal、タイプ: CNAME</h5>
+  <p>ここは2カ所をまとめて書いていきます。<br>
+   2つとも<a href="https://portal.feinatelier.org/">fein's portal</a>に関する設定です。</p>
+  <h5>エントリ名: example123、タイプ: CNAME</h5>
+
+  <p>それぞれの CNAME レコードは、別々の目的のために設定されています。<br>
+   2つとも正しく設定しないと<a href="https://portal.feinatelier.org/">fein's portal</a>へサブドメインを設定できません。</p>
+
+  <p class="gra">1. エントリ名: portal の CNAME レコード</p>
+  <p>このレコードは、<span class="codecolor">portal.feinatelier.org</span> にアクセスするユーザーのリクエストを、Google
+   Sites のホスティングサーバーである
+   <span class="codecolor">ghs.googlehosted.com.</span>
+   に正しく振り分けるためのものです。<br>
+   つまり、実際にウェブサイトを表示するための「道しるべ」として機能します。
+  </p>
+
+  <p class="gra">2. エントリ名: example123 の CNAME レコード</p>
+  <p>このレコードは、Googleサーチコンソールなどの Google のサービスが、設定したサブドメインに対して所有権の確認や設定情報の検証を行うために発行したものです。<br>
+   これがないと、Google Sites側でDNSに関する何かしらエラーが発生するはずです。<br>
+   だって<span class="codecolor">portal.feinatelier.org</span> というサブドメインに対して所有権の確認が取れないから。<br>
+   ゆえに追加の検証用情報として
+   <span class="codecolor">example-placeholder.googlehosted.com</span>
+   を示すレコードを入れることで、正しい設定と所有権を確認し、最終的に <span class="codecolor">portal.feinatelier.org</span> が問題なく表示されるというわけですね。
+  </p>
+
+  <p><span class="codecolor">portal</span> のレコードは、実際のサイトへのアクセスを Google のホスティングサービスに結びつけるためにあるんですよ。<br>
+   一方、<span class="codecolor">example123</span>
+   のレコードは、Googleの検証プロセスの一環として追加されたものであり、サイト設定や所有権の確認が正しく行われるために必要な情報なのです。<br>
+   同じサブドメインに対して複数の CNAME レコードが存在するように見えますが、実際はそれぞれ全く異なる役割を担っているというわけです。</p>
+
+  <h5>エントリ名: _atproto、タイプ: TXT</h5>
+  <p>Bluesky側の設定については <a href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial">How to verify your
+    Bluesky
+    account</a> にあります。</p>
+
+  <p>このDNSレコードは、BlueskyがカスタムドメインとBlueskyアカウントを連携させるために用いる認証情報です。<br>
+   _atproto は、Bluesky（ATプロトコル）の仕様で定められた特定の名前空間です。<br>
+   Blueskyは、この名前（ホスト名）のTXTレコードを探して、ドメインの認証や紐付けを行います。<br>
+   TXTレコードは、任意のテキスト情報をDNSに登録でき、所有権の確認や認証情報の提供によく使われます。これは上述しましたね。<br>
+   did から始まる文字列に記載されている情報は、ドメインがBluesky側で発行された分散型識別子（DID: Decentralized Identifier）と連携していることを示しています。<br>
+   つまり、Blueskyアカウントに対応する識別子です。</p>
+
+  <p>
+   BlueskyはこのTXTレコードをチェックすることで、「_atproto.feinatelier.org」というサブドメインに対して、正しいDID（分散型識別子）が設定されているかを確認し、私のドメインが所有され、Bluesky用の設定が完了していると認証します。<br>
+   このようにして、Bluesky側のシステムは私のドメインを正しく認識・連携することができるようになります。</p>
+
+
+  <h3>SOAレコード</h3>
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">シリアル番号:</span> xxxxxxxxxx<br>
+     <span class="feinorg-label">更新間隔 (Refresh):</span> 3600<br>
+     <span class="feinorg-label">リトライ間隔 (Retry):</span> 900<br>
+     <span class="feinorg-label">有効期限 (Expire):</span> 3600000<br>
+     <span class="feinorg-label">ネガティブキャッシュTTL:</span> 3600
+    </p>
+   </div>
+  </div>
+
+  <p>次はここの説明ですね。<br>
+   SOA（Start of Authority）レコードは、DNSゾーンファイルに含まれる重要な情報のひとつで、DNSゾーンの管理に関するデータを提供します。<br>
+   DNSゾーンの同期や信頼性、効率性を保つために重要な設定を含んでいるので、通常はプロバイダやゾーン管理者が調整します。</p>
+
+  <dl>
+   <dt>1. シリアル番号 (Serial Number)</dt>
+   <dd>ゾーンファイルのバージョンを示しています。<br>
+    ゾーンファイルを更新した際に番号を増やすことで、セカンダリDNSサーバーに更新内容が反映されるトリガーとなります。</dd>
+
+   <dt>2. 更新間隔 (Refresh)</dt>
+   <dd>セカンダリDNSサーバーがプライマリDNSサーバーに接続し、ゾーンの更新があるかどうかを確認する間隔を秒単位で指定します。<br>
+    この間隔で、セカンダリサーバーが定期的に更新チェックを行います。</dd>
+
+   <dt>3. リトライ間隔 (Retry)</dt>
+   <dd>セカンダリDNSサーバーがプライマリDNSサーバーへの接続に失敗した場合、再試行までの待ち時間を秒単位で指定します。<br>
+    プライマリサーバーが一時的にダウンしても、この値の間隔で再接続を試みます。</dd>
+
+   <dt>4. 有効期限 (Expire)</dt>
+   <dd>セカンダリDNSサーバーがプライマリサーバーに接続できないまま、キャッシュデータを有効とみなす最大期間（秒単位）を指定します。<br>
+    この期間を超えると、セカンダリサーバーはキャッシュを無効とし、応答を停止します。</dd>
+
+   <dt>5. ネガティブキャッシュTTL</dt>
+   <dd>ドメインが存在しない場合などのエラー情報をキャッシュとして保持する期間（秒単位）を指定します。<br>
+    エラー結果を再利用することで、サーバーへの負荷を軽減します。</dd>
+  </dl>
+
+  <h4>セカンダリDNSサーバーとプライマリDNSサーバー</h4>
+  <p>上述している「セカンダリDNSサーバーとプライマリDNSサーバー」について、見ていきます。<br>
+   これらは、DNS（Domain Name System）における役割を持った2種類のサーバーで、ゾーンデータの管理と提供に関与しています。</p>
+
+  <p>このサイトの<span class="codecolor">NS_ns1.dns.ne.jp.</span> と <span class="codecolor">NS_ns2.dns.ne.jp.</span>
+   は、ネームサーバー（Name Server）を指定するNSレコードとなっているんですよね。<br>
+   これらのネームサーバーが、プライマリDNSサーバーまたはセカンダリDNSサーバーの役割を果たします。</p>
+
+  <dl>
+   <dt><span class="codecolor">ns1.dns.ne.jp.</span></dt>
+   <dd>一般的にはプライマリDNSサーバーとして機能します。<br>
+    ゾーンデータの元データを保持し、管理を行います。</dd>
+   <dt><span class="codecolor">ns2.dns.ne.jp.</span></dt>
+   <dd>セカンダリDNSサーバーとして設定される場合が多いです。<br>
+    プライマリDNSサーバーからデータを同期し、冗長性を確保します。</dd>
+  </dl>
+
+  <p>これらのネームサーバーは、ドメインに対する名前解決を提供するサーバーとして、外部からのクエリに対応します。<br>
+   例えば、ドメイン名をIPアドレスに変換するといったお仕事ですよ。<br>
+   こうすることで、システムの信頼性や可用性を向上させています。</p>
+
+  <p>ここらへんは深みにハマるとキリがないのですが、もうちょっと詳しく見ておく必要があります。<br>
+   ぼんやりとでも良いから意味が分かっていないと、トラブル発生時に対処できなくなることはもちろん、そもそも設定時にヒントを探すべくググることさえ難しいケースが出てくるんだよね。</p>
+
+  <p class="gra">プライマリDNSサーバー (Primary DNS Server)</p>
+  <p>ゾーンデータの「元データ」を管理する主要なサーバーです。<br>
+   このサーバー上でゾーン情報（Aレコード、CNAMEレコード、NSレコードなど）を作成・編集します。<br>
+   ゾーンファイルを直接編集できるのはプライマリDNSサーバーのみ。<br>
+   言い変えると、サイト管理者がDNS設定をしているのは、このプライマリDNSサーバーを触っているということです。<br>
+   このサーバーはSOA（Start of Authority）レコードを含む全てのゾーンデータを保持します。<br>
+   データが更新されると、セカンダリDNSサーバーに通知し、データの同期を行います。</p>
+
+  <p class="gra">セカンダリDNSサーバー (Secondary DNS Server)</p>
+  <p>プライマリDNSサーバーからコピーされたゾーンデータを保持し、クライアント（例えばWebブラウザや他のサーバー）のクエリに応答します。<br>
+   ゾーンデータの編集はできず、プライマリDNSサーバーからデータを取得して保持します。<br>
+   プライマリDNSがダウンしても、セカンダリDNSが引き続き名前解決を提供するため、可用性と信頼性を向上させます。<br>
+   「更新間隔（Refresh）」の設定に従い、プライマリDNSから最新のゾーンデータを取得します。</p>
+
+  <p>交通整理をしましょう。<br>
+   プライマリDNSは「ゾーンデータの作成者」として、すべての基準を管理します。<br>
+   セカンダリDNSは「コピーを保持するパートナー」として、データを補完し、可用性を確保します。<br>
+   両者の連携により、ドメインが正しく機能し、高い可用性と信頼性を提供します。<br>
+   実用上のポイントとしては、一般的にプライマリDNSサーバーがプロバイダや管理者によって設定され、ユーザーはセカンダリDNSについて深く意識する必要はありません。<br>
+   ただし、もしドメイン運用における問題（名前解決が遅い、接続失敗など）がある場合、セカンダリDNSが正常に機能しているかを確認することが重要なのです。</p>
+
+  <h2>ドメインとレコードタイプの対応関係</h2>
+  <p>私の独自ドメイン運用のように、ルートドメインとサブドメインを使い分けるような設定にしている場合、それらの対応関係を把握しておく必要があります。<br>
+   いろんな事例があるけども、私の運用はわりと単純な部類かと思います。<br>
+   ここまでの説明文と多少重複する場面もありますが、リダイレクトのソースコードを見る前に、復習ついでに見ておいて頂けると良いかと思います。</p>
+
+  <h4>メインサイトとBlueskyの関係</h4>
+  <p>
+   DNSの仕組みでは、同じドメイン名に対して複数のレコードタイプ（A、AAAA、NS、TXT、CNAMEなど）を独立して設定できるため、一見するとルートドメインが2カ所に設定されているように見えても、それぞれは全く別の役割を持っているのです。<br>
+   例えば私の場合、https://feinatelier.org/ と https://bsky.app/profile/feinatelier.org で、ルートドメインを2つ使っているわけではありません。<br>
+   https://feinatelier.org/ はルートドメイン（トップレベルのドメイン）ですが、https://bsky.app/profile/feinatelier.org
+   はサブドメインではなく、別のドメイン（bsky.app）の特定のページになります。</p>
+
+  <dl>
+   <dt>ルートドメイン</dt>
+   <dd>feinatelier.org のように、ドメインの基本部分（親）を指します。この場合、 https://feinatelier.org/ はそのドメインのルート（トップ）です。</dd>
+   <dt>サブドメイン</dt>
+   <dd>www.feinatelier.org や blog.feinatelier.org のように、ルートドメインの前に名前（www や blog）を付けることで、同じドメイン内の異なる部分を示します。</dd>
+  </dl>
+
+  <p>一方で、 <span class="codecolor">bsky.app</span> は完全に別のドメインです。<br>
+   URL <span class="codecolor">https://bsky.app/profile/feinatelier.org</span> に含まれている <span
+    class="codecolor">feinatelier.org</span> は、あくまで <span class="codecolor">bsky.app</span>
+   上のプロファイルページの一部として使われているだけです。<br>
+   つまり、<span class="codecolor">feinatelier.org</span> はこのURLの中でサブドメインの一部ではありません。</p>
+
+  <dl>
+   <dt>「@」レコードと「_atproto」レコードは別物</dt>
+   <dd>
+    「@」は「feinatelier.org」そのものを示し、A、AAAA、NS、TXT（Googleサイト認証用など）の各レコードがメインのウェブサイトの動作に関わります。<br>
+    一方「_atproto」は「_atproto.feinatelier.org」というそのドメイン内に属する独自のサブドメインになっています。<br>
+    TXTレコードとしてBluesky向けの認証やサービスディスカバリ目的で設定されています。<br>
+    すなわち、Blueskyプロトコルなどで使われる認証用サブドメインと言えます。
+   </dd>
+
+   <dt>DNSではレコードタイプごとに独立して参照される</dt>
+   <dd>
+    ウェブサイトの表示はAやAAAA、またはCNAMEレコードによって行われるため、_atprotoのTXTレコードはそれらの動作に一切影響しません。<br>
+    TXTレコードは、メール認証やサービス認証、各種検証用情報として使われるもので、HTTPリクエストの解決には影響しません。
+   </dd>
+
+   <dt>同一ドメイン内で複数のレコードが共存できる仕様</dt>
+   <dd>
+    DNSでは、AレコードやCNAMEレコード、TXTレコードなどは同じ「feinatelier.org」というルートドメイン内でも、設定対象の名前（@や_subname）が異なるので、互いに干渉することなく並存できます。
+   </dd>
+  </dl>
+
+  <p>
+   つまり、さくらのDNSゾーン設定で「_atproto」TXTレコードを追加しても、これは「_atproto.feinatelier.org」というサブドメイン用の設定であって、メインの「feinatelier.org」には設定されているAやAAAAレコードなどと全く別物です。<br>
+   そのため、ホームページ（feinatelier.org）の動作に影響は出ず、Bluesky用の認証などでのみ使われるという仕組みになっています。</p>
+
+  <h4>メインサイトとポータルサイトの関係</h4>
+  <p>次に、App Engineのサイトで「feinatelier.org」を設定していると、 Google Sitesのサイトでは「feinatelier.org」を設定できないのはなぜでしょうか。</p>
+
+  <p>一つのルートドメイン（この場合「feinatelier.org」）は、DNS設定上、基本的にひとつのサービスにしかマッピングできません。<br>
+   たとえば、App
+   Engine側で「feinatelier.org」を使うように設定している場合、そのドメインはApp Engineのサーバーを指すことになります。<br>
+   そのため、同じルートドメインをGoogle
+   Sites側でカスタムドメインとして設定することはできず、重複して使用することはできません。</p>
+
+  <p>もしGoogle Sitesで別のコンテンツを公開したい場合は、私のように portal.feinatelier.org などのサブドメインを利用するか、App
+   Engine側の設定と調整して、どちらに割り当てるかを明確にする必要があります。</p>
+
+  <p>これも分かりにくいポイントでしょう。<br>
+   ひとつのサービスにしかマッピングできないのは、DNSでドメインの名前（feinatelier.org）に対して、ウェブトラフィックをどこに送るかを決める A/AAAA/CNAME
+   レコードが、基本的に1つ（または1種類）のサービスにしか向けられないからです。<br>
+   つまり、同じ名前を2つ以上のウェブサービスに同時に割り当てることはできないということです。<br>
+   次のように考えてみると多少はマシかも。</p>
+
+  <p class="gra">「メインサイト + ポータルサイト」の場合</p>
+  <p>もし feiinatelier.org を A レコードや CNAME を使って別のウェブサイト（App Engine のサイト）に割り当てている状態で、さらに Google Sites
+   のサイトに同じドメインを割り当てようとすると、DNS がどちらにトラフィックを送ればよいかわからなくなってしまいます。<br>
+   DNSでは1つのドメイン名に対して複数のウェブ向けレコードが併存することはできないため、結果的にどちらか一方にしかマッピングできません。<br>
+   同じドメインを2つ以上のウェブサービス（DNSの A/CNAME レコードで方向付けされるサービス）に割り当てることはできないんだよね。<br>
+   どちらにするかを選ぶ必要があります。</p>
+
+  <p class="gra">「メインサイト + bluesky」の場合</p>
+  <p>Bluesky の設定で利用されるのは、主に TXT レコードなど追加の検証情報であって、ウェブトラフィック（HTTP/HTTPS の接続）の向き先には直接影響しません。<br>
+   つまり、feinatelier.org は A や CNAME レコードによって App Engine のサイトに向けられており、その一方で、Bluesky 用の認証・検証情報を TXT レコード（または特定のサブドメインの TXT
+   レコード）として設定しているため、両方を同時に使うことができるのです。<br>
+   ウェブサイト用の A/CNAME レコードはそのまま使用しつつ、TXT レコードなどでBlueskyの検証用の情報を追加することになるので、両者は役割が異なり、干渉しません。</p>
+
+  <h4>Google SitesとBlueskyの共通点</h4>
+  <p>Bluesky の場合、通常のウェブサイトのようにそのドメイン上で直接コンテンツをホスティングするわけではないため、A レコードなどのIPアドレスへのマッピングが必要ない仕組みになっています。<br>
+   分散型プロトコルでもサーバーは必要ですよ？<br>
+   でも、Twitterの中央集権型のようにすべてを1カ所で管理するわけではなく、複数の場所に分散して動いています。<br>
+   各ユーザーが自分のサーバーを持つ自由度が高く、サービス提供者に依存しない形でデータを保持できます。</p>
+
+  <p>Bluesky は、カスタムドメインをそのサービスに紐付けるために、DNS の TXT レコード（たとえば「_atproto」レコード）を利用して所有権の検証を行います。<br>
+   TXT レコードに特定の値（did=
+   did:plc:exampleplaceholder1234）を設定することで、Bluesky 側が「このドメインはあなたのものである」と認証します。</p>
+
+  <p>通常のウェブサイトとホスティングの仕組みが違うんですよね。<br>
+   通常のウェブサイトだと、利用者がドメインにアクセスしたときに、DNS の A や CNAME レコードで指定されたサーバーに接続されます。<br>
+   しかし、Bluesky
+   の場合は、実際のコンテンツ提供は中央のサービスで行われ、カスタムドメインはあくまで「表示名」や「認証情報」として使われるだけです。<br>
+   このため、ウェブトラフィックを直接 Bluesky のサーバーにルーティングする必要がなく、A
+   レコードのようなIPアドレスへのマッピングも不要となっています。</p>
+
+  <p>Bluesky では、アカウントがドメインの所有権を証明するための TXT レコードだけがあれば、そのドメイン（やサブドメイン）をサービスに関連付けることができ、従来のウェブサイトのように DNS
+   によるホスティングの設定（A/CNAME
+   レコードなど）を変更する必要がない、という仕組みになっています。</p>
+
+  <p>これが、Bluesky で A レコードなどを設定せずに、TXT レコードだけでカスタムドメインの認証や紐付けが可能な理由です。<br>
+   Google Sitesも、基本的な考え方は似ています。</p>
+
+  <p>Google SitesのようなSaaSプラットフォームでは、サービス提供側がバックエンドのインフラを管理しているため、ユーザー側が直接サーバーのIPアドレス（つまりAレコード）を指定する必要はありません。<br>
+   そのため、CNAMEレコードを使って自分のサブドメインをサービス側のドメインにエイリアスする形で設定できます。<br>
+   たとえば、次の設定を改めて見ておきます。</p>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+     <span class="feinorg-label">エントリ名:</span> portal<br>
+     <span class="feinorg-label">タイプ:</span> CNAME<br>
+     <span class="feinorg-label">データ:</span> ghs.googlehosted.com.<br>
+     <span class="feinorg-label">TTL:</span> -
+    </p>
+   </div>
+  </div>
+
+  <p>これは、portal.feinatelier.org へのアクセスを ghs.googlehosted.com に転送する、という仕組みです。<br>
+   GHS（Google Host Hosted
+   Service）側でIPアドレスの管理がされるので、利用者は単にCNAMEで仕向ければ済むのです。</p>
+
+  <p>Blueskyも同様に、ドメインの所有権確認やサービス連携はTXTレコードなどで行われ、ウェブトラフィック自体は中心となるBlueskyのサービス側で処理される仕組みになっています。<br>
+   つまり、直接Aレコードでそのドメインをポイントする必要がないため、同じように簡易な設定で済んでいると言えます。</p>
+
+  <p>
+   両者とも、サービス提供側でインフラ管理がなされているため、ユーザー側はカスタムドメイン設定においてAレコードを直接書く必要がなく、CNAME（もしくはTXT認証）を利用してドメインをサービスに紐付けられる仕組みになっています。<br>
+   そのため、Google Sitesでサブドメインを設定する場合も、Blueskyの場合も、本質的には「サービス側に任せる」という方法で動いているので、利用者にとっては設定がシンプルになるという点で同じ考え方なのです。</p>
+
+  <h4>メインサイトだけでAレコードが必要</h4>
+  <p>これは、DNSの仕様とサービス毎のカスタムドメインの設定方法の違いにあります。</p>
+
+  <p class="gra">1. DNS仕様の制約</p>
+  <dl>
+   <dt>ルートドメイン（@）にはCNAMEを使えない</dt>
+   <dd>
+    DNSの仕様上、ルートドメイン（たとえば「feinatelier.org」そのもの）に対してはCNAMEレコードを設定できません。<br>
+    そのため、ルートドメインにアクセスさせたい場合、<strong>Aレコード（IPv4）やAAAAレコード（IPv6）</strong>を使って、どのIPアドレスに向けるかを明示的に指示する必要があります。
+   </dd>
+  </dl>
+
+  <p class="gra">2. App Engineのカスタムドメイン設定の要件</p>
+  <dl>
+   <dt>所有権の検証</dt>
+   <dd>
+    TXTレコード（例：<span
+     class="codecolor">"google-site-verification=example1234567890"</span>）は、Googleがサイト作成者のドメインの所有権を確認するために必要です。
+   </dd>
+
+   <dt>ルートドメインのマッピング</dt>
+   <dd>
+    App Engine（あるいは一般的なGoogle
+    Cloudのサービス）で静的なウェブサイトをホスティングする場合、ルートドメインでのアクセスを適切に処理するために、Google側から提供された特定のIPアドレスにルートドメインを向けなければなりません。<br>
+    このため、ルートドメイン「@」には、<strong>Aレコード（例：123.123.123.123）とAAAAレコード（例：2001:db8::1234）</strong>を設定する必要があるのです。
+   </dd>
+  </dl>
+
+  <p class="gra">3. サブドメインとCNAMEの違い</p>
+  <dl>
+   <dt>サブドメイン（wwwなど）はCNAMEでOK</dt>
+   <dd>
+    サブドメインについては、CNAMEレコードを使って、たとえば「www」のアクセスを <span class="codecolor">ghs.googlehosted.com.</span>
+    にエイリアスするように設定できます。<br>
+    これは、Google Sitesや一部SaaSプラットフォームが内部でそのCNAMEを見てサービスに振り分ける仕組みになっているため、柔軟に利用できます。
+   </dd>
+  </dl>
+
+  <p>Google
+   SitesやBlueskyの場合、サービス提供側がそのサブドメインの背後にあるインフラのIPアドレス管理を完璧に行っているため、<strong>ユーザー側は単にサービスにエイリアスさせるためのCNAMEやTXTレコードだけで済む</strong>のです。<br>
+   つまり、内部でGoogle（またはBluesky）が適切にリクエストをルーティングしているため、Aレコードで直接IPアドレスを指定する必要がないということです。</p>
+
+  <dl>
+   <dt>App Engineでホスティングする場合</dt>
+   <dd>
+    ルートドメインはDNS仕様上CNAMEを使えないため、Googleが指定するIP（A/AAAAレコード）へ向ける必要があり、かつドメイン所有権検証もTXTレコードで行う必要があるため、<strong>AレコードやAAAAレコード</strong>を設定します。
+   </dd>
+
+   <dt>SaaSサービス（Google Sites、Blueskyなど）の場合</dt>
+   <dd>
+    サブドメインに対してCNAMEやTXTレコードのみでドメインの紐付けや認証が行えるため、直接Aレコードを設定する必要がありません。
+   </dd>
+  </dl>
+
+  <p>これが、App
+   Engineにデプロイされた静的ウェブサイトだけでA/AAAAレコードを書く理由です。<br>
+   DNSの仕様やサービスがどのようにドメインを管理するかという点で、各サービスの仕組みが違うため、設定方法も異なるのです。</p>
+
+  <h2>App Engineのリダイレクト設定</h2>
+  <p>リダイレクト設定を自分で行うなら、自身のサイトの構造を知る必要があります。<br>
+   このような構造は一般的に「プロジェクト構成」や「ディレクトリ構造」と呼ばれます。<br>
+   私の場合、Google App Engineにデプロイされていて、動的Webサイト（Flask使用）と静的Webサイトが混在しているのが特徴となっています。</p>
+
+  <div class="code-container">
+   <pre><code class="language-txt">
+FEIN-SITES-DEV1
+│  app.yaml           # メインサービスの App Engine 設定ファイル（ランタイム・ルート定義など）
+│  dispatch.yaml      # サービス間のルーティング規則を定義するファイル
+│  main.py            # Flask アプリケーションのエントリポイント（ルートや動的機能の設定）
+│  README.md          # プロジェクトの概要や使い方を説明するドキュメント
+│  requirements.txt   # アプリで必要な Python パッケージ（依存関係）のリスト
+├─redirect-service    # リダイレクト専用サービスのディレクトリ
+│      app.yaml       # リダイレクト用サービスの App Engine 設定ファイル
+│      redirect.py    # リダイレクト処理を記述した Flask アプリケーション
+│      requirements.txt # リダイレクト用サービスで必要な Python パッケージのリスト
+├─static              # 静的ファイルを保存するディレクトリ（CSS, JavaScript, 画像など）
+│  ├─css              # スタイルシート（デザイン）を格納
+│  ├─js               # JavaScript（インタラクションや動作制御）のスクリプトを格納
+│  └─menu             # メニュー関連のリソースを保存
+├─templates           # Flask 用の HTML テンプレートを保存
+│      top.html       # `/top` ルート用の動的コンテンツテンプレート
+│
+│   【上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。】
+│   【下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。】
+│
+└─www                 # 静的ウェブサイトのルートディレクトリ（主にフロントエンド用）
+    │  favicon.ico    # ブラウザのタブに表示されるアイコン
+    │  index.html     # 静的ウェブサイトのホームページ
+    │  manifest.json  # PWA（Progressive Web App）の設定ファイル
+    │  robots.txt     # 検索エンジンによるクローリング設定ファイル
+    │  service-worker.js # PWA 用のサービスワーカー（キャッシュ管理やオフライン対応）
+    ├─contents        # コンテンツ関連のファイルやデータを格納
+    ├─css             # 静的ウェブサイト専用のスタイルシートを保存
+    ├─fish            # 画像やリソース用ディレクトリ
+    ├─script          # フロントエンド用 JavaScript を格納
+
+</code></pre>
+  </div>
+
+  <p>この構造は、「Webアプリケーションを動かすためのファイルやフォルダを整理した箱」と考えると分かりやすいです。<br>
+   それぞれの部分に役割があり、全体が一緒になって動きます。</p>
+
+  <h3>1. メインサービス（上側部分）</h3>
+  <p>この部分は、サーバー側（バックエンド）で動く頭脳のようなものです。<br>
+   サーバーが「お客さん（訪問者）のリクエスト」を受け取ったり、必要な情報を探して返す役割を持ちます。</p>
+  <dl>
+   <dt>main.py</dt>
+   <dd>サーバーの中核部分。<br>
+    お客さんが「/aboutページ見せて」と頼んだら、それに応じる処理を書く。</dd>
+
+   <dt>app.yaml</dt>
+   <dd>サーバーの設定を記述。<br>
+    「どう動くのか」「どの言語（Python）で動かすか」を教える説明書。</dd>
+
+   <dt>templates/</dt>
+   <dd>見た目（HTML）を動的に生成するファイルの置き場所。</dd>
+  </dl>
+
+  <h3>2. リダイレクト専用サービス</h3>
+  <p>このセクションで集中的に見ていくエリアです。<br>
+   リダイレクトとは、「訪問者を自動で別のページに連れて行く」仕組みです。<br>
+   例えば、「古いページに来た人を新しいページに案内」するときなどに使います。</p>
+  <p>私の場合、他のエリアと同じようにPythonで書かれた小さな追加サービスとなっています。<br>
+   別のサーバーでも動かせるよう、ファイルが独立しています。</p>
+
+  <h3>3. 静的ファイル（下側部分）</h3>
+  <p>静的ファイルは、「サーバー側で処理がいらない見た目のページや素材」の集まりです。単純にブラウザで読まれるだけの部分ですよね。<br>
+   何かしらの紹介ページ（HTMLファイル）や、デザインの色や形を決めるCSSファイル、ボタンの動きを制御するJavaScriptファイルなどがあります。</p>
+
+  <dl>
+   <dt>css/</dt>
+   <dd>ページのデザインや色、フォントを決めるファイル。</dd>
+
+   <dt>script/</dt>
+   <dd>ページ上で動くプログラムを置く場所（例えば、ボタンをクリックしたときに動く仕組み）。</dd>
+
+   <dt>favicon.ico</dt>
+   <dd>ブラウザのタブに表示される小さいアイコン。</dd>
+  </dl>
+
+  <h3>プロジェクト構成の全体像</h3>
+  <ol>
+   <li>サーバーが訪問者のリクエストを受け取る（例えば、「トップページを見たい」）。</li>
+   <li>サーバーが「バックエンド（動的部分）」でそのリクエストを処理する。</li>
+   <li>必要に応じて「静的ファイル」を利用しながら、最終的なページを作成して訪問者のブラウザに返す。</li>
+  </ol>
+
+  <p>この構造の強みは、「動的な処理」と「静的な素材」をうまく組み合わせて使える点です。<br>
+   簡単にいうと、「頭を使って動く部分」（サーバー処理）と、「見た目を支える部分」（静的ファイル）が一緒に整理されていて、効率よく作業できるようになっています。</p>
+  <p>では、リダイレクト設定を行うソースコードを見ていきます。</p>
+
+  <p class="codegra" id="redirect_python">リダイレクト設定を行うredirect.py</p>
+  <div class="code-container">
+   <pre><code class="language-python">
+import os
+from flask import Flask, request, redirect
+
+app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/&lt;path:path&gt;')
+def redirect_all(path):
+    # クエリ文字列も含めた完全な URL を作成
+    new_url = request.url.replace(request.host, 'feinatelier.org', 1)
+    return redirect(new_url, code=301)
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8080))
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'  # デバッグモードを環境変数で制御
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
+
+</code></pre>
+  </div>
+  <p>このコードを動かすと、例えば「http://example.com/some-page」にアクセスした人を自動的に「http://feinatelier.org/some-page」に転送してくれる、という仕組みです。</p>
+
+  <ol>
+   <li>ユーザーがリクエスト（ページにアクセス）。</li>
+   <li>Flaskアプリがそのリクエストを受け取る。</li>
+   <li>新しいURLを作成し、ユーザーをそこに転送。</li>
+  </ol>
+
+  <p>コードの部分ごとの説明をしていきます。</p>
+
+  <p><strong>ライブラリの読み込み</strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+import os
+from flask import Flask, request, redirect
+
+</code></pre>
+  </div>
+  <dl>
+   <dt>import os</dt>
+   <dd>環境変数やシステム関連の情報を扱うための標準モジュールです。</dd>
+
+   <dt>from flask import ...</dt>
+   <dd>FlaskはPythonでWebアプリを作るためのフレームワーク（便利ツールセット）です。<br>
+    このコードではその一部の機能を使っています。</dd>
+
+   <dt>Flask</dt>
+   <dd>Webアプリの土台を作るためのクラス。</dd>
+
+   <dt>request</dt>
+   <dd>ユーザーのアクセス情報（URLやリクエスト内容など）を取得するために使用します。</dd>
+
+   <dt>redirect</dt>
+   <dd>別のURLに転送するための便利な関数です。</dd>
+  </dl>
+
+  <p><strong>Flaskアプリの初期化</strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+app = Flask(__name__)
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>役割</dt>
+   <dd>この一行でアプリケーションの土台を作成します。<br>
+    「Flaskを使ってアプリを動かしますよー」という合図のようなものです。</dd>
+  </dl>
+
+  <p><strong>リダイレクトのルート設定</strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/', defaults={'path': ''})
+@app.route('/&lt;path:path&gt;')
+ def redirect_all(path):
+
+</code></pre>
+  </div>
+  <dl>
+   <dt>@app.route(...)</dt>
+   <dd>訪問者がどのURL（パス）にアクセスしても、この関数が実行されるよう設定しています。</dd>
+
+   <dt>/</dt>
+   <dd>ルートパス（トップページ）用の設定。</dd>
+
+   <dt>&lt;path:path&gt;</dt>
+   <dd>任意のパス（例: /about や /contact）に対応します。</dd>
+  </dl>
+
+  <p><strong>関数の中身</strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+new_url = request.url.replace(request.host, 'feinatelier.org', 1)
+return redirect(new_url, code=301)
+
+</code></pre>
+  </div>
+  <dl>
+   <dt>request.url</dt>
+   <dd>ユーザーがアクセスした元のURLを取得します。</dd>
+
+   <dt>.replace(request.host, 'feinatelier.org', 1)</dt>
+   <dd>URLの中のホスト名（<span class="codecolor">request.host</span> = 現在のドメイン）を、<span
+     class="codecolor">feinatelier.org</span>に置き換えます。</dd>
+
+   <dt>redirect(...)</dt>
+   <dd>作成した新しいURLに転送します。</dd>
+
+   <dt>code=301</dt>
+   <dd>HTTPステータスコードで「恒久的なリダイレクト」を意味します。</dd>
+  </dl>
+
+  <p><strong>アプリの起動</strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+if __name__ == '__main__':
+port = int(os.environ.get('PORT', 8080))
+debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+app.run(host='0.0.0.0', port=port, debug=debug_mode)
+
+</code></pre>
+  </div>
+  <dl>
+   <dt>if __name__ == '__main__':</dt>
+   <dd>このコードが直接実行されるときにだけ動く部分を指定しています。</dd>
+
+   <dt>環境変数からポート番号とデバッグモードを取得</dt>
+   <dd></dd>
+
+   <dt>os.environ.get('PORT', 8080)</dt>
+   <dd>環境変数からポート番号を取得。指定がない場合はデフォルトで8080番を使用します。</dd>
+
+   <dt>os.getenv('FLASK_DEBUG', 'False').lower() == 'true'</dt>
+   <dd>デバッグモードをON/OFFする設定。</dd>
+
+   <dt>app.run(...)</dt>
+   <dd>アプリケーションを起動します。</dd>
+   <dd>host='0.0.0.0':<br>
+    どのIPアドレスからのアクセスも受け付ける設定。</dd>
+   <dd>port=port:<br>
+    ここで設定されたポート番号を使います。</dd>
+   <dd>debug=debug_mode:<br>
+    デバッグモードを環境変数でON/OFFできます。</dd>
+  </dl>
+
+  <h5>リダイレクト実装方法の選択肢</h5>
+  <p>私のプロジェクト構成の場合、次の2つの変更方法が考えられました。<br>
+   どちらも「default URL → 独自ドメイン」へのリダイレクトを実現できます。</p>
+
+  <dl>
+   <dt>1. シンプルにコードで処理したい場合</dt>
+   <dd>
+    <span class="codecolor">main.py</span> に <span class="codecolor">@app.before_request</span> を追加してリダイレクト。<br>
+    ただし、<span class="codecolor">app.yaml</span> の静的ハンドラは Flask 経由にならないため、すべてのリクエストに適用するには <span
+     class="codecolor">app.yaml</span> の設定変更が必要でした。
+   </dd>
+
+   <dt>2. 静的ハンドラもそのまま活かしたい場合</dt>
+   <dd>
+    別途リダイレクト専用サービスを構築し、<span class="codecolor">dispatch.yaml</span> で default URL（<span
+     class="codecolor">fein-sites-dev1.ew.r.appspot.com</span>）から振り分ける方法を採用する。
+   </dd>
+  </dl>
+
+  <p>こういうときどちらの方法をとるかは、運用のしやすさで考えたほうが良いと思うんですよね。<br>
+   どちらの方法でも「default URL から独自ドメインへの恒久リダイレクト (HTTP 301)」が実現できますが…<br>
+   私は2.の静的ハンドラもそのまま活かす方を選択しています。<br>
+   なぜ2.を選んだのかは、追って説明していきます。</p>
+
+
+  <p class="codegra" id="redirect_dispatch">リダイレクト設定を行うdispatch.yaml</p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+dispatch:
+  - url: "fein-sites-dev1.ew.r.appspot.com/*"
+    service: redirect-service
+
+</code></pre>
+  </div>
+
+  <p>このファイルは、Google App Engineでアプリケーション内のトラフィックルーティングを設定するために使います。<br>
+   「どのリクエスト（URL）をどのサービスに送るか」を決めるルールを書いているってことです。</p>
+
+  <ol>
+   <li>ユーザーが「<span class="codecolor">fein-sites-dev1.ew.r.appspot.com/</span>」にアクセスする。</li>
+   <li><span class="codecolor">dispatch.yaml</span> を使って「このリクエストは <span class="codecolor">redirect-service</span>
+    に送るべき」と判断する。</li>
+   <li><span class="codecolor">redirect-service</span> が実行され、別のURL（例: <span
+     class="codecolor">http://feinatelier.org</span>）にリダイレクトします。</li>
+  </ol>
+
+  <p><strong>1. dispatch:</strong><br>
+   このファイルで「どのリクエストをどのサービスに送るか」という指示を開始します。</p>
+
+  <p><strong>2. - url: "fein-sites-dev1.ew.r.appspot.com/*"</strong><br>
+   ここでは、「すべてのURL（例: /about や /contact）」が含まれるこのドメイン（fein-sites-dev1.ew.r.appspot.com）に対するリクエストをキャッチします。</p>
+  <dl>
+   <dt>*</dt>
+   <dd>これはワイルドカードと呼ばれ、「すべてのURLを含む」という意味です。</dd>
+
+   <dt>例</dt>
+   <dd>以下すべてのリクエストを対象にします。</dd>
+   <dd>http://fein-sites-dev1.ew.r.appspot.com/</dd>
+   <dd>http://fein-sites-dev1.ew.r.appspot.com/about</dd>
+   <dd>http://fein-sites-dev1.ew.r.appspot.com/contact</dd>
+  </dl>
+
+  <p><strong>3. service: redirect-service</strong><br>
+   上記のURLリクエストを redirect-service に送ります。<br>
+   これはGoogle App Engine内で動作するサービスの名前で、リダイレクト処理を行うサービスを指します。</p>
+
+  <p>このファイルは、Google App Engineの中でどの機能をどのリクエストに対応させるかを分ける「交通整理」の役割を持っています。<br>
+   エラーが出るとすべてのリクエストが止まる可能性があるため、修正する際には注意が必要です。</p>
+
+  <h5>App Engineで複数のサービスを構成する</h5>
+  <p>App Engine では、複数のサービスを持つ場合、各サービスごとに独自の app.yaml を配置します。<br>
+   つまりこのプロジェクト内に複数の app.yaml が存在する形になりますが、これは正常な構成です。<br>
+   メインサービス用とリダイレクト専用のサービス用、2つの app.yaml が存在するわけです。</p>
+  <p>また、プロジェクトルートに配置する dispatch.yaml によって、
+   https://fein-sites-dev1.ew.r.appspot.com/ へのリクエストがリダイレクト用サービスに転送されるので、メインサービスの app.yaml に手を加える必要がないのです。</p>
+
+  <p class="codegra" id="redirect_requirements">リダイレクト設定に使うrequirements.txt</p>
+  <div class="code-container">
+   <pre><code class="language-txt">
+Flask==2.3.2
+gunicorn==20.1.0
+
+</code></pre>
+  </div>
+
+  <p>このファイルは、Pythonで作られたアプリケーションに必要なライブラリやツールの一覧を記載したものです。<br>
+   アプリケーションを動かす際に、「どのバージョンのライブラリが必要なのか」を指定します。</p>
+
+  <ol>
+   <li>この<span class="codecolor">requirements.txt</span>を使って必要なライブラリをインストールします（<span class="codecolor">pip install -r
+     requirements.txt</span>）。</li>
+   <li>FlaskはWebアプリを動かすためのコードを書く部分をサポート。</li>
+   <li>Gunicornは、そのアプリを外部（訪問者）からアクセスできる形で動作させます。</li>
+  </ol>
+
+  <p>ここではPythonのWebフレームワークのFlask==2.3.2を使うよう指定しています。<br>
+   FlaskはWebアプリを作るためのツールセットです。<br>
+   例えば、リクエストを受け取ってレスポンスを返す機能や、HTMLを動的に作る機能を提供します。</p>
+
+  <p>同様に、ここではPythonのHTTPサーバーのgunicorn==20.1.0を使います。<br>
+   GunicornはPythonのアプリケーションをサーバーとして動かすためのツール。<br>
+   Flask単体よりも安定して、同時に多くのリクエストを処理できるようになります。</p>
+
+  <h5>App Engineにおける設定ファイルの場所</h5>
+  <dl>
+   <dt>dispatch.yaml はプロジェクトルート</dt>
+   <dd>
+    dispatch.yaml は、App Engine におけるサービス間のルーティング規則を定義するグローバルな設定ファイルです。<br>
+    プロジェクト全体でどのリクエストをどのサービスに振り分けるかを決定するため、ルートディレクトリに配置され、一元管理されます。
+   </dd>
+
+   <dt>redirect.py は redirect-service ディレクトリ</dt>
+   <dd>
+    redirect.py は、リダイレクト専用の処理を実装しているため、メインサービスから分離して管理されます。<br>
+    こうすればリダイレクト処理だけを担当する独立したサービス（redirect-service）として運用でき、メンテナンスやデプロイの際に柔軟性が向上します。
+   </dd>
+
+   <dt>app.yaml は各サービスごとに設置</dt>
+   <dd>
+    app.yamlについては既に書きましたが、改めて。<br>
+    App Engine では、各サービスごとに個別の設定ファイル（app.yaml）が必要です。<br>
+    プロジェクトのルートにある app.yaml はメインサービス用、redirect-service フォルダ内の app.yaml
+    はリダイレクト専用サービス用となっており、それぞれのサービス固有の設定（ランタイムやスケーリングなど）を管理しています。
+   </dd>
+
+   <dt>requirements.txt も各サービスごとに設置</dt>
+   <dd>
+    各サービスは、それぞれ異なる依存関係を持つ可能性があります。<br>
+    メインサービスとリダイレクトサービスで必要なライブラリが異なる場合、別々の requirements.txt を管理することで、各サービスごとに必要なパッケージのみをインストールでき、依存性管理が容易になります。
+   </dd>
+  </dl>
+
+  <p>equirements.txt について特記するなら、各サービスは独立した環境としてデプロイされるため、同じ内容の requirements.txt をそれぞれのサービスのディレクトリに配置しても全く問題ありません。<br>
+   App Engine
+   はサービスごとに依存パッケージをインストールするので、メインサービスと redirect-service で同じライブラリ（Flask や gunicorn）を使っていても干渉しません。</p>
+
+  <p>もし、コードや設定が共通している部分が多い場合、プロジェクト全体で管理する方法を工夫することも可能ですが…<br>
+   シンプルな構成の場合は、各サービスディレクトリに同じ requirements.txt
+   を用意するのが手間も少なく、一般的なアプローチだと思います。</p>
+
+  <p class="codegra" id="redirect_app">リダイレクト設定を行うapp.yaml</p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+runtime: python312
+service: redirect-service
+
+instance_class: F1
+env: standard
+
+automatic_scaling:
+  min_idle_instances: 0
+  max_idle_instances: 2
+  max_concurrent_requests: 200
+
+handlers:
+- url: /(.*)
+  script: auto
+
+entrypoint: gunicorn -b :$PORT redirect:app
+
+</code></pre>
+  </div>
+
+  <p>app.yaml は、Google App Engine (GAE) にアプリケーションをデプロイする際に必要な設定ファイルです。<br>
+   このファイルには、アプリケーションの基本的な動作方法（ランタイムの種類、スケール方法、リクエスト処理の仕組みなど）が記述されています。</p>
+
+  <ol>
+   <li>この<span class="codecolor">app.yaml</span>をもとにGoogle App Engineがアプリケーションを設定します。</li>
+   <li>必要に応じてインスタンスをスケールアップ／ダウンしてリソースを管理します。</li>
+   <li>リクエストを受け取ると、Flaskアプリ（<span class="codecolor">redirect.py</span>）が動作して処理します。</li>
+  </ol>
+
+  <p><span class="small-orange-text">ただし、この設定は駆け出しサイト用です。<br>
+    ある程度の規模になってくるとこれではアクセスを捌ききれないので、注意してください。</span></p>
+
+  <p><strong>1. ランタイムとサービス名の設定</strong></p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+runtime: python312
+service: redirect-service
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>runtime: python312</dt>
+   <dd>アプリケーションを動かす環境を指定しています。<br>
+    この場合、Pythonのバージョン<span class="codecolor">3.12</span>を使用します。</dd>
+
+   <dt>service: redirect-service</dt>
+   <dd>このアプリケーションのサービス名を指定しています。<br>
+    「redirect-service」という名前のサービスとして動作します。</dd>
+   <dd>サービス名とは、同じプロジェクト内で複数の機能を分けるために使用される「名前」です。</dd>
+  </dl>
+
+  <p><strong>2. インスタンスの設定</strong></p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+instance_class: F1
+env: standard
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>instance_class: F1</dt>
+   <dd>インスタンス（サーバー）のスペックを指定します。<span class="codecolor">F1</span>は、低コストの小規模なインスタンスで、軽量なアプリケーションに適しています。</dd>
+
+   <dt>env: standard</dt>
+   <dd>環境（エンジンの種類）を「Standard Environment」に設定。これは短時間の実行や軽い負荷向けの環境です。</dd>
+  </dl>
+
+  <p><strong>3. 自動スケーリングの設定</strong></p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+automatic_scaling:
+min_idle_instances: 0
+max_idle_instances: 2
+max_concurrent_requests: 200
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>min_idle_instances: 0</dt>
+   <dd>必要がないときはインスタンス（サーバー）を0個にしてコストを削減。</dd>
+
+   <dt>max_idle_instances: 2</dt>
+   <dd>アイドル状態でも最大2個のインスタンスを維持して、迅速にリクエストに応答。</dd>
+
+   <dt>max_concurrent_requests: 200</dt>
+   <dd>1つのインスタンスで同時に処理できるリクエスト数を最大200に設定。</dd>
+  </dl>
+
+  <p><strong>4. ハンドラー（リクエストのルール）</strong></p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+handlers:
+- url: /(.*)
+script: auto
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>url: /(.*)</dt>
+   <dd>すべてのリクエスト（例: <span class="codecolor">/about</span>, <span class="codecolor">/contact</span> など）を対象としています。</dd>
+   <dd><span class="codecolor">/(.*)</span> は「すべてのURL」を意味する正規表現です。</dd>
+
+   <dt>script: auto</dt>
+   <dd>Pythonランタイム環境で自動的にリクエストを処理。</dd>
+  </dl>
+
+  <p><strong>5. 実行エントリポイントの設定</strong></p>
+  <div class="code-container">
+   <pre><code class="language-yaml">
+entrypoint: gunicorn -b :$PORT redirect:app
+
+</code></pre>
+  </div>
+  <dl>
+   <dt>entrypoint</dt>
+   <dd>アプリケーションを実行するコマンドを指定します。</dd>
+
+   <dt>gunicorn -b :$PORT redirect:app</dt>
+   <dd><span class="codecolor">gunicorn</span>を使ってアプリケーションを実行。</dd>
+   <dd><span class="codecolor">-b :$PORT</span>: 環境変数からポート番号を取得して接続。</dd>
+   <dd><span class="codecolor">redirect:app</span>: <span
+     class="codecolor">redirect.py</span>ファイルの中にあるFlaskアプリケーション（<span class="codecolor">app</span>）を実行。</dd>
+  </dl>
+
+  <p>このファイルは、アプリの「設定表」や「設計図」のようなものですよね。<br>
+   間違った設定をするとアプリが正常に動かないこともあるため、細かい部分まで慎重に作成する必要があります。</p>
+
+  <h5>リダイレクト専用の動作を完全に分離する</h5>
+  <p>リダイレクト設定を一つの app.yaml に書き足すだけで済むケースだってあります。<br>
+   app.yaml は、App Engineサービス全体の設定ファイルであり、アプリケーションの動作環境、すなわちランタイムやエントリポイント、URLマッピングを定義します。<br>
+   ここでリダイレクト設定を app.yaml の一部に統合しようとすると、メインアプリ（静的ウェブサイトやFlaskアプリ）の動作と混ざり合ってしまって、平たく言うとややこしいんですよ…</p>
+
+  <p>リダイレクト設定があると、/ やその他のルートへのリクエストをリダイレクト用のロジックが処理してしまい、メインのアプリケーションに到達できなくなる可能性があります。<br>
+   https://feinatelier.org/top のアクセスがリダイレクト設定に奪われるとか。<br>
+   こういうのを、URLパスの競合と言います。</p>
+
+  <p>そもそもリダイレクトは独自の振る舞いが求められるケースが多く、例えば301リダイレクトのHTTPステータスを正確に返す必要があります。<br>
+   リダイレクトの独立性を損なうようなプロジェクト構成の設計は、望ましくないです。<br>
+   一方、メインアプリではHTMLや動的コンテンツの提供が優先されるため、同じ app.yaml 内でロジックが混在すると管理が煩雑になります。</p>
+
+  <p>現在のように、<span class="codecolor">redirect.py</span>を<span
+    class="codecolor">redirect-service</span>ディレクトリに独立させて別のサービスとしてデプロイするアプローチは、App Engineの<span
+    class="codecolor">マイクロサービス設計</span>に適合しています。</p>
+
+  <p>App Engineでは、複数のサービスを<span class="codecolor">dispatch.yaml</span>でルーティングできます。<br>
+   すると、次のように役割を完全に分離した設計が可能になるんです。</p>
+
+  <dl>
+   <dt>メインサービス</dt>
+   <dd>
+    <span class="codecolor">main.py</span> 静的ウェブサイトや動的コンテンツを提供。
+   </dd>
+
+   <dt>リダイレクトサービス</dt>
+   <dd>
+    <span class="codecolor">redirect.py</span> すべてのリクエストを新しいURL <span class="codecolor">feinatelier.org</span>
+    に301リダイレクト。
+   </dd>
+  </dl>
+
+  <p>こうすることで、互いの振る舞いが影響を与えることなく、独立して動作させることができます。<br>
+   リダイレクト設定を一つの app.yaml に書き足すだけで済むケースというのは、ルート数が少なく、振る舞いが単純な場合ですよね。<br>
+   特定のページだけ別のURLへ飛ばすとか。<br>
+   でも今回のようにプロジェクト構成へ丸ごと独自ドメインを適用するようなケースでは、あまり適切とは言えないでしょう。<br>
+   現在のアプローチが優れている理由としては、次の3点が挙げられます。</p>
+
+  <ol>
+   <li>リダイレクト処理を完全に独立させて管理できる。</li>
+   <li>URLの競合を避け、役割を明確に分離できる。</li>
+   <li><span class="codecolor">dispatch.yaml</span>を使うことで柔軟なサービス間ルーティングが可能。</li>
+  </ol>
+
+  <p>つまり、今後を見据えた柔軟性と保守性を重視して、この設計にしているわけです。</p>
+
+  <h4>App Engineへリダイレクト設定をデプロイ</h4>
+  <p>さて、ここまで書けたら、App Engineへのデプロイしましょう。</p>
+  <p>リダイレクト専用サービスのフォルダ redirect-service へ移動してデプロイしてください。</p>
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ gcloud app deploy app.yaml
+
+</code></pre>
+  </div>
+
+  <p>次はプロジェクトのルートへ移動してから、そこに配置した dispatch.yaml をデプロイします。</p>
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ gcloud app deploy dispatch.yaml
+
+</code></pre>
+  </div>
+
+  <p>メインサービスはこれまで通り、プロジェクトルートでgcloud app deployをするのみです。</p>
+
+  <h5>gcloud app deploy コマンドの注意点</h5>
+  <p>プロジェクトルートで普通にWebサイトを更新する時には、<span class="codecolor">gcloud app deploy</span>コマンドに「<span
+    class="codecolor">app.yaml</span>」をつけなくても良いのですよ？<br>
+   プロジェクトルートにある<span class="codecolor">app.yaml</span>を暗黙的に使うため、明示的にファイル名を書く必要がないからです。</p>
+
+  <p><span class="codecolor">gcloud app deploy</span>コマンドは、現在のディレクトリに<span
+    class="codecolor">app.yaml</span>が存在する場合、自動的にそのファイルを認識して使用します。<br>
+   つまり、プロジェクトのルートに<span class="codecolor">app.yaml</span>が配置されている状態で<span class="codecolor">gcloud app
+    deploy</span>とだけ入力すれば、明示的にファイル名を指定しなくてもデプロイが実行されます。</p>
+
+  <p>一方で、リダイレクト専用サービスの場合は、フォルダ<span class="codecolor">redirect-service</span>内の<span
+    class="codecolor">app.yaml</span>をデプロイするため、フォルダに移動するか明示的にファイルパスを指定する必要があります。<br>
+   そのため、次のような手順となっているのです。</p>
+
+  <dl>
+   <dt><span class="codecolor">redirect-service</span>ディレクトリへ移動してデプロイ。</dt>
+   <dd><span class="codecolor">gcloud app deploy app.yaml</span></dd>
+
+   <dt>プロジェクトルートに移動して<span class="codecolor">dispatch.yaml</span>をデプロイ。</dt>
+   <dd><span class="codecolor">gcloud app deploy dispatch.yaml</span></dd>
+
+   <dt>メインサービス（ルートの<span class="codecolor">app.yaml</span>）のデプロイでは、ファイル指定が不要。</dt>
+   <dd><span class="codecolor">gcloud app deploy</span></dd>
+  </dl>
+
+  <p>このサイトでは現在、<span class="codecolor">app.yaml</span> 内で静的ハンドラとして <span class="codecolor">www/</span>
+   以下のコンテンツを配信していますが、デフォルト URL でのアクセスは本ディスパッチ設定によりリダイレクト対象になるため、静的ファイルも自動的に独自ドメインに誘導されるのですよ。</p>
+
+  <p>以上が、このサイトに合わせた「<span class="codecolor">App Engine</span> のサービス／ディスパッチ設定でリダイレクトする方法」のソースコード解説になります。<br>
+   これで <span class="codecolor">https://fein-sites-dev1.ew.r.appspot.com/</span> へアクセスしたユーザーは自動的に <span
+    class="codecolor">https://feinatelier.org/</span> へリダイレクトされるってことですね。</p>
+
+  <h4>リダイレクトのテストと検証</h4>
+  <p>Twitterなどでフォロワーさんに「古いURLでアクセスしてみて!」などと、負荷をかけるようなことをしてはいけません。<br>
+   デプロイ後は、ログなどでリダイレクトが正しく実施されているかを自分で確認しましょう。</p>
+
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ gcloud app services list
+
+SERVICE NUM_VERSIONS
+default 167
+redirect-service 1
+
+</code></pre>
+  </div>
+
+  これは、App Engine プロジェクト内に2つのサービスが存在することを意味しています。
+  それぞれの行は、サービス名とそのサービスに展開されているバージョンの数を表しています。
+
+  <dl>
+   <dt>default</dt>
+   <dd>メインのサービスです。<br>
+    ここでは <strong>167</strong> 個のバージョンが存在しており、これまでのデプロイ履歴（過去のバージョンも残っている状態）が反映されています。</dd>
+
+   <dt>redirect-service</dt>
+   <dd>リダイレクト専用サービスです。<br>
+    ここには <strong>1</strong> 個のバージョンが存在しているので、最新（そして唯一）のバージョンがデプロイされていることが分かります。</dd>
+  </dl>
+
+  <p>これが私の検証だとするなら、redirect-service は正常にデプロイされていて、ルーティング設定（dispatch.yaml）によって <span
+    class="codecolor">https://fein-sites-dev1.ew.r.appspot.com/</span>
+   へのアクセスがこのサービスに振り分けられているのです。<br>
+   設定は正しく反映されていると考えて良いでしょう。</p>
+
+  <p>仮に、ここで「Service Unavailable」などのエラーがブラウザに表示される場合は、リダイレクトサービスのログを確認して、エラーが発生していないかチェックする必要があります。<br>
+   例えば、以下のコマンドでリアルタイムのログを確認できます。</p>
+
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ gcloud app logs tail -s redirect-service
+
+</code></pre>
+  </div>
+
+  <p>redirect-service のエラー内容や動作状況を詳しく把握して、調べてみましょう。<br>
+   また、次のようにコマンドラインでも、リダイレクトが正しく機能しているか検証できます。</p>
+
+  <h5>cURL でヘッダーを確認する</h5>
+  <p>cURL（カール）は、データをURL経由でやり取りするためのコマンドラインツールです。<br>
+   主にWeb開発やネットワーク管理で使用され、HTTPやHTTPSなどのプロトコルを通じてリクエストを送信し、その応答を確認することができます。<br>
+   たとえば、「ヘッダーを確認する」という場合、cURLを使うと簡単にHTTPリクエストやレスポンスのヘッダー情報を取得できます。<br>
+   ここで、あるURL https://example.com のヘッダー情報を取得してみましょう。</p>
+
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ curl -I https://example.com
+
+</code></pre>
+  </div>
+  <p>このコマンドの結果として、レスポンスのヘッダー情報（例：HTTPステータス、サーバー情報、コンテンツタイプなど）が表示されます。<br>
+   これを独自ドメインのリダイレクト設定チェックに使うなら、次のようにターミナルやコマンドプロンプトから以下のコマンドを実行します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-bash">
+$ curl -I https://fein-sites-dev1.ew.r.appspot.com/
+
+HTTP/1.1 301 Moved Permanently
+Location: https://feinatelier.org/
+
+</code></pre>
+  </div>
+  <p>HTTP レスポンスのヘッダー情報だけが表示されます。─ 実際にはもっといろいろ出ますよ？ ─<br>
+   このように、Location ヘッダーにリダイレクト先の URL が記載されていること、また 301 ステータスが返っていることを確認してください。<br>
+   この方法でリダイレクトが正しく設定され、<span class="codecolor">https://fein-sites-dev1.ew.r.appspot.com/</span> から <span
+    class="codecolor">https://feinatelier.org/</span> に転送されていることを確かめることができます。</p>
+
+  <h3>個人サイトはスタート前の計画が大切</h3>
+  <p>Eロン禍で「時代は個人サイト」という言葉を頻繁に耳にするようになりました。<br>
+   自分でサイトを作ろうとしたとき、おおよそ次のように話題が移るものです。</p>
+
+  <ol>
+   <li>どのサービスがいいか？</li>
+   <li>自分で作れないか？</li>
+   <li>でもコーディングとプログラミングが…</li>
+  </ol>
+
+  <p>ここまでは良いのですよ。<br>
+   プログラミングだって本を読めばある程度はできちゃったりするもんです。<br>
+   CSSにしてもデザイナーが出している素晴らしい教本がたくさんあるしね。<br>
+   でも…いよいよ厳しくなるのは、その先だと私は思っています。</p>
+
+  <ol>
+   <li>自分だけのサイトが作れた！</li>
+   <li>更新がめんどいけど頑張ってみてる！</li>
+   <li>せっかくなら独自ドメインにしたい！</li>
+   <li>独自ドメインはどのプロバイダーがいいの？</li>
+  </ol>
+
+  <p>いろんなケースがあるけど、個人サイトが頓挫するポイントは、だいたい決まってると思います。<br>
+   「更新の継続」と、そこから先にある「独自ドメイン設定」です。</p>
+
+  <dl>
+   <dt>更新の継続</dt>
+   <dd>
+    そもそも計画段階からプロジェクト構成と話題選びがマズいと、後から変更するのが非常に難しいケースが多いです。<br>
+    でも構成と話題が適切かどうかなんて、経験を積まないと分からないんだよ…
+   </dd>
+
+   <dt>独自ドメイン設定</dt>
+   <dd>
+    初めから独自ドメインにしてスタートの場合、更新が継続できないと、いろいろもったいないことになります。<br>
+    欲が出てきて後から独自ドメインにする場合、想像以上に難航する可能性があります。
+   </dd>
+  </dl>
+
+  <p>このサイトの場合、もう初めっから全て計画済みで、たっぷりと時間を取りながら、段階的に一手ずつ進めていったのです。<br>
+   .orgドメイン取得のタイミングなどなど、サイト構築前から全て決まっていました。</p>
+
+  <p>個人サイトはスタート前の計画がとっても大切だと私は思います。<br>
+   ベストプラクティスであろう計画を立ててからスタートすれば、こんなにおもしろくてお金がかからない遊びも珍しいと思いますよ？</p>
 
   <!-- ●ここから人間用のフッター● -->
   <hr id="feinhr">
