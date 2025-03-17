@@ -13,6 +13,9 @@
 .git
 .gitignore
 
+# Shell scripts:
+*.sh
+
 # Python virtual environment:
 /venv/
 __pycache__/

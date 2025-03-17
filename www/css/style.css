@@ -175,6 +175,7 @@ h4 {
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* ★h5見出しにオレンジ線を引く */
 h5 {
  font-size: 110%;
  margin-top: 25px;

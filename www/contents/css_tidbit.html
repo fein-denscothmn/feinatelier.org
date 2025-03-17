@@ -505,9 +505,104 @@ pre {
    <a href="https://prismjs.com/">prismjs</a>を使って各種の言語に応じたシンタックスハイライトを付けています。
   </p>
 
+  <h3>カード型レイアウトを作る</h3>
+  <p>これはちょっと私のサイト独特の事情も入ってるかな？<br>
+   cssのファイル名称と中身が一致してないことがあるんですよ。<br>
+   サイト構築当初に機能に分けてcssをたくさん作り、デザイン追加に従って追記するような流れにしています。<br>
+   1つのcssに何でもかんでも入れるのが好きじゃないんだよね。</p>
 
-  <h3>見出しに赤い線を引く</h3>
-  <p>あまり目立つものではありませんが、頻繁に使うh3見出しに少しだけ色を付けています。<br>
+  <p>カード型レイアウトも悪くないですよ。<br>
+   一部のセクションだけ際立たせるとか、ちょっとした装飾にぴったりです。</p>
+
+  <p class="codegra" id="cardlayout">カード型レイアウトを作るcollapsible.cssの一部</p>
+  <div class="code-container">
+   <pre><code class="language-css">
+/* コンテナ全体の設定 */
+.feinorg-container {
+ /* 内部のアイテムを横並び（flexbox）に配置 */
+ display: flex;
+
+ /* アイテムが折り返せるよう設定 */
+ flex-wrap: wrap;
+
+ /* アイテム間の間隔を20pxに設定 */
+ gap: 20px;
+
+ /* コンテンツを左寄せに設定 */
+ justify-content: flex-start;
+
+ /* 内側の余白を10pxに設定 */
+ padding: 10px;
+}
+
+/* カード要素のデザイン */
+.feinorg-card {
+ /* カードの背景色を白に設定 */
+ background: #fff;
+
+ /* カードに薄い枠線を付ける */
+ border: 1px solid #ddd;
+
+ /* 内側の余白を上下2px、左右15pxに設定 */
+ padding: 2px 15px;
+
+ /* カードの角を丸める */
+ border-radius: 12px;
+
+ /* カードに影を付けて浮き上がるような効果 */
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+ /* カードの横幅を全体の90%に設定 */
+ width: 90%;
+
+ /* カードの最大幅を800pxに制限 */
+ max-width: 800px;
+
+ /* ボックスモデルのサイズ計算方法を設定 */
+ box-sizing: border-box;
+
+ /* ホバーなどの状態で動きのあるエフェクトを追加 */
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* カード内部の行のスタイル */
+.feinorg-row {
+ /* 文字の色をやや暗めのグレーに設定 */
+ color: #333;
+
+ /* 下の余白を8pxに設定 */
+ margin-bottom: 8px;
+
+ /* 行の高さを1.6倍にして読みやすく */
+ line-height: 1.6;
+
+ /* テキストを左揃えに設定 */
+ text-align: left;
+}
+
+/* ラベル要素のスタイル */
+.feinorg-label {
+ /* 文字を少し太字に設定 */
+ font-weight: 600;
+
+ /* 文字の色を青色（#0078d4）に設定 */
+ color: #0078d4;
+
+ /* 右側の余白を5pxに設定 */
+ margin-right: 5px;
+
+ /* テキストを左揃えに設定 */
+ text-align: left;
+}
+
+</code></pre>
+  </div>
+
+  <p>ごくごく一般的なデザインであり、かつ私のサイトで取り入れているものはかなりシンプル寄せです。<br>
+   全体的にうるさいデザインのWebサイトが好きじゃないのです。</p>
+
+  <h3>見出しに目立つ下線を引く</h3>
+  <p>あまり目立つものではありませんが、h3やh5見出しに少しだけ色を付けています。<br>
    ユーザーがh3見出しを視界に入れると、赤い下線がサッと引かれるようなアニメーションを付けているんですよね。<br>
    JavaScriptとCSSをそれぞれ説明します。</p>
 
@@ -656,7 +751,65 @@ h3.visible::after {
 
 </code></pre>
   </div>
-  <p>このようにJavaScriptとCSSが合わさって、少しだけ見出し部分に視線が行くような効果を演出しています。</p>
+  <p>このようにJavaScriptとCSSが合わさって、少しだけ見出し部分に視線が行くような効果を演出しています。<br>
+   次のh5に関してはJavaScriptは入っていませんが、サッとオレンジの下線を引くようにしています。</p>
+
+  <p class="codegra" id="h5underline_style">h5見出しにオレンジ線を引くstyle.css</p>
+  <div class="code-container">
+   <pre><code class="language-css">
+/* h5タグのスタイル設定 */
+h5 {
+ /* h5タグの文字の大きさを通常の110%に設定 */
+ font-size: 110%;
+
+ /* 上の余白を25pxに設定 */
+ margin-top: 25px;
+
+ /* 下の余白を0に設定 */
+ margin-bottom: 0;
+
+ /* 下のパディング（内側の余白）を5pxに設定 */
+ padding-bottom: 5px;
+
+ /* 行の高さを通常の1.2倍に設定して読みやすく */
+ line-height: 1.2;
+
+ /* 文字色を黒（不透明度70%）に設定 */
+ color: rgba(0, 0, 0, 0.7);
+
+ /* h5タグをインラインブロック要素として表示 */
+ position: relative;
+ display: inline-block;
+}
+
+/* h5要素の下に装飾ラインを追加するスタイル */
+h5::after {
+ /* 疑似要素の内容を空に設定 */
+ content: '';
+
+ /* 疑似要素をh5タグの下に配置 */
+ position: absolute;
+ left: 0;
+ bottom: 0;
+
+ /* ラインの幅をh5要素全体に設定 */
+ width: 100%;
+
+ /* ラインの高さを5pxに設定 */
+ height: 5px;
+
+ /* ラインの背景色をグラデーションに設定 */
+ background: linear-gradient(90deg, #ff6f61, #ffc107);
+
+ /* ラインの端を少し丸めて柔らかい印象に */
+ border-radius: 2px;
+}
+
+</code></pre>
+  </div>
+
+  <p>さりげなくコソっとやるみたいな。
+   何も凝ったデザインである必要はなく、周囲から少しだけ際立って見えれば良いのですよ。</p>
 
   <h3>特定範囲にテキストを書く</h3>
   <p class="codegra" id="lefttext_footer">特定範囲内にテキスト表示するfooter.css</p>
@@ -867,6 +1020,8 @@ margin-bottom: 20px; /* 画像の下に20ピクセルの余白を設定 */
 
   <section class="sitemap">
    <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
    <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
      アナザーエデン関連ページ・サイトマップ</a></p>
    <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>

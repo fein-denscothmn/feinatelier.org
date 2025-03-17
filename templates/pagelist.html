@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <meta charset="UTF-8">
+ <title>サイトマップ</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="PythonのFlaskを使うことで、このページようのようなサイトマップも簡単に作れます。当サイトのページリストを表示した後、コードも掲載しましょう。">
+ <meta name="keywords" content="Python, Flask, 個人サイト制作">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="全ページをリスト化したサイトマップ">
+ <meta property="og:description" content="PythonのFlaskを使うことで、このページようのようなサイトマップも簡単に作れます。当サイトのページリストを表示した後、コードも掲載しましょう。">
+ <meta property="og:image" content="{{ url_for('static', filename='images/anafish.png') }}">
+ <meta property="og:url" content="https://feinatelier.org/pages/pagelist">
+ <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+
+ <!-- 構造化データ -->
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "全ページをリスト化したサイトマップ",
+      "url": "https://feinatelier.org/pages/pagelist",
+      "logo": "https://feinatelier.org/static/images/barracuda.jpg"
+    }
+    </script>
+
+ <!-- CSSファイル -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pstyle.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/footer.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/flower.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/menu.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/collapsible.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/feinpan.css') }}">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/feinheadline1.css') }}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/appleicon.png') }}">
+ <link rel="icon" sizes="32x32" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+
+ <!-- Googleタグマネージャー -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JavaScriptファイル -->
+ <script src="{{ url_for('static', filename='js/underline.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/feinfade.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/feinScroll.js') }}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="{{ url_for('static', filename='js/album.js') }}"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
+ <script src="{{ url_for('static', filename='js/collapsible.js') }}"></script>
+
+ <!-- Service Workerの登録 -->
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="/contents/site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">全ページをリスト化したサイトマップ</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="{{ url_for('static', filename='images/VisualAtelierCode.png') }}" alt="fein's personal site"
+     class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <button id="generate-headings" data-open-text="全ページをリスト化したサイトマップの目次を開く ▼"
+   data-close-text="全ページをリスト化したサイトマップの目次を閉じる ▲">全ページをリスト化したサイトマップの目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+
+  <p><a href="/contents/site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>全ページをリスト化したサイトマップ</span></h1>
+  <p>すでに次のようにカテゴリー分けされているし、内部リンクも十分あるんですけどね？<br>
+   ちなみに<a href="/sitemap.xml">XML形式のサイトマップ</a>もあるけど、これはタップしてもおもしろくないです。<br>
+   私のチェック用みたいなものですから、コードの羅列が出てくるだけで、おまけって感じ？</p>
+
+  <ul>
+   <li><a href="/">グラスタの入手場所一覧</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html">アナザーエデンのエリア</a></li>
+   <li><a href="/contents/site_create.html">個人サイト制作のエリア</a></li>
+   <li><a href="/fish/fish_sitemap.html">アウトドアのエリア</a></li>
+   <li><a href="/contents/rss.html">最近の更新履歴</a></li>
+   <li><a href="/contents/x_exoduslink.html">個人サイトのリンク掲載をご希望の方へ</a></li>
+   <li><a href="/menu/symbol.html">このサイトのシンボルマークとバナー</a></li>
+  </ul>
+
+  <p>このページでは、まず利便性向上のためにリストを表示しています。<br>
+   そこから先は、このページを作っているソースコードの紹介へ移りますね😊</p>
+
+  <p>私がページを増やすたびに、自動的にここへ追加されていく仕組みになっていますよ？<br>
+   ブログとかでよく見る、自動生成される記事リストみたいなもんです。<br>
+   これも典型的なサーバーサイドスクリプトかと。</p>
+
+  <!-- Dynamic -->
+  <h2>FlankによるWebページ</h2>
+  {% for page in pages_by_category['Dynamic'] %}
+  <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+  {% endfor %}
+
+  <!-- Another Eden -->
+  <h2>アナザーエデン</h2>
+  {% for page in pages_by_category['Another Eden'] %}
+  <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+  {% endfor %}
+
+  <!-- Contents -->
+  <h2>個人サイト制作</h2>
+  {% for page in pages_by_category['Contents'] %}
+  <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+  {% endfor %}
+
+  <!-- Fish -->
+  <h2>アウトドア</h2>
+  {% for page in pages_by_category['Fish'] %}
+  <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+  {% endfor %}
+
+  <!-- RSS -->
+  <h2>RSSフィード</h2>
+  {% for page in pages_by_category['RSS'] %}
+  <p><a href="{{ page.url }}">{{ page.title }}</a></p>
+  {% endfor %}
+
+
+  <h4>【PC初心者向け】サーバーサイドスクリプトは必要か</h4>
+  <p>無理しなくてもいいんですけどね。<br>
+   でも、普通のhtml・css・JavaScriptだけでは、難しい状況もあるんです。<br>
+   ホームページにサーバーサイドスクリプトがある意義を、なるべく分かりやすく、例え話をしつつ考えてみましょう。</p>
+
+  <p>
+   サーバーサイドスクリプトは、ウェブサイトの「頭脳」と考えるとわかりやすいです。<br>
+   例えば、レストランに行ったとき、お客さん（あなた）は注文をして料理を受け取りますよね。<br>
+   でも、注文を受けたり料理を作ったりする「キッチン」の仕事は見えません。<br>
+   この「キッチン」の役割がサーバーサイドスクリプトと考えてよろしいかと。</p>
+
+  <p>次は身近でよく見るタイプのWebサイトで、考えてみますね。</p>
+
+  <dl>
+   <dt>1. お客さんごとにサービスを調整</dt>
+   <dd>ホームページを訪れた人のリクエストに応じて、必要な情報を準備します。<br>
+    例えば、ログインしている人には「ようこそ！」という特別なメッセージを表示したり、ショッピングサイトでは「カートに入っている商品」を見せたりすることができます。</dd>
+
+   <dt>2. データを安全に管理</dt>
+   <dd>例えば、あなたのパスワードや個人情報など、誰にも見られたくない情報は、サーバー側で安全に管理します。<br>
+    安心して使えるウェブサイトというのは、サーバーサイドスクリプトで作ることができるのです。</dd>
+
+   <dt>3. 大きなデータの処理が可能</dt>
+   <dd>サーバーサイドスクリプトは、重たい計算や大きなデータを扱うのに適しています。<br>
+    例えば、SNSサイトで友だちの投稿を表示したり、動画を配信したりするには、多くのデータを扱う必要があります。<br>
+    それを手伝うのがサーバー側の役割です。</dd>
+
+   <dt>4. 柔軟な機能追加</dt>
+   <dd>ウェブサイトに新しい機能（例えば検索機能や予約システム）を追加したいとき、サーバーサイドスクリプトを使うことで簡単に実現できます。</dd>
+  </dl>
+
+  <p>このページの後ろで動作している「PythonのFlaskフレームワーク」というのは、サーバーサイドスクリプトの一種です。
+   それを使って、Webページのリストを表示しているんですよね。
+   ページが増えるたびに手作業なんかしてたら、もう大変ですよ…</p>
+
+  <p>もしサーバーサイドスクリプトがなかったら、ウェブサイトは単に「紙に印刷されたポスター」のようになります。<br>
+   見た目は綺麗でも、自分の情報を入力したり、自分専用のサービスを受けたりすることができません。<br>
+   これが、いわゆる「機能」の部分です。<br>
+   当サイトも、今後はこのサイトマップだけではなく、いろいろやっていくつもりです。</p>
+
+  <p>サーバーサイドがあるサイトだと、次のような感じになります。</p>
+  <ul>
+   <li>あなたが好きな音楽リストが、自分専用に表示されます。</li>
+   <li>お買い物のときに、「おすすめの商品」を教えてくれます。</li>
+   <li>チケット予約では、空席状況をリアルタイムで確認できます。</li>
+  </ul>
+
+  <p>こうした「ちょっと便利」を実現するのが、サーバーサイドスクリプトの意義なんです。</p>
+
+  <h2>PythonのFlaskでXMLとHTMLのサイトマップを作る</h2>
+  <p>PythonのFlaskフレームワークでサイトマップを作ろうと考えた時、おおむね次のような手順となります。</p>
+
+  <dl>
+   <dt>1. サイトのURLを整理する</dt>
+   <dd>静的なページと動的なページのURLをリストアップします。<br>
+    Flaskの場合、app.url_mapを使うとアプリ内のすべてのルートが確認できます。<br>
+    これが動的URLの基礎になりますね。</dd>
+
+   <dt>2. データ構造を準備する</dt>
+   <dd>URLとタイトルをペアで管理する辞書やリストを用意します。<br>
+    静的なURLは直接記述し、動的なURLは生成（またはルールから取得）します。<br>
+    後述しますが、このページの場合はここらへんがちょっとだけ違います。</dd>
+
+   <dt>3. Flaskのルートを定義する</dt>
+   <dd>サイトマップ用の専用ルートを追加します。<br>
+    例えば、/sitemap.xmlや/sitemapといったエンドポイントを作成します。<br>
+    これにはFlaskの@app.route()デコレーターを使います。</dd>
+
+   <dt>4. テンプレートエンジンでHTML/XMLを生成</dt>
+   <dd>サイトマップを表示するためのHTMLファイルや、クローラー用にXML形式のファイルを生成します。<br>
+    HTMLテンプレートを作成し、リンクを整列したデザインを実装します。─ これが、今ご覧になっているページです ─<br>
+    XML形式では、SEO最適化のためのGoogleクローラー対応のフォーマットを用います。</dd>
+
+   <dt>5. サイトマップデータをテンプレートに渡す</dt>
+   <dd>render_template()で、準備したURLとタイトルのデータをテンプレートに注入します。<br>
+    例えば、ページリストをループで回してリンクを動的に生成します。</dd>
+
+   <dt>6. 動作確認</dt>
+   <dd>ローカル環境でサイトマップが正しく生成されているか、リンク切れや形式に問題がないか確認します。<br>
+    必要であればGoogle Search ConsoleなどでXMLサイトマップを登録します。</dd>
+  </dl>
+
+  <p>Pythonコードの例を挙げるなら、次のような感じでしょうかね。</p>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/sitemap')
+def sitemap():
+    pages = [
+        {'url': '/', 'title': 'Home'},
+        {'url': '/about', 'title': 'About Us'},
+        {'url': '/contact', 'title': 'Contact'},
+    ]
+    return render_template('sitemap.html', pages=pages)
+
+</code></pre>
+  </div>
+
+  <p>次はHTMLです。<br>
+   URLの書き方がちょっと特殊ですよね。</p>
+  {% raw %}
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;ul&gt;
+  {% for page in pages %}
+  &lt;li&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;
+
+</code></pre>
+  </div>
+
+  <h3>Flaskのテンプレートエンジン「Jinja2」</h3>
+  <p>上述のコードはFlaskのテンプレートエンジンである「Jinja2」の構文を利用して動的にHTMLを生成するものです。<br>
+   一見するとおかしなhtmlに見えるかもしれませんが、ちゃんと意味がありますよ。</p>
+
+  <dl>
+   <dt>1. {{ page.url }}</dt>
+   <dd>Jinja2の{{ }}はテンプレート内でPythonの変数や値を出力するための記法です。<br>
+    この場合、page.urlはFlaskのバックエンドから渡されるデータで、特定のページへのリンク（URL）を指します。</dd>
+
+   <dt>2. {{ page.title }}</dt>
+   <dd>これはリンク先ページのタイトルを表しています。<br>
+    バックエンドで生成されたデータを動的に挿入しています。</dd>
+
+   <dt>3. 全体の意味</dt>
+   <dd>&lt;a href="{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;は、バックエンドで渡されたURLとタイトルに基づいてリンクを動的に生成するコードです。<br>
+    例えば、page.urlが/aboutで、page.titleがAbout Usなら、レンダリングされたHTMLは以下のようになります：</dd>
+   <dd>&lt;a href="/about"&gt;About Us&lt;/a&gt;</dd>
+  </dl>
+  {% endraw %}
+  <p>これがまた便利なんですよ。<br>
+   Flaskに限らず、フレームワークを使う意味といいますか。</p>
+
+  <p>例えば、数百ページにリンクを貼る場合、それぞれのURLとタイトルを手書きするのは非効率です。<br>
+   Flaskで render_template() を使うことで、Pythonコードから一括してデータを注入し、テンプレート内で動的にリンクを生成できます。<br>
+   データの管理も簡単なんですよね。<br>
+   URLやタイトルをPython側でリストや辞書で一元管理できますし、修正が必要ならテンプレートをいじらずにPythonコードだけで対応可能です。</p>
+
+  <p>ここで言う「テンプレート」とは、動的なコードを差し込まれる側のhtmlファイルのことです。</p>
+
+  <p>テンプレートとなっているhtmlにはちょっとした特徴があります。<br>
+   レンダリング後には、普通のhtmlとしてブラウザに送信されるため、最終的にはシンプルなリンクになるのです。</p>
+
+  <h5>Jinja2は日本の神社から来ている?!</h5>
+  <p>なんでも、Jinja2の名前は日本の「神社（jinja）」に由来しているとか。<br>
+   これを開発したArmin
+   Ronacher氏が、日本文化やデザインの美しさからインスピレーションを受けて命名したと言われています。<br>
+   数字の「2」は、初期バージョンのJinjaから進化を遂げた第二世代であることを示しています。<br>
+   日本文化がこうした技術的なツールの名前に反映されているのは、なんだかとっても興味深いです。<br>
+   日本人の個人サイトに、ぴったりな技術だと思いませんか？</p>
+
+  <p>参考サイト：<a href="https://jinja.palletsprojects.com/en/stable/faq/#why-is-it-called-jinja">Jinja2の公式ドキュメント</a></p>
+
+  <p>PythonのFlaskについては、今後もいろいろなページを作っていくときに説明していきます。<br>
+   前置きはこのくらいにして、このページを作っているソースコードを見ていきましょう。</p>
+
+  <h3>htmlサイトマップを作るPythonコード</h3>
+  <p>XMLについては、また後日に別のページで解説します。<br>
+   まずは閲覧者に直接影響するHTMLのほうですね。</p>
+
+  <p>このコードの主な目的は、指定されたカテゴリーごとのページリストを作成し、/pagelistというURLでそのリストを表示することです。<br>
+   リンクには、ページのURL（リンク先）とページのタイトル（画面に表示される名前）が含まれます。</p>
+  <p class="codegra" id="pagelist_py">htmlサイトマップを作るpagelist.py</p>
+  <div class="code-container">
+   <pre><code class="language-python">
+import os
+from flask import Blueprint, render_template
+from bs4 import BeautifulSoup
+
+pagelist_bp = Blueprint('pagelist', __name__)
+
+def get_category_pages_with_titles(category_name):
+    static_dir = 'www'
+    category_pages = []
+    excluded_paths = [
+        '/index.html',
+        '/externalization/commongdl.html',
+        '/menu/menu.html',
+        '/another-eden/anaden_sitemap.html',
+        '/contents/site_create.html',
+        '/fish/fish_sitemap.html',
+        '/contents/rss.html',
+        '/sitemap.xml',
+        '/contents/x_exoduslink.html',
+        '/menu/symbol.html',
+        '/pages/pagelist',
+        '/'
+    ]
+
+    for root, dirs, files in os.walk(static_dir):
+        if category_name in root:
+            for file in files:
+                if file.endswith('.html'):
+                    path = os.path.join(root, file).replace('\\', '/')
+                    url = path.replace(static_dir, '').lstrip('/')
+                    if f'/{url}' not in excluded_paths:
+                        title = get_page_title(path)
+                        category_pages.append({'url': f'/{url}', 'title': title})
+    return category_pages
+
+def get_page_title(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            soup = BeautifulSoup(f, 'html.parser')
+            return soup.title.string if soup.title else 'No Title'
+    except Exception as e:
+        return 'Error Reading Title'
+
+def get_another_eden_pages():
+    return get_category_pages_with_titles('another-eden')
+
+def get_contents_pages():
+    return get_category_pages_with_titles('contents')
+
+def get_fish_pages():
+    return get_category_pages_with_titles('fish')
+
+def get_rss_pages():
+    return get_category_pages_with_titles('rss')
+
+def get_dynamic_pages(app):
+    dynamic_pages = []
+    excluded_paths = [
+        '/index.html',
+        '/externalization/commongdl.html',
+        '/menu/menu.html',
+        '/another-eden/anaden_sitemap.html',
+        '/contents/site_create.html',
+        '/fish/fish_sitemap.html',
+        '/contents/rss.html',
+        '/sitemap.xml',
+        '/contents/x_exoduslink.html',
+        '/menu/symbol.html',
+        '/pages/pagelist',
+        '/'
+    ]
+
+    url_to_title = {
+        '/': None,
+        '/sitemap.xml': 'サイトマップのXML表示',
+        '/pages/pagelist': None,
+        '/redirect': '独自ドメイン設定後にリダイレクト機能を追加する',
+        '/top': '個人サイトへPythonのFlaskを導入する'
+    }
+
+    for rule in app.url_map.iter_rules():
+        if rule.endpoint != 'static' and '&lt;' not in rule.rule and rule.rule not in excluded_paths:
+            title = url_to_title.get(rule.rule, 'Dynamic Page')
+            if title:
+                dynamic_pages.append({'url': rule.rule, 'title': title})
+
+    return dynamic_pages
+
+@pagelist_bp.route('/pagelist')
+def pagelist():
+    from main import app
+
+    pages_by_category = {
+        'Another Eden': get_another_eden_pages(),
+        'Contents': get_contents_pages(),
+        'Fish': get_fish_pages(),
+        'RSS': get_rss_pages(),
+        'Dynamic': get_dynamic_pages(app)
+    }
+
+    return render_template('pagelist.html', pages_by_category=pages_by_category)
+
+</code></pre>
+  </div>
+
+  <p>このコードは、PythonのFlaskフレームワークを使って、サイトのページリスト（カテゴリーごとのリンクリスト）を動的に生成するプログラムです。</p>
+
+  <ul>
+   <li>サイト内のすべてのページをカテゴリ別にまとめてリンクを表示することができます。</li>
+   <li>静的なHTMLファイルだけでなく、動的に生成されるページのリンクも一覧化できます。</li>
+   <li>URLやタイトルを一箇所で管理できるので、メンテナンスが簡単です。</li>
+  </ul>
+
+  <p>次のような仕組みで動作しているんですよね。</p>
+
+  <dl>
+   <dt>1. 静的HTMLを探す</dt>
+   <dd>os.walkでフォルダ内を再帰的に検索します。</dd>
+   <dd>必要なファイルだけをフィルタリングし、リンクを生成。</dd>
+
+   <dt>2. 動的ページの追加</dt>
+   <dd>Flaskアプリケーション内のルート一覧を動的に取得し、URLリストに追加。</dd>
+
+   <dt>3. 結果をHTMLで表示</dt>
+   <dd>ページリストをHTMLとして返すため、Flaskのrender_templateでテンプレートを利用。</dd>
+  </dl>
+
+  <p>では、具体的にプログラムの構成を見ていきます。</p>
+
+
+  <h5>Blueprintの作成</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+pagelist_bp = Blueprint('pagelist', __name__)
+
+</code></pre>
+  </div>
+
+  <p>Blueprint は、Flaskでルートや機能をモジュール化する方法です。<br>
+   ここでは、 pagelist という名前の独立したルートを作成しています。</p>
+
+  <h5>静的ページを取得する関数</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+def get_category_pages_with_titles(category_name):
+
+</code></pre>
+  </div>
+
+  <p>この関数は、www フォルダ内に保存されている静的なHTMLファイルを検索します。<br>
+   指定したカテゴリー名（例えば、another-eden など）に属するページのURLとタイトルを取得してリストにまとめます。</p>
+
+  <p>それぞれの部分が何をしているか、ちょっと詳しく見てみましょうか。</p>
+
+  <h5>ページリストを取得</h5>
+  <p>例えば、カテゴリー another-eden に属するHTMLファイルを探し、そのファイルからURLとタイトルを取り出します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+for root, dirs, files in os.walk(static_dir):
+if category_name in root:
+for file in files:
+if file.endswith('.html'):
+path = os.path.join(root, file).replace('\\', '/')
+url = path.replace(static_dir, '').lstrip('/')
+title = get_page_title(path)
+category_pages.append({'url': f'/{url}', 'title': title})
+
+</code></pre>
+  </div>
+
+  <p>ファイルパスを探して url を生成。<br>
+   各HTMLファイルのタイトルを取り出すため、get_page_title を呼び出します。</p>
+
+  <h5>HTMLからタイトルを取得</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+def get_page_title(file_path):
+with open(file_path, 'r', encoding='utf-8') as f:
+soup = BeautifulSoup(f, 'html.parser')
+return soup.title.string if soup.title else 'No Title'
+
+</code></pre>
+  </div>
+
+  <p>BeautifulSoup（HTML解析ライブラリ）を使って、HTMLファイルの&lt;title&gt;タグからページタイトルを取得します。</p>
+
+  <h5>動的ページを取得</h5>
+  <div class="code-container">
+   <pre><code class="language-python">
+def get_dynamic_pages(app):
+
+</code></pre>
+  </div>
+
+  <p>Flaskアプリケーション（app）のルート一覧（url_map）を調べ、動的なURLを取得します。<br>
+   一部除外対象（例えば、/index.html など）をフィルタリングした後、URLとタイトルをまとめます。</p>
+
+  <h5>サイトマップページの生成</h5>
+  <p>最後に、取得したデータを元に、/pagelist というURLでカテゴリーごとのリンクを表示します。</p>
+  <div class="code-container">
+   <pre><code class="language-python">
+@pagelist_bp.route('/pagelist')
+def pagelist():
+from main import app
+pages_by_category = {
+'Another Eden': get_another_eden_pages(),
+'Contents': get_contents_pages(),
+'Fish': get_fish_pages(),
+'RSS': get_rss_pages(),
+'Dynamic': get_dynamic_pages(app)
+}
+return render_template('pagelist.html', pages_by_category=pages_by_category)
+
+</code></pre>
+  </div>
+
+  <p>まずは get_another_eden_pages() などを呼び出してカテゴリーごとのデータを収集しますよね。<br>
+   それからテンプレートに渡します。<br>
+   Flaskの render_template() を使い、データを pagelist.html テンプレートに渡していく。<br>
+   そして pagelist.html のテンプレートでリストが表示されるってこと。</p>
+
+  <h4>Webサイトのディレクトリ構造を把握する</h4>
+  <p>このページのような動的サイトマップを作るとき、自分が作っているWebサイトのディレクトリ構造を把握しておいたほうが良いですね。<br>
+   例えば私のサイトの場合、次のようになっています。</p>
+  <div class="code-container">
+   <pre><code class="language-text">
+FEIN-SITES-DEV1（App EngineにデプロイされているFlaskアプリ）
+│  app.yaml
+│  dispatch.yaml
+│  main.py
+│  README.md
+│  requirements.txt
+│  sitemap.py
+│  pagelist.py
+│
+├─redirect-service
+│      app.yaml
+│      redirect.py
+│      requirements.txt
+│
+├─static
+│  ├─css
+│  ├─icons
+│  ├─images
+│  ├─js
+│  ├─menu
+│
+├─templates
+│  │  sitemap.xml
+│  │  top.html
+│  │  pagelist.html（これが今ご覧になっているページです）
+│  │
+│  └─server
+│          redirect.html
+│
+├─www（これは静的ウェブサイト）
+│  │  .hintrc
+│  │  favicon.ico
+│  │  index.html
+│  │  manifest.json
+│  │  robots.txt
+│  │  service-worker.js
+│  │
+│  ├─another-eden
+│  │      anaden_beginner.html
+│  │
+│  ├─contents
+│  │      color.html
+│  │
+│  ├─css
+│  ├─externalization
+│  ├─fish
+│  │      morayeel.html
+│  │
+│  ├─icons
+│  ├─image
+│  ├─menu
+│  │      symbol.html
+│  │
+│  ├─rss
+│  │      rss202502.html
+│  │
+│  ├─script
+└─キャッシュなど
+
+</code></pre>
+  </div>
+  <p>動的サイトと静的サイトが同じところに住んでいる、ちょっと変わった構造になっています。<br>
+   こうすることで、柔軟に自分のコンテンツを拡大させつつも、いろんなリスクに即時対応できるわけです。</p>
+
+  <p>このディレクトリ構造を踏まえた上で、ソースコードの続きを見ていきます。</p>
+
+  <h3>アプリ全体の動作をコントロールするPythonコード</h3>
+  <p>このコードは、Google App EngineにデプロイされているFlaskアプリケーションの中核部分、つまりメインの処理を定義しているファイルです。<br>
+   これがちゃんとしていないと、サイトマップも正常動作しないのですよ。</p>
+
+  <p class="codegra" id="sitemap_mainpy">サイトマップ生成を踏まえたmain.py</p>
+  <div class="code-container">
+   <pre><code class="language-python">
+import os
+from flask import Flask, render_template, send_from_directory, abort
+from sitemap import sitemap_bp
+from pagelist import pagelist_bp
+
+app = Flask(__name__)
+
+app.register_blueprint(sitemap_bp)
+app.register_blueprint(pagelist_bp, url_prefix='/pages')
+
+@app.route('/')
+def serve_static_index():
+    return send_from_directory('www', 'index.html')
+
+@app.route('/redirect')
+def serve_redirect():
+    return render_template('server/redirect.html')
+
+@app.route('/top')
+def serve_flask_content():
+    return render_template('top.html')
+
+@app.route('/&lt;page_name&gt;')
+def serve_dynamic_content(page_name):
+    try:
+        return render_template(f'server/{page_name}.html')
+    except:
+        abort(404)
+
+@app.route('/&lt;path:filename&gt;')
+def serve_static_files(filename):
+    return send_from_directory('www', filename)
+
+if __name__ == '__main__':
+    debug_mode = os.getenv('FLASK_DEBUG', 'False') == 'True'
+    app.run(debug=debug_mode)
+
+</code></pre>
+  </div>
+
+  <p>このコードは、トップページ（静的ファイル）やテンプレートを利用した動的ページなど、いろいろなページにアクセスできるルートを定義しています。<br>
+   また、 Blueprint を使って、サイトマップやページリストなどの機能をモジュールごとに分けて管理してもいる。<br>
+   そして、静的ファイル（HTMLやCSS、画像）や動的に生成されるコンテンツをユーザーに返しているわけですよ。</p>
+
+
+  <h5>1. アプリケーションの準備</h5>
+  <p><strong></strong></p>
+  <div class="code-container">
+   <pre><code class="language-python">
+import os
+from flask import Flask, render_template, send_from_directory, abort
+from sitemap import sitemap_bp
+from pagelist import pagelist_bp
+
+</code></pre>
+  </div>
+
+  <p>FlaskというPythonのフレームワークを使って、ウェブアプリを作成すると書いてありますね。<br>
+   また、他のファイル（ sitemap.py や pagelist.py ）から機能をインポートして利用しています。<br>
+   この場合、サイトマップ用とページリスト用の機能を取り込んでいます。</p>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+app = Flask(__name__)
+
+</code></pre>
+  </div>
+
+  <p>Flaskアプリケーションのインスタンス（アプリ本体）を作成しています。<br>
+   この app がアプリの中心となります。</p>
+
+  <h5>2. Blueprintの登録</h5>
+  <div class="code-container">
+   <pre><code class="language-python">
+app.register_blueprint(sitemap_bp)
+app.register_blueprint(pagelist_bp, url_prefix='/pages')
+
+</code></pre>
+  </div>
+
+  <p>BlueprintはFlaskアプリケーションをモジュール化して管理する仕組みです。<br>
+   ここでは、sitemap_bp と pagelist_bp という2つのBlueprintを登録しています。</p>
+
+  <dl>
+   <dt>sitemap_bp</dt>
+   <dd>サイトマップ機能に関連するルートを管理。</dd>
+
+   <dt>pagelist_bp</dt>
+   <dd>ページリスト機能に関連するルートを管理。<br>
+    url_prefix='/pages'により、/pages/を先頭とするルートが作成されます。</dd>
+  </dl>
+
+  <h5>3. ルート（URL）の定義</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/')
+def serve_static_index():
+return send_from_directory('www', 'index.html')
+
+</code></pre>
+  </div>
+
+  <p>サイトのトップページ（`/`）にアクセスが来たとき、www というフォルダにある index.html を返します。<br>
+   静的なファイルをそのまま表示します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/redirect')
+def serve_redirect():
+return render_template('server/redirect.html')
+
+</code></pre>
+  </div>
+
+  <p>/redirect というURLにアクセスすると、templates/server/redirect.html を返します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/top')
+def serve_flask_content():
+return render_template('top.html')
+
+</code></pre>
+  </div>
+
+  <p>/top というURLにアクセスすると、templates/top.html を返します。</p>
+
+  <h5>4. 動的なページ表示</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/&lt;page_name&gt;')
+   def serve_dynamic_content(page_name):
+   try:
+   return render_template(f'server/{page_name}.html')
+   except:
+   abort(404)
+
+</code></pre>
+  </div>
+  <p>例えば、/about にアクセスすると、templates/server/about.html というテンプレートを表示しようとします。<br>
+   でも指定されたHTMLファイルが存在しない場合は、404エラー（ページが見つかりません）を返します。</p>
+
+  <h5>5. 静的ファイルの提供</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+@app.route('/&lt;path:filename&gt;')
+ def serve_static_files(filename):
+ return send_from_directory('www', filename)
+
+</code></pre>
+  </div>
+  <p>サイト内の画像やCSSファイルなどの静的なリソースを提供します。<br>
+   例えば、/css/style.css にアクセスすると、www/css/style.css を返しますよね。</p>
+
+  <h5>6. アプリケーションの実行</h5>
+
+  <div class="code-container">
+   <pre><code class="language-python">
+if __name__ == '__main__':
+debug_mode = os.getenv('FLASK_DEBUG', 'False') == 'True'
+app.run(debug=debug_mode)
+
+</code></pre>
+  </div>
+
+  <p>__name__ == '__main__' という部分は、このファイルが直接実行された場合のみ以下のコードが動作する仕組みです。<br>
+   アプリケーションを起動し、デバッグモード（ debug=True ）かどうかを環境変数 FLASK_DEBUG で制御しています。</p>
+
+  <p>app.yamlは別の機会でも良いかな。<br>
+   ここではFlaskの/pages用ルートを解決するコードを入れましたが、それで紙面を割くほどじゃないでしょ。</p>
+
+  <h3>テンプレートとなるHTMLコード</h3>
+  <p>上述してきたようにpythonが書けたら、テンプレートとなるhtmlを用意します。<br>
+   このテンプレートに、pythonによって生成されたWebページリストが差し込まれていくわけですよ。<br>
+   だから私の手作業が大幅に減るという仕組みなんです。</p>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+{% raw %}
+&lt;h2&gt;FlankによるWebページ&lt;/h2&gt;
+  {% for page in pages_by_category['Dynamic'] %}
+  &lt;p&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+
+  &lt;!-- Another Eden --&gt;
+  &lt;h2&gt;アナザーエデン&lt;/h2&gt;
+  {% for page in pages_by_category['Another Eden'] %}
+  &lt;p&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+
+  &lt;!-- Contents --&gt;
+  &lt;h2&gt;個人サイト制作&lt;/h2&gt;
+  {% for page in pages_by_category['Contents'] %}
+  &lt;p&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+
+  &lt;!-- Fish --&gt;
+  &lt;h2&gt;アウトドア&lt;/h2&gt;
+  {% for page in pages_by_category['Fish'] %}
+  &lt;p&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+
+  &lt;!-- RSS --&gt;
+  &lt;h2&gt;RSSフィード&lt;/h2&gt;
+  {% for page in pages_by_category['RSS'] %}
+  &lt;p&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+  {% endfor %}
+{% endraw %}
+</code></pre>
+  </div>
+
+  <p>このように、サーバーサイドスクリプトの実装には意味があります。<br>
+   静的ウェブサイトは安定稼働という意味で最高峰だと感じるのですが、それを統一管理する仕組みはサーバーサイドスクリプトが欲しいですよね。<br>
+   私の場合、PythonのFlaskフレームワークということなんです。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="{{ url_for('static', filename='js/feinScroll.js') }}"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="{{ url_for('static', filename='externalization/common.js') }}"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc={{ url_for('static', filename='contents/site_create.html') }}">
+     <img src="{{ url_for('static', filename='images/HTML5_Logo_64.png') }}" alt="Valid HTML5" height="31"
+      style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc={{ url_for('static', filename='css/style.css') }}">
+     <img style="border:0;width:88px;height:31px" src="{{ url_for('static', filename='images/vcss-blue.png') }}"
+      alt="正当なCSSです!">
+    </a>
+   </div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="{{ url_for('static', filename='js/feinheadline1.js') }}"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
