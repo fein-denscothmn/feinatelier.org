@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>キャラの加入や強化に伴う強敵戦</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta name="keywords" content="アナザーエデン, 強敵, 攻略">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="キャラの加入や強化に伴う強敵戦">
+ <meta property="og:description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_feinpdf_strengthen.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "キャラの加入や強化に伴う強敵戦",
+      "url": "https://feinatelier.org/another-eden/anaden_feinpdf_strengthen.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">キャラの加入や強化に伴う強敵戦</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/顕現.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="キャラの加入や強化に伴う強敵戦の目次を開く ▼"
+   data-close-text="キャラの加入や強化に伴う強敵戦の目次を閉じる ▲">キャラの加入や強化に伴う強敵戦の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>キャラの加入や強化に伴う強敵戦</span></h1>
+
+  <p>こっちには邂逅や顕現、ウクアージとかを書いていきましょうか。<br>
+   配布キャラが仲間入りしたり、キャラ固有の武具が入手できたり。<br>
+   このページを用意しておくことで、他のページの負荷も少しは減るでしょ。<br>
+   でもこういうの難しいんですよね。<br>
+   例えばキュリオの武器を強化する連続強敵戦だってあるわけで。<br>
+   とは言え、もう星導覚醒実装後ですからね。<br>
+   あまり関係ないかな？</p>
+
+  <h3>開眼アザミ編</h3>
+  <p>もう思いっきり推し推し攻略ですね😆ww<br>
+   でも私らしくて良い感じです。<br>
+   アザミ開眼はお勧めです。アナザースタイルの火力が尋常ではないんですよね。<br>
+   ３部のMaster難易度でも大活躍してくれました！</p>
+
+  <p><a href="fein_report/アザミ開眼.pdf">アザミ開眼.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/アザミ開眼.pdf">アザミ開眼.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h4>マユとASミストレア、そしてフィーネ</h4>
+  <p>どのキャラも強いよね。<br>
+   見出しの３キャラはこのアザミ開眼をしていたころに全員天冥255だったような？<br>
+   ミストレアだけがまだ255になってなかったのかな？<br>
+   忘れちゃったけど、これほどレポートで褒め称えているのですから、大活躍してくれたんでしょう。</p>
+
+  <h3>開眼ガリユ編</h3>
+  <p>出たガリユのドラゴン！<br>
+   ループか！<br>
+   火力か！<br>
+   これほんと私のプレイスタイルの分岐点というか、方向性を決定付けるというか、ASサキによる赫灼たる豪炎猛火extreme４ という終着点へ繋がる戦いのスタート地点だったんですよね😆ww<br>
+   もちろんループ攻略ですよ？<br>
+   だって魚釣りにお金がかかるんだもん🐠<br>
+   当時はまだカミングアウトしてなかったけどね🐟</p>
+  <p><a href="fein_report/開眼ガリユ編.pdf">開眼ガリユ編.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/開眼ガリユ編.pdf">開眼ガリユ編.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h5>ガリユのアナザースタイル</h5>
+  <p>そういえばASガリユの顕現とか、出ないんですかね？<br>
+   これを書いているのは2023年7月なんですけど、そろそろ出ても良い頃だと思います。<br>
+   この竜ってけっこう強めに設定されてたような記憶があります。しかも私はASユナが引けてるにも関わらず、敢えてループ攻略への道を選んだという。<br>
+   私は当時からやってること変わらないよね。<br>
+   ２部期間中はほんとおもしろい砂袋期でした😆ww<br>
+   今になって思い返せば、クロノス石も倹約できて悪くない時期だったのです。<br>
+   ていうか元々そのつもりだったけど。<br>
+   だって火力ワンパンに頼っている限り、どこかで「ガチャの壁」に当たるの分かってるでしょ？<br>
+   アナザーエデンはライブサービスゲームなのです。</p>
+
+  <h3>開眼シェリーヌ編</h3>
+  <p>当時はシェリーヌがインフレに置いていかれており、攻略という観点ではあまり注目されていなかった記憶があります。<br>
+   火力に見劣りするとパーティーから外れてしまう…そういうのが元々好きではなかったため、シェリーヌをアタッカーにして勝利することを第一優先とした戦闘でした。</p>
+
+  <p><a href="fein_report/開眼シェリーヌ.pdf">開眼シェリーヌ.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/開眼シェリーヌ.pdf">開眼シェリーヌ.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h4>サブメンバーはグラスタ置き場なのか？</h4>
+  <p>そうではありません。<br>
+   アナザーエデンにはVC（ヴァリアブルチャント）というものがあり、インフレが重なった今でも時として有効です。いずれVCにも何かしら強化が入れば良いなーと思っています。<br>
+   この戦闘はそんな普段は日の目を見ないサブメンバーのVCを最大限活かした戦いです。<br>
+   また、とかく火力を持つキャラ以外は片っ端からtier表で下げられてしまう戦闘環境にあって、インフレに取り残されたシェリーヌで勝つことに大きな意義を見い出していました。<br>
+   個人的にはtier表は攻略の役に立たないと考えているんだけどね？<br>
+   アナザーエデンの繁栄に大いに貢献する攻略観だから私もtier表そのものは存在し続けて良いと思うけど。<br>
+   ただ、私の時層の攻略には採用できないってだけです。</p>
+
+
+
+  <h2>最後まで倒すとウクアージが仲間入り</h2>
+
+  <p>ぜひともウクアージを仲間にすることをお勧めします。<br>
+   さすがアナデンの元強敵代表選手。非常に強いです。<br>
+   ウクアージもいつか仲間になるんじゃないか…そんな期待はどこかにありましたよね。<br>
+   少なくとも私はそうだった。<br>
+   このサイトを作り始めた2023年7月あたりには、すでに冥200を超えています。</p>
+
+  <p>普通の強敵戦でもウクアージは大活躍していますよ？<br>
+   バックサイドに待機させた時の回復がマジで強いんです！</p>
+
+  <p><a href="fein_report/ウクアージLv175〜Lv195.pdf">ウクアージLv175〜Lv195.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/ウクアージLv175〜Lv195.pdf">ウクアージLv175〜Lv195.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>グラスタをある程度は集めないと苦しいけどね。<br>
+   途中まではループ攻略で長期戦すればグラスタなしでも何とかなるかもしれませんが、最終戦が厳しいと思います。<br>
+   ウクアージ最終戦は３匹まとめて相手にしなければならず、耐久戦はあまり現実味がないでしょう。<br>
+   普通に開幕アナザーフォースで一気に倒してしまったほうが良いです。<br>
+   その後で武器を集めるために何度も倒さなければならないので。<br>
+   私はフィーネの火力で最終戦は倒しました。<br>
+   無属性魔法なら耐性ガチャにほぼ引っかからないため、気楽に武器集めもできましたね。<br>
+   フィーネを冥255にしておいて良かったです。</p>
+
+  <div class="video-card">
+   <h4 class="special-title">フィーネ冥255の火力</h4>
+   <p>これが冥255のフィーネが持つ火力です。<br>
+    当時でさえこれだったから、今はもっと高いですね。</p>
+   <video class="myVideo" controls>
+    <source src="/video/フィーネ冥255の火力.mp4" type="video/mp4">
+    お使いのブラウザは動画タグに対応していません。
+   </video>
+   <p>これとてグラスタによって火力を上げていますよ？<br>
+    つまり、グラスタをちゃんとすれば、本来なら火力アタッカーでないキャラでも火力が出るようになるんです。</p>
+   <hr class="stylish">
+   <div class="controls">
+    <button class="control-btn play-pause" onclick="playPause()">再生/一時停止</button>
+    <button class="control-btn stop" onclick="stopVideo()">停止</button>
+    <button class="control-btn mute-unmute" onclick="muteUnmute()">ミュート/ミュート解除</button>
+    <button class="control-btn pip" onclick="togglePip()">ピクチャインピクチャ</button>
+   </div>
+  </div>
+
+  <p>「バフの倍率が高過ぎて、もう昔みたいなバランスに戻すのは無理だと思うわ…」<br>
+   このセリフ、笑ってしまいました😆ww<br>
+   そうですね。<br>
+   これが、インフレの未来です。</p>
+
+  <h4>Lv170までのウクアージ</h4>
+  <p>当時はレポートの書式もこんな感じにしていたんです。<br>
+   Twitter時代末期の「Introduction」で始まるレポート書式は、無貌レポートから始めたもの。<br>
+   もともと洋書でよく見るスタイルで、文頭の１文字を大きいフォントにして見やすくするという。<br>
+   ウクアージ170なんてのもいたよね。<br>
+   どうやって倒したのか、それこそ自分のレポート読まないと思い出せない…</p>
+
+  <p><a href="fein_report/ウクアージ170.pdf">ウクアージ170.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/ウクアージ170.pdf">ウクアージ170.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h5>過去の敵はみんなグラスタでやっつける</h5>
+  <p>これに尽きますよ。<br>
+   新しい敵もそうですが、古い時代の強敵はみーんなグラスタを集めるだけで勝てます。<br>
+   tier表のSSキャラなんかいらないし、リセマラもいらないです。<br>
+   グラスタさえ集まれば、適当な配布キャラにくっつけてアナフォすればみんな吹き飛びます。<br>
+   HPストッパーから何かされたら初めて考えればいい。<br>
+   上述のようにグラスタなんですよね。私からのアナデン攻略提示はもうグラスタ集め一徹でも良いくらいだと思ってますよ。<br>
+   だってそれだけで１年以上はかかるし、あとはどなたでも多少は慣れてくれるでしょうから。<br>
+   逆にグラスタ持ってないのに砂袋やってもしょーがないですよ。<br>
+   どっちみち火力は出ません。<br>
+   グラスタの有無で10倍も20倍も差が出るんですから。</p>
+
+  <h3>インフレ考察とループ攻略</h3>
+
+  <div class="pdf-list-add">
+   <button class="pdf-link-add"
+    data-url="fein_report/ウクアージLv170・開幕アナフォ即撃破で見る濃密バフデバフ.pdf">ウクアージLv170・開幕アナフォ即撃破で見る濃密バフデバフ.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/ウクアージLv170・開幕アナフォ即撃破で見る濃密バフデバフ.pdf">ウクアージLv170・開幕アナフォ即撃破で見る濃密バフデバフ.pdf</a></p>
+  <p>早い話が、２部でグラスタが登場してからは「短ターンキルできる」というのが、ガチャの中心的な付加価値だったのですよ。<br>
+   それに当時はまだTwitterが正常稼働していたから、Twitterが擬似的な闘技場みたいな雰囲気になって、ユーザー同士で競わせる雰囲気を作り出すことも容易だったよね。ソシャゲ会社にとっては経費をかけずにレース場を設備できてたってこと。<br>
+   そういう感じだと私は理解していたので、最新キャラに頼らぬ強敵戦攻略、すなわち「ループ攻略」の方が優れているという考え方を変えなかったのです。<br>
+   今でも基礎の考え方は変わっていませんよ？<br>
+   手元に残るクロノス石の数字の桁が違うというのは、それだけで価値があると言えます。要はガチャ。そういうことです😊</p>
+
+
+  <h4>古いウクアージ</h4>
+
+  <p>原初のアナデンって感じだよね。<br>
+   2023年7月のヘブバン生放送でも思ったけど、運営が付いているアプリゲームは配信開始から数年間は様子を見て、堅調な成長を遂げて緩和が出始めてからやると遊びやすいのかも。</p>
+
+  <p><a href="fein_report/古いウクアージ.pdf">古いウクアージ.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/古いウクアージ.pdf">古いウクアージ.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h5>古い敵は全てグラスタでやっつける</h5>
+  <p>他のところでも書いたかな？<br>
+   アナザーエデンはとにかくグラスタがあるかどうかですよ。<br>
+   だからリセマラは不要なんだけど、やはりソシャゲ業界の消費者教育というのは極めて強力で、そういうアナデンの良さはなかなか伝わらない側面があるよね。</p>
+
+  <h3>とても古い時代の顕現全集</h3>
+  <p>顕現に関してもこんなふうにその都度レポートを書いてたんです。<br>
+   このような軽微な戦闘に関してもそうですね。<br>
+   新キャラ＆ASが出るたびにガチャ引いて短ターンキル目指してなんてやってたらさ…<br>
+   そんなの、クロノス石が焼失しまくることが当初から分かっていました。<br>
+   昔のアナデンの話であって、期間限定のお話ですよ？<br>
+   今のアナデンでは、そんなこと不可能です。<br>
+  </p>
+
+  <p><a href="fein_report/顕現戦：イスカミュルス.pdf">顕現戦：イスカミュルス.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：イスカミュルス.pdf">顕現戦：イスカミュルス.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/顕現戦：ガリユラクレア.pdf">顕現戦：ガリユラクレア.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：ガリユラクレア.pdf">顕現戦：ガリユラクレア.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/顕現戦：シェイネアナベル.pdf">顕現戦：シェイネアナベル.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：シェイネアナベル.pdf">顕現戦：シェイネアナベル.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/顕現戦：シオンマイティシュゼット.pdf">顕現戦：シオンマイティシュゼット.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：シオンマイティシュゼット.pdf">顕現戦：シオンマイティシュゼット.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/顕現戦：トゥーヴァアザミ.pdf">顕現戦：トゥーヴァアザミ.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：トゥーヴァアザミ.pdf">顕現戦：トゥーヴァアザミ.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/顕現戦：ナギユーイン.pdf">顕現戦：ナギユーイン.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/顕現戦：ナギユーイン.pdf">顕現戦：ナギユーイン.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/アルス・ノヴァ顕現.pdf">アルス・ノヴァ顕現.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/アルス・ノヴァ顕現.pdf">アルス・ノヴァ顕現.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/サーペントテイル顕現.pdf">サーペントテイル顕現.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/サーペントテイル顕現.pdf">サーペントテイル顕現.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/ベルトラン顕現.pdf">ベルトラン顕現.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/ベルトラン顕現.pdf">ベルトラン顕現.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/ボルトクリムゾン顕現.pdf">ボルトクリムゾン顕現.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/ボルトクリムゾン顕現.pdf">ボルトクリムゾン顕現.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/フェルミナ顕現.pdf">フェルミナ顕現.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/フェルミナ顕現.pdf">フェルミナ顕現.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>顕現はレポート書式を特別仕様にしてたんですよ。<br>
+   この頃からいっそのことWeb媒体にしちゃうかー…とも思っていましたが、必ず誰かが「ホームページ作りました！」という雰囲気でやり始めると踏んでいたから、それらが一巡して熟する時まで、待ちたかったんだよね。
+  </p>
+  <p>と言いますか、インターネット活動の終着点なんてだいたい決まってるんですよ？<br>
+   当たり前じゃん自分の城を作ろうという方向になるでしょそりゃ😆ww<br>
+   私もいずれ歳を取りますが、お婆さんになってからRPGをやりたくなるかもしれないね。<br>
+   そんな時、このWebサイトにある古いレポートを読み返してみようと思います。</p>
+
+  <h4>ループ攻略、そして無償クロノス石で何人も255へ</h4>
+  <p>普通の顕現でも、短ターンキルできない場合はある程度防戦の必要があったんです。
+   それを甘受することで、私は多くの配布キャラを無償石で255にしてきました。
+  </p>
+
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_feinpdf_strengthen.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
