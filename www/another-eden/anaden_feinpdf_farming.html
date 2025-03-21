@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>周回要素に関するレポート集</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta name="keywords" content="アナザーエデン, 周回, 攻略">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="周回要素に関するレポート集">
+ <meta property="og:description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_feinpdf_farming.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "周回要素に関するレポート集",
+      "url": "https://feinatelier.org/another-eden/anaden_feinpdf_farming.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">周回要素に関するレポート集</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/メビウス内部ノーナ.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="周回要素に関するレポート集の目次を開く ▼"
+   data-close-text="周回要素に関するレポート集の目次を閉じる ▲">周回要素に関するレポート集の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>周回要素に関するレポート集</span></h1>
+
+  <p>あまり数は多くないけど、周回要素に関するレポート集を集めていきましょう。
+   異境だけは一時期強敵戦として話題になったから、別建てにしましたが。
+   メビウス迷宮や釣りなど、周回効率についても計算してきました。
+   もっとも、期間限定もないから効率とか、大したことではないけどね。</p>
+
+  <h2>メビウスの迷宮・堅実攻略</h2>
+  <p>メビウス迷宮を堅実に20層までクリアできる攻略レポートと、周回手法による効率差を検討した計算書及び説明書を掲載します。<br>
+   ノクシスが仲間になり、強い武器や防具が量産できます。</p>
+  <p><a href="fein_report/メビウス.pdf">メビウス.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/メビウス.pdf">メビウス.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>メビウスは言わば「プチアナデン」ですよね。<br>
+   こういうのローグライクと呼ぶらしいです。<br>
+   スキルはそのままスキル。アビリティとチャームはグラスタです。<br>
+   難易度は高くないです。ただ、好みは分かれるかもしれない。<br>
+   このレポートの方法だと周回に時間はかかります。<br>
+   しかし、よっぽど運が悪くなければ確実に20層までクリアできるようになってます。</p>
+
+  <div class="custom-google-drive-container">
+   <h4>メビウスボスはアナザーフォースなしで２ターン</h4>
+   <p>他にもやりようはあると思いますけどね。<br>
+    私はこのようにやっていました。<br>
+    ちょうど良いタイミングで勲章Getまでを動画にすることができたので掲載します。<br>
+    上記のレポートにあるように回っていれば、最終ボス戦はこの動画のような形になります。</p>
+   <iframe src="https://drive.google.com/file/d/1sLqiFSdgxZP7L3KPokeayWa1UvWo7Hn2/preview"
+    class="custom-google-drive-iframe" allow="autoplay" title="バフ8種のオーラ対策"></iframe>
+   <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
+  </div>
+
+  <h3>メビウスの迷宮・周回効率計算式</h3>
+  <p>メビウスの周回タイプによる効率差を検討した計算書です。<br>
+   ここにある計算式はさほど重要ではありません。<br>
+   期間限定でもないから、時間的効率など後回しにして確実にクリアできるよう工夫したほうが手っ取り早いでしょうね。</p>
+
+  <p><a href="fein_report/メビウス効率.pdf">メビウス効率.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/メビウス効率.pdf">メビウス効率.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>4層周回を4分で行うと仮定した場合、20層を最低でも平均55分で回らないと時間的効率では4層周回に及ばないという結果となっています。<br>
+   しかもこれは煩雑さ回避のために20層周回に有利な式にせざる得なかったため、実際には4層周回のほうが効率は良いでしょう。<br>
+   ただし、ノクシス加入は別の内部的な計算式で行われています。<br>
+   これは先日のこみゅ生放送で言及されていましたね？<br>
+   メビウス武器にどこまで価値を置くか。そこにあるわけですよ。<br>
+   加えて、アナデンにはインフレがあることをお忘れなきよう。</p>
+
+  <h3>メビウスの迷宮・周回効率計算式の考え方</h3>
+  <p>さすがにここまで来ると細か過ぎますね。<br>
+   ほとんど私の趣味に過ぎません。<br>
+   ただ、じっくり読み込んでいただければそれなりの根拠をもとに式を作っていることをお伝えできるでしょう。</p>
+
+  <p><a href="fein_report/メビウス表.pdf">メビウス表.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/メビウス表.pdf">メビウス表.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>メビウスの周回タイプによる効率差を検討した計算書はすでに掲載しましたが、上にあるPDFはその説明書です。<br>
+   でもこれは把握しなくても良いです。<br>
+   一時期「メビウス迷宮は20層周回のほうが良いか4層周回のほうが良いか」と、Twitterでかなりの議論が巻き起こったことがありました。<br>
+   それを受けて私が徹底的に計算し、かつその根拠を文書化したものです。<br>
+   こういうのも良い想い出ですねー♪</p>
+
+  <p><a href="fein_report/メビウス説明書.pdf">メビウス説明書.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/メビウス説明書.pdf">メビウス説明書.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p>上のPDFもメビウスの「20層周回のほうが良いか4層周回のほうが良いか」という問題を計算した式に対する説明書です。<br>
+   ただ、こちらのほうはどちらかというと計算の意図といったところでしょうか。<br>
+   こういう計算って、小中学生の頃にやった算数の文章問題に似ていると思います。<br>
+   ああいうのは書いてある文章を理解し、それを数字に置き換え、分からない部分を未知数としてから計算する必要があります。<br>
+   メビウスの効率計算式も同じ要領ですよね。<br>
+   周回スピードの差など大した問題ではありません。<br>
+   Excelに式を作り、未知数を示す枠に3分なら3・40分なら40と入力すればパソコンが解を出してくれる。<br>
+   今後も、何かおもしろそうな機会があったらこのようにして徹底的に計算しようと思います（笑）</p>
+
+  <h3>Preferred List for Enhancing Weapons & Armor</h3>
+
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/武器強化計画書.pdf">武器強化計画書.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <p><a href="fein_report/武器強化計画書.pdf">武器強化計画書.pdf</a></p>
+  <p>なんで私はここstrengtheningにしてるんだろう…そんな英語できるほうじゃないけど、ちょっと違う気がする。<br>
+   何かレイアウト都合があったのかしら？<br>
+   Wordで作ってたからねー<br>
+   いやはや…Twitterからデータを拾い出してると、実に様々な古文書が次々と出てきますね！<br>
+   これは各種の武器強化について計画したものでしょう。ずいぶんと綺麗に作っていたんだ…<br>
+   Webサイト制作も落ち着いたので、また何か綺麗なレポートを書きたいもんです。</p>
+
+  <h3>Master設定３部前編フェイズシフト周回</h3>
+  <p>これは強敵戦ではないんですけどね。周回ネタです。<br>
+   でもさすがマスター難易度だけあってザコが尋常でないほど強く、一筋縄ではいきませんでしたね。<br>
+   普通に考えれば難易度を落としたほうがいい。</p>
+  <p><a href="fein_report/Master設定３部前編フェイズシフト周回.pdf">Master設定３部前編フェイズシフト周回.pdf</a></p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="fein_report/Master設定３部前編フェイズシフト周回.pdf">Master設定３部前編フェイズシフト周回.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+  <p>マスター難易度へ挑戦するかどうかはともかく、３部まで来てグラスタが抜け漏れだらけというのはリスクが高いと考えます。<br>
+   運営側も難易度を落としてくれたりするけどね？<br>
+   完璧じゃなくてもいいし、付け方が上手じゃなくてもいいです。<br>
+   とりあえず、グラスタをちゃんと持っておきましょう。<br>
+   そうでないと付け方の練習さえできません。<br>
+   マスター難易度でフェイズシフトを周回するかどうかは、その後で考えれば良いことでしょうね。<br>
+   必ずしもキャラが揃っている必要はありません。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_feinpdf_farming.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
