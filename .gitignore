@@ -7,7 +7,20 @@
 /app.yaml
 
 # 特定のディレクトリを除外
-www/another-eden/anaimage/
-www/another-eden/icon/
+www/**/anaimage/
+www/**/icon/
 www/image/
 www/paint/
+
+# キャッシュファイルを除外
+__pycache__/
+*.pyc
+*.pyo
+
+# 一時ファイルやログを除外
+*.log
+*.tmp
+
+# OS依存の不要ファイルを除外
+.DS_Store
+Thumbs.db

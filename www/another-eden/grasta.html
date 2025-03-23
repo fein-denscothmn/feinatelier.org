@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+ <meta charset="UTF-8">
+ <title>仮のindex.html</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="feinatelier.orgのトップページです。">
+ <meta name="keywords" content="アナザーエデン, アウトドア, 個人サイト">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="feinatelier.orgのトップページ">
+ <meta property="og:description" content="feinatelier.orgのトップページです。">
+ <meta property="og:image" content="image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/grasta.html">
+
+ <!--検索ヒット時のアイコン-->
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "feinatelier.orgのトップページ",
+    "url": "https://feinatelier.org/another-eden/grasta.html",
+    "logo": "https://feinatelier.org/image/barracuda.jpeg"
+  }
+  </script>
+
+ <link rel="manifest" href="/manifest.json">
+
+ <!-- CSSファイル -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/pdf.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/album.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグマネージャー -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JavaScriptファイル -->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/pdf.js" defer></script>
+ <script src="/script/collapsible.js"></script>
+ <script src="/script/album.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+ <!-- Service Workerの登録 -->
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="/script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/icons/feinatelier_org.png" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="feinatelier.orgの目次を開く ▼"
+   data-close-text="feinatelier.orgの目次を閉じる ▲">feinatelier.orgの目次を開く
+   ▼</button><!--目次の自動生成-->
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <section>
+   <h1 class="background-waveimage-heading"><span>feinatelier.org</span></h1>
+   <p>URLがgrastaとなっているのに、中身はどう見てもWebサイトのトップページです。<br>
+    時間をかけて作っていこうと思ってね。</p>
+
+   <hr>
+
+   <p class="feintag">ここから、新しいトップページの草案</p>
+
+   <h2>About feinatelier</h2>
+
+   <p>By owning an independent website, individuals can establish their own digital space without relying on social
+    media or centralized platforms.<br>
+    This allows for the freedom to customize content and design, enabling users to directly express their unique
+    identity.<br>
+    Even with the rise of Web3.0, personal websites offer unparalleled value as a platform to convey one's "own voice"
+    within the digital realm—a true form of self-expression in the modern era.</p>
+
+   <div class="feinorg-container">
+    <div class="feinorg-card">
+     <p class="feinorg-row">
+     <dl>
+      <dt>Published Content</dt>
+      <dd><a href="/contents/site_create.html">Personal Website Creation</a></dd>
+      <dd><a href="/fish/fish_sitemap.html">Outdoor Activities</a></dd>
+      <dd><a href="/another-eden/anaden_sitemap.html">Another Eden</a></dd>
+     </dl>
+    </div>
+   </div>
+
+   <p>Furthermore, many social media platforms are subject to the risks of service discontinuation or changes in
+    policies, which may lead to the loss of content.<br>
+    However, personal websites mitigate such risks, ensuring the long-term dissemination and preservation of
+    information.<br>
+    Additionally, the process of managing a website provides opportunities to deepen one’s knowledge of technologies
+    such as HTML, CSS, JavaScript, frameworks like Flask, and cloud hosting.<br>
+    This also enhances adaptability to new technologies brought about by Web3.0.</p>
+
+   <div class="feinorg-container">
+    <div class="feinorg-card">
+     <p class="feinorg-row">
+     <dl>
+      <dt>Main Website</dt>
+      <dd><a href="https://feinatelier.org/">https://feinatelier.org/</a></dd>
+     </dl>
+    </div>
+   </div>
+
+   <p>This site is operated on a non-profit basis.<br>
+    Personal websites are often referred to as 'digital gardens' in Western countries.<br>
+    My website integrates dynamic and static elements to publish content.</p>
+
+   <div class="feinorg-container">
+    <div class="feinorg-card">
+     <p class="feinorg-row">
+     <dl>
+      <dt>Portal Website</dt>
+      <dd><a href="https://portal.feinatelier.org/">https://portal.feinatelier.org/</a></dd>
+     </dl>
+    </div>
+   </div>
+
+   <p>The future of the Internet is undergoing significant transformation alongside the advancement of technology.<br>
+    In particular, the concept of a "decentralized web" (Web3.0) has been garnering attention.<br>
+    Unlike the traditionally centralized Internet (Web2.0), this decentralized framework relies on blockchain
+    technology, ensuring that data and services are not dependent on specific companies or servers.</p>
+
+   <div class="feinorg-container">
+    <div class="feinorg-card">
+     <p class="feinorg-row">
+     <dl>
+      <dt>SNS Account</dt>
+      <dd><a href="https://bsky.app/profile/feinatelier.org">https://bsky.app/profile/feinatelier.org</a></dd>
+     </dl>
+    </div>
+   </div>
+
+   <p class="feintag">新しいトップページの草案、ここまで</p>
+
+   <!-- ●ここから人間用のフッター● -->
+   <div class="spacer"></div>
+
+   <section class="sitemap">
+    <h2 class="sitemap_heading">サイトマップ</h2>
+    <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+     下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+    <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+      アナザーエデン関連ページ・サイトマップ</a></p>
+    <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+     期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+     もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+    <div class="spacer"></div>
+    <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+      個人サイトのホスティングとコンテンツ作成</a></p>
+    <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+     HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+     Webデザインやレイアウトについても書いてあります。</p>
+    <div class="spacer"></div>
+    <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+    <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+     このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+     アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+   </section>
+
+   <!-- ページ上部へ戻るボタン -->
+   <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+   <script src="/script/feinScroll.js"></script>
+
+   <div class="spacer"></div>
+
+   <footer>
+    <!--common google digital leader-->
+
+    <div id="commongdl"></div>
+    <script src="/externalization/common.js"></script>
+
+    <div class="spacer"></div>
+
+    <!--w3cバリデーターに合格していることを示す-->
+    <div class="w3ccheck">
+     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/grasta.html">
+      <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+     </a>
+     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/grasta.html/css/style.css">
+      <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+     </a>
+    </div>
+    <!--w3cバリデーターに合格していることを示す-->
+
+    <div class="spacer"></div>
+    <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+      site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+     を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const dateElement = document.getElementById('updated-date');
+      dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+     });
+    </script>
+
+   </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
