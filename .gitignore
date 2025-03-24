@@ -5,6 +5,7 @@
 /www/robots.txt
 /.vscode/tasks.json
 /app.yaml
+/www/a1bb1d9bd4684089b5fc1d1413723671.txt
 
 # 特定のディレクトリを除外
 www/**/anaimage/
