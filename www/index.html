@@ -12,7 +12,7 @@
  <meta name="robots" content="index, follow">
  <meta property="og:title" content="アナザーエデン グラスタの入手場所一覧：完全版 ～アナデン攻略の基礎と冒険のガイド～">
  <meta property="og:description" content="アナザーエデンのグラスタに関するページ。おおよそ難易度やストーリーで行く場所に応じて、その場で入手できるグラスタをまとめてあります。">
- <meta property="og:image" content="image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:image" content="image/アナザーエデンのバディ_ピスケ.webp">
  <meta property="og:url" content="https://feinatelier.org/">
 
  <!--検索ヒット時のアイコン-->
@@ -37,14 +37,21 @@
  <link rel="stylesheet" type="text/css" href="/css/menu.css">
  <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
  <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
- <link rel="stylesheet" type="text/css" href="/css/album.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  media="print" onload="this.media='all'">
+
+ <!-- Preconnectでサーバー接続を最適化 -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+
+ <!-- Preloadでフォント読み込みを高速化 -->
+ <link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+ <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-  rel="stylesheet">
- <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+  media="print" onload="this.media='all'">
+
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.webp">
  <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
 
  <!-- Googleタグマネージャー -->
@@ -69,11 +76,9 @@
  <script src="/script/underline.js"></script>
  <script src="/script/feinfade.js"></script>
  <script src="/script/feinScroll.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
  <script src="/script/pdf.js" defer></script>
  <script src="/script/collapsible.js"></script>
- <script src="/script/album.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
 
  <!-- Service Workerの登録 -->
  <script>
@@ -112,7 +117,7 @@
 
  <nav class="den_nav">
   <ul>
-   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="https://feinatelier.org/"><img src="/image/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
    <li><a href="/" class="animated-link">ホーム</a></li>
    <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
    <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
@@ -145,7 +150,7 @@
   <!--サイトタイトル-->
   <div class="header-frame">
    <div class="header-container">
-    <img src="/another-eden/anaimage/ESねここキャライラスト（白地）.jpg" alt="fein's personal site" class="header-image">
+    <img src="/another-eden/anaimage/ESねここキャライラスト_white.webp" alt="fein's personal site" class="header-image">
     <div class="header-text">
      <a href="https://feinatelier.org/">fein's personal site</a>
     </div>
@@ -165,7 +170,7 @@
 
    <p class="codegra">このグラスタ表のコンセプト</p>
    <div class="content">
-    <img src="/paint/2024kyabiaフィーネ全体.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="/paint/2024kyabiaフィーネ全体.webp" alt="illustration of kyabia" class="graphic right-image fade-in-out">
     <p>おおよそ難易度やストーリーで行く場所に応じて、その場で入手できるグラスタをまとめてあります。<br>
      入手場所を記述しただけで、詳細は全て省略しました。</p>
     <p>また、攻撃・生命・支援・特殊は分けていません。<br>
@@ -234,8 +239,8 @@
     高い火力が必要と思うなら、グラスタは必須です。</p>
 
    <div class="grastaimage">
-    <img src="image/グラスタを付けた.jpg" class="fade-in-out" alt="グラスタあり">
-    <img src="image/グラスタを付けていない.jpg" class="fade-in-out" alt="グラスタなし">
+    <img src="image/グラスタを付けた.webp" loading="lazy" class="fade-in-out" alt="グラスタあり">
+    <img src="image/グラスタを付けていない.webp" loading="lazy" class="fade-in-out" alt="グラスタなし">
    </div>
   </section>
 
@@ -269,7 +274,7 @@
        <td rowspan="3">
         <div class="gtable">
          <div class="toptext">ジュスティーヌ＆カロリーヌ撃破</div>
-         <img src="image/mari1.png" alt="ジュスティーヌ＆カロリーヌ" class="bottomimage fade-in-out">
+         <img src="image/mari1.webp" loading="lazy" alt="ジュスティーヌ＆カロリーヌ" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -369,7 +374,7 @@
 
   <aside>
    <div class="content">
-    <img src="paint/kyabiaフィーネb1.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaフィーネb1.webp" alt="illustration of kyabia" class="graphic right-image fade-in-out">
     <p>今までの fein's portal にあった<a
       href="https://portal.feinatelier.org/%E3%82%A2%E3%83%8A%E3%82%B6%E3%83%BC%E3%82%A8%E3%83%87%E3%83%B3/%E3%82%B0%E3%83%A9%E3%82%B9%E3%82%BF%E3%81%AE%E5%A0%B4%E6%89%80%E4%B8%80%E8%A6%A7%E8%A1%A8%E5%85%A5%E6%89%8B%E7%AF%84%E5%9B%B2%E5%88%A5?authuser=0">グラスタの場所一覧表
       〜 入手範囲別 〜</a>も、末永く使っていきますよ？<br>
@@ -401,7 +406,7 @@
        <td rowspan=11>
         <div class="gtable">
          <div class="toptext">２部ストーリー中のボス</div>
-         <img src="image/story1.png" alt="紅葉街道の茶屋" class="bottomimage fade-in-out">
+         <img src="image/story1.webp" loading="lazy" alt="紅葉街道の茶屋" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -587,7 +592,8 @@
   <section>
    <h4>生命・支援・特殊グラスタについて</h4>
    <div class="content">
-    <img src="paint/kyabiaフィーネb2.jpg" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
+    <img src="paint/kyabiaフィーネb2.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphicmini right-image fade-in-out">
     <p>攻撃以外のグラスタもお勧めです。</p>
     <p>「天冥が低く火力が出ない」<br>
      「手持ちキャラが不足していて少し耐久戦をする必要がある」</p>
@@ -649,7 +655,7 @@
        <td rowspan="7">
         <div class="gtable">
          <div class="toptext">アナダン現代ガルレア大陸</div>
-         <img src="image/ana1.png" alt="現代ガルレア大陸" class="bottomimage fade-in-out">
+         <img src="image/ana1.webp" loading="lazy" alt="現代ガルレア大陸" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -682,7 +688,7 @@
 
   <aside>
    <div class="content">
-    <img src="paint/kyabiaイスカ.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaイスカ.webp" loading="lazy" alt="illustration of kyabia" class="graphic right-image fade-in-out">
     <p>アナザーエデンは大長編RPGです。<br>
      引き継ぎ設定は済ませておきましょうね？<br>
      それと共に、ユーザーID・引き継ぎID・パスワードは必ずメモしておきましょう。<br>
@@ -733,7 +739,7 @@
        <td rowspan="10">
         <div class="gtable">
          <div class="toptext">アナダン古代ガルレア大陸</div>
-         <img src="image/ana2.png" alt="古代ガルレア大陸" class="bottomimage fade-in-out">
+         <img src="image/ana2.webp" loading="lazy" alt="古代ガルレア大陸" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -773,9 +779,10 @@
 
   <aside>
    <div class="content">
-    <img src="paint/kyabiaフィーネc1.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
-    <p>強敵戦の攻略も「feinのアナデン戦闘史<a href="https://tinyurl.com/2aoxa9zd">vol1</a>・<a
-      href="https://tinyurl.com/255tplla">vol2</a>・<a href="https://tinyurl.com/2bc29bx7">vol3</a>」というレポートにまとめており、同時に「<a
+    <img src="paint/kyabiaフィーネc1.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
+    <p>強敵戦の攻略も「feinのアナデン戦闘史<a
+      href="https://portal.feinatelier.org/%E3%82%A2%E3%83%8A%E3%82%B6%E3%83%BC%E3%82%A8%E3%83%87%E3%83%B3/fein%E3%81%AE%E3%82%A2%E3%83%8A%E3%83%87%E3%83%B3%E6%88%A6%E9%97%98%E5%8F%B2vol1">vol1</a>というレポートにまとめており、同時に「<a
       href="another-eden/another-eden_feinpdf.html">アナザーエデン：feinが書いたレポート集</a>」というページもございます。<br>
      ただ…このタイプの情報は「星夢お勧めリスト」や「キャラの強さランキング」と同じように、インフレによってすぐに陳腐化します。<br>
      だって、半月に１度はアプデがあるのですよ？</p>
@@ -803,7 +810,7 @@
        <td rowspan="8">
         <div class="gtable">
          <div class="toptext">アナダン未来ガルレア大陸（アナダン冥峡界の報酬枠でも出る）</div>
-         <img src="image/ana3.png" alt="未来ガルレア大陸" class="bottomimage fade-in-out">
+         <img src="image/ana3.webp" loading="lazy" alt="未来ガルレア大陸" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -843,7 +850,8 @@
   <section>
    <h4>強いアナザーエデン・アカウントを育てる大まかな手順</h4>
    <div class="content">
-    <img src="paint/kyabiaフィーネc2.jpg" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
+    <img src="paint/kyabiaフィーネc2.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphicmini right-image fade-in-out">
     <ol>
      <li>グラスタを集める</li>
      <li>装備を集める</li>
@@ -860,7 +868,8 @@
   <section>
    <h4>旧キャラの星導覚醒がアナウンスされたら</h4>
    <div class="content">
-    <img src="paint/kyabiaフィーネa2.jpg" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
+    <img src="paint/kyabiaフィーネa2.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphicmini right-image fade-in-out">
     <p>夢詠みの書に余裕があり、お気に入りキャラなのであれば、アプデが来る前に★５にしてあげると良いでしょう。<br>
      星導覚醒ゲージが＋１されてお得です。<br>
      でも夢詠みの書に余裕がなく、さほどお気に入りのキャラでもないということであれば、無理に夢詠み収集を頑張らなくても大丈夫です。</p>
@@ -886,7 +895,7 @@
        <td rowspan="7">
         <div class="gtable">
          <div class="toptext">冥峡界アナダン</div>
-         <img src="image/ana4.png" alt="冥峡界" class="bottomimage fade-in-out">
+         <img src="image/ana4.webp" loading="lazy" alt="冥峡界" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -930,7 +939,7 @@
        <td rowspan="7">
         <div class="gtable">
          <div class="toptext">冥峡界アナダン</div>
-         <img src="image/fi1.png" alt="冥峡界" class="bottomimage fade-in-out">
+         <img src="image/fi1.webp" loading="lazy" alt="冥峡界" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -961,7 +970,8 @@
 
   <aside>
    <div class="content">
-    <img src="paint/kyabiaフィーネd1.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaフィーネd1.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
     <p>しばしば話題になる天冥値ですが、天冥が低くて困るのは、他ユーザーの攻略をそのまま真似しようとしたときです。<br>
      ゆえに、自分の好きなキャラを育てて良いのですよ？<br>
      詳しくは<a
@@ -1053,7 +1063,8 @@
   <section>
    <h4>困ったらグラスタを集め、試してみる</h4>
    <div class="content">
-    <img src="paint/kyabiaフィーネd2.jpg" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
+    <img src="paint/kyabiaフィーネd2.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphicmini right-image fade-in-out">
     <p>キャラはガチャで引けないことがあります。<br>
      星導覚醒(★6)が実装された今となっては特にこの傾向が強いです。</p>
     <p>しかし、グラスタは違います。<br>
@@ -1113,7 +1124,8 @@
   <section>
    <h4>古いコンテンツを侮ると損をすることがあります</h4>
    <div class="content">
-    <img src="paint/御堂りくフィーネb.jpg" alt="illustration of 御堂りく" class="graphicsaki right-image fade-in-out">
+    <img src="paint/御堂りくフィーネb.webp" loading="lazy" alt="illustration of 御堂りく"
+     class="graphicsaki right-image fade-in-out">
     <p>アナデンは期間限定のない RPG です。<br>
      みんながやってきたコンテンツを貴方だけがやっていない...</p>
     <p>すると何が起きるでしょう？<br>
@@ -1127,7 +1139,8 @@
   <section>
    <h4>★コンテンツと強敵の一覧も別ページにあります</h4>
    <div class="content">
-    <img src="paint/kyabiaフィーネa1.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaフィーネa1.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
 
     <p>「<a
       href="another-eden/anaden_story.html">アナザーエデンのコンテンツリスト</a>」というページは、メインストーリーの進行度に合わせて解放されるストーリーコンテンツを全て記載したものです。<br>
@@ -1245,7 +1258,7 @@
   <section>
    <h4>このグラスタ表の上手な使い方</h4>
    <div class="content">
-    <img src="paint/御堂りくフィーネa.jpg" alt="illustration of 御堂りく" class="graphic right-image fade-in-out">
+    <img src="paint/御堂りくフィーネa.webp" loading="lazy" alt="illustration of 御堂りく" class="graphic right-image fade-in-out">
     <p>紙に印刷して、ペンでチェックを入れながら集めて頂く。<br>
      これが一番手っ取り早いでしょう。</p>
     <p>冒頭でお伝えしたように、グラスタがなければどんな「人権キャラ」でも弱いのですよ。<br>
@@ -1280,7 +1293,7 @@
        <td rowspan="9">
         <div class="gtable">
          <div class="toptext">アナダンイスカリオテ</div>
-         <img src="image/ana6.png" alt="イスカリオテ" class="bottomimage fade-in-out">
+         <img src="image/ana6.webp" loading="lazy" alt="イスカリオテ" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -1328,7 +1341,8 @@
   <section>
    <h4>武器・防具・バッジも可能な限り集める</h4>
    <div class="content">
-    <img src="paint/kyabiaマリエルa2.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaマリエルa2.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
     <p>強い装備を持っていようとグラスタがなければ火力は出ません。<br>
      しかし、余裕があればいろいろ集めてみましょう。<br>
      グラスタ集めが最優先ではありますが小さい選択肢もあったほうが良いこともあります。</p>
@@ -1338,9 +1352,82 @@
   </section>
 
   <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">東方外典にあるグラスタ</h3>
+    <table>
+     <caption>東方外典にあるグラスタ</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>グラスタ名称</th>
+       <th>入手方法</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>会心の力＜東方＞</td>
+       <td>異時層イナナリ高原</td>
+      </tr>
+      <tr>
+       <td>会心の力＜普賢一刀流＞</td>
+       <td>異時層ヤガラ竹林</td>
+      </tr>
+      <tr>
+       <td>健全な身体＜東方＞</td>
+       <td>東方外典で夜黒荒魂石を集める</td>
+      </tr>
+      <tr>
+       <td>全能の力＜普賢一刀流＞</td>
+       <td>ガルレア古銭を集める</td>
+      </tr>
+      <tr>
+       <td>会心の力＜妖し＞</td>
+       <td>ガルレア古銭を集める</td>
+      </tr>
+      <tr>
+       <td>陣の呪＜刻陰陣＞</td>
+       <td>ガルレア古銭を集める</td>
+      </tr>
+      <tr>
+       <td>イザナギの証＜センヤ＞</td>
+       <td>ガルレア古銭を集めて１つ・星詠みの書架[禍夢鵺の書]で１つ・アナダン冥獄で白陽和魂石を集めて１つ</td>
+      </tr>
+      <tr>
+       <td>心頭滅却の珠＜センヤ＞</td>
+       <td>異時層クンロン山脈</td>
+      </tr>
+      <tr>
+       <td>属性耐性UP＜妖し＞</td>
+       <td>異時層妖魔殿</td>
+      </tr>
+      <tr>
+       <td>腕速知デバフ耐性＜妖し＞</td>
+       <td>異時層妖魔殿</td>
+      </tr>
+      <tr>
+       <td>健全な身体＜妖し＞</td>
+       <td>異時層猫神神社地下</td>
+      </tr>
+      <tr>
+       <td>全能の力＜妖し＞</td>
+       <td>異時層妖摩天楼</td>
+      </tr>
+      <tr>
+       <td>吸収の力＜東方＞</td>
+       <td>アナダン冥獄で白陽和魂石を集める</td>
+      </tr>
+      <tr>
+       <td>陣の呪＜轟打陣＞</td>
+       <td>アナダン冥獄で白陽和魂石を集める</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <section>
    <h2>【重要】メインストーリー３部にあるグラスタ</h2>
    <div class="content">
-    <img src="/paint/2024kyabiaフィーネ.png" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
+    <img src="/paint/2024kyabiaフィーネ.webp" alt="illustration of kyabia" class="graphicmini right-image fade-in-out">
     <p>
      ２部と同じく、メインストーリー３部のグラスタも大切です。<br>
      錬成材料も含めて、虚時層アナダンにあるグラスタも確保しておきましょう。<br>
@@ -1454,10 +1541,10 @@
   </section>
 
   <section>
-   <img src="paint/御堂りくミストレア.jpg" alt="illustration of 御堂りく" class="graphic fade-in-out">
+   <img src="paint/御堂りくミストレア.webp" loading="lazy" alt="illustration of 御堂りく" class="graphic fade-in-out">
    <h4>グラスタ錬成について</h4>
    <div class="content">
-    <img src="image/パーティー.jpg" alt="パーティー" class="graphicmini right-image fade-in-out">
+    <img src="image/パーティー.webp" loading="lazy" alt="パーティー" class="graphicmini right-image fade-in-out">
     <p>キャラクターのパーソナリティーが大きなポイントです。<br>
      まずは HP 最大時強化＜弓＞などのグラスタを潜在鉱石で錬成し、P グラスタにしてみましょう。<br>
      具体的には次のように使います。<br>
@@ -1465,7 +1552,7 @@
    </div>
 
    <div class="content">
-    <img src="image/パーソナリティ.jpg" alt="パーソナリティ" class="graphicmini right-image fade-in-out">
+    <img src="image/パーソナリティ.webp" loading="lazy" alt="パーソナリティ" class="graphicmini right-image fade-in-out">
     <p>AS ミストレアのパーソナリティをまず見ます。<br>
      それから、パーソナリティが一致する仲間へ【P】グラスタを付けます。<br>
      これが大きな火力の源であり、基本です。</p>
@@ -1510,7 +1597,8 @@
   <aside>
    <h4>🌟Webサイトを作ってみたい方へ</h4>
    <div class="content">
-    <img src="paint/kyabiaマリエルa3.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaマリエルa3.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
     <p>X ( 旧Twitter ) が頻繁に仕様変更を行い、そのたびに大騒ぎになっていますね。<br>
      「自分も個人的にWebサイトを作ってみたい」と思う方がおられましたら、<a href="/another-eden/atelier_studio.html">ファンサイト制作のアトリエ</a> が参考になると思います。<br>
      HTML・CSS・JavaScriptといったソースコードの解説はもちろん、自分で作ったホームページをアプリにする方法などなど。<br>
@@ -1555,7 +1643,7 @@
        <td rowspan="7">
         <div class="gtable">
          <div class="toptext">アナダンジスモンデ</div>
-         <img src="image/ana5.png" alt="ジスモンデ" class="bottomimage fade-in-out">
+         <img src="image/ana5.webp" loading="lazy" alt="ジスモンデ" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -1585,7 +1673,8 @@
   <section>
    <h4>バフデバフと運営公式バトル解説動画</h4>
    <div class="content">
-    <img src="paint/御堂りくasフィーネ.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/御堂りくasフィーネ.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
 
     <p>敵の物理攻撃を防ぎたいとき、例えば次のようにしてみます。</p>
 
@@ -1635,7 +1724,7 @@
        <td rowspan="6">
         <div class="gtable">
          <div class="toptext">アナダンジスモンデの報酬枠</div>
-         <img src="image/fi2.png" alt="ASフィーネ" class="bottomimage fade-in-out">
+         <img src="image/fi2.webp" loading="lazy" alt="ASフィーネ" class="bottomimage fade-in-out">
         </div>
        </td>
       </tr>
@@ -1663,7 +1752,7 @@
   <section>
    <h4>アナザーフォースを練習する場所</h4>
    <div class="content">
-    <img src="image/bos2.png" alt="ASサキの伝説" class="graphicsaki right-image fade-in-out">
+    <img src="image/bos2.webp" loading="lazy" alt="ASサキの伝説" class="graphicsaki right-image fade-in-out">
     <p>廻生の「時の闇を照らせし者 normal ステージ1」が一番手軽かと思います。<br>
      バルド・パルスという入場券も消費せず、何度もアナザーフォースの練習ができます。</p>
     <p>廻生はすぐにリタイアできるのも大きいですね。<br>
@@ -1746,11 +1835,11 @@
        <td>壊毒の力＜剣＞<br><span class="small-orange-text">廻生に２つある</span></td>
        <td rowspan="16">
         <div class="gtable">
-         <img src="image/bos1.png" alt="エルジオン" class="bottomimage fade-in-out">
+         <img src="image/bos1.webp" loading="lazy" alt="エルジオン" class="bottomimage fade-in-out">
         </div>
         <div class="gtable">
          <div class="toptext">廻生は他のグラスタがある程度整ってからチャレンジです</div>
-         <img src="image/saki1.png" alt="ASサキ" class="bottomimage fade-in-out">
+         <img src="image/saki1.webp" loading="lazy" alt="ASサキ" class="bottomimage fade-in-out">
         </div>
        </td>
 
@@ -1817,7 +1906,7 @@
   <section>
    <h4>廻生について</h4>
    <div class="content">
-    <img src="paint/和菓子マユサキ.jpg" alt="illustration of 和菓子" class="graphicmini right-image fade-in-out">
+    <img src="paint/和菓子マユサキ.webp" loading="lazy" alt="illustration of 和菓子" class="graphicmini right-image fade-in-out">
     <p>グラスタ表の中でも書きましたが、廻生は他のグラスタをある程度でも良いので揃えてからにしましょう。<br>
      そのほうがやりやすいです。<br>
      廻生でしか入手できないグラスタもたくさんあります。<br>
@@ -1936,14 +2025,21 @@
        <td>地轟く抉痛の力</td>
        <td>星詠みの書架[エンプレスの書]</td>
       </tr>
-
+      <tr>
+       <td>アメノトツカの証＜センヤ＞</td>
+       <td>星詠みの書架[天津神ツクヨミ・御体の書]</td>
+      </tr>
+      <tr>
+       <td>HP最大時強化＜東方＞</td>
+       <td>星詠みの書架[天津神ツクヨミ・御体の書]</td>
+      </tr>
      </tbody>
     </table>
    </div>
 
    <div class="spacer"></div>
    <div class="content">
-    <img src="image/sakimayu.jpg" alt="サキとマユ" class="graphicsaki right-image fade-in-out">
+    <img src="image/sakimayu.webp" loading="lazy" alt="サキとマユ" class="graphicsaki right-image fade-in-out">
     <p>星詠みの書架に関しては、左下に「Book」とあるのですぐ分かります。<br>
      グラスタがもらえるミッションは、他の場所でちゃんとグラスタを集めていればクリアできます。<br>
      「追加＋αのグラスタ」がもらえるので、時間があるときに集めておきましょう。<br>
@@ -2013,62 +2109,6 @@
        <td>シェリーヌ開眼クリア</td>
       </tr>
       <tr>
-       <td>会心の力＜東方＞</td>
-       <td>異時層イナナリ高原</td>
-      </tr>
-      <tr>
-       <td>会心の力＜普賢一刀流＞</td>
-       <td>異時層ヤガラ竹林</td>
-      </tr>
-      <tr>
-       <td>健全な身体＜東方＞</td>
-       <td>東方外典で夜黒荒魂石を集める</td>
-      </tr>
-      <tr>
-       <td>全能の力＜普賢一刀流＞</td>
-       <td>ガルレア古銭を集める</td>
-      </tr>
-      <tr>
-       <td>会心の力＜妖し＞</td>
-       <td>ガルレア古銭を集める</td>
-      </tr>
-      <tr>
-       <td>陣の呪＜刻陰陣＞</td>
-       <td>ガルレア古銭を集める</td>
-      </tr>
-      <tr>
-       <td>イザナギの証＜センヤ＞</td>
-       <td>ガルレア古銭を集めて１つ・星詠みの書架[禍夢鵺の書]で１つ</td>
-      </tr>
-      <tr>
-       <td>アメノトツカの証＜センヤ＞</td>
-       <td>星詠みの書架[天津神ツクヨミ・御体の書]</td>
-      </tr>
-      <tr>
-       <td>HP最大時強化＜東方＞</td>
-       <td>星詠みの書架[天津神ツクヨミ・御体の書]</td>
-      </tr>
-      <tr>
-       <td>心頭滅却の珠＜センヤ＞</td>
-       <td>異時層クンロン山脈</td>
-      </tr>
-      <tr>
-       <td>属性耐性UP＜妖し＞</td>
-       <td>異時層妖魔殿</td>
-      </tr>
-      <tr>
-       <td>腕速知デバフ耐性＜妖し＞</td>
-       <td>異時層妖魔殿</td>
-      </tr>
-      <tr>
-       <td>健全な身体＜妖し＞</td>
-       <td>異時層猫神神社地下</td>
-      </tr>
-      <tr>
-       <td>全能の力＜妖し＞</td>
-       <td>異時層妖摩天楼</td>
-      </tr>
-      <tr>
        <td>アマランサスの証＜ノノルド＞<br>
         <span class="small-orange-text">３つある</span>
        </td>
@@ -2082,7 +2122,8 @@
   <section>
    <h4>Afterword</h4>
    <div class="content">
-    <img src="paint/kyabiaマリエルa1.jpg" alt="illustration of kyabia" class="graphic right-image fade-in-out">
+    <img src="paint/kyabiaマリエルa1.webp" loading="lazy" alt="illustration of kyabia"
+     class="graphic right-image fade-in-out">
     <p>グラスタ錬成及び付け方について詳説していないのは、ケースバイケースだからです。<br>
      仕組みを把握していれば難しいものではありません。<br>
      しかし、生命グラスタに攻撃的錬成をしたり、攻撃グラスタに支援的錬成をしたり、パーティー編成や立ち回りなどによって違ってくるのです。<br>
@@ -2118,13 +2159,13 @@
 
   <aside>
    <h2>頂いたイラストの掲示について</h2>
-   <a href="/contents/album_script.html">JavaScriptでイラストアルバムを作成する</a>というページに、イラストレーター様より頂いたイラストのアルバムを展示しています。
+   <p><a href="/contents/album_script.html">JavaScriptでイラストアルバムを作成する</a>というページに、イラストレーター様より頂いたイラストのアルバムを展示しています。</p>
    <button class="collapsible">タップして開く ▼</button>
    <div class="collapsiblecontent">
     <p>まだ構想段階ですし国際的な動きにもよりますが、絵師さんから頂いたイラストに関しては、最終的にはこのWebサイトに移行していこうと思います。<br>
      このサイトは次の画像のように、europe-westというリージョンにデータを置いています。<br>
      これは欧州連合（EU）のデータ保護規則（GDPR）などの法律に従うということを意味します。</p>
-    <img src="paint/リージョン.png" alt="Google Cloudのリージョン" class="graphic">
+    <img src="paint/リージョン.webp" alt="Google Cloudのリージョン" class="graphic">
     <p>要するに何なのかというと…<br>
      「データを保管するサーバーをEUに置くことができるGoogle CloudによるWebサイトなら、絵師さんのイラストをAI学習から守りやすいだろう」<br>
      ということです。</p>
@@ -2192,10 +2233,10 @@
    <!--w3cバリデーターに合格していることを示す-->
    <div class="w3ccheck">
     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org">
-     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+     <img src="/image/HTML5_Logo_64.webp" alt="Valid HTML5" height="31" style="width: auto;">
     </a>
     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
-     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.webp" alt="正当なCSSです!">
     </a>
    </div>
    <!--w3cバリデーターに合格していることを示す-->

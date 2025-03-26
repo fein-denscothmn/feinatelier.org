@@ -19,17 +19,3 @@ function scrollToTop() {
   }
  }, 15);
 }
-
-// ★ヘッダーのロゴ画像をスクロールする
-document.addEventListener("DOMContentLoaded", function () {
- const headerImage = document.querySelector('.header-image');
-
- headerImage.style.opacity = 0;
- headerImage.style.transform = 'translateX(100%)';
-
- setTimeout(() => {
-  headerImage.style.opacity = 1;
-  headerImage.style.transform = 'translateX(0)';
-  console.log("Header image is visible");
- }, 100);
-});

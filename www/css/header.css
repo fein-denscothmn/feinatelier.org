@@ -74,7 +74,8 @@
  color: #0078D4;
 }
 
-/* ★ヘッダー画像にアニメーションを付ける */
+/* ★ヘッダー画像の基本スタイル（静止状態でLCPを確保） */
+/* ★ヘッダー画像の基本スタイル（静止状態でLCPを確保） */
 .header-image {
  width: 100%;
  height: auto;
@@ -84,11 +85,13 @@
  padding: 20px;
  border-radius: 15px;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- opacity: 0;
- transform: translateX(100%);
- transition: opacity 1s ease, transform 1s ease;
+ /* 初期状態は静止状態として表示 */
+ opacity: 1;
+ transform: translateX(0);
+ transition: none;
 }
 
+/* ★ヘッダー全体の枠・コンテナのスタイル */
 .header-frame {
  border: 5px solid transparent;
  padding: 10px;
@@ -144,11 +147,6 @@
   bottom: 5px;
   left: 5px;
  }
-}
-
-.header-image.visible {
- opacity: 1;
- transform: translateX(0);
 }
 
 @keyframes border-draw {

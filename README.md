@@ -20,12 +20,17 @@ https://portal.feinatelier.org/
 | プログラム | JavaScript・Python(Flask)・Lua |
 | バックアップ | Microsoft 365<br>GitHub |
 
-### 推奨ブラウザ
-少々古い、ないしはマニアックなブラウザでも動作します。
-* Microsoft Edge
-* Google Chrome
-* Firefox
-* Safari
+### 推奨動作環境
+
+十分に調べましたが、万が一間違いがあれば訂正いたします。
+| **ブラウザ**         | **対応バージョン** | **対応OSバージョン**                     | **リリース年** |
+|----------------------|--------------------|------------------------------------------|---------------|
+| **Microsoft Edge**   | バージョン 18 以上 | Windows 10 April 2018 Update 以上        | 2018年        |
+| **Google Chrome**    | バージョン 32 以上 | Android 4.4 以上、Windows 7 以上、macOS 10.9 以上 | 2014年        |
+| **Mozilla Firefox**  | バージョン 65 以上 | Windows 7 以上、macOS 10.12 以上         | 2019年        |
+| **Safari**           | バージョン 14 以上 | iOS 14 以上、macOS Big Sur (11.0) 以上   | 2020年        |
+| **Opera**            | バージョン 19 以上 | Android 4.4 以上、Windows 7 以上、macOS 10.9 以上 | 2014年        |
+
 
 ### ロゴマーク
 当Webサイトのロゴマークです。<br>
