@@ -51,7 +51,8 @@ function queueRenderPage(num) {
  }
 }
 
-pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+// PDFを部分的にロード
+pdfjsLib.getDocument({ url: url, rangeChunkSize: 65536 }).promise.then(pdfDoc_ => {
  pdfDoc = pdfDoc_;
  document.getElementById('page-count').textContent = pdfDoc.numPages;
  renderPage(pageNum);

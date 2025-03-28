@@ -98,7 +98,7 @@ p.feintag {
 
 /* ★統一感を持たせた見出しを作る */
 h1.background-waveimage-heading {
- background-image: url('../image/hone.png');
+ background-image: url('/image/hone.webp');
  background-size: contain;
  background-repeat: no-repeat;
  background-position: left;

@@ -75,17 +75,17 @@
 }
 
 /* ★ヘッダー画像の基本スタイル（静止状態でLCPを確保） */
-/* ★ヘッダー画像の基本スタイル（静止状態でLCPを確保） */
 .header-image {
- width: 100%;
+ max-width: 100%;
+ /* 親要素に応じてスケーリング */
  height: auto;
+ /* アスペクト比を維持 */
  display: block;
  margin: 0 auto;
  background: linear-gradient(to bottom, #ffffff, #e0f7fa);
  padding: 20px;
  border-radius: 15px;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- /* 初期状態は静止状態として表示 */
  opacity: 1;
  transform: translateX(0);
  transition: none;
@@ -131,24 +131,7 @@
  color: #dcdcdc;
 }
 
-@media (max-width: 600px) {
- .header-frame {
-  margin: 10px;
-  padding: 5px;
- }
-
- .header-image {
-  padding: 10px;
- }
-
- .header-text {
-  font-size: 20px;
-  padding: 5px 10px;
-  bottom: 5px;
-  left: 5px;
- }
-}
-
+/* アニメーション */
 @keyframes border-draw {
  0% {
   border-color: transparent;
