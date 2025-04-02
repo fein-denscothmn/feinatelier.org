@@ -73,15 +73,21 @@
  <link rel="stylesheet" type="text/css" href="/css/colors.css">
 
  <!--JavaScript-->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
- <script src="../script/underline.js"></script>
- <script src="../script/feinfade.js"></script>
- <script src="../script/feinScroll.js"></script>
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
 
- <!-- Google Fonts -->
- <link
+ <!-- Preconnectでサーバー接続を最適化 -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+
+ <!-- Preloadでフォント読み込みを高速化 -->
+ <link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+ <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-  rel="stylesheet">
+  media="print" onload="this.media='all'">
+
 </head>
 
 <body>
@@ -125,15 +131,15 @@
     <div id="fden-menu-content"></div>
    </div>
   </div>
-  <script src="../script/menu.js"></script>
+  <script src="/script/menu.js"></script>
   <!-- ハンバーガーメニューここまで -->
 
   <!--サイトタイトル-->
   <div class="header-frame">
    <div class="header-container">
-    <img src="/another-eden/anaimage/マリエルキャライラストヘッダー.png" alt="fein's personal site" class="header-image">
+    <img src="/another-eden/anaimage/マリエルキャライラストヘッダー.png" alt="fein's app" class="header-image">
     <div class="header-text">
-     <a href="https://feinatelier.org/">fein's personal site</a>
+     <a href="https://feinatelier.org/">fein's app</a>
     </div>
    </div>
   </div>
@@ -158,7 +164,8 @@
 
   <h3>このページにある表のコンセプト</h3>
   <div class="content">
-   <img src="/another-eden/anaimage/チェルノボーグwallpaper.jpg" alt="チェルノボーグの壁紙" class="wallpaper right-image fade-in-out">
+   <img src="/another-eden/anaimage/チェルノボーグwallpaper.jpg" loading="lazy" alt="チェルノボーグの壁紙"
+    class="wallpaper right-image fade-in-out">
    <ul>
     <li>持っていないと困る場面が出てきそうな状態異常を無効化するアイテムを集めた</li>
     <li>持っているとパーティー編成の幅が広がる便利なアイテムを集めた</li>
@@ -236,7 +243,7 @@
   <h2>本来できないはずの攻撃ができるグッズ</h2>
 
   <div class="content">
-   <img src="../paint/マツリカwallpeper.jpg" alt="マツリカの壁紙" class="wallpaper right-image fade-in-out">
+   <img src="../paint/マツリカwallpeper.jpg" loading="lazy" alt="マツリカの壁紙" class="wallpaper right-image fade-in-out">
    <p>例えばアルドなら、本来は魔法を使えません。<br>
     しかしウィズダムソードを装備すれば魔法が使えるようになります。<br>
     フィーネなら、本来は突攻撃ができません。<br>
@@ -257,7 +264,8 @@
 
   <h4>ドラゴンピアース獲得バッジの場所と入手方法</h4>
   <div class="content">
-   <img src="/another-eden/anaimage/ドラゴンピアース.png" alt="ドラゴンピアースはお勧めバッジ" class="graphicsaki right-image fade-in-out">
+   <img src="/another-eden/anaimage/ドラゴンピアース.png" loading="lazy" alt="ドラゴンピアースはお勧めバッジ"
+    class="graphicsaki right-image fade-in-out">
    <p>ドラゴンピアース獲得バッジは別途セクション作ろうかな。<br>
     無属性の突攻撃スキルを身に付けることができるバッジです。<br>
    </p>
@@ -387,7 +395,7 @@
 
   <div class="flowerclearfix">
    <div class="flowerfade-out">
-    <img src="/flower2/flower2(48).JPG" alt="フェードアウト効果の草花写真">
+    <img src="/flower2/flower2(48).JPG" loading="lazy" alt="フェードアウト効果の草花写真">
    </div>
    <p>他には巨人バッジとか、そういったものも使用頻度は比較的高いですね。<br>
     でも、ないと困るというほどでもないです。<br>
@@ -399,7 +407,7 @@
   <h4>武器防具バッジを網羅した一覧表を作らない理由</h4>
   <div class="flowerclearfix">
    <div class="flowerfade-out">
-    <img src="/flower2/flower2(51).JPG" alt="フェードアウト効果の草花写真">
+    <img src="/flower2/flower2(51).JPG" loading="lazy" alt="フェードアウト効果の草花写真">
    </div>
    <p>このようなWebサイトですから、いくらでも加筆修正、大きな表を作ることもできるでしょう。<br>
     ただ…ここでも登場の必殺ワード、「インフレ」が出てくるのです。</p>
@@ -432,7 +440,7 @@
 
   <h4>顕現武器は集めておきましょう</h4>
   <div class="content">
-   <img src="/another-eden/anaimage/真顕現ロキド.jpg" alt="真顕現ロキド" class="graphicsaki right-image fade-in-out">
+   <img src="/another-eden/anaimage/真顕現ロキド.jpg" loading="lazy" alt="真顕現ロキド" class="graphicsaki right-image fade-in-out">
    <p>「顕現」というコンテンツがあるんですよ。<br>
     キャラ専用の武器が入手できるという。<br>
     <a href="../another-eden/anaden_story.html">アナザーエデンのコンテンツリスト</a>をご覧いただけると、どのへんでプレイできるようになるかが分かります。<br>
@@ -489,10 +497,10 @@
    <!--w3cバリデーターに合格していることを示す-->
    <div class="w3ccheck">
     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/another_weapon.html">
-     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
     </a>
     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
-     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
     </a>
    </div>
    <!--w3cバリデーターに合格していることを示す-->

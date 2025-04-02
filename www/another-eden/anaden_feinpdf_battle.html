@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>feinのアナデン戦闘史について～３部中編強敵戦を通して～</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta name="keywords" content="アナザーエデン, 強敵, 攻略">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="feinのアナデン戦闘史について～３部中編強敵戦を通して～">
+ <meta property="og:description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_feinpdf_battle.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "feinのアナデン戦闘史について～３部中編強敵戦を通して～",
+      "url": "https://feinatelier.org/another-eden/anaden_feinpdf_battle.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">feinのアナデン戦闘史について～３部中編強敵戦を通して～</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/ASねここ紹介.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="feinのアナデン戦闘史について～３部中編強敵戦を通して～の目次を開く ▼"
+   data-close-text="feinのアナデン戦闘史について～３部中編強敵戦を通して～の目次を閉じる ▲">feinのアナデン戦闘史について～３部中編強敵戦を通して～の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>feinのアナデン戦闘史について～３部中編強敵戦を通して～</span></h1>
+  <p>Twitter時代にはこのようなセクションは作れませんでした。<br>
+   拡散性や即時性をウリにしているシステムだから、私がやりたいタイプの記述はもともと難しかったのですよ。<br>
+   モーメントやTweet collectionのサブ機能があることで、Webサイトの代用品としても使えていたというだけです。<br>
+   ここでは３部中編の強敵戦を一通りやってみての感想文や、レポートの意図などを書きたいです。</p>
+
+  <img src="/another-eden/anaimage/フィーネ勝利宣言.png" loading="lazy" alt="フィーネ勝利宣言" class="graphic fade-in-out">
+
+  <p>加えて、この３部中編の強敵戦を通して、私が大切にしていた「アナデンの戦闘観」みたいなものも、書いていきたいと思います。<br>
+   もっとも…それも星導覚醒で失われたけどね😆ww<br>
+   だからこの本系Webサイトに完成品としてまとめているわけで。</p>
+
+  <p>ASねここ率が高いこと高いこと😺<br>
+   フィーネはもう幾度も弊時層で伝説を作っているのでともかくとして、ASねここの快進撃も長く続きますね。<br>
+   何と言っても持ってるバフデバフが強いですよ。<br>
+   いろんなところで活躍できる、汎用性の高いスキルを持っています。</p>
+
+  <h3>３部前編バウンティHEADとの違い</h3>
+
+  <p>３部前編には発明王アルトマスとか、バウンティHEADがいましたね。<br>
+   あれらの強敵戦との違いがありました。<br>
+   バウンティHEADの場合、敵が100%バリアを張ることでミナルカ不在では短ターンキルが極めてやりにくい仕様にしてあったのです。</p>
+
+  <img src="/another-eden/anaimage/ハイプリエステス勝利.png" loading="lazy" alt="ハイプリエステス勝利" class="graphic fade-in-out">
+
+  <p>だから私もTwitterでしきりにミナルカお勧めとお伝えしていたのですが、私個人としては短ターンキルする習慣がないため、ミナルカ不在は強敵戦の障壁と感じなかったのです。<br>
+   しかし、３部中編・強敵戦は違いますね。<br>
+   バウンティハンター（魔物の討伐依頼）の果てにある４匹のヌシ、そしてストーリーのあるラヴォーグ５匹全てが特定属性をクローズアップしています。<br>
+   それも単に弱点が違うとかそういう単調なものではなく、オーラを絡めた上で特定の属性を強調している傾向があります。<br>
+   例えば氷原のヌシであれば、地属性以外の属性でも攻撃可能であるものの、敵側が水属性攻撃をしてくるために味方側にとって都合の悪いオーラが極めて回避しにくい状況となるのです。</p>
+
+  <h3>装備型の防御バフは健在</h3>
+
+  <p>バウンティハンター（魔物の討伐依頼）の果てにある４匹のヌシ、そしてストーリーのあるラヴォーグ５匹。<br>
+   これら全てが何かしらの防御バフを装着しています。<br>
+   何かしらの手段でデバフをかけないと攻撃が非常に通りにくくなっています。<br>
+   この仕様は以前からありましたが、特に「彷徨える少女と白夜の綴糸シリーズ」にあった強敵戦で目立ちましたね。<br>
+   歪なる生まれし命やデウスクラースなど、普通に攻撃しても０ダメージとなってしまって戸惑うユーザーさんもおられたご様子です。</p>
+
+  <img src="/another-eden/anaimage/ピスケ勝利.png" loading="lazy" alt="ピスケ勝利" class="graphic fade-in-out">
+
+  <p>ゆえに、今回の強敵戦も物理や属性の耐性をデバフする必要があります。<br>
+   感覚的に分かりやすいのは物理耐性デバフと全属性耐性デバフでしょうね。<br>
+   例えば真顕現ミュルスなど、この２つをいっぺんにかけられるキャラは攻略パーティーに編成しやすいかもしれません。<br>
+   ビーストインパクトで物理耐性＋全属性耐性を下げつつ腕力知性までデバフし、同時にHPMP治癒、加えて前衛を地属性キャラで固めれば地裂陣が展開されデバフの効果量が倍増します。<br>
+   あるいは、４匹のヌシ＋ラヴォーグ５匹にチャレンジするまえにノーナ外史の防衛戦でデバフの練習をするのも良さそうですね。</p>
+
+  <h3>HPストッパーに加えて復活する</h3>
+
+  <p>４匹のヌシ＋ラヴォーグ５匹はどれも当たり前のようにHPストッパーがあります。<br>
+   それに加えて復活するのですよ。<br>
+   一度倒すだけではダメで何度も倒す必要がある。</p>
+
+  <img src="/another-eden/anaimage/ノーナ勝利.png" loading="lazy" alt="ノーナ勝利" class="graphic fade-in-out">
+
+  <p>100ターン以上など数時間かかる戦闘でも良いなら構いませんが、そんなの大変過ぎると感じる方はグラスタ集めから先にやりましょう。<br>
+   もしくは過去のコンテンツで積み残しがあるなら、それを先にやりましょう。<br>
+   グラスタはいろんな場所やコンテンツにばらけているので一覧表を用意しておりますが、いろんな場所にある強力な装備やバッジもあるに越したことはありません。<br>
+   あまり細かいところまでこだわる必要もありませんが、持っていないアイテムが多ければ多いほど不利なのは昔から変わりません。<br>
+   少しくらい手持ちに恵まれなくても勝てるというのは、グラスタなどアイテム類がある前提の話です。</p>
+
+  <h3>ヌシの感想：氷原・塔・坑道・湿地帯</h3>
+
+  <p>ジェラド氷原のヌシだけ少しやりにくいですね。<br>
+   復活と同時に誰か１名が問答無用で戦闘不能にされます。</p>
+
+  <img src="/another-eden/anaimage/メロディ勝利.png" loading="lazy" alt="メロディ勝利" class="graphic fade-in-out">
+
+  <p>でもアナザーフォースを抑制するようなオーラを持っていることが仇となり、簡単にループが成立してしまう弱点がありますね。<br>
+   「アナフォゲージを使わざる得ない→どうせならバフデバフをかけよう」という思考へ容易に結び付いてしまう。<br>
+   攻略のヒントと考えてもいい。<br>
+   暁の塔・ウォキア坑道・ノイース湿地帯のヌシはどれも大差ないと感じました。<br>
+   HP最大値減少蓄積トラップに関しても、グラスタを装着した上での火力があれば追い込まれる前に倒し切れる感触です。</p>
+
+  <h3>ラヴォーグの感想：γ・ε・β・δ・α</h3>
+
+  <p>おもしろい名前だよね。<br>
+   ギリシャ文字なんです。<br>
+   属性の対応関係としては、「γ地・ε雷・β水・δ風・α火」となります。<br>
+   ここはさほど大きな問題にはならないと思います。</p>
+
+  <img src="/another-eden/anaimage/ディアドラ勝利.png" loading="lazy" alt="ディアドラ勝利" class="graphic fade-in-out">
+
+  <p>５匹全部が似通ったギミックを持っており、戦闘画面の仕組みというか仕様が分かっていれば、どこに狙うべき中枢体がいるかも表示されています。<br>
+   ガチャがあるライブサービスゲームの攻略と言えば、とにかく「手持ち」「手持ち」「天冥」「天冥」と強調されます。<br>
+   このラヴォーグのように火力を要する戦闘の場合は特にです。<br>
+   しかし、例えばASラブリがいないなら先に積み残しコンテンツをやるとか、調整していただければ。<br>
+   ASラブリが絶対に必要だとは言いませんけどね？<br>
+   いたほうが倒しやすいでしょう。</p>
+
+  <h2>feinの雑談：強敵戦について</h2>
+
+  <p>さて、ここから先はTwitterを中心に強敵戦についてお話していた時代のものです。<br>
+   当Webサイトの製作目的の一つとして、Eロン禍に見舞われたTwitterからのデータ救出があります。<br>
+   そのためにここで私のプレイスタイルだったり、強敵戦レポートの書式に関する意図などもまとめております。<br>
+   かなりの長文となりますので、ご興味があればどうぞ。</p>
+
+  <h4>装備やグラスタ等の詳細を書いていない理由</h4>
+
+  <p>アナザーエデンが長寿ゲームで、ものすごいボリュームになってるからです。<br>
+   Eロン禍の対応で一時休止期間があったとは言え、私はアプデのたびに一通りのコンテンツをこなしてきてるからね。<br>
+   武器防具バッジグラスタなどなど、ほとんど揃っています。<br>
+   選択肢が豊富にある状態なんだけど、もはやアナデンがここまで長寿ゲームになると、そういう人は少ないと思います。<br>
+   まだ３部に入っていない人も多いのでは？<br>
+   そういった状況の中で、配信されたての強敵を倒すための装備やグラスタ等の詳細を書いてもほとんど意味がないと考えているのです。</p>
+
+  <img src="/another-eden/anaimage/ヒスメナ勝利.png" loading="lazy" alt="ヒスメナ勝利" class="graphic fade-in-out">
+
+  <p>そういった状況の中で、配信されたての強敵を倒すための装備やグラスタ等の詳細を書いてもほとんど意味がないと考えているのです。<br>
+   アナデンはライブサービスゲームだからインフレがあります。<br>
+   次々と新しい武器も出る。<br>
+   そういった中で、例えばこのWebページの原稿を書いている2023年8月下旬〜9月上旬の頃に存在していたであろう装備やグラスタ詳細の範囲内で選別された物品リスト等を書いても、その情報を活かせる人がまず少ないということですよ。<br>
+   いわゆる「攻略情報の陳腐化スピード」がより加速しましたね。<br>
+   昔のアナデンは月１回のアプデでしたが、今や月２回あります。<br>
+   それなら、ストレートに自分が書きたいように感想文を書きたいと思っています。</p>
+
+  <h4>攻略情報の陳腐化とインフレの関連性</h4>
+
+  <p>アナデンのようなライブサービスゲームでは、インフレは避けられないのでしょう。<br>
+   それはとりもなおさず、上述のように攻略の陳腐化が発生するということです。<br>
+   これは２部に入ってグラスタが登場してからより加速したように思えます。</p>
+
+  <img src="/another-eden/anaimage/ミーユ勝利.png" loading="lazy" alt="ミーユ勝利" class="graphic fade-in-out">
+
+  <p>ところで「アプデ→インフレ→アプデ→インフレ→・・・」という流れが持つ意味について、私はしばらく理解できませんでした。ソシャゲのプレイ経験もないからね。</p>
+
+  <ul>
+   <li>なぜインフレさせまくるんだろう？</li>
+   <li>そんなことしたら、せっかくの戦闘コンテンツも次々とダメになってしまうのでは？</li>
+  </ul>
+
+  <p>しかしながら、昔の戦闘コンテンツがエンドコンテンツとして成立しなくなっても良いということであるなら、話は別ですよね。<br>
+   昔の私の考えとしては、戦闘コンテンツがエンドコンテンツとして成立しなくなってはキャラを確保せんとする動機さえ損なわれるというものだったのです。<br>
+   とはいえ、思い直してみれば次々と新しいものを作れるんだよね。だってライブサービスゲームなのだから。<br>
+   もしこの文脈がある程度でも正しいのであれば、例えば私が頑張って４匹ヌシのループ攻略について装備や立ち回り等を書きまくっても、それが攻略情報として有益であるのは長く保って数ヶ月でしょう。<br>
+   そもそも、最新の強敵へ喧嘩を売る前にグラスタ集めというのは、私が大々的に言い始めたことですからね。</p>
+
+  <h4>可能であっても過度な長期戦は避けたい</h4>
+
+  <p>例えば100ターン近くかかっちゃうとかね？<br>
+   そこまで行くとちょっと大変過ぎて攻略としてはアレかもしれません。<br>
+   ただ、もちろん超長期戦でも倒せればそれが正義なのです。</p>
+
+  <img src="/another-eden/anaimage/アルド勝利.png" loading="lazy" alt="アルド勝利" class="graphic fade-in-out">
+
+  <p>最近の私の傾向として、パッとそれなりのターンに収まる編成が思い付いたならそれで済ませちゃおうというところがあるんだよね。<br>
+   かと言ってパッと思い付いた編成が長期戦になりそうであれば、度が過ぎたものでなければそれで済ませちゃったりもする。<br>
+   あんまり一つの戦闘に長期の試行錯誤をしない傾向が私にはあるよね。<br>
+   それなりに良さげな戦い方ができて、可能なら推しがいれば十分みたいな？<br>
+   特に最近の戦闘はそれとなーく…敵側の仕様の都合である程度までの戦闘時間で収まるよう暗にユーザーを誘導しているような、そういうフシが見られるようにも感じています。</p>
+
+  <h4>昔から攻略情報の真似を避けている理由</h4>
+
+  <p>単純明快。<br>
+   手持ちキャラが揃っていても、天冥値が悪影響を及ぼす可能性を否定できないからです。<br>
+   特に私の時層は夢見キャラの天冥値が古参ユーザーのわりに低いからね。</p>
+
+  <img src="/another-eden/anaimage/チェルノボーグ勝利.png" loading="lazy" alt="チェルノボーグ勝利" class="graphic fade-in-out">
+
+  <p>もちろん昔から言われているように手持ちキャラの都合もある。<br>
+   今はたまたまガチャ運に恵まれているだけで、こんなことがいつまでも続くわけがありません。<br>
+   このように、攻略情報を参照しても大なり小なり自分で考えるポイントが発生することが多いです。<br>
+   それなら、初めから自分で考えたほうが手っ取り早く倒せるんですよね。<br>
+   こういった基礎のプレイスタイルは今でも変わっておりません。<br>
+   ただ、アナデンは慣れていないと全滅を繰り返す試行錯誤になりがちです。<br>
+   それを嫌がるユーザーさんが多いのは確かにあると思う。<br>
+   私は最低限の試行錯誤で済むよう、次のように斥候部隊を用意していますよ？</p>
+
+  <h4>オーラや耐性など調査に斥候部隊を使う</h4>
+
+  <p>いつもコピペを集めた斥候部隊を用意してます。<br>
+   私はもうアナデン歴も長いので、一度コピペ軍で挑んで状態確認をすればどんな相手なのかおおよその見当が付きます。</p>
+
+  <img src="/another-eden/anaimage/斥候部隊.png" loading="lazy" alt="斥候部隊" class="graphic fade-in-out">
+
+  <p>ここで得た情報を元に編成して、グラスタや装備も整えてから微調整にとりかかる感じです。<br>
+   もし「アナデンを昔からやっているのに最近のバトルは難しくて…」というユーザーさんがおられたら、このようにしてみてはいかがでしょう？<br>
+   攻略情報に依存せず、自分で考えて強敵を倒せるようになると凄く楽しいですよ。</p>
+
+  <h4>オーラがアイコン表示されるようになった！</h4>
+
+  <p>私もたまにはストレートに文句言いますよ（笑）</p>
+
+  <img src="/another-eden/anaimage/オーラ文句.png" loading="lazy" alt="オーラ文句" class="graphic fade-in-out">
+
+  <p>オーラは以前、ちょっと分かりにくかったですね。<br>
+   こうして以前のTweetを掲載しておきますが、大したものではありません。<br>
+   私がつまらない愚痴を言っただけのことです。<br>
+   ところが３部中編になったらオーラがアイコン表示され、改善されています。<br>
+   これは戦闘が苦手な方にとっても朗報ですね🎉</p>
+
+  <h4>３部中編・フィーネ周回の様子</h4>
+
+  <p>もう周回火力に関しては全然気にしてないねー</p>
+
+  <img src="/another-eden/anaimage/3部中編フィーネ.png" loading="lazy" alt="3部中編フィーネ" class="graphic fade-in-out">
+
+  <p>何か必要性が出てきたらやるけど、基本的にはASフラムラピスを混じえてアナフォで済ませちゃってました。<br>
+   スクショの整理が進むにつれて動画も出てきたから、記念に残しておきましょう。</p>
+
+  <div class="custom-google-drive-container">
+   <h4>３部中編）フィーネ＋カムラナージュ周回</h4>
+   <p>ノーマルフィーネとカムラナージュは、星導覚醒するんでしょうかね？<br>
+    配布で置いていかれるキャラも多数出てきそうで、それがとても残念です。</p>
+   <iframe src="https://drive.google.com/file/d/1h4PrkdzQYnY7zLtIUT0LJeTjvhU0wuH-/preview"
+    class="custom-google-drive-iframe" allow="autoplay" title="３部中編）フィーネ＋カムラナージュ周回"></iframe>
+   <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
+  </div>
+
+  <p>こんな感じ。<br>
+   カムラナージュとフィーネを入れたかったんですよね。<br>
+   時間があるタイミングなら、次の動画のようにVCなしで毒ペ抜きにしてました。</p>
+
+  <div class="custom-google-drive-container">
+   <h4>３部中編）フィーネ周回毒ペなし</h4>
+   <p>毒ペイン抜きもけっこう便利ですよ？<br>
+    グラスタの装着がやりやすいし。<br>
+    火力が足りるならそれで良いのですから</p>
+   <iframe src="https://drive.google.com/file/d/1qMeRNy3mx_1PcU2OcAm4kodXcAz3CiRX/preview"
+    class="custom-google-drive-iframe" allow="autoplay" title="３部中編）フィーネ周回毒ペなし"></iframe>
+   <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
+  </div>
+
+  <p>最後にfear戦も入れておこうかな。<br>
+   ストッパーで引っかかっても天使の唄フィーネでおしまい。<br>
+   ASフラムラピスのバフが強いですよね。</p>
+
+  <div class="custom-google-drive-container">
+   <h4>３部中編）フィーネ周回fear戦</h4>
+   <p>ASフィーネが星導覚醒したときにノーマルフィーネの性能も上がったんですけどね。<br>
+    でも、ノーマルフィーネに限らずエイミやギルドナとか、いろんなキャラが依然として星導覚醒しておりません。</p>
+   <iframe src="https://drive.google.com/file/d/19KTZTMscX2FM4VB-4gZlW3nZjnfVnJzS/preview"
+    class="custom-google-drive-iframe" allow="autoplay" title="３部中編）フィーネ周回fear戦"></iframe>
+   <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
+  </div>
+
+  <p>こんな感じでしょうかね？<br>
+   私が大切にしていたアナデンの戦闘観としては。<br>
+   冒頭でもお伝えしたように、星導覚醒の実装でアナデンの戦闘は様変わりしました。<br>
+   もうここに書いてあることは古い話ですけど、こういうふうにアナデンをプレイしていたんだよーという、日記みたいなもんです。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_feinpdf_battle.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>星導覚醒実装後の強敵戦～外伝編～</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta name="keywords" content="アナザーエデン, 強敵, 攻略">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="星導覚醒実装後の強敵戦～外伝編～">
+ <meta property="og:description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/stellar_awakening_side.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "星導覚醒実装後の強敵戦～外伝編～",
+      "url": "https://feinatelier.org/another-eden/stellar_awakening_side.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">星導覚醒実装後の強敵戦～外伝編～</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/フィーネ幻璃境.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="星導覚醒実装後の強敵戦～外伝編～の目次を開く ▼"
+   data-close-text="星導覚醒実装後の強敵戦～外伝編～の目次を閉じる ▲">星導覚醒実装後の強敵戦～外伝編～の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>星導覚醒実装後の強敵戦～外伝編～</span></h1>
+  <p>星導覚醒の実装前と実装後は、明確に分けなければなりません。
+   ここにあるのは、星導覚醒が実装された後の強敵戦、中でもメインストーリー以外のものです。</p>
+
+  <p>せっかく★６を実装したのだから…アナザーエデンには飛翔していただきたいものです。<br>
+   例えば秋葉原の街に巨大ポスターがたくさん掲示され、アニメイトにグッズが大量に置かれるくらい。<br>
+   よって、2024年以降の強敵戦は星導覚醒キャラの販売促進が主たるテーマになっていくであろうと前提します。<br>
+   これからは戦闘バランスやテクニックというより、ガチャと課金の戦略を軸に考えたほうが良いと思うからね。</p>
+
+  <p>生放送でも戦闘作りの難易度が上がっているというコメントがありました。<br>
+   私のようなユーザーから見ても、実際にそうだろうと推測できます。</p>
+
+  <p>俗に言うところの特権キャラについても触れていけたらと思うけど…引けないことにはどうしようもないしな。<br>
+   まぁ、そこらへんはさすがにテキトーにやるよ😆ww</p>
+
+  <h2>虚ろなる真実を抱擁せし者の試練 EXステージ5</h2>
+  <p>えーっと…たしか、途中まではASノーナで頑張ってたんですよ。<br>
+   でもEX4だったか5だったか、そのあたりでESマリエルを軸にやりました。</p>
+
+  <p>私のアナデン戦闘において、「<a href="/another-eden/anaden_feinpdf_assaki.html">ASサキによる赫灼たる豪炎猛火extreme4</a>」を超えるものは今後出ません。<br>
+   特に星導覚醒時代ともなれば、あの戦闘を超えるクオリティーを出すのは不可能です。<br>
+   キャラ性能もそうですが、そもそもゲームシステムや状況がまるっきり変わっていますからね。</p>
+
+  <img src="/another-eden/anaimage/ミッションは分けてクリア.jpg" loading="lazy" alt="ミッションは分けてクリア" class="graphic fade-in-out">
+
+  <h4>ミッションを分けてクリアする</h4>
+
+  <p>西方廻生EX5は下記のミッションがあります。</p>
+
+  <ul>
+   <li>パーティメンバーが一度も戦闘不能にならない</li>
+   <li>4人以下のパーティでクリア</li>
+   <li>25ターン以内にクリア</li>
+   <li>非アナザーフォース時に1hitで9憶以上のダメージを与えてクリア</li>
+   <li>他のミッションを全てクリア</li>
+  </ul>
+
+  <p>最後が同時にクリアではないため、まずは４人以下を満たしておいて、改めて６人でクリアするという流れでやったはずです。<br>
+   ４人クリアのスクショが残ってないからね。<br>
+   もちろんグラスタはゴリゴリに盛りまくり、より簡素な手順で火力が出るよう工面しました。</p>
+
+  <h4>ESチルリルはいませんでしたね</h4>
+
+  <p>西方廻生の配信っていつでしたっけ？<br>
+   ちょっと忘れてしまったけど、ESチルリルがいなかったことだけは覚えています。</p>
+
+  <img src="/another-eden/anaimage/西方廻生EX5.jpg" loading="lazy" alt="西方廻生EX5" class="graphic fade-in-out">
+
+  <p>西方廻生EX5の敵は全て晶属性が弱点なんですよ。<br>
+   だから星導覚醒のESチルリルがいれば飛躍的に有利であるはず。<br>
+   可能であれば、ESチルリル他の晶属性キャラが揃ってからのほうがいい。<br>
+   途中で混沌陣を何度も展開されてやりにくいです。<br>
+   私は打ZONEを覚醒して逃げ切りました。</p>
+
+  <h4>廻生のグラスタはおいしい</h4>
+
+  <p>昔からそうですが、廻生にあるグラスタは強力なものが多いです。<br>
+   ガルレアアナダンにあるものに比べてちょっと変わり種が多いけど、とても有用なグラスタがいっぱい入手できますよ。<br>
+   「強敵戦をやるなら廻生から」と言いたいところですが…これとてグラスタが揃っていなければ制限ターン以内にクリアすることは難しいでしょう。</p>
+
+  <img src="/another-eden/anaimage/新しいタイプのグラスタ.jpg" loading="lazy" alt="新しいタイプのグラスタ" class="graphic fade-in-out">
+
+  <p>まだ西方廻生は星導覚醒登場直後のものだからそんなでもないでしょうが、１年も経てば星導覚醒キャラの保有が前提となるような難易度になるはずです。<br>
+   特に廻生は火力が必要なので、星導覚醒ガチャがクローズアップされると考えるのが自然と言えましょう。</p>
+
+  <p>そうそう！<br>
+   おもしろい記事を見つけましたよ。
+   リンク先がいつまであるか分からないけど、「<a
+    href="https://nordot.app/1162499077793366073?c=62479058578587648">“死にゲー”が出来ない人はゲーマーを名乗るべきじゃない」という滅茶苦茶すぎる暴論に思うこと</a>」というものです。<br>
+   なるほどこういう考え方もあるんですね。</p>
+
+  <h2>プロトエデン・コアの影</h2>
+  <p>シェンファのスキル名はおおよそIT用語に関連しているのが気に入ってます💻✨<br>
+   例えば「ノード」はネットワークに繋がっている情報機器のことで、「ヌル」はデータが存在しない状態です。<br>
+   「テッセラクト」は四次元超立方体ですが…コラム的に触れただけで私は深く勉強したことはないですね🤔</p>
+
+
+  <img src="/another-eden/anaimage/ガリアードの真VCグラスタ.png" loading="lazy" alt="ガリアードの真VCグラスタ" class="graphic fade-in-out">
+
+  <h4>星導覚醒以降は、キャラの取得方法が違います</h4>
+  <p>ここはシェンファ特権でしょ。<br>
+   上述しましたが、今後は可能な限り「ガチャ」をクローズアップして記述します。─ お小遣いがヌルな人だけど😆ww ─</p>
+
+  <p>星導覚醒以降のアナザーエデンは、今までのアナザーエデンとは違う。<br>
+   そういう認識を私は持っているんですよね。<br>
+   実際７年間アナデンやってるけど、もう別のゲームのように感じるもの。</p>
+
+  <h4>シェンファのテッセラクトでバフを反転させる</h4>
+
+  <p>星導覚醒スキルのテッセラクトで大技直前のバフをひっくり返してましたね。<br>
+   まだ最近のことだから覚えてます。<br>
+   念のためプライも編成したのですが、立ち回りによってはいらないかも。<br>
+   ハッキングとブレイクダウンも優秀なバフデバフであり、両方使ってました。</p>
+
+  <img src="/another-eden/anaimage/テッセラクト・四次元超立方体.jpg" loading="lazy" alt="テッセラクト・四次元超立方体" class="graphic fade-in-out">
+
+  <p>なんにせよ。<br>
+   シェンファを引いてグラスタ揃えれば勝てます。<br>
+   ものすごい攻撃力だもん。<br>
+   大してバフデバフとか考えてないし、耐性変化の仕様を知らずとも問題ありません。</p>
+
+  <h4>フィーネは星導覚醒するだろうか…</h4>
+
+  <p>一時期、コレットの天を上げようか悩んでいました。<br>
+   でも正直やらなくて良かったと思っています。<br>
+   もうこの状況だから普通に言っちゃうけど…<br>
+   過去のコラボキャラの強化は、まずあり得ないでしょ。<br>
+   私はミラ・マクスウェルだけ天255ですが、これからテイルズキャラが星導覚醒するなんて思えないからね😅</p>
+
+  <p>過去キャラの強化という方向でも、今までのアナザーエデンとは違うと私は判断してます。<br>
+   そのほうがフラストレーションを感じずにアナデンを続けられる。<br>
+   フィーネが星導覚醒しない可能性も視野に入れてますよ？<br>
+   だってAS等を含めて考えれば200人以上もキャラがいるのですから。<br>
+   だからサブスクを解約したのです。</p>
+
+  <img src="/another-eden/anaimage/シェンファの無属性魔法.jpg" loading="lazy" alt="シェンファの無属性魔法" class="graphic fade-in-out">
+
+  <p>特に戦闘中の注意点はなかったと記憶してる。<br>
+   HPストッパー直後の動きだけ注意して、念のため守護をかけておいたり。<br>
+   たしかそんな感じで戦っていたはずです。<br>
+   ものすごい火力の全体魔法とか飛んでくるから。<br>
+   フィーネもいい感じで参加してくれたし、おもしろい戦闘でしたね🎵</p>
+
+  <h2>死喰竜リントヴルム：４回戦闘</h2>
+
+  <p>これ、何か月前でしたっけ？<br>
+   スクショを紛失しましたよ😆ww<br>
+   引っ越す前に新旧住所周辺を記念撮影しまくっててさ。<br>
+   それの整理を今やってるのですが、なんかそれに紛れて消しちゃったっぽいです。<br>
+   懸命に探しましたが…<br>
+   先日職場で不快事象が発生して時間も取れないので、もうここらへんスクショ探しは打ち切りとします。</p>
+
+  <img src="/another-eden/anaimage/全能ドラゴンキラー.jpg" loading="lazy" alt="全能ドラゴンキラー" class="graphic fade-in-out">
+
+  <p>ぜんぜん遭遇しなかったのは覚えてる。<br>
+   死喰竜リントヴルム、アナデンで一番不遇な強敵なんじゃない？<br>
+   まず、この当時は星導覚醒実装の大混乱で強敵戦なんていうムードじゃなかったと思うんだよね。<br>
+   さらにこの独特のエンカウント仕様もあって、撃破率が低いと推測しています。</p>
+
+  <p>私は地方移住が重なってしまって、新幹線やら道の駅やらの隙間時間に戦ってました。<br>
+   もうぜんぜんエンカウントできないの！<br>
+   なんか特定のポイントでエンカウントしやすいような感じはあったけど、普通のザコ敵の相手もしなければならないし、とにかくやりにくいのなんのって😅<br>
+   アナザーエデンのように試行錯誤が要求されるゲーム性である場合、こういう仕様はウケないと私は思うのですが。<br>
+   いかがですか？</p>
+
+  <p>タイミングもあったよね…<br>
+   伐竜姫譚Ⅰは星導覚醒と同時にリリースされたコンテンツで、場がすごく荒れていましたね。<br>
+   あまりTLに浮けなかったけど、引退騒ぎとか凄かった記憶ある。<br>
+   伐竜姫譚のストーリーやBGMはとっても良かったのに、タイミングがすごく悪くてさ。<br>
+   なんかリュゼが可哀想だなぁ…と感じました😟💦</p>
+
+  <p>死喰竜リントヴルムは上述のエンカウント仕様からめちゃくちゃ戦いにくい印象が強く残っています。<br>
+   私は試行錯誤というか、それ以前の段階で苦労しましたよ…<br>
+   星導覚醒アルドが活躍してたかな。<br>
+   相変わらずASねここはいたはず。<br>
+   それで、１回戦ごとに有効属性が変わるんです。<br>
+   火水地風だったか風水火地だったか忘れたけど、それ以外の属性で叩くとオーラが発動して硬くなる。<br>
+   そのくらいかなー？</p>
+
+  <img src="/another-eden/anaimage/ドラゴンキラー.jpg" loading="lazy" alt="ドラゴンキラー" class="graphic fade-in-out">
+
+  <h4>全能ドラゴンキラーは無理しなくて良いです</h4>
+  <p>アルカディアのメンバーにはみんなドラゴンキラーが付いてるのかしら？<br>
+   私は上記のスクショだけで他は未所持なので分かりません。<br>
+   グラスタの場所一覧表（入手範囲別） にもあるように私はグラスタ集めを推奨しているけど…<br>
+   ただでさえドラゴンキラーのパーソナリティ持ちは少なく、しかも全能グラスタなのでね。<br>
+   この死喰竜リントヴルムはインフレ後でも良いでしょう。<br>
+   他を優先させたほうが戦力強化の効率は良いと思います。<br>
+   星導覚醒（★６）の影響で、今までとは比較にならぬほどのレベルで猛烈なインフレが進むと推測してます。<br>
+   すぐに倒しやすくなるよ🎵</p>
+
+  <p>んー…今ならシェンファが良さそうですよ？ ─ このセクションは2024/5/19に書いてます ─<br>
+   ザコにエンカウントしても問題ないように難易度を最低ランクにまで落としてさ。<br>
+   それでシェンファ軸の無属性魔法パーティーでやれば、少しは戦いやすいかもしれません。</p>
+
+  <h2>冥竜王の影</h2>
+
+  <p>こっちも出てきた。<br>
+   蛇がいる洞窟で冥竜王の鱗を拾えば、次元の狭間で戦えるようになります。</p>
+
+  <img src="/another-eden/anaimage/冥竜王の影.jpg" loading="lazy" alt="冥竜王の影" class="graphic fade-in-out">
+
+  <p>引っ越しのドタバタが少し落ち着いてきた頃だったかな？<br>
+   そのあたりの時期だったかと。<br>
+   冥界で竜武器をちゃんと鍛えて戦えば大丈夫でしょう。<br>
+   アナザーフォースでバリアを叩きまくって倒すんだよね。<br>
+   私は風属性でいったけど、耐性や弱点があるかどうかは分からない。</p>
+
+  <img src="/another-eden/anaimage/ドラゴンアサルト.jpg" loading="lazy" alt="ドラゴンアサルト" class="graphic fade-in-out">
+
+  <p>キュリオとジェイドが255だったのは、グラスタ装着でかなり有利でしたね。<br>
+   キュリオは連撃がすごいし。<br>
+   もう弊時層から当面は255キャラは出ないでしょうけど、彼らはいつか星導覚醒するのかな？</p>
+
+  <p>そういえばASメロディもセスタも星導覚醒していないんですよね…<br>
+   星導覚醒が登場する直前に位置するキャラは、あるいは最後尾になるのかもしれない。<br>
+   特にASメロディは天255にしようか悩んでいたのですが、ちょっと数年は様子を見ないといけませんね。<br>
+   あまり考えたくないことですが、星導覚醒キャラに囲まれて取り残されてしまう可能性があります。</p>
+
+  <img src="/another-eden/anaimage/ライリス.jpg" loading="lazy" alt="ライリス" class="graphic fade-in-out">
+
+  <p>この冥竜王は戦闘の演出が熱いのですよ。<br>
+   本編中だとライリスのセリフまで入ってるんだよね。<br>
+   リュゼの星導覚醒もなかなか強いと思いますよ？</p>
+
+  <p>配布とガチャキャラの戦力差はもう気にしてない。<br>
+   というか、視点を置くべき位置じゃないと考えてますね。<br>
+   星導覚醒が出ていることで、そこらへんも関係ないと思うから。<br>
+   ★５と★６の差、ステラバーストの差、などなど全然違うじゃん。<br>
+   それ言ったら、今の星導覚醒キャラだって近いうちにインフレに呑まれていくのです。<br>
+   例えばセスタだって、例外ではありませんよ？</p>
+
+  <h2>オクトパストラベラーの強敵たち</h2>
+  <p>オクトパストラベラーのキャラたちを星導覚醒させるために必要なのですよ。<br>
+   異形化せしリケッツ・異形化せしガルディ・異形化せしハレきゅん。<br>
+   そして忌まわしき旅の呪いがいます。<br>
+   でもオクトパストラベラーのルールが適用されているから、アナデンオリジナルのバトルという感じではないです。</p>
+
+  <img src="/another-eden/anaimage/弱点break.jpg" loading="lazy" alt="弱点break" class="graphic fade-in-out">
+
+  <p>異形化せしリケッツ・異形化せしガルディ・異形化せしハレきゅんはぜんぜん強くないです。<br>
+   グラスタが整っているかどうか。そこでしょう。<br>
+   敵の弱点を効率良く叩いて気絶させてアナフォ。<br>
+   ここで火力不足が出るようなら、グラスタ集めに戻ったほうが良いです。</p>
+
+  <h3>忌まわしき旅の呪い</h3>
+
+  <p>これだけはちょっと強め。<br>
+   オクトラのルール通りにやらないと何度も復活するので、火・水・雷の属性攻撃ができるよう編成する必要があります。<br>
+   書架のステラもあった気がするけど、そっちと大して難易度は変わらないと感じました。<br>
+   あれ？<br>
+   違ったかな？<br>
+   スクショが残ってないです…</p>
+
+  <img src="/another-eden/anaimage/オクトラコラボ強敵.jpg" loading="lazy" alt="オクトラコラボ強敵" class="graphic fade-in-out">
+
+  <p>オクトラのサイラスが意識されているんでしょうね。<br>
+   火水雷のZONEが展開できる。<br>
+   私の場合はオルレイアが天255ですから、彼女に火ZONEと水ZONEのグラスタを装備させました。<br>
+   天冥ブースト速度UPを付ければ、ASねここの速度を簡単に超えられるんですよね。</p>
+
+  <img src="/another-eden/anaimage/ESマリエル必殺技.jpg" loading="lazy" alt="ESマリエル必殺技" class="graphic fade-in-out">
+
+  <p>ZONEを切り替えつつ、ASねここの霊恵虹変怪を使ってパーティー全員の属性を変化させて攻撃するのです。<br>
+   そうすればパーティー編成もやりやすい。<br>
+   まぁでも、ここに関しても無理しなくて良いと思いますよ？</p>
+
+  <p>すでに書いているけど、これからのインフレは今までとは比べものにならぬほどの苛烈さで進むと思います。<br>
+   星導覚醒（★６）実装後ですからね。<br>
+   パルテティオ・ティティ・サイラスもちゃんとした性能をしていると思いますが、無理しなくて良いでしょう。<br>
+   忌まわしき旅の呪いは属性を分けて戦う必要があってちょっとやりにくいし。<br>
+   ここで足止めをくらっているより、他の積み残しコンテンツを進めたほうがクロノス石をより多く確保できると思います。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/stellar_awakening_side.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
