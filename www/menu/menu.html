@@ -4,7 +4,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>fein's personal siteのハンバーガーメニュー</title>
+ <title>fein's appのハンバーガーメニュー</title>
 </head>
 
 <body>
@@ -18,15 +18,14 @@
  <a href="/another-eden/vc.html" style="color:#1A73E8;">宿星の断片ドロップ調査</a>
  <a href="/another-eden/another-eden_feinpdf.html" style="color:#1A73E8;">アナザーエデン：feinが書いたレポート集</a>
  <a href="/menu/symbol.html#feininfo" style="color:#1A73E8;">サイト制作者について</a>
-
+ <a href="/another-eden/atelier_studio.html" style="color:#1A73E8;">ファンサイト制作のためのアトリエ</a>
  <div id="denmenu">
   <a href="#" class="fden-submenu-toggle1" id="toggle-site-content"
-   onclick="toggleSubMenu('fden-submenu2', 'toggle-site-content')">上記以外のコンテンツも見る▼</a>
+   onclick="toggleSubMenu('fden-submenu2', 'toggle-site-content', event)">上記以外のコンテンツも見る▼</a>
 
   <div class="fden-submenu" id="fden-submenu2">
 
    <a href="/contents/domain.html" style="color:#1A73E8;">注意したい独自ドメイン設定手順とルール</a>
-   <a href="/another-eden/atelier_studio.html" style="color:#1A73E8;">ファンサイト制作のためのアトリエ</a>
    <a href="/contents/pwa.html#Progressive_Web_Application" style="color:#1A73E8;">このサイトがアプリになりました！</a>
    <a href="/contents/software.html" style="color:#1A73E8;">Web制作の技術でソフトウェアを作る</a>
    <a href="/contents/github.html" style="color:#1A73E8;">Webサイトの共同制作とGitHub</a>
@@ -36,7 +35,7 @@
   </div>
 
   <a href="#" class="fden-submenu-toggle2" id="toggle-popular-pages"
-   onclick="toggleSubMenu('fden-submenu1', 'toggle-popular-pages')">ポータルサイトも独自ドメイン設定を行いました▼</a>
+   onclick="toggleSubMenu('fden-submenu1', 'toggle-popular-pages', event)">ポータルサイトも独自ドメイン設定を行いました▼</a>
   <div class="fden-submenu" id="fden-submenu1">
    <a href="https://portal.feinatelier.org/"
     style="display: flex; align-items: center; text-decoration: none; color: #00A2ED;">

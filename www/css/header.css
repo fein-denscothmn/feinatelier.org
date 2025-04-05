@@ -74,40 +74,48 @@
  color: #0078D4;
 }
 
-/* ★ヘッダー画像の基本スタイル（静止状態でLCPを確保） */
+/* ★ヘッダー画像の基本スタイル */
 .header-image {
  max-width: 100%;
- /* 親要素に応じてスケーリング */
  height: auto;
- /* アスペクト比を維持 */
  display: block;
  margin: 0 auto;
- background: linear-gradient(to bottom, #ffffff, #e0f7fa);
- padding: 20px;
- border-radius: 15px;
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
- opacity: 1;
- transform: translateX(0);
- transition: none;
-}
-
-/* ★ヘッダー全体の枠・コンテナのスタイル */
-.header-frame {
- border: 5px solid transparent;
  padding: 10px;
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
  border-radius: 15px;
- margin: 10px;
- max-width: 100%;
- box-sizing: border-box;
- animation: border-draw 3s linear forwards;
+ background: linear-gradient(to bottom, #ffffff, #f0e6d4);
 }
 
-.header-container {
- position: relative;
+/* ★画像の額縁スタイル */
+.header-frame {
+ padding: 5px;
+ border: none;
+ border-radius: 15px;
+ margin: 20px auto;
+ max-width: 95%;
+ box-sizing: border-box;
+ background: transparent;
  text-align: center;
 }
 
+/* ★背景を個展会場風に */
+.header-container {
+ position: relative;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ background: radial-gradient(circle at top, rgba(255, 255, 255, 1) 20%, rgba(240, 240, 240, 0.7) 50%, rgba(210, 210, 210, 0.5) 80%);
+ padding: 20px 25px;
+ border-radius: 25px;
+ box-shadow:
+  0 20px 30px rgba(0, 0, 0, 0.6),
+  0 -5px 15px rgba(255, 255, 255, 0.8) inset,
+  0 10px 50px rgba(255, 255, 255, 0.2);
+ border: 1px solid #dcdcdc;
+ margin: 0 auto;
+}
+
+/* ★ヘッダーテキストデザイン */
 .header-text {
  position: absolute;
  bottom: 10px;
@@ -116,7 +124,7 @@
  font-size: 24px;
  color: white;
  background-color: rgba(0, 0, 0, 0.5);
- padding: 10px 20px;
+ padding: 5px 15px;
  border-radius: 10px;
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -129,47 +137,4 @@
 
 .header-text a:hover {
  color: #dcdcdc;
-}
-
-/* アニメーション */
-@keyframes border-draw {
- 0% {
-  border-color: transparent;
-  border-width: 5px 0 0 0;
- }
-
- 12.5% {
-  border-color: #99CCFF;
-  border-width: 5px 5px 0 0;
- }
-
- 25% {
-  border-color: #99CCFF;
-  border-width: 5px 5px 5px 0;
- }
-
- 37.5% {
-  border-color: #99CCFF;
-  border-width: 5px 5px 5px 5px;
- }
-
- 50% {
-  border-color: #99CCFF;
- }
-
- 62.5% {
-  border-color: #99CCFF;
- }
-
- 75% {
-  border-color: #99CCFF;
- }
-
- 87.5% {
-  border-color: #99CCFF;
- }
-
- 100% {
-  border-color: #99CCFF;
- }
 }

@@ -562,36 +562,64 @@ for container in document.select('.atelier-container'):
 
   <div class="code-container">
    <pre><code class="language-txt">
-FEIN-SITES-DEV1
-│  app.yaml           # メインサービスの App Engine 設定ファイル（ランタイム・ルート定義など）
-│  dispatch.yaml      # サービス間のルーティング規則を定義するファイル
-│  main.py            # Flask アプリケーションのエントリポイント（ルートや動的機能の設定）
-│  README.md          # プロジェクトの概要や使い方を説明するドキュメント
-│  requirements.txt   # アプリで必要な Python パッケージ（依存関係）のリスト
-├─redirect-service    # リダイレクト専用サービスのディレクトリ
-│      app.yaml       # リダイレクト用サービスの App Engine 設定ファイル
-│      redirect.py    # リダイレクト処理を記述した Flask アプリケーション
-│      requirements.txt # リダイレクト用サービスで必要な Python パッケージのリスト
-├─static              # 静的ファイルを保存するディレクトリ（CSS, JavaScript, 画像など）
-│  ├─css              # スタイルシート（デザイン）を格納
-│  ├─js               # JavaScript（インタラクションや動作制御）のスクリプトを格納
-│  └─menu             # メニュー関連のリソースを保存
-├─templates           # Flask 用の HTML テンプレートを保存
-│      top.html       # `/top` ルート用の動的コンテンツテンプレート
+FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https://feinatelier.org/)
+│  app.yaml
+│  dispatch.yaml
+│  main.py
+│  pagelist.py
+│  README.md
+│  requirements.txt
+│  sitemap.py
+│
+├─redirect-service
+│      app.yaml
+│      redirect.py
+│      requirements.txt
+│
+├─static
+│  ├─css
+│  ├─externalization
+│  ├─flower1
+│  ├─icons
+│  ├─images
+│  ├─js
+│  ├─menu
+│  └─nature
+│
+├─templates
+│  │  pagelist.html
+│  │  sitemap.xml
+│  │  top.html
+│  │
+│  └─server
+│          redirect.html
 │
 │   【上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。】
 │   【下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。】
 │
-└─www                 # 静的ウェブサイトのルートディレクトリ（主にフロントエンド用）
-    │  favicon.ico    # ブラウザのタブに表示されるアイコン
-    │  index.html     # 静的ウェブサイトのホームページ
-    │  manifest.json  # PWA（Progressive Web App）の設定ファイル
-    │  robots.txt     # 検索エンジンによるクローリング設定ファイル
-    │  service-worker.js # PWA 用のサービスワーカー（キャッシュ管理やオフライン対応）
-    ├─contents        # コンテンツ関連のファイルやデータを格納
-    ├─css             # 静的ウェブサイト専用のスタイルシートを保存
-    ├─fish            # 画像やリソース用ディレクトリ
-    ├─script          # フロントエンド用 JavaScript を格納
+├─www
+│  │  favicon.ico
+│  │  index.html
+│  │  manifest.json
+│  │  robots.txt
+│  │  service-worker.js
+│  │
+│  ├─another-eden
+│  ├─contents
+│  ├─css
+│  ├─externalization
+│  ├─fish
+│  ├─flower1
+│  ├─flower2
+│  ├─flower3
+│  ├─icons
+│  ├─image
+│  ├─menu
+│  ├─paint
+│  ├─rss
+│  ├─script
+│  ├─sea
+│  └─video
 
 </code></pre>
   </div>

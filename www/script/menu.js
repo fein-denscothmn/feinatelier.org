@@ -16,7 +16,8 @@ function toggleMenu() {
  }
 }
 
-function toggleSubMenu(id, buttonId) {
+function toggleSubMenu(id, buttonId, event) {
+ event.preventDefault(); // デフォルト動作を防止
  var submenu = document.getElementById(id);
  var button = document.getElementById(buttonId);
  if (submenu.classList.contains('show')) {

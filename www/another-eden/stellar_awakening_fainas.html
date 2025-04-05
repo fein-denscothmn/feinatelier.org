@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>星導覚醒実装後の強敵戦～３部後編～</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta name="keywords" content="アナザーエデン, 強敵, 攻略">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="星導覚醒実装後の強敵戦～３部後編～">
+ <meta property="og:description" content="アナザーエデンについて、feinという人物が書いてきた攻略レポートを集めています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/stellar_awakening_fainas.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "星導覚醒実装後の強敵戦～３部後編～",
+      "url": "https://feinatelier.org/another-eden/stellar_awakening_fainas.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.png" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">星導覚醒実装後の強敵戦～３部後編～</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/マツリカフィーネ.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="星導覚醒実装後の強敵戦～３部後編～の目次を開く ▼"
+   data-close-text="星導覚醒実装後の強敵戦～３部後編～の目次を閉じる ▲">星導覚醒実装後の強敵戦～３部後編～の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>星導覚醒実装後の強敵戦～３部後編～</span></h1>
+  <p>星導覚醒の実装前と実装後は、明確に分けなければなりません。
+   ここにあるのは、星導覚醒が実装された後の強敵戦、中でもメインストーリーのものです。</p>
+
+  <p>ちょうど私がここの文章を書いている時、次の記事がなんか嬉しげに拡散されてましたね😆ww
+   → <a
+    href="https://shueisha.online/articles/-/250884https://shueisha.online/articles/-/250884">“ガチャゲー”終焉の足音…日本のガラパゴス化に最適化したモバイルゲーム会社MIXI・ガンホー・グリーの行く先</a>
+  </p>
+
+  <p>この記事に限らず「ガチャゲー 終焉」とググって頂ければ、昔から似たようなことを言われていたようですね。<br>
+   他にも記事が出てきました。<br>
+   ていうかいつも似たようなこと語られてない？</p>
+
+  <p>もうアナデンTwitterランドも長いこと滞在しておりますが、心配しなくて大丈夫ですよ。<br>
+   いわゆる「ガチャ」って、そんな単純なもんじゃないと思います。<br>
+   言い変えると、人の射幸心というのはそんな単純なもんじゃないです。─ 釣り人が言うんだから間違いない ─<br>
+   人の気質によっても違うしさ。</p>
+
+  <p>私はIT好きの立場もあり、ゲームとSNSの連携を切断しつつWebサイトを兼用することで出費を抑えているけども。<br>
+   アナデン運営とて、そのくらいのことは見越してガチャの販売戦略を練っているはずですよ？<br>
+   相手はプロなんだからさ。</p>
+
+  <h2>ASフィーネ中心の攻略</h2>
+  <p>他の場所にも書いていますが、星導覚醒実装前と実装後とでは、大きく環境…いや、システムが違います。<br>
+   従来通り配布キャラを使ってクリア等もできようけれども、もはやそのような「戦闘バランス」に興味はありません。</p>
+
+  <p>そんなことより、フィーネもアナザースタイルになったことですし🎉<br>
+   ハマったポイントではフィーネを中心として思い出を書き残していきたいです。</p>
+
+  <h2>カプトニクとシュペトニク</h2>
+
+  <p>私の完全オリジナル攻略ですよ。</p>
+
+  <img src="/another-eden/anaimage/カプトニク_アルドで攻略.jpg" loading="lazy" alt="カプトニク_アルドで攻略" class="graphic fade-in-out">
+
+  <p>あまり詳しく覚えているわけではないけど、そんなに力まなくても大丈夫です。<br>
+   いつもの私の戦闘スタイルのままですよ？<br>
+   まずは守れることを確認してから、火力調整をしていきます。</p>
+
+  <p>はじめに火力じゃないんだよね。<br>
+   私の場合、順番が違うのですよ。</p>
+
+
+  <h4>カプトニクのパーティー編成</h4>
+
+  <p>まずは守りです。</p>
+
+  <ul>
+   <li>ASねここ：ライカマジック</li>
+   <li>ASノーナ：プレギエーラとクオーレカリタ</li>
+   <li>ESマリエル：救済の祈り</li>
+   <li>アルド：オリジンフォース</li>
+   <li>テトラ：オーラのみ</li>
+   <li>テュシア：HPMP回復と増加。及び…忘れた😅 何か防御力が上がるものを付けておいたはず。</li>
+  </ul>
+
+  <p>アルド以外のHPを盛り盛りにしておいて、属性デバフ耐性のPグラスタを7つ用意します。<br>
+   あとは…３部後編で強化できる花防具をアルドに付けてたはず。<br>
+   たまたま最大強化できていたから。<br>
+   他は腕知速デバフ耐性の武器種グラスタをねここ・ノーナ・マリエルに装着してました。<br>
+   状態異常は全てプレギエーラで解決します。</p>
+
+  <img src="/another-eden/anaimage/カプトニクのパーティー.jpg" loading="lazy" alt="カプトニクのパーティー" class="graphic fade-in-out">
+
+  <p>次に火力です。<br>
+   要するに、まずは守れることを確認してから、編成や装備等で火力を上げていくようにして試行錯誤するのですよ。</p>
+
+  <ul>
+   <li>ASねここ：霊恵虹変怪と烈火陣グラスタ</li>
+   <li>ASノーナ：ディヴォージオとタイミングが合えばコンコルディア＋カスティーゴ</li>
+   <li>ESマリエル：勇敢の祈りとヒートカッター</li>
+   <li>アルド：斬りまくり</li>
+  </ul>
+
+  <p>グラスタがある程度でも良いから揃ってないと辛いだけだと思います。<br>
+   一方、グラスタを揃えた人は装着方法も分かるだろうから、ここで細々と解説は書きません。</p>
+
+  <p>重要なのはASノーナのディヴォージオとESマリエルのヒートカッターですよね。<br>
+   これで全員が火の斬となり、カプトニクのオーラは発動しません。<br>
+   あとは烈火陣を使えばアナフォゲージも貯まるでしょ？</p>
+
+  <h4>シュペトニクのパーティー編成</h4>
+
+  <p>シュペトニクは特に深く考えなかったですね。<br>
+   一応ミュンファにヒートカッターを装備させていましたが、途中でディアドラを前に出してアナフォしてみたり。</p>
+
+  <img src="/another-eden/anaimage/シュペトニクのパーティー.jpg" loading="lazy" alt="シュペトニクのパーティー" class="graphic fade-in-out">
+
+  <p>カプトニクもそうですが、状態異常に上手いこと対応できれば良いのですよ。<br>
+   シュペトニクの場合はASマリエルを使ったよというだけです。</p>
+
+  <h4>カプトニクとシュペトニクの戦い方</h4>
+
+  <p>シュペトニクはともかく、カプトニクは次のように守りました。</p>
+
+  <ol>
+   <li>オリジンフォース、ライカマジック、救済の祈りを防御の柱とする。</li>
+   <li>途中でクオーレカリタを挟む</li>
+  </ol>
+
+  <p>これでカプトニクがZONE覚醒してても問題ないのですよ。<br>
+   余裕で守り切れる。<br>
+   多くて500くらいだったかな？<br>
+   固定ダメージ以外はほぼダメージ受けません。</p>
+
+  <img src="/another-eden/anaimage/カプトニク_シュペトニク.jpg" loading="lazy" alt="カプトニク_シュペトニク" class="graphic fade-in-out">
+
+  <p>火力のほうはいつもと変わらないです。</p>
+
+  <ol>
+   <li>カプトニクがZONE覚醒していたら、霊恵虹変怪をしながらアナフォゲージをちまちま貯める。</li>
+   <li>まず頭を狙って霊恵虹変怪をしながらアナフォ竜神斬でカプトニクの頭を割る。</li>
+   <li>次に烈火陣しながら右手と左手をアナフォ竜神斬で斬っていく。</li>
+   <li>手加減しながら本体のHPをミリ残しにする。</li>
+   <li>アナフォゲージが満タンの状態で、霊恵虹変怪＋勇敢の祈りをしながらアルドで狙い撃つ。</li>
+   <li>頭が復活したら、また割りにいく。</li>
+  </ol>
+
+  <p>こんな感じかな🤔<br>
+   こちらが死なないことは分かっているので、１回のアナフォで落とし切れなくても関係ないです。<br>
+   毒ペインに不具合があったと伺っていますが、私の編成だと毒ペは入れられなかったと記憶しているから、そこらへんは分からないです。</p>
+
+  <h4>ガチャの新キャラを使った攻略は知らない</h4>
+
+  <p>分からんというか、当時はユーインさえいなかったような？<br>
+   忘れてしまいましたが、基本原則として万象は貯めまくるので。<br>
+   持ってないものは分からないです😅</p>
+
+  <p>私の時層の場合、このあたりが一番やりやすかったかな。<br>
+   でもアルド・ノーナ・ねここ・マリエルともに天冥255です。</p>
+
+  <h4>敵のZONE覚醒はどの属性でも構いません</h4>
+
+  <p>どっちみちねここで霊恵虹変怪をしながらアナフォするので。<br>
+   そこから竜神斬でメッタギリにするわけですから、属性は何でも良かったです。<br>
+   アナフォゲージについては敵がZONE覚醒支配下でも貯められるようになっているから、そこは問題ないじゃん？<br>
+   頭を叩き潰した後は烈火陣をするから、アナフォゲージ貯め放題ですよ。</p>
+
+  <h4>ノーナやマリエルは星導覚醒しますかね？</h4>
+
+  <p>とにかく強いんだもん。ASノーナ。<br>
+   プレギエーラがめちゃくちゃ強いんです。<br>
+   迎撃で回復しながら状態異常ケアができるから、盲目とかくらっても関係ないのですよ。<br>
+   アルドにディヴォージオすればノーナ本人のステータスも下がりませんしね。</p>
+
+  <p>「私まで頑張れちゃうな💕」<br>
+   なぁんてね🎵</p>
+
+  <p>ディヴォージオすれば本人の武器種も相手に合わせて変わるから、カプトニク相手になんかとても相性が良いキャラだと思いますよ？</p>
+
+  <img src="/another-eden/anaimage/いつも美しいマリエル様.jpg" loading="lazy" alt="いつも美しいマリエル様" class="graphic fade-in-out">
+
+  <p>ねここ的な動きをするカプトニクより、私のねここのほうが強かった。<br>
+   そういうことですよね。</p>
+
+  <p>撃陣の力＜星海＞はどうでしょう？<br>
+   まだ十分に使っていないのですが、ASフィーネ向きであることは間違いない。─ 後日談：このグラスタは結局、大活躍することになります ─<br>
+   この強敵戦ページも随時加筆訂正を繰り返していくので、そのうちに何か書きますか！</p>
+
+  <img src="/another-eden/anaimage/撃陣の力＜星海＞.jpg" loading="lazy" alt="撃陣の力＜星海＞" class="graphic fade-in-out">
+
+  <h4>最後に細々した攻略のワンポイントを</h4>
+  <p>私の時層のようにキャラがおらず火力が出ないのであれば、カプトニクの覚醒ZONE支配下でもアナフォゲージを貯められるように編成しておけば良いですね。<br>
+   斬攻撃以外をするとオーラで敵の攻撃力が上がるから、伐竜外伝で拾える「ヒートカッター」を使えるバッジを持っておくと編成しやすいです。<br>
+   そう考えると、自然とASねここは入ってくるかと思います。<br>
+   霊恵虹変怪をすることでカプトニクのZONEを利用しつつこちらのゲージを貯められる。<br>
+   そういう意味でも、カプトニクの覚醒ZONE支配下でも味方を守り切れる編成と動きができれば問題ないです。</p>
+
+  <p>最後の復活の場面だけ注意してね？<br>
+   カプトニクが自身のデバフを解除した後で攻撃してくるから。<br>
+   そこは守護で防ぐなり、アナフォするターンを考えて固定ダメージが来るように立ち回りを工夫します。</p>
+
+  <p>どうしてもカプトニクの攻撃を防ぎ切れないなら…火力で叩き潰すしかありません。<br>
+   殺られる前に殺るためには、グラスタをちゃんと揃えつつも、サボらずガチャを回しましょう！<br>
+   星導覚醒実装後のキャラについて、私はほとんど知りません。<br>
+   でもカプトニク相手に短期決戦ができるよう、ガチャのラインナップが整っていたはずですよ？<br>
+   意味もなくガチャの陳列はしていないのですから、欠かさず引くことです。</p>
+
+  <h2>レビテイター</h2>
+  <p>これはほとんど編成のカラーが出ないと思います。<br>
+   ASデューイが極端に有利ですからね。</p>
+
+  <img src="/another-eden/anaimage/レビテイター勝利.jpg" loading="lazy" alt="レビテイター勝利" class="graphic fade-in-out">
+
+  <p>私の編成であれば、ハーディーくらいでしょうか？<br>
+   レビテイターの晶ZONEがウザいからハーディーで割るんですよ😆ww<br>
+   敵の晶ZONEさえなければ、すぐにアナフォゲージも貯まります。</p>
+
+  <img src="/another-eden/anaimage/レビテイター戦闘シーン.jpg" loading="lazy" alt="レビテイター戦闘シーン" class="graphic fade-in-out">
+
+  <p>他は、そうそう、ここでもマツリカ連携ですね。<br>
+   マツリカはほんと汎用性が高くて助かります。<br>
+   ASデューイが有利なのもそうなんだけど、そこをさらにマツリカ連携で大ダメージを狙います。</p>
+
+  <h2>天賢のレーヴ ─ 最終決戦 ─</h2>
+  <p>叡智の塔の最終決戦。<br>
+   見事に英雄となったのは「マユ」です。<br>
+   星海陣のためアナフォゲージが蓄積するまではロゼッタで耐え、そこからマユに切り替えていきます。</p>
+
+  <img src="/another-eden/anaimage/天賢のレーヴ勝利.jpg" loading="lazy" alt="天賢のレーヴ勝利" class="graphic fade-in-out">
+
+  <p>特に凝った攻略はしていません。<br>
+   ソイラとマツリカで守りつつ、ロゼッタとマユを入れ替えながら星海陣を維持しました。<br>
+   そしてマリエルで狙い撃つ。</p>
+
+  <img src="/another-eden/anaimage/天賢のレーヴ_マリエル.jpg" loading="lazy" alt="天賢のレーヴ_マリエル" class="graphic fade-in-out">
+
+  <p>真っ向勝負ですよ。<br>
+   天賢のレーヴとマユ。<br>
+   どちらが強いか。</p>
+
+  <img src="/another-eden/anaimage/天賢のレーヴ_アナフォ.jpg" loading="lazy" alt="天賢のレーヴ_アナフォ" class="graphic fade-in-out">
+
+  <p>アナザーフォースを使うのは最後の局面のみ。<br>
+   ここだけは火力で落とさないと厳しそうだったので。<br>
+   マユにね。<br>
+   勝たせたかったのですよ。</p>
+
+  <p>ちなみに求道のほうはスコアタ同様ソシャゲ的な競争の世界だと認識しているので、プレイしていてもSNSでお話しすることはありません。<br>
+   競争に参加してしまうと、<a href="/another-eden/anaden_feinpdf_feinne.html">ループ攻略集大成：星５フィーネと八妖</a>を最後にゲームとSNSの連携を切った意味がないでしょ？</p>
+
+  <h2>神獣スピリタス</h2>
+  <p>これはシェンファのテッセラクトでしょうね。<br>
+   眷属を倒すとパワーアップすることに加えて、その眷属もバフをかけてどんどん強くなっていきます。<br>
+   守護や庇うを使っても良いでしょうけど…<br>
+   庇い切れますか？<br>
+   守護や庇うキャラが持ち堪えている間に火力撃破できれば良いけど、そうでない場合はどうするんだろう？</p>
+
+  <p>カプトニクもそうですが、そーんなに…守護＋庇うに頼らなくても良いと思います。<br>
+   守れることは最低限必要だけど、それは最低限で良いのですよ。<br>
+   バフデバフで立ち回れるなら、そちらのほうが手っ取り早いと感じます。</p>
+
+  <img src="/another-eden/anaimage/神獣スピリタス.jpg" loading="lazy" alt="神獣スピリタス" class="graphic fade-in-out">
+
+  <p>シェンファの攻撃力を極端に落とせば良いのですよ。<br>
+   生命グラスタだらけにして、武器も弱いやつを持ってもらって。<br>
+   アナフォで削っていけばね。<br>
+   眷属にバフが掛かり始めたタイミングで、シェンファの星導覚醒スキル「テッセラクト」をすればいいです。<br>
+   私のパーティーはASオルレイアがいますが、彼女の庇うは機能していません。<br>
+   場繋ぎ敵にデバフしてくれれば良いわけで、スピリタスが星海陣を展開するからASねここが少し扱いにくかったというだけよ。</p>
+
+
+  <h2>原始の火 ─ ウィザード級1戦目 ─</h2>
+
+  <p>ジルファニーを使ってみました。<br>
+   おそらく運営が想定しているであろう、マツリカと合わせて。<br>
+   新キャラを即時習得するのは難しいので、こういう余裕のある敵じゃないと試しにくいです。<br>
+   確かにジルファニー強いね！<br>
+   余裕があれば天を上げていきたいものです。</p>
+
+  <p>ジルファニーはあまり注目されていないようですが、あまりそういうの気にしなくて良いと思いますよ？<br>
+   それ言ったら、今の星導覚醒ユーインだって近いうちに上位互換キャラが出ます。<br>
+   だってノーマルユーインに覇権を取らせておくより、新キャラのほうがガチャが回るのですから。<br>
+   そのうちジルファニーがぴったりハマる強敵も出てくることでしょう。</p>
+
+  <img src="/another-eden/anaimage/原始の火.jpg" loading="lazy" alt="原始の火" class="graphic fade-in-out">
+
+  <p>ASサキが大活躍！<br>
+   ここは普通にASサキですよ。<br>
+   詳しくは<a href="/another-eden/anaden_feinpdf_assaki.html">火力攻略集大成：ASサキによる「豪炎猛火廻生」の完全制圧</a>をどうぞ🔥<br>
+   ヨトゥンエフェクトやりつつ、ソイラとマツリカにフォローしてもらえれば十分です。</p>
+
+  <p>実装当時に恐ろしい難易度を誇った火の廻生。<br>
+   あそこで伝説を残したのが、弊時層のサキです。<br>
+   相変わらず頼りになりますね。</p>
+
+  <p>ぜひとも星導覚醒していただきたいものですわね。<br>
+   だってそうでもないと、私の時層にあるツブラとクロノス石が貯まる一方だもの。</p>
+
+  <h2>海神オチェアーノ ─ ウィザード級２戦目 ─</h2>
+  <p>ウィザード級ともなってくると、それなりに強いですよ。<br>
+   この海神オチェアーノなんか、最後のほうでちょっとした工夫が必要でした。<br>
+   ASソイラが耐えきれないから、カムラナージュと絡めてASラブリを入れ替えるんです。</p>
+
+  <img src="/another-eden/anaimage/海神オチェアーノ戦闘シーン.jpg" loading="lazy" alt="海神オチェアーノ戦闘シーン" class="graphic fade-in-out">
+
+  <p>戦闘の最終局面はこんな感じにしました。</p>
+
+  <ol>
+   <li>ASソイラでまずは耐える</li>
+   <li>カムラナージュとASラブリをチェンジ</li>
+   <li>ASソイラとカムラナージュをチェンジ</li>
+   <li>アナフォで〆る</li>
+  </ol>
+
+  <p>最後の最後でやってくる固定ダメージだったかな？<br>
+   ちょっと覚えてないけど、ASソイラでは耐えきれない状況があったんですよ。<br>
+   それで最後だけASラブリで守護をかける。</p>
+
+  <img src="/another-eden/anaimage/海神オチェアーノ勝利.jpg" loading="lazy" alt="海神オチェアーノ勝利" class="graphic fade-in-out">
+
+  <p>アタッカーはカムラナージュのみ。<br>
+   いい火力が出るんですよ。<br>
+   他は全員、防御か火力サポートです。<br>
+   カムラナージュの冥は上げておいて良いと思いますよ？<br>
+   あーただ、星導覚醒実装後ですからね…<br>
+   ものすごい火力の雷キャラもすぐに出てくるのかもしれませんが。</p>
+
+  <h2>永遠のディアマンテ ─ ウィザード級３戦目 ─</h2>
+
+  <p>ディアマンテはですねー<br>
+   マツリカの連携で斬突打魔を切り替えていきました。</p>
+
+  <ul>
+   <li>斬はESチルリル（星導覚醒なし）の剣攻撃</li>
+   <li>突はASノーナ</li>
+   <li>打はESマリエル</li>
+   <li>魔はASフィーネ</li>
+  </ul>
+
+  <p>一方、</p>
+
+  <ul>
+   <li>突はフィーネにドラゴンピアース</li>
+   <li>打は誰かにファイアラッシュ（誰だったか忘れてしまった）</li>
+   <li>魔はESマリエルにウィズダムナックル</li>
+  </ul>
+
+  <p>こういう感じにしていけば、アナフォゲージを貯めて倒し切れます。</p>
+
+  <h4>ASノーナのディヴォージオをかけるタイミング</h4>
+  <img src="/another-eden/anaimage/永遠のディアマンテ勝利.jpg" loading="lazy" alt="永遠のディアマンテ勝利" class="graphic fade-in-out">
+
+  <p>ASノーナの運用がキーになるのですよ。<br>
+   献身をするのはフィーネですが、ディアマンテの突モードを抜けてからです。<br>
+   すると、ASノーナのカスティーゴが魔になります。<br>
+   その後で最後の魔モードを迎えるわけですよね。<br>
+   魔なら４人揃うから、一番厳しいであろう局面でフルアナフォをぶっ放す。</p>
+
+  <img src="/another-eden/anaimage/永遠のディアマンテ戦闘.jpg" loading="lazy" alt="永遠のディアマンテ戦闘" class="graphic fade-in-out">
+
+  <p>固定ダメージに関してはESクロードでマツリカのHPを増やします。<br>
+   その固定ダメージのターンのみ、ESクロードとマツリカを残して全員を後ろに下げるんだよね。<br>
+   これでこちらが倒されないループができるわけですから、後は倒すだけ。<br>
+   ディアマンテ戦は自分の手持ちの中でいかに斬突打魔を混ぜつつ組むかってことだと思います。</p>
+
+  <h2>デドリー・スタブ ─ ソーサラー級 ─</h2>
+
+  <p>叡智の塔はまずイベントを解放していくのに時間がかかりますからね。<br>
+   たまたまだけど、ちょっとまとまった休みが取れたので。<br>
+   そしてソーサラー級からしてちょっと敵が強いんです。<br>
+   頑張っても良いだろうけど、やっぱりここでもグラスタ集めや過去コンテンツを優先させたほうが良いと思う。</p>
+
+  <img src="/another-eden/anaimage/デドリー・スタブ.jpg" loading="lazy" alt="デドリー・スタブ" class="graphic fade-in-out">
+
+  <p>デドリー・スタブは迎撃ターンに手を出さないようにしながらシェンファでなぎ倒せばいいよね。<br>
+   マツリカでバフデバフは十分。<br>
+   あるいはマツリカの連携をASノーナにかければ良かったかもしれない。<br>
+   私はなんでシェンファにしてるんだろ？<br>
+   耐性でもあったのかな？<br>
+   毒が鬱陶しいからASノーナでHPを上げてたような気がします。<br>
+   こいつはマシなほうだと思う。</p>
+
+  <h2>一雫の白銀 ─ ソーサラー級 ─</h2>
+
+  <p>ソーサラー級で躓きポイントがあるとすれば、ここかもしれないね。<br>
+   スライム。<br>
+   TLを見てもけっこう話題になっていたし、イラついてた人もいたんじゃない？<br>
+   😆ww<br>
+   でも基本のバフデバフで十分長期戦可能でしょ。</p>
+
+  <img src="/another-eden/anaimage/一雫の白銀.jpg" loading="lazy" alt="一雫の白銀" class="graphic fade-in-out">
+
+  <p>ダメージは大したことないんですよね。<br>
+   なんか揃うと必殺技みたいのやってきた気がするけど、特に大きなものではなかったと思う。<br>
+   ASミストレアとASソイラで防御を担当して。<br>
+   ASミストレアは歌唱でダメージアップもできる。<br>
+   アタッカーはASフィーネのシャインですよ。<br>
+   魔法耐性デバフも付いてるから、マツリカと連携すれば大ダメージを与えられます。</p>
+
+  <img src="/another-eden/anaimage/一雫の白銀_マツリカ連携.jpg" loading="lazy" alt="一雫の白銀_マツリカ連携" class="graphic fade-in-out">
+
+  <p>どうだったかなー…あるいは、スライム運が良かったのかもしれないけどね。<br>
+   すぐに緑が揃って試合終了となりました。<br>
+   マツリカ＋ASフィーネペアの初陣とも言える試合で楽しかったですよ。<br>
+   いずれにしても、噂ほど強くはないからご安心を。<br>
+   このページにコラム挟むけど、このタイプの強ボスって登場当時は凄く大袈裟に語られるんだよね。</p>
+
+  <h2>ライト&レフトワーデン[ユナイトワーデン] ─ ソーサラー級 ─</h2>
+
+  <p>これは大丈夫だと思います。<br>
+   迎撃のターンはバフデバフに集中し、あとはシェンファでなぎ倒すだけですね。</p>
+
+  <img src="/another-eden/anaimage/ライト_レフトワーデン_ユナイトワーデン.jpg" loading="lazy" alt="ライト_レフトワーデン_ユナイトワーデン"
+   class="graphic fade-in-out">
+
+  <p>編成できるようであれば、ASノーナは入れておいたほうが安心感が出ました。<br>
+   この戦闘に限らずプレギエーラがめちゃくちゃ強いです！<br>
+   バンバン回復してくれるしHPも増えるし。<br>
+   ３部後編の戦闘全般において、ASノーナが大活躍していました。</p>
+
+  <h2>闇に魅入られしアウルム ─ ソーサラー級 ─</h2>
+  <p>ちょっとクセがあるけど、ひっきりなしにアナフォしてれば勝てますよ。<br>
+   要するにアナフォゲージが最大にならないように攻めればいいんだよね。<br>
+   ここでもマツリカ連携＋ASフィーネのシャインです。<br>
+   あっという間に減らせるよ。</p>
+
+  <img src="/another-eden/anaimage/闇に魅入られしアウルム.jpg" loading="lazy" alt="闇に魅入られしアウルム" class="graphic fade-in-out">
+
+  <p>MPダメージが酷いからASフラムラピスのVCでMP回復するようにしてました。<br>
+   混沌陣を変えてしまうと誰かが倒されるから放置します。<br>
+   ていうか混沌陣のままアナフォをガンガン打てば良いと思いますね。</p>
+
+  <p>いつものやり方ですよ。<br>
+   こちら側が守れることが分かっていれば、難なく勝てるってね。</p>
+
+  <h2>四獣はフィーネ＋ASねここ</h2>
+
+  <p>四獣はいいんじゃないかな？<br>
+   グラスタがぜんぜんないとか、バフデバフのイロハに不慣れであるとか、そういう初心者様を除いてクリアするのに支障があるポイントはなかったかと。</p>
+
+  <img src="/another-eden/anaimage/四獣はフィーネ_ASねここ.jpg" loading="lazy" alt="四獣はフィーネ_ASねここ" class="graphic fade-in-out">
+
+  <p>「雲海アゲハ・監獄の巨人・花園の王・遺構の剣鬼」<br>
+   この四体です。<br>
+   戦い方は次の通り。</p>
+
+  <ol>
+   <li>まずはZONEをかける</li>
+   <li>ASねここの猫娘オマジナイをかけつつ、アナザーフォース</li>
+   <li>適当に戦う</li>
+   <li>半分ゲージが貯まったらまたアナフォ</li>
+   <li>ASフィーネのオーガグレイス</li>
+   <li>アナフォでおしまい</li>
+  </ol>
+
+  <p>これだけですよ。<br>
+   ASねここに霊恵虹変怪をやってもらえば、ASフィーネの星の唄が4属性に切り替わるのですから。<br>
+   毎度お馴染みですが、当サイトでは強敵と出逢うまでの道のりとか、そういったことは書かないです。<br>
+   Webサイトのコンテンツとして手間に見合わないことと、あくまでも思い出を書き残していくためのノートですからね。</p>
+
+  <h3>石華龍 ─ Master ─</h3>
+  <p>３部後編のPVにも登場した敵ですよね！<br>
+   結晶というか、氷属性の敵のようにも見えたね。<br>
+   ３部後編がはじまり、そしていずれフィーネがアナザースタイルになる。<br>
+   その序盤で登場したボス。<br>
+   ここは上がったよ。上がりまくった😆</p>
+  <img src="/another-eden/anaimage/石華龍.jpg" loading="lazy" alt="石華龍" class="graphic fade-in-out">
+  <p>フォロワーさんもおっしゃっていましたが、フィーネとシェンファは相性がいいよね。<br>
+   同じ無属性魔法の杖ですから、グラスタのP効果を双方で享受しやすい。<br>
+   上のパーティーなら異時層ミュンファがPグラスタを持っていて、シェンファもフィーネも火力が高い状態を維持できるんです。<br>
+   ノーマルフィーネとマツリカも相性良し！</p>
+
+  <h3>殺華鬼・コモンザーク ─ Master ─</h3>
+  <p>こいつは気分を害する敵でしたねー😆ww<br>
+   もちろんアナザーエデンというファンタジーストーリーの中での話ではありますよ？<br>
+   でもコモンザークみたいなタイプは殴られてしかるべきでしょ。</p>
+  <img src="/another-eden/anaimage/殺華鬼・コモンザーク.jpg" loading="lazy" alt="殺華鬼・コモンザーク" class="graphic fade-in-out">
+  <p>ASノーナでチェルノボーグのステータスを上げつつ、思いっきりリュシオルサイスでぶった斬りました。<br>
+   途中で２体同時出現するタイミングがあってね。<br>
+   両方を攻撃してはダメなんです。<br>
+   本体を単体攻撃で倒す必要がある。<br>
+   リュシオルサイスで狙い撃つしかないでしょ？<br>
+   相手は鎌を持っているし、こちらのサイスのほうが強烈でしたね。</p>
+
+  <h3>古海魚 ─ Master ─</h3>
+  <p>そんなに強い印象は持ちませんでしたが、ストーリー中のボスとは言えMasterでやってると立派な裏ボスクラスの強度を持つこともあります。<br>
+   Masterレベルのボス全てを今後記載するかはともかくとして、今回は可能な限り書き残そうかと。<br>
+   何といってもフィーネのアナザースタイルですから。</p>
+  <img src="/another-eden/anaimage/古海魚.jpg" loading="lazy" alt="古海魚" class="graphic fade-in-out">
+  <p>ASノーナとマツリカでフルに守っていたからね。<br>
+   そんなに強く感じなかっただけかもしれないです。<br>
+   この編成だとマツリカの連携は活かせない状況が出てくるのですが、まぁ細かいことは気にしない🎵<br>
+   BGMとマップの雰囲気、そして大好きな３部前編の光景でそれどころじゃなかったよ。</p>
+
+  <h3>虚無 ─ Master ─</h3>
+  <p>これはマツリカ連携のASフィーネでしょうね。<br>
+   一撃でゲージ一本丸々削れるときもありました。</p>
+  <img src="/another-eden/anaimage/虚無.jpg" loading="lazy" alt="虚無" class="graphic fade-in-out">
+  <p>21ターン撃破だったんだね。<br>
+   何回も形態が変わって復活するから、けっこうな長丁場ですよ。<br>
+   キュリオもちゃんと活躍してるんですよ？<br>
+   形態変化直後に毒ブレイクを入れるのです。<br>
+   キュリオの毒は永続ですから、こういう時に便利ですよね。</p>
+
+  <img src="/another-eden/anaimage/虚無パーティー.jpg" loading="lazy" alt="虚無パーティー" class="graphic fade-in-out">
+  <p>最大HPが減っていくのでね。<br>
+   ASノーナが大活躍していました。<br>
+   安心感がぜんぜん違うよ。<br>
+   あと、ターンエンドなのかな？<br>
+   なんか固定ダメージみたいなの毎回やってくるから、そこらへんは全部ASソイラが受け流してくれました。</p>
+
+  <p>ちなみにこいつが最終ボスです。<br>
+   倒すとフィーネ専用の特殊グラスタをもらえます。<br>
+   アルドの時と同じですね。</p>
+
+  <h3>剣帝・ガルドマギス ─ Master ─</h3>
+  <p>出た出た剣帝！<br>
+   これ強かったですよ。</p>
+  <img src="/another-eden/anaimage/剣帝・ガルドマギス勝利.jpg" loading="lazy" alt="剣帝・ガルドマギス勝利" class="graphic fade-in-out">
+  <p>基本的にはASソイラで攻撃を受けるんです。<br>
+   剣帝お得意の斬攻撃も、ほぼゼロダメージに抑えられます。<br>
+   ちょっと普通とは違う難易度があると判断した途端、速攻で編成を組みなおしてASソイラを入れました。</p>
+
+  <p>そうそう、書き忘れてたけど。<br>
+   アルドにフレッシュヒールバッジを装備させてましたよ。<br>
+   迎撃がすごいから、むやみに手を出さないようにしてました。<br>
+   ゴリゴリにバフをかけて、エックス斬り一発でゲージをごそっと削るんです。<br>
+   もっとも、迎撃を受けてもASソイラがいるから大きな被害は出ないんだけどね。</p>
+
+  <img src="/another-eden/anaimage/剣帝・ガルドマギス.jpg" loading="lazy" alt="剣帝・ガルドマギス" class="graphic fade-in-out">
+
+  <p>ASソイラを入れた編成にて、一発勝利です。<br>
+   特に苦労したポイントはなかったと記憶してる。<br>
+   剣帝の必殺技も演出をちゃんと楽しめた。<br>
+   BGMもかっこいいよねー…</p>
+
+  <p>あーでも、私のASソイラは天255あります。<br>
+   間違いなく強いと踏んで昔サブスクで上げておいたのです。<br>
+   そのASソイラが３部後編の高難易度戦闘では大活躍していますね。</p>
+
+
+  <h4>3部後編強敵戦後の周回</h4>
+  <p>特筆するようなことはないかなー…<br>
+   だって周回だからさ。<br>
+   周回スピードについては昔は遅い早いでいろいろ語られてたけど、おそらくそれもソシャゲ特有の文化だと思います。<br>
+   最後の最後まで馴染めなかったというか、理解が難しい文化だった😂<br>
+   ましてや星導覚醒まで実装された今となっては、周回スピードのためにガチャを回すわけにはいきませんよ😆ww ─ 昔から私はそうだけど… ─</p>
+
+  <img src="/another-eden/anaimage/ジスモンデアナダン.jpg" loading="lazy" alt="ジスモンデアナダン" class="graphic fade-in-out">
+
+  <p>エントラーナはすぐに終わったけどね。<br>
+   ジスモンデは長丁場となりそうです。<br>
+   私はすでにフィーネが冥255だから天冥上げの恩恵はないんだけど、もう私みたいな古参はアナデンに大した貢献はできないのでね😅
+   いろんなストーリーキャラが255化しているし。<br>
+   新規ユーザーさんを応援してあげてくださればよろしいかと？</p>
+
+  <img src="/another-eden/anaimage/レジナチェック.jpg" loading="lazy" alt="レジナチェック" class="graphic fade-in-out">
+
+  <p>ベアリングが依然として大量に余っているので。<br>
+   レストセットは機人世界のお店で買ってます。<br>
+   以外にも強化フィーネの「シャイン」が有能でさ。<br>
+   敵を気絶させるから、鬱陶しいfearの動きを止められるんですよ。<br>
+   ほとんどのエリアでASフィーネを中心に回ってます。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/stellar_awakening_fainas.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
