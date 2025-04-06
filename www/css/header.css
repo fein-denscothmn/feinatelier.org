@@ -1,39 +1,26 @@
 @charset "UTF-8";
 
 /* ★グローバルナビゲーションを構成する */
-@keyframes underline-animation {
- from {
-  width: 0;
-  background: #00CC00;
- }
-
- to {
-  width: 100%;
-  background: #4285F4;
- }
-}
-
 .animated-link {
  position: relative;
  color: #4285F4;
- text-decoration: none;
+ font-size: 0.9em;
 }
 
 .animated-link::after {
  content: "";
  position: absolute;
  left: 0;
- bottom: -2px;
- width: 0;
- height: 2px;
- background: #00CC00;
- transition: width 0.5s;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(to right, rgba(50, 205, 50, 0.15), rgba(50, 205, 50, 0));
+ pointer-events: none;
+ border-radius: 5px;
 }
 
-.animated-link.loaded::after {
- width: 100%;
- background: #4285F4;
- animation: underline-animation 2s forwards;
+.animated-link:hover {
+ color: #0078D4;
 }
 
 .den_nav {
@@ -41,10 +28,11 @@
  color: #4285F4;
  padding: 10px;
  border-radius: 20px;
+ font-size: 1em;
 }
 
 .feinhome {
- width: 50px;
+ width: 45px;
  margin-left: 3px;
  margin-top: 3px;
  display: block;

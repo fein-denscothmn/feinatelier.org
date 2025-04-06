@@ -55,10 +55,3 @@ document.addEventListener('DOMContentLoaded', function () {
   }
  });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
- const links = document.querySelectorAll(".animated-link");
- links.forEach(link => {
-  link.classList.add("loaded");
- });
-});
