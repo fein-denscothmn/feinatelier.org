@@ -3,6 +3,7 @@
 /www/robots.txt
 /.vscode/tasks.json
 /app.yaml
+/redirect-service/app.yaml
 /www/d7a93778274747368193589d62e18f10.txt
 
 # 特定のディレクトリを除外
