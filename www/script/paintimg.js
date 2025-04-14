@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
- const images = document.querySelectorAll('img.fade-in-out');
+ const images = document.querySelectorAll('img.art-image');
  const checkVisibility = () => {
   images.forEach(image => {
    const rect = image.getBoundingClientRect();

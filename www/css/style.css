@@ -540,3 +540,40 @@ hr.atelierflower::before {
  border: none;
  background-color: transparent;
 }
+
+/* イラストレータースタイルを管理 */
+.art-container {
+ overflow: hidden;
+}
+
+/* イラストレーター画像とキャプションの配置を調整 */
+.art-frame {
+ float: right;
+ width: 45%;
+ margin-left: 5px;
+ margin-right: 10px;
+}
+
+/* イラストレーター画像のスタイル */
+.art-image {
+ width: 100%;
+ border-radius: 10px;
+ opacity: 0;
+ transition: opacity 1s ease-in-out;
+}
+
+/* イラストレーターフェードインアニメーションを適用 */
+.art-image.visible {
+ opacity: 1;
+}
+
+/* イラストレーターキャプションのスタイル */
+.art-caption {
+ text-align: right;
+ color: #666;
+}
+
+/* イラストレーター回り込むテキストのスタイル */
+.art-description {
+ margin: 0;
+}
