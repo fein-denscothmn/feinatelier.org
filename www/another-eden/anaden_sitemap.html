@@ -69,14 +69,15 @@
  <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
  <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
  <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/pdf.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
  <!--JavaScript-->
  <script src="/script/underline.js"></script>
  <script src="/script/feinfade.js"></script>
  <script src="/script/feinScroll.js"></script>
- <!-- gsapの読み込み -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" defer></script>
+ <script src="/script/pdf.js" defer></script>
 
  <!-- google fonts -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,7 +195,86 @@
   </section>
 
   <section>
-   <h3>アナデン感想文</h3>
+   <h2>アナデンのファンサイトらしいページ集</h2>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/feinne_as_wallpaper_jp.jpg" alt="ASフィーネの壁紙"
+     class="wallpaper right-image fade-in-out">
+
+    <p><a href="/another-eden/anaden_favourite.html" class="custom-link">アナデンのお気に入りグッズや写真</a><br>
+     このページを出発点として、アナデン関連のお気に入りポイントや自己紹介ネタとかを追加していきます。</p>
+
+   </div>
+  </section>
+
+
+  <section>
+   <h3>アナザーエデン最難関コンテンツ！？</h3>
+   <div class="content">
+    <img src="/another-eden/anaimage/ASミストレア壁紙.jpeg" alt="ASミストレアの壁紙" class="wallpaper right-image fade-in-out">
+    <p><a href="/another-eden/lua.html" class="custom-link">アナザーエデンのプログラミングを個人サイトで試す</a><br>
+     難易度からして「アナザーエデン」の枠組みにあるコンテンツという意味では、最難関と言って良いと思います😆💻<br>
+     リアルのアナデン開発現場では、Lua以外のプログラミング言語も多く使われていることでしょう。<br>
+     公開されている資料から分かる範囲かつ、話題として珍しいという意味で、「Lua」という言語を題材にしてみました。</p>
+    <p>HTML・CSS・JavaScript・Luaとフルにコードを掲載しています。</p>
+
+    <p><a href="/another-eden/atelier_studio.html" class="custom-link">ファンサイト制作のためのアトリエ</a><br>
+     ライザのアトリエ、素晴らしいコラボコンテンツでしたね！<br>
+     でも、ただクリアして攻略を書いて…それだけでは…<br>
+     せっかくのファンサイトなのに、凡庸に過ぎると感じます。<br>
+     どーせならライザリン・シュタウトにあやかり、ファンサイトのアトリエを作りたいです！</p>
+    <p>ちなみにこのページ、アトリエ期間中はもちろん今後も末永く更新されまくるので、よろしくお願いします🎵</p>
+
+   </div>
+  </section>
+
+  <section>
+   <h3>アナデンとSNSの関係について</h3>
+   <div class="content">
+    <img src="/another-eden/anaimage/異時層ミュンファの壁紙.jpg" alt="異時層ミュンファの壁紙" class="wallpaper right-image fade-in-out">
+    <p><a href="/another-eden/anaden_prtsc.html" class="custom-link">アナデンのスクリーンショット投稿に係る指針</a><br>
+     ネタバレとAI学習の懸念から、ゲームのスクリーンショットを投稿しにくい状況がSNSにはあります。<br>
+     そのような状況における当アカウントの指針について、記述しています。</p>
+    <ul>
+     <li><a href="/another-eden/anaden_prtsc.html#game_strategy">付録1：攻略アドバイスを拡散して欲しい皆様へのご案内</a></li>
+     <li><a href="/another-eden/anaden_prtsc.html#solo_game">付録2：自分で自由にプレイしたい方へのご案内</a></li>
+    </ul>
+
+    <p><a href="/another-eden/anaden_social.html" class="custom-link">SNSによるアナデンのソシャゲ化を避けるコツ</a><br>
+     アナザーエデンをソーシャルゲームとしてプレイしている方は良いのですが、そうでないユーザー様もおられます。<br>
+     アナデンを自分のペースで楽しみたい…<br>
+     そういう人たちのために書いたものです。</p>
+
+    <p><a href="/another-eden/spoiler.html" class="custom-link">ネタバレ有_アナザーエデンの思い出全集</a><br>
+     ネタバレあるので注意してね？<br>
+     SNSとは違って簡単ワンタッチ投稿はできないので、リアルタイムの攻略状況は掲載できませんけどねー<br>
+     でも、思い出全集ページを作ってみました！</p>
+
+   </div>
+  </section>
+
+  <section>
+   <h3>feinのアナデンレポート全集</h3>
+
+   <p id="grastapdf">まだTwitterが不具合を連発せずマトモだった頃は、こんな感じのPDF資料を画像化してタイムラインに投稿していました。<br>
+    しかしイーロン・マスクがTwitterを変えてしまいましたね。<br>
+    そこで、こうしてWebサイトにPDF資料を全て移しているのです。</p>
+
+   <div class="feinpdf-container" data-url="/another-eden/fein_report/grasta.pdf">
+    <div id="feinpdf-viewer"></div>
+    <div class="feinpdfcontrols">
+     <button id="prev-page">前のページへ</button>
+     <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+     <button id="next-page">次のページへ</button>
+    </div>
+   </div>
+
+   <p><a href="/another-eden/fein_report/grasta.pdf">入手範囲別グラスタの場所一覧表.pdf版</a>です。<br>
+    このPDF版もカプトニク撃破までは掲載されているので、多くの人にとって有益な資料かと思います。<br>
+    こちらの<a href="/">アナザーエデン グラスタの入手場所一覧</a>のほうが、最新の情報等を多く掲載しているというだけですね。</p>
+
+   <hr id="feinhr">
+
    <div class="content">
     <img src="/another-eden/anaimage/suzette.jpg" alt="シュゼットの壁紙" class="wallpaper right-image fade-in-out">
     <p><a href="/another-eden/another-eden_feinpdf.html" class="custom-link">アナザーエデン：feinが書いたレポート集</a><br>
@@ -248,48 +328,6 @@
     <p><a href="/another-eden/anaden_feinpdf_siterta.html" class="custom-link">アナザーエデン：ファンサイト制作RTA</a></p>
 
     <p><a href="/another-eden/anaden_feinpdf_AboutMe.html" class="custom-link">アナデンTwitterをしていた頃の自己紹介</a></p>
-
-   </div>
-  </section>
-
-  <section>
-   <h3>アナザーエデン最難関コンテンツ！？</h3>
-   <div class="content">
-    <img src="/another-eden/anaimage/ASミストレア壁紙.jpeg" alt="ASミストレアの壁紙" class="wallpaper right-image fade-in-out">
-    <p><a href="/another-eden/lua.html" class="custom-link">アナザーエデンのプログラミングを個人サイトで試す</a><br>
-     難易度からして「アナザーエデン」の枠組みにあるコンテンツという意味では、最難関と言って良いと思います😆💻<br>
-     リアルのアナデン開発現場では、Lua以外のプログラミング言語も多く使われていることでしょう。<br>
-     公開されている資料から分かる範囲かつ、話題として珍しいという意味で、「Lua」という言語を題材にしてみました。</p>
-    <p>HTML・CSS・JavaScript・Luaとフルにコードを掲載しています。</p>
-
-    <p><a href="/another-eden/atelier_studio.html" class="custom-link">ファンサイト制作のためのアトリエ</a><br>
-     ライザのアトリエ、素晴らしいコラボコンテンツでしたね！<br>
-     でも、ただクリアして攻略を書いて…それだけでは…<br>
-     せっかくのファンサイトなのに、凡庸に過ぎると感じます。<br>
-     どーせならライザリン・シュタウトにあやかり、ファンサイトのアトリエを作りたいです！</p>
-    <p>ちなみにこのページ、アトリエ期間中はもちろん今後も末永く更新されまくるので、よろしくお願いします🎵</p>
-
-   </div>
-  </section>
-
-  <section>
-   <h3>アナデンとSNSの関係について</h3>
-   <div class="content">
-    <img src="/another-eden/anaimage/異時層ミュンファの壁紙.jpg" alt="異時層ミュンファの壁紙" class="wallpaper right-image fade-in-out">
-    <p><a href="/another-eden/anaden_prtsc.html" class="custom-link">アナデンのスクリーンショット投稿に係る指針</a><br>
-     アナデンと題していますが、ヘブバンも含めての話です。<br>
-     ネタバレとAI学習の懸念から、ゲームのスクリーンショットを投稿しにくい状況がSNSにはあります。<br>
-     そのような状況における当アカウントの指針に付いて、記述しています。</p>
-
-    <p><a href="/another-eden/anaden_social.html" class="custom-link">SNSによるアナデンのソシャゲ化を避けるコツ</a><br>
-     アナザーエデンをソーシャルゲームとしてプレイしている方は良いのですが、そうでないユーザー様もおられます。<br>
-     アナデンを自分のペースで楽しみたい…<br>
-     そういう人たちのために書いたものです。</p>
-
-    <p><a href="/another-eden/spoiler.html" class="custom-link">ネタバレ有_アナザーエデンの思い出全集</a><br>
-     ネタバレあるので注意してね？<br>
-     SNSとは違って簡単ワンタッチ投稿はできないので、リアルタイムの攻略状況は掲載できませんけどねー<br>
-     でも、思い出全集ページを作ってみました！</p>
 
    </div>
   </section>
