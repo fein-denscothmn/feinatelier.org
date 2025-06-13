@@ -19,10 +19,13 @@
  <link rel="stylesheet" type="text/css" href="/css/menu.css">
  <link rel="stylesheet" type="text/css" href="/css/flower.css">
  <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
  <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
  <script src="/script/underline.js"></script>
  <script src="/script/feinfade.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
  <script src="/script/feinScroll.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +145,26 @@
    </div>
   </section>
 
+
+  <h2>旧Twitterで活動していた頃の作品</h2>
+  <p>アナザーエデンというスマホゲームにハマり、Twitterアカウントを作りました。<br>
+   その頃にゲーム界隈向けに魚釣りの紹介とか、そういったことをしていたのですよ。<br>
+   ゲーム界隈向けだけども、思い出の品々です。</p>
+  <hr>
+
+  <p><a href="/another-eden/fein_report/おさかな３匹.pdf">おさかな３匹.pdf</a> はTwitterのプロフィール画像に使ってたやつ。<br>
+   ウツボ・カマス・トウゴロウイワシです。</p>
+  <div class="pdf-list-add">
+   <button class="pdf-link-add" data-url="/another-eden/fein_report/おさかな３匹.pdf">おさかな３匹.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
 
   <!-- ●ここから人間用のフッター● -->
   <hr id="feinhr">
