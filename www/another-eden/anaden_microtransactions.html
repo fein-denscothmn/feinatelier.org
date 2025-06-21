@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <!-- 基本のメタ情報 -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- タイトル -->
+ <title>スマホゲームのガチャが心配な方でもアナデンなら？！</title>
+
+ <!-- マニフェスト -->
+ <link rel="manifest" href="/manifest.json">
+
+ <!-- 基本のメタタグ -->
+ <meta name="description" content="アナザーエデンの最推しキャラ、フィーネについて書いてます。">
+ <meta name="keywords" content="アナザーエデン, 最推しキャラ, フィーネ">
+ <meta name="robots" content="index, follow">
+
+ <!-- OG タグ -->
+ <meta property="og:title" content="スマホゲームのガチャが心配な方でもアナデンなら？！">
+ <meta property="og:description" content="アナザーエデンの最推しキャラ、フィーネについて書いてます。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/microtransactions.html">
+
+ <!-- 構造化データ -->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "スマホゲームのガチャが心配な方でもアナデンなら？！",
+  "url": "https://feinatelier.org/another-eden/microtransactions.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+}
+  </script>
+
+ <!-- Google Fonts 用の preconnect -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+ <!-- Google Fonts -->
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ファビコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- CSS スタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+ <!-- サービスワーカー登録 -->
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoft tag -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- その他の JavaScript -->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="/script/paintimg.js" defer></script>
+ <!-- gsap の読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">スマホゲームのガチャが心配な方でもアナデンなら？！</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/サブスク拡大.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="スマホゲームのガチャが心配な方でもアナデンなら？！の目次を開く ▼"
+   data-close-text="スマホゲームのガチャが心配な方でもアナデンなら？！の目次を閉じる ▲">スマホゲームのガチャが心配な方でもアナデンなら？！の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>スマホゲームのガチャが心配な方でもアナデンなら？！</span></h1>
+
+  <div class="art-container">
+   <figure class="art-frame">
+    <img src="/another-eden/anaimage/ガチャの様子.jpg" alt="ガチャの様子" class="art-image">
+    <figcaption class="art-caption">節度を保てば楽しい♪</figcaption>
+   </figure>
+   <div class="art-description">
+    <p>アナザーエデンを始めてみたいけど、スマホゲームのガチャが不安…<br>
+     そういうお気持ちがあるのも頷けますよ。</p>
+
+    <p>結論から言うと、私は俗に言うところの「微課金ユーザー」です。<br>
+     その状態でずーっと8年間もの間、アナザーエデンを続けています。<br>
+     大丈夫ですよ。<br>
+     高額なガチャ費用をかけずとも、十分に楽しめます！</p>
+   </div>
+  </div>
+
+  <h2>少しの課金を容認できるならサブスクへ</h2>
+  <div class="art-container">
+   <figure class="art-frame">
+    <img src="/another-eden/anaimage/サブスク案内.jpg" alt="サブスク案内" class="art-image">
+    <figcaption class="art-caption">左上に加入中とあるやつ</figcaption>
+   </figure>
+   <div class="art-description">
+    <p>アナザーエデンにはサブスクが用意されています。<br>
+     継続プレミアムサービスの「星天の導証」と「大地の導証」です。<br>
+     よくある、様々な特典が受けられる自動更新の月額有料サービスですね。<br>
+     お値段は次の通り。</p>
+
+    <ul>
+     <li>星天の導証（3900円/月(税込)）</li>
+     <li>大地の導証（600円/月(税込)）</li>
+    </ul>
+
+    <p>公式サイトの説明で最も詳しいのは<a href="https://wp.another-eden.jp/index.php/news/20201029/">【iOS版/Android版】Ver 2.7.0
+      アップデート</a>の下部にある説明文ですが、お金がかかることですから、ゲーム内部の説明書をよーく読んで決めましょう。</p>
+   </div>
+  </div>
+
+  <p>もちろんライブサービスゲームですから、これだけでは勝てない強敵とか登場しちゃう可能性もありますが。<br>
+   それはそれ。これはこれ。<br>
+   ムキになることなく、一つの素晴らしい作品として、アナザーエデンを楽しんで頂ければと思います。</p>
+
+  <h2>もうちょっと課金しても良いなら公式WEBショップも</h2>
+  <div class="art-container">
+   <figure class="art-frame">
+    <img src="/another-eden/anaimage/公式WEBショップ.jpg" alt="公式WEBショップ" class="art-image">
+    <figcaption class="art-caption">シンプルで見やすい</figcaption>
+   </figure>
+   <div class="art-description">
+
+    <p>人によっては、ゲームに毎月数万円かけても良いとお考えの方もいるでしょう。<br>
+     私は魚釣りにけっこうなお金をかけているし、そもそもITの勉強と資格試験に何十万円も使ってきました。</p>
+
+    <p>上記でご紹介したサブスク以上の出費も容認できるなら、<a herf="https://payment.another-eden.jp/">クロノスの石 公式WEBショップ</a> を使ってゲーム内通貨を購入しましょう。<br>
+     ゲーム内部にある購入システムより、こちらのほうがお得なんです！<br>
+     私もお小遣いに余裕がある時など、たまに使わせてもらってます。</p>
+
+    <p>あとは…<br>
+     これは余談ですが、コロナやインフルエンザが流行っているタイミングとか。<br>
+     そういう時はアナデンにちょいちょい課金して遊んでたりしましたね。<br>
+     無理に外出するより、ゲームに課金して自宅にいる方が賢明だろうなーって当時は思っていたから。</p>
+
+    <p>これはぼんやりした記憶なのですが…<br>
+     コロナの頃はアナデン運営からもいろんなサービスがありましたよ。<br>
+     家で遊ぼうとか何とか。<br>
+     とても好感が持てました✨</p>
+
+   </div>
+  </div>
+
+  <h3>ゲームへの課金はよく考えてね？</h3>
+  <div class="art-container">
+   <figure class="art-frame">
+    <img src="/another-eden/anaimage/公式WEBショップ購入後.jpg" alt="公式WEBショップ購入後" class="art-image">
+    <figcaption class="art-caption">楽しいRPGですよ？</figcaption>
+   </figure>
+   <div class="art-description">
+
+    <p>ガチャへの課金はしばしば、大きな問題ないし議論となることがあります。<br>
+     私からは次のような資料をご紹介できますね。</p>
+
+    <p>内閣府ホーム &gt; 活動・白書等 &gt; 審議会・懇談会等 &gt; 消費者委員会 &gt; 委員会本会議資料・議事録 &gt; 2016年 と辿って頂くと、<a
+      href="https://www.cao.go.jp/consumer/iinkai/2016/230/shiryou/index.html">第230回 消費者委員会本会議</a> というページに着きます。<br>
+     そこにはいろいろ資料がありますが、例えば<a href="https://www.cao.go.jp/consumer/iinkai/2016/230/doc/20160802_shiryou2.pdf">【資料２】
+      スマートフォンゲームをめぐる高額課金問題等に対する視点と解決の方向性（PDF形式：342KB）</a>という資料があります。<br>
+     この資料によれば、課金経験者のうち約62.8%が月1,500円以下、1万円以上課金している人は全体の約5.5% というデータがあります。</p>
+
+    <p>このことから、月々数千円程度を一般的な範囲と考えて良さそうですよ？<br>
+     私自身もそう考えています。<br>
+     上述したサブスク程度であれば、この一般的な範囲に収まります。</p>
+
+   </div>
+  </div>
+
+  <h4>現役ユーザーのアンケートも掲載</h4>
+
+  <div class="art-container">
+   <figure class="art-frame">
+    <img src="/another-eden/anaimage/スウィートレディ.jpg" alt="スウィートレディ" class="art-image">
+    <figcaption class="art-caption">私が好きなキャラ！</figcaption>
+   </figure>
+   <div class="art-description">
+    <p>では、次にアナデン現役ユーザーの声を集めてみましょう！<br>
+     この下にアンケートがあるので、よろしければポチポチっと選んでみてください。<br>
+     票が集まり次第、集計結果をこのページに掲載します。</p>
+
+    <p>アナザーエデンを知らない人にとって「星導覚醒」というのは馴染みがない言葉だと思います。<br>
+     簡単に言うと、普通のレアキャラより、さらなる上のレアキャラが登場しましたという意味ですね。<br>
+     当然のことながら多くの人が欲しがるわけですが、お財布事情というものもございます。</p>
+
+    <p>みんなはどうしてるのかな…<br>
+     こういうのが気になるのも人情というもの。<br>
+     アンケートでみんなの声を集め、それを例えばグラフにしてみたりとか！<br>
+     腹の探り合いではなく、みんなで見て楽しんで頂けるような。<br>
+     そういうコーナーにしていこうかと思います。</p>
+
+   </div>
+  </div>
+
+  <div class="responsive-iframe-container">
+   <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdAI9rGQwwxhx09T5Qqfdzyk14Ch0n-0W5tckGbuTohkDzVXA/viewform?embedded=true"
+    class="responsive-iframe" frameborder="0" title="星導覚醒・課金意識アンケート" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+  </div>
+
+  <p>念のため説明しておくと、Googleのフォーム機能を使っています。<br>
+   Googleアカウントにログインした状態だと、貴方のGmailアドレスが表示されます。<br>
+   しかし、そのEメールアドレスは私に送信されないのでご安心ください。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/microtransactions.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
