@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoft tag -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <meta charset="UTF-8">
+
+ <!--基本のメタタグ-->
+ <meta name="description" content="cloudflareのpay-per-crawlを解説しています。AIに料金を請求できたら理想的ですね。">
+ <meta name="keywords" content="個人サイト, cloudflare, AI">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="アクセス課金とWebの設計 ～ AIクローラー課金モデル ～">
+ <meta property="og:description" content="cloudflareのpay-per-crawlを解説しています。AIに料金を請求できたら理想的ですね。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/aipay.html">
+
+ <!--検索ヒット時のアイコン-->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "アクセス課金とWebの設計 ～ AIクローラー課金モデル ～",
+  "url": "https://feinatelier.org/contents/aipay.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+}
+</script>
+
+ <!--レスポンシブデザイン-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!--CSS-->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+ <!--JavaScript-->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <!-- gsapの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <!-- prismの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+
+ <!-- google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!--ページタイトル-->
+ <title>アクセス課金とWebの設計 ～ AIクローラー課金モデル ～</title>
+
+ <!--ASノーナのファビコン-->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">アクセス課金とWebの設計 ～ AIクローラー課金モデル ～</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="アクセス課金とWebの設計 ～ AIクローラー課金モデル ～の目次を開く ▼"
+   data-close-text="アクセス課金とWebの設計 ～ AIクローラー課金モデル ～の目次を閉じる ▲">アクセス課金とWebの設計 ～ AIクローラー課金モデル ～の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>アクセス課金とWebの設計 ～ AIクローラー課金モデル ～</span></h1>
+  <p>Cloudflare 公式ブログ記事 <a href="https://blog.cloudflare.com/introducing-pay-per-crawl/" target="_blank"
+    rel="noopener">「Introducing pay per crawl: enabling content owners to charge AI crawlers for access（Pay per
+    crawl：AIクローラーへのアクセスに課金できる新しい仕組みの紹介）」</a>は実に興味深いですね。<br>
+   このWebページでは、このブログ記事を元に、AIに課金させる仕組みについて考えていきます。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_51.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>AIがネット上の情報を読み取り・収集（クロール）する際、その情報を提供している人たちが無料ではなく、対価を得られるようにする取り組みです。<br>
+    著作権や情報の価値についての新しい考え方が反映された動きとも言えそうです。</p>
+
+   <p>今のウェブでは、AIが勝手に情報を集めていくか、完全に拒否するかの両極端な選択になっているように思えます。<br>
+    でも、Cloudflareは制作者自身が自由にアクセスのルールを決めて報酬も得られる仕組みをつくろうとしている。<br>
+    AIに使わせる代わりに、収益が得られる道を模索しているというわけです。</p>
+  </div>
+
+  <p>イラストに限らず、AIからコンテンツを守りたいとお考えの方は、このページと併せて<a
+    href="/contents/protect.html">X（旧：Twitter）のAIからイラストなどを守る試み</a>をご覧いただけると良いでしょう。</p>
+
+  <h2>AI推進派 VS AI規制派のお話</h2>
+  <p>SNSで繰り広げられている論戦ですね。<br>
+   このページで紹介するのは、AIクローラーへのアクセスに課金できる新しい仕組み、特に技術的な説明です。<br>
+   私自身は現在のAI学習問題に対して、<a href="/contents/x_exoduslink.html">個人サイトのリンク掲載をご希望の方へ</a> にあるような考え方を持っています。<br>
+   ご興味があればご覧ください。</p>
+
+  <p>また、今はCloudflare公式ブログ記事の技術説明に留めますが、今後もこのページに続々と情報を追加していく予定です。</p>
+
+  <h2>AIがアクセスするたびに支払いを求めるPay per
+   crawl</h2>
+  <p>これまではAIが情報を集めにくるとき、拒否するかタダで渡すしか選べませんでしたね。<br>
+   しかしCloudflareはアクセスにお金を請求するという新たな方法を提案しています。<br>
+   そのために、昔あったけど使われなくなっていたHTTPステータスコード402という仕組みを使おうとしているのです。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_52.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>「Pay per
+    crawl（クローラーごとの課金）」は、AIがウェブの情報にアクセスするとき、そのたびに支払いを求める仕組みです。<br>
+    Cloudflareはこの新しい仕組みを構築中で、昔からあるHTTPステータスコード（特に未使用だった402支払い要求）と、認証の仕組みを組み合わせて、アクセスごとの課金を実現しています。
+   </p>
+
+   <p>AIクローラーが情報を取りに来るとき、ちゃんと支払いの情報を送れば「OK（HTTP 200）」になるし、送らなければ「支払いが必要」という通知（HTTP 402）を受け取ることになります。<br>
+    Cloudflareはこの取引の管理役も担っており、裏側の仕組みも提供しています。</p>
+  </div>
+
+  <h3>Web課金モデルにおけるパブリッシャーとは？</h3>
+  <p>ここで、新しい用語の説明をしておきます。<br>
+   「パブリッシャー」とはなんでしょうか？</p>
+
+  <p>
+   このWebページにおけるパブリッシャー（publisher）とは、
+   Web上で情報やコンテンツを公開し、それに価値をつけて提供している個人または団体のことを指します。<br>
+   AIクローラーやエージェントがアクセスする対象のWebページやリソースの所有者・管理者にあたります。
+  </p>
+
+  <p>パブリッシャーの主な役割は、次のようなものがあるでしょう。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_53.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>コンテンツ提供者</dt>
+    <dd>AIがアクセスする記事、API、画像、動画などの情報を公開している存在。</dd>
+
+    <dt>課金対象の設定者</dt>
+    <dd>ページやファイルに対して「この情報には○ドル支払ってほしい」と価格を設定できる。</dd>
+
+    <dt>利益の受け取り手</dt>
+    <dd>AIクローラーが課金リクエストに応じてコンテンツ取得した際、収益が分配される対象となる。</dd>
+
+    <dt>自身の資産管理者</dt>
+    <dd>課金対象や価格帯、どのAIにアクセスを許可するかなどを制御する責任者。</dd>
+   </dl>
+
+  </div>
+
+  <p>もうちょっと分かりやすく具体例を挙げてみますね。</p>
+  <ul>
+   <li>技術ブログを運営している個人開発者</li>
+   <li>学術論文データベースを提供する大学機関</li>
+   <li>ニュースメディアサイトを運営する企業</li>
+   <li>有料APIやリサーチツールを提供するスタートアップ</li>
+   <li>高品質な画像を販売・配信するクリエイター</li>
+  </ul>
+  <p>これらすべてが、情報価値に応じて収益を得る「パブリッシャー」に該当します。</p>
+
+  <p>パブリッシャーは単なる情報提供者ではなく、デジタル経済の主体としてコンテンツに価格をつけ、アクセスに対して取引を行う立場になります。</p>
+
+  <h2>パブリッシャーが行う制御と価格設定</h2>
+  <p>「Pay per
+   crawl（クローラー単位の課金）」は、ドメイン所有者にコンテンツ収益化戦略の完全なコントロールを提供します。<br>
+   サイト全体に対して一律のリクエスト単価を設定することができる。<br>
+   パブリッシャーは、クローラーに対して以下の3つの選択肢を持ちます。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_54.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>許可（Allow）</dt>
+    <dd>コンテンツへの無料アクセスを許可する</dd>
+
+    <dt>課金（Charge）</dt>
+    <dd>サイト全体で設定した価格に基づき、アクセスに課金する</dd>
+
+    <dt>拒否（Block）</dt>
+    <dd>完全にアクセスを拒否し、支払いの選択肢も与えない</dd>
+   </dl>
+
+   <p>
+    Cloudflareでは、AIクローラーに対して「アクセスを許可する」「課金する」「拒否する」といった動作を設定できます。<br>
+    ただし、こうした動作を決める前に、まずは各サイトがすでに導入しているセキュリティ対策が適用されます。
+   </p>
+
+  </div>
+
+  <p>
+   その代表的な仕組みがWAFポリシー（Web Application Firewallポリシー）です。
+  </p>
+
+  <h3>WAFポリシーとは？</h3>
+  <p>WAFポリシーとは、Webサイトを守るための「防御ルールのセット」です。<br>
+   たとえば、次のようなものがあるでしょう。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_55.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <ul>
+    <li>不正なアクセスや攻撃（SQLインジェクション、クロスサイトスクリプティングなど）を検知・遮断する</li>
+    <li>特定のIPアドレスやボットからのアクセスをブロックする</li>
+    <li>ページごとに異なるセキュリティレベルを設定する</li>
+   </ul>
+   <p>
+    Cloudflareでは、こうしたWAFポリシーを使って、まず「安全なアクセスかどうか」をチェックします。<br>
+    その後に課金ルールが適用されるということになる。<br>
+    WAFポリシーで問題がないと判断されたアクセスだけが、次に「Pay per crawl」のルールエンジンに渡されるってことですね。<br>
+    そこで初めて、「このアクセスは無料で許可するか？課金するか？拒否するか？」という判断が行われます。
+   </p>
+
+  </div>
+
+  <p>
+   つまり、Cloudflareは <strong>既存のセキュリティ設定を尊重したうえで、課金ルールを追加する</strong> という設計になっているのです。<br>
+   処理フローにすると、次の通りです。
+  </p>
+
+  <ol>
+   <li>WAFポリシーで安全性チェック</li>
+   <li>問題なければ課金ルールへ</li>
+   <li>Allow / Charge / Block を判定</li>
+  </ol>
+
+  <p>サイト運営者は「AIクローラーへの対応」を細かく設定できるようになります。<br>
+   無料で見せるか、アクセスごとに料金を請求するか、それとも完全に拒否するかを選べる。<br>
+   さらに、まだCloudflareと契約していないクローラーに対しても「課金する」選択が可能で、その場合は、コンテンツは返さずに「将来的に契約すれば見せる可能性がある」というサインを送れる。<br>
+   既存のセキュリティ設定にも配慮した仕組みで、柔軟な運用ができる設計になっているのです。</p>
+
+  <h3>HTTP 402 Payment Required について</h3>
+  <p>HTTP 402 は、Web上のコンテンツに価格をつけて流通させる「情報経済」の基盤として再注目されていますね。<br>
+   特に AI やエージェントが自律的に情報を取得・支払う未来において、プログラム的な課金交渉のトリガーとして活用される可能性です。</p>
+
+  <p>基本的な部分に絞って概要を書いてみましょう。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_56.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>名称</dt>
+    <dd>Payment Required（支払いが必要）</dd>
+
+    <dt>分類</dt>
+    <dd>クライアントエラー（4xx系）</dd>
+
+    <dt>目的</dt>
+    <dd>対象のコンテンツを取得するには課金が必要であることを示す</dd>
+
+    <dt>仕様上の扱い</dt>
+    <dd>将来の利用のために予約されており、標準化はされていないが一部のサービスで利用され始めている</dd>
+   </dl>
+
+   <p>HTTP 402 Payment Requiredは、1997年に RFC 2068 にてマイクロペイメント向けとして登場しました。<br>
+    その後、Cloudflare などが AI クローラー向け課金応答に活用するなど、実用例が広がりつつあります。<br>
+    Cloudflareの「Pay per crawl」とは、AIクローラーが有料コンテンツにアクセスした際、HTTP 402と価格ヘッダーを返す仕組みです。<br>
+    また、決済APIでの通知にも使えますね。<br>
+    残高不足や支払い失敗時に HTTP 402 を返すことでエラー原因を明示するという。</p>
+
+  </div>
+
+  <p>しかし、現在は標準化されていないため明確な仕様がなく、サービスごとに挙動や意味が異なる可能性があります。<br>
+   多くのブラウザが 402 を明示的に扱わず、通常のエラーとして処理するかもしれません。<br>
+   加えてエンドユーザーには意味が伝わりにくく、UI設計上の工夫が必要です。<br>
+   現状、出来合いのWebサービスに乗っかる形のコンテンツでは、利用できないと見て良いでしょう。</p>
+
+  <p>将来的な可能性として、情報経済のトリガーになるよね。<br>
+   Web上の情報に価格をつけ、収益化する新しい基盤として期待できる。<br>
+   知的なAIエージェントが自律的に情報を収集・支払う未来において、中核となる仕組みとして活用される可能性があります。</p>
+
+  <h3>Pay per crawl ヘッダーの仕様について</h3>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_57.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>ここいらへんで、そろそろコードについても触れていきたいです。
+    crawler-price ヘッダーとcrawler-charged ヘッダーに分けて書いていきましょう。</p>
+
+   <p>このWebページにおける以下のコードは、Cloudflare 公式ブログ記事 <a href="https://blog.cloudflare.com/introducing-pay-per-crawl/"
+     target="_blank" rel="noopener">「Introducing pay per crawl: enabling content owners to charge AI crawlers for
+     access（Pay per
+     crawl：AIクローラーへのアクセスに課金できる新しい仕組みの紹介）」</a> から引用ないし参照しています。</p>
+
+  </div>
+
+  <h5>crawler-price ヘッダー</h5>
+  <div class="spacer"></div>
+  <div class="code-container">
+   <pre><code class="language-http">
+HTTP 402 Payment Required
+crawler-price: USD 0.05
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>コードの目的</dt>
+   <dd>有料コンテンツであることをクローラーに通知するための価格提示。</dd>
+
+   <dt>動作</dt>
+   <dd>AIクローラーが通常アクセスした結果、対象リソースが課金対象だった場合にCloudflareから返される。</dd>
+
+   <dt>返されるステータス</dt>
+   <dd>HTTP 402 Payment Required</dd>
+
+   <dt>値の形式</dt>
+   <dd>米ドル建ての課金額（例：USD 0.05）</dd>
+  </dl>
+
+
+  <h5>crawler-charged ヘッダー</h5>
+  <div class="spacer"></div>
+  <div class="code-container">
+   <pre><code class="language-http">
+HTTP 200 OK
+crawler-charged: USD 0.05
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>コードの目的</dt>
+   <dd>クローラーが支払いに合意し、課金が成立したことを示す。</dd>
+
+   <dt>動作</dt>
+   <dd>クローラーが支払い意思を示して再アクセスした結果、課金が受理されてコンテンツが提供されたときにCloudflareから返される。</dd>
+
+   <dt>返されるステータス</dt>
+   <dd>HTTP 200 OK</dd>
+
+   <dt>値の形式</dt>
+   <dd>実際に課金された金額（例：USD 0.05）</dd>
+  </dl>
+
+  <p>こんなところでしょうかね。<br>
+   まだ当Webサイトには導入していませんが、技術的な仕様面で調整が付いたら、アナザーエデン関連コンテンツ以外の部分には、積極的に導入していきます。</p>
+
+
+  <h2>AIクローラーとエージェントの違い</h2>
+  <p>ここでの「エージェント」とは、Webサイトを単にクロールするだけでなく、情報取得・判断・支払い・応答までを自律的にこなす高度なAIを指します。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_58.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>情報収集</dt>
+    <dd>AIクローラーと同様にWebから情報を取得する</dd>
+
+    <dt>理解・要約</dt>
+    <dd>収集した情報を文脈に合わせて処理・要約できる</dd>
+
+    <dt>支払い判断・実行</dt>
+    <dd>有料コンテンツに対して適切な価格かどうかを判断し、支払い処理を実行する</dd>
+
+    <dt>行動の自律性</dt>
+    <dd>ユーザーの目的に合わせて判断・交渉・実行を能動的に行う</dd>
+   </dl>
+
+   <p>AIクローラーとの違いを述べるなら、次のようになるでしょう。</p>
+
+  </div>
+
+  <dl>
+   <dt>AIクローラー</dt>
+   <dd>主に検索エンジンや学習用のデータ収集を目的とし、基本的には情報を一方的に取得するソフトウェア。</dd>
+
+   <dt>エージェント</dt>
+   <dd>情報を収集するだけでなく、コンテンツの価値を判断し、必要に応じて支払い、情報処理してユーザーに応答する存在。</dd>
+  </dl>
+
+  <p>続けて、AIクローラーとAIエージェントを比較してみます。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AIクローラーとAIエージェント</h3>
+    <table class="weapon-table">
+     <caption>AIクローラーとAIエージェント</caption>
+     <thead>
+      <tr class="weapon-table header-blue">
+       <th>項目</th>
+       <th>クローラー</th>
+       <th>エージェント</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>目的</td>
+       <td>インデックス作成やデータ収集</td>
+       <td>問題解決や知的支援</td>
+      </tr>
+      <tr>
+       <td>支払い能力</td>
+       <td>基本なし（課金応答に実験的対応）</td>
+       <td>課金判断・予算管理を持つ</td>
+      </tr>
+      <tr>
+       <td>処理能力</td>
+       <td>情報の収集のみ</td>
+       <td>取得・要約・判断・交渉・応答まで</td>
+      </tr>
+      <tr>
+       <td>利用者との関係</td>
+       <td>ユーザー介在なし</td>
+       <td>ユーザー代理として目的達成を支援</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   クローラーは「足を使って情報を拾う存在」、エージェントは「頭と財布を持って情報を交渉し取得する存在」と考えるとわかりやすいでしょう。<br>
+   Cloudflare の Pay per crawl
+   は、どちらかというとエージェントの方向を見据えた技術と言えます。
+  </p>
+
+  <h3>Pay per crawl によるAIクローラー課金の可能性</h3>
+
+  <p>Cloudflare が提案する <strong>「Pay per crawl（アクセスごとの課金）」</strong> が業界標準として広がった場合、Google や Microsoft、OpenAI といった企業が運用する
+   AI クローラーは、Web サイトから情報を取得するたびに制作者に「料金を支払う」仕組みが定着する可能性があります。</p>
+  <p>一方で、サイト制作者やクリエイターは、自らのコンテンツが価値ある情報源として認識されることで「収益を得られる」チャンスが生まれます。</p>
+
+  <p>ここで、課金の成立に必要な条件を見ていきます。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_59.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>課金対象ページであること</dt>
+    <dd>サイト運営者が課金対象として設定したページのみが料金請求の対象になります。</dd>
+
+    <dt>クローラー側の支払い合意</dt>
+    <dd>「この価格なら支払える」とクローラーが明示することで課金が成立します。意志がない場合は拒否されます。</dd>
+
+    <dt>柔軟な価格設定</dt>
+    <dd>課金額はコンテンツごとに設定可能であり、0.01ドル未満のマイクロペイメントも対応可能です。</dd>
+
+    <dt>インフラ側の支援</dt>
+    <dd>Cloudflare などのインフラが、トラッキング、課金処理、収益分配までの流れを管理します。</dd>
+   </dl>
+
+   <p>自分の脳と指でコンテンツを制作できる側の人々からすれば、収益拡大の可能性を模索することができますよね。<br>
+    企業がどれだけのページにクロールするか、<br>
+    ページがどれだけ価値あると判断されるか、<br>
+    サイト側が課金設定を的確に行っているか──<br>
+    この<strong>3つの掛け算</strong>によって支払い額は決まります。
+   </p>
+
+  </div>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_100.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>
+    例えば Google が Gemini を使って、1日あたり数十億ページにアクセスすると仮定すると、<br>
+    そのうち 1億ページが課金対象で、1ページあたり 0.01ドルだった場合、<br>
+    <strong>100万ドル以上/日</strong>という莫大な課金が発生する理論も成り立つということですよ。
+   </p>
+
+   <p>Webサイト制作者にとっては、「勝手に使われる」時代から、「認められて報酬が得られる」時代への転換点です。<br>
+    この価値経済の仕組みをさらに掘り下げると、<strong>価格の付け方、企業の対応、Web3との接点</strong>など、今以上に掘り下げた形での情報設計を考える必要があります。</p>
+
+  </div>
+
+  <h2>ヘッダーとアクセス制御を検討する</h2>
+  <p>AIクローラーに課金するには、「そのクローラーが本物である」ことを技術的に保証する必要があります。<br>
+   公式ブログを読むと、Cloudflareはその解決策として『Web Bot
+   Auth』という新しい認証技術を導入しました。<br>
+   クローラーは自分の公開鍵をネット上に置いて、それを使ってアクセス時に「署名付き」のリクエストを送る。<br>
+   これによって「誰なのか」が明確になり、安全に課金ができる仕組みが整う仕組みです。</p>
+
+  <p>ここで、公式ブログにあるコードを見てみましょう。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+GET /example.html
+Signature-Agent: "https://signature-agent.example.com"
+Signature-Input: sig2=("@authority" "signature-agent")
+;created=1735689600
+;keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U"
+;alg="ed25519"
+;expires=1735693200
+;nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4lAZYadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLElW1qg=="
+;tag="web-bot-auth"
+Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:
+
+</code></pre>
+  </div>
+
+  <p>これは AI クローラーが Web Bot Auth を使って自身の正当性を証明し、Cloudflare の「Pay per crawl」モデル下で安全にコンテンツへアクセスするための署名付きリクエスト例かと思われます。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_87.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>署名情報は鍵ペアを基にして生成されており、スプーフィング（なりすまし）を防ぐ仕組みになっていますね。<br>
+    各構成要素を、私なりに説明してみましょう。<br>
+    誤りがある可能性も十分にあるため、御自身でも入念に調べてください。</p>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">GET /example.html</span></dt>
+   <dd>アクセスしようとしている対象のリソース。</dd>
+
+   <dt><span class="codecolor">Signature-Agent</span></dt>
+   <dd>署名に使う公開鍵をホストしている URL。Cloudflare との事前登録が必要。</dd>
+
+   <dt><span class="codecolor">Signature-Input</span></dt>
+   <dd>署名対象のフィールドとパラメータを記述したヘッダー。</dd>
+
+   <dt><span class="codecolor">@authority</span></dt>
+   <dd>署名対象にホスト情報（ドメイン）を含める指定。</dd>
+
+   <dt><span class="codecolor">signature-agent</span></dt>
+   <dd>署名対象として Signature-Agent ヘッダーも含めることを指示。</dd>
+
+   <dt><span class="codecolor">created</span></dt>
+   <dd>署名が生成された時刻（UNIX タイムスタンプ形式）。</dd>
+
+   <dt><span class="codecolor">keyid</span></dt>
+   <dd>使用する Ed25519 公開鍵の識別子。</dd>
+
+   <dt><span class="codecolor">alg</span></dt>
+   <dd>署名アルゴリズム。ここでは <span class="codecolor">ed25519</span> を使用。</dd>
+
+   <dt><span class="codecolor">expires</span></dt>
+   <dd>この署名の有効期限（UNIX タイム）。</dd>
+
+   <dt><span class="codecolor">nonce</span></dt>
+   <dd>リプレイ攻撃を防ぐためのランダムな一意識別子。</dd>
+
+   <dt><span class="codecolor">tag</span></dt>
+   <dd>この署名が Web Bot Auth 方式に基づいていることを示すラベル。</dd>
+
+   <dt><span class="codecolor">Signature</span></dt>
+   <dd><span class="codecolor">Signature-Input</span> に含まれる情報群に対して生成された署名値（Base64 エンコード）。</dd>
+  </dl>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_99.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>このような署名付きアクセスリクエストは、クローラーが正規の存在であることをサーバーに証明し、コンテンツの安全な提供と課金処理の信頼性を確保するために不可欠かと思われます。<br>
+    とくに Pay per crawl においては、支払いの識別と保証の根幹となる仕組みであり、Web3的なアイデンティティと自己証明の技術とも通じるものです。</p>
+
+  </div>
+
+  <h4>Web3的思想 ─ 個体識別と自己証明の視点 ─</h4>
+  <p>これについても書いておいたほうがいいよね…<br>
+   可能な限り簡単な説明を試みます。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_88.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>Web3とは、これまでの中央集権的なインターネットの仕組みから脱却し、個人が自らの情報やアイデンティティを自由に管理できるようにするという思想です。<br>
+    GoogleやFacebookといった巨大プラットフォームがユーザーのデータを管理する従来のWeb2と異なり、Web3では「自分の情報は自分が持つ」という分散型の価値観が中心に据えられています。</p>
+
+   <p>その根本には「個体識別」と「自己証明」という2つの概念があります。</p>
+
+   <p>まず、個体識別（Decentralized Identifier,
+    DID）は、ユーザー自身が自ら発行できるIDの仕組みです。<br>
+    DIDは、特定の企業や組織に依存せず、ブロックチェーンなどの分散型ネットワーク上で自律的に識別を可能にします。<br>
+    たとえば「did:example:123456789abcdefghi」のような形で、自分だけのユニークな識別子が生成されるのです。</p>
+
+  </div>
+
+  <p>一方で、自己証明（Self-Sovereign Identity, SSI）は、誰かに頼ることなく自分の身元や属性を証明できる仕組みです。<br>
+   必要な情報だけを選び、その内容が信頼できるものであると証明可能な形式（Verifiable
+   Credential）で提示することができます。<br>
+   年齢確認の場面で「私は18歳以上です」とだけ証明したり、医療や金融の場面では必要最低限のデータだけを提示できる ── そんな柔軟性とプライバシー保護が、自己証明の最大のメリットです。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_89.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>この仕組みがあることで、個人情報は企業の手に委ねるのではなく、自分の手元で選択的に開示・共有できるようになります。<br>
+    SNSのログイン一つとっても、パスワードではなく「この人は本人です」とだけ証明すれば済む未来が、すでに現実になりつつあります。<br>
+    例えば、まだあまり一般的とは言えないまでも thirdweb Connect などが挙げられるでしょう。</p>
+
+   <p>このサービスでは、GoogleやAppleなどのアカウントでログインするだけで、Web3ウォレットが自動生成され、ユーザーは「本人性の証明」を済ませた状態でNFTの取得やブロックチェーンサービスの利用が可能になります。<br>
+    パスワードや秘密鍵の管理は不要で、ログイン体験は従来のSNSと変わらないほどシンプルです。</p>
+  </div>
+
+  <p>Web3的思想は、「情報の所有者は常に個人であるべき」という哲学に基づいています。<br>
+   コンテンツ、ID、資格情報 ── あらゆるものを自己主権的に扱える時代に向かう中で、「自分のWeb資産を守りたい」「価値ある情報を自分で制御したい」と考える人にとって、この考え方は極めて重要です。<br>
+   情報の価値設計やデジタルの持続性に関心がある方こそ、この動きの中心になれるかもしれませんね。</p>
+
+  <h2>有料コンテンツにアクセスする仕組み（Cloudflareのクローラー課金モデル）</h2>
+  <p>ウェブクローラー（検索エンジンやアグリゲーター）が有料のコンテンツにアクセスする際、Cloudflareでは以下の2つの方法で課金が行われます。</p>
+
+  <h4>１．リアクティブ方式（事後的な発見）</h4>
+  <p>まずクローラーが普通にコンテンツへアクセスしようとします。<br>
+   もしそのURLが課金対象の場合、Cloudflareから次のようなレスポンスが返ってきます。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+HTTP 402 Payment Required
+crawler-price: USD 5.00
+
+</code></pre>
+  </div>
+
+  <p><span class="codecolor">HTTP 402</span>は「支払いが必要です」という意味のステータスコード。<br>
+   <span class="codecolor">crawler-price</span>は「このページを見るにはいくらかかります」という通知。
+  </p>
+
+  <p>次に、クローラーはその料金を了承する形でリトライ（再リクエスト）します。<br>
+   その際に、以下のように<span class="codecolor">crawler-exact-price</span>というヘッダーを追加します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+GET /example.html
+crawler-exact-price: USD 5.00
+
+</code></pre>
+  </div>
+
+  <p><span class="codecolor">crawler-exact-price</span>は「この金額なら払います！」と宣言するもの。<br>
+   Cloudflareはそのリクエストが有効なら、ページを返して課金イベントをログに記録します。</p>
+
+  <h4>２．プロアクティブ方式（事前に上限金額を設定）</h4>
+  <p>この方法では、最初のリクエストに「この金額までなら払ってもいい」と伝えます。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+GET /example.html
+crawler-max-price: USD 4.00
+
+</code></pre>
+  </div>
+
+  <p>ここで、Cloudflare側が設定しているページの価格が $4.00 以下なら、次のような成功レスポンスが返ります。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+HTTP 200 OK
+crawler-charged: USD 3.50
+server: cloudflare
+
+</code></pre>
+  </div>
+
+  <p><span class="codecolor">crawler-charged</span>は実際に課金された金額を表します。<br>
+   クローラーが提示した上限より安ければ、安い方が適用されます。</p>
+
+  <p>ただし、もしページの価格が $6.00 のように提示上限より高かった場合は、再び以下のようなレスポンスが返ります。</p>
+
+  <div class="code-container">
+   <pre><code class="language-http">
+HTTP 402 Payment Required
+crawler-price: USD 6.00
+
+</code></pre>
+  </div>
+
+  <p>ここで、これらのヘッダーについてどのように使い分けるのか、表にしてみます。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">ヘッダーの使い分け表</h3>
+    <table class="weapon-table">
+     <caption>ヘッダーの使い分け表</caption>
+     <thead>
+      <tr class="weapon-table header-blue">
+       <th>ヘッダー名</th>
+       <th>目的</th>
+       <th>動作</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>crawler-price</td>
+       <td>ページの価格をクローラーへ通知</td>
+       <td>最初のアクセス時（リアクティブ方式）/td>
+      </tr>
+      <tr>
+       <td>crawler-exact-price</td>
+       <td>指定された価格で支払う意思</td>
+       <td>再リクエスト時</td>
+      </tr>
+      <tr>
+       <td>crawler-max-price</td>
+       <td>最大限支払える価格を提示</td>
+       <td>最初から支払い意思あり（プロアクティブ方式）</td>
+      </tr>
+      <tr>
+       <td>crawler-charged</td>
+       <td>実際に課金された金額</td>
+       <td>成功時のレスポンス</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>こうした仕組みは、クローラーが価格を確認しながら柔軟に課金付きコンテンツへアクセスできるようにするためのもので、Web3的な考えに近い「マイクロペイメント」にも通じていますね。</p>
+
+  <h2>クローラー課金の仕組みとCloudflareによる決済処理</h2>
+  <p>原文が英語だからちょっとしんどい…<br>
+   まずは実際の流れを順に追ってみましょう。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_90.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <ol>
+    <li>クローラーが有料ページにアクセス</li>
+    <li>Cloudflareが「このアクセスには〇ドル課金された」と記録</li>
+    <li>月末などに、すべてのイベントを集計</li>
+    <li>クローラーに請求し、コンテンツ所有者に支払い</li>
+   </ol>
+
+   <p>有料コンテンツへのアクセスを制御するために、Cloudflareでは「クローラーによるアクセスに対する課金」機能が提供されています。<br>
+    この仕組みでは、コンテンツ所有者（Webサイト管理者）とクローラー運営者の双方が、Cloudflareのアカウント内で事前に課金設定を行っておく必要があります。<br>
+    ここがちょっと気になりますね。<br>
+    クローラー運営者も設定が必要になってくるから、何かで強制的に支払いが発生するか、支払いに了承しなければ弾けるようにしておくのが良いでしょう。<br>
+    支払いを行ったAIクローラーだけ通すようにしておくのです。</p>
+
+  </div>
+
+  <p>
+   たとえば、GoogleのようにWeb上の情報を収集するクローラーや、データ収集を行う企業は、「このページにアクセスするためならいくらまで払える」という上限を設定できます。<br>
+   一方で、有料ページの配信元となるWebサイトの運営者は「このページの閲覧には◯ドル必要」と価格を定めておきます。
+  </p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_91.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>こうした設定が終わると、実際のアクセス時にクローラーは支払い意思を示したうえで、認証付きリクエストを送信します。<br>
+    そして、Cloudflareがそのリクエストを受け取り、成功（HTTPステータス200番台）として処理された場合、レスポンスには
+    <span class="codecolor">crawler-charged</span>というヘッダーが付けられ、実際に課金された金額が記録されるのです。
+   </p>
+
+   <p>この一連のやり取りは「課金イベント」としてCloudflareが管理し、すべてのアクセスをログに残して集計します。<br>
+    月末などのタイミングでまとめて精算が行われ、クローラー運営者に利用料金が請求されると同時に、Webサイトの運営者には収益が分配されるという仕組みです。</p>
+
+  </div>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">各々の役割イメージ表</h3>
+    <table>
+     <caption>各々の役割イメージ表</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>役割</th>
+       <th>説明</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>クローラー運営者</td>
+       <td>ページを巡回して情報を集める人（企業）</td>
+      </tr>
+      <tr>
+       <td>コンテンツ所有者</td>
+       <td>有料コンテンツの配信元（Webサイト運営者）</td>
+      </tr>
+      <tr>
+       <td>Cloudflare</td>
+       <td>中間で課金処理やイベント集計を行うプラットフォーム</td>
+      </tr>
+      <tr>
+       <td>課金イベント</td>
+       <td>ページ閲覧に伴い、実際に請求が発生したログ</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>この仕組みは、機械同士の自動取引を可能にするもので、Web3時代の「価値に対する公平な支払い」の土台になりうるモデルでもあります。</p>
+
+
+  <h3>Pay per Crawl（閲覧ごと課金）は価値を守る新ルールになるか</h3>
+  <p>現在、私たちがWeb上で得ている情報は、検索エンジンやAIが「クローラー」と呼ばれるプログラムを使って自動収集しています。<br>
+   しかし、こうした収集が無料かつ無制限で行われることで、情報の価値が軽んじられることもあります。<br>
+   そこで注目されているのが、「Pay per Crawl（ペイ・パー・クロール）」という新しい仕組みです。</p>
+
+  <h4>コンテンツの価値をプログラムで管理する</h4>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_92.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>Pay per Crawlは、Webコンテンツの閲覧に対して「料金を設定できる仕組み」です。<br>
+    例えば、あるニュースサイトが「政治記事は無料だが、医療記事は100円」と設定することで、情報の希少性や重要度に応じて価格を決めることができます。<br>
+    これは、創作者やメディアが情報の価値を守りつつ、収益も得られる持続的なモデルの第一歩です。
+   </p>
+  </div>
+
+  <p>簡単に例えるなら「情報に電子チケットをつけるイメージ」でしょうか。<br>
+   コンテンツ提供者はより緻密な価格戦略を取ることができるようになります。</p>
+
+  <h4>技術的な土台であるHTTP 402</h4>
+  <p>この仕組みの鍵となるのが上述した「HTTP 402 Payment Required」というステータスコードですね。<br>
+   今まではほとんど使われていなかったこのコードを活用することで、「このページは有料です」とプログラムに伝えられるようになります。<br>
+   AIもクローラーも、このコードを見れば「支払いが必要」と判断できます。</p>
+
+  <p>Pay per
+   Crawlは、単なる課金モデルではないようです。<br>
+   少なくとも、<a href="https://blog.cloudflare.com/introducing-pay-per-crawl/" target="_blank" rel="noopener">Introducing pay
+    per crawl: enabling content owners to charge AI crawlers for
+    access</a> の原文を読んでいると、私にはそう思えます。<br>
+   情報の価値を守り、創作者が安心して質の高いコンテンツを提供できる仕組みが、定着するかもしれません。</p>
+
+  <h3>Pay per Crawlの導入とCloudflareの技術</h3>
+  <p>「Pay per
+   Crawl（ページ閲覧に対する課金）」は現在、プライベートベータとして提供されています。<br>
+   Webコンテンツへのアクセスに対して料金を支払いたいと考えているクローラー運営者、またはコンテンツに対して課金を導入したいと考えているクリエイターは、ぜひCloudflareに連絡してほしいと呼びかけられています。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_93.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>参加対象者は、次の通りです。</p>
+
+   <ul>
+    <li>クローラー（検索エンジンやAIエージェントなど）を運用している側で、コンテンツ取得に対して対価を支払う意志がある事業者</li>
+    <li>Webサイトやメディアを運営し、提供するコンテンツへのアクセスに課金を導入したいと考えるコンテンツ提供者</li>
+   </ul>
+
+   <p>要するにAI開発企業とコンテンツ提供者ってことですよ。<br>
+    前者が動かないと、AIに係る課題は前に進まないわけです。<br>
+    SNSで連日繰り広げられているAIとイラストレーターの口論も、終わることなく続くでしょう。</p>
+   <p>とはいったものの…どっちみちAIにコンテンツを食わせてやる義理もないのですから、「支払いなきAIクローラーはブロック」というサイトにしてしまって良いと思います。</p>
+
+  </div>
+
+  <p>すなわち、AIクローラーに対して金銭の支払いを求める選択肢を与えることができるということですね。<br>
+   どっちみちブロックする気マンマンなのであれば、AIクローラーに対してのみ、全ページ有償化設定をするイメージです。</p>
+
+  <p>詳細および申し込みは、以下のURLからアクセスできます。
+   <a href="https://www.cloudflare.com/paypercrawl-signup/">https://www.cloudflare.com/paypercrawl-signup/</a><br>
+   また、既存のエンタープライズ顧客は、担当のアカウントエグゼクティブに直接連絡することで参加が可能です。
+  </p>
+
+  <h4>CloudflareのConnectivity Cloud</h4>
+  <p>Cloudflareが展開する「Connectivity Cloud」は、次のように多様な機能を提供しています。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_97.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <ul>
+    <li>法人ネットワーク全体の保護</li>
+    <li>インターネット規模のアプリケーションの効率的な構築支援</li>
+    <li>Webサイトおよびインターネットアプリケーションの高速化</li>
+    <li>DDoS（分散型サービス妨害）攻撃の防御</li>
+    <li>外部からの侵入者（ハッカー）への対応</li>
+    <li>ゼロトラスト体制への移行支援（ネットワークの信頼性を前提としない設計）</li>
+   </ul>
+
+  </div>
+
+  <p>これらの機能は、企業・開発者がより安全かつスケーラブルなWebサービスを展開するための基盤として活用可能です。</p>
+
+  <h4>Cloudflareの無料アプリ</h4>
+  <p>Cloudflareは、Web通信の高速化と安全性向上を目的とした無料アプリを提供しています。<br>
+   任意のデバイスから <a href="https://1.1.1.1">1.1.1.1</a> へアクセスすることで、インターネットの接続速度とセキュリティを強化するDNSベースのアプリを利用開始できます。</p>
+
+  <h4>Cloudflareのミッション</h4>
+  <p>より良いインターネットの構築を目指すCloudflareのミッションや活動に興味がある方は、公式サイトを通じて理念を確認できます。<br>
+   また、技術職をはじめとした複数のポジションで採用活動も行われているようですね。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_98.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>このように、Pay per
+    Crawlは単なる技術的機能としてだけではなく、コンテンツの価値保全や健全なネット環境の構築に向けた一歩として位置づけられています。<br>
+    プロダクトの成長フェーズを見守ると同時に、必要に応じて参加・検討する価値のある取り組みと言えるでしょう。</p>
+
+   <p>参考サイト：👉Cloudflare 公式ブログ記事 <a href="https://blog.cloudflare.com/introducing-pay-per-crawl/" target="_blank"
+     rel="noopener">「Introducing pay per crawl: enabling content owners to charge AI crawlers for access（Pay per
+     crawl：AIクローラーへのアクセスに課金できる新しい仕組みの紹介）」</a></p>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/aipay.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
