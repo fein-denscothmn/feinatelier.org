@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8"> <!-- 文字セットは最初に配置 -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="アナザーエデンにある強敵やハイエンドコンテンツなどをまとめました。">
+ <meta name="keywords" content="アナザーエデン, 強敵, ハイエンドコンテンツ">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="アナザーエデンのシンボルフィッシュ「カマス」">
+ <meta property="og:description" content="アナザーエデンにある強敵やハイエンドコンテンツなどをまとめました。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_barracuda.html">
+
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/album.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <title>アナザーエデンのシンボルフィッシュ「カマス」</title>
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "アナザーエデンのシンボルフィッシュ「カマス」",
+  "url": "https://feinatelier.org/another-eden/anaden_barracuda.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+}
+  </script>
+
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/album.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">アナザーエデンのシンボルフィッシュ「カマス」</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="/script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/anaden_barracuda.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="アナザーエデンのシンボルフィッシュ「カマス」の目次を開く ▼"
+   data-close-text="アナザーエデンのシンボルフィッシュ「カマス」の目次を閉じる ▲">アナザーエデンのシンボルフィッシュ「カマス」の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+  <h1 class="background-waveimage-heading"><span>アナザーエデンのシンボルフィッシュ「カマス」</span></h1>
+
+  <p>現実の海でリアルのカマスを釣ったりしているのが、feinのアナザースタイル😆<br>
+   <a href="fein_report/アナザーエデンのシンボル魚、カマス（KMS）をリアルで釣る！.pdf">アナザーエデンのシンボル魚、カマス（KMS）をリアルで釣る！.pdf</a> なんてレポートも書きました。<br>
+   カマスを５匹。大きいメジナとウツボを１匹ずつ。<br>
+   このくらいの釣果がちょうど良い感じ。<br>
+   過不足なく、しばらくは美味しい磯魚料理を堪能できます。
+  </p>
+
+  <div class="pdf-list-add">
+   <button class="pdf-link-add"
+    data-url="fein_report/アナザーエデンのシンボル魚、カマス（KMS）をリアルで釣る！.pdf">アナザーエデンのシンボル魚、カマス（KMS）をリアルで釣る！.pdfを開く</button>
+  </div>
+  <div class="feinpdf-container-add addpdfhidden">
+   <div class="feinpdf-viewer-add"></div>
+   <div class="feinpdfcontrols-add">
+    <button class="prev-page-add">前のページへ</button>
+    <span>Page: <span class="page-num-add"></span> / <span class="page-count-add"></span></span>
+    <button class="next-page-add">次のページへ</button>
+   </div>
+  </div>
+
+  <h2>リアルのカマスはこんな魚</h2>
+  <p>カマスの群れって陸から写真撮影ができるほど近付いて来ることは少ないと思うんですよね。<br>
+   最低でも5、6mは先にいるから、スマホカメラじゃ写しにくい。<br>
+   でも今回は綺麗な写真が撮れたので載せてみようかと。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/カマスの群れ.png" alt="カマスの群れ" class="biggraphic fade-in-out">
+  </div>
+
+  <p>今度は夜間撮影もしてみたいですね。<br>
+   灯台なんかが近くにあると、銀色の鱗がキラキラ光ってとても綺麗です。<br>
+   この画像の上のほうに魚の群れが見えると思うのですが、これらが全部カマスです。<br>
+   小魚を追いかけて湾内にまで大群が突入してくるのですよ。<br>
+   冬なんか特に凄いね。<br>
+   海面のどこを見てもカマスだらけになってしまうことがあります。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/カマスとルアー.png" alt="カマスとルアー" class="biggraphic fade-in-out">
+  </div>
+
+  <p>とても獰猛な肉食魚です。<br>
+   いろんな釣り方があるだろうけど、私はメタルジグという硬質ルアーで釣ります。<br>
+   カマスは牙も鋭く、何匹も釣っているとルアーの塗装も剥げて傷だらけになってしまうんですよね。<br>
+   この写真にあるルアーもボロボロになってしまいました…</p>
+
+  <img src="/another-eden/anaimage/バルッシー馴染みの池.jpg" alt="バルッシー馴染みの池" class="graphic fade-in-out">
+
+  <p>これはアナデンの釣りに登場するボスです。<br>
+   リアルの魚釣りではこんなの釣れませんよ😆ww<br>
+   でも危ない魚はけっこういるよ？<br>
+   子供の頃ハオコゼの毒ヒレに刺されたことがあって、ギャン泣きした記憶があります。<br>
+   本物の毒だからさ、痛いなんてもんじゃないのですよ…</p>
+
+  <h2>リアル釣り人から見たライブサービスゲーム</h2>
+
+  <p>さぁて…ここからは、私のようなタイプの人物から見た、スマホゲーというものへの見解を書いてみましょうか。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/ソシャゲSNSアイコン.png" alt="ソシャゲSNSアイコン" class="graphic right-image fade-in-out">
+
+   <p>いわゆる「SNSを主たる活動フィールドとしているゲーマー」と呼ばれる人々と、私のようなタイプの人物とでは、ゲームに対する認識がそもそも根底から違うみたいなのです。<br>
+    認識…いや、取り組み方というべきなのか。</p>
+
+   <p>これはアナザーエデンの釣りで何度も議論が展開されているTwitterを見たときから感じてたんですよね。<br>
+    リアルで釣りをしている人間から見ると、ああいうのは本当に摩訶不思議かつ理解が困難な人間模様でした🤔💦<br>
+    SNSとてその場の空気というものがあるから、何とかその場では話を合わせられるよう努力をしたもんです😅</p>
+
+  </div>
+
+  <h5>ライブサービスゲームとリアルの時間が持つ密接な関係</h5>
+
+  <p>ライブサービスゲームはアプデがかかります。<br>
+   それと同時にSNSがある。<br>
+   これらの諸関係は、実に興味深いものがあるのですよ。<br>
+   ていうか、運営型のゲームを「ライブサービスゲーム」と呼ぶのですね！<br>
+   ヘブバンの生放送を聞いて始めて知りました。<br>
+   では、アナデンもヘブバンもライブサービスゲームということになるのでしょうか？<br>
+   ソーシャルゲームやらコンシューマーゲームやら、なんかいろいろあって混乱しちゃうよ😅</p>
+
+  <h5>ソシャゲ素人から見たライブサービスゲーム</h5>
+
+  <p>私はいわゆる「ソーシャルゲーム」というものをプレイしたことがありません。<br>
+   父の手ほどきでネトゲみたいなのをちょろっと試したことはあるけど、経済的に自立して家計を回し続ける能力を獲得するまで、ソシャゲへの課金は理由を問わず絶対禁止だと厳命されていました。<br>
+   だから本物の素人なんですよね。<br>
+   アナザーエデンを始めたときは場の空気感さえ理解してなかったのです。<br>
+   私がそんな感じだったから、運営があるゲームはソシャゲで、アナデンとかヘブバンみたいなソロRPGは競争要素をなくしたものなんだろうなー…というボヤッとした理解しかなかったのです。</p>
+
+  <p>でもTwitterをはじめとするSNSがあるから、擬似的な闘技場なりレース場だかが暗黙の形で用意されているムードになるんですね？！<br>
+   これはアナザーエデンの釣りゲームで、誰のどんなやり方が最も効率が良いかという競争を目の当たりにして得た知見です。<br>
+   アナザーエデンはソシャゲではないと聞いていたけど、あのSNSでの様相は実に興味深いものでした…😯<br>
+   どうやら…SNSによって、曖昧な形でのソーシャル性は辛うじて維持されているようなのです。─ 2023年7月、Twitterの弱体化でその曖昧な前提らしきものが壊れ始めていると、私は思っているんだけどね。 ─</p>
+
+  <p>そんな中でアナデンやヘブバンの「インフレ」や「緩和」という言葉を知り、なんとなく見えてきたものがあります。</p>
+
+
+  <h3>ライブサービスゲームを始めるタイミング</h3>
+
+  <p>そういう感じのSNSを眺めつつ、何かおもしろいゲームが始まっても様子を見ると遊びやすいのかもしれないと思ったんですよ。<br>
+   ライブサービスゲームを運営している会社がSNSリサーチをやっていないはずがないからね。<br>
+   例えば上の画像はアナザーエデンの異境というコンテンツです。<br>
+   この異境というコンテンツが登場当初は大変な難易度でさ！<br>
+   でも今となってはすっかり弱々しいエンドコンテンツとなってしまいました。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/異境バルオキー.png" alt="異境バルオキー" class="graphic right-image fade-in-out">
+
+   <p>度重なるインフレや緩和で過去の難易度はどこへやら？<br>
+    手ぶらで行けるハイキングコースみたいなノリでちょろりと周回できる。<br>
+    昔はクリアするだけで全力を出す必要があったんです。<br>
+    ヘブバンにも似たようなコンテンツはあるでしょう。<br>
+    そう考えていくとですよ？<br>
+    サービスが落ち着いてからやり始めたほうが、何かと得なんではないかと。<br>
+    そう感じたわけです。<br>
+    実際、この感覚は正しいだろうという確信があります。</p>
+
+  </div>
+
+  <h3>ライブサービスゲームは「他のユーザーより○○」がポイント</h3>
+
+  <p>ポイントというかね、売りとなる部分と言うべきなんだろうね。<br>
+   ライブサービスゲームで付加価値として販売されるのは、主に次の２つかと。</p>
+
+  <ul>
+   <li>他のユーザーより１日でも１時間でも早くクリアできる</li>
+   <li>他のユーザーより高い数値（ダメージや点数など）でクリアできる</li>
+  </ul>
+
+  <p>この「他のユーザーより」という部分がガチャになっていると思われます。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/アーデルハイド.png" alt="アーデルハイド" class="graphic right-image fade-in-out">
+
+   <p>そしてこういった「SNSを闘技場に見立てたユーザー同士の競争」を誘発するには、最新コンテンツを定期的に配信しなければ成立しないわけです。<br>
+    最新コンテンツを対象として「他のユーザーより」という部分をガチャにすることで売上が出ている。<br>
+    シューティングゲームとか、RPG以外のジャンルでライブサービスゲームってあるのでしょうか？<br>
+    聞いたことないけど。<br>
+    いずれにしても、RPGをライブサービスゲームという形で実施し、かつ売上を出し続けるにはインフレを避けては通れないはずです。<br>
+    だからアナザーエデンの異境もダメになったんだよ。</p>
+
+  </div>
+
+  <p>こういった一連の流れが、ライブサービスゲームが持つ特徴の一つと言って差し支えないでしょう。<br>
+   とするとですよ？<br>
+   これらの特徴とSNSとの相互関係を予め理解できていれば、他のユーザーから過剰な干渉を受けずに何年も一つのゲームを楽しみ続けることも可能だと…<br>
+   そう、リアル釣り人の私は考えているのです。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_barracuda.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
