@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>ヘブンバーンズレッドのファンページ</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="ヘブンバーンズレッドに心を動かされたひとりのファンが綴る感想と想い。言葉では語りきれない感情を、このページに込めました。">
+ <meta name="keywords" content="ヘブンバーンズレッド, WFS, 感想">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="ヘブンバーンズレッドのファンページ">
+ <meta property="og:description" content="ヘブンバーンズレッドに心を動かされたひとりのファンが綴る感想と想い。言葉では語りきれない感情を、このページに込めました。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/heavenburnsred_album.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/album.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ヘブンバーンズレッドのファンページ",
+      "url": "https://feinatelier.org/another-eden/heavenburnsred_album.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="/script/album.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">ヘブンバーンズレッドのファンページ</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/heavenburnsred/蒼井えりか_ヒカル・Mermaid Vacationホーム.png" alt="fein's personal site"
+     class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="ヘブンバーンズレッドのファンページの目次を開く ▼"
+   data-close-text="ヘブンバーンズレッドのファンページの目次を閉じる ▲">ヘブンバーンズレッドのファンページの目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>ヘブンバーンズレッドのファンページ</span></h1>
+
+  <p>アナデンにはアナデンの、ヘブバンにはヘブバンの良さがあります。<br>
+   ずっとアナザーエデンをやってきた身からすると、同じWFSの別のゲームというのが本当に新鮮ですね…<br>
+   でもなんとなく、アナデンと似たような雰囲気も感じたりする。<br>
+   このWebページでは、アナデンユーザーであるわたくしfeinが、ヘブンバーンズレッドの魅力を語ってみたいです！</p>
+
+  <h2>アナデンユーザー「fein」より、ヘブンバーンズレッドを愛する皆様へ</h2>
+  <p>真っ先にご挨拶から書きましょうか。<br>
+   私はスマホゲーというか、ガチャというシステムでさえアナザーエデンが初体験という、ゲーム業界素人です。<br>
+   でも素人なりにアナザーエデンに惚れ込んでずっと進めてきて、大きな目標を達成した後にヘブンバーンズレッドを始めました。</p>
+
+  <p>結果から先に書くと、ヘブンバーンズレッドを始めて良かったと思います😆<br>
+   復帰勢でもあるし進みは遅いけど、大いに楽しんでいます！<br>
+   久しぶりに起動してさっそくガチャしまくったのですが、なんかいろいろSSが引けましたよ。</p>
+
+  <!--アルバム１-->
+  <div class="feinalbum-container" id="feinalbum1">
+   <div class="feinalbum">
+    <div class="feinalbum-page">
+     <img src="/another-eden/anaimage/heavenburnsred/ヘブバンガチャ蒼井水着.png" alt="ヘブバンガチャ蒼井水着">
+    </div>
+
+    <div class="feinalbum-page">
+     <img src="/another-eden/anaimage/heavenburnsred/柊木梢_蒼きノクターン.png" alt="柊木梢_蒼きノクターン">
+    </div>
+
+    <div class="feinalbum-page">
+     <img src="/another-eden/anaimage/heavenburnsred/シャルロッタ・スコポフスカヤ_逆境に咲く華.png" alt="シャルロッタ・スコポフスカヤ_逆境に咲く華">
+    </div>
+
+    <div class="feinalbum-page">
+     <img src="/another-eden/anaimage/heavenburnsred/蒼井えりか_ヒカル・Mermaid Vacation.png" alt="蒼井えりか_ヒカル・Mermaid Vacation">
+    </div>
+
+   </div>
+   <button class="feinalbum-prev">前のページ</button>
+   <button class="feinalbum-next">次のページ</button>
+  </div>
+
+  <p>「シャルロッタ・スコポフスカヤ」と「蒼井えりか」が特に好きです。</p>
+
+  <h2>歌付きのBGMがすごくいい！</h2>
+  <p>ヘブバンの最初のボス戦だったかな？<br>
+   手塚司令官との戦闘がありましたよね？<br>
+   ここでいきなり刺さってしまって…<br>
+   歌が付いてるBGMって、RPGの戦闘に合うんですね？！<br>
+   こんなに没頭できるとは思わなかった。<br>
+   そういえばアナザーエデンでも歌が付いてる戦闘シーンがあって、そこでも同じように燃えたのを思い出しました。<br>
+   キャラの動きやセリフ、グラフィックもすごくいい。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/heavenburnsred/ヘブバン復帰パーティー編成.png" alt="ヘブバン復帰パーティー編成"
+    class="biggraphic fade-in-out">
+  </div>
+
+  <p>ていうか復帰直後、パーティー編成をどうやったら良いのかまったく分からなかったですね。<br>
+   なんかキャラをオプションみたいに付けられるようになっていて。<br>
+   これはどうしたらいいんだ？</p>
+
+  <h2>まるでアニメを見ているようです</h2>
+  <p>そう感じたんですよ。<br>
+   まるでアニメを見ているみたいだなって。<br>
+   BGMとキャラの掛け声、戦闘に係る動きとか、いろいろBGMとぴったり息が合うというか。<br>
+   そういう要素が合わさってゲームをしていることを忘れさせるような、そういう没入感があります。<br>
+   アナデンに比べて戦闘がシンプルな仕組みになっているようで、そこもまた良い影響があるのでは？！<br>
+   アナデンの戦闘も迫力があって緊張感があります。<br>
+   同時に、ヘブバンの戦闘も没入感があるんです。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/heavenburnsred/ロータリーモール.png" alt="ロータリーモール" class="biggraphic fade-in-out">
+  </div>
+
+  <p>ロータリーモール戦なんか最高だった。<br>
+   星の墓標だっけ？<br>
+   今のところ一番好きなBGMですね。</p>
+
+  <h2>アナデンとヘブバンで、優劣を付けたくないです</h2>
+  <p>どっちも違った魅力があるんだよ。<br>
+   あらゆる優れた要素を取り込んだゲームなんか存在しないんだからさ。<br>
+   私は俗に言うところの「ゲーム批評家」ではありません。<br>
+   そういうの、おもしろい話と思わないし🥱</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/heavenburnsred/柊木梢_プールサイド・モーメントスキル.png" alt="柊木梢_プールサイド・モーメントスキル"
+    class="biggraphic fade-in-out">
+  </div>
+
+  <p>そういうんじゃなく、私がここで書いてるのは単純に自分がヘブバンをやっててどう感じたのか。<br>
+   そこを書きたいと思って、このWebページを作りました。<br>
+   ヘブバンの歌付きBGMに惚れ込んじゃったんだよね。<br>
+   それとキャラの動きが合わさって、マジでアニメのワンシーンみたいに思える。</p>
+
+  <h2>アナザーエデンとヘブンバーンズレッドのコラボ希望！</h2>
+  <p>私はもともとアニメやゲームの業界にいた人間ではないから、昔のいろんなゲーム等をよく知らないです。<br>
+   今だってアナザーエデンとヘブンバーンズレッド、2つしかやってないもの。<br>
+   どっちもWFSのスマホゲームです。<br>
+   この2作品はコラボしないのでしょうか？</p>
+  <div class="content">
+   <img src="/another-eden/anaimage/heavenburnsred/サマータイムな無人島はバカンスでジャーニー.png" alt="サマータイムな無人島はバカンスでジャーニー"
+    class="biggraphic fade-in-out">
+  </div>
+
+  <p>このセリフなんか、アナデンとの親和性を強調しているように感じちゃうのですが？！<br>
+   ダメかなぁ…<br>
+   ヘブバン側はちょっと分からないけど、アナデン側でヘブバンのキャラをお招きするのは難しくないと思うんだけどな。<br>
+   時空の穴を使えば何でもイケるでしょ！</p>
+
+  <p class="feintag">まだまだ追記していく予定！</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/heavenburnsred_album.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
