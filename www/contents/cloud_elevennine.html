@@ -220,6 +220,38 @@
   </div>
   <p>耐久性は全て99.999999999%です。</p>
 
+  <h4>AWS S3（オブジェクトストレージと多層的な保護機構）</h4>
+  <p>
+   Amazon S3は、99.999999999%の耐久性を誇るオブジェクトストレージであり、通信・データ保護の観点から多層的なセキュリティ機能が組み込まれています。<br>
+   通信経路ではTLSによる暗号化が標準で、保存時にはサーバー側暗号化（SSE-S3, SSE-KMS, SSE-C）やクライアント側暗号化が選択可能です。<br>
+   データの整合性はチェックサム（SHA-256, CRC32など）で検証され、S3 Object LockによるWORM（Write Once Read Many）保護も可能です。<br>
+   アクセス制御はIAMポリシー、バケットポリシー、ACL、VPCエンドポイント、S3 Block Public Accessなどが併用され、きめ細かな制御が可能です。<br>
+   さらに、GuardDuty Malware Protection for
+   S3により、アップロードされたオブジェクトのマルウェアスキャンが自動化され、タグベースのアクセス制御（TBAC）と連携したブロックポリシーも構成可能です。<br>
+   バージョニングやクロスリージョンレプリケーション（CRR）による冗長性確保、CloudTrailによる操作監査、MacieによるPII検出など、プライバシー保護と可視性の両立が図られています。
+  </p>
+
+  <h4>GCP Cloud Storage（DLPとIAMによるコンテンツベース保護）</h4>
+  <p>
+   Google Cloud Storageは、RESTful
+   APIベースのオブジェクトストレージであり、通信はHTTPS/TLSで暗号化され、保存時にはGoogle管理鍵（GMEK）または顧客管理鍵（CMEK）による暗号化が適用されます。<br>
+   IAMロールによるアクセス制御に加え、VPC Service Controlsで境界ベースの制限が可能です。<br>
+   特筆すべきはSensitive Data Protection（旧Cloud DLP）との連携で、バケット内のオブジェクトをスキャンし、PIIや機密情報を検出・分類・マスキングできます。<br>
+   検出結果はSecurity Command CenterやBigQueryに連携可能で、リスクレベルやinfoTypeに基づくポリシー適用が可能です。<br>
+   また、Object Lifecycle Managementにより、非アクティブなオブジェクトの自動削除やストレージクラス移行が可能で、データ保持ポリシーとの整合性も担保されます。<br>
+   CDPA（Cloud Data Processing Addendum）により、EU GDPRやHIPAAなどの法令準拠もサポートされ、プライバシー保護の基盤として機能します。
+  </p>
+
+  <h4>Azure Blob Storage（バージョン管理と不変ポリシーによる保護）</h4>
+  <p>
+   Azure Blob Storageは、階層型名前空間を持つオブジェクトストレージであり、TLSによる通信暗号化と、保存時のサーバー側暗号化（Microsoft管理鍵または顧客管理鍵）を提供します。<br>
+   アクセス制御はRBAC、ABAC、ACL、SAS（Shared Access Signature）など多様で、きめ細かな制御が可能です。<br>
+   データ保護機能として、Blob Versioningによる自動バージョン生成、Soft Deleteによる論理削除保護、Point-in-Time Restoreによる時点復元が利用可能です。<br>
+   さらに、Immutable Blob（WORM）ポリシーにより、法令遵守や監査要件に対応した削除・上書き防止が可能です。<br>
+   Microsoft Purviewとの統合により、スキャン結果に基づくSensitivity Labelの自動付与と、それに応じたアクセス制限（MIP Protection Policies）を実現できます。<br>
+   Geo-Zone-Redundant Storage（GZRS）やCustomer-initiated Failoverにより、災害対策と可用性も強化されており、プライバシー保護と業務継続性の両立が図られています。
+  </p>
+
   <h2>可用性の設計で重要なポイント</h2>
   <p>高可用性を担保するアーキテクチャを設計する際、最も致命的な誤りは単一リージョンへの依存です。<br>
    物理障害・ネットワーク断・オペレーションミスなどによって一地域全体が機能不全に陥る可能性はゼロではなく、 これに備えるにはマルチゾーン／マルチリージョン構成が前提となります。<br>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description" content="AWSでゼロトラストを実現するための主要サービスを、導入のヒントとともにやさしく解説します。セキュリティ強化に向けた第一歩として、ご参考にどうぞ。">
+ <meta name="keywords" content="ゼロトラスト,AWS セキュリティ,AWS IAM,AWS WAF,クラウド セキュリティ,セキュリティ設計,AWSサービス 比較,アクセス制御">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="AWSで「ゼロトラスト」を確保するために活用できるサービス">
+ <meta property="og:description" content="AWSでゼロトラストを実現するための主要サービスを、導入のヒントとともにやさしく解説します。セキュリティ強化に向けた第一歩として、ご参考にどうぞ。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/zerotrustarchitecture.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AWSで「ゼロトラスト」を確保するために活用できるサービス",
+  "url": "https://feinatelier.org/contents/zerotrustarchitecture.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>AWSで「ゼロトラスト」を確保するために活用できるサービス</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">AWSで「ゼロトラスト」を確保するために活用できるサービスの目次を開く</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="AWSで「ゼロトラスト」を確保するために活用できるサービスの目次を開く ▼"
+   data-close-text="AWSで「ゼロトラスト」を確保するために活用できるサービスの目次を閉じる ▲">AWSで「ゼロトラスト」を確保するために活用できるサービスの目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>AWSで「ゼロトラスト」を確保するために活用できるサービス</span></h1>
+  <p>ゼロトラストとは、まるで「自宅に誰が来ても、まずはインターホン越しに本人確認をする」ような考え方です。<br>
+   会社のネットワークであっても、内部だからといって自動的に信用するのではなく、すべてのアクセスが「本当にその人が入っていいのか？」を逐一確認します。</p>
+
+  <p>AWS（Amazon Web
+   Services）では、この考え方を実現するために、「本人確認（アイデンティティ中心の制御）」を玄関の鍵に例え、アクセスできる範囲を最小限に絞ることで安全性を高めています。<br>
+   さらに、通信を暗号化することで「封筒の中身を第三者に見られないようにする」ような工夫をして、かつサービス間のやり取りも厳密に監視することで、怪しい挙動があればすぐに気づける体制を整えています。</p>
+
+  <p>また、セキュリティ設計の質を高めるには「STRIDE」と呼ばれる脅威モデリング手法を使うのが効果的です。<br>
+   これは、家の防犯を考えるときに「窓からの侵入」「鍵のかけ忘れ」「火災」などさまざまなリスクを洗い出して対策を立てるようなもので、事前に弱点を予測して対処できるようになります。</p>
+
+
+  <h2>身元確認と認証・認可の考え方</h2>
+  <p>
+   ITの世界で安全を守るためには、「この人は誰で」「何をしてもよいのか？」をしっかり確認することが大切です。<br>
+   これは、まるで会社のビルに入るときのルールと似ています。
+  </p>
+
+  <p>
+   まず、あなたが会社に入るとき、受付で身分証を見せて本人確認されますよね。<br>
+   これが「身元確認（認証）」です。<br>
+   あなたが本当に社員なのかをチェックする仕組みです。
+  </p>
+
+  <p>
+   そして、会議室や資料室など、誰でも入れるわけではなく、あなたの部署や役職に応じて入れる場所が決まっています。<br>
+   これが「認可」です。<br>
+   必要な人だけが必要な場所に入れるようにする仕組みです。
+  </p>
+
+  <p>
+   ITシステムでもこの仕組みを使うことで、本人かどうかを確認し、かつその人がアクセスしてよい範囲だけに制限することができます。<br>
+   そうすることで、悪意のある第三者による情報漏えいを防げるのです。
+  </p>
+
+  <p>
+   これはまるで「鍵のかかっていない家に誰でも入れる」ような状態を避けるために、鍵とルールをしっかり設けるようなものなのです。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWSにおける身元確認と認証・認可</h3>
+    <table>
+     <caption>AWSにおける身元確認と認証・認可</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>サービス名</th>
+       <th>役割</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>AWS IAM / IAM Identity Center</td>
+       <td>ユーザー・サービスの認証と最小権限アクセス制御</td>
+      </tr>
+      <tr>
+       <td>Amazon Cognito</td>
+       <td>アプリ利用者向けのID管理とMFA対応</td>
+      </tr>
+      <tr>
+       <td>AWS Verified Access</td>
+       <td>VPN不要で安全なアプリアクセスを提供</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h4>AWS IAM（アクセス権を細かく設定するしくみ）</h4>
+  <p>AWS IAMは、AWSのサービスにアクセスするための「誰が・何を・どこまでできるか」を決める仕組みです。<br>
+   IAMユーザーやロールに対して許可を出すことで、安心してシステムを運用できます。<br>
+   鍵の役割を果たすのがIAMポリシーで、細かなルールをJSON形式で書いて管理します。</p>
+
+  <h4>IAM Identity Center（人ごとにアクセス先を整理できる窓口）</h4>
+  <p>IAM Identity
+   Centerは、いろんなAWSアカウントや外部サービスをひとつの入り口から使えるようにしてくれる機能です。<br>複数の社員がそれぞれの業務に応じて違うAWS環境を使う場合、ここからまとめてアクセスできるようになります。<br>
+   自分のIDの持ち主を確認する方法（パスワードやMFAなど）や、どんな役割を持っているか（Permission Set）でアクセス範囲を決められます。</p>
+
+  <h4>Amazon Cognito（ログイン機能をすぐに使えるサービス）</h4>
+  <p>Amazon
+   Cognitoは、アプリのユーザー向けのログイン機能を提供するサービスです。<br>
+   GoogleやFacebookでログインできるようにしたり、自分のアカウントを新しく作る仕組みを準備したりします。<br>
+   ログイン後にはトークンという「身分証明書」が発行され、それを使ってAWSサービスにアクセスすることができます。<br>
+   裏側ではIDプールが動いていて、AWSが一時的なアクセス情報をユーザーに渡すことで、安全に処理ができるようになっています。
+  </p>
+
+  <h4>AWS Verified Access（アクセスする人や端末をチェックする門番）</h4>
+  <p>AWS Verified
+   Accessは、社内アプリケーションなどに外部からアクセスする人を細かくチェックするための仕組みです。<br>
+   「本当にこの人は社内の人？」「この端末は安全なの？」といった条件をもとに、アクセスの可否を決めてくれます。<br>
+   アクセスのルールは専用の言語（Cedar）で書くことができて、役割や端末の状態に応じて柔軟に判定できるのが特徴です。<br>
+   通信は暗号化されているので、安全な状態でアプリに接続できるようになります。
+  </p>
+
+  <p>
+   どのサービスも「本人かどうかを確かめること（認証）」「その人に何が許されているかを決めること（認可）」を支える役割を持っています。<br>
+   クラウドの世界では、こうした仕組みがきちんと整っていることで、たくさんの人が安心して使える環境が成り立っています。
+  </p>
+
+  <h2>通信・データの保護の考え方</h2>
+  <p>たとえば、あなたが手紙を送るときのことを想像してみてください。<br>
+   紙に大事なことを書いて、それを封筒に入れて郵便で送る。<br>
+   このとき、封筒がきちんと閉じていなかったら、中身が丸見えで誰でも読めてしまいますよね。</p>
+
+  <p>インターネットもそれと同じです。<br>
+   あなたがスマホやパソコンでやり取りする情報は、いろんなルートを通って相手に届けられます。<br>
+   きちんと保護されていなければ、途中で誰かに見られたり、盗まれたりするかもしれません。</p>
+
+  <p>だからこそ、「通信・データの保護」という考え方が大切になります。<br>
+   この言葉は、情報のやり取り（通信）と、保存している情報（データ）に鍵をかけて守るという仕組みを指します。</p>
+
+  <p>そしてもうひとつ大事なのが「プライバシー」の保護です。</p>
+
+  <p>あなたが病院に通った記録、家族との会話、写真、買い物の履歴など。<br>
+   それは誰かに勝手に見られたくない、あなたの個人的な情報です。</p>
+
+  <p>通信の中身が見られてしまったら、知らない人があなたの秘密を知ることになるかもしれません。<br>
+   保存されたデータが安全でなければ、不正にコピーされたり悪用される可能性も出てきます。</p>
+
+  <p>だから、「通信とデータの保護」というのは、 あなたのプライバシーを守り、安心してインターネットを使うための土台とも言えるものなんです。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWSにおける通信・データの保護</h3>
+    <table>
+     <caption>AWSにおける通信・データの保護</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>サービス名</th>
+       <th>役割</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>AWS WAF</td>
+       <td>Webアプリ層の脅威（SQLi, XSSなど）を防御</td>
+      </tr>
+      <tr>
+       <td>AWS Shield</td>
+       <td>DDoS攻撃からの保護（Advanced版で自動対応も）</td>
+      </tr>
+      <tr>
+       <td>AWS KMS</td>
+       <td>暗号鍵の集中管理とアクセス制御ログの可視化</td>
+      </tr>
+      <tr>
+       <td>Amazon VPC Lattice</td>
+       <td>サービス間通信の認証・承認を組み込みで実現</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+
+  <h4>AWS WAF（ウェブアプリケーションファイアウォール）</h4>
+  <p>
+   インターネット上の「やり取り」を安全に守ってくれるサービスです。たとえば、Webサイトに届くリクエストの中には、悪意のあるもの（変な命令文など）が紛れ込んでいることがあります。<br>
+   AWS WAFは、それらをルールに従ってチェックし、不正なリクエストをブロックします。<br>
+   最近のバージョンでは、条件を組み合わせてより細かくコントロールできるようになっていて、設定も柔軟になっています。<br>
+   ルールをたくさん使いすぎないように「WCU（容量）」という単位で制限もありますが、上限内なら自由に組み合わせて使えます。<br>
+   さらに、よくある攻撃パターンに対応した「おまかせルール」も用意されているので、詳しい知識がなくても安心して始められます。<br>
+   ログも出力できて、まずは“様子見”で記録してからブロックに切り替えるなど、やさしい運用も可能です。
+  </p>
+
+  <h4>AWS Shield（DDoS攻撃から守る防御サービス）</h4>
+  <p>
+   Webサイトやアプリが大量のアクセスで動かなくなってしまう「DDoS攻撃」から守ってくれるサービスです。<br>
+   標準プラン（Shield Standard）は無料で、よくある攻撃には自動で対応してくれます。<br>
+   もっと強力な保護が欲しい人向けには「Shield Advanced」という有料プランもあって、専門チームのサポートや、攻撃によって増えた通信量の費用補償など、安心感がアップします。<br>
+   AWS WAFと連携して、攻撃内容に応じた防御ルールを自動で作成できるのも便利です。
+  </p>
+
+  <h4>AWS KMS（鍵の管理サービス）</h4>
+  <p>
+   データを暗号化して守る「鍵」を、ちゃんと管理してくれる頼れるサービスです。<br>
+   KMSで作った鍵は、安全な保管場所（HSM）にしまわれていて、外に持ち出されることはありません。<br>
+   鍵そのもので暗号化せず、まず「データ用の鍵」を暗号化して、それでデータを守るという“二重構造”になっていて、とても安全です。<br>
+   ユーザーが自由に鍵のルールを設定できるタイプもあり、運用面でも柔軟です。<br>
+   ログを記録したり、アクセス権を設定したり、複数地域に分散して保管したりと、かゆいところに手が届く機能がそろっています。
+  </p>
+
+  <h4>Amazon VPC Lattice（サービス同士のやり取りを管理するしくみ）</h4>
+  <p>
+   たくさんのサービスをつなぎ合わせるネットワークの“交通整理役”です。<br>
+   「誰が誰と通信していいのか」をポリシーでしっかり決められますし、通信はすべて暗号化されているので安心です。<br>
+   サービスを探す機能、状態のチェック、条件ごとのルーティング（パスやヘッダーなど）も一体化されていて、複雑な設定をせずに運用できます。<br>
+   従来よりもスッキリした設計で、セキュリティもわかりやすく保てるのが特徴です。
+  </p>
+
+  <h2>監視・可視化・自動対応の考え方</h2>
+
+  <p>ITの世界では、監視・可視化・自動対応という考え方がとても大切です。<br>
+   これをわかりやすく説明するために、まず日常の安全管理に置き換えてみましょう。</p>
+
+  <p>あなたが暮らす家には玄関や窓があり、そこには貴重品や大切なペットがいるかもしれません。<br>
+   安全に暮らすためには、誰かが勝手に入ってこないよう見張ること、今の状態がどうなっているか確認できること、そして何か異常が起きた時にはすぐに対処できる仕組みがあると安心です。</p>
+
+  <p>この考え方は、そのままITシステムにも当てはまります。</p>
+
+  <p>「監視」は、サーバーやネットワークの状態を常に見守ること。<br>
+   不正アクセスの兆候やデータの異常な動きを察知するための目となります。</p>
+
+  <p>「可視化」は、今どんな状態なのかをわかりやすく表示することです。<br>
+   状況を目で見て判断できれば、問題が起きる前に手を打つこともできます。<br>
+   まるで体温計や天気予報のように、変化に気づきやすくなるのです。</p>
+
+  <p>「自動対応」は、異常が起きたときに人間の手を介さず、システム自身が対処することです。<br>
+   たとえば、サーバーに過負荷がかかったら予備のサーバーに切り替える、攻撃を検知したら瞬時に遮断する、といった仕組みです。<br>
+   これは、まるで自動消火装置や防犯センサーのように、素早く賢く守ってくれます。</p>
+
+  <p>この3つの考え方は、セキュリティの面でも非常に重要ですが、プライバシー保護にも深く関わります。<br>
+   誰がいつどこで自分の情報にアクセスしたのかを把握できること、そして問題が起きた際に自動的に対応できる仕組みがあることで、個人の情報を安心して守れる環境が生まれるのです。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWSにおける監視・可視化・自動対応</h3>
+    <table>
+     <caption>AWSにおける監視・可視化・自動対応</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>サービス名</th>
+       <th>役割</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>AWS CloudTrail</td>
+       <td>API操作の記録と監査</td>
+      </tr>
+      <tr>
+       <td>Amazon GuardDuty</td>
+       <td>脅威検出とインシデント対応</td>
+      </tr>
+      <tr>
+       <td>AWS Config + Lambda</td>
+       <td>リソース設定の監視と自動修復</td>
+      </tr>
+      <tr>
+       <td>AWS Security Hub</td>
+       <td>セキュリティイベントの統合管理</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h4>AWS CloudTrail（誰が何をしたかの記録帳）</h4>
+  <p>AWS CloudTrailは、クラウドで「いつ・誰が・何をしたか」を記録してくれるサービスです。<br>
+   操作ログのようなもので、たとえば誰かがEC2を削除したり、S3の設定を変更したりすると、その行動が記録に残ります。<br>
+   これによって、あとで「何が起こったのか」をたどれるので、トラブル対応やセキュリティチェックにも役立ちます。<br>
+   ログはS3やCloudWatch Logsに保存できて、他のサービスと連携して通知や自動対応も可能です。</p>
+
+  <h4>Amazon GuardDuty（怪しい動きを見張ってくれる見守り役）</h4>
+  <p>Amazon
+   GuardDutyは、クラウド上で怪しい動きを見つけるためのサービスです。<br>
+   たとえば「知らない場所から誰かがアクセスしてきた」「不自然な通信をしている」など、通常とは違う挙動があると検出して知らせてくれます。<br>
+   専門的には、ログに含まれるIP情報や動作パターンをAIが見て判断しています。<br>
+   検出した内容は他のサービスと連携させて、自動的に警告したり対策したりすることもできます。
+  </p>
+
+  <h4>AWS Config（設定の変化を記録してくれる見える化ツール）</h4>
+  <p>AWS
+   Configは、クラウドの設定がどう変わったかを記録しておいて、今の状態が決められたルールに合っているかどうかをチェックしてくれます。<br>
+   「このS3バケットが公開されているかどうか」「EC2のタグ付けがルール通りか」などを調べてくれて、違反を見つけたときはLambda関数を動かして通知や修正処理もできます。<br>
+   設定の履歴も残るので、変化があったときにすぐに気づけるのがポイントです。
+  </p>
+
+  <h4>AWS Security Hub（セキュリティ情報をまとめて整理する中継センター）</h4>
+  <p>AWS Security Hubは、セキュリティに関するさまざまなチェック結果をまとめて見えるようにするサービスです。<br>
+   GuardDutyやConfig、IAM Access
+   Analyzerなどが見つけた問題を一か所で集めて一覧表示してくれるので、「全体としてどこが安全で、どこが心配か」がわかりやすくなります。<br>
+   安全の目安として、CISベンチマークなどのルールに沿ってスコアも付けてくれるので、改善の優先順位も見つけやすくなります。
+  </p>
+
+  <p>どのサービスも「ちゃんと見てくれてる」「すぐ気づける」「自動で対処できる」ことが目的です。<br>
+   クラウドは便利な反面、気づきにくいリスクもあるからこそ、こうした仕組みがあると安心して使えるようになります。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/zerotrustarchitecture.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
