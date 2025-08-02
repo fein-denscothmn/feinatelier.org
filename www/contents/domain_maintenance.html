@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoft tag -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <meta charset="UTF-8">
+
+ <!--基本のメタタグ-->
+ <meta name="description"
+  content="独自ドメインって難しそう？そんなあなたに、自分の名前でWebを育てる方法をやさしく解説。ドメイン取得から設定、運用まで、初心者でも安心して始められる独自ドメイン管理入門ガイドです。">
+ <meta name="keywords" content="独自ドメイン, ドメイン管理, ドメイン取得, 初心者向け, Web入門, ネームサーバー, DNS設定, 個人サイト, ホームページの始め方">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="あなたの名前でWebを育てよう：独自ドメイン管理入門">
+ <meta property="og:description"
+  content="独自ドメインって難しそう？そんなあなたに、自分の名前でWebを育てる方法をやさしく解説。ドメイン取得から設定、運用まで、初心者でも安心して始められる独自ドメイン管理入門ガイドです。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/domain_maintenance.html">
+
+ <!--検索ヒット時のアイコン-->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "あなたの名前でWebを育てよう：独自ドメイン管理入門",
+  "url": "https://feinatelier.org/contents/domain_maintenance.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+}
+</script>
+
+ <!--レスポンシブデザイン-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!--CSS-->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!--JavaScript-->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/album.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <!-- gsapの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <!-- prismの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
+ <!-- google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!--ページタイトル-->
+ <title>あなたの名前でWebを育てよう：独自ドメイン管理入門</title>
+
+ <!--ASノーナのファビコン-->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">あなたの名前でWebを育てよう：独自ドメイン管理入門</li>
+   </ol>
+  </div>
+
+  <!--google検索-->
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="あなたの名前でWebを育てよう：独自ドメイン管理入門の目次を開く ▼"
+   data-close-text="あなたの名前でWebを育てよう：独自ドメイン管理入門の目次を閉じる ▲">あなたの名前でWebを育てよう：独自ドメイン管理入門の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>あなたの名前でWebを育てよう：独自ドメイン管理入門</span></h1>
+
+  <p>Webサイトに「独自ドメイン」を設定した時点で、あなたはそのドメインの所有者であり、管理者です。<br>
+   ネームサーバーの設定ミス、Whois情報の期限切れ、更新漏れ――これらは小さな見落としからサイトの表示障害に繋がる技術的リスクと言えます。</p>
+  <p>このページでは、ドメイン取得後に必要となる管理作業について、以下のような観点から具体的に解説していきます。</p>
+
+  <ul>
+   <li>レジストラと契約期間の確認・更新タイミングの把握</li>
+   <li>自動更新設定の有無と、その信頼性</li>
+   <li>DNSレコードの監視と変更時の注意点</li>
+   <li>Whois情報の公開範囲とプライバシー設定</li>
+   <li>サブドメインやリダイレクト設定の扱い方</li>
+  </ul>
+
+  <p>個人で運営するサイトであっても、こうした「見えないレイヤー」の知識と対策が、あなたのコンテンツを安定して公開し続けるためには必要になってきます。<br>
+   このガイドを通じて、Webの「表舞台」だけでなく「裏方」もしっかり理解し、安心してサイト運営を継続できるようになりましょう。</p>
+
+  <h2>レジストラと契約期間の確認・更新タイミングの把握</h2>
+  <p>
+   独自ドメインは一度取得すれば永久に使えるわけではなく、定期的な更新手続きが必要です。<br>
+   契約期間や更新タイミングを正しく把握していないと、思わぬトラブルにつながる可能性があります。
+  </p>
+  <p>ドメインを販売・管理する事業者のことを「レジストラ（registrar）」と言います。<br>
+   以下に代表的なサービスを一覧で紹介してみましょう。<br>
+   ちなみにこのWebアプリはさくらのドメインですよ？</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">レジストラ（registrar）</h3>
+    <table>
+     <caption>レジストラ（registrar）</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>レジストラ名</th>
+       <th>特徴</th>
+      </tr>
+     </thead>
+     <tbody>
+      <td>さくらのドメイン</td>
+      <td>さくらインターネットが提供。<br>
+       サーバーとの連携がスムーズで、安定した国内サービスが魅力</td>
+      </tr>
+      <tr>
+       <td>お名前.com</td>
+       <td>日本語対応が充実し、キャンペーン価格で取得できることも多い</td>
+      </tr>
+      <tr>
+       <td>Xserverドメイン</td>
+       <td>サーバーとドメインの一元管理が可能。<br>
+        初心者にも扱いやすいUI</td>
+      </tr>
+      <tr>
+       <td>Google Domains</td>
+       <td>シンプルで直感的な操作性。<br>
+        現在はSquarespaceに移行中の部分あり</td>
+      </tr>
+      <tr>
+       <td>Namecheap</td>
+       <td>海外サービスながらUIが使いやすく、価格が比較的安価</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h3>契約期間と更新タイミングの確認ポイント</h3>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_101.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <p>
+    ドメインの契約状況を適切に管理するには、まず現在の契約開始日と満了日を、レジストラの管理画面などで定期的に確認することが重要です。<br>
+    特に複数年契約をしている場合は、注意しましょう。<br>
+    個人的には、毎年更新するのがお勧めしたいです。<br>
+    年1回くらいはサーバのチェックもしたほうが良いと思います。
+   </p>
+   <p>
+    また、更新期限が近づくと多くのレジストラから通知メールが送信されますが、こうしたメールが迷惑メールに振り分けられてしまい、気づかないまま期限が過ぎてしまうケースとかね。<br>
+    ありがち…<br>
+   </p>
+   <p>
+    さらに、自動更新の設定が有効になっているかどうか、そして登録している支払い手段（クレジットカードや銀行引き落とし）が有効な状態かどうかも定期的にチェックしておくと良いでしょう。<br>
+    多くのレジストラでは自動更新が可能ですが、支払い情報が失効していると更新に失敗し、ドメインが失効してしまう恐れがあります。<br>
+    特に、カードの有効期限切れなどは見落としがちですので、注意が必要です。
+   </p>
+  </div>
+
+
+  <h3>契約期限・猶予期間・移管時期に関する注意点</h3>
+  <p>
+   ドメイン管理においては、Whois情報の確認も非常に重要です。<br>
+   Whoisにはドメインの有効期限が明記されており、その情報と契約画面上の内容が一致しているかどうか、定期的に照らし合わせることで思わぬ更新漏れを防ぐことができます。<br>
+   Whoisは第三者からも参照可能な公開情報ですので、セキュリティ面も踏まえて確認しておく習慣があれば安心ですね。
+  </p>
+  <div class="content">
+   <img src="  /contents/itimages/さくらのドメイントップ.png" alt="さくらのドメイントップ" class="biggraphic fade-in-out">
+
+   <p> また、契約期間が終了した際、すぐにドメインが失効するわけではなく、「Grace
+    Period（猶予期間）」が設定されていることがあります。<br>
+    この期間内であれば再契約が可能な場合も多いですが、レジストラによって扱いが異なり、期間も数日から数週間と幅があります。<br>
+    猶予期間を過信せず、あくまで“最後の手段”として認識しておくほうがよいでしょう。
+   </p>
+
+   <p>
+    ドメインを他のレジストラに移管する場合にも、注意が必要です。<br>
+    契約満了日との兼ね合いのことね。<br>
+    移管には数日〜数週間かかることがあり、満了日直前に手続きを開始すると、うまく完了できずドメインの利用継続に支障をきたす恐れがあります。<br>
+    移管は余裕を持って、できれば契約満了の1〜2か月前を目安に進めておきます。<br>
+    ただ、移管については深く考えなくても良いかも。<br>
+    それよりも、可能な限り、移管する必要がないようシステム構築したほうが良いです。
+   </p>
+  </div>
+
+  <p>
+   レジストラとの契約は、Webサイトやアプリなど、大切なデジタル資産を守るための基盤です。<br>
+   自動更新の設定や通知管理を含めた契約期間の把握は、技術的メンテナンスのひとつとして習慣づけておくのを強くお勧めします。
+  </p>
+
+  <h2>自動更新設定の有無と、その信頼性</h2>
+
+  <p>
+   ドメインの契約を継続的に維持するために、多くのレジストラでは「自動更新」の設定が用意されています。<br>
+   この機能を有効にすることで、契約満了日が近づいた際に、登録された支払い方法を用いて自動的に更新処理が行われます。<br>
+   手間が省けるだけでなく、うっかり更新を忘れてしまう事態も防ぐことができますので、忙しい方や複数のドメインを管理されている方には特に心強い仕組みです。
+  </p>
+
+
+  <div class="content">
+   <img src="/contents/itimages/さくらのドメイン支払いヘルプ.png" alt="さくらのドメイン支払いヘルプ" class="biggraphic fade-in-out">
+   <p>
+    ただし、自動更新を「有効にしたから安心」と思い込むのはやめたほうがいい。<br>
+    支払い方法の有効性が維持されていない場合、たとえば登録してあるクレジットカードの有効期限が切れてしまっていると、更新処理が正常に行われず、契約が失効する可能性があります。<br>
+    また、レジストラによっては更新失敗時に通知をしてくれるものの、通知メールが正常に届かない可能性がありますよね？</p>
+  </div>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_102.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>
+    さらに、レジストラによっては更新処理が「契約満了日当日」ではなく、「満了日の数日前」に行われることがあります。<br>
+    この挙動はサービスごとに異なり、仕様が明記されていないこともあるため、実際の更新タイミングがいつになるのかを事前に確認しておくか、もう数か月前にはチェック作業に入りましょう。<br>
+    思わぬタイムラグによって更新が意図通りに進まず、Webサイトやアプリの動作に影響が出てしまう例もありますよ。<br>
+    長期運用が前提となるのが独自ドメインですから、慎重な管理をお勧めします。
+   </p>
+
+   <p>レジストラの自動更新機能は便利な反面、「放置してよい仕組み」ではありません。<br>
+    設定の有無を定期的に確認し、支払い手段の状態や、レジストラごとの仕様についても把握しておくことが、安心してドメイン運用を続けるために必要な作業です。
+   </p>
+  </div>
+
+  <h2>DNSレコードの監視と変更時の注意点</h2>
+
+  <p>
+   Webサイトやアプリの安定運用には、DNSレコードの正確な設定と継続的な監視が欠かせません。<br>
+   DNSとは、取得した独自ドメインとサーバーのIPアドレスなどを紐づける仕組みです。<br>
+   たとえば、Aレコードはドメイン名をWebサーバーのIPアドレスに結びつけ、MXレコードはメールの配送先を定義します。<br>
+   これらが正しく設定されていないと、サイトが表示されなかったり、メールが届かなかったりすることがあります。
+  </p>
+
+  <p>参考ページ👉：<a href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a></p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_101.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>DNSレコードは一度設定すればそれで終わりではなく、必要に応じて更新したり、第三者の変更から守ったりする必要があります。<br>
+    特に、次のようなタイミングでは注意が必要です。 </p>
+
+   <ul>
+    <li>サーバーの乗り換え（IPアドレスが変わる場合）</li>
+    <li>メールサービスの変更（MXレコードの移行）</li>
+    <li>CDNやリバースプロキシの導入（CNAMEやAレコードの追加・置換）</li>
+   </ul>
+  </div>
+
+  <p> こうした変更を行う際は、DNSレコードにTTL（Time To
+   Live）の値が設定されていることにも注意してください。<br>
+   TTLは、レコードの情報がDNSキャッシュに保持される時間で、短すぎると頻繁な通信が発生し、長すぎると古い情報が残ってしまう可能性があります。<br>
+   変更前にはTTLを短く設定し、反映が確認できたら元に戻すなど、計画的に操作するのがお勧めですよ？
+  </p>
+
+  <p>
+   また、DNS管理の権限がレジストラにあるのか、外部のDNSホスティングサービスにあるのかによって、操作画面や仕様が異なります。<br>
+   例えばこのサイトでお世話になっているさくらのドメインの場合、「さくらのDNSコントロールパネル」から設定しますが、複数のレコードが並んで表示されているため、削除や編集の際は特に慎重に操作する必要があります。
+  </p>
+
+  <p>
+   最後に、DNSの変更後は反映までに時間がかかることがあります。<br>
+   世界中のDNSサーバーで情報が更新されるまで数分〜数時間かかることがあり、一時的に表示されない、通信が不安定になるといった現象が起こる場合もあります。<br>
+   変更作業はアクセスが少ない時間帯に実施するなど、影響を最小限に抑える工夫も重要です。
+  </p>
+
+  <div class="content">
+   <img src="/contents/itimages/さくらのドメイン契約中.png" alt="さくらのドメイン契約中" class="biggraphic fade-in-out">
+   <p> DNSの管理は、ドメインとサーバーとの橋渡し役を担う大切な作業です。<br>
+    レコードの意味を理解し、変更時の挙動まで丁寧に確認することで、安定したWeb運用につながっていきます。</p>
+  </div>
+
+  <h2>独自ドメイン管理における2段階認証の重要性</h2>
+  <p>
+   独自ドメインの運用には、Webサイトの表示だけでなく、DNSレコードの編集やSSL証明書の更新など、セキュリティに直結する操作が日常的に求められます。<br>
+   これらの作業は、サイト全体の信頼性に大きな影響を与えるため、不正アクセスを防ぐための仕組みが不可欠です。
+  </p>
+  <div class="content">
+   <img src="/contents/itimages/さくらのドメイン2段階認証.png" alt="さくらのドメイン2段階認証" class="biggraphic fade-in-out">
+   <p>
+    その中でも「2段階認証（2FA）」は、運用者の本人性を高める重要な技術です。<br>
+    さくらインターネットのようなサービスでも、SMSによる確認コード送信を取り入れることで、パスワードだけでは防げない攻撃から管理者を守ることができます。
+   </p>
+  </div>
+
+  <h3>独自ドメイン管理に2段階認証は必須です！</h3>
+  <dl>
+   <dt>パスワード漏洩時のリスク軽減</dt>
+   <dd>万が一パスワードが流出しても、認証コードがなければログインできません。</dd>
+
+   <dt>サーバーやDNS設定の改ざん防止</dt>
+   <dd>悪意のある第三者がドメインを乗っ取って、偽サイトへ誘導する可能性があります。</dd>
+
+   <dt>SSL証明書やメール設定など、機微な変更の保護</dt>
+   <dd>これらの変更が悪用されると、個人情報漏洩やフィッシングにつながることも。</dd>
+  </dl>
+
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">独自ドメイン管理と2段階認証の対応領域</h3>
+    <table class="boss-table">
+     <caption>独自ドメイン管理と2段階認証の対応領域</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>管理作業</th>
+       <th>影響範囲</th>
+       <th>2段階認証の有効性</th>
+      </tr>
+      <tr>
+       <td>DNSレコード編集</td>
+       <td>サイト表示 / メール配送</td>
+       <td>改ざんを防ぐ</td>
+      </tr>
+      <tr>
+       <td>管理パネルへのログイン</td>
+       <td>サーバー全体</td>
+       <td>本人確認を強化</td>
+      </tr>
+      <tr>
+       <td>サブドメイン追加・削除</td>
+       <td>サービス提供範囲</td>
+       <td>設定変更を制限</td>
+      </tr>
+      <tr>
+       <td>SSL証明書の更新</td>
+       <td>通信の暗号化と信頼性</td>
+       <td>不正取得を防止</td>
+      </tr>
+     </thead>
+     </tbody>
+    </table>
+   </div>
+
+   <h3>独自ドメイン・2段階認証の技術と運用バランス</h3>
+   <div class="flowerclearfix">
+    <div class="flowerfade-out">
+     <img src="/fleur1/nature_121.jpg" alt="フェードアウト効果の草花写真">
+    </div>
+    <p>
+     2段階認証は「便利かどうか」ではなく、「守るべき対象があるか」によって必要性が決まります。<br>
+     独自ドメインを持つということは、インターネット上に“責任ある住所”を持つことと同じです。<br>
+     ログインの安全性を高めておくことは、利用者だけでなく検索エンジンやエンドユーザーからの信頼を維持する上でも欠かせません。
+    </p>
+   </div>
+
+   <p>
+    万が一認証コードの受信手段が使えなくなった場合のバックアップも含め、2段階認証は「設定して終わり」ではなく、運用計画の一部として捉えていきましょう。
+   </p>
+  </section>
+
+  <h2>Whois情報の公開範囲とプライバシー設定</h2>
+
+  <p>
+   Whois情報とは、ドメイン名の登録者に関する情報（氏名・住所・電話番号・メールアドレスなど）が記載された登録データベースのことです。<br>
+   ICANN（インターネットの調整機関）の規定により、基本的に誰でも参照できる状態にありますが、近年はプライバシー保護の観点から公開範囲や表示内容が制限されるようになってきました。
+  </p>
+
+  <h3>公開される情報の種類</h3>
+
+  <p>Whois情報の項目としては、次のようなものがありますね。</p>
+
+  <ul>
+   <li>登録者名（Registrant Name）</li>
+   <li>組織名（Organization）</li>
+   <li>住所（Street, City, Postal Code, Country）</li>
+   <li>メールアドレス</li>
+   <li>電話番号</li>
+   <li>登録・更新・有効期限の日付</li>
+   <li>ドメインを管理するレジストラ情報</li>
+  </ul>
+
+  <p>これらがすべて無加工で表示されると、個人や企業の連絡先が不特定多数に晒されることになります。</p>
+
+  <h3>プライバシー保護サービスの役割</h3>
+
+  <p>多くのドメインレジストラでは、Whois情報の代理公開サービス（「Whois Proxy」や「Privacy
+   Protect」など）を提供しています。<br>
+   これは、実際の登録者情報の代わりに、レジストラが用意した代理情報を掲載することで、外部からの連絡やスパムのリスクを減らすものです。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">レジストラのプライバシー保護サービス</h3>
+    <table class="boss-table">
+     <caption>レジストラのプライバシー保護サービス</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>項目</th>
+       <th>代理公開あり</th>
+       <th>代理公開なし</th>
+      </tr>
+      <tr>
+       <td>登録者名</td>
+       <td>レジストラの代理名義</td>
+       <td>本人の氏名</td>
+      </tr>
+      <tr>
+       <td>メールアドレス</td>
+       <td>一時転送メール</td>
+       <td>本人のメールアドレス</td>
+      </tr>
+      <tr>
+       <td>住所</td>
+       <td>レジストラの住所</td>
+       <td>本人または企業の住所</td>
+      </tr>
+     </thead>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>ただし、場合によっては法的機関や裁判所の要請に応じて、実際の登録者情報が開示されることもあります。<br>
+   匿名性を過信せず、必要最小限の情報管理が重要です。 </p>
+
+  <h3>GDPRと公開情報の制限</h3>
+
+  <p>EU圏の一般データ保護規則（GDPR）に準拠して、Whois情報の一部はデフォルトで非公開となるケースが増えています。<br>
+   これにより、個人名やメールアドレスの表示が制限され、技術担当者レベルの情報のみが参照可能になることもあります。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/さくらのドメイン請求書確認.png" alt="さくらのドメイン請求書確認" class="biggraphic fade-in-out">
+   <p>
+    たとえば、さくらインターネットやお名前.comなど、国内レジストラの場合も、個人ドメインは代理公開が初期設定されていることが多く、管理画面から変更可能です。<br>
+    ただし、法人ドメインは信頼性や透明性のために一部情報を公開する設計になっている場合があります。
+   </p>
+  </div>
+
+  <h3>プライバシー設定の限界とWhois変更時の制約</h3>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_103.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <ul>
+    <li>プライバシー設定をしても、ドメインの所有権を完全に隠すことはできません</li>
+    <li>WHOISスパム対策のためにメール転送サービスを利用する場合、転送先アドレスが確実に届くように管理しましょう</li>
+    <li>Whois情報を変更した場合、ICANNの規定で60日間ドメイン移管が制限されることがあります</li>
+   </ul>
+  </div>
+  <p> Whois情報は、ドメインの信頼性と所有者の責任を担保する大切な仕組みですが、公開しすぎるとセキュリティリスクにもつながりかねません。<br>
+   プライバシーと透明性のバランスを取りつつ、目的や立場に応じた設定が求められます。 </p>
+
+
+  <h2>サブドメインとリダイレクト設定がもたらす構造的メリットと運用ポイント</h2>
+
+  <p> サブドメインやリダイレクトは、ドメイン運用において情報の整理やアクセス導線の最適化に欠かせない設定です。<br>
+   たとえば、blog.feinatelier.org や support.feinatelier.org
+   のように、目的ごとにサブドメインを分けることで、ユーザーの利便性が向上し、検索エンジン側でも意味のある構造として評価されることがあります。
+  </p>
+
+  <h3>サブドメインの設計と設定ポイント</h3>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_105.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>
+    サブドメインはDNSレコードで個別に定義する必要があり、AレコードやCNAMEレコードなどを用いて、それぞれのサーバーやサービスに紐づけます。<br>
+    たとえば、外部のCMSを使っている場合は、サブドメインに対してCNAMEで外部ホストを指定するケースがあります。
+   </p>
+
+   <p> 一方で、サブドメインの設計には次の点に注意が必要です。</p>
+  </div>
+
+  <ul>
+   <li>SEO的には、サブドメインは別サイトとみなされる傾向がある（メインドメインと評価が分離される可能性）</li>
+   <li>SSL証明書のカバー範囲：無料のLet’s Encryptでもワイルドカード証明書を
+    使えば *.example.com を保護できますが、設定にはDNS検証が必要</li>
+   <li>同一ドメイン上でも、Cookieのスコープ設定を誤ると認証情報が共有できないことがある</li>
+  </ul>
+
+  <p>ここはちょっと補足説明しますね。<br>
+   慣れてないと難しいと思う。</p>
+
+  <h4>ワイルドカード証明書とDNS検証について</h4>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_134.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>WebサイトをHTTPSで安全に公開するためには「SSL証明書」が必要です。<br>
+    通常は feinatelier.org のように、特定のドメインだけを保護します。<br>
+    でも、もし blog.feinatelier.org や shop.feinatelier.org
+    など、たくさんのサブドメインを使いたいなら、1つずつ証明書を取得するのは大変ですよね。</p>
+
+   <p>そこで使えるのが「ワイルドカード証明書」という仕組みです。<br>
+    これは、*.feinatelier.org というように、すべてのサブドメインをまとめて保護してくれる便利な証明書です。</p>
+
+   <p>たとえば、Let’s
+    Encryptという無料の証明書サービスでもワイルドカードを使うことができますが、そのためには「DNS検証」と呼ばれる少し特殊な手続きが必要になります。<br>
+    つまり、あなたが本当にそのドメインの管理者であることを、DNSの設定を通じて証明しなくてはいけないというわけです。</p>
+  </div>
+
+  <p>このDNS検証は、管理画面で特定の「TXTレコード」を追加するなど、少しだけ技術的な作業が必要になります。</p>
+
+  <h4>Cookieとサブドメインの関係について</h4>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_107.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>もうひとつのポイントは「Cookieのスコープ」です。<br>
+    Webサイトでログイン状態を記憶したり、ユーザーの設定を保持するために使われるのが「Cookie」という仕組みです。<br>
+    ところが、Cookieは「どのドメインで使えるか」をあらかじめ決めておく必要があるんです。</p>
+
+   <p>たとえば、あなたのサイトに feinatelier.org というメインドメインがあり、そこにログインしたユーザーが blog.feinatelier.org
+    にもアクセスできるようにしたい場合、Cookieがサブドメイン間で共有されていないと、もう一度ログインし直すことになってしまうことがあります。</p>
+  </div>
+
+  <p>この「共有できるようにする」ためには、Cookieの設定で .feinatelier.org
+   というように、ドットから始まる形でスコープ（適用範囲）を指定する必要があります。<br>
+   もしこれが適切に設定されていないと、ユーザー体験に不具合が出たり、セッションが切れてしまうこともあるのです。</p>
+
+  <h3>リダイレクトの種類と適切な使い分け</h3>
+
+  <p> リダイレクトには、主に301（恒久）と302（一時）があります。<br>
+   それぞれ次のような使い分けを意識しましょう。 </p>
+
+  <p>参考ページ👉：<a href="/redirect">独自ドメイン設定後にリダイレクト機能を追加する</a></p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">リダイレクトの種類</h3>
+    <table class="boss-table">
+     <caption>リダイレクトの種類</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>種類</th>
+       <th>目的</th>
+       <th>SEOへの影響</th>
+      </tr>
+      <tr>
+       <td>301 リダイレクト</td>
+       <td>コンテンツの完全移行</td>
+       <td>旧URLの評価を引き継ぐ</td>
+      </tr>
+      <tr>
+       <td>302 リダイレクト</td>
+       <td>一時的な転送やメンテ中</td>
+       <td>旧URLの評価は保持される</td>
+      </tr>
+     </thead>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p> 設定方法はサーバーの種類によって異なります。<br>
+   Apacheの場合は .htaccess による記述、Nginxなら rewrite ディレクティブで設定します。<br>
+   また、CMSやCDN経由でもGUIベースで設定できる場合もあります。 </p>
+
+  <h3>設定ミスによるトラブルと対策</h3>
+
+  <p> リダイレクトのループ設定や、サブドメイン未設定のままアクセスがエラーになる、といった現象は意外と多く見られます。<br>
+   以下のような確認をしておきましょう。</p>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_140.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+   <ul>
+    <li>リダイレクトチェッカーを使ってステータスコードの連続を検証する</li>
+    <li>DNS設定が正しく伝播しているか、dig や nslookup で確認する</li>
+    <li>SSL証明書がサブドメインを含んでいるかを SSL Labs などで確認する</li>
+   </ul>
+
+   <p> 意図しない転送や未設定のアクセスによってユーザー体験やSEOに悪影響を与えることがあるため、設定後のテストや定期的な監視が推奨されます。 </p>
+
+   <p>
+    サブドメインやリダイレクトの設定は、サイト構造の明確化や運用の柔軟性に寄与しますね。<br>
+    しかし、その裏ではDNSやサーバーの知識、ユーザー導線への配慮が不可欠です。<br>
+    目的に応じた設定と、変更時の検証手順を大切にすることで、ドメイン運用の質は大きく高まります。
+   </p>
+  </div>
+
+  <h4>独自ドメイン管理は「うっかり」に注意してね</h4>
+  <p>こんな感じでしょうか。<br>
+   独自ドメインが「勝手に失効する」ことは、基本原則としてありません。<br>
+   多くの場合は更新忘れや支払い不備が原因です。<br>
+   仕組みとしてはわりとシンプルなのですが、油断していると落とし穴もあります。<br>
+   一方、個人サイトを辞めるときは、主体的に停止することもできます。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/domain_maintenance.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's
+     portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
