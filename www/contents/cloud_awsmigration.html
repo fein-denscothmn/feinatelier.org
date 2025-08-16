@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="AWS Application Discovery Service・Migration Hub・Application Migration Serviceを活用し、オンプレミス環境からのクラウド移行を戦略的に支援。依存関係の可視化から移行設計・実行までを一元管理する方法を解説します。">
+ <meta name="keywords"
+  content="AWS移行, Application Discovery Service, Migration Hub, Application Migration Service, クラウド移行, オンプレミス, 移行設計, 依存関係, MGN, SMS, Wave設計, AWS Migration">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="Discovery・Migration Hub・MGNで作られるAWS移行支援">
+ <meta property="og:description"
+  content="AWS Application Discovery Service・Migration Hub・Application Migration Serviceを活用し、オンプレミス環境からのクラウド移行を戦略的に支援。依存関係の可視化から移行設計・実行までを一元管理する方法を解説します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsmigration.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Discovery・Migration Hub・MGNで作られるAWS移行支援",
+  "url": "https://feinatelier.org/contents/cloud_awsmigration.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>Discovery・Migration Hub・MGNで作られるAWS移行支援</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Discovery・Migration Hub・MGNで作られるAWS移行支援の目次を開く</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="Discovery・Migration Hub・MGNで作られるAWS移行支援の目次を開く ▼"
+   data-close-text="Discovery・Migration Hub・MGNで作られるAWS移行支援の目次を閉じる ▲">Discovery・Migration Hub・MGNで作られるAWS移行支援の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>Discovery・Migration Hub・MGNで作られるAWS移行支援</span></h1>
+
+  <p>
+   AWSへのクラウド移行においては、既存環境の正確な把握、依存関係の可視化、移行計画の設計、そして実行までを一貫して管理できる仕組みが求められます。<br>
+   特に、複数のサーバーやアプリケーションが連携して動作する環境では、移行による影響範囲の特定と段階的な移行戦略が不可欠です。
+  </p>
+
+  <p>本ページでは、AWSが提供する移行支援サービスであるAWS Application Discovery Service、AWS Migration Hub、AWS Application Migration
+   Service（MGN）の各機能と役割について整理し、それぞれがどのように連携して移行プロジェクトを支えるかを技術的な観点から解説します。</p>
+
+  <p>Application Discovery Serviceによる環境調査と依存関係の収集、Migration
+   Hubによるインベントリ管理とWave設計、MGNによる継続的レプリケーションと自動カットオーバーなど、各サービスの特徴を踏まえながら、AWS移行の全体像を体系的に理解することを目的としています。</p>
+
+  <h2>AWS Application Discovery Serviceで移行前の環境を正確に把握する</h2>
+
+  <p>AWS Application Discovery Serviceは、オンプレミス環境からAWSへの移行を検討する際に、既存のサーバーやアプリケーションの構成・依存関係を可視化するためのマネージドサービスです。<br>
+   移行計画の精度を高めるためには、現状のインフラを正しく理解することが不可欠であり、本サービスはその第一歩を支援します。</p>
+
+  <p>Discovery Serviceには、エージェントベースとエージェントレスの2つの収集方式があり、環境に応じて柔軟に選択できます。<br>
+   収集されたデータは、AWS Migration Hubに統合され、移行対象の選定や依存関係の分析、移行ステップの設計に活用できます。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Application Discovery Serviceの主な機能と特徴</h3>
+    <table class="boss-table">
+     <caption>Application Discovery Serviceの主な機能と特徴</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>機能</th>
+       <th>概要</th>
+       <th>活用ポイント</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>エージェントベース収集</td>
+       <td>OSレベルの詳細なメトリクスやプロセス情報を取得</td>
+       <td>アプリケーションの依存関係を深く分析可能</td>
+      </tr>
+      <tr>
+       <td>エージェントレス収集</td>
+       <td>VMware環境からvCenter経由で情報を取得</td>
+       <td>既存の仮想環境に影響を与えずに調査可能</td>
+      </tr>
+      <tr>
+       <td>Migration Hub連携</td>
+       <td>収集データを一元管理し、移行計画に活用</td>
+       <td>他の移行ツールとの連携が容易</td>
+      </tr>
+      <tr>
+       <td>依存関係の可視化</td>
+       <td>アプリケーション間の通信や接続関係をグラフ表示</td>
+       <td>移行順序や影響範囲の判断に役立つ</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>Application Discovery Serviceは、単なるインベントリ収集にとどまらず、移行プロジェクト全体の設計品質を高めるための重要な基盤となります。<br>
+   特に、複雑な業務システムやレガシー環境をAWSへ移行する際には、依存関係の把握がトラブル回避の鍵となります。</p>
+
+  <p>導入にあたっては、対象環境の構成やセキュリティポリシーに応じて、収集方式を選定することが重要です。<br>
+   また、収集後のデータをどのように活用するかを事前に設計しておくことで、移行プロジェクトの効率と成功率を高めることができます。</p>
+
+
+  <h3>DiscoveryとMigration Hubで作るAWS移行の土台</h3>
+  <p>AWS Application Discovery Serviceは、収集したオンプレミス環境の情報を<strong>AWS Migration
+    Hub</strong>に連携することで、移行プロジェクト全体の可視化と管理を可能にします。<br> 以下のステップで、Discoveryから移行計画までの流れを整理できます。</p>
+
+  <h3>連携フローのステップ一覧</h3>
+  <ol>
+   <li><strong>Discovery Agentの導入</strong>：対象サーバーにDiscovery Agentをインストールし、メトリクスやプロセス情報を収集します。</li>
+   <li><strong>データ収集の開始</strong>：Agentが定期的にAWSにデータを送信。収集対象はOS、ネットワーク、アプリケーションの依存関係など。</li>
+   <li><strong>Migration Hubへの統合</strong>：収集されたデータは自動的にMigration Hubに統合され、インベントリとして表示されます。</li>
+   <li><strong>依存関係の可視化</strong>：Migration Hub上でアプリケーション間の通信や接続関係をグラフ形式で確認できます。</li>
+   <li><strong>移行グループの定義</strong>：依存関係をもとに、移行対象のグループ（Wave）を定義します。</li>
+   <li><strong>移行ツールとの連携</strong>：Server Migration Service（SMS）やApplication Migration Service（MGN）などと連携し、実際の移行を開始します。
+   </li>
+  </ol>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Discovery ServiceとMigration Hubの連携ポイント</h3>
+    <table class="boss-table">
+     <caption>Discovery ServiceとMigration Hubの連携ポイント</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>ステージ</th>
+       <th>使用サービス</th>
+       <th>主な役割</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>環境調査</td>
+       <td>Application Discovery Service</td>
+       <td>オンプレミスの構成・依存関係を収集</td>
+      </tr>
+      <tr>
+       <td>データ統合</td>
+       <td>Migration Hub</td>
+       <td>収集データを一元管理し、可視化</td>
+      </tr>
+      <tr>
+       <td>移行設計</td>
+       <td>Migration Hub</td>
+       <td>移行グループの定義と依存関係の分析</td>
+      </tr>
+      <tr>
+       <td>移行実行</td>
+       <td>SMS / MGNなど</td>
+       <td>実際のサーバー・アプリケーション移行</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>このように、Discovery Serviceは単体ではなく、Migration Hubを中心とした移行エコシステムの一部として機能します。<br>
+   特に、依存関係の可視化と移行グループの定義は、移行の成否を左右する重要なポイントです。</p>
+
+  <h2>AWS Application Migration Serviceで“止めずに移す”を実現する</h2>
+
+  <p>AWS Application Migration Service（MGN）は、オンプレミスや他クラウド環境からAWSへの移行を、最小限のダウンタイムで実現するためのマネージドサービスです。<br>
+   従来のServer Migration Service（SMS）に代わる推奨サービスとして位置づけられており、継続的なレプリケーションと自動化されたカットオーバー機能が特徴です。</p>
+
+  <p>MGNは、対象サーバーに軽量なレプリケーションエージェントをインストールすることで、ブロックレベルのデータを継続的にAWSへ転送します。<br>
+   これにより、移行対象のシステムを停止することなく、リアルタイムに近い状態でAWS上にレプリカを構築できます。</p>
+
+  <dl>
+   <dt>継続的レプリケーション</dt>
+   <dd>オンプレミスのディスクブロックをAWSに非同期転送し、最新状態を維持します。</dd>
+
+   <dt>自動化されたカットオーバー</dt>
+   <dd>移行タイミングを指定し、AWS上のインスタンスを起動することで本番環境への切り替えが可能です。</dd>
+
+   <dt>変換不要な移行</dt>
+   <dd>OSやアプリケーションの再インストールを必要とせず、既存環境をそのまま移行できます。</dd>
+
+   <dt>タグ・セキュリティグループの自動適用</dt>
+   <dd>移行後のインスタンスに対して、事前定義した設定を自動で適用できます。</dd>
+  </dl>
+
+  <p>MGNは、移行対象が数十台〜数百台規模であっても、統一されたプロセスで効率的に移行を進めることができます。<br>
+   また、AWS Migration Hubと連携することで、移行ステータスの一元管理やWave単位での進捗把握も可能です。</p>
+
+  <p>移行におけるリスクを最小化しつつ、業務停止を避けたい場合には、MGNの継続的レプリケーションと自動カットオーバー機能が非常に有効です。<br>
+   特に、レガシー環境や複雑な依存関係を持つシステムにおいては、再構築よりも“そのまま移す”という選択肢が現実的な解となることもあります。</p>
+
+  <h2>AWS Migration Hubで“移行の全体像”を一元管理する</h2>
+
+  <p>AWS Migration Hubは、複数の移行ツールやサービスを横断的に統合し、移行プロジェクト全体の進捗やステータスを一元管理できるサービスです。<br>
+   オンプレミスからAWSへの移行において、複数のサーバーやアプリケーションが関与する場合、個別の移行状況を把握するのは困難ですが、Migration Hubを使うことで、可視性と統制力を高めることができます。</p>
+
+  <p>Migration Hubは、Application Discovery ServiceやApplication Migration Service（MGN）、Server Migration
+   Service（SMS）などと連携し、移行対象のインベントリ管理や依存関係の可視化、Wave単位での移行設計を支援します。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Migration Hubの主要機能とその役割</h3>
+    <table class="boss-table">
+     <caption>Migration Hubの主要機能とその役割</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>機能</th>
+       <th>概要</th>
+       <th>活用シーン</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>インベントリ管理</td>
+       <td>Discovery Serviceから収集したサーバー・アプリ情報を一覧化</td>
+       <td>移行対象の選定と依存関係の把握</td>
+      </tr>
+      <tr>
+       <td>Wave設計</td>
+       <td>移行対象をグループ化し、段階的な移行計画を立案</td>
+       <td>大規模移行の段階管理</td>
+      </tr>
+      <tr>
+       <td>ステータス追跡</td>
+       <td>各移行ツールの進捗を統合ビューで表示</td>
+       <td>プロジェクト全体の進捗管理</td>
+      </tr>
+      <tr>
+       <td>ツール連携</td>
+       <td>MGNやSMSなどの移行ツールと連携可能</td>
+       <td>移行の実行と自動化</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>Migration Hubは、単なるダッシュボードではなく、移行プロジェクトの“司令塔”として機能します。<br>
+   特に、複数チームが関与する大規模な移行では、情報の集約と可視化が成功の鍵となります。</p>
+
+  <p>また、AWS以外の移行ツールとも連携できる柔軟性があり、ハイブリッドな移行戦略にも対応可能です。<br>
+   移行の初期段階から導入することで、計画・実行・検証までの一貫した管理が実現できます。</p>
+
+  <h4>自分のPCで作っているサイトをクラウドへ</h4>
+  <p>AWSへの移行は、単にインフラをクラウドに置き換えるだけではなく、既存環境の構造を理解し、段階的かつ安全に移行するための設計と管理が求められます。<br>
+   Application Discovery Serviceによる環境調査、Migration Hubによる進捗と依存関係の管理、そしてApplication Migration
+   Serviceによる実行フェーズの自動化は、それぞれが移行プロセスの異なる局面を支えています。</p>
+
+  <p>個人でWebサイトや小規模なサービスを運営している場合でも、これらのサービスの考え方は十分に応用可能です。<br>
+   たとえば、複数のEC2インスタンスやRDSを使った構成を段階的に再設計したいとき、Discoveryによる構成把握やMigration HubによるWave設計は、無理のない移行計画を立てるうえで有効です。<br>
+   また、MGNのような継続的レプリケーション機能は、サービス停止を最小限に抑えたい場合に役立ちます。</p>
+
+  <p>特に、個人でインフラ管理からコンテンツ制作までを一手に担っている場合、移行に伴うリスクや作業負荷を軽減するためには、こうしたマネージドサービスの活用が現実的な選択肢となります。<br>
+   AWSの移行支援ツール群は、規模の大小を問わず、構造的な移行を可能にする設計思想に基づいており、個人開発者にとっても十分に価値あるものです。</p>
+
+  <p>本ページの内容が、AWS移行に取り組む際の技術的な判断材料として、また移行設計のヒントとして活用されることを願います。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsmigration.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
