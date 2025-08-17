@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="Amazon EC2・ECS・EKS・Lambda・Fargateなど、AWSの主要コンピューティングサービスについて、技術的な深度を持ってやさしく解説。仮想サーバーからコンテナ、サーバーレスまで、柔軟なクラウド設計を支援します。">
+ <meta name="keywords"
+  content="AWS, EC2, ECS, EKS, Lambda, Fargate, コンテナ, サーバーレス, クラウドコンピューティング, Kubernetes, インフラ設計, クラウドアーキテクチャ">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用">
+ <meta property="og:description"
+  content="Amazon EC2・ECS・EKS・Lambda・Fargateなど、AWSの主要コンピューティングサービスについて、技術的な深度を持ってやさしく解説。仮想サーバーからコンテナ、サーバーレスまで、柔軟なクラウド設計を支援します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awscomputing.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用",
+  "url": "https://feinatelier.org/contents/cloud_awscomputing.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用の目次を開く</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用の目次を開く ▼"
+   data-close-text="個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用の目次を閉じる ▲">個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>個人開発で使えるAWSコンピューティング｜EC2・ECS・EKS・Lambda・Fargateの活用</span></h1>
+
+  <p>
+   AWS（Amazon Web Services）は、個人開発者から大規模なエンタープライズまで、幅広い層に利用されているクラウドプラットフォームです。<br>
+   中でも「コンピューティングサービス」と呼ばれる領域は、アプリケーションの実行環境や処理基盤を構築するうえで欠かせない存在となっています。<br>
+   このページでは、Amazon EC2・ECS・EKS・Lambda・Fargateといった主要なコンピューティングサービスについて、それぞれの特徴や使いどころをやさしく、かつ技術的な視点を交えて解説しています。
+  </p>
+
+  <p>
+   仮想サーバーを柔軟に構築できる<strong>Amazon EC2</strong>、コンテナ運用を効率化する<strong>Amazon
+    ECS</strong>、Kubernetesをクラウドネイティブに展開できる<strong>Amazon EKS</strong>、イベント駆動型アーキテクチャを支える<strong>AWS
+    Lambda</strong>、そしてインフラ管理を不要にする<strong>AWS Fargate</strong>。<br>
+   それぞれのサービスは、目的や設計思想に応じて選択すべきものであり、単なる機能比較では語りきれない奥深さがあります。
+  </p>
+
+  <p>
+   このページは、AWSのコンピューティングサービスを「なんとなく知っている」から「自分の開発に活かせる」へとステップアップしたい方に向けて、実践的な視点で構成しています。<br>
+   サービスごとの構成要素やユースケース、設計上のポイントを丁寧に整理していますので、ぜひご自身のプロジェクトや学習に役立ててください。
+  </p>
+
+  <h2>Amazon Elastic Compute Cloud(Amazon EC2)で柔軟な仮想サーバー環境を構築する</h2>
+
+  <p>Amazon Elastic Compute Cloud（Amazon EC2）は、AWSが提供するスケーラブルな仮想サーバーサービスであり、クラウド上で自由にインスタンスを起動・停止・管理することができます。<br>
+   用途に応じてインスタンスタイプやストレージ、ネットワーク構成を選択できるため、Webアプリケーションのホスティングから機械学習の演算処理まで、幅広いユースケースに対応します。</p>
+
+  <p>EC2は、オンデマンド・リザーブド・スポットなど複数の料金モデルを提供しており、コスト最適化と可用性のバランスを柔軟に設計できます。<br>
+   また、Auto ScalingやElastic Load Balancingと組み合わせることで、トラフィックの変動に応じた動的なリソース管理が可能になります。</p>
+
+  <dl>
+   <dt>インスタンスタイプの選択</dt>
+   <dd>汎用（t系）、コンピューティング最適化（c系）、メモリ最適化（r系）、GPU搭載（p/g系）など、用途に応じた選択が可能です。</dd>
+
+   <dt>ストレージ構成</dt>
+   <dd>EBSによる永続ストレージ、インスタンスストアによる一時領域など、パフォーマンスと耐久性を考慮した設計ができます。</dd>
+
+   <dt>ネットワーク設定</dt>
+   <dd>VPC内でのサブネット配置、セキュリティグループ、Elastic IPの割り当てなど、細かな制御が可能です。</dd>
+
+   <dt>起動テンプレートとAuto Scaling</dt>
+   <dd>起動設定をテンプレート化し、負荷に応じてインスタンス数を自動調整できます。</dd>
+
+   <dt>運用と監視</dt>
+   <dd>CloudWatchによるメトリクス収集、SSMによるリモート操作、IAMによるアクセス制御などが利用できます。</dd>
+  </dl>
+
+  <p>Amazon EC2は、クラウドインフラの中核を担うサービスとして、柔軟性・拡張性・制御性のすべてを備えています。<br>
+   初期構築からスケールアウト、セキュリティ設計、コスト最適化まで、あらゆるフェーズで活用できるため、AWS環境における基盤設計の中心的存在と言えるでしょう。</p>
+
+  <h3>Amazon Machine Image(AMI)で再現性の高い仮想サーバー環境を構築する</h3>
+
+  <p>Amazon Machine Image（AMI）は、Amazon EC2インスタンスを起動するためのテンプレートであり、OS・アプリケーション・設定情報などを含んだ仮想マシンのイメージです。<br>
+   AMIを利用することで、同一構成のインスタンスを複数展開したり、環境のスナップショットとして保存・共有したりすることが可能になります。</p>
+
+  <p>標準で提供されるAWS公式AMIのほかに、Marketplaceから入手できる商用AMI、自分自身で作成するカスタムAMIなど、用途に応じた選択肢が用意されています。<br>
+   特にインフラのコード化（IaC）やCI/CDパイプラインとの連携において、AMIは安定した環境の再現に欠かせない要素となります。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon Machine Image(AMI)の種類と特徴</h3>
+    <table>
+     <caption>Amazon Machine Image(AMI)の種類と特徴</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>AMIの種類</th>
+       <th>特徴</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>公式AMI</td>
+       <td>AWSが提供する標準的なOSイメージ（Amazon Linux、Ubuntu、Windowsなど）。セキュリティ更新が定期的に行われる</td>
+      </tr>
+      <tr>
+       <td>Marketplace AMI</td>
+       <td>サードパーティが提供する商用AMI。ライセンス付きのソフトウェアやセキュリティ製品などが含まれる</td>
+      </tr>
+      <tr>
+       <td>カスタムAMI</td>
+       <td>ユーザー自身が作成したAMI。特定の設定やアプリケーションを含めて、再利用・共有が可能</td>
+      </tr>
+      <tr>
+       <td>Golden AMI</td>
+       <td>セキュリティ・監査・運用基準を満たした社内標準AMI。組織内での統一運用に適している</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>AMIは、単なる仮想マシンのコピーではなく、インフラの安定性・再現性・セキュリティを支える重要な構成要素です。<br>
+   Auto ScalingやLaunch Templateとの連携により、スケーラブルかつ一貫性のある環境構築が可能になります。</p>
+
+  <p>個人開発者にとっても、AMIを活用することで「一度作った環境を何度でも使える」安心感が得られます。<br>
+   検証環境や本番環境の切り替え、バックアップとしての保存など、柔軟な運用に役立ててみてください。</p>
+
+
+  <h3>Amazon EC2 Auto Scalingで実現する柔軟なインフラ運用</h3>
+  <p>
+   Amazon EC2 Auto Scalingは、需要に応じてEC2インスタンスの数を自動的に増減させることで、システムの可用性とコスト効率を最適化するサービスです。<br>
+   特にトラフィックの変動が大きいWebアプリケーションや、負荷分散が必要なバックエンド処理において有効です。
+  </p>
+  <p>
+   スケーリングの挙動は、事前に定義されたポリシーやメトリクスに基づいて制御されます。<br>
+   例えば、CPU使用率が一定の閾値を超えた場合にインスタンスを追加するような設定が可能です。
+  </p>
+  <dl>
+   <dt>Launch Template</dt>
+   <dd>インスタンスの起動設定（AMI、インスタンスタイプ、セキュリティグループなど）を定義します。</dd>
+
+   <dt>Auto Scaling Group</dt>
+   <dd>スケーリング対象となるインスタンス群を管理し、最小・最大・希望数を設定します。</dd>
+
+   <dt>Scaling Policy</dt>
+   <dd>CloudWatchメトリクスに基づいてインスタンス数を増減させるルールを定義します。</dd>
+
+   <dt>Health Check</dt>
+   <dd>インスタンスの正常性を監視し、異常があれば自動的に置き換えます。</dd>
+
+   <dt>Lifecycle Hook</dt>
+   <dd>インスタンスの起動・終了時にカスタム処理を挟むことができ、柔軟な制御が可能です。</dd>
+  </dl>
+  <p>
+   適切な設計と監視を行うことで、Amazon EC2 Auto Scalingは高可用性とコスト最適化を両立するインフラ運用の中核となります。<br>
+   特に、他のAWSサービス（Elastic Load BalancingやCloudWatchなど）と連携することで、より高度な自動化が実現できます。
+  </p>
+
+
+  <h3>Elastic Load Balancing(ELB)で支えるスケーラブルなトラフィック分散</h3>
+  <p>
+   Elastic Load Balancing（ELB）は、複数のターゲットに対してトラフィックを分散することで、アプリケーションの可用性と耐障害性を高める重要なコンポーネントです。<br>
+   特に、Auto Scalingと組み合わせることで、動的なインフラ構成にも柔軟に対応できます。
+  </p>
+  <p>
+   ELBには複数のタイプがあり、それぞれ異なるレイヤーで動作します。<br>
+   用途に応じて適切なロードバランサーを選択することが、安定したシステム運用の鍵となります。
+  </p>
+  <dl>
+   <dt>Application Load Balancer (ALB)</dt>
+   <dd>HTTP/HTTPSレベルで動作し、パスベースやホストベースのルーティングが可能です。<br>
+    マイクロサービスやコンテナ環境に適しています。</dd>
+
+   <dt>Network Load Balancer (NLB)</dt>
+   <dd>TCPレベルで動作し、高スループット・低レイテンシが求められるアプリケーションに適しています。<br>
+    静的IPの割り当ても可能です。</dd>
+
+   <dt>Gateway Load Balancer (GLB)</dt>
+   <dd>セキュリティアプライアンスなどの仮想アプライアンスをスケーラブルに配置するためのロードバランサーです。<br>
+    トラフィックのインスペクション用途に向いています。</dd>
+
+   <dt>Classic Load Balancer (CLB)</dt>
+   <dd>旧世代のロードバランサーで、EC2 Classic環境向けに提供されていました。<br>
+    新規構築では非推奨です。</dd>
+  </dl>
+  <p>
+   ELBは、ターゲットのヘルスチェックやSSL終端、セッション維持（スティッキーセッション）などの機能も備えており、アプリケーションの信頼性を高めるための基盤となります。<br>
+   適切なロードバランサーの選定と設定により、トラフィックの急増にも耐えうる堅牢なアーキテクチャを構築できます。
+  </p>
+
+
+  <h2>Amazon Elastic Container Service(Amazon ECS)でコンテナ運用を効率化する</h2>
+
+  <p>Amazon Elastic Container Service（Amazon ECS）は、Dockerコンテナを効率的にデプロイ・管理・スケーリングできるフルマネージドなコンテナオーケストレーションサービスです。<br>
+   Kubernetesのような外部ツールを使わずに、AWSネイティブな環境でコンテナ運用を完結できる点が特徴です。</p>
+
+  <p>ECSは、FargateとEC2の2つの起動タイプを提供しており、インフラ管理の有無に応じて柔軟に選択できます。<br>
+   Fargateを利用すれば、サーバーレスでコンテナを実行でき、リソースのプロビジョニングやスケーリングが自動化されます。</p>
+
+  <dl>
+   <dt>タスク定義</dt>
+   <dd>コンテナイメージ、CPU・メモリ、環境変数、ログ設定などを含む、ECSにおける基本的な実行単位です。</dd>
+
+   <dt>サービス</dt>
+   <dd>指定したタスク数を維持し、ロードバランサーとの連携やAuto Scalingによる可用性の確保が可能です。</dd>
+
+   <dt>クラスタ</dt>
+   <dd>タスクやサービスを実行する論理的なグループであり、EC2またはFargateによる実行環境を管理します。</dd>
+
+   <dt>IAMロールとセキュリティ</dt>
+   <dd>タスクごとのIAMロール設定により、きめ細かなアクセス制御が可能です。セキュリティグループやVPC設定も適用できます。</dd>
+
+   <dt>統合と監視</dt>
+   <dd>CloudWatch LogsやContainer Insightsとの連携により、ログ収集やメトリクス監視が容易です。</dd>
+  </dl>
+
+  <p>Amazon ECSは、AWS環境におけるコンテナ運用をシンプルかつ強力に支援してくれるサービスです。<br>
+   CI/CDパイプラインとの統合や、Blue/Greenデプロイの実現、マイクロサービスアーキテクチャへの適用など、実践的なユースケースにも対応しています。</p>
+
+
+  <h2>Amazon Elastic Kubernetes Service(Amazon EKS)でKubernetes運用をクラウドネイティブに</h2>
+
+  <p>Amazon Elastic Kubernetes Service（Amazon EKS）は、Kubernetesクラスターの構築・運用・スケーリングをAWS上で簡素化するマネージドサービスです。<br>
+   Kubernetesの複雑な制御プレーンの管理をAWSが担うことで、ユーザーはワーカーノードやアプリケーションの運用に集中できます。</p>
+
+  <p>EKSは、EC2・Fargate・Bare Metalなど多様な実行環境に対応しており、ワークロードの特性に応じた柔軟な設計が可能です。<br>
+   また、AWS IAMとの統合により、Kubernetes RBACとクラウド側のアクセス制御を連携させることができます。</p>
+
+  <dl>
+   <dt>制御プレーンのマネージド化</dt>
+   <dd>高可用性なKubernetes APIサーバーがAWSによって管理され、パッチ適用やスケーリングが自動化されます。</dd>
+
+   <dt>ノードグループ</dt>
+   <dd>EC2ベースのノードグループやFargateによるサーバーレス実行が選択でき、コストや運用負荷に応じた設計が可能です。</dd>
+
+   <dt>ネットワーク統合</dt>
+   <dd>VPC CNIプラグインにより、Pod単位でのENI割り当てが可能となり、AWSネットワークと密接に統合されます。</dd>
+
+   <dt>セキュリティとIAM連携</dt>
+   <dd>IAM Roles for Service Accounts（IRSA）を用いることで、Pod単位でのIAM権限付与が可能です。</dd>
+
+   <dt>監視とロギング</dt>
+   <dd>CloudWatch Container InsightsやPrometheus/Grafanaとの統合により、メトリクスとログの可視化が容易です。</dd>
+  </dl>
+
+  <p>Amazon EKSは、Kubernetesの標準性を維持しながら、AWSのセキュリティ・ネットワーク・監視機能と統合できる点が大きな魅力です。<br>
+   マイクロサービスやイベント駆動アーキテクチャ、GitOpsなどの先進的な運用モデルにも適しており、クラウドネイティブな基盤構築において重要な選択肢となります。</p>
+
+  <h3>Amazon Elastic Container Registry(ECR)で支えるセキュアなコンテナ管理</h3>
+  <p>
+   Amazon Elastic Container Registry（ECR）は、Dockerイメージを保存・取得するためのマネージド型レジストリサービスです。<br>
+   AWSの他サービスと密接に統合されており、特にECSやEKSとの連携において、スムーズなコンテナデプロイを実現します。
+  </p>
+  <p>
+   ECRは、開発・運用の両面で利便性が高く、セキュリティやスケーラビリティにも優れています。<br>
+   CI/CDパイプラインとの統合も容易で、DevOps環境におけるコンテナ管理の要となります。
+  </p>
+  <dl>
+   <dt>プライベートレジストリ</dt>
+   <dd>自社専用のコンテナイメージを安全に保存でき、IAMポリシーによるアクセス制御が可能です。</dd>
+
+   <dt>イメージスキャン</dt>
+   <dd>脆弱性のあるパッケージを自動検出し、セキュリティリスクを早期に把握できます。</dd>
+
+   <dt>ライフサイクルポリシー</dt>
+   <dd>古いイメージの自動削除ルールを設定することで、ストレージの最適化が図れます。</dd>
+
+   <dt>マルチアーキテクチャ対応</dt>
+   <dd>ARMやx86など、複数のアーキテクチャ向けイメージを同一リポジトリで管理できます。</dd>
+
+   <dt>パブリックレジストリ</dt>
+   <dd>オープンソースプロジェクトなどのイメージを広く公開するための仕組みも提供されています。</dd>
+  </dl>
+  <p>
+   ECRは、開発者が信頼できるイメージを迅速に取得・配布できる環境を提供し、セキュアかつ効率的なコンテナ運用を支えます。<br>
+   特に、IAMやKMSとの連携によるアクセス制御・暗号化機能は、企業レベルのセキュリティ要件にも対応可能です。
+  </p>
+
+  <h2>AWS Lambdaでイベント駆動型アーキテクチャを実現する</h2>
+
+  <p>AWS Lambdaは、サーバーのプロビジョニングや管理を一切行うことなく、コードをイベントに応じて実行できるサーバーレスコンピューティングサービスです。<br>
+   関数単位でのデプロイが可能で、API Gateway、S3、DynamoDB、EventBridgeなど、AWSの多様なサービスと連携して動作します。</p>
+
+  <p>Lambda関数は、リクエストに応じて自動的にスケーリングされ、使用した分だけ課金される従量課金モデルを採用しています。<br>
+   また、コンテナイメージによるデプロイや、最大15分までの実行時間、VPC内での実行など、柔軟な運用が可能です。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWS Lambdaの主な特徴と技術的ポイント</h3>
+    <table>
+     <caption>AWS Lambdaの主な特徴と技術的ポイント</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>項目</th>
+       <th>内容</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>イベントトリガー</td>
+       <td>S3アップロード、API Gateway呼び出し、DynamoDB変更、EventBridgeスケジュールなど多様なイベントに対応</td>
+      </tr>
+      <tr>
+       <td>実行環境</td>
+       <td>Node.js、Python、Java、Go、.NETなど複数のランタイムをサポート。コンテナイメージも利用可能</td>
+      </tr>
+      <tr>
+       <td>スケーラビリティ</td>
+       <td>リクエスト数に応じて自動的に関数インスタンスが増減。高トラフィックにも対応可能</td>
+      </tr>
+      <tr>
+       <td>セキュリティ</td>
+       <td>IAMロールによるアクセス制御、VPC内実行、環境変数の暗号化などが可能</td>
+      </tr>
+      <tr>
+       <td>監視とロギング</td>
+       <td>CloudWatch Logs、X-Rayによるトレース、メトリクス収集などが統合されている</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>AWS Lambdaは、マイクロサービスやバッチ処理、リアルタイムデータ処理など、幅広いユースケースに対応できる柔軟性を持っています。<br>
+   インフラ管理から解放され、コードに集中できる開発体験は、クラウドネイティブなアーキテクチャの推進において非常に有効です。</p>
+
+
+  <h2>AWS Fargateでインフラ管理不要なコンテナ実行を実現する</h2>
+
+  <p>AWS Fargateは、Amazon ECSやAmazon EKSと連携して、仮想マシンの管理を不要にするサーバーレスなコンテナ実行環境です。<br>
+   ユーザーは、CPU・メモリ・コンテナイメージなどの定義に集中するだけで、Fargateが裏側のインフラを自動的にプロビジョニング・スケーリング・管理してくれます。</p>
+
+  <p>従来のEC2ベースのコンテナ運用と異なり、Fargateではノードのパッチ適用や容量管理が不要となり、セキュリティや可用性の面でもメリットがあります。<br>
+   また、起動時間が短く、リソース単位での課金モデルにより、コスト最適化にも寄与します。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWS Fargateの技術的特徴と利点</h3>
+    <table>
+     <caption>AWS Fargateの技術的特徴と利点</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>項目</th>
+       <th>内容</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>インフラ管理</td>
+       <td>EC2インスタンス不要。Fargateが仮想マシンの管理を完全に抽象化</td>
+      </tr>
+      <tr>
+       <td>対応サービス</td>
+       <td>Amazon ECSおよびAmazon EKSの両方に対応。用途に応じて選択可能</td>
+      </tr>
+      <tr>
+       <td>起動時間</td>
+       <td>数秒でコンテナ起動が可能。スケーリングにも迅速に対応</td>
+      </tr>
+      <tr>
+       <td>セキュリティ</td>
+       <td>各タスクにIAMロールを割り当て可能。VPC内実行やセキュリティグループ設定も対応</td>
+      </tr>
+      <tr>
+       <td>課金モデル</td>
+       <td>CPU・メモリの使用量に応じた従量課金。未使用リソースの無駄が発生しにくい</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>AWS Fargateは、インフラ管理の負担を軽減し、アプリケーション開発に集中できる環境を提供してくれます。<br>
+   マイクロサービス、バッチ処理、イベント駆動型アーキテクチャなど、さまざまなユースケースにおいて、柔軟かつ効率的なコンテナ運用を実現します。</p>
+
+  <h2>Amazon Lightsailで始めるシンプルかつ堅牢なクラウド運用</h2>
+  <p>
+   Amazon Lightsailは、クラウド初心者から中級者まで幅広く利用できる、使いやすさとコストパフォーマンスに優れたサービスです。<br>
+   AWSの他サービスと連携することも可能で、段階的なスケーリングにも対応できます。
+  </p>
+  <p>
+   特に、WordPressやNode.jsなどのスタックをワンクリックでデプロイできるテンプレート機能は、開発の初期段階において大きな助けとなります。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon Lightsailの主な機能と特徴</h3>
+    <table class="boss-table">
+     <caption>Amazon Lightsailの主な機能と特徴</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>機能</th>
+       <th>概要</th>
+       <th>技術的ポイント</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>仮想サーバー</td>
+       <td>定額料金で利用可能なLinux/Windowsベースのインスタンス</td>
+       <td>SSDストレージ、固定IP、SSHアクセスに対応</td>
+      </tr>
+      <tr>
+       <td>マネージドデータベース</td>
+       <td>MySQLやPostgreSQLを簡単に構築・管理</td>
+       <td>自動バックアップ、スケールアップ可能</td>
+      </tr>
+      <tr>
+       <td>ロードバランサー</td>
+       <td>複数インスタンスへのトラフィック分散</td>
+       <td>SSL証明書の無料発行とHTTPS対応</td>
+      </tr>
+      <tr>
+       <td>オブジェクトストレージ</td>
+       <td>静的ファイルやメディアの保存に最適</td>
+       <td>S3互換APIで他サービスとの連携も可能</td>
+      </tr>
+      <tr>
+       <td>DNS管理</td>
+       <td>独自ドメインの設定とレコード管理</td>
+       <td>Route 53との連携も可能</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+  <p>
+   Lightsailは、AWSの本格的なサービス群への橋渡しとしても有効です。<br>
+   必要に応じてEC2やRDSへ移行することも可能で、成長に合わせた柔軟なクラウド戦略を描くことができます。
+  </p>
+
+  <h2>Amazon WorkSpacesで実現する柔軟な仮想デスクトップ環境</h2>
+  <p>
+   Amazon WorkSpacesは、クラウドベースの仮想デスクトップを提供することで、従業員がどこからでも安全に業務環境へアクセスできる仕組みを実現します。<br>
+   管理者は、ユーザーごとのリソース割り当てやセキュリティ設定を一元管理でき、運用負荷の軽減にもつながります。
+  </p>
+  <p>
+   特に、従来のVDIと比較して初期構築が容易で、スケールアップ・ダウンも柔軟に行える点が魅力です。<br>
+   以下の表に、代表的な特徴と活用例を整理しました。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon WorkSpacesの特徴とユースケース</h3>
+    <table class="boss-table">
+     <caption>Amazon WorkSpacesの特徴とユースケース</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>特徴</th>
+       <th>概要</th>
+       <th>活用シーン</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>マネージド型VDI</td>
+       <td>インフラ管理不要で仮想デスクトップを提供</td>
+       <td>社内ITの運用負荷軽減</td>
+      </tr>
+      <tr>
+       <td>セキュアなアクセス</td>
+       <td>暗号化通信とIAM連携による認証管理</td>
+       <td>リモートワークや外部委託業務</td>
+      </tr>
+      <tr>
+       <td>柔軟なリソース設定</td>
+       <td>CPU・メモリ・ストレージをユーザー単位で調整可能</td>
+       <td>開発者・デザイナー向けの高性能環境</td>
+      </tr>
+      <tr>
+       <td>コスト最適化</td>
+       <td>月額課金と時間課金の選択が可能</td>
+       <td>短期プロジェクトや季節要員の対応</td>
+      </tr>
+      <tr>
+       <td>マルチOS対応</td>
+       <td>WindowsとAmazon Linuxの両方をサポート</td>
+       <td>社内ポリシーやアプリ要件に応じた選択</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   WorkSpacesは、他のAWSサービス（Directory ServiceやCloudWatchなど）と連携することで、より高度な運用管理が可能になります。<br>
+   安定した仮想デスクトップ環境をクラウドで手軽に構築したい場合、非常に有力な選択肢となります。
+  </p>
+
+  <h2>Amazon Batchで実現するスケーラブルなバッチ処理基盤</h2>
+  <p>
+   Amazon Batchは、ジョブの実行に必要なリソースを自動的に管理し、効率的なバッチ処理を可能にするサービスです。<br>
+   コンテナベースで動作するため、環境の再現性や移植性にも優れており、CI/CDパイプラインとの統合にも適しています。
+  </p>
+  <p>
+   ジョブの依存関係や優先度、リトライポリシーなども柔軟に設定できるため、複雑な処理フローにも対応可能です。<br>
+   以下に、Amazon Batchの主要な構成要素をまとめました。
+  </p>
+  <dl>
+   <dt>ジョブ定義（Job Definition）</dt>
+   <dd>コンテナイメージ、vCPU数、メモリ量、環境変数などを指定するテンプレートです。</dd>
+
+   <dt>ジョブキュー（Job Queue）</dt>
+   <dd>ジョブの優先度や実行順序を制御するキューで、複数のコンピューティング環境に振り分け可能です。</dd>
+
+   <dt>コンピューティング環境（Compute Environment）</dt>
+   <dd>ジョブを実行するためのインフラ環境で、EC2ベースまたはFargateベースを選択できます。</dd>
+
+   <dt>依存関係管理</dt>
+   <dd>ジョブ間の依存関係を定義することで、順序性のある処理を構築できます。</dd>
+
+   <dt>CloudWatch連携</dt>
+   <dd>ジョブのログやメトリクスを監視・可視化することで、運用の安定性を高めます。</dd>
+  </dl>
+  <p>
+   Amazon Batchは、オンデマンドでスケーリング可能な処理基盤として、従来のオンプレミスバッチ環境をクラウドへ移行する際の有力な選択肢です。<br>
+   特に、Spotインスタンスを活用することで、コスト効率の高い運用も実現できます。
+  </p>
+
+  <h4>個人サイト制作でもクラウドは立派な選択肢</h4>
+  <p>
+   ここまで、Amazon EC2・ECS・EKS・Lambda・FargateといったAWSの主要コンピューティングサービスについて、それぞれの特徴や設計上のポイントを解説してきました。<br>
+   仮想サーバーからコンテナ、サーバーレスまで、選択肢が豊富であるがゆえに迷うこともあるかもしれませんが、それぞれのサービスは異なる目的に最適化されており、使い分けることでクラウド設計の自由度は大きく広がります。
+  </p>
+
+  <p>
+   個人サイト制作者にとって、AWSは「大企業向けの難しいクラウド」という印象を持たれがちですが、実際には小規模なプロジェクトや趣味の開発にも十分に活用できる柔軟性があります。<br>
+   例えば、EC2でWordPressをホストしたり、Lambdaでフォーム送信を処理したり、Fargateで静的サイトのビルドを自動化したりと、アイデア次第で多彩な使い方が可能です。
+  </p>
+
+  <p>
+   大切なのは、「自分のサイトにとって何が必要か」を見極めることです。<br>
+   インフラを細かく制御したいのか、運用負荷を減らしたいのか、スケーラビリティを重視したいのか——それぞれのニーズに応じて、AWSのコンピューティングサービスは確かな選択肢を提供してくれます。
+  </p>
+
+  <p>
+   このページが、あなたの開発スタイルに合ったAWSサービスを見つけるきっかけとなり、より快適で拡張性のあるWebサイト運営につながれば嬉しく思います。<br>
+   クラウドの世界は広く、そして自由です。<br>
+   ぜひ、あなた自身の手でその可能性を広げてみてください。
+  </p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awscomputing.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="Amazon VPCやAPI Gatewayなど、AWSの主要コンピューティングサービスの構成要素と役割をわかりやすく解説。専用線接続のDirect Connectも含め、クラウドネットワーク設計の基礎を網羅。">
+ <meta name="keywords"
+  content="AWS,VPC,Amazon VPC,API Gateway,AWS Direct Connect,クラウドネットワーク,専用線接続,API管理,クラウド設計,コンピューティングサービス">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話">
+ <meta property="og:description"
+  content="Amazon VPCやAPI Gatewayなど、AWSの主要コンピューティングサービスの構成要素と役割をわかりやすく解説。専用線接続のDirect Connectも含め、クラウドネットワーク設計の基礎を網羅。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsnetwork.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話",
+  "url": "https://feinatelier.org/contents/cloud_awsnetwork.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">AWS VPC・API Gateway・Direct
+     Connectの基礎と役割｜クラウドネットワーク設計のお話の目次を開く</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話の目次を開く ▼"
+   data-close-text="AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話の目次を閉じる ▲">AWS VPC・API Gateway・Direct
+   Connectの基礎と役割｜クラウドネットワーク設計のお話の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>AWS VPC・API Gateway・Direct Connectの基礎と役割｜クラウドネットワーク設計のお話</span></h1>
+
+  <p>クラウドインフラの設計において、ネットワークの構成は単なる技術的な選択肢ではなく、セキュリティ・可用性・拡張性といったビジネスの根幹に関わる重要な要素です。<br>
+   特にAmazon Web Services（AWS）を活用する際には、「Virtual Private Cloud（VPC）」や「API
+   Gateway」などのコンピューティングサービスを正しく理解し、目的に応じて適切に組み合わせることが求められます。</p>
+
+  <p>本ページでは、AWSが提供するクラウドネットワークの中核であるAmazon VPCの主要コンポーネントとその役割を解説します。<br>
+   VPCは、クラウド上に構築する仮想的な専用ネットワーク空間であり、サブネットやルートテーブル、インターネットゲートウェイなどの構成要素を通じて、柔軟かつ安全なネットワーク設計を可能にします。</p>
+
+  <p>さらに、オンプレミス環境との安定した接続を実現するAWS Direct Connectという専用線接続の選択肢についても取り上げ、ハイブリッドクラウド構成における実践的な視点を記載します。</p>
+
+  <p>そして、クラウド時代のAPI管理に不可欠なAmazon API Gatewayについては、APIの公開・認証・スロットリング・モニタリングなど、開発者と運用者双方にとって重要な機能を紹介。<br>
+   API Gatewayは、マイクロサービスアーキテクチャやサーバーレス構成において、まさに「APIのフロントドア」として機能します。</p>
+
+  <p>AWSのコンピューティングサービスを理解することは、単なる技術習得にとどまらず、クラウド活用の戦略的な第一歩です。<br>
+   初心者の方にもわかりやすく、実務に活かせる視点で解説していきます。</p>
+
+  <h2>Amazon Virtual Private Cloud(VPC)：クラウド上の専用ネットワーク空間</h2>
+
+  <p>Amazon Virtual Private
+   Cloud（VPC）は、AWS上にユーザー専用の仮想ネットワーク空間を構築できるサービスです。<br>
+   オンプレミスのネットワーク設計に近い柔軟性を持ちつつ、クラウドのスケーラビリティや可用性を享受できる点が大きな特徴です。</p>
+
+  <p>
+   VPCを利用することで、IPアドレス範囲（CIDR）を自由に設定し、サブネットの分割、ルートテーブルやインターネットゲートウェイの構成、セキュリティグループやネットワークACLによるアクセス制御など、ネットワークの論理設計を細かく制御できます。
+  </p>
+
+  <p>特に、以下のようなユースケースにおいてVPCは非常に有効です：</p>
+  <ul>
+   <li>パブリックとプライベートサブネットを分離し、セキュアなWebアプリケーションを構築</li>
+   <li>VPNやAWS Direct Connectを用いてオンプレミスとのハイブリッド接続を実現</li>
+   <li>セキュリティポリシーに基づいたトラフィック制御と監視の実装</li>
+  </ul>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">VPCの主要コンポーネントと役割</h3>
+    <table>
+     <caption>VPCの主要コンポーネントと役割</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>コンポーネント名</th>
+       <th>役割</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>サブネット</td>
+       <td>VPC内のIP範囲を分割し、パブリック／プライベートのゾーンを構成</td>
+      </tr>
+      <tr>
+       <td>インターネットゲートウェイ</td>
+       <td>VPCとインターネット間の通信を可能にするゲートウェイ</td>
+      </tr>
+      <tr>
+       <td>ルートテーブル</td>
+       <td>ネットワークトラフィックの経路を定義する設定</td>
+      </tr>
+      <tr>
+       <td>セキュリティグループ</td>
+       <td>インスタンス単位でのステートフルなファイアウォール設定</td>
+      </tr>
+      <tr>
+       <td>ネットワークACL</td>
+       <td>サブネット単位でのステートレスなアクセス制御</td>
+      </tr>
+      <tr>
+       <td>VPCピアリング</td>
+       <td>異なるVPC間の通信を可能にする接続設定</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   VPCは、クラウド環境におけるセキュアで柔軟なネットワーク設計の基盤となります。<br>
+   設計段階でのCIDRの選定や、サブネットの分離方針、セキュリティグループの粒度などが、後々の運用に大きく影響しますので、初期設計は慎重に行うことが重要です。
+  </p>
+
+
+  <h2>AWS Direct Connectという専用線接続の選択肢</h2>
+
+  <p>AWS Direct Connectは、オンプレミス環境とAWSクラウド間を専用線で直接接続するサービスです。<br>
+   インターネットを経由せず、物理的に安定した通信経路を確保できるため、セキュリティ・帯域・レイテンシの面で非常に優れた選択肢となります。</p>
+
+  <p>このサービスは、特に以下のような要件を持つ企業に適しています：</p>
+
+  <dl>
+   <dt>大容量データ転送</dt>
+   <dd>バックアップやビッグデータ処理など、継続的な大量データの移動に最適です。</dd>
+
+   <dt>ハイブリッドクラウド構成</dt>
+   <dd>オンプレミスとAWS間で安定した通信を必要とするシステム設計に有効です。</dd>
+
+   <dt>セキュリティ要件の厳しい業界</dt>
+   <dd>金融・医療・公共機関など、通信経路の制御が求められるケースに適しています。</dd>
+
+   <dt>低レイテンシ</dt>
+   <dd>リアルタイム性が求められるアプリケーションにおいて、インターネット経由よりも安定した応答性を実現します。</dd>
+
+   <dt>帯域保証</dt>
+   <dd>契約帯域に応じた安定した通信速度を確保できるため、予測可能なパフォーマンスが得られます。</dd>
+  </dl>
+
+  <p>Direct Connectは、仮想インターフェース（VIF）を通じて、VPCへのプライベート接続や、AWSのパブリックサービスへのアクセスを構成できます。<br>
+   BGP（Border Gateway Protocol）による動的ルーティングにも対応しており、冗長構成やフェイルオーバー設計も可能です。</p>
+
+  <p>なお、Direct Connectは単独で利用するだけでなく、VPNとの併用による冗長性確保や、Transit Gatewayとの連携による複数VPCの集約接続など、設計次第で柔軟なネットワークアーキテクチャを構築できます。
+  </p>
+
+
+
+
+  <h2>Amazon API Gateway：API管理のフロントドア</h2>
+
+  <p>Amazon API Gatewayは、RESTful APIやWebSocket
+   APIを簡単かつ安全に公開・管理できるフルマネージドサービスです。<br>
+   バックエンドのLambda関数、EC2、コンテナ、オンプレミス環境などと連携し、APIのエントリーポイントとして機能します。</p>
+
+  <p>このサービスは、スケーラビリティ・セキュリティ・モニタリング・課金管理など、API運用に必要な機能を包括的に提供しており、マイクロサービスアーキテクチャやサーバーレス構成において特に有効です。</p>
+
+  <p>API Gatewayの主な特徴は以下の通りです：</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon API Gatewayの主要機能と役割</h3>
+    <table>
+     <caption>Amazon API Gatewayの主要機能と役割</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>機能</th>
+       <th>役割・効果</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>認証・認可</td>
+       <td>IAMポリシー、Cognito、Lambdaオーソライザーを用いたアクセス制御</td>
+      </tr>
+      <tr>
+       <td>レート制限</td>
+       <td>API利用者ごとのリクエスト制限により、過負荷を防止</td>
+      </tr>
+      <tr>
+       <td>ステージ管理</td>
+       <td>開発・ステージング・本番環境の分離とバージョン管理</td>
+      </tr>
+      <tr>
+       <td>モニタリング</td>
+       <td>CloudWatchとの連携によるメトリクス収集とアラート設定</td>
+      </tr>
+      <tr>
+       <td>キャッシュ</td>
+       <td>レスポンスのキャッシュにより、パフォーマンス向上とコスト削減</td>
+      </tr>
+      <tr>
+       <td>OpenAPI対応</td>
+       <td>標準仕様に基づいたAPI設計とドキュメント生成が可能</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>Amazon API
+   Gatewayは、単なるAPI公開の手段ではなく、セキュアでスケーラブルなAPI運用基盤として設計されています。<br>
+   Lambdaとの連携による完全サーバーレス構成や、VPCリンクを用いたプライベートリソースへの接続など、設計次第で多様なアーキテクチャに対応できます。
+  </p>
+
+  <h4>クラウドは企業専用のITツールではない</h4>
+  <p>本ページでは、AWSのコンピューティングサービスの中でも特に重要な「Amazon VPC」「AWS Direct Connect」「Amazon API
+   Gateway」について、その構成要素と役割を体系的に解説してきました。<br>
+   これらは単なるクラウド機能ではなく、安全で柔軟なWebサービスを構築するための“土台”とも言える存在です。</p>
+
+  <p>個人でWebサイトやサービスを構築・運営している方にとって、AWSは「大企業向けの難しいクラウド」という印象を持たれがちですが、実はスモールスタートにも適した設計自由度と拡張性を備えています。<br>
+   VPCによって自分専用のネットワーク空間を持ち、API Gatewayで外部との接点を安全に管理することで、セキュリティとスケーラビリティの両立が可能になります。</p>
+
+  <p>また、オンプレミス環境や他サービスとの連携を視野に入れる場合、Direct Connectのような専用線接続の選択肢を知っておくことは、将来的な構成変更やビジネス拡張にも役立ちます。<br>
+   たとえ今は使わなくても、「知っているかどうか」で設計の幅は大きく変わります。</p>
+
+  <p>個人サイト制作者として、デザインやコンテンツに注力するのはもちろんですが、その裏側で動くインフラの理解があると、より信頼性の高いサービス提供が可能になります。<br>
+   ユーザーの体験を支えるのは、見えない部分の設計です。<br>
+   AWSの各サービスは、その“見えない部分”を自分の手でコントロールできます。
+   ぜひ、今回紹介した内容をきっかけに、AWSのドキュメントや実際のコンソール操作にも触れてみてください。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsnetwork.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
