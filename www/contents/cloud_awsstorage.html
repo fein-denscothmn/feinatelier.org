@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description" content="Amazon EBS・S3・EFS・FSxなど、AWSの主要ストレージサービスを技術的に比較・解説。用途に応じた柔軟な設計と選定ポイントを丁寧に紹介します。">
+ <meta name="keywords"
+  content="Amazon EBS, Amazon S3, Amazon EFS, Amazon FSx, AWS ストレージ, クラウドストレージ, ファイル共有, オブジェクトストレージ, ブロックストレージ, ストレージクラス比較, SMB, NFS, スケーラブルストレージ">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイント">
+ <meta property="og:description"
+  content="Amazon EBS・S3・EFS・FSxなど、AWSの主要ストレージサービスを技術的に比較・解説。用途に応じた柔軟な設計と選定ポイントを丁寧に紹介します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsstorage.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイント",
+  "url": "https://feinatelier.org/contents/cloud_awsstorage.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイント</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイント</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイントの目次を開く ▼"
+   data-close-text="AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイントの目次を閉じる ▲">AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイントの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>AWSストレージ設計｜EBS・S3・EFS・FSxの技術比較と活用ポイント</span></h1>
+
+  <p>クラウドインフラの進化に伴い、ストレージ設計は単なる容量確保から、柔軟性・可用性・コスト効率・パフォーマンスの最適化へと大きくシフトしています。<br>
+   特にAWS（Amazon Web Services）が提供するストレージサービス群は、用途に応じた多様な選択肢を備えており、設計者にとっては“最適な組み合わせ”を見極めるのが難しいですよね。</p>
+
+  <p>本ページでは、Amazon Elastic Block Store（EBS）、Amazon Simple Storage Service（S3）、Amazon Elastic File System（EFS）、そしてAmazon
+   FSx
+   for Windows File
+   Serverという4つの主要ストレージサービスに焦点を当て、それぞれの特徴・ユースケース・選定ポイントを体系的に解説します。<br>
+   EBSのボリュームタイプ比較から始まり、S3のストレージクラスの違い、EFSによる共有ファイルストレージの柔軟性、FSxによるWindowsネイティブなファイル共有まで、可能な限り簡潔に書いています。</p>
+
+  <p>「ブロック」「オブジェクト」「ファイル」という3つのストレージモデルを軸に、どのようなシステム構成や運用方針に適しているのかを明確にし、Web開発者が迷わず選択できるよう紹介します。</p>
+
+  <h2>Amazon Elastic Block Store(Amazon EBS)による柔軟なストレージ設計</h2>
+
+  <p>
+   Amazon Elastic Block Store（Amazon EBS）は、Amazon
+   EC2インスタンス向けに設計された高可用性・高耐久性のブロックストレージサービスです。<br>
+   EBSは、仮想マシンに対して永続的なストレージを提供し、ファイルシステムの構築やデータベースの格納、ログの保存など、幅広い用途に対応しています。
+  </p>
+
+  <p>
+   EBSボリュームはネットワーク越しにEC2インスタンスへ接続され、インスタンスのライフサイクルとは独立して管理できます。<br>
+   これにより、インスタンスの停止や再起動を行ってもデータが保持されるため、可用性の高いアーキテクチャを構築するうえで非常に有用です。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon EBSの主要ボリュームタイプ比較（3列構成）</h3>
+    <table class="boss-table">
+     <caption>Amazon EBSの主要ボリュームタイプ比較（3列構成）</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>ボリュームタイプ</th>
+       <th>主な用途</th>
+       <th>性能概要</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>gp3（汎用SSD）</td>
+       <td>一般的な用途全般</td>
+       <td>最大16,000 IOPS / 最大1,000 MB/s</td>
+      </tr>
+      <tr>
+       <td>io2（プロビジョンドIOPS SSD）</td>
+       <td>高性能DBやI/O集約型アプリ</td>
+       <td>最大64,000 IOPS / 最大1,000 MB/s</td>
+      </tr>
+      <tr>
+       <td>st1（スループット最適化HDD）</td>
+       <td>ログ処理や大容量データの一括処理</td>
+       <td>中程度IOPS / 最大500 MB/s</td>
+      </tr>
+      <tr>
+       <td>sc1（Cold HDD）</td>
+       <td>アクセス頻度の低いデータ</td>
+       <td>低IOPS / 最大250 MB/s</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   適切なボリュームタイプを選定することで、コストと性能のバランスを最適化できます。<br>
+   特にgp3は、従来のgp2に比べてIOPSやスループットを独立して設定できるため、柔軟性が高くおすすめです。
+  </p>
+
+  <p>
+   最後に、EBSはEC2インスタンスとの密接な連携だけでなく、スナップショットを活用した災害対策や環境の複製にも活用できるため、クラウド設計において非常に重要なコンポーネントとなります。
+  </p>
+
+
+  <h2>Amazon Simple Storage Service(Amazon S3)で構築するスケーラブルなオブジェクトストレージ</h2>
+
+  <p>
+   Amazon Simple Storage Service（Amazon S3）は、オブジェクトストレージの代表的なサービスであり、インターネット経由で任意のサイズのデータを保存・取得できるよう設計されています。<br>
+   S3は高い耐久性（99.999999999%）と可用性を備えており、バックアップ、静的Webホスティング、ビッグデータ分析、アーカイブなど、幅広いユースケースに対応します。
+  </p>
+
+  <p>
+   S3では、データは「バケット」と呼ばれるコンテナに格納され、各オブジェクトには一意のキーが付与されます。バージョニングやライフサイクル管理、イベント通知などの機能を活用することで、運用効率やセキュリティを高めることが可能です。<br>
+   また、IAMポリシーやバケットポリシーを用いたアクセス制御により、きめ細かな権限管理が実現できます。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon S3の主要ストレージクラス比較</h3>
+    <table class="boss-table">
+     <caption>Amazon S3の主要ストレージクラス比較</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>ストレージクラス</th>
+       <th>主な用途</th>
+       <th>特徴</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>S3 Standard</td>
+       <td>頻繁にアクセスされるデータ</td>
+       <td>高可用性・低レイテンシ・即時アクセス</td>
+      </tr>
+      <tr>
+       <td>S3 Intelligent-Tiering</td>
+       <td>アクセス頻度が不明なデータ</td>
+       <td>自動階層化によるコスト最適化</td>
+      </tr>
+      <tr>
+       <td>S3 Glacier</td>
+       <td>長期保存・アーカイブ</td>
+       <td>低コスト・数分〜数時間の復元時間</td>
+      </tr>
+      <tr>
+       <td>S3 One Zone-IA</td>
+       <td>低頻度アクセスかつ耐久性要件が緩いデータ</td>
+       <td>単一AZに保存・低価格</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   S3はHTTPベースのAPIで操作可能であり、SDKやCLIを通じてプログラムからも柔軟に制御できます。<br>
+   特に静的WebサイトホスティングやCloudFrontとの連携によるCDN構成は、コストを抑えつつグローバル配信を実現するうえで有効です。
+  </p>
+
+  <p>
+   最後に、S3は他のAWSサービスとの親和性が高く、LambdaやAthena、Redshift Spectrumなどと連携することで、サーバーレスアーキテクチャやデータレイクの基盤としても活用できます。<br>
+   設計次第で、非常にスケーラブルかつ堅牢なストレージ戦略を構築できるのが魅力です。
+  </p>
+
+  <h2>Amazon Elastic File System(Amazon EFS)で実現する共有ファイルストレージの柔軟性</h2>
+
+  <p>
+   Amazon Elastic File System（Amazon EFS）は、複数のAmazon EC2インスタンスから同時にアクセス可能な、完全マネージド型のNFSベースのファイルストレージサービスです。<br>
+   Linuxベースのワークロードに最適化されており、スケーラブルかつ高可用性なファイル共有を実現します。
+  </p>
+
+  <p>
+   EFSは、ストレージ容量を自動的にスケールするため、事前のプロビジョニングが不要です。<br>
+   数GBからペタバイト級まで、使用量に応じて柔軟に拡張されるため、運用負荷を大きく軽減できます。<br>
+   また、複数のアベイラビリティゾーン（AZ）にまたがって冗長化されるため、耐障害性にも優れています。
+  </p>
+
+  <dl>
+   <dt>標準ストレージクラス</dt>
+   <dd>高頻度アクセス向けで、低レイテンシと高スループットを提供します。</dd>
+
+   <dt>イン頻度アクセス（IA）ストレージクラス</dt>
+   <dd>アクセス頻度が低いファイルに対してコストを最適化できるオプションです。</dd>
+
+   <dt>POSIX互換</dt>
+   <dd>ファイルやディレクトリのパーミッション、所有権、リンクなどをサポートし、既存のLinuxアプリケーションとの互換性が高いです。</dd>
+
+   <dt>パフォーマンスモード</dt>
+   <dd>「General Purpose」と「Max I/O」の2種類があり、用途に応じて選択できます。</dd>
+
+   <dt>暗号化とセキュリティ</dt>
+   <dd>転送時・保存時の暗号化に対応し、IAMやセキュリティグループによるアクセス制御も可能です。</dd>
+  </dl>
+
+  <p>
+   EFSは、ステートフルなアプリケーションや共有ファイルストレージが必要な環境において、非常に有効な選択肢です。<br>
+   特に、コンテナ環境（Amazon ECSやEKS）との統合や、CI/CDパイプラインでの成果物共有などにも活用されています。
+  </p>
+
+  <p>
+   最後に、EFSは従量課金制であり、使用した分だけの料金が発生するため、コスト管理の面でも柔軟性があります。<br>
+   クラウドネイティブなファイルストレージとして、設計の自由度と運用の効率性を両立できる点が魅力です。
+  </p>
+
+
+  <h2>Amazon FSx for Windows File Server：Windowsネイティブなファイル共有</h2>
+
+  <p>
+   Amazon FSx for Windows File Serverは、Windows Serverベースのファイルシステムをフルマネージドで提供するサービスです。<br>
+   Active Directoryとの統合やSMBプロトコルのサポートにより、オンプレミスのWindows環境と同様の操作性をクラウド上で実現できます。
+  </p>
+
+  <p>
+   特に、Windowsベースのアプリケーションやユーザーがファイル共有を必要とするシナリオにおいて、FSxは高い互換性とパフォーマンスを提供します。<br>
+   NTFSファイルシステムを採用しており、アクセス制御リスト（ACL）やファイルロックなど、Windows特有の機能もそのまま利用可能です。
+  </p>
+
+  <dl>
+   <dt>SMBプロトコル対応</dt>
+   <dd>SMBv2およびv3をサポートし、Windowsクライアントからのシームレスな接続が可能です。</dd>
+
+   <dt>Active Directory統合</dt>
+   <dd>既存のAD環境に参加させることで、ユーザー認証やグループポリシーの適用が可能です。</dd>
+
+   <dt>マルチAZ配置</dt>
+   <dd>複数のアベイラビリティゾーンにまたがる冗長構成により、高可用性を確保できます。</dd>
+
+   <dt>スループットと容量の柔軟な設定</dt>
+   <dd>ストレージ容量とスループットを独立して設定でき、ワークロードに応じた最適化が可能です。</dd>
+
+   <dt>バックアップと復元</dt>
+   <dd>自動バックアップ機能により、日次スナップショットを取得し、簡単に復元できます。</dd>
+  </dl>
+
+  <p>
+   FSxは、VDI環境やホームディレクトリの管理、業務アプリケーションのファイル共有基盤としても活用されています。<br>
+   オンプレミスからの移行時にも、既存のWindowsベースの運用モデルを維持できる点が大きな利点です。
+  </p>
+
+  <p>
+   最後に、FSxは従量課金制であり、使用したストレージ容量とスループットに応じて課金されます。<br>
+   コスト管理と性能要件のバランスを取りながら、Windowsネイティブなファイル共有をクラウド上で安全かつ効率的に運用できるサービスです。
+  </p>
+
+  <h3>個人サイト運営者のためのAWSストレージ設計</h3>
+  <p>クラウド時代において、ストレージの選択は単なる技術的な構成要素ではなく、サイトの信頼性・拡張性・運用効率を左右する重要な設計判断となります。<br>
+   Amazon EBS・S3・EFS・FSxといったAWSのストレージサービスは、それぞれ異なる特性と強みを持ち、用途に応じた最適な選択が求められます。</p>
+
+  <p>個人でWebサイトを運営されている方にとっても、これらのサービスは決して“企業向け”のものにとどまりません。<br>
+   例えば、静的コンテンツをS3でホスティングすれば、サーバーレスかつ高速な配信が可能になりますし、EFSやFSxを活用すれば、複数のインスタンス間でファイルを共有するような高度な構成も実現できます。<br>
+   EBSは、WordPressなどのCMSを安定して運用するための永続ストレージとしても非常に有効です。</p>
+
+  <p>また、バックアップやバージョン管理、アクセス制御、コスト最適化といった観点でも、AWSのストレージ群は柔軟な選択肢を提供してくれます。<br>
+   小規模なサイトであっても、将来的な拡張やトラフィック増加に備えて、スケーラブルな設計を意識することは、長期的な運用の安心につながります。</p>
+
+  <p>このページが、あなたのサイト設計やクラウド活用のヒントとなり、より自由度の高い、そして信頼性のあるWeb運営の一助となれば幸いです。<br>
+   技術は手段であり、目的は「伝えること」。<br>
+   その目的を支えるストレージ設計が、あなたのコンテンツをより遠く、より確実に届けてくれるはずです。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsstorage.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description" content="IPアドレスはなぜ32ビットなのか？初心者にもわかりやすく、ビットの基本からIPv4の仕組み、ネットワーク部とホスト部の役割までを丁寧に解説します。">
+ <meta name="keywords" content="IPアドレス, 32ビット, IPv4, ネットワーク部, ホスト部, ビットとは, 2進数, /24, IPの仕組み, 初心者向け, IT基礎, インターネット構造">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～">
+ <meta property="og:description" content="IPアドレスはなぜ32ビットなのか？初心者にもわかりやすく、ビットの基本からIPv4の仕組み、ネットワーク部とホスト部の役割までを丁寧に解説します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/ipaddress.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～",
+  "url": "https://feinatelier.org/contents/ipaddress.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～の目次を開く ▼"
+   data-close-text="IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～の目次を閉じる ▲">IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>IPアドレスはなぜ「32ビット」なのか ～ 仕組みをやさしく解説 ～</span></h1>
+  <p>「192.168.1.1」──この見慣れた数字の並びが、実は“32個の0と1”でできているって知っていましたか？<br>
+   私たちが日常的に目にするIPアドレスは、ただの数字の羅列ではなく、コンピューターが情報をやり取りするためのものです。<br>
+   その中には、ビットという最小単位で構成された仕組みや、ネットワークとホストという役割分担が隠れています。<br>
+   このページでは、IPアドレスの基本構造から、2進数の世界、そしてネットワーク設計の考え方まで──初めての方にもわかりやすく、やさしく解きほぐしていきます。</p>
+
+  <h2>「ビット」とはコンピューターの最小単位</h2>
+  <p>「ビット（bit）」は、コンピューターが情報を扱う最小単位です。<br>
+   1ビットは「0」か「1」のどちらかの値を持ちます。</p>
+
+  <h2>IPアドレスは数字のかたまり ─ 4つの数字 ─</h2>
+  <p>IPアドレス（IPv4）は、よく見るとこんな形ですよね：</p>
+
+  <div class="code-container">
+   <pre><code class="language-none">
+192.168.1.1
+
+</code></pre>
+  </div>
+
+  <p>この「192」「168」「1」「1」は、実はそれぞれ 8ビットの数字 なんです。<br>
+   つまり、全部合わせると：</p>
+
+  <div class="code-container">
+   <pre><code class="language-none">
+8ビット × 4つ = 32ビット
+
+</code></pre>
+  </div>
+
+  <p>これが「IPアドレスは32ビットでできている」という意味です。</p>
+
+  <h2>IPアドレスの中身を考える ─ 2進数で見る仕組み ─</h2>
+  <p>たとえば「192」は、コンピューターの中ではこう表現されています：</p>
+
+  <div class="code-container">
+   <pre><code class="language-none">
+192 → 11000000（2進数で8ビット）
+
+</code></pre>
+  </div>
+
+  <p>IPアドレス全体を2進数で書くと、こんな感じになります：</p>
+
+  <div class="code-container">
+   <pre><code class="language-none">
+192.168.1.1 → 11000000.10101000.00000001.00000001
+
+</code></pre>
+  </div>
+
+  <p>これが「32個の0と1」でできている、ということなんです。</p>
+
+  <h2>IPアドレスの使い方：ネットワーク部とホスト部の役割</h2>
+  <p>この32ビットの中で、前半を「ネットワーク部（町名）」、後半を「ホスト部（番地）」として使います。<br>
+   その境目を示すのが「/24」などの表記です。</p>
+  <ul>
+   <li><span class="codecolor">/24</span>
+    → 最初の24ビットがネットワーク部</li>
+   <li>残りの8ビットがホスト部（IPを割り当てる部分）</li>
+  </ul>
+
+  <h2>塗り絵の例え話 ─ IPアドレスの「ネットワーク」と「ホスト」</h2>
+  <p>IPアドレスは「32マスのぬりえ」だと思ってください。</p>
+  <ul>
+   <li>最初の何マスかを「青色」で塗る → ネットワーク部</li>
+   <li>残りを「赤色」で塗る → ホスト部</li>
+  </ul>
+  <p><span class="codecolor">/24</span>なら、青が24マス、赤が8マス。<br>
+   この赤い部分の組み合わせで、IPアドレスを割り当てることができます。</p>
+
+
+  <h2>192.168.1.0/24 の意味を解説</h2>
+
+  <p>「192.168.1.0/24」という表記は、IPアドレスのグループ（ネットワーク）を示しています。</p>
+
+  <p>/24 は「ネットワークアドレス長が24ビット」という意味で、IPアドレス全体が32ビットで構成されているため、残りの 32 - 24 = 8ビット
+   が「ホスト部（番地）」になります。</p>
+
+  <p>つまり、「192.168.1」までが町名（ネットワーク部）で、「.0〜.255」が番地（ホスト部）になります。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">IPアドレスの構造：ネットワーク部とホスト部の関係</h3>
+    <table class="boss-table">
+     <caption>IPアドレスの構造：ネットワーク部とホスト部の関係</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>部分</th>
+       <th>例</th>
+       <th>意味</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>ネットワーク部</td>
+       <td>192.168.1</td>
+       <td>町名（共通部分）</td>
+      </tr>
+      <tr>
+       <td>ホスト部</td>
+       <td>.0 ～ .255</td>
+       <td>番地（家の番号）</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+
+  <p>ホスト部が8ビットなので、2進数で表すと 00000000（＝0）～ 11111111（＝255） までの256通りの番地が作れます。</p>
+
+  <p>この範囲のIPアドレスには、たとえば<span class="codecolor">192.168.1.1</span>や<span class="codecolor">192.168.1.100</span>、<span
+    class="codecolor">192.168.1.254</span>などが含まれます。</p>
+
+  <h2>IPアドレスの基本用語をやさしく整理：サブネットやアドレスの意味とは</h2>
+  <p>IPアドレスの仕組みを理解するには、まず「サブネット」や「ネットワークアドレス」などの基本用語を押さえておくことが大切です。<br>
+   ここでは、よく使われる <span class="codecolor">192.168.1.0/24</span> を例に、それぞれの用語がどんな意味を持っているのかをやさしく整理してみましょう。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">IPアドレス関連用語の意味と例</h3>
+    <table class="boss-table">
+     <caption>IPアドレス関連用語の意味と例</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>用語</th>
+       <th>意味</th>
+       <th>例（192.168.1.0/24）</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>サブネット</td>
+       <td>IPアドレスを細かく分けた「住所のまとまり」</td>
+       <td><span class="codecolor">192.168.1.0/24</span></td>
+      </tr>
+      <tr>
+       <td>ネットワークアドレス長</td>
+       <td>ネットワーク部のビット数（/の後ろの数字）</td>
+       <td><span class="codecolor">/24</span>（＝24ビット）</td>
+      </tr>
+      <tr>
+       <td>ネットワークアドレス</td>
+       <td>サブネットの先頭アドレス（町名）</td>
+       <td><span class="codecolor">192.168.1.0</span></td>
+      </tr>
+      <tr>
+       <td>ブロードキャストアドレス</td>
+       <td>サブネット内の「全員宛て」のアドレス</td>
+       <td><span class="codecolor">192.168.1.255</span></td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h2>サブネットとは？</h2>
+  <p>IPアドレスの世界では、1つの大きな住所空間を小さく分けることがよくあります。
+   この「分けたまとまり」が サブネット（subnet） です。</p>
+
+  <p>たとえば：</p>
+  <ul>
+   <li><span class="codecolor">192.168.1.0/24</span> は「192.168.1.0 から 192.168.1.255」までの256個のIPアドレスを含むサブネット</li>
+  </ul>
+
+  <h2>ネットワークアドレス長とは？</h2>
+  <p>これは「ネットワーク部が何ビットあるか」を示す数字です。</p>
+  <ul>
+   <li><span class="codecolor">/24</span> → 最初の24ビットがネットワーク部</li>
+   <li>残りの 8ビット（32 - 24）がホスト部</li>
+  </ul>
+  <p>つまり、ネットワーク部が長いほど、ホスト部は少なくなり、割り当て可能なIP数も減るということです。</p>
+
+
+  <h2>ネットワークアドレスとは？</h2>
+  <p>サブネットの先頭のIPアドレスで、ネットワークそのものを表します。</p>
+  <ul>
+   <li>例：<span class="codecolor">192.168.1.0</span> は <span class="codecolor">192.168.1.0/24</span> のネットワークアドレス</li>
+   <li>このアドレスは「町名」みたいなもので、機器に割り当てることはできません</li>
+  </ul>
+
+  <h2>ブロードキャストアドレスとは？</h2>
+  <p>サブネット内のすべての機器に一斉にメッセージを送るための特別なアドレスです。</p>
+  <ul>
+   <li>例：<span class="codecolor">192.168.1.255</span> は <span class="codecolor">192.168.1.0/24</span> のブロードキャストアドレス</li>
+   <li>最後の番地（ホスト部がすべて1）になります</li>
+   <li>これも、通常の機器には割り当てません</li>
+  </ul>
+
+  <h4>192.168.1.0/24 のIP構造を理解：ネットワーク・使用可能IP・ブロードキャスト</h4>
+  <p>IPアドレス <span class="codecolor">192.168.1.0/24</span> は、家庭やオフィスのネットワークでよく使われる代表的なサブネットです。<br>
+   このセクションでは、その中に含まれる「ネットワークアドレス」「使用可能なIP」「ブロードキャストアドレス」がそれぞれどんな役割を持っているのかを、わかりやすく整理してみましょう。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">192.168.1.0/24 におけるアドレスの役割</h3>
+    <table class="boss-table">
+     <caption>192.168.1.0/24 におけるアドレスの役割</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>種類</th>
+       <th>アドレス</th>
+       <th>説明</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>ネットワークアドレス</td>
+       <td><span class="codecolor">192.168.1.0</span></td>
+       <td>サブネットの先頭。町名。</td>
+      </tr>
+      <tr>
+       <td>使用可能なIP</td>
+       <td><span class="codecolor">192.168.1.1</span> ～ <span class="codecolor">192.168.1.254</span></td>
+       <td>実際に機器に割り当てるIP</td>
+      </tr>
+      <tr>
+       <td>ブロードキャストアドレス</td>
+       <td><span class="codecolor">192.168.1.255</span></td>
+       <td>サブネット内の全員宛て</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h3>Web制作者の技術的な読解力</h3>
+  <p>IPアドレスは、ただの数字の並びではなく、インターネット上の「住所」として機器やサービスをつなぐ大切な役割を持っています。<br>
+   このページでは、32ビットの構造や2進数の仕組み、ネットワーク部とホスト部の分かれ方、そしてサブネットやブロードキャストなどの基本用語まで、段階的にやさしく解説してきました。</p>
+
+  <p>特に <span class="codecolor">192.168.1.0/24</span>
+   のような表記の意味を理解することで、DNS設定やアクセス制御、クラウドサービスの運用など、Webサイトの裏側にある技術的な判断がぐっと身近になります。</p>
+
+  <p>個人でWebサイトを運営する方にとって、こうした知識は「困ったときに自分で調べて対応できる力」につながります。<br>
+   デザインやコンテンツだけでなく、技術の土台を理解することで、より自由に、より安心してサイトを育てていけるはずです。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/ipaddress.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
