@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="JSONとJavaScriptを使って、検索・フィルタ・ソート・集計が可能な簡易NoSQL風データベースを構築する方法を、個人サイト制作者向けに丁寧に解説。静的データでも動的な操作体験を実現する実装例付き。">
+ <meta name="keywords"
+  content="JSON, JavaScript, NoSQL, フロントエンド, Web開発, 個人サイト, データベース, 検索, フィルタ, ソート, 集計, HTML, コーディング, fetch, reduce, localeCompare, includes">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る">
+ <meta property="og:description"
+  content="JSONとJavaScriptを使って、検索・フィルタ・ソート・集計が可能な簡易NoSQL風データベースを構築する方法を、個人サイト制作者向けに丁寧に解説。静的データでも動的な操作体験を実現する実装例付き。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/nosql.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る",
+  "url": "https://feinatelier.org/contents/nosql.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js" defer></script>
+
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="JSONとJavaScriptを使って簡易的なNoSQL風データベースを作るの目次を開く ▼"
+   data-close-text="JSONとJavaScriptを使って簡易的なNoSQL風データベースを作るの目次を閉じる ▲">JSONとJavaScriptを使って簡易的なNoSQL風データベースを作るの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る</span></h1>
+  <p>まず、ここでご紹介するコードは「静的JSONファイルを使ったクライアントサイド表示」であり、正しくはNoSQLとは呼びません。<br>
+   このサイトは静的な部分と動的な部分が分かれていて、目的に応じて実装する場所を使い分けられるようになっています。<br>
+   今回の簡易データベースくらいなら、静的なところだけで済ませられるというだけで。<br>
+   NoSQLを使うには、データベース（MongoDBなど）＋APIサーバー（Node.jsなど）が必要となります。<br>
+   ただし、この構成は軽量で高速であり、小規模なデータ表示には最適なんですよね。</p>
+
+  <p>例えばこのサイトで使っているPythonのFlaskであれば、次のようなパーツに分けて考えます。</p>
+
+  <dl>
+   <dt>MongoDB</dt>
+   <dd>データを保存する場所。JSON形式で保存できる。</dd>
+   <dd>例：ユーザー情報、投稿、コメントなど。</dd>
+
+   <dt>pymongo</dt>
+   <dd>FlaskからMongoDBにアクセスするためのPythonライブラリ。</dd>
+   <dd>例：<span class="codecolor">users_collection.find()</span> など。</dd>
+
+   <dt>Flask</dt>
+   <dd>APIサーバー。クライアントからのリクエストを受けて、MongoDBからデータを取得して返す。</dd>
+   <dd>例：<span class="codecolor">/api/users</span> などのエンドポイント。</dd>
+
+   <dt>HTML + JS</dt>
+   <dd>ユーザーが操作する画面。JavaScriptでAPIを呼び出して、データを表示する。</dd>
+   <dd>例：<span class="codecolor">fetch('/api/users')</span> など。</dd>
+  </dl>
+
+  <p>このような構成でNoSQLを作っていくと、次のようなメリットがあります。</p>
+
+  <ul>
+   <li>データが動的に変わる：MongoDBからリアルタイムで取得可能</li>
+   <li>柔軟なデータ構造：スキーマレスで項目追加に強い</li>
+   <li>セキュリティやバリデーション：Flaskで制御しやすい</li>
+   <li>拡張性：ユーザー追加・編集・削除も簡単に実装可能</li>
+  </ul>
+
+  <p>そして、例えば「ユーザー一覧」を表示する流れを書くと、次のようになります。</p>
+
+  <ol>
+   <li>ユーザーがブラウザでページを開く</li>
+   <li>JavaScriptが /api/users にリクエストを送る</li>
+   <li>Flaskがリクエストを受けて、MongoDBからユーザー一覧を取得</li>
+   <li>FlaskがJSON形式でデータを返す</li>
+   <li>JavaScriptがデータを受け取って、HTMLに描画する</li>
+  </ol>
+
+  <p>つまり、これからご紹介する「NoSQLらしく見えるデータベース」は、上記の1.4.5だけを抜粋したものと言えます。<br>
+   静的なJSONファイルを読み込んで表示しており、クライアントサイドのみで完結させています。<br>
+   API通信やDB連携は含まれていませんが、個人サイトでデータ管理をする程度であれば、このレベルの実装で十分でしょう。</p>
+
+  <h2>feinのミニデータベース</h2>
+  <p>手っ取り早く作るなら、こんな感じでしょうかね。<br>
+   下記のデータベースは単純なJSONファイルから読み込んでいるので、中身を更新したいなら、そのJSONファイルを編集するだけです。</p>
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+
+     <input type="text" id="search-name" placeholder="名前で検索">
+     <select id="role-filter">
+      <option value="">すべての役割</option>
+      <option value="admin">Admin</option>
+      <option value="editor">Editor</option>
+      <option value="user">User</option>
+     </select>
+
+     <select id="sort-order">
+      <option value="id-asc">ID昇順</option>
+      <option value="id-desc">ID降順</option>
+      <option value="name-asc">名前昇順</option>
+      <option value="name-desc">名前降順</option>
+     </select>
+
+    <div id="fein-user-list">読み込み中...</div>
+    <div id="role-count"></div>
+
+    <script src="/contents/nosql/feinnosql.js"></script>
+
+   </div>
+  </div>
+
+  <p>実際に触ってみていただいて構いません。<br>
+   後ろでいろいろ動かしているわけではないので、軽快に動作すると思いますよ？</p>
+
+  <h3>HTMLの記載例</h3>
+  <p>そんなに複雑ではありません。<br>
+   データを表示させるための枠組みを整えているだけです。</p>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;input type=&quot;text&quot; id=&quot;search-name&quot; placeholder=&quot;名前で検索&quot;&gt;
+&lt;select id=&quot;role-filter&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;すべての役割&lt;/option&gt;
+    &lt;option value=&quot;admin&quot;&gt;Admin&lt;/option&gt;
+    &lt;option value=&quot;editor&quot;&gt;Editor&lt;/option&gt;
+    &lt;option value=&quot;user&quot;&gt;User&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select id=&quot;sort-order&quot;&gt;
+    &lt;option value=&quot;id-asc&quot;&gt;ID昇順&lt;/option&gt;
+    &lt;option value=&quot;id-desc&quot;&gt;ID降順&lt;/option&gt;
+    &lt;option value=&quot;name-asc&quot;&gt;名前昇順&lt;/option&gt;
+    &lt;option value=&quot;name-desc&quot;&gt;名前降順&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div id=&quot;fein-user-list&quot;&gt;読み込み中...&lt;/div&gt;
+&lt;div id=&quot;role-count&quot;&gt;&lt;/div&gt;
+
+&lt;script src=&quot;/contents/nosql/feinnosql.js&quot;&gt;&lt;/script&gt;
+
+</code></pre>
+  </div>
+
+  <p>HTMLコードを1行ずつ丁寧に解説します。<br>
+   技術的な背景やUI設計の意図も交えて、読みやすく構造的に整理しました。</p>
+
+  <h5>入力・選択フォーム部分</h5>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;input type=&quot;text&quot; id=&quot;search-name&quot; placeholder=&quot;名前で検索&quot;&gt;
+
+</code></pre>
+  </div>
+
+  <p>テキスト入力欄です。<br>
+   ユーザーが名前で検索するためのキーワードを入力します。</p>
+  <ul>
+   <li><span class="codecolor">id="search-name"</span> は JavaScript でこの要素を取得するための識別子。</li>
+   <li><span class="codecolor">placeholder="名前で検索"</span> により、入力欄に薄く案内文が表示されます。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;select id=&quot;role-filter&quot;&gt;
+
+</code></pre>
+  </div>
+  <p>役割によるフィルタリングを行うセレクトボックスの開始タグです。</p>
+  <ul>
+   <li><span class="codecolor">id="role-filter"</span> により、JavaScriptからこの選択肢を操作できます。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;option value=&quot;&quot;&gt;すべての役割&lt;/option&gt;
+
+</code></pre>
+  </div>
+  <p>初期選択肢です。<br>
+   「すべての役割」を選ぶと、フィルタがかからず全ユーザーが表示されます。</p>
+
+  <ul>
+   <li><span class="codecolor">value=""</span> は空文字で、フィルタ条件なしを意味します。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;option value=&quot;admin&quot;&gt;Admin&lt;/option&gt;
+&lt;option value=&quot;editor&quot;&gt;Editor&lt;/option&gt;
+&lt;option value=&quot;user&quot;&gt;User&lt;/option&gt;
+
+</code></pre>
+  </div>
+
+  <p>それぞれの役割に対応する選択肢です。</p>
+
+  <ul>
+   <li><span class="codecolor">value="admin"</span> などは、JSONデータの <span class="codecolor">role</span> フィールドと一致させるための値です。
+   </li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;/select&gt;
+
+</code></pre>
+  </div>
+  <p>セレクトボックスの終了タグです。</p>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;select id=&quot;sort-order&quot;&gt;
+
+</code></pre>
+  </div>
+  <p>並び順を指定するセレクトボックスの開始タグです。</p>
+
+  <ul>
+   <li><span class="codecolor">id="sort-order"</span> により、JavaScriptで並び順の変更を検知できます。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;option value=&quot;id-asc&quot;&gt;ID昇順&lt;/option&gt;
+&lt;option value=&quot;id-desc&quot;&gt;ID降順&lt;/option&gt;
+
+</code></pre>
+  </div>
+
+  <p>ユーザーIDによる昇順・降順の並び替えを指定する選択肢です。</p>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;option value=&quot;name-asc&quot;&gt;名前昇順&lt;/option&gt;
+&lt;option value=&quot;name-desc&quot;&gt;名前降順&lt;/option&gt;
+
+</code></pre>
+  </div>
+
+  <p>ユーザー名による昇順・降順の並び替えを指定する選択肢です。</p>
+  <ul>
+   <li><span class="codecolor">localeCompare()</span> を使った文字列ソートが JavaScript 側で行われます。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;/select&gt;
+
+</code></pre>
+  </div>
+  <p>並び順セレクトボックスの終了タグです。</p>
+
+  <h5>表示領域</h5>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;div id=&quot;fein-user-list&quot;&gt;読み込み中...&lt;/div&gt;
+
+</code></pre>
+  </div>
+  <p>ユーザー一覧を表示する領域です。</p>
+  <ul>
+   <li>初期状態では「読み込み中...」と表示され、JSONデータの取得後に内容が更新されます。</li>
+   <li><span class="codecolor">id="fein-user-list"</span> により、JavaScriptからこの領域に動的にHTML要素を追加できます。</li>
+  </ul>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;div id=&quot;role-count&quot;&gt;&lt;/div&gt;
+
+</code></pre>
+  </div>
+  <p>役割ごとの人数集計結果を表示する領域です。</p>
+
+  <ul>
+   <li>たとえば「Admins: 3, Editors: 5, Users: 12」のように表示されます。</li>
+   <li><span class="codecolor">id="role-count"</span> により、JavaScriptから集計結果を挿入できます。</li>
+  </ul>
+
+  <h5>スクリプトの読み込み</h5>
+
+  <div class="code-container">
+   <pre><code class="language-html">
+&lt;script src=&quot;/contents/nosql/feinnosql.js&quot;&gt;&lt;/script&gt;
+
+</code></pre>
+  </div>
+  <p>JavaScriptファイル <span class="codecolor">feinnosql.js</span> を読み込むタグです。</p>
+  <ul>
+   <li>このファイルには、JSONデータの取得・フィルタ・ソート・描画などのロジックが記述されています。</li>
+   <li>HTMLとJSの責務を分離することで、保守性と再利用性が高まります。</li>
+  </ul>
+
+
+  <h3>JSONの記載例</h3>
+  <p>お次はJSONですが、これはワンパターンに書いていくだけですよ。</p>
+  <div class="code-container">
+   <pre><code class="language-json">
+[
+ {
+  "id": 1,
+  "name": "Zoe Carter",
+  "role": "user"
+ },
+ {
+  "id": 2,
+  "name": "Liam Turner",
+  "role": "editor"
+ },
+～ 省略 ～
+ {
+  "id": 20,
+  "name": "Tina Morgan",
+  "role": "admin"
+ }
+]
+
+</code></pre>
+  </div>
+
+  <p>JSON（ジェイソン）は、「JavaScript Object Notation」の略で、データを構造的かつ人間にも読みやすい形式で表現するための軽量なデータ記述言語です。<br>
+   もともとはJavaScriptの文法をベースにしていますが、現在ではほとんどのプログラミング言語で扱うことができる汎用的なフォーマットとして広く使われています。</p>
+
+  <p>Webページやアプリケーションがサーバーとデータをやり取りする際、JSONはその通信の中身を担うことが多く、特にAPI（アプリケーション・プログラミング・インターフェース）との連携において欠かせない存在です。<br>
+   たとえば、ユーザー情報や設定、検索結果などをサーバーから受け取るとき、JSON形式で送られてくることで、クライアント側のJavaScriptが簡単にそのデータを解析し、画面に反映することができます。</p>
+
+  <p>JSONの特徴は、シンプルで直感的な構造にあります。<br>
+   データは「キー」と「値」のペアで構成され、オブジェクト（中括弧）や配列（角括弧）を使って入れ子構造を作ることもできます。<br>
+   この構造により、複雑な情報を整理して表現することが可能になります。<br>
+   また、XMLのようなタグが不要で、記述量が少なく済むため、通信の効率も高く、読み書きの負担が軽減されます。</p>
+
+  <p>Web開発においてJSONは、静的なデータの記述だけでなく、動的なコンテンツの生成や状態管理にも活用されており、現代のフロントエンド・バックエンドの橋渡し役として、非常に重要な役割を果たしています。</p>
+
+
+  <h3>Javascriptの記載例</h3>
+  <p> このスクリプトは、外部のJSONデータを読み込み、ユーザー一覧を動的に「名前検索」「役割フィルタ」「ソート」「役割ごとの人数集計」を行い、その結果をHTML上に描画する一連の流れを実装しています。</p>
+
+  <p>データの取得からUIの更新、イベントリスナーの設定までが明確に分割されており、各処理を責務ごとに関数化して保守性を高めています。</p>
+  <div class="code-container">
+   <pre><code class="language-javascript">
+// データ取得元
+const DATA_URL = '/contents/nosql/feinusers.json';
+
+// DOM要素の取得
+const nameInput = document.getElementById('search-name');
+const roleSelect = document.getElementById('role-filter');
+const sortSelect = document.getElementById('sort-order');
+const userList = document.getElementById('fein-user-list');
+const roleCount = document.getElementById('role-count');
+
+let users = []; // 外部JSONから読み込んだデータを保持
+
+// JSONを読み込む
+fetch(DATA_URL)
+ .then(response => {
+  if (!response.ok) throw new Error('読み込み失敗: ' + response.status);
+  return response.json();
+ })
+ .then(data => {
+  users = data;
+  updateView(); // 初期表示
+ })
+ .catch(error => {
+  userList.textContent = 'ユーザーデータの読み込みに失敗しました';
+  console.error(error);
+ });
+
+// 名前による部分一致検索
+function filterByName(keyword) {
+ return users.filter(user =>
+  user.name.toLowerCase().includes(keyword.toLowerCase())
+ );
+}
+
+// 役割によるフィルタ
+function filterByRole(role, list) {
+ if (!role) return list;
+ return list.filter(user => user.role === role);
+}
+
+// ソート処理
+function sortUsers(list, order) {
+ const sorted = [...list]; // 元の配列を破壊しないようコピー
+ switch (order) {
+  case 'id-asc':
+   sorted.sort((a, b) => a.id - b.id);
+   break;
+  case 'id-desc':
+   sorted.sort((a, b) => b.id - a.id);
+   break;
+  case 'name-asc':
+   sorted.sort((a, b) => a.name.localeCompare(b.name));
+   break;
+  case 'name-desc':
+   sorted.sort((a, b) => b.name.localeCompare(a.name));
+   break;
+ }
+ return sorted;
+}
+
+// 役割ごとの人数集計
+function countRoles(filteredUsers) {
+ return filteredUsers.reduce((acc, user) => {
+  acc[user.role] = (acc[user.role] || 0) + 1;
+  return acc;
+ }, {});
+}
+
+// ユーザー一覧を描画
+function renderUserList(filteredUsers) {
+ userList.innerHTML = '';
+ if (filteredUsers.length === 0) {
+  userList.textContent = '該当するユーザーが見つかりません';
+  return;
+ }
+
+ const ul = document.createElement('ul');
+ filteredUsers.forEach(user => {
+  const li = document.createElement('li');
+  li.textContent = `ID: ${user.id} / 名前: ${user.name} / 役割: ${user.role}`;
+  ul.appendChild(li);
+ });
+ userList.appendChild(ul);
+}
+
+// 集計結果を描画
+function renderRoleCount(filteredUsers) {
+ const counts = countRoles(filteredUsers);
+ roleCount.textContent = `Admins: ${counts.admin || 0}, Editors: ${counts.editor || 0}, Users: ${counts.user || 0}`;
+}
+
+// 検索・フィルタ・ソートの更新処理
+function updateView() {
+ const keyword = nameInput.value.trim();
+ const role = roleSelect.value;
+ const sortOrder = sortSelect.value;
+
+ let result = users;
+ if (keyword) result = filterByName(keyword);
+ result = filterByRole(role, result);
+ result = sortUsers(result, sortOrder);
+
+ renderUserList(result);
+ renderRoleCount(result);
+}
+
+// イベントリスナーの設定
+nameInput.addEventListener('input', updateView);
+roleSelect.addEventListener('change', updateView);
+sortSelect.addEventListener('change', updateView);
+
+</code></pre>
+  </div>
+
+  <p>では、各パートを順に詳しく解説していきます。</p>
+
+  <h5>データ取得元の定義</h5>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+const DATA_URL = '/contents/nosql/feinusers.json';
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>目的</dt>
+   <dd>外部JSONファイルのパスを定数として定義。</dd>
+
+   <dt>メリット</dt>
+   <dd>URLをハードコードせずに定数化することで、後から変更しやすく、保守性が向上します。</dd>
+
+   <dt>補足</dt>
+   <dd>このファイルはユーザー情報（ID、名前、役割など）を含むと想定され、<span class="codecolor">fetch()</span> で非同期に読み込まれます。</dd>
+  </dl>
+
+  <h5>DOM要素の取得</h5>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+const nameInput = document.getElementById('search-name');
+const roleSelect = document.getElementById('role-filter');
+const sortSelect = document.getElementById('sort-order');
+const userList = document.getElementById('fein-user-list');
+const roleCount = document.getElementById('role-count');
+
+</code></pre>
+  </div>
+
+  <p><strong>目的：</strong>HTML内の操作対象となる要素を変数に格納。</p>
+
+  <dl>
+   <dt>役割ごとの説明：</dt>
+   <dd><span class="codecolor">nameInput</span>：検索キーワード入力欄</dd>
+   <dd><span class="codecolor">roleSelect</span>：役割フィルタのセレクトボックス</dd>
+   <dd><span class="codecolor">sortSelect</span>：並び順のセレクトボックス</dd>
+   <dd><span class="codecolor">userList</span>：ユーザー一覧の表示領域</dd>
+   <dd><span class="codecolor">roleCount</span>：役割ごとの人数集計の表示領域</dd>
+  </dl>
+
+  <p><strong>ベストプラクティス：</strong>IDで取得することで、明確かつ高速にアクセス可能。<br>
+   このようにセマンティックな命名がされていると、コードの可読性も高まります。</p>
+
+  <h5>ユーザーデータの保持用変数</h5>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+let users = []; // 外部JSONから読み込んだデータを保持
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>目的</dt>
+   <dd><span class="codecolor">fetch()</span> で取得したユーザーデータを格納するための変数。</dd>
+
+   <dt>スコープ</dt>
+   <dd>グローバルに定義されているため、他の関数（フィルタや描画など）からもアクセス可能。</dd>
+
+   <dt>注意点</dt>
+   <dd><span class="codecolor">let</span> を使うことで、後から <span class="codecolor">users = data</span> のように再代入できるようになっています。
+   </dd>
+  </dl>
+
+  <h5>データ取得の仕組み</h5>
+  <p>まず <span class="codecolor">fetch(DATA_URL)</span> を使って外部JSONを取得します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+fetch(DATA_URL)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('読み込み失敗: ' + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    users = data;
+    updateView();
+  })
+  .catch(error => {
+    userList.textContent = 'ユーザーデータの読み込みに失敗しました';
+    console.error(error);
+  });
+
+</code></pre>
+  </div>
+
+  <p>ここでは、HTTPステータスをチェックし、JSONへのパースに成功したら <span class="codecolor">users</span> に格納、失敗時にはエラーメッセージを画面に表示してコンソールに詳細を出力します。
+  </p>
+
+  <h5>名前による部分一致検索</h5>
+  <p>ユーザー名を小文字化して部分一致検索を行うのが <span class="codecolor">filterByName</span> 関数です。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function filterByName(keyword) {
+  return users.filter(user =>
+    user.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+}
+
+</code></pre>
+  </div>
+
+  <p><span class="codecolor">includes</span> を使うことで、入力した文字列がユーザー名のどこかに含まれていればマッチし、柔軟な検索体験を実現しています。</p>
+
+  <h5>役割フィルタの実装</h5>
+  <p>役割フィルタでは、選択肢が空文字なら全リストを返し、特定の役割が選ばれたらその役割だけを抽出します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function filterByRole(role, list) {
+  if (!role) return list;
+  return list.filter(user => user.role === role);
+}
+
+</code></pre>
+  </div>
+
+  <p>空文字チェックで「フィルタなし」も処理できるため、一覧表示とフィルタ表示をシンプルに切り替えています。</p>
+
+  <h5>ソート処理の仕組み</h5>
+  <p>ID昇順・降順、名前昇順・降順の4パターンに対応した <span class="codecolor">sortUsers</span> 関数は、元の配列を壊さないようコピーしてソートしています。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function sortUsers(list, order) {
+  const sorted = [...list]; // 元の配列を破壊しないようコピー
+
+  switch (order) {
+    case 'id-asc':
+      sorted.sort((a, b) => a.id - b.id);
+      break;
+    case 'id-desc':
+      sorted.sort((a, b) => b.id - a.id);
+      break;
+    case 'name-asc':
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'name-desc':
+      sorted.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+  }
+
+  return sorted;
+}
+
+</code></pre>
+  </div>
+
+  <p><span class="codecolor">localeCompare</span> を活用することで日本語や特殊文字にも適切に対応できます。</p>
+
+  <h5>役割ごとの人数集計</h5>
+
+  <p>選別後のユーザーリストを <span class="codecolor">reduce</span> で集計し、役割ごとの人数をオブジェクト形式で得るのが <span
+    class="codecolor">countRoles</span> 関数です。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function countRoles(filteredUsers) {
+  return filteredUsers.reduce((acc, user) => {
+    acc[user.role] = (acc[user.role] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+</code></pre>
+  </div>
+
+  <p>集計結果は空のオブジェクトからスタートし、各ユーザーの役割をカウントアップしていきます。</p>
+
+  <h5>ユーザー一覧の描画</h5>
+  <p><span class="codecolor">renderUserList</span> 関数では、フィルタ・ソート済みのユーザー配列を `&lt;ul&gt;
+   &lt;li&gt;` リストに変換してDOMへ挿入します。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function renderUserList(filteredUsers) {
+  userList.innerHTML = '';
+
+  if (filteredUsers.length === 0) {
+    userList.textContent = '該当するユーザーが見つかりません';
+    return;
+  }
+
+  const ul = document.createElement('ul');
+
+  filteredUsers.forEach(user => {
+    const li = document.createElement('li');
+    li.textContent = `ID: ${user.id} / 名前: ${user.name} / 役割: ${user.role}`;
+    ul.appendChild(li);
+  });
+
+  userList.appendChild(ul);
+}
+
+</code></pre>
+  </div>
+
+  <p>要素を再生成することで、古いリストを一掃して最新の状態だけを表示できます。</p>
+
+  <h5>役割集計結果の描画</h5>
+  <p><span class="codecolor">renderRoleCount</span> では、集計オブジェクトから各役割の人数を取り出してテキスト化し、表示エリアにセットします。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function renderRoleCount(filteredUsers) {
+  const counts = countRoles(filteredUsers);
+  roleCount.textContent = `Admins: ${counts.admin || 0}, Editors: ${counts.editor || 0}, Users: ${counts.user || 0}`;
+}
+
+</code></pre>
+  </div>
+  <p>未出現の役割にはデフォルトで0を表示することで、UIが崩れないよう工夫しています。</p>
+
+  <h5>表示更新の流れ</h5>
+  <p><span class="codecolor">updateView</span> 関数は、検索キーワード、役割フィルタ、ソート順を取得し、以下の手順で処理を組み合わせます。</p>
+
+  <ol>
+   <li>名前フィルタ</li>
+   <li>役割フィルタ</li>
+   <li>ソート</li>
+   <li>ユーザーリスト描画</li>
+   <li>役割集計描画</li>
+  </ol>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+function updateView() {
+  const keyword = nameInput.value.trim();
+  const role = roleSelect.value;
+  const sortOrder = sortSelect.value;
+
+  let result = users;
+
+  if (keyword) {
+    result = filterByName(keyword);
+  }
+
+  result = filterByRole(role, result);
+  result = sortUsers(result, sortOrder);
+
+  renderUserList(result);
+  renderRoleCount(result);
+}
+
+</code></pre>
+  </div>
+
+  <p>この一連の流れを通じて、UIは常に最新の条件に沿った情報を反映します。</p>
+
+  <h5>イベントリスナー設定</h5>
+  <p>最後に、入力フォームやセレクトボックスに対して <span class="codecolor">updateView</span> を呼び出すイベントリスナーを設定しています。</p>
+
+  <div class="code-container">
+   <pre><code class="language-javascript">
+nameInput.addEventListener('input', updateView);
+roleSelect.addEventListener('change', updateView);
+sortSelect.addEventListener('change', updateView);
+
+</code></pre>
+  </div>
+  <p>ユーザー操作が発生するたびに表示が更新されるため、リアルタイムなフィードバックが得られます。</p>
+
+
+  <h2>小さなデータベースから広がる可能性</h2>
+  <p>
+   今回のページでは、<span class="codecolor">JSON</span>と<span
+    class="codecolor">JavaScript</span>を活用して、簡易的なNoSQL風データベースを構築する手法を紹介しました。<br>
+   静的なデータを扱いながらも、検索・フィルタ・ソート・集計といった基本的なデータ操作を実装することで、
+   動的なWebアプリケーションのような体験を提供できることを確認しました。
+  </p>
+  <p>
+   このアプローチは、個人サイト制作者にとって非常に有益です。<br>
+   なぜなら、サーバーサイドの知識や環境が整っていなくても、クライアントサイドだけでインタラクティブな機能を実現できるからです。<br>
+   特にポートフォリオサイトや小規模な情報管理ツール、教育用デモなどでは、今回のような構成が軽量かつ柔軟に機能します。
+  </p>
+  <p>ページ内では以下のような構成で、段階的に機能を組み立てていきました：</p>
+  <ul>
+   <li>HTMLでフォームや表示領域を定義し、ユーザーとのインタラクションの土台を作成</li>
+   <li><span class="codecolor">JSON</span>形式でデータを保持し、<span class="codecolor">JavaScript</span>で取得・操作することで、構造化された情報管理を実現
+   </li>
+   <li><span class="codecolor">fetch(DATA_URL)</span> による非同期データ取得と、HTTPステータス・パースエラーへの対応</li>
+   <li><span class="codecolor">filterByName</span> による部分一致検索、<span class="codecolor">sortUsers</span> による昇降順ソート、<span
+     class="codecolor">countRoles</span> による集計処理など、関数単位で責務を分離</li>
+   <li><span class="codecolor">renderRoleCount</span> や <span class="codecolor">updateView</span> によって、表示の更新と集計結果の描画を連携
+   </li>
+   <li>イベントリスナーを通じて、ユーザー操作に応じたリアルタイムな反映を実装</li>
+  </ul>
+  <p>
+   これらの構成は、セマンティックなHTML、アクセシビリティ、保守性、そしてセキュリティを意識した設計にもつながります。<br>
+   たとえば、<span class="codecolor">includes</span> や <span class="codecolor">localeCompare</span>
+   を使った柔軟な文字列処理は、日本語や特殊文字を扱う際にも有効ですし、
+   配列のコピーによる非破壊的なソートは、データの安全性を保つ上で重要な配慮です。
+  </p>
+  <p>
+   今後、より本格的なバックエンド（<span class="codecolor">Flask</span>や<span
+    class="codecolor">MongoDB</span>など）へと発展させる際にも、今回のような構成は良い足場になるのですよ？<br>
+   関数の責務分離、表示とロジックの分離、データ構造の明確化といった設計の流れは、いろんなプロジェクトに通用すると思いますね。
+  </p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/nosql.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

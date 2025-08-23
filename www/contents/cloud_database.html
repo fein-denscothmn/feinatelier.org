@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="Microsoft Accessの機能をクラウド環境で再現する方法を解説。Power AppsやAppSheetなどのノーコードツール、Azure SQLやBigQueryなどのクラウドDBを活用し、GUI・クエリ・レポート・自動化をクラウドで構築する手法を紹介します。">
+ <meta name="keywords"
+  content="Access クラウド移行, Power Apps, AppSheet, Azure SQL, AWS RDS, BigQuery, Power BI, Looker Studio, Access代替, ノーコード, クラウドDB, 業務アプリ, 自動化, レポート作成">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法">
+ <meta property="og:description"
+  content="Microsoft Accessの機能をクラウド環境で再現する方法を解説。Power AppsやAppSheetなどのノーコードツール、Azure SQLやBigQueryなどのクラウドDBを活用し、GUI・クエリ・レポート・自動化をクラウドで構築する手法を紹介します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_database.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法",
+  "url": "https://feinatelier.org/contents/cloud_database.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法の目次を開く ▼"
+   data-close-text="Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法の目次を閉じる ▲">Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>Access的な構成をクラウドで再現する｜主要クラウドサービス比較と代替手法</span></h1>
+
+  <p>
+   長年にわたり、Microsoft Accessは中小規模の業務アプリケーションやデータ管理の現場で重宝されてきました。<br>
+   GUIでのフォーム作成、クエリによる集計、レポート出力、マクロによる自動化など、ひとつの環境で完結できるその利便性は、非エンジニア層にも広く支持されてきた理由のひとつです。<br>
+   しかし、クラウド時代の到来とともに、ローカル環境に依存したAccessの運用には限界が見え始めています。<br>
+   複数拠点からの同時アクセス、モバイル対応、スケーラビリティ、セキュリティ、そして保守性——これらの課題を解決するためには、クラウドベースの構成への移行が必要となるケースがあるでしょう。
+  </p>
+
+  <p>
+   本ページでは、Accessの主要機能を分解し、それぞれに対応するクラウドサービスを整理・比較することで、「Access的な構成をクラウドでどう再現できるか？」という問いについて、考えていきます。<br>
+   Microsoft、Google、Amazon（AWS）といった主要クラウドベンダーが提供するサービスを活用すれば、Accessのフォーム・クエリ・レポート・自動化といった機能は、より柔軟かつ拡張性の高い形で再構築可能です。
+  </p>
+
+  <p>
+   たとえば、Microsoftの「Power Apps」はAccessフォームに近いUIをノーコードで構築でき、Azure SQLはAccessのバックエンドとしても親和性が高いデータベースです。<br>
+   Googleの「AppSheet」や「BigQuery」は、スプレッドシート感覚で始められる一方で、大規模データ処理にも対応可能。<br>
+   AWSでは「RDS」や「QuickSight」など、インフラから分析までを網羅するサービス群が揃っています。<br>
+   Accessからクラウドへの移行は、単なるツールの置き換えではなく、作業の在り方そのものを見直すチャンスでもあります。
+  </p>
+
+  <h2>クラウドでの代替構成を見てみる</h2>
+  <p>
+   Microsoft Accessは、ローカル環境でリレーショナルデータベースを構築・操作できる便利なツールですが、クラウド時代の現在では、同様の機能を分散的に提供するサービスが各社から登場しています。<br>
+   Accessのように「データを保存し、フォームで操作し、クエリで集計し、レポートで可視化し、自動化する」といった一連の流れは、クラウド環境でも十分に再現可能です。
+  </p>
+
+  <p>
+   以下の表では、Accessの主要な機能を分解し、それぞれに対応するクラウドサービスを整理しています。<br>
+   Microsoft、Google、Amazon（AWS）といった主要クラウドベンダーが提供するサービスを比較することで、Access的な構成をクラウドでどう再現できるかのイメージを掴んでいただけると思います。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Accessの機能とクラウドでの代替構成</h3>
+    <table class="boss-table">
+     <caption>Accessの機能とクラウドでの代替構成</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>機能</th>
+       <th>Accessでの役割</th>
+       <th>クラウドでの代替例</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>データ保存</td>
+       <td>.accdbファイル</td>
+       <td>Azure SQL / AWS RDS / Google Cloud SQL</td>
+      </tr>
+      <tr>
+       <td>GUIフォーム</td>
+       <td>Accessフォーム</td>
+       <td>Power Apps / AppSheet</td>
+      </tr>
+      <tr>
+       <td>クエリ・集計</td>
+       <td>Accessクエリ</td>
+       <td>SQL / BigQuery</td>
+      </tr>
+      <tr>
+       <td>レポート出力</td>
+       <td>Accessレポート機能</td>
+       <td>Power BI / Looker</td>
+      </tr>
+      <tr>
+       <td>自動化・通知</td>
+       <td>Accessマクロ</td>
+       <td>Power Automate / AWS Step Functions / AppSheet</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   このように、クラウドではAccessのような「一体型ツール」は存在しないものの、目的に応じて複数のサービスを組み合わせることで、より柔軟でスケーラブルな構成が可能になります。<br>
+   特に、Power AppsやAppSheetのようなノーコードツールを活用すれば、GUI操作やフォーム設計も直感的に行えますし、SQLベースのクラウドDBと連携することで、データの信頼性や拡張性も高まります。
+  </p>
+
+  <h2>クラウド各社の「Access的」なサービス</h2>
+  <p>
+   Accessの知識をベースに、クラウドサービスの構成や連携を学ぶことで、より広い技術領域へとステップアップすることができます。<br>
+   個人開発者や小規模チームにとっても、こうした構成は十分に現実的で、業務アプリやデータ管理の基盤として活用できるはずです。
+  </p>
+
+  <h3>Microsoftのプロダクト</h3>
+  <p>
+   Accessを開発したMicrosoftは、クラウド時代に合わせてAccess的な機能を分散型サービスとして提供しています。<br>
+   特に「Power Platform」と呼ばれる一連のツール群は、Accessユーザーにとって親和性が高く、移行先として非常に有力です。<br>
+   以下に、Accessの各機能に対応するMicrosoftのクラウドサービスを紹介します。
+  </p>
+
+  <dl>
+   <dt>Power Apps</dt>
+   <dd>ノーコードで業務アプリを作成。Accessのフォームに近いUI。</dd>
+   <dt>Azure SQL Database</dt>
+   <dd>Accessのバックエンドとして最適。ODBC接続も可能。</dd>
+   <dt>Power Automate</dt>
+   <dd>Accessのマクロ的な自動化が可能。</dd>
+   <dt>Power BI</dt>
+   <dd>Accessのレポート機能をクラウドで再現。</dd>
+  </dl>
+
+  <h3>Googleのプロダクト</h3>
+  <p>
+   Googleは、スプレッドシートやBigQueryなど、データ処理に強みを持つサービスを多数展開しています。<br>
+   Accessのような一体型ツールは提供していませんが、AppSheetを中心にノーコード開発環境を整備しており、クラウドネイティブな構成でAccess的な運用を再現することが可能です。
+  </p>
+
+  <dl>
+   <dt>AppSheet</dt>
+   <dd>ノーコードアプリ作成ツール。スプレッドシートやCloud SQLと連携可能。</dd>
+   <dt>Cloud SQL</dt>
+   <dd>MySQL/PostgreSQLベースのクラウドDB。AccessからODBC接続も可能。</dd>
+   <dt>BigQuery</dt>
+   <dd>大量データの分析に特化。Accessのクエリを超えるスケーラビリティ。</dd>
+   <dt>Looker Studio</dt>
+   <dd>レポート作成に特化。Accessのレポート機能に近い。</dd>
+  </dl>
+
+  <h3>Amazon (AWS)のプロダクト</h3>
+  <p>
+   AWSは、インフラレベルからアプリケーション構築まで幅広いサービスを提供しており、Accessの代替としても柔軟な選択肢があります。<br>
+   GUIツールはやや発展途上ですが、RDSやQuickSightなど、データベース・分析系のサービスは非常に強力です。<br>
+   以下に、Accessの各機能に対応するAWSの代表的なサービスをまとめました。
+  </p>
+
+  <dl>
+   <dt>AWS RDS</dt>
+   <dd>SQL Server / MySQL / PostgreSQLなどをクラウドで提供。Accessから接続可能。</dd>
+   <dt>Amazon Honeycode</dt>
+   <dd>GUIでアプリを作れるが、まだ発展途上。</dd>
+   <dt>Amazon QuickSight</dt>
+   <dd>BIツール。Accessのレポート機能に近い。</dd>
+   <dt>AWS AppSync / Amplify</dt>
+   <dd>GraphQLベースでアプリ構築。Accessより高度。</dd>
+  </dl>
+
+  <p>
+   各クラウドベンダーにはそれぞれの強みがあり、Access的な構成を再現するには「何を重視するか」によって選択肢が変わります。<br>
+   GUIの使いやすさを重視するならMicrosoftやGoogle、データ処理のスケーラビリティを重視するならAWSやBigQueryなどが有力です。<br>
+   Accessの運用スタイルをクラウドに移行する際は、こうしたサービスの特徴を理解し、最適な組み合わせを検討することが重要です。
+  </p>
+
+  <h4>Accessの経験を活かしてクラウドへ</h4>
+
+  <p>
+   Accessのような一体型ツールは、個人や小規模チームにとって非常に魅力的な存在でした。<br>
+   フォーム、クエリ、レポート、マクロといった機能が一つの環境で完結することで、開発の敷居が下がり、業務改善のアイデアをすぐに形にできるという利点がありました。<br>
+   しかし、クラウド時代の今、同じような利便性を保ちつつ、より柔軟でスケーラブルな構成を実現するには、複数のクラウドサービスを組み合わせるという発想が必要です。
+  </p>
+
+  <p>
+   本記事で紹介したように、Microsoft、Google、AWSといった主要クラウドベンダーは、それぞれAccess的な機能を分散的に提供しています。<br>
+   ノーコードでGUIを構築できるPower
+   AppsやAppSheet、クラウドDBとしてのAzure SQLやCloud SQL、レポート出力に特化したPower BIやLooker
+   Studioなど、用途に応じて選択肢は豊富です。<br>
+   Accessの知識をベースに、これらのサービスを組み合わせることで、クラウド環境でも十分に業務アプリケーションを構築・運用することが可能です。
+  </p>
+
+  <p>
+   特に個人サイト制作者にとっては、こうしたクラウド構成の理解が今後ますます重要になります。<br>
+   単なる静的なWebページから、データベース連携や動的なUIを持つWebアプリケーションへと進化させるには、Access的な発想とクラウド技術の橋渡しが必要なこともあります。<br>
+   ノーコードツールを活用すれば、プログラミングの知識がなくても業務アプリを構築できる時代ですし、クラウドDBやBIツールを組み合わせることで、より信頼性の高いデータ管理や可視化も実現できます。
+  </p>
+
+  <p>
+   Accessからクラウドへの移行は、単なる技術的な置き換えではなく、「自分のアイデアを、より広く、より持続可能な形で届ける」ためのステップでもあります。<br>
+   個人サイト制作者として、こうした技術の流れを理解し、自分の制作物に取り入れていくことで、より価値のあるコンテンツを生み出せるかもしれませんね。
+  </p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_database.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="Amazon RDSやAurora、DynamoDBなどの主要AWSデータベースサービスを比較・解説。DMSやSCTを活用した移行戦略まで、クラウド型DB運用の最適化を技術的に深掘りします。">
+ <meta name="keywords" content="AWS,RDS,Aurora,DynamoDB,DMS,SCT,クラウドデータベース,リレーショナルDB,NoSQL,データ移行,スキーマ変換,DBエンジン比較">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行">
+ <meta property="og:description"
+  content="Amazon RDSやAurora、DynamoDBなどの主要AWSデータベースサービスを比較・解説。DMSやSCTを活用した移行戦略まで、クラウド型DB運用の最適化を技術的に深掘りします。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsrdb.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行",
+  "url": "https://feinatelier.org/contents/cloud_awsrdb.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行の目次を開く ▼"
+   data-close-text="クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行の目次を閉じる ▲">クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行</span></h1>
+
+  <p>クラウド環境でのデータベース運用は、年々多様化と高度化が進んでいます。<br>
+   AWS（Amazon Web Services）では、Amazon RDS、Aurora、DynamoDBなど、用途に応じた複数のデータベースサービスが提供されており、それぞれに異なる特性と強みがあります。</p>
+
+  <p>このページでは、AWSにおける主要なデータベースサービスの概要と選定ポイントを整理しながら、運用設計や移行に関する基本的な考え方をまとめています。<br>
+   特に、AWS Database Migration Service（DMS）やAWS Schema Conversion Tool（SCT）といった移行支援ツールについて概略をご紹介します。</p>
+
+  <p>RDSによる安定したリレーショナルDBの運用、Auroraが提供するクラウドネイティブな高性能、DynamoDBによるスケーラブルなNoSQL設計──それぞれの選択肢には、明確な技術的背景と設計思想があります。<br>
+   移行ツールの活用も含め、これらのサービスをどう組み合わせ、どう使い分けるかは、システムの目的や成長フェーズによって変わってくるでしょう。</p>
+
+  <p>本ページが、AWS上でのデータベース設計や移行を検討されている方にとって、少しでも参考になる内容となれば幸いです。<br>
+   必要な情報を丁寧に整理しながら、実務に役立つ視点をお届けできればと思います。</p>
+
+  <h2>Amazon Relational Database Service(RDS)で実現するクラウド型リレーショナルDBの運用最適化</h2>
+
+  <p>
+   Amazon Relational Database
+   Service（RDS）は、AWSが提供するフルマネージド型のリレーショナルデータベースサービスです。<br>
+   インフラの構築・運用・スケーリング・バックアップ・パッチ適用など、従来のDB管理に伴う煩雑な作業をAWSが代行してくれるため、開発者はアプリケーションロジックやデータ設計に集中することができます。
+  </p>
+
+  <p>
+   RDSは、MySQL、PostgreSQL、MariaDB、Oracle、SQL
+   Server、そしてAmazon独自のAuroraなど、複数のエンジンに対応しており、用途や既存資産に応じた選択が可能です。<br>
+   高可用性を実現するマルチAZ配置や、読み取り専用のリードレプリカ、暗号化、スナップショットによるバックアップなど、エンタープライズレベルの機能も充実しています。
+  </p>
+
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">Amazon RDSで利用可能な主要DBエンジンの比較</h3>
+    <table class="boss-table">
+     <caption>Amazon RDSで利用可能な主要DBエンジンの比較</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>エンジン</th>
+       <th>特徴</th>
+       <th>代表的な用途</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>MySQL</td>
+       <td>軽量で広く普及。OSSとの親和性が高い。</td>
+       <td>Webアプリ、スタートアップ向け</td>
+      </tr>
+      <tr>
+       <td>PostgreSQL</td>
+       <td>高機能で拡張性が高い。GISや分析にも強い。</td>
+       <td>業務系アプリ、分析基盤</td>
+      </tr>
+      <tr>
+       <td>MariaDB</td>
+       <td>MySQL互換。高速性と柔軟性を重視。</td>
+       <td>中小規模の業務システム</td>
+      </tr>
+      <tr>
+       <td>Oracle</td>
+       <td>商用DBの代表格。PL/SQLや高度な機能を提供。</td>
+       <td>大企業の基幹系システム</td>
+      </tr>
+      <tr>
+       <td>SQL Server</td>
+       <td>Windows環境との統合性が高い。</td>
+       <td>Microsoft系業務アプリ</td>
+      </tr>
+      <tr>
+       <td>Amazon Aurora</td>
+       <td>MySQL/PostgreSQL互換。高性能・高可用性。</td>
+       <td>クラウドネイティブな分散アプリ</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   RDSは、AWSマネジメントコンソールやCLI、APIを通じて簡単にデプロイ・管理が可能です。<br>
+   インスタンスタイプやストレージ容量、バックアップ保持期間などを柔軟に設定できるため、開発・検証環境から本番運用まで幅広く対応できます。
+  </p>
+
+  <dl>
+   <dt>マルチAZ配置</dt>
+   <dd>障害時にも自動フェイルオーバーが可能で、高可用性を確保できます。</dd>
+
+   <dt>リードレプリカ</dt>
+   <dd>読み取り専用の複製を作成し、負荷分散や分析用途に活用できます。</dd>
+
+   <dt>暗号化とセキュリティ</dt>
+   <dd>AWS KMSによる暗号化、IAMによるアクセス制御が可能です。</dd>
+
+   <dt>スナップショットと自動バックアップ</dt>
+   <dd>任意の時点に復元できるスナップショット機能を備えています。</dd>
+  </dl>
+
+  <p>
+   Amazon
+   RDSは、クラウド環境でのリレーショナルデータベース運用を効率化し、信頼性・可用性・拡張性を高めるための強力な選択肢です。<br>
+   既存のAccessやオンプレミスDBからの移行にも対応しており、個人開発者からエンタープライズまで幅広い層にとって有用なサービスと言えるでしょう。
+  </p>
+
+
+
+  <h2>Amazon Auroraがもたらすクラウドネイティブな高性能RDBの進化</h2>
+
+  <p>
+   Amazon Auroraは、AWSが独自に開発したリレーショナルデータベースエンジンで、MySQLおよびPostgreSQLとの互換性を持ちながら、従来のオープンソースDBを大きく上回る性能と可用性を提供します。<br>
+   クラウド環境に最適化された設計により、従来のRDBMSのボトルネックを解消し、スケーラブルかつ堅牢なデータ基盤を構築することが可能です。
+  </p>
+
+  <p>
+   Auroraはストレージとコンピュートを分離したアーキテクチャを採用しており、ストレージは最大128TBまで自動拡張されます。<br>
+   さらに、6つのコピーを3つのAZに分散配置することで、耐障害性とデータ保全性を高めています。<br>
+   トランザクションログを継続的にストレージに書き込むことで、ポイントインタイムリカバリも容易です。
+  </p>
+
+  <dl>
+   <dt>パフォーマンス</dt>
+   <dd>MySQL互換の場合、最大5倍、PostgreSQL互換では最大3倍のスループットを実現します。</dd>
+
+   <dt>高可用性</dt>
+   <dd>マルチAZ構成と自動フェイルオーバーにより、99.99%以上の可用性を確保できます。</dd>
+
+   <dt>セキュリティ</dt>
+   <dd>VPC内配置、IAM認証、KMSによる暗号化など、AWS標準のセキュリティ機能に対応しています。</dd>
+
+   <dt>サーバーレス対応</dt>
+   <dd>Aurora Serverless v2により、リクエスト量に応じて自動でスケーリングし、コスト最適化が可能です。</dd>
+  </dl>
+
+  <p>
+   Auroraは、リードレプリカの作成やGlobal Database機能によるグローバル展開にも対応しており、ミッションクリティカルなシステムにも適しています。<br>
+   従来のRDSと比較しても、よりクラウドネイティブな設計思想が貫かれており、モダンなアプリケーション開発において非常に有力な選択肢となります。
+  </p>
+
+  <p>
+   なお、AuroraはRDSの一部として提供されているため、マネジメントコンソールやCLI、CloudFormationなどを通じて、他のRDSエンジンと同様に運用管理が可能です。<br>
+   初期構築からスケーリング、バックアップ、監視まで、統合された運用体験が得られる点も魅力のひとつです。
+  </p>
+
+
+
+  <h2>Amazon DynamoDBで実現するスケーラブルなNoSQLデータベース設計</h2>
+
+  <p>
+   Amazon
+   DynamoDBは、AWSが提供するフルマネージド型のNoSQLデータベースサービスです。<br>
+   高い可用性とスケーラビリティを備え、ミリ秒単位のレスポンスを維持しながら、膨大なトラフィックを処理できる設計となっています。<br>
+   リレーショナルデータベースとは異なり、スキーマレスな構造を採用しており、柔軟なデータモデルが求められるモダンなアプリケーションに適しています。
+  </p>
+
+  <p>
+   DynamoDBは、主にキー・バリュー型およびドキュメント型のデータモデルをサポートしており、JSON形式のデータをネイティブに扱うことができます。<br>
+   テーブル設計では、パーティションキーとソートキーを組み合わせた複合主キーを定義することで、効率的なアクセスパターンを実現します。<br>
+   また、インデックス（GSI/LSI）を活用することで、柔軟な検索条件にも対応可能です。
+  </p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">DynamoDBの主要機能と特徴</h3>
+    <table class="boss-table">
+     <caption>DynamoDBの主要機能と特徴</caption>
+     <thead>
+      <tr class="header-blue">
+       <th>機能</th>
+       <th>概要</th>
+       <th>活用例</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>オンデマンドキャパシティ</td>
+       <td>トラフィックに応じて自動でスケーリング。事前の容量設定不要。</td>
+       <td>不定期アクセスのあるモバイルアプリ</td>
+      </tr>
+      <tr>
+       <td>プロビジョニングキャパシティ</td>
+       <td>読み書き容量を明示的に設定。コスト最適化が可能。</td>
+       <td>安定したトラフィックの業務システム</td>
+      </tr>
+      <tr>
+       <td>グローバルテーブル</td>
+       <td>複数リージョンにまたがるレプリケーションを自動化。</td>
+       <td>多国展開するWebサービス</td>
+      </tr>
+      <tr>
+       <td>DAX（DynamoDB Accelerator）</td>
+       <td>インメモリキャッシュによる高速読み取り。</td>
+       <td>リアルタイム分析やランキング表示</td>
+      </tr>
+      <tr>
+       <td>トランザクション</td>
+       <td>複数項目の一括更新をACID特性で保証。</td>
+       <td>決済処理や在庫管理</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <p>
+   DynamoDBは、APIベースで操作するため、従来のSQLとは異なる設計思考が求められます。<br>
+   特にアクセスパターンを事前に定義し、それに最適化されたテーブル構造を設計することが重要です。<br>
+   これは「逆正規化」や「データの重複を許容する設計」といった、RDBとは対照的なアプローチを意味します。
+  </p>
+
+  <dl>
+   <dt>パーティションキー</dt>
+   <dd>データの分散配置を決定する主キー。均等なアクセス分布が望ましいです。</dd>
+
+   <dt>ソートキー</dt>
+   <dd>同一パーティション内での並び順を定義。時系列データなどに有効です。</dd>
+
+   <dt>GSI（グローバルセカンダリインデックス）</dt>
+   <dd>別のキー構成で検索可能なインデックス。柔軟なクエリ設計に活用されます。</dd>
+
+   <dt>LSI（ローカルセカンダリインデックス）</dt>
+   <dd>同一パーティションキー内で異なるソートキーを使った検索を可能にします。</dd>
+
+   <dt>TTL（Time to Live）</dt>
+   <dd>指定時間経過後に自動削除される項目。セッション管理などに便利です。</dd>
+  </dl>
+
+  <p>
+   Amazon DynamoDBは、サーバーレスアーキテクチャとの親和性も高く、LambdaやAPI
+   Gatewayと組み合わせることで、完全にマネージドなバックエンドを構築することができます。<br>
+   スケーラブルで高可用性なデータストアを必要とする場合、DynamoDBは非常に有力な選択肢となるでしょう。
+  </p>
+
+
+  <h2>AWS Database Migration Service(AWS DMS)：柔軟かつ安全なデータ移行戦略</h2>
+
+  <p>
+   AWS Database Migration Service（AWS DMS）は、オンプレミス環境や他のクラウドサービスからAWS上のデータベースへ、あるいはその逆方向への移行を支援するマネージドサービスです。<br>
+   リアルタイムレプリケーションにも対応しており、ダウンタイムを最小限に抑えながら移行を行うことが可能です。
+  </p>
+
+  <p>
+   DMSは、同種のデータベース間（例：OracleからOracle）だけでなく、異種間（例：SQL Serverから Amazon Aurora）にも対応しており、移行先の柔軟性が高い点が特徴です。<br>
+   移行元・移行先の接続情報やマッピングルールをタスクとして定義し、移行プロセスを自動化できます。
+  </p>
+
+  <dl>
+   <dt>サポートされるデータベース</dt>
+   <dd>Amazon RDS、Aurora、Redshift、DynamoDB、S3、Oracle、SQL Server、MySQL、PostgreSQLなど</dd>
+
+   <dt>移行モード</dt>
+   <dd>一括移行（Full Load）、継続的レプリケーション（CDC: Change Data Capture）</dd>
+
+   <dt>セキュリティ</dt>
+   <dd>IAMロールによるアクセス制御、暗号化（SSL/TLS）、VPC内での通信が可能</dd>
+
+   <dt>監視とログ</dt>
+   <dd>CloudWatchによるメトリクス監視、ログ出力によるトラブルシューティング支援</dd>
+  </dl>
+
+  <p>
+   実際の移行にあたっては、事前のスキーマ変換（必要に応じて AWS SCT を使用）や、ネットワーク帯域・レイテンシの考慮も重要です。<br>
+   DMSは移行中の整合性チェックやエラー通知も備えており、信頼性の高い移行を実現できます。
+  </p>
+
+
+  <h2>AWS Schema Conversion Tool(AWS SCT)でスムーズに異種データベースを移行</h2>
+
+  <p>
+   AWS Schema Conversion Tool（AWS SCT）は、異なる種類のデータベース間でスキーマを変換するためのツールです。<br>
+   たとえば、オンプレミスのOracleデータベースからAmazon Aurora PostgreSQLへの移行など、商用データベースからオープンソースへの移行を支援します。
+  </p>
+
+  <p>
+   SCTは、テーブル定義、ビュー、ストアドプロシージャ、ファンクションなどのスキーマオブジェクトを解析し、移行先に適した形式へ自動変換します。<br>
+   変換が困難な部分については、詳細なレポートを生成してくれるため、手動での対応も計画的に行えます。
+  </p>
+
+  <dl>
+   <dt>対応する移行元</dt>
+   <dd>Oracle、SQL Server、MySQL、Sybase、Db2 などの商用・オープンソースDB</dd>
+
+   <dt>対応する移行先</dt>
+   <dd>Amazon Aurora、Amazon RDS（PostgreSQL、MySQL）、Redshift など</dd>
+
+   <dt>変換対象</dt>
+   <dd>テーブル構造、インデックス、ビュー、トリガー、ストアドプロシージャ、関数など</dd>
+
+   <dt>補助機能</dt>
+   <dd>コード分析、互換性レポート、手動編集支援、DMSとの連携</dd>
+  </dl>
+
+  <p>
+   AWS SCTはGUIベースで操作できるため、複雑なコマンド操作を必要とせず、移行作業の可視性と効率性を高めてくれます。<br>
+   特に、スキーマの互換性チェックや変換結果のレビュー機能は、移行リスクの軽減に大きく貢献します。
+  </p>
+
+  <h4>小さなプロジェクトでも活きる、AWSデータベース設計の基本視点</h4>
+
+  <p>AWSのクラウドデータベースサービスは、選択肢が豊富である一方、それぞれの特性や設計思想を理解しないまま使い始めると、後々の運用や拡張に悩むことも少なくありません。<br>
+   RDSの安定性、Auroraの高性能、DynamoDBのスケーラビリティ──それぞれが異なる強みを持ち、用途やシステム構成によって最適な選択肢は変わってきます。</p>
+
+  <p>また、既存のデータベースからAWSへの移行を検討する際には、DMSやSCTといったツールの理解が不可欠です。<br>
+   単なるデータのコピーではなく、スキーマの変換や整合性の確保、移行中の可用性維持など、設計者として考慮すべき点は多岐にわたります。</p>
+
+  <p>このページでは、AWSの主要なデータベースサービスと移行ツールについて、できるだけ丁寧に整理してきました。<br>
+   特に個人でWebサイトやアプリケーションを運営されている方にとっては、「どのサービスを選ぶべきか」「将来的な拡張性はどうか」「移行のハードルはどこにあるか」といった判断が、技術的にも運用的にも重要なテーマになるはずです。</p>
+
+  <p>もちろん、AWSのサービスは日々進化しており、ベストプラクティスも変化していきます。<br>
+   ですが、基本的な設計の考え方や、サービスごとの役割を理解しておくことで、将来的な選択肢の幅は大きく広がります。</p>
+
+  <p>このページが、AWS上でのデータベース設計や移行に取り組む個人制作者の皆さんにとって、少しでも参考になれば。<br>
+   小さなプロジェクトでも、技術的な選択が未来の可能性を左右することがあります。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsrdb.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
