@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="AWSの主要プロダクトをカテゴリ別に整理し、Azure・GCPの類似サービスと比較。セキュリティ、コンプライアンス、環境構築、コンピューティング、ネットワーク、ストレージ、データベース、Webアプリ、デベロッパーツール、AI・機械学習、データ分析、請求管理など幅広く網羅し、ニーズに応じた選定を支援します。">
+ <meta name="keywords"
+  content="AWS, Azure, GCP, クラウドサービス比較, セキュリティ, コンプライアンス, コンピューティング, ネットワーク, ストレージ, データベース, Webアプリ, デベロッパーツール, 機械学習, 人工知能, データ分析, 請求管理, AWSプロダクト一覧, クラウド選定, サービス対応表">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="AWSのプロダクト一覧と対応するAzure・GCPサービス">
+ <meta property="og:description"
+  content="AWSの主要プロダクトをカテゴリ別に整理し、Azure・GCPの類似サービスと比較。セキュリティ、コンプライアンス、環境構築、コンピューティング、ネットワーク、ストレージ、データベース、Webアプリ、デベロッパーツール、AI・機械学習、データ分析、請求管理など幅広く網羅し、ニーズに応じた選定を支援します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsservice.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AWSのプロダクト一覧と対応するAzure・GCPサービス",
+  "url": "https://feinatelier.org/contents/cloud_awsservice.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>AWSのプロダクト一覧と対応するAzure・GCPサービス</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">AWSのプロダクト一覧と対応するAzure・GCPサービス</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="AWSのプロダクト一覧と対応するAzure・GCPサービスの目次を開く ▼"
+   data-close-text="AWSのプロダクト一覧と対応するAzure・GCPサービスの目次を閉じる ▲">AWSのプロダクト一覧と対応するAzure・GCPサービスの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>AWSのプロダクト一覧と対応するAzure・GCPサービス</span></h1>
+  <p>私が３大メガクラウドのプロダクトを選ぶときに使っているノートの一部です。<br>
+   すべてを覚えているわけではありませんが、おおよそ決まってくるかな。<br>
+   何かを作ってWebに公開するとなったら、もうクラウド抜きでは語れないような状況になっていると思います。</p>
+
+  <p>各項目に分かれていますが、重複しているプロダクトも多数あります。<br>
+   どれをコンピューティングに分類するかといった記述上の課題は、さほど大きな問題ではないとも考えているので。</p>
+
+  <h2>セキュリティ</h2>
+  <dl>
+   <dt>AWS Identity and Access Management (IAM)</dt>
+   <dd>ユーザーやサービスのアクセス権限を細かく制御したいときに使用します。ポリシーベースできめ細かいアクセス管理が可能です。</dd>
+   <dd>Azure Active Directory / Google Cloud IAM</dd>
+
+   <dt>AWS Key Management Service (KMS)</dt>
+   <dd>データの暗号化・復号に必要な鍵を安全に管理・運用したい場合に利用されます。S3やRDSなど他サービスと連携可能です。</dd>
+   <dd>Azure Key Vault / Google Cloud Key Management</dd>
+
+   <dt>AWS CloudTrail</dt>
+   <dd>AWSアカウント内の操作履歴（APIコールなど）を記録・監査したいときに使います。セキュリティインシデントの追跡にも有効です。</dd>
+   <dd>Azure Monitor / Google Cloud Audit Logs</dd>
+
+   <dt>AWS Config</dt>
+   <dd>リソースの構成変更を追跡し、コンプライアンス違反を検出したい場合に活用されます。設定の履歴管理にも対応しています。</dd>
+   <dd>Azure Policy / Google Cloud Config Connector</dd>
+
+   <dt>AWS Shield</dt>
+   <dd>DDoS攻撃からWebアプリケーションやサービスを保護したいときに使用します。Standardは自動適用、Advancedは高度な防御機能を提供します。</dd>
+   <dd>Azure DDoS Protection / Google Cloud Armor</dd>
+
+   <dt>AWS WAF (Web Application Firewall)</dt>
+   <dd>SQLインジェクションやXSSなどのWeb攻撃を防ぎたい場合に導入します。ルールベースで柔軟な防御が可能です。</dd>
+   <dd>Azure Web Application Firewall / Google Cloud Armor</dd>
+
+   <dt>AWS Secrets Manager</dt>
+   <dd>データベースの認証情報やAPIキーなどの機密情報を安全に保存・取得したいときに使います。自動ローテーションにも対応しています。</dd>
+   <dd>Azure Key Vault / Google Secret Manager</dd>
+
+   <dt>Amazon GuardDuty</dt>
+   <dd>AWS環境内の脅威を継続的にモニタリングし、異常な挙動を検出したい場合に利用されます。機械学習による分析が特徴です。</dd>
+   <dd>Azure Defender / Google Cloud Threat Detection</dd>
+
+   <dt>AWS Security Hub</dt>
+   <dd>複数のセキュリティサービスからの検出結果を統合し、セキュリティ状況を一元管理したいときに活用されます。</dd>
+   <dd>Microsoft Defender for Cloud / Google Security Command Center</dd>
+
+   <dt>AWS Inspector</dt>
+   <dd>EC2やコンテナイメージに対して脆弱性スキャンを行い、セキュリティリスクを評価したい場合に使います。</dd>
+   <dd>Microsoft Defender Vulnerability Management / Google Cloud Security Scanner</dd>
+  </dl>
+
+
+  <h2>コンプライアンス</h2>
+  <dl>
+   <dt>AWS Artifact</dt>
+   <dd>コンプライアンス関連のレポート（SOC、ISO、PCIなど）を取得・管理したいときに使用します。監査対応や証明書の確認に便利です。</dd>
+   <dd>Microsoft Service Trust Portal / Google Cloud Compliance Reports</dd>
+
+   <dt>AWS Config</dt>
+   <dd>リソースの設定変更を追跡し、コンプライアンスルールに違反していないかを継続的に評価したい場合に使います。</dd>
+   <dd>Azure Policy / Google Cloud Config Connector</dd>
+
+   <dt>AWS Audit Manager</dt>
+   <dd>監査証跡を自動収集し、コンプライアンスレポートを効率的に作成したいときに利用されます。内部監査や外部監査の準備に有効です。</dd>
+   <dd>Microsoft Purview Compliance Manager / Google Cloud Assured Workloads</dd>
+
+   <dt>AWS Organizations</dt>
+   <dd>複数のAWSアカウントを統合管理し、ポリシーやコンプライアンスルールを一括適用したいときに使います。</dd>
+   <dd>Azure Management Groups / Google Cloud Resource Manager</dd>
+
+   <dt>AWS Control Tower</dt>
+   <dd>セキュリティとコンプライアンスを考慮したマルチアカウント環境を迅速に構築・管理したい場合に活用されます。</dd>
+   <dd>Azure Landing Zones / Google Cloud Landing Zone Accelerator</dd>
+
+   <dt>AWS Security Hub</dt>
+   <dd>複数のセキュリティサービスの検出結果を統合し、コンプライアンス標準（CIS、PCI DSSなど）に基づいた評価を行いたいときに使用します。</dd>
+   <dd>Microsoft Defender for Cloud / Google Security Command Center</dd>
+
+   <dt>AWS Well-Architected Tool</dt>
+   <dd>セキュリティ、信頼性、パフォーマンス、コスト最適化、運用効率の観点からアーキテクチャを評価し、ベストプラクティスに沿った改善を図りたいときに使います。</dd>
+   <dd>Azure Advisor / Google Cloud Architecture Framework</dd>
+  </dl>
+
+
+  <h2>AWS環境の構築</h2>
+  <dl>
+   <dt>AWS CloudFormation</dt>
+   <dd>インフラをコードで定義し、テンプレートを使って一貫性のある環境を自動構築したいときに使用します。</dd>
+   <dd>Azure Resource Manager (ARM) Templates / Google Cloud Deployment Manager</dd>
+
+   <dt>AWS Elastic Beanstalk</dt>
+   <dd>アプリケーションコードをアップロードするだけで、インフラの構築・スケーリング・運用を自動化したい場合に使います。</dd>
+   <dd>Azure App Service / Google App Engine</dd>
+
+   <dt>AWS Control Tower</dt>
+   <dd>複数アカウントを含むセキュアでガバナンスの効いた環境を迅速に構築したいときに活用されます。ベストプラクティスに沿ったLanding Zoneを提供します。</dd>
+   <dd>Azure Landing Zones / Google Cloud Landing Zone Accelerator</dd>
+
+   <dt>AWS Systems Manager</dt>
+   <dd>インスタンスやリソースの構成管理、パッチ適用、リモート操作などを一元的に行いたいときに使用します。</dd>
+   <dd>Azure Automation / Google Cloud OS Config</dd>
+
+   <dt>AWS Service Catalog</dt>
+   <dd>事前承認されたインフラ構成やアプリケーションをカタログ化し、セルフサービスで安全に展開したい場合に使います。</dd>
+   <dd>Azure Managed Applications / Google Cloud Marketplace Private Catalog</dd>
+
+   <dt>AWS Launch Wizard</dt>
+   <dd>複雑なアプリケーションスタック（SAP、SQL Serverなど）をガイド付きで簡単に構築したいときに利用されます。</dd>
+   <dd>Azure Deployment Center / Google Cloud Solution Deployment Manager</dd>
+
+   <dt>AWS OpsWorks</dt>
+   <dd>ChefやPuppetを使って構成管理をコードベースで行いたい場合に使用します。インフラの状態を継続的に維持できます。</dd>
+   <dd>Azure Automation DSC / Google Cloud Config Connector</dd>
+  </dl>
+
+
+  <h2>コンピューティング</h2>
+  <dl>
+   <dt>Amazon EC2 (Elastic Compute Cloud)</dt>
+   <dd>仮想サーバーを柔軟に構築・管理したいときに使用します。OSやインスタンスタイプを自由に選択でき、スケーラブルな環境を構築可能です。</dd>
+   <dd>Azure Virtual Machines / Google Compute Engine</dd>
+
+   <dt>AWS Lambda</dt>
+   <dd>サーバーレスでコードを実行したいときに使用します。インフラ管理不要で、イベント駆動型の処理に最適です。</dd>
+   <dd>Azure Functions / Google Cloud Functions</dd>
+
+   <dt>AWS Fargate</dt>
+   <dd>コンテナをサーバーレスで実行したい場合に使います。EC2を意識せずにECSやEKS上でコンテナを動かせます。</dd>
+   <dd>Azure Container Instances / Google Cloud Run</dd>
+
+   <dt>Amazon ECS (Elastic Container Service)</dt>
+   <dd>Dockerコンテナをオーケストレーションしたいときに使用します。FargateやEC2と連携可能で、柔軟な運用が可能です。</dd>
+   <dd>Azure Kubernetes Service (AKS) / Google Kubernetes Engine (GKE)</dd>
+
+   <dt>Amazon EKS (Elastic Kubernetes Service)</dt>
+   <dd>Kubernetesベースでコンテナを管理したい場合に使います。マネージドなKubernetes環境を提供します。</dd>
+   <dd>Azure Kubernetes Service (AKS) / Google Kubernetes Engine (GKE)</dd>
+
+   <dt>AWS Batch</dt>
+   <dd>大量のバッチ処理を効率的に実行したいときに使用します。ジョブのスケジューリングとリソース管理を自動化できます。</dd>
+   <dd>Azure Batch / Google Cloud Batch</dd>
+
+   <dt>AWS Outposts</dt>
+   <dd>オンプレミス環境にAWSのインフラとサービスを展開したいときに使います。ハイブリッドクラウド構成に最適です。</dd>
+   <dd>Azure Stack / Google Distributed Cloud</dd>
+
+   <dt>AWS Lightsail</dt>
+   <dd>簡単に仮想サーバーやアプリケーション環境を立ち上げたいときに使用します。初心者向けのUIと定額料金が特徴です。</dd>
+   <dd>Azure App Service / Google Cloud App Engine (Standard)</dd>
+  </dl>
+
+
+  <h2>ネットワーク</h2>
+  <dl>
+   <dt>Amazon VPC (Virtual Private Cloud)</dt>
+   <dd>クラウド上に隔離されたネットワーク環境を構築し、IPアドレスやサブネット、ルートテーブルなどを自由に設計したいときに使用します。</dd>
+   <dd>Azure Virtual Network / Google Virtual Private Cloud (VPC)</dd>
+
+   <dt>Elastic Load Balancing (ELB)</dt>
+   <dd>複数のEC2インスタンスやサービスに対してトラフィックを分散し、可用性とスケーラビリティを向上させたい場合に使います。</dd>
+   <dd>Azure Load Balancer / Google Cloud Load Balancing</dd>
+
+   <dt>Amazon Route 53</dt>
+   <dd>ドメイン名の登録・DNSルーティング・ヘルスチェックを行いたいときに使用します。グローバルな可用性と高速な名前解決が特徴です。</dd>
+   <dd>Azure DNS / Google Cloud DNS</dd>
+
+   <dt>AWS Direct Connect</dt>
+   <dd>オンプレミス環境とAWS間を専用線で接続し、安定した低レイテンシ通信を実現したい場合に使います。</dd>
+   <dd>Azure ExpressRoute / Google Cloud Interconnect</dd>
+
+   <dt>AWS Global Accelerator</dt>
+   <dd>グローバルなユーザーに対してアプリケーションの応答速度と可用性を向上させたいときに使用します。Anycast IPでトラフィックを最適ルートに誘導します。</dd>
+   <dd>Azure Front Door / Google Cloud Global Load Balancer</dd>
+
+   <dt>AWS Transit Gateway</dt>
+   <dd>複数のVPCやオンプレミスネットワークを一元的に接続・管理したい場合に使います。大規模なネットワーク構成に対応可能です。</dd>
+   <dd>Azure Virtual WAN / Google Cloud Network Connectivity Center</dd>
+
+   <dt>AWS PrivateLink</dt>
+   <dd>VPC間やサービス間の通信をインターネットを経由せずにセキュアに行いたいときに使用します。プライベートエンドポイントを提供します。</dd>
+   <dd>Azure Private Link / Google Private Service Connect</dd>
+
+   <dt>AWS CloudFront</dt>
+   <dd>静的・動的コンテンツをグローバルに高速配信したい場合に使います。CDNとしてキャッシュとセキュリティ機能を提供します。</dd>
+   <dd>Azure CDN / Google Cloud CDN</dd>
+  </dl>
+
+
+  <h2>ストレージ</h2>
+  <dl>
+   <dt>Amazon S3 (Simple Storage Service)</dt>
+   <dd>静的ファイルやバックアップ、ログなどをオブジェクトストレージとして保存したいときに使用します。高可用性・スケーラビリティが特徴です。</dd>
+   <dd>Azure Blob Storage / Google Cloud Storage</dd>
+
+   <dt>Amazon EBS (Elastic Block Store)</dt>
+   <dd>EC2インスタンスに接続するブロックストレージとして使用します。データベースやファイルシステムなど、低レイテンシが求められる用途に適しています。</dd>
+   <dd>Azure Managed Disks / Google Persistent Disk</dd>
+
+   <dt>Amazon EFS (Elastic File System)</dt>
+   <dd>複数のEC2インスタンスから同時アクセス可能な共有ファイルストレージが必要なときに使用します。Linuxベースのアプリケーションに最適です。</dd>
+   <dd>Azure Files / Google Filestore</dd>
+
+   <dt>AWS Storage Gateway</dt>
+   <dd>オンプレミス環境とAWSクラウド間でファイル・ボリューム・テープのストレージ連携を行いたい場合に使用します。ハイブリッド構成に適しています。</dd>
+   <dd>Azure StorSimple / Google Transfer Appliance</dd>
+
+   <dt>AWS Backup</dt>
+   <dd>複数のAWSサービスにまたがるバックアップを一元管理・自動化したいときに使用します。ポリシーに基づくバックアップ運用が可能です。</dd>
+   <dd>Azure Backup / Google Backup and DR</dd>
+
+   <dt>Amazon FSx</dt>
+   <dd>WindowsファイルサーバーやLustreなど、特定用途向けのマネージドファイルシステムを利用したい場合に使用します。</dd>
+   <dd>Azure NetApp Files / Google Filestore Enterprise</dd>
+
+   <dt>AWS Snow Family (Snowcone, Snowball, Snowmobile)</dt>
+   <dd>大容量データを物理デバイスで安全にAWSへ移行したいときに使用します。ネットワーク転送が困難なケースに有効です。</dd>
+   <dd>Azure Data Box / Google Transfer Appliance</dd>
+  </dl>
+
+
+  <h2>データベース</h2>
+  <dl>
+   <dt>Amazon RDS (Relational Database Service)</dt>
+   <dd>MySQL、PostgreSQL、Oracle、SQL Serverなどのリレーショナルデータベースをマネージドで運用したいときに使用します。バックアップ、スケーリング、パッチ適用が自動化されます。</dd>
+   <dd>Azure SQL Database / Google Cloud SQL</dd>
+
+   <dt>Amazon Aurora</dt>
+   <dd>高性能・高可用性なリレーショナルデータベースを構築したい場合に使用します。MySQL/PostgreSQL互換で、RDSよりも高速かつスケーラブルです。</dd>
+   <dd>Azure SQL Hyperscale / Google AlloyDB</dd>
+
+   <dt>Amazon DynamoDB</dt>
+   <dd>スケーラブルで高速なNoSQLデータベースを利用したいときに使用します。キー・バリュー型やドキュメント型のデータに対応し、サーバーレスで運用可能です。</dd>
+   <dd>Azure Cosmos DB / Google Cloud Bigtable</dd>
+
+   <dt>Amazon ElastiCache</dt>
+   <dd>RedisやMemcachedを使って、アプリケーションのレスポンスを高速化したいときに使用します。キャッシュ層として利用されます。</dd>
+   <dd>Azure Cache for Redis / Google Cloud Memorystore</dd>
+
+   <dt>Amazon Redshift</dt>
+   <dd>大規模なデータ分析やBI用途に特化したデータウェアハウスを構築したい場合に使用します。SQLベースで高速なクエリ処理が可能です。</dd>
+   <dd>Azure Synapse Analytics / Google BigQuery</dd>
+
+   <dt>Amazon DocumentDB</dt>
+   <dd>MongoDB互換のドキュメント指向データベースをマネージドで使いたいときに使用します。スキーマレスな構造に対応しています。</dd>
+   <dd>Azure Cosmos DB (MongoDB API) / Google Firestore</dd>
+
+   <dt>Amazon Neptune</dt>
+   <dd>グラフ構造のデータを扱いたいときに使用します。SNSや推薦エンジンなど、ノードと関係性の分析に適しています。</dd>
+   <dd>Azure Cosmos DB (Gremlin API) / Google Cloud Datastore (部分的に類似)</dd>
+
+   <dt>AWS Glue Data Catalog</dt>
+   <dd>データレイクや分析基盤において、データセットのメタデータを一元管理・検索したいときに使用します。</dd>
+   <dd>Azure Purview / Google Data Catalog</dd>
+  </dl>
+
+
+  <h2>機械学習と人工知能【取扱注意】</h2>
+  <p>ここは注意してください。<br>
+   個人的な勉強や仕事で使うならともかく、SNSでこれらの知識や経験等をむやみに語らないほうが良いです。<br>
+   あくまでも、学習か仕事に留める。<br>
+   これを貫徹していれば、SNSアカウントを円滑に運用できるでしょう。</p>
+
+  <dl>
+   <dt>Amazon SageMaker</dt>
+   <dd>機械学習モデルの構築・学習・デプロイを一貫して行いたいときに使用します。Jupyter環境、AutoML、MLOps機能も統合されています。</dd>
+   <dd>Azure Machine Learning / Google Vertex AI</dd>
+
+   <dt>Amazon Comprehend</dt>
+   <dd>テキストから感情、キーフレーズ、エンティティなどを抽出したい場合に使用します。自然言語処理（NLP）に特化しています。</dd>
+   <dd>Azure Text Analytics / Google Cloud Natural Language API</dd>
+
+   <dt>Amazon Rekognition</dt>
+   <dd>画像や動画から顔認識、物体検出、ラベル付けなどを行いたいときに使用します。セキュリティやメディア分析に活用されます。</dd>
+   <dd>Azure Computer Vision / Google Cloud Vision AI</dd>
+
+   <dt>Amazon Transcribe</dt>
+   <dd>音声データをテキストに変換したいときに使用します。会議録や音声ログの自動文字起こしに便利です。</dd>
+   <dd>Azure Speech to Text / Google Cloud Speech-to-Text</dd>
+
+   <dt>Amazon Polly</dt>
+   <dd>テキストを自然な音声に変換したい場合に使用します。多言語・多声種に対応し、音声アプリや読み上げ機能に活用されます。</dd>
+   <dd>Azure Text to Speech / Google Cloud Text-to-Speech</dd>
+
+   <dt>Amazon Lex</dt>
+   <dd>チャットボットや音声対話型アプリケーションを構築したいときに使用します。自然言語理解と音声認識を統合しています。</dd>
+   <dd>Azure Bot Service / Google Dialogflow</dd>
+
+   <dt>Amazon Forecast</dt>
+   <dd>時系列データをもとに需要予測や売上予測を行いたい場合に使用します。機械学習ベースで高精度な予測が可能です。</dd>
+   <dd>Azure Machine Learning (Time Series Forecasting) / Google Vertex AI Forecasting</dd>
+
+   <dt>Amazon Textract</dt>
+   <dd>スキャンされた文書や画像からテキスト・表・フォーム情報を抽出したいときに使用します。OCR以上の構造認識が可能です。</dd>
+   <dd>Azure Form Recognizer / Google Document AI</dd>
+
+   <dt>AWS Deep Learning AMIs</dt>
+   <dd>TensorFlow、PyTorchなどのフレームワークがプリインストールされた環境で、カスタムMLモデルを開発・学習したい場合に使用します。</dd>
+   <dd>Azure Data Science Virtual Machines / Google Deep Learning VM Images</dd>
+  </dl>
+
+
+  <h2>データ分析</h2>
+  <dl>
+   <dt>Amazon Athena</dt>
+   <dd>S3上のデータに対してSQLクエリを直接実行したいときに使用します。サーバーレスで、データレイク分析に最適です。</dd>
+   <dd>Azure Synapse Serverless SQL / Google BigQuery</dd>
+
+   <dt>Amazon Redshift</dt>
+   <dd>大規模なデータウェアハウスを構築し、高速な分析クエリを実行したい場合に使用します。BIツールとの連携にも強みがあります。</dd>
+   <dd>Azure Synapse Analytics / Google BigQuery</dd>
+
+   <dt>AWS Glue</dt>
+   <dd>ETL（抽出・変換・ロード）処理を自動化し、データをクレンジング・統合したいときに使用します。サーバーレスでスケーラブルです。</dd>
+   <dd>Azure Data Factory / Google Cloud Dataflow</dd>
+
+   <dt>Amazon Kinesis</dt>
+   <dd>リアルタイムでストリーミングデータを収集・処理・分析したい場合に使用します。IoTやログ分析に適しています。</dd>
+   <dd>Azure Event Hubs / Google Cloud Pub/Sub + Dataflow</dd>
+
+   <dt>AWS Lake Formation</dt>
+   <dd>セキュアで統合されたデータレイクを迅速に構築・管理したいときに使用します。アクセス制御やカタログ管理も可能です。</dd>
+   <dd>Azure Data Lake Storage + Purview / Google Cloud Storage + Data Catalog</dd>
+
+   <dt>AWS Data Pipeline</dt>
+   <dd>定期的なデータ転送や処理ジョブをスケジュール・管理したい場合に使用します。バッチ処理に適しています。</dd>
+   <dd>Azure Data Factory / Google Cloud Composer</dd>
+
+   <dt>AWS QuickSight</dt>
+   <dd>BIダッシュボードを作成し、データを可視化・共有したいときに使用します。SaaS型で、RedshiftやAthenaと連携可能です。</dd>
+   <dd>Azure Power BI Embedded / Google Looker</dd>
+
+   <dt>AWS Data Exchange</dt>
+   <dd>外部のデータプロバイダーから商用データセットを取得・分析したい場合に使用します。マーケットプレイス形式で提供されます。</dd>
+   <dd>Azure Data Share / Google Analytics Hub</dd>
+  </dl>
+
+
+  <h2>請求関連サポート</h2>
+  <dl>
+   <dt>AWS Cost Explorer</dt>
+   <dd>サービスごとの利用状況やコストを可視化し、月次・日次での分析や予測を行いたいときに使用します。グラフやフィルターで柔軟に分析可能です。</dd>
+   <dd>Azure Cost Management + Billing / Google Cloud Billing Reports</dd>
+
+   <dt>AWS Budgets</dt>
+   <dd>予算を設定し、使用量やコストが閾値を超えた際にアラートを受け取りたい場合に使用します。コスト管理や部門別予算統制に有効です。</dd>
+   <dd>Azure Budgets / Google Cloud Budgets</dd>
+
+   <dt>AWS Billing Console</dt>
+   <dd>請求書の確認、支払い方法の管理、課金履歴の取得など、請求全般を管理したいときに使用します。アカウント単位での明細確認が可能です。</dd>
+   <dd>Azure Portal (Billing) / Google Cloud Console (Billing)</dd>
+
+   <dt>AWS Cost and Usage Report (CUR)</dt>
+   <dd>詳細な課金データをCSV形式で取得し、外部ツールで分析したい場合に使用します。高度なコスト分析や社内レポート作成に適しています。</dd>
+   <dd>Azure Export to CSV / Google Cloud Detailed Billing Export (BigQuery or CSV)</dd>
+
+   <dt>AWS Marketplace Metering Service</dt>
+   <dd>サードパーティ製品の使用量に応じた課金を管理したいときに使用します。Marketplace経由のSaaS課金に対応しています。</dd>
+   <dd>Azure Marketplace Metering Service / Google Cloud Marketplace Billing</dd>
+
+   <dt>AWS Compute Optimizer</dt>
+   <dd>EC2やLambdaなどのリソース使用状況を分析し、コスト効率の良いインスタンスタイプや設定を提案したい場合に使用します。</dd>
+   <dd>Azure Advisor / Google Active Assist (Recommender)</dd>
+  </dl>
+
+
+  <h2>その他、分類がしにくいプロダクト</h2>
+  <dl>
+   <dt>AWS Cloud9</dt>
+   <dd>ブラウザベースのIDEで、開発環境をクラウド上に構築したいときに使用します。チームでのリアルタイム共同編集にも対応しています。</dd>
+   <dd>Azure DevTest Labs / Google Cloud Workstations</dd>
+
+   <dt>AWS IoT Core</dt>
+   <dd>IoTデバイスとの双方向通信を安全かつスケーラブルに行いたい場合に使用します。MQTTやHTTPなどのプロトコルに対応しています。</dd>
+   <dd>Azure IoT Hub / Google Cloud IoT Core（※2023年に提供終了）</dd>
+
+   <dt>AWS Elemental MediaConvert</dt>
+   <dd>動画ファイルを様々な形式にトランスコードしたいときに使用します。OTT配信やVODサービスに適しています。</dd>
+   <dd>Azure Media Services / Google Transcoder API</dd>
+
+   <dt>AWS RoboMaker</dt>
+   <dd>ロボットアプリケーションの開発・シミュレーション・デプロイをクラウドで行いたい場合に使用します。ROS（Robot Operating System）に対応しています。</dd>
+   <dd>Azure ROS on Virtual Machines / Google Cloud Robotics Core（限定提供）</dd>
+
+   <dt>AWS Ground Station</dt>
+   <dd>衛星との通信をクラウド経由で行いたいときに使用します。地上局インフラをオンデマンドで利用可能です。</dd>
+   <dd>Azure Orbital / Google Cloud（類似サービスなし）</dd>
+
+   <dt>AWS AppConfig</dt>
+   <dd>アプリケーションの設定値を安全に管理・デプロイしたい場合に使用します。設定変更による障害を防ぐためのバリデーション機能も備えています。</dd>
+   <dd>Azure App Configuration / Google Config Controller</dd>
+
+   <dt>AWS Step Functions</dt>
+   <dd>分散アプリケーションのワークフローを定義・実行したいときに使用します。状態管理やエラーハンドリングが組み込まれています。</dd>
+   <dd>Azure Durable Functions / Google Workflows</dd>
+
+   <dt>AWS AppSync</dt>
+   <dd>GraphQL APIを簡単に構築・管理したい場合に使用します。リアルタイムデータ同期やオフライン対応も可能です。</dd>
+   <dd>Azure API Management + GraphQL / Google Cloud Apigee + GraphQL</dd>
+  </dl>
+
+  <h4>ニーズに応じてプロダクトを選ぶ</h4>
+  <p>こんなにいっぱいあるけど、おおよそ使うものは決まってきますよ。<br>
+   大規模なWebショップでも稼働させない限り、大型データベースなんて必要ないしね。<br>
+   上記リストにないものとして、AWS Amplify なんかもおもしろいと思います。<br>
+   Webアプリケーションやモバイルアプリの実行環境を構築・運用できるサービスで、このサイトを乗っけることもできます。</p>
+  <p>あー…やっぱWebアプリ関連も掲載しておこうかな？<br>
+   個人サイト構築のときにどっちみち検討することになるし。</p>
+
+  <h3>🌟Webアプリ</h3>
+  <dl>
+   <dt>AWS Amplify</dt>
+   <dd>フロントエンドとバックエンドを統合したWeb・モバイルアプリの開発・ホスティング・認証・データ管理を支援</dd>
+   <dd>Azure App Service + Azure Static Web Apps / Firebase</dd>
+
+   <dt>AWS AppSync</dt>
+   <dd>GraphQL APIを簡単に構築・管理し、リアルタイムデータやオフライン対応を実現</dd>
+   <dd>Azure API Management + Azure Cosmos DB Graph API / Firebase + GraphQL via Cloud Functions</dd>
+
+   <dt>AWS Device Farm</dt>
+   <dd>実機でのモバイルアプリのテストを自動化。多様なOS・端末での動作確認に活用</dd>
+   <dd>Azure Test Plans + App Center / Firebase Test Lab</dd>
+
+   <dt>AWS Cognito</dt>
+   <dd>ユーザー認証・認可・ユーザープロファイル管理を提供。SNSログインやMFAにも対応</dd>
+   <dd>Azure Active Directory B2C / Firebase Authentication</dd>
+
+   <dt>AWS CloudFront</dt>
+   <dd>Webアプリの高速配信とセキュリティ強化（CDN）。静的・動的コンテンツのキャッシュに活用</dd>
+   <dd>Azure Front Door / Google Cloud CDN</dd>
+
+   <dt>AWS App Runner</dt>
+   <dd>コードやコンテナから自動でWebアプリを構築・デプロイ。インフラ管理不要でスケーラブル</dd>
+   <dd>Azure App Service / Google Cloud Run</dd>
+
+   <dt>AWS Elastic Beanstalk</dt>
+   <dd>Webアプリのデプロイ・スケーリング・管理を簡易化。複数言語・プラットフォームに対応</dd>
+   <dd>Azure App Service / Google App Engine</dd>
+
+   <dt>AWS Pinpoint</dt>
+   <dd>モバイルアプリやWebアプリ向けのユーザーエンゲージメント（通知・メール・SMS）を実現</dd>
+   <dd>Azure Communication Services / Firebase Cloud Messaging</dd>
+  </dl>
+
+
+  <h3>🌟デベロッパーツール</h3>
+
+  <dl>
+   <dt>AWS CodeCommit</dt>
+   <dd>Gitベースのソースコードリポジトリをホストし、チームでのバージョン管理や共同開発に利用</dd>
+   <dd>Azure Repos / Google Cloud Source Repositories</dd>
+
+   <dt>AWS CodeBuild</dt>
+   <dd>ソースコードのビルド、テスト、パッケージ化を自動化。CI/CDパイプラインの一部として活用</dd>
+   <dd>Azure Pipelines / Google Cloud Build</dd>
+
+   <dt>AWS CodeDeploy</dt>
+   <dd>アプリケーションの自動デプロイをサーバーやLambda関数に対して実行。ローリングアップデートやBlue/Greenデプロイに対応</dd>
+   <dd>Azure Pipelines / Google Cloud Deploy</dd>
+
+   <dt>AWS CodePipeline</dt>
+   <dd>ソースからデプロイまでのCI/CDワークフローを構築。複数ステージの自動化が可能</dd>
+   <dd>Azure Pipelines / Google Cloud Build + Cloud Deploy</dd>
+
+   <dt>AWS Cloud9</dt>
+   <dd>ブラウザベースのIDEで、コード編集・デバッグ・実行が可能。チーム開発やリモート作業に便利</dd>
+   <dd>Visual Studio Codespaces (旧Azure Cloud Shell Editor) / Google Cloud Shell Editor</dd>
+
+   <dt>AWS X-Ray</dt>
+   <dd>分散アプリケーションのトレースとパフォーマンス分析。マイクロサービス間のボトルネック特定に有効</dd>
+   <dd>Azure Monitor Application Insights / Google Cloud Trace</dd>
+
+   <dt>AWS CodeStar</dt>
+   <dd>開発プロジェクトのテンプレート作成と統合管理。CI/CD、リポジトリ、権限設定などを一括で構築</dd>
+   <dd>Azure DevOps Projects / Google Cloud Project Templates（類似機能は限定的）</dd>
+  </dl>
+
+  <h4>このWebサイト(PWA)はGoogleのApp Engineですよ</h4>
+  <p>慣れてることもあるし、Google Cloudの資格も取れて基礎知識も問題ありません。<br>
+   ほ～むぺ～じ を作ってデプロイするだけですからね。<br>
+   開発ツールは Visual Studio Code のみです。<br>
+   大したもの使ってないよ？<br>
+   ソースコードなどについては <a href="/another-eden/atelier_studio.html">ファンサイト制作のためのアトリエ</a> をご覧くださいませ🎵</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsservice.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

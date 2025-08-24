@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="AWSのデータベース関連プロダクトの機能や特徴を技術的視点から解説。個人サイト制作者向けに、RDBとDynamoDBの違いや選定ポイント、Accessからの移行手順、クラウドデータベースの活用方法までを丁寧に紹介します。">
+ <meta name="keywords"
+  content="AWS, データベース, RDS, DynamoDB, クラウドデータベース, 個人サイト, Access移行, データベース選定, NoSQL, リレーショナルデータベース, Web開発, 技術解説, サイト制作者向け, AWS移行手順">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴">
+ <meta property="og:description"
+  content="AWSのデータベース関連プロダクトの機能や特徴を技術的視点から解説。個人サイト制作者向けに、RDBとDynamoDBの違いや選定ポイント、Accessからの移行手順、クラウドデータベースの活用方法までを丁寧に紹介します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsdb.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴",
+  "url": "https://feinatelier.org/contents/cloud_awsdb.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴の目次を開く ▼"
+   data-close-text="AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴の目次を閉じる ▲">AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>AWSのデータベース関連プロダクトの機能概要と特筆すべき特徴</span></h1>
+
+  <p>AWSのデータベース関連プロダクトは、非常に幅広いユースケースに対応できる柔軟性と、クラウドネイティブな設計思想に基づいた高い運用性が特徴です。<br>
+   リレーショナル、NoSQL、インメモリ、グラフ、時系列、台帳型など、データモデルごとに専用のマネージドサービスが用意されており、アプリケーションの要件に応じて最適な選択が可能です。</p>
+
+  <p>たとえば、Amazon
+   RDSやAuroraは、従来型のリレーショナルデータベースをクラウド上で安定的かつスケーラブルに運用できるよう設計されており、マルチAZ構成や自動バックアップ、パッチ適用など、運用負荷を大幅に軽減する機能が充実しています。<br>
+   一方、DynamoDBはサーバーレスでスケーラブルなNoSQLデータベースとして、ミリ秒単位のレスポンスを求めるアプリケーションに適しており、トランザクションやTTL、ストリーム処理などの高度な機能も備えています。</p>
+
+  <p>また、NeptuneやTimestream、QLDBといった専門性の高いデータベースも提供されており、グラフ構造のデータ分析、時系列データの蓄積とクエリ、変更履歴の完全な記録といったニッチな要件にも対応できます。<br>
+   これらのプロダクトは、単なるストレージではなく、データの性質やアクセスパターンに最適化されたアーキテクチャを持っている点が魅力です。</p>
+
+  <p>他クラウドとの比較においては、AzureやGCPも同様に多様なデータベースサービスを提供していますが、AWSはその成熟度と選択肢の豊富さにおいて一歩抜きん出ている印象があります。<br>
+   特にAuroraのような独自実装による高性能なRDBMSや、DynamoDBのような完全サーバーレスでグローバルスケールに対応したNoSQLサービスは、他クラウドにはないユニークな価値を提供しています。</p>
+
+  <p>さらに、AWS DMSやSCTといった移行支援ツールも充実しており、オンプレミスからクラウドへの移行、あるいは異種間データベースの変換といった複雑な作業も、比較的スムーズに行えるよう設計されています。<br>
+   これにより、既存システムのクラウド化やモダナイゼーションを進める際の障壁が低く、エンタープライズレベルの導入にも適しています。</p>
+
+  <p>総じて、AWSのデータベースプロダクトは、単なるサービス群ではなく、アーキテクチャ設計や運用戦略に深く関与する「プラットフォーム」としての完成度が高く、技術者にとっては選択肢の広さと制御性の高さが大きな魅力となっています。</p>
+
+
+  <h2>AWSのデータベース選定における技術的視点とは</h2>
+
+  <p>ここで、各プロダクトの特徴などを整理してみましょう。</p>
+
+  <dl>
+   <dt>Amazon Redshift</dt>
+   <dd>高速でスケーラブルなデータウェアハウス。SQLベースでペタバイト級のデータ分析が可能。</dd>
+   <dd>Redshift SpectrumによりS3上のデータも直接クエリ可能。BIツールとの統合も容易。</dd>
+
+   <dt>Amazon ElastiCache</dt>
+   <dd>インメモリキャッシュサービス。RedisまたはMemcachedを使用してアプリケーションのレスポンスを高速化。</dd>
+   <dd>低レイテンシで高スループットなデータアクセスを実現。セッション管理やランキング処理に最適。</dd>
+
+   <dt>Amazon MemoryDB for Redis</dt>
+   <dd>Redis互換のインメモリデータベース。高可用性と耐久性を備えた完全マネージド型。</dd>
+   <dd>マルチAZ構成と永続性を備え、リアルタイムアプリケーションに適した設計。</dd>
+
+   <dt>Amazon DocumentDB</dt>
+   <dd>MongoDB互換のドキュメント指向データベース。JSON形式のデータを柔軟に扱える。</dd>
+   <dd>スケーラブルで高可用性。MongoDBクライアントやツールとの互換性が高い。</dd>
+
+   <dt>Amazon Keyspaces</dt>
+   <dd>Apache Cassandra互換のスケーラブルなNoSQLデータベース。分散型で高可用性。</dd>
+   <dd>サーバーレスで自動スケーリング。CQL（Cassandra Query Language）を使用可能。</dd>
+
+   <dt>Amazon Neptune</dt>
+   <dd>グラフデータベース。リレーション重視のデータモデルに最適で、RDFやProperty Graphをサポート。</dd>
+   <dd>SPARQLやGremlinによるクエリが可能。ソーシャルネットワークや知識グラフに適している。</dd>
+
+   <dt>Amazon Timestream</dt>
+   <dd>時系列データベース。IoTや運用モニタリング向けに最適化された設計。</dd>
+   <dd>自動的なデータ階層化と圧縮により、コスト効率とパフォーマンスを両立。</dd>
+
+   <dt>Amazon Quantum Ledger Database (QLDB)</dt>
+   <dd>変更履歴を完全に記録する台帳型データベース。透過性と不変性を保証。</dd>
+   <dd>中央集権型の信頼性を持ちつつ、ブロックチェーンのような監査性を提供。</dd>
+  </dl>
+
+  <p>AWSが提供するデータベースプロダクトは非常に多岐にわたっており、それぞれが異なるユースケースやアーキテクチャ思想に基づいて設計されています。<br>
+   そのため、単に「RDBかNoSQLか」といった分類だけではなく、より深い技術的な観点から選定することが重要です。</p>
+
+  <p>まず意識したいのは、データの構造とアクセスパターンです。<br>
+   リレーショナルな整合性が求められる場合はAmazon
+   RDSやAuroraが適しており、特にAuroraは高スループットかつ自動フェイルオーバー機能を備えているため、ミッションクリティカルなシステムにも安心して導入できます。<br>
+   一方、スキーマレスで柔軟なデータモデルが必要な場合はDynamoDBやDocumentDBが候補となります。<br>
+   DynamoDBはサーバーレスでスケーラブルな設計が特徴で、トラフィックの急増にも耐えられる構造を持っています。</p>
+
+  <p>次に考慮すべきは、リアルタイム性やデータの保持期間です。<br>
+   たとえば、IoTやメトリクス系のアプリケーションでは、時系列データに特化したAmazon Timestreamが有効です。<br>
+   自動的な階層化と圧縮によって、長期保存と高速クエリを両立できる点が魅力です。<br>
+   また、変更履歴の完全な記録が必要な場合には、Amazon QLDBのような台帳型データベースが選択肢となります。</p>
+
+  <p>可用性とスケーラビリティも重要な判断軸です。<br>
+   AWSの多くのデータベースサービスはマルチAZ構成や自動スケーリングに対応しており、インフラの冗長性を意識せずとも高い耐障害性を確保できます。<br>
+   特にElastiCacheやMemoryDBのようなインメモリ型は、低レイテンシが求められるユースケースにおいて非常に有効です。</p>
+
+  <p>さらに、既存システムからの移行や異種間の統合を検討している場合には、AWS DMSやSchema Conversion Toolの活用も視野に入れるべきです。<br>
+   これらのツールは、移行中のダウンタイムを最小限に抑えつつ、スキーマの変換やデータの整合性を保ちながら移行を支援してくれます。</p>
+
+  <p>最後に、運用面での負荷やチームのスキルセットも選定に影響します。<br>
+   たとえば、Aurora ServerlessやDynamoDBのようなフルマネージド型を選ぶことで、インフラ管理の手間を減らし、アプリケーション開発に集中できる環境を整えることができます。<br>
+   逆に、細かいチューニングや制御が必要な場合は、RDSのような構成可能なサービスが適しているかもしれません。</p>
+
+  <p>このように、AWSのデータベース選定には、単なる機能比較だけでなく、アーキテクチャ設計、運用戦略、そして将来的な拡張性までを見据えた多角的な視点が求められます。<br>
+   技術者としての経験値を活かしながら、プロジェクトの性質に最も合った選択をすることが、クラウド時代の理想的なデータベース設計につながっていきます。</p>
+
+  <h5>RDB関連とAmazon DynamoDBを今一度おさらい</h5>
+
+  <p>加えて、<a href="/contents/cloud_awsrdb.html">クラウド時代のDB運用設計｜AWSを用いたスケーラビリティと移行</a> でお話したプロダクトをさらりと復習しておきますか。</p>
+
+  <dl>
+   <dt>Amazon Relational Database Service (RDS)</dt>
+   <dd>複数のリレーショナルデータベースエンジン（MySQL、PostgreSQL、MariaDB、Oracle、SQL Server）をサポートするマネージド型サービス。</dd>
+   <dd>自動バックアップ、スケーリング、パッチ適用、マルチAZ配置などの運用負荷軽減機能を提供。</dd>
+
+   <dt>Amazon Aurora</dt>
+   <dd>MySQLおよびPostgreSQL互換の高性能リレーショナルデータベース。RDSより最大5倍のスループットを実現。</dd>
+   <dd>分散ストレージによる高可用性と自動フェイルオーバー。サーバーレスオプションも利用可能。</dd>
+
+   <dt>Amazon DynamoDB</dt>
+   <dd>フルマネージドなNoSQLキー・バリュー型データベース。ミリ秒単位のレスポンスと自動スケーリングを提供。</dd>
+   <dd>トランザクション、TTL、ストリーム、インデックスなどの高度な機能を備え、サーバーレスで運用可能。</dd>
+
+   <dt>AWS Database Migration Service (AWS DMS)</dt>
+   <dd>オンプレミスやクラウド間でのデータベース移行を支援するサービス。移行中もソースDBを稼働可能。</dd>
+   <dd>異種間（例：Oracle → PostgreSQL）や同種間の移行に対応。リアルタイムレプリケーションも可能。</dd>
+
+   <dt>AWS Schema Conversion Tool (AWS SCT)</dt>
+   <dd>異なるデータベース間のスキーマ変換を支援するツール。DMSと連携して移行プロセスを簡素化。</dd>
+   <dd>SQLコード、関数、トリガーなどの変換もサポート。GUIベースで操作可能。</dd>
+  </dl>
+
+  <p>プロダクトを選ぶ際のニーズという観点から、改めてまとめなおしてみましょう。</p>
+
+  <section>
+   <div class="custom-table-container">
+    <h3 class="grastah3">AWSデータベースプロダクトと選定ニーズ</h3>
+    <table>
+     <caption>AWSデータベースプロダクトと選定ニーズ</caption>
+     <thead>
+      <tr class="grasta_blue">
+       <th>プロダクト名</th>
+       <th>選定ニーズ</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>Amazon Relational Database Service(RDS)</td>
+       <td>既存のリレーショナルDB（MySQL, PostgreSQL等）をマネージドで運用したい</td>
+      </tr>
+      <tr>
+       <td>Amazon Aurora</td>
+       <td>高可用性・高性能なクラウドネイティブなリレーショナルDBを使いたい</td>
+      </tr>
+      <tr>
+       <td>Amazon DynamoDB</td>
+       <td>スケーラブルで高速なNoSQL（キー・バリュー型）DBが必要</td>
+      </tr>
+      <tr>
+       <td>AWS Database Migration Service (DMS)</td>
+       <td>オンプレミスや他クラウドからAWSへDBを移行したい</td>
+      </tr>
+      <tr>
+       <td>AWS Schema Conversion Tool (SCT)</td>
+       <td>異なるDBエンジン間でスキーマを自動変換したい</td>
+      </tr>
+      <tr>
+       <td>Amazon Redshift</td>
+       <td>大規模なデータウェアハウスで高速な分析処理を行いたい</td>
+      </tr>
+      <tr>
+       <td>Amazon ElastiCache</td>
+       <td>RedisやMemcachedによるインメモリキャッシュで高速化したい</td>
+      </tr>
+      <tr>
+       <td>Amazon MemoryDB for Redis</td>
+       <td>高可用性・永続性を備えたRedis互換のインメモリDBが必要</td>
+      </tr>
+      <tr>
+       <td>Amazon DocumentDB</td>
+       <td>MongoDB互換のドキュメント指向DBをマネージドで使いたい</td>
+      </tr>
+      <tr>
+       <td>Amazon Keyspaces</td>
+       <td>Apache Cassandra互換のスケーラブルなNoSQL DBが必要</td>
+      </tr>
+      <tr>
+       <td>Amazon Neptune</td>
+       <td>グラフ構造のデータ（RDF, Property Graph）を扱いたい</td>
+      </tr>
+      <tr>
+       <td>Amazon Timestream</td>
+       <td>時系列データを効率的に保存・分析したい（IoTやメトリクス用途）</td>
+      </tr>
+      <tr>
+       <td>Amazon Quantum Ledger Database (QLDB)</td>
+       <td>変更履歴を完全に追跡できる台帳型DBが必要</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </section>
+
+  <h3>AWSデータベースプロダクトを使いこなすための道筋：個人サイト制作者の視点から</h3>
+  <p>個人でWebサイトを制作されている方が、AWSのデータベースサービスに興味を持つのはとても自然な流れです。<br>
+   静的なHTMLやJavaScriptだけでは実現できない動的な機能――たとえばユーザー管理や投稿機能、検索や集計など――を取り入れたいと思ったとき、クラウド上のデータベースは非常に魅力的な選択肢となります。<br>
+   ただし、Microsoft Accessのようなローカル環境で完結するツールとは異なり、AWSのデータベースはクラウドネイティブな設計思想に基づいています。<br>
+   そのため、単にAccessファイルをアップロードするだけでは利用できない点に注意が必要です。</p>
+
+
+  <h4>クラウドデータベースは「サービス」として設計されている</h4>
+  <p>AWSのデータベース群は、いずれも「サービス」として提供されており、物理的なファイルをアップロードして使うというよりは、APIや接続エンドポイントを通じてアプリケーションと連携する形になります。<br>
+   たとえば、Amazon RDSやAuroraはリレーショナルデータベースをクラウド上でホストし、MySQLやPostgreSQLといった既存のDBエンジンと同様の操作が可能です。<br>
+   ただし、初期設定ではVPC（仮想プライベートクラウド）やセキュリティグループの構成、IAMによるアクセス制御など、クラウド特有の設計が求められます。</p>
+
+  <p>個人サイト制作者がこれらを扱うには、まずAWSアカウントを作成し、対象のデータベースサービスを選択してインスタンスを立ち上げる必要があります。<br>
+   その際、DBの種類やバージョン、ストレージ容量、接続方式などを細かく指定します。<br>
+   ローカルのAccessファイルをそのまま移行することはできませんが、CSVやSQLダンプなどの形式に変換したうえで、RDSやDynamoDBにインポートすることは可能です。<br>
+   特にDynamoDBのようなNoSQL型の場合は、データ構造の設計から見直す必要があるため、事前のモデリングが重要になります。</p>
+
+
+  <h4>データベースの選定は「目的」から逆算する</h4>
+  <p>AWSには多様なデータベースが用意されており、用途に応じて選ぶ必要があります。<br>
+   たとえば、ユーザーの投稿やコメントを保存するならAuroraやRDSが適していますし、リアルタイムなランキングやキャッシュ処理にはElastiCacheやMemoryDBが力を発揮します。<br>
+   時系列データを扱うならTimestream、グラフ構造を可視化したいならNeptuneが候補になります。<br>
+   個人サイトであっても、将来的なスケーラビリティやセキュリティを考慮するなら、こうした選定は非常に重要です。</p>
+
+
+  <h4>Accessからの移行は「変換」と「接続」の２ステップ</h4>
+  <p>AccessファイルをAWSで活用したい場合、まずはデータをエクスポートして汎用的な形式に変換する必要があります。<br>
+   CSVやSQL形式で出力し、それをAWSのデータベースにインポートするのが一般的な流れです。<br>
+   RDSであれば、MySQL WorkbenchやpgAdminなどのGUIツールを使って接続し、インポート作業を行うことができます。<br>
+   DynamoDBの場合は、AWS CLIやSDKを使ってプログラム的にデータを投入することになります。</p>
+
+  <p>その後、Webサイト側からは、Python（Flask）やPHPなどを使ってデータベースに接続し、動的な処理を実装していきます。<br>
+   これについては、<a href="/contents/nosql.html">JSONとJavaScriptを使って簡易的なNoSQL風データベースを作る</a>
+   も参考にして頂けそうですね。<br>
+   AWSはセキュリティが厳格なため、IAMロールや認証情報の管理も欠かせません。<br>
+   個人開発であっても、公開前にはアクセス制御や暗号化の設定をしっかり確認しておくことが大切です。</p>
+
+
+  <h4>クラウドの自由度を積極的に活用できる準備を</h4>
+  <p>AWSのデータベースは、個人サイトにも十分に活用できるパワフルなツールです。<br>
+   ただし、Accessのような「ファイルを開いて使う」感覚とは異なり、クラウドの設計思想に沿った使い方が求められます。<br>
+   その分、スケーラビリティや可用性、セキュリティといった面では圧倒的なメリットがあります。<br>
+   少しずつ慣れていけば、個人開発でもプロフェッショナルな仕組みを構築することができますので、ぜひ一歩踏み出してみてください。</p>
+
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsdb.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
