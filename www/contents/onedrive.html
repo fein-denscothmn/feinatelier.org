@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description"
+  content="Windows 11で初期設定されるOneDriveの挙動や「ファイルオンデマンド」の仕組み、右クリック操作の意味、無料・有料プランの違いまでを分かりやすく解説。クラウドとローカルの境界を理解し、安心して使いこなすための実践的なヒントを紹介します。">
+ <meta name="keywords"
+  content="OneDrive, Windows 11, ファイルオンデマンド, クラウドストレージ, 無料プラン, Microsoft 365, 空き領域を増やす, 初期設定, 同期, ファイル管理, OneDrive料金, グレーアウト, 雲アイコン">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点">
+ <meta property="og:description"
+  content="Windows 11で初期設定されるOneDriveの挙動や「ファイルオンデマンド」の仕組み、右クリック操作の意味、無料・有料プランの違いまでを分かりやすく解説。クラウドとローカルの境界を理解し、安心して使いこなすための実践的なヒントを紹介します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/cloud_awsstorage.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点",
+  "url": "https://feinatelier.org/contents/cloud_awsstorage.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点の目次を開く ▼"
+   data-close-text="OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点の目次を閉じる ▲">OneDriveの基本と落とし穴｜Windows
+   11での初期設定・料金・ファイル管理の注意点の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点</span></h1>
+
+  <p>OneDriveは、Microsoftが提供するクラウドストレージサービスで、写真や文書、動画などのファイルをインターネット上に保管できる仕組みです。<br>
+   自宅のパソコンで保存したファイルを、外出先のスマホからも開けるようになるため、端末を問わず作業を続けられるのが大きな魅力。<br>
+   家族や同僚とのファイル共有や共同編集もスムーズに行えるので、仕事でもプライベートでも活躍の場は広がります。</p>
+
+  <p>初心者の方には、「パソコンの中の大事なフォルダーを、インターネット上にもそっくりそのまま置いておける」とイメージすると、ぐっと分かりやすくなるかもしれません。<br>
+   万が一パソコンが壊れても、クラウド上にファイルが残っていれば安心。<br>
+   そんな“保険”のような役割も担ってくれるのが、OneDriveの頼もしいところです。</p>
+
+  <h2>Windows 11初期状態のOneDrive設定</h2>
+  <p>Windows 11を初めて起動すると、Microsoftアカウントでサインインした瞬間から、OneDriveの同期設定が動き始めます。<br>
+   特に何も操作していなくても、デスクトップやドキュメント、画像フォルダーが「バックアップ対象」としてクラウドに送られるよう促される構成になっているのです。</p>
+
+  <p>最近のWindowsでは、このOneDrive連携がほぼ“既定路線”になっていて、ユーザーが意識しないままクラウド同期が始まっているケースも少なくありません。<br>
+   気づいたら「PCの中身がOneDriveに全部入ってる…？」と驚く方もいるでしょう。</p>
+
+  <p>もし「勝手に同期されるのは困る」「ローカルだけで管理したい」と感じたら、画面右下の通知領域にある雲のアイコン（OneDrive）をクリックしてみてください。<br>
+   そこから設定画面に入り、どのフォルダーを同期するか、そもそもバックアップを有効にするかどうかを細かく調整できます。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/onedrive基礎設定.png" alt="onedrive基礎設定" class="biggraphic fade-in-out">
+  </div>
+
+  <p>初期状態では“親切すぎる”くらいにOneDriveがお勧めされてくるので、使い方に合わせて手綱を握ることが大切です。<br>
+   クラウドとの距離感を、自分で決められるようにしておきましょう。</p>
+
+  <h2>「ユーザー名 個人用」という青い雲のアイコン</h2>
+  <p>エクスプローラーの左側（ナビゲーションウィンドウ）に表示される「ユーザー名 個人用」という青い雲のアイコンは、あなたのMicrosoftアカウントに紐づいたOneDriveフォルダーです。<br>
+   これはローカルのフォルダーではなく、クラウドと同期される特別な領域です。<br>
+   すなわち、OneDriveのクラウドストレージ領域を示しています。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/エクスプローラーonedrive.png" alt="エクスプローラーonedrive" class="biggraphic fade-in-out">
+  </div>
+
+  <p>見た目は通常のフォルダーとほぼ同じで、エクスプローラー上ではローカルのフォルダーと並んで表示されるため、違いが分かりにくいと感じる方も多いです。<br>
+   特に、ファイルオンデマンド機能が有効になっている場合、ファイルの実体がクラウドにあるのかローカルにあるのかが一目で判別しづらくなることがあります。</p>
+
+  <p>ただし、ファイルやフォルダーのアイコンに付いているマーク（雲、緑のチェック、白地に緑のチェックなど）で状態を見分けることができます。<br>
+   雲のマークなら「オンラインのみ」、緑のチェックなら「ローカルに保存済み」、白地に緑の丸いチェックなら「常にこのデバイスに保持する」状態です。</p>
+
+  <p>このように、見た目は紛らわしい部分もありますが、アイコンの意味を理解しておけば、クラウドとローカルの違いを把握しながら安全に運用できます。</p>
+
+  <h2>ファイルが勝手に消えるファイルオンデマンド？！</h2>
+  <p>OneDriveの「ファイルオンデマンド」機能は、クラウドとローカルの“いいとこ取り”を実現する仕組みです。<br>
+   すべてのファイルをパソコンに保存しなくても、エクスプローラー上ではあたかも存在しているかのように表示され、必要なときだけダウンロードして使えるという、非常にスマートな動作をします。</p>
+
+  <p>この機能には、ファイルの状態を示す3つのモードがあります。<br>
+   ひとつ目は「オンラインのみ」。これはファイルがクラウド上にだけ存在し、雲のアイコンで表示されます。開くにはインターネット接続が必要で、オフラインでは利用できません。<br>
+   ふたつ目は「ローカルにある」状態で、緑のチェックマークが付き、パソコンに保存されているためすぐに開けます。<br>
+   そして三つ目が「常にこのデバイスに保持する」。<br>
+   これは白地に緑の丸いチェックマークで表示され、常にローカルに保存されるため、オフラインでも安心して使えます。</p>
+
+  <p>この機能を活用すれば、ストレージ容量の少ないPCでも大量のファイルを扱えるようになりますが、いくつか注意点もあります。<br>
+   たとえば、見た目はローカルにあるようでも、実際にはクラウド上にしか存在しないファイルもあり、オフラインでは開けなかったり、開く際に通信が発生したりします。<br>
+   また、ローカルから削除したファイルがクラウドにだけ残るという挙動を理解していないと、「削除したつもりが残っていた」「共有リンクが生きていた」といった思わぬトラブルに繋がることもあります。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/ファイルオンデマンドと共有.png" alt="ファイルオンデマンドと共有" class="biggraphic fade-in-out">
+  </div>
+
+  <p>さらに、企業や組織で利用する場合には、グループポリシーや管理者設定によってファイルオンデマンドの挙動が制限されることもあります。<br>
+   こうした環境では、同期対象や保存場所のルールを明確にしておくことが重要です。</p>
+
+  <p>クラウドとローカルの境界が曖昧に感じられるかもしれません。<br>
+   「どのファイルを常にローカルに置くか」「どれをクラウド専用にするか」といった運用方針を自分の中で整理しておくことが、トラブルを防ぎ、快適に使いこなすためのポイントになります。</p>
+
+  <h4>ファイルを右クリックで「空き領域を増やす」</h4>
+  <p>WindowsでOneDriveを使っていると、ファイルを右クリックしたときに「空き領域を増やす」という項目が表示されることがあります。<br>
+   これは、そのファイルをローカル（パソコン本体）から削除して、クラウド上（OneDrive）にだけ残す操作です。<br>
+   つまり、ファイルの実体はインターネット上に保存され、パソコンのストレージ容量を節約できるようになります。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/空き領域を増やす.png" alt="空き領域を増やす" class="biggraphic fade-in-out">
+  </div>
+
+  <p>この操作をすると、ファイルは「オンラインのみ」の状態になり、エクスプローラー上には雲のアイコンが付きます。<br>
+   見た目はそのまま残っているように見えますが、実際にはクラウドにだけ存在していて、開くときにインターネット経由でダウンロードされる仕組みです。</p>
+
+  <p>逆に、ファイルを右クリックして「常にこのデバイスに保持する」を選ぶと、そのファイルはローカルにも保存され、オフラインでも開けるようになります。</p>
+
+  <p>つまり、「空き領域を増やす」はファイルオンデマンド機能を使って、ローカルからファイルを退避させる操作だと考えてください。<br>
+   ローカルのストレージを節約したいときには便利ですが、オフライン環境で使う予定のファイルには注意が必要です。</p>
+
+  <h4>「空き容量を増やす」がグレーアウトして選べない</h4>
+  <p>「空き容量を増やす」がグレーアウトして選べない状態になっている場合、そのファイルはすでに「オンラインのみ」の状態、つまりファイルオンデマンドによってローカルから削除され、クラウド上にのみ存在していることを意味します。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/このデバイスに保持.png" alt="このデバイスに保持" class="biggraphic fade-in-out">
+  </div>
+
+  <p>この機能は、ローカルのストレージ容量を節約するために使われるもので、すでにクラウドに退避済みのファイルにはそれ以上の「空き容量を増やす」操作が不要なため、選択肢が無効化されているのです。<br>
+   逆に言えば、そのファイルは今の時点でパソコンのディスク領域を使っていない状態です。</p>
+
+  <p>もしそのファイルをオフラインでも使いたい場合は、右クリックして「常にこのデバイスに保持する」を選ぶことで、ローカルに再ダウンロードされ、オフラインでもアクセス可能になります。<br>
+   ファイルの状態をアイコンで見分けながら、用途に応じて切り替えるのが賢い使い方です。</p>
+
+  <h2>無料プランを含めた料金プランと容量</h2>
+  <p>OneDriveの無料プランは、まず試してみるには十分な機能を備えています。<br>
+   ただし、写真や動画を多く保存したい場合や、WordやExcelなどのOfficeアプリを本格的に使いたい方にとっては、容量や機能面で物足りなさを感じることもあるでしょう。</p>
+
+  <p>そうしたニーズに応えるのが、有料のMicrosoft 365プランです。<br>
+   中でも「Basic」は、月額・年額ともに手頃な価格で、クラウド保存容量を100GBまで拡張できるため、ストレージ強化を目的とするユーザーには非常にバランスの良い選択肢です。</p>
+
+  <dl>
+   <dt>OneDrive 無料プラン</dt>
+   <dd>価格：0円（Microsoftアカウント作成のみで利用可能）<br>
+    OneDrive容量：5GB<br>
+    特徴：基本的なクラウド保存機能のみ。Officeアプリは含まれず、容量も限定的</dd>
+
+   <dt>Microsoft 365 Basic</dt>
+   <dd>月額：260円（税込）／年額：2,600円（税込）<br>
+    OneDrive容量：100GB<br>
+    特徴：広告なしのOutlookメール、ランサムウェア検出、Web版Officeの利用が可能。コストを抑えつつクラウド容量を増やしたい人向け</dd>
+
+   <dt>Microsoft 365 Personal</dt>
+   <dd>月額：2,130円（税込）／年額：21,300円（税込）<br>
+    OneDrive容量：1TB（1,000GB）<br>
+    特徴：1人用。Word、Excel、PowerPointなどのフル機能版Officeアプリが利用可能。複数デバイスでの同時使用にも対応</dd>
+
+   <dt>Microsoft 365 Family</dt>
+   <dd>月額：2,740円（税込）／年額：27,400円（税込）<br>
+    OneDrive容量：最大6TB（1人あたり1TB × 最大6人）<br>
+    特徴：家族や複数人での利用に最適。各ユーザーが個別のOneDrive領域を持ち、Officeアプリもフル機能で利用可能</dd>
+  </dl>
+
+  <p>
+   さらに、より高度な作業や複数デバイスでの利用を想定するなら、「Personal」や「Family」プランが適しています。<br>Officeアプリのフル機能が使えるだけでなく、OneDriveの容量も大幅に増えるため、仕事や家庭での活用にも十分対応できます。
+  </p>
+
+  <p>なお、法人向けの「Business
+   Basic」や、学生向けの割引プランも存在しますが、個人利用であれば、無料・Basic・Personal・Familyの4つが主な選択肢となります。<br>
+   いずれのプランもサブスクリプション型で、契約中は常に最新のOfficeアプリやクラウド機能が利用できるのが大きなメリットです。</p>
+
+  <h3>OneDriveを使うときの実践的なヒント</h3>
+  <p>実務や日常でOneDriveを安心して使うためには、三つのポイントを押さえると良いです。</p>
+
+  <p>まず、重要なフォルダーは「常にこのデバイスに保持する（常時ローカル化）」に設定してオフラインやダウンロード遅延のリスクを減らします。<br>
+   次に、無料プランの容量不足を避けるために、自動バックアップで保存されるフォルダーの範囲を最小限に絞り、不要ファイルの定期的な整理や重複ファイルの削除をルーティンにします。<br>
+   最後に、共有や共同編集を行う際には権限設定（編集か閲覧か、有効期限の有無）を適切に運用し、誤って機密ファイルを公開してしまわないように運用ルールを整備していきましょう。</p>
+
+  <p>こうした運用をすることで、OneDriveの便利さを活かしつつ事故や容量トラブルを防げます。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/cloud_awsstorage.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
