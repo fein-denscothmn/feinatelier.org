@@ -574,7 +574,7 @@ for container in document.select('.atelier-container'):
 
   <div class="code-container">
    <pre><code class="language-txt">
-FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https://feinatelier.org/)
+GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https://feinatelier.org/)
 │  app.yaml
 │  dispatch.yaml
 │  main.py
@@ -582,12 +582,11 @@ FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https:/
 │  README.md
 │  requirements.txt
 │  sitemap.py
-│
 ├─redirect-service
+│      .gcloudignore
 │      app.yaml
 │      redirect.py
 │      requirements.txt
-│
 ├─static
 │  ├─css
 │  ├─externalization
@@ -597,30 +596,43 @@ FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https:/
 │  ├─js
 │  ├─menu
 │  └─nature
-│
 ├─templates
-│  │  pagelist.html
-│  │  sitemap.xml
-│  │  top.html
-│  │
+│  │  top.html（動的Webサイトのトップページ）
 │  └─server
-│          redirect.html
-│
-│   【上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。】
-│   【下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。】
-│
+│   ▲上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。
+│   ▼下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。
 ├─www
+│  │  .hintrc
 │  │  favicon.ico
-│  │  index.html
+│  │  index.html（静的Webサイトのトップページ）
 │  │  manifest.json
 │  │  robots.txt
 │  │  service-worker.js
-│  │
 │  ├─another-eden
+│  │  ├─anaimage
+│  │  │  ├─goods
+│  │  │  ├─heavenburnsred
+│  │  │  ├─oldanaden
+│  │  │  ├─spoiler
+│  │  │  └─vcgrasta
+│  │  ├─fein_report
+│  │  └─icon
 │  ├─contents
+│  │  ├─itimages
+│  │  │  ├─app_engine
+│  │  │  ├─cat_a
+│  │  │  ├─cat_b
+│  │  │  ├─feinne
+│  │  │  ├─metainput
+│  │  │  ├─picture_1hide
+│  │  │  ├─picture_allhide
+│  │  │  │  └─afterhide
+│  │  │  └─pwainfo
+│  │  └─nosql
 │  ├─css
 │  ├─externalization
 │  ├─fish
+│  ├─fleur1
 │  ├─flower1
 │  ├─flower2
 │  ├─flower3
