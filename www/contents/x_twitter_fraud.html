@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- SEOメタタグ -->
+ <meta name="description" content="AWSのセキュリティ管理ツールを初心者向けに解説！IAM、アイデンティティセンター、Cognitoなど主要なサービスについてわかりやすく紹介します。">
+ <meta name="keywords"
+  content="AWS, IAM, アイデンティティセンター, Amazon Cognito, Directory Service, Resource Access Manager, Organizations, Verified Permissions, クラウド, セキュリティ管理, 権限管理">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="Xの詐欺DM事例：アカウントが凍結される？！">
+ <meta property="og:description" content="AWSのセキュリティ管理ツールを初心者向けに解説！IAM、アイデンティティセンター、Cognitoなど主要なサービスについてわかりやすく紹介します。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/x_twitter_frand.html">
+
+ <!-- アイコン -->
+ <link rel="icon" sizes="32x32" href="../favicon.ico" type="image/x-icon">
+
+ <!-- Googleタグ (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+
+ <!-- Microsoftタグ -->
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+
+ <!-- JSON-LD構造化データ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Xの詐欺DM事例：アカウントが凍結される？！",
+  "url": "https://feinatelier.org/contents/x_twitter_frand.html",
+  "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+
+ <!-- CSSスタイルシート -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+
+ <!-- Googleフォント -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- ページタイトル -->
+ <title>Xの詐欺DM事例：アカウントが凍結される？！</title>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Xの詐欺DM事例：アカウントが凍結される？！の目次を開く</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="fein's personal site" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">fein's personal site</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="Xの詐欺DM事例：アカウントが凍結される？！の目次を開く ▼"
+   data-close-text="Xの詐欺DM事例：アカウントが凍結される？！の目次を閉じる ▲">Xの詐欺DM事例：アカウントが凍結される？！の目次を開く ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>Xの詐欺DM事例：アカウントが凍結される？！</span></h1>
+  <p>最近、乗っ取られたと思われるXのフォロワーから、「アカウントが凍結されるぞ」という内容のDMが届きました。<br>
+   一見すると公式の対応のように見えますが、こういったDMの信憑性には十分な注意が必要です。<br>
+   「誤って報告してしまった」「相手が永久禁止になるかも」といった文言は、罪悪感を利用して返信を引き出す心理的な罠です。<br>
+   DMをもらった側が悪いわけではありませんし、冷静に対応しましょう。</p>
+
+  <h2>アカウントが凍結される詐欺のセリフ</h2>
+  <p>ここからは「アカウントが凍結される詐欺のセリフ」を掲載します。<br>
+   確保したスクショと、それの下に文章を直接書きましょうか。<br>
+   私からの返信内容は極めて無難かつ短いもので、相手から言葉を引き出すためのものですから、省略しますね🥱</p>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺2.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😅</p>
+    <p>もしお時間があれば、少しだけお話ししたいです。</p>
+   </div>
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺1.jpg" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺3.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😥</p>
+    <p>何も悪いことをしていない人を誤って報告してしまったことを深く後悔しています。
+     私の報告が認められ、あなたが永久禁止になった場合、それは私のミスであり、私が責任を負います。</p>
+   </div>
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺4.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😵‍💫</p>
+    <p>
+     報告を取り消すためにサポートに連絡したところ、「Discordはxsupport_yurieさんに連絡し、報告番号40557035が誤って送信されたことを確認するよう依頼しました。あなたからの簡単なメッセージで問題は解決できます。既に状況を説明しましたが、サポートからは、完全に取り消すにはあなたからの直接の確認が必要だと連絡がありました。」という返信がありました。
+    </p>
+   </div>
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺5.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😅</p>
+    <p>
+     何かが起こるか、あなたのXアカウントが停止されるか心配です。本当に申し訳ありません。既にXサポートにチケットを送信し、自分が間違ったプロファイルに登録されていることを伝えようとしましたが、Xサポートに聞き取れません。それとも説明を手伝ってくれますか？
+    </p>
+   </div>
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺6.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😥</p>
+    <p>
+     レポートのチケットからわかるように、この問題を解決するには約12時間しかかかりません。そうでなければ、私たちはIPの禁止や法的措置に直面する可能性があります。そうは言っても、Xにいる29人の友人にも、あなたのアカウントを報告するように頼みました。
+    </p>
+   </div>
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😵‍💫</p>
+    <p>はい。ただし、その前に、Discordで割り当てられた指定のサポートにメッセージを送信してください。ユーザーIDはxsupport_yurieです。</p>
+   </div>
+  </div>
+
+  <div class="content">
+   <img src="/contents/itimages/詐欺7.png" alt="XのDMによる詐欺" class="biggraphic fade-in-out">
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😅</p>
+    <p>まあ、私が彼らから受け取ったメールによると、彼らはあなたに12時間以内に従わなければならないので、Discordで彼らを追加することを勧めているようです。</p>
+   </div>
+  </div>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <p class="feintag">詐欺DMのセリフ😥</p>
+    <p>失敗した場合、Xアカウントは停止されます。</p>
+   </div>
+  </div>
+
+  <p>いかがでしたか？<br>
+   ※アフィブログ風😆ww</p>
+
+  <p>こんなふうに言ってくるのですよ。<br>
+   怖い怖い…</p>
+
+  <h4>詐欺DMの内容から読み取れるポイント</h4>
+  <p>メールの件名は「RE: Account Compromised - Request #40657305」となっていて、何らかのアカウント問題に関する返信のように見えます。<br>
+   差出人は「Yurie Moriatx」という人物で、肩書きには「Appeal Specialist（異議申し立て担当）」と記されています。<br>
+   メールにはDiscordのロゴが添えられており、会社の住所として「X Corp, 1355 Market Street, San Francisco」が記載されています。</p>
+
+  <p>文章は日本語で書かれていて、一見すると公式な対応のように感じられるかもしれません。<br>
+   ただ、その内容はアカウントの問題に関するものを装っているようにも見え、注意が必要です。</p>
+
+  <h4>この詐欺DMで注意すべき点</h4>
+  <p>一見すると公式らしい体裁を整えているメールでも、よく見ると不自然な点がいくつか見受けられることがあります。<br>
+   たとえば、差出人として記載されている名前や肩書きが検索しても見つからなかったり、文面がDiscordの公式テンプレートとは異なっていたりする場合は注意が必要です。<br>
+   こうした違和感があったなら、、詐欺やなりすましを疑ってみましょう！</p>
+
+  <p>さらに、今回のケースではX（旧Twitter）でのDMと連動している点も気になりますよね。<br>
+   Discordのサポートが、Xを通じて個人に直接連絡を取るというのは、通常の対応としては考えにくいものです。<br>
+   公式なサポートは、基本的にアプリ内や公式サイトを通じて行われるため、SNS経由の連絡には慎重になるべきです。</p>
+
+  <p>また、「xsupport_yurie」といったIDを提示して、Discord以外のプラットフォームでのやり取りを促す手口も典型的な詐欺のパターンです。<br>
+   こうした誘導には、個人情報やアカウント情報を盗み取ろうとする意図が隠されている可能性があります。<br>
+   少しでも不安を感じたら、すぐにやり取りを中止し、公式のサポート窓口に確認することをおすすめします。</p>
+
+  <h4>詐欺DMを相手に可能な安全対策</h4>
+  <p>たとえ相手が詐欺だと分かったとしても、感情的になって煽ったり、反論の返信をしたりするのは避けたほうが安心です。<br>
+   というのも、詐欺グループは「この人は反応してくれる」と判断すると、さらに巧妙な手口で接触してくる可能性があるからです。</p>
+
+  <p>たとえば、「本人確認のために情報を教えてください」とか、「誤って報告された内容を取り下げるには手続きが必要です」といった名目で、個人情報やアカウント情報を引き出そうとするケースもあります。<br>
+   こうした誘導には、絶対に応じないようにしましょう。</p>
+
+  <p>もし怪しいDMを受け取った場合は、まずその送信者をすぐにブロックするのが基本です。<br>
+   そして、念のためDiscordやX（旧Twitter）のパスワードを変更しておくと安心ですね。<br>
+   あわせて、二段階認証（2FA）を有効にしておくことで、アカウントの安全性をさらに高めることができます。</p>
+
+  <p>今後、同じようなDMが届いたとしても、絶対に返信せず、静かに無視するのが一番です。<br>
+   不安が残る場合は、Discordの公式サポートに直接問い合わせて、正しい情報を確認するようにしましょう。</p>
+
+  <h2>GoogleとMicrosoftのAuthenticatorアプリとは何か</h2>
+  <p>ちょっと難しい話になるけど、Authenticatorについて説明しましょうか！</p>
+
+  <p>GoogleとMicrosoftが提供しているAuthenticatorアプリは、オンラインサービスにおけるセキュリティを強化するための二段階認証（2FA）を実現するツールです。<br>
+   これらのアプリは、ユーザーがパスワードに加えて一時的なコードを入力することで、アカウントへの不正アクセスを防ぐ仕組みになっています。<br>
+   技術的には、TOTP（Time-based One-Time Password）というアルゴリズムに基づいて動作しており、RFC 6238という標準仕様に準拠しています。</p>
+
+  <div class="content">
+   <img src="/contents/itimages/authenticator.jpg" alt="authenticatorアプリ" class="biggraphic fade-in-out">
+  </div>
+
+  <p>TOTP（Time-based One-Time Password）は、一定の時間間隔、通常は30秒ごとに新しい認証コードを生成する仕組みです。<br>
+   この方式では、ユーザーのスマートフォンとサービス側のシステムが、共通の秘密鍵（シークレットキー）をあらかじめ共有していることが前提になります。</p>
+
+  <p>この秘密鍵は、初回の設定時にQRコードなどを使ってアプリに登録されます。<br>
+   アプリは、現在の時刻と秘密鍵をもとに、HMAC-SHA1というハッシュ関数を使って一時的なコードを生成します。<br>
+   一方、サービス側でも同じ計算を行い、ユーザーが入力したコードと照合することで認証が行われる仕組みです。</p>
+
+  <p>このような認証方式を使うことで、仮にパスワードが漏れてしまったとしても、スマートフォンを持っていない第三者がログインすることはできません。<br>
+   つまり、パスワードだけでは突破できない、非常に強力なセキュリティ層が追加されることになります。</p>
+
+  <p>Microsoft Authenticatorは、従来のTOTP方式に加えて、プッシュ通知による認証もサポートしています。<br>
+   ユーザーがログインを試みると、スマートフォンに通知が届き、それをタップして承認するだけでログインが完了するという、非常にスムーズな仕組みです。<br>
+   この機能は、OAuth 2.0やOpenID Connectといった認証プロトコルと連携しており、企業向けのAzure Active Directoryとも統合されています。<br>
+   そのため、Microsoft Authenticatorは個人利用だけでなく、業務環境でも広く活用されています。</p>
+
+  <p>一方で、Google Authenticatorはよりシンプルな設計が特徴です。<br>
+   TOTP専用のアプリとして、インターネット接続がなくても動作するため、オフライン環境でも安心して使うことができます。<br>
+   以前は機種変更時の引き継ぎがやや面倒でしたが、最近ではクラウドバックアップ機能が追加され、利便性が大きく向上しました。<br>
+   スマートフォンを買い替えた際も、認証情報をスムーズに移行できるようになっています。</p>
+
+  <p>両者ともに、セキュリティを高めるための強力なツールですが、それぞれの設計思想や利用シーンに応じて選ぶことで、より快適で安全な認証体験が得られると思います。</p>
+
+  <p>Google AuthenticatorとMicrosoft Authenticatorの両アプリは、ひとつの端末上で複数のアカウントを管理できるよう設計されています。<br>
+   ユーザーは、各サービスごとに異なるシークレットキーを登録することで、それぞれの認証コードをまとめて扱うことが可能になります。<br>
+   複数のサービスを利用していても、認証作業が煩雑にならず、効率的にセキュリティを維持することができますね。</p>
+
+  <p>さらに、生成された認証コードは端末内で暗号化されて保存されるため、外部からの不正アクセスに対しても強固な防御が施されています。<br>
+   アプリ自体にもPINコードや指紋・顔認証といった生体認証によるロック機能が備わっており、万が一スマートフォンを紛失した場合でも、第三者に認証情報を知られるリスクを最小限に抑えることができます。</p>
+
+  <p>このように、Authenticatorアプリは単なる利便性を追求したツールではありません。<br>
+   暗号技術と認証プロトコルの高度な組み合わせによって、現代のサイバーセキュリティにおいて欠かせない存在となっています。<br>
+   導入は比較的簡単ですが、その背後には緻密な技術が支えていることを知っておくと、より安心して日常的に活用できるのではないでしょうか。</p>
+
+  <h4>Xでパスキーを使っている方へ：アカウントの一時ロックに関する注意点</h4>
+  <p>最近、X（旧Twitter）を利用している一部のユーザーの間で、「パスキーを使っているとアカウントが凍結されるのでは？」という不安の声が広がっていますよね。<br>
+   でも実際には「凍結」ではなく、「一時的なロック」の可能性があるというのが正しい情報です。</p>
+
+  <p>2025年10月末、XはパスキーやYubiKeyなどのセキュリティキーを使って二段階認証を設定しているユーザーに対し、11月10日までにセキュリティキーの再登録を行うよう通知を出しました。<br>
+   これは、旧ドメイン「twitter.com」から新しい「x.com」への移行に伴う技術的な変更が理由です。<br>
+   セキュリティキーはドメインに紐づいて動作するため、新しいドメインに対応させるための再登録が必要になったのです。</p>
+
+  <p>もしこの期限までに再登録を行わなかった場合、ログイン時にアカウントが一時的にロックされる可能性があります。<br>
+   ただし、これは永久的な凍結ではありません。<br>
+   他の認証方法─たとえば認証アプリやSMS認証が該当する─に切り替えることで、アクセスを回復することができますので、過度に心配する必要はありません。</p>
+
+  <p>なお、認証アプリのみを使っている方は今回の対象外です。<br>
+   特に対応する必要はなく、これまで通りの方法でログインできます。</p>
+
+  <p>この変更はセキュリティ上のトラブルではなく、あくまでドメイン移行に伴う技術的な調整です。<br>
+   対象となるユーザーには個別に通知が届いているとのことですので、もし心当たりがある方は、Xの設定画面でセキュリティキーの状態を確認しておくと安心です。</p>
+
+  <p>今後も安全にXを利用するために、こうした技術的な案内には早めに対応しておくことをおすすめします。</p>
+
+  <h4>パスキーと認証アプリは違うからね！</h4>
+  <p>「認証アプリ」というのは、まさに先ほどご説明した Google Authenticator や Microsoft Authenticator のようなアプリのことを指しています。</p>
+
+  <p>これらのアプリは、TOTP（時刻ベースのワンタイムパスワード）という仕組みを使って、一定時間ごとに使い捨ての認証コードを生成してくれます。<br>
+   X（旧Twitter）でも、二段階認証の方法としてこのタイプの認証アプリを利用することができ、今回のセキュリティキー（パスキーやYubiKey）に関する再登録の対象外となっています。</p>
+
+  <p>つまり、認証アプリだけで二段階認証を設定している方は、今回のドメイン移行による影響を受けないので、特に対応する必要はありません。<br>
+   安心してそのまま使い続けていただけますよ。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/x_twitter_frand.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
