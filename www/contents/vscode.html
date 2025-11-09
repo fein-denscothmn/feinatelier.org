@@ -441,7 +441,51 @@ for container in document.select('.atelier-container'):
 
   <img src="/contents/itimages/notepad.png" alt="Windowsのメモ帳" class="graphic fade-in-out">
 
-  <p>VS Codeのようにシンタックスハイライトをしてくれれば、メモ帳は完璧だったと思います。</p>
+  <p>VS Codeのようにシンタックスハイライトをしてくれれば、メモ帳は完璧だったと思います。<br>
+   普段は下記のようにコメントも外してるけどね。</p>
+
+  <p class="codegra">settings.jsonのまとまったコード</p>
+  <div class="code-container">
+   <pre><code class="language-json">
+{
+ "extensions.ignoreRecommendations": true,
+ "editor.fontFamily": "'Yu Gothic UI', 'Courier New', monospace",
+ "workbench.settings.applyToAllProfiles": [
+  "editor.fontFamily"
+ ],
+ "editor.fontLigatures": false,
+ "editor.wordWrap": "on",
+ "files.insertFinalNewline": true,
+ "editor.formatOnSave": true,
+ "files.trimFinalNewlines": true,
+ "files.trimTrailingWhitespace": true,
+ "breadcrumbs.enabled": true,
+ "workbench.tree.renderIndentGuides": "always",
+ "editor.tabSize": 1,
+ "editor.insertSpaces": true,
+ "editor.autoIndent": "none",
+ "editor.detectIndentation": false,
+ "background.fullscreen": {
+  "images": [
+   "file:///C:/Users/ユーザー名/OneDrive/_fein/asnekoko.jpg"
+  ],
+  "opacity": 0.1,
+  "size": "contain",
+  "position": "center",
+  "interval": 0
+ },
+ "terminal.integrated.fontFamily": "monospace",
+ "git.openRepositoryInParentFolders": "never",
+ "vscode-edge-devtools.webhintInstallNotification": true,
+ "terminal.integrated.fontSize": 14,
+ "terminal.integrated.defaultProfile.windows": "Command Prompt",
+ "explorer.confirmDelete": false,
+}
+
+</code></pre>
+  </div>
+
+  <p>こんな感じかなぁ。</p>
 
   <h2>VS Codeのターミナル機能</h2>
   <p>ステータスバーを上に持ち上げるとターミナルまで出てきます。<br>
@@ -512,7 +556,99 @@ for container in document.select('.atelier-container'):
   <p>このタイプの作業自動化であれば、ターミナルプロファイルを使う手もあるんです。<br>
    でも環境やVSCodeのバージョンによって動作が異なる可能性があるし、他のプロファイルや設定と競合するかもしれません。<br>
    予期しない動作を引き起こすと面倒なので、私ならこうするっていう設定例ですね。<br>
-   ちなみにタスクランナーはVS Codeの公式ドキュメントに基づいた機能であり、多くの開発者に利用されています。</p>
+   ちなみにタスクランナーはVS Codeの公式ドキュメントに基づいた機能であり、多くの開発者に利用されています。<br>
+   んでもって、いろいろ機能追加してまとめあげたのがこれ。<br>
+   Flaskアプリ起動とブラウザを開くように設定してたりする。</p>
+
+  <p class="codegra">tasks.jsonのまとまったコード</p>
+  <div class="code-container">
+   <pre><code class="language-json">
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "label": "Google Cloud SDK Shell を起動",
+   "type": "shell",
+   "command": "cmd",
+   "args": [
+    "/c",
+    "\"\"C:\\Users\\ユーザー名\\AppData\\Local\\Google\\Cloud SDK\\cloud_env.bat\" && cd \"C:\\Users\\ユーザー名\\OneDrive\\_fein\\google cloud\\fein-sites-dev1\" && cmd\""
+   ],
+   "problemMatcher": [],
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   }
+  },
+  {
+   "label": "Flaskアプリを起動",
+   "type": "shell",
+   "command": "cmd",
+   "args": [
+    "/C",
+    "\"cd C:\\Users\\ユーザー名\\OneDrive\\_fein\\google cloud\\fein-sites-dev1 && set FLASK_APP=main.py && set FLASK_ENV=development && set FLASK_DEBUG=1 && flask run\""
+   ],
+   "isBackground": true,
+   "problemMatcher": [
+    {
+     "pattern": [
+      {
+       "regexp": ".",
+       "file": 1,
+       "location": 2,
+       "message": 3
+      }
+     ],
+     "background": {
+      "activeOnStart": true,
+      "beginsPattern": ".",
+      "endsPattern": "."
+     }
+    }
+   ],
+   "presentation": {
+    "echo": true,
+    "reveal": "always",
+    "focus": true,
+    "panel": "dedicated"
+   }
+  },
+  {
+   "label": "ブラウザを開く",
+   "type": "shell",
+   "command": "cmd",
+   "args": [
+    "/C",
+    "timeout /T 5 & start msedge \"http://127.0.0.1:5000/\""
+   ],
+   "presentation": {
+    "echo": false,
+    "reveal": "never",
+    "focus": false,
+    "panel": "shared"
+   }
+  },
+  {
+   "label": "Flaskアプリ起動とブラウザを開く",
+   "dependsOn": [
+    "Flaskアプリを起動",
+    "ブラウザを開く"
+   ],
+   "problemMatcher": [],
+   "presentation": {
+    "echo": false,
+    "reveal": "never",
+    "focus": false,
+    "panel": "shared"
+   }
+  }
+ ]
+}
+
+</code></pre>
+  </div>
+
+  <p>VS Codeはほんと何でもできるよね。</p>
 
   <h2>VS Codeのワークスペースを使った環境構築</h2>
   <p>Visual Studio Code（VS Code）のワークスペースはプロジェクトを効率的に管理し、複数のフォルダや設定を統合するための概念です。<br>
