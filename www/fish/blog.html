@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>fein's blog</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="サイト制作者feinのブログ">
+ <meta name="keywords" content="個人サイト, 更新履歴, ブログ">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="fein's blog">
+ <meta property="og:description" content="サイト制作者feinのブログ">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/rss.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "Organization",
+   "name": "fein's blog",
+   "url": "https://feinatelier.org/contents/rss.html",
+   "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <script src="/script/fengari-web.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav_blog">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link_blog">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link_blog">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link_blog">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link_blog">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link_blog">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link_blog">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="fish_sitemap.html">アウトドア関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">fein's blog</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="/script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/sea/Total_lunar_eclipse.jpg" alt="fein's blog" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/fish/blog.html">fein's blog</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="fein's blogの目次を開く ▼" data-close-text="fein's blogの目次を閉じる ▲">fein's
+   blogの目次を開く ▼</button><!--目次の自動生成-->
+
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>fein's blog</span></h1>
+  <p>もともと、いつか作ろうとは思っていたんですよね。<br>
+   こういう「Webサイト併設型のブログ」というのは、次のような形態が考えられます。</p>
+
+  <ul>
+   <li>SNSリンクを貼るに留める</li>
+   <li>ブログサービスへのリンクを貼るに留める</li>
+   <li>このサイトのように、新規Webページを作り込んでいく</li>
+  </ul>
+
+  <p>これで当サイトも時事ネタとかを書いていけるね！</p>
+
+  <h2>2025/11/15：引っ越し多いと疲れる</h2>
+  <p>勤め先から急に言われてさ。<br>
+   現在住んでる新築アパートが気に入ってたんだけど、家族連れや女性かつ、勤続年数がある者は職場から少し離れたタワマンに移って欲しいと。<br>
+   そのタワマンは都心にあるような超豪華なものではありませんが、エントランスホールやオートロックがあり、管理人の事務所もあるんです。<br>
+   職場がタワマンを丸ごと借り上げてるわけじゃないよ？<br>
+   そのうちの何部屋かを、職員用として確保したみたい。<br>
+   上述のアパートだけでは転勤者を収容しきれなかった様子。<br>
+   防犯面など安全性を鑑みれば、職場が言ってることも分かるんだけど、短期間に何度も引っ越しすることになって疲れます…</p>
+
+  <p>問題なのは、あまり高層階へ割り当てられてしまうと、日常生活で不便です。<br>
+   エレベーターがないと上がれず、アウトドア活動にも支障が出る。<br>
+   ていうか気軽にスーパー行ったり、そういうのがやりにくいじゃん。<br>
+   せいぜい4Fくらいまでなら自力で階段を上り下りできるから、そのくらいがいいな。<br>
+   まだ正式決定ではないものの、おそらく…そこへ移り住むことになるでしょう。</p>
+
+  <div class="spacer"></div>
+  <h3>活動を停止した個人サイトたち</h3>
+  <p>個人サイトが衰退した主な理由は、更新の手間やSNS・ブログサービスの台頭による役割の移行です。<br>
+   現在も個人サイトを運営する人がブログを併設すると、更新性・検索性・交流性が高まり、サイトの価値を維持・拡張できます。</p>
+  <p>特にこのサイトで重要視しているブログの役割は、静的ページでは扱いづらい時事ネタや個人的な考察も、ブログ形式なら追加できるという側面なんですよ。<br>
+   サイトの幅が広がり、Webサイト特有の硬直性から解放されます。</p>
+
+  <h4>個人サイトが衰退した理由</h4>
+  <p>個人サイトの停滞は、更新負荷の高さとSNSへの役割移行が主因で、収益や検索環境の変化が追い打ちをかけました。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_86.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>更新の手間が大きい</dt>
+    <dd>初期の個人サイトはHTMLを手打ちし、FTPでアップロードする必要がありました。<br>
+     これが継続の障壁となり、多くの人が更新をやめてしまいました。</dd>
+
+    <dt>SNSやブログサービスの台頭</dt>
+    <dd>個人サイトの役割（情報発信・交流）は、より簡単に始められるブログやSNSに置き換えられました。<br>
+     メールアドレス登録だけで始められる利便性が、個人サイト文化を押し流しました。</dd>
+
+    <dt>検索順位の低下</dt>
+    <dd>Googleなどの検索アルゴリズムの変化により、個人サイトは企業サイトや大規模メディアに埋もれやすくなり、アクセスが減少しました。</dd>
+
+    <dt>収益化やモチベーションの問題</dt>
+    <dd>サイトやブログを続けても収益が伸びず、時間や労力に見合わないと感じて放置する人が増えました。</dd>
+   </dl>
+
+  </div>
+
+  <p>今では WordPressやGoogle Sites、はてなブログ のようなサービスが普及していて、HTMLやFTPを意識せずとも更新できる環境が整っています。<br>
+   こうして更新の手間が大きいという課題は大幅に軽減されましたが、黎明期には便利な仕組みがなく、技術的ハードルが高かったことが放置の大きな要因だったと両親から聞いています。</p>
+
+  <p>一言でまとめるなら、今は簡単なサービスがあるけど、当時は「技術の壁」が更新を止める最大の理由だったのでしょう。</p>
+
+  <h4>個人サイトにブログを併設する効果</h4>
+  <p>個人サイトにブログを併設することで、更新性・交流性・専門性が強化され、サイト全体の価値が高まります。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/fleur1/nature_91.jpg" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <dl>
+    <dt>更新性の向上</dt>
+    <dd>静的なサイトに比べ、ブログは記事単位で簡単に更新できるため、サイト全体が「動いている」印象を与えます。</dd>
+
+    <dt>検索エンジン対策（SEO）</dt>
+    <dd>定期的に記事を追加することで検索エンジンに評価されやすくなり、アクセス増加につながります。</dd>
+
+    <dt>交流・コミュニティ形成</dt>
+    <dd>コメント欄やSNS連携を通じて読者との双方向コミュニケーションが可能になり、サイトのファン層を育てられます。</dd>
+
+    <dt>専門性の補強</dt>
+    <dd>サイトのテーマに関連するブログ記事を継続的に発信することで、専門性や信頼性を高められます。</dd>
+
+    <dt>柔軟な情報発信</dt>
+    <dd>静的ページでは扱いづらい時事ネタや個人的な考察を、ブログ形式で気軽に追加できるため、サイトの幅が広がります。</dd>
+   </dl>
+
+  </div>
+
+  <p>結論として、個人サイトが衰退したのは「更新の不便さ」と「SNS・ブログの利便性」による役割移行が大きな要因です。<br>
+   一方で、今も個人サイトを運営する人がブログを併設すれば、更新性・検索性・交流性を補強し、サイトを「生きた場」として維持できるという効果があります。<br>
+   運用最適化と言い変えることもできますね。<br>
+   静的ページの信頼性とブログの動的更新を組み合わせて情報発信基盤を構築するのは非常に有効だと思います。</p>
+
+  <h3>静的ページでは扱いづらいネタこそブログの出番！</h3>
+  <p>上述した「静的ページでは扱いづらい時事ネタや個人的な考察を、ブログ形式で気軽に追加できる」のは極めて大きいですよ？<br>
+   私のようにサイト内部に併設する方法もありますが…<br>
+   独自ドメイン＋サブドメインという形にすれば、昔から続けているブログを新設サイトと関連するコンテンツとして結び付けることだってできるのです。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/rss.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">fein's personal site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

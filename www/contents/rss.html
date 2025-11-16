@@ -30,6 +30,7 @@
  <link rel="stylesheet" type="text/css" href="/css/header.css">
  <link rel="stylesheet" type="text/css" href="/css/footer.css">
  <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
  <link rel="stylesheet" type="text/css" href="/css/menu.css">
  <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
  <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
@@ -73,6 +74,7 @@
  <script src="/script/feinScroll.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
  <script src="/script/addpdf.js" defer></script>
+ <script src="/script/collapsible.js" defer></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
  <script src="/script/fengari-web.js" type="text/javascript"></script>
 </head>
@@ -142,36 +144,97 @@
 
   <h1 class="background-waveimage-heading"><span>このサイトとポータルサイトの更新履歴</span></h1>
 
-  <div class="flowerclearfix">
-   <div class="flowerfade-out">
-    <img src="/flower2/flower2(43).JPG" alt="フェードアウト効果の草花写真">
+  <p>feinatelier.org の完成とこれからについては、右側の タップして開く ▼ をタップすれば続きを読めます。<br>
+   ご興味のある方はどうぞ。</p>
+  <button class="collapsible">タップして開く ▼</button>
+  <div class="collapsiblecontent">
+
+   <div class="flowerclearfix">
+    <div class="flowerfade-out">
+     <img src="/flower2/flower2(43).JPG" alt="フェードアウト効果の草花写真">
+    </div>
+
+    <p>独自ドメインで括ってあるから、当Webサイトは今後何十年にもわたって更新され続けます。</p>
+
+    <ol>
+     <li>学生時代にorgドメインによって統一された「自分のデジタル空間構築」という計画を思い付いた</li>
+     <li>アナザーエデンというゲームにハマり、Twitterを始めたが…</li>
+     <li>イーロンマスク登場でTwitterが不具合と改悪を繰り返す</li>
+     <li>Twitterに保管していたゲームのレポート類も、上記の「自分のデジタル空間」、具体的には<a href="https://portal.feinatelier.org/">ポータルサイト</a>へ含めることにした。
+     </li>
+     <li>アナザーエデンの★6キャラ実装に合わせて、<a href="https://feinatelier.org/">fein's personal site</a> の構築を開始</li>
+     <li>学生時代の構想を形にすべく、<a href="/contents/pwa.html">サイトをアプリ化</a>・<a
+       href="/another-eden/atelier_studio.html">ソースコードの管理帳</a>・<a href="/top">サーバーサイドスクリプトの実行環境</a>などなど、必要な道具を実装</li>
+     <li><a href="/contents/domain.html">独自ドメイン</a>を用いて<a href="https://portal.feinatelier.org/">fein's portal</a>・<a
+       href="https://feinatelier.org/">fein's personal site</a>・<a
+       href="https://bsky.app/profile/feinatelier.org">Bluesky</a>を統一し、自分のデジタル空間を完成させた</li>
+     <li>サイトをひったすら拡張 + 細かいSEO設定</li>
+     <li>SNSへの連投を避けるため、<a href="/fish/blog.html">fein's blog</a>というブログスペースを開設 <i class="fas fa-arrow-left"></i> イマココ
+     </li>
+     <li>Googleサイトのページが減ってきたら、そっちをポートフォリオ化する</li>
+    </ol>
+    <p>必ずしもGoogle Cloudである必要もなかったけど、App Engineなら他のGoogle系サービスと相性良いからね。<br>
+     プログレッシブウェブアプリは、もともとGoogleが提唱したものなのです。
+    </p>
+
    </div>
-   <p>feinatelier.org の完成とこれから</p>
-
-   <ol>
-    <li>学生時代にorgドメインによって統一された「自分のデジタル空間構築」という計画を思い付いた</li>
-    <li>アナザーエデンというゲームにハマり、Twitterを始めたが…</li>
-    <li>イーロンマスク登場でTwitterが不具合と改悪を繰り返す</li>
-    <li>Twitterに保管していたゲームのレポート類も、上記の「自分のデジタル空間」、具体的には<a href="https://portal.feinatelier.org/">ポータルサイト</a>へ含めることにした。
-    </li>
-    <li>アナザーエデンの★6キャラ実装に合わせて、<a href="https://feinatelier.org/">fein's personal site</a> の構築を開始</li>
-    <li>学生時代の構想を形にすべく、<a href="/contents/pwa.html">サイトをアプリ化</a>・<a
-      href="/another-eden/atelier_studio.html">ソースコードの管理帳</a>・<a href="/top">サーバーサイドスクリプトの実行環境</a>などなど、必要な道具を実装</li>
-    <li><a href="/contents/domain.html">独自ドメイン</a>を用いて<a href="https://portal.feinatelier.org/">fein's portal</a>・<a
-      href="https://feinatelier.org/">fein's personal site</a>・<a
-      href="https://bsky.app/profile/feinatelier.org">Bluesky</a>を統一し、自分のデジタル空間を完成させた</li>
-    <li>サイトをひったすら拡張 + 細かいSEO設定 <i class="fas fa-arrow-left"></i> イマココ</li>
-    <li>Googleサイトのページが減ってきたら、そっちをポートフォリオ化する</li>
-   </ol>
-   <p>必ずしもGoogle Cloudである必要もなかったけど、App Engineなら他のGoogle系サービスと相性良いからね。<br>
-    プログレッシブウェブアプリは、もともとGoogleが提唱したものなのです。
-   </p>
-
   </div>
 
-  <p class="gra">主な更新履歴</p>
+  <section>
+   <h2>当サイト制作者に関するブログ</h2>
+   <p>サイト制作者の環境が大きく変わった時など、SNSフォロワー様向けの特筆すべき事項をまとめるエリアです。</p>
+
+   <div class="feinorg-container">
+    <div class="feinorg-card">
+     <p class="feinorg-row">
+     <div class="feinblog">
+      <span><a href="/fish/blog.html">fein's blog</a></span>
+      <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク">
+     </div>
+     <p>The developer of this web application, 'fein.den_scoth_mn,' enjoys outdoor activities such as fishing and
+      occasionally writes a blog.</p>
+    </div>
+   </div>
+
+   <p>一方、当サイトの技術的な仕様変更などは、別途大型ページを作りましょう。</p>
+
+  </section>
+
+  <h2>主な更新履歴</h2>
   <p>日々の更新の中で、大きく変化した部分だけを掲載しています。</p>
 
+  <h5>2025年11月11日の更新</h5>
+  <p><a href="/fish/blog.html" style="color:#1A73E8; text-decoration:none;">
+    fein's blog
+    <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク"
+     style="width:40px; vertical-align:middle; margin-left:5px;"></a>を開設しました。</p>
+
+  <p>サイト制作者の環境が大きく変わった時など、SNSフォロワー様向けの特筆すべき事項をまとめるエリアを作りました。<br>
+   身バレしないように気を付けて投稿していきます。<br>
+   下記のようにそれぞれリンクを付けているので、サイト制作者が活動継続しているかどうか、情報を得ることができます。</p>
+  <ul>
+   <li><a href="/fish/blog.html" style="color:#1A73E8; text-decoration:none;">
+     fein's blog
+     <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク"
+      style="width:40px; vertical-align:middle; margin-left:5px;"></a>というリンクを、ハンバーガーメニューに新設。</li>
+   <li>このブログは<a href="/fish/fish_sitemap.html">魚釣りなどアウトドアのエリア</a>に属するものとし、専用のセクションを新設。</li>
+   <li><a href="/contents/rss.html">このサイトとポータルサイトの更新履歴</a>の上部レイアウトを調整し、当サイト制作者に関するブログという形でセクションを新設。</li>
+   <li><a href="/menu/symbol.html">このサイトのシンボルマークとバナー</a>のページに併設されている<a
+     href="/menu/symbol.html#feininfo">サイト制作者について</a>というセクションに、ブログの紹介文を新設。</li>
+   <li><a href="/another-eden/grasta.html">feinatelier.org</a>にある「SNS Account & Blog」セクションに、ブログの紹介文を新設。─
+    このページは将来的に、当サイトのトップページとなります。 ─</li>
+  </ul>
+
+  <p>一方、<a href="/another-eden/anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a>と<a
+    href="/another-eden/another-eden_feinpdf.html">アナザーエデン：feinが書いたレポート集</a>を整理しました。<br>
+   増え続ける移植ページへの動線を改善したことと、上述のようにブログエリアを新設したことで、サイト全体のレイアウトを整える必要があったのです。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月12日の更新</h5>
+  <p>feinのアナデンレポート全集にて、<a href="/another-eden/anaden_resetmarathon.html">アナザーエデンにリセマラは必要なのか？</a>を形にしました。<br>
+   またページを分けるかもしれませんが、大詰めに入っていることは確かです。</p>
+
+  <div class="spacer"></div>
   <h5>2025年11月11日の更新</h5>
   <p>feinのアナデンレポート全集にて、<a href="/another-eden/anaden_resetmarathon.html">アナザーエデンにリセマラは必要なのか？</a>をfein's
    portalから移行開始しました。</p>
