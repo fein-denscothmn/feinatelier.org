@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解について書いています。">
+ <meta name="keywords" content="アナザーエデン, 自己紹介, Twitterアカウント">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解">
+ <meta property="og:description" content="feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解について書いています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_web.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解",
+      "url": "https://feinatelier.org/another-eden/anaden_web.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="/script/collapsible.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/ニナキャライラスト.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解の目次を開く ▼"
+   data-close-text="feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解の目次を閉じる ▲">feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</span></h1>
+
+  <p>以前、Twitterが有料化されるなんていう怪しげなニュースが流れたことがありました。<br>
+   あれは結局どうなったんでしょう？<br>
+   実際にどうなるかはともかくとして、Eロンがどう出るかは分かりません。<br>
+   TwitterをWebサイト代わりに使っていろんなコンテンツを格納していた私は、あるいはアナデン界隈で最悪の被害者だったのかもしれません。<br>
+   しかし、後から思い返してみれば…チャンスでもあると考えられるのです。</p>
+
+  <h2>Webサイトを開設した理由</h2>
+  <p>ずっと前からこういうWebサイトを作る構想はあったんです。<br>
+   本来であれば、Twitterへ全コンテンツを集約させるような運用は避けるべきだったと言えるでしょう。<br>
+   ただTwitterも安定稼働しており、アナザーエデンがエンディングを迎えた時に移行すれば良いと考えていました。<br>
+   しかし、2023年7月にTwitterが大規模障害を発生させましたね。<br>
+   これをきっかけに、手元に用意していたソースコードと原稿をGoogleとMicrosoftのWebサービスへ移す決断をしたのです。</p>
+
+  <h3>いろんなSNSに手を出すことも可能ですが</h3>
+  <div class="content">
+   <img src="/another-eden/anaimage/ニナSD.jpg" alt="ニナSD" class="graphic right-image fade-in-out">
+   <p>先日、Instagramを基盤とするTreads（スレッズ）というTwitter競合アプリのニュースがありましたね。<br>
+    これからもいろんなSNSやWebサービスが狼煙を上げるでしょう。<br>
+    しかし、このWebサイトのようなインターネット活動の拠点を一つ用意しておけば、SNS業者がどれほど乱立しようと関係ありません。<br>
+    私は何のリスクもなくなるし、どこのSNSのフォロワー様へも一切負担はありません。<br>
+    私へ繋がるリンクがWebサイトに全て集約されているからです。<br>
+    今後どのようなSNSサービスへ私が行こうと、このWebサイトへのリンクを付けます。<br>
+    それは今のアナザーエデンがエンディングを迎えアナザーエデン２が出たとしても、変わりありません。</p>
+  </div>
+
+  <h3>インターネット活動の拠点</h3>
+  <p>例えば<a href="https://portal.feinatelier.org/">fein's portal</a>について、いろんな表現が可能でしょう。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/ノーナbar.jpg" alt="ノーナbar" class="graphic right-image fade-in-out">
+   <p>名の通りportal：ポータルサイトでもあり、Portfolio：ポートフォリオサイトと呼んでも差し支えないかも。<br>
+    私はもともと釣り人であり、将来的にいろいろやりたいこともあります。<br>
+    例えば低未利用魚を使った美味しいレシピを広めるとか。<br>
+    もっとシンプルに自分の釣り日記を残していくとか。<br>
+    いずれにしてもこうした私の構想まで踏まえて考えたとき、EロンがTwitterをおもちゃにして遊んでいる今がチャンスと見ました。</p>
+  </div>
+
+  <p>すなわち自分の城、言い換えると自分のWebサイトを育てる好機ということです。</p>
+
+  <h4>Instagramを選んだ理由</h4>
+  <p>Twitterとまったく同じ機能を持つSNSは2025年11月現在、存在しません。<br>
+   ただ大規模SNSの中だとInstagramは一番有望ですよね。<br>
+   Threadsへ移行するにはInstagramのアカウントが必要という事情もある。</p>
+
+  <p>ちなみに、<a href="https://www.instagram.com/another_eden/">アナザーエデン公式のInstagramアカウント</a>はこちらです。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/マツリカステータス.jpg" alt="マツリカステータス" class="graphic right-image fade-in-out">
+
+   <p>とりあえずアカウントだけ作っておいても損はないでしょう。<br>
+    私がフォロワーさんをInstagramへ誘い込み、フォロワーさんたちがそれに同意したとしますね？<br>
+    でも結果としてその判断は杞憂に過ぎなかったと。<br>
+    Eロンは消えてTwitterも完全復活した。<br>
+    仮にそうなっても、私や私に同意した皆様に損はありません。<br>
+    そこがとっても大切。<br>
+    元通りTwitterやればいい。</p>
+
+   <p>次に、そのSNSサービスの利用人口というものがあります。<br>
+    Instagramは世界中に広がり、多種多様な趣味等で繋がるコミュニティーがあるのはTwitterと同じ。<br>
+    あんまり小規模SNSだと付き合いも広がらないし、そもそも反応がもらえなかったりするとつまらなかったりしますよね？<br>
+    ログインしないと閲覧さえできない、閉鎖的環境にあるSNSも楽しいと思います。<br>
+    島国も落ち着くでしょう。<br>
+    しかし、それでは本当に「一時的な避難所」にしかならないと考えたんです。<br>
+    一時的な避難所も良いけど根本解決にならない。
+    せっかくなら「避難した、その先へ」繋がるほうが良いだろうというのが私の立場です。</p>
+  </div>
+
+  <h3>オープンなSNSなら皆が自由です</h3>
+  <div class="content">
+   <img src="/another-eden/anaimage/マツリカ顔グラフィック.jpg" alt="マツリカ顔グラフィック" class="graphic right-image fade-in-out">
+
+   <p>2023年7月のTwitter大規模障害に伴い、真っ先にInstagramへお招きしたのは私かもしれません。<br>
+    しかし、私に気を使う必要などまったくありません。<br>
+    皆さん各々いろんな趣味なり特技なりをお持ちであって、それらをネタにTwitter以外の場所で楽しめるわけです。<br>
+    私が場を仕切る必要もないし、私は勝手に魚の写真を上げまくり、そしてアナデンやヘブバンのスクショを上げまくるでしょう。<br>
+    そんな感じで良いと思います。</p>
+
+   <p>もちろん飽きたらInstagram側は休眠アカウントになってもいいしさ。<br>
+    オープンで利用者が多いSNSサービスを選ぶことによって、私自身も含めてみんなが自由でいられます。</p>
+
+   <p>以上です。<br>
+    他にもいろいろありますが、これが私がInstagramを選んだ主たる理由となります。<br>
+    ここらへんでコラムを挟んでから、ちょっと細かい操作などをお話しします。</p>
+
+  </div>
+
+  <h4>★column★ SNS疲れを感じたことはありますか？</h4>
+  <p>2023年7月にTwitterが大障害を起こしたことで、SNSデトックスができた方も多いのでは？<br>
+   ここではわたくしfeinの「SNS疲れ」への見解について書いてみました。<br>
+   ご興味のある方は下にある タップして開く ▼ をタップすれば続きを読めます。</p>
+  <button class="collapsible">タップして開く ▼</button>
+  <div class="collapsiblecontent">
+
+   <p>SNS疲れというか、そういう感覚を持ったことはないですね。<br>
+    インターネット上に何かを投稿する行為という意味で言うなら、私の本分というかフィールドはもともとWebサイトです。<br>
+    出身地とも言うべきなのか。</p>
+
+   <p>そうだねー…学生時代の話だけど、Webサイトの補足ツールとしてfacebookを試行錯誤した時期がありましたよ？<br>
+    facebookもSNSだから大なり小なり嫌な経験もしたんだけど、私はまずWebサイトの補足システムとしての役割を、facebookに強く求めていました。<br>
+    でもアフィリエイトが時給換算すると割に合わない労務だと分かったと同時に、facebookアカウントも削除しちゃったのです。<br>
+    正直な感想としては、facebookに投稿してる時間があればWebサイトを1文字でも更新したほうが1円でも多く稼げたというものですね😅<br>
+    当時は自分のネタで思いっきりアフィリエイトチャレンジしていたから、とにかく数字数字数字数字だったんだよ。<br>
+    IT資格をごそごそ取得した後、調子こいてた時期の話です♪</p>
+
+   <p>そんな私からSNS疲れへの解決策を提示できるとすれば、なんでしょうね？<br>
+    SNSには中の人がいるでしょう。<br>
+    それはそうなんだけど…</p>
+
+   <p>Twitterのような匿名性を持ったSNSの場合、投稿されるテクストを真面目に受け取らないほうが良いという見解を私は持っています。<br>
+    対面コミュニケーションでもないのですから、嘘を付き放題だろうと私は思っているんだよね。<br>
+    不必要に話が大きくなっている可能性を否定できません。</p>
+
+   <ul>
+    <li>医師だと言いつつダイエットの喧伝をしていながら、実際には無職かもしれない。</li>
+    <li>高収入のプロゲーマーを気取りながら、月収500円のアフィリエイターかもしれない。</li>
+    <li>呑気な女子高生を装いつつ、リアルではITプロジェクトリーダーかもしれない。</li>
+    <li>法律について語っているのに、関連する正規の教育を受けていない人物かもしれない。</li>
+   </ul>
+
+   <p>投稿されたテクストが事実であるという、徹底的かつ厳密な確認。<br>
+    「真偽の確認」が、Twitterでは難しいと私は考えているのです。<br>
+    AIで大きな台風被害を受けた街の画像を捏造することだってできるのですから。<br>
+    その画像が捏造であると、100%、即座に見抜けるのか？<br>
+    私が重要視しているのはそういう「事実確認」の視点なんですよね。</p>
+
+   <p>加えて、世の中には必ずしも正誤だけでは語れない問題も多いです。<br>
+    むしろそういう問題のほうが多いかもしれない。<br>
+    例えば「バラムツ」は販売してはいけない魚です。<br>
+    でも美味い。<br>
+    だからこっそり釣って食べてみる釣り人が後を絶ちません。<br>
+    あまり褒められた行為ではないかもしれませんが、即座に逮捕されるほどではないでしょう。<br>
+    本人が恥を忍んでオムツを着用すれば良いだけです。</p>
+
+   <p>このような微妙でグレーな話題について、SNSで議論を展開しても時間の無駄と考えます。<br>
+    なぜなら、自称法律家・自称漁師・自称魚屋・自称プロ釣り師・自称深海魚学者・自称医師・自称管理栄養士…といった者たちが集まり、事実確認さえ取れないテキストを投稿し合っているようにしか見えないからなんだよね。<br>
+    中には本物の医師がいて、釣り師もいることでしょう。<br>
+    そこは私も疑わないよ？<br>
+    でもその議論の場に、一人でも自称法律家が存在しており、かつその自称法律家がGoogle先生から教えてもらっただけのテキストを投稿し、そしてその投稿によって議論の流れが変わったのだとすれば、もはやそれは役に立つ議論ではありません。
+   </p>
+
+   <p>語り合える良い機会になって良かったね♪<br>
+    ちゃんちゃん♪<br>
+    それはそうでしょう。<br>
+    でも、議論の果てにあるはずの明確な結果は出せていません。<br>
+    ゆえに、時間の無駄です。<br>
+    そして、容易に「結論」が出せるようなものでないからこそ、グレーな話題となって世の中に存在しているのでしょうね。</p>
+
+   <p>ずいぶん長文になりましたが…<br>
+    これらの考え方を踏まえつつ、SNS疲れに関する私の見解は下記のとおりとなります。</p>
+
+   <ol>
+    <li>疲れちゃうほどSNSのテキストを真に受けてもしょうがないですよ？</li>
+    <li>どーせ事実確認を徹底することは難しいのだから、テキトーに受け流してればいいじゃん？</li>
+    <li>おもしろそうな投稿をして周囲のアカウントとおしゃべりして、あははという程度がちょうど良いかもよ？</li>
+    <li>明日の学校や仕事に悪影響が出ないよう、今夜は早く寝ましょうか。</li>
+   </ol>
+
+   <p>そういう感じですよね。</p>
+
+  </div>
+
+  <h4>Instagramでフォロワーの投稿を見る方法</h4>
+  <p>ここで、インスタで時系列にフォロワーの投稿を見る方法だけ書いておきます。</p>
+
+  <p>１．家のマークを押して、画像のようにInstagram▽の文字が左上にあるホーム画面へ移動する</p>
+  <img src="/another-eden/anaimage/インスタ1.png" alt="インスタで時系列にフォロワーの投稿を見る方法" class="graphic fade-in-out">
+
+  <p>２．Instagram▽の▽マークを押す。プルダウンメニューが出てきます。それからフォロー中という文字列をタップ。</p>
+  <img src="/another-eden/anaimage/インスタ2.png" alt="インスタで時系列にフォロワーの投稿を見る方法" class="graphic fade-in-out">
+
+  <p>３．それで、自分自身の投稿も含め、Twitterみたく時系列にフォロワーの投稿を閲覧でき、ハートマークで反応したりリプしたりできます。</p>
+  <img src="/another-eden/anaimage/インスタ2.png" alt="インスタで時系列にフォロワーの投稿を見る方法" class="graphic fade-in-out">
+
+  <p>Web版のインスタグラムでも、フォロワーの投稿のみ閲覧することができます。<br>
+   あんまり多くはないと思うのですが、Web版 ─パソコンのブラウザで表示するパターンのこと─ のインスタグラムでフォロワーの投稿のみ閲覧する場合の方法を書いておきます。</p>
+
+  <p><a href="https://www.instagram.com/">https://www.instagram.com/</a><br>
+   これがインスタグラムのURLです。<br>
+   この末尾へ次のように ?variant=following を書き加えます。<br>
+   <a href="https://www.instagram.com/?variant=following">https://www.instagram.com/?variant=following</a><br>
+   すると、パソコン版のインスタグラムでもフォロワーさんの投稿のみ閲覧できます。
+  </p>
+
+  <p>Instagramアカウントさえ作っておけばThreadsにも簡単に行けることもあるよね。<br>
+   これはもう散々言われてるから良いと思うけど。<br>
+   ThreadsはInstagramと強く関連があると思ってもらえれば。</p>
+
+  <p>加えて、画像SNSに関する不安があるなら、写真データに付いてる情報は削除してから投稿すると良いでしょう。<br>
+   これについても良いんじゃないかな？<br>
+   私は必要に応じてTwitterでもやってます。<br>
+   スマホカメラで撮影した写真には位置情報とかが付いてることがあるんですけどね。<br>
+   不安なら念のためそれを削除してから投稿しましょうという話。<br>
+   Google PlayやAppライブラリで「写真 情報 削除」とか、何でも良いけどそういった形でアプリを検索していただくのが一番手軽かと思います。</p>
+
+  <img src="/another-eden/anaimage/インスタフラワー.png" alt="インスタで時系列にフォロワーの投稿を見る方法" class="graphic fade-in-out">
+
+  <p>ちょっと気分転換に、サイクリングロードに咲いてた綺麗な花の写真を添えてみた。<br>
+   自転車とかアウトドアに関するお話も<a href="/fish/fish_sitemap.html">アウトドアのエリア</a>に書いてありますよ。</p>
+
+  <h2>SNS選びはシェアを調べる</h2>
+  <p>これをまずは調べるべきですね。<br>
+   Twitterが大混乱に陥った当時は周囲のフォロワーがどうするか、そればかり気にする風潮が見られました。<br>
+   「俺について来い！」、「いや、私に付いて来なさい！」みたいな、ほとんど派閥争いにまで発展していたケースも散見されて…残念です。<br>
+   ていうかそもそも、移住先のSNSのシェアが低いと、また同じことになるのですよ？</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/ニナ金扉.jpg" alt="ニナ金扉" class="graphic right-image fade-in-out">
+
+   <p>まず<a href="https://gs.statcounter.com/">StatCounter</a>というWebサイトを見てみましょう。
+    英語ですが、なんとなく雰囲気で分かると思います。<br>
+    次に<a href="https://gs.statcounter.com/social-media-statsSocial">Media Stats
+     Worldwide</a>というページへ移動します。<br>
+    世界の人々がどんなSNSを使っているか分かるページです。<br>
+    2025年10月時点で、世界のSNSシェアは次のようになっています。</p>
+
+   <ul>
+    <li>Facebook：68.71%</li>
+    <li>Twitter（X）：7.73%</li>
+    <li>YouTube：7.65%</li>
+    <li>Instagram：7.19%</li>
+    <li>Pinterest：6.91%</li>
+    <li>Reddit：0.83%</li>
+   </ul>
+
+   <p>では、今度は日本国内の状況について調べてみましょう。<br>
+    <a href="https://gs.statcounter.com/social-media-stats/all/japanSocial">Media Stats
+     Japan</a>というページへ移動します。<br>
+    2025年10月時点で、日本国内SNSシェアは次のようになっています。
+   </p>
+
+   <ul>
+    <li>Twitter（X）：53.15%</li>
+    <li>Pinterest：13.05%</li>
+    <li>Facebook：13.03%</li>
+    <li>Instagram：11.78%</li>
+    <li>YouTube：4.59%</li>
+    <li>LinkedIn：2.33%</li>
+   </ul>
+
+   <p>Twitterが多く、次にFacebook。それからPinterestとInstagramが並んでいます。<br>
+    上記の<a href="https://gs.statcounter.com/social-media-stats/all/japan">Social Media Stats
+     Japan</a>というページをご覧頂けるとグラフがあり、Twitterがシェアを落としていることが分かります。<br>
+    PinterestとInstagramはいい勝負をしているようですが、アナザーエデンの公式アカウントが存在し、かつThreads連携があるのはInstagramです。<br>
+    Facebookは実名SNSとなっています。<br>
+    StatCounterはWeb上の人の行き来を解析したサイトなのですが、これらの結果は普段ニュースで見かけるTwitter関連ニュースと方向性が一致しています。<br>
+    他にも同種のサイトは多くあるものの、おおよそ同じような結果となっていますね。</p>
+
+   <p>さて、こうやって見ていくと…<br>
+    今のところInstagramが一番無難な選択肢となるのですよ。<br>
+    Twitterからの移住先としてはね。</p>
+
+  </div>
+
+  <p>ただし、独自ドメインを持っている方に関しては、話が別です。</p>
+
+  <h2>【重要】Blueskyに独自ドメインを割り当てる</h2>
+  <p>Blueskyに独自ドメインを割り当てることは、単なる見た目のカスタマイズ以上の意味を持っています。<br>
+   私のBlueskyアカウントは <a href="https://bsky.app/profile/feinatelier.org">https://bsky.app/profile/feinatelier.org</a>
+   となっていますね。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/マツリカSD.jpg" alt="マツリカSD" class="graphic right-image fade-in-out">
+
+   <p>まず、ユーザー名が「@example.com」のように自分のドメインを使えることで、アイデンティティの所有権を自分自身に強く引き寄せることができます。<br>
+    これは従来のSNSがプラットフォームの都合に依存していたのとは異なり、分散型の思想に沿った「自分の名前空間を自分で管理する」仕組みです。<br>
+    さらに、ドメインを使うことで信頼性やブランド力が高まり、個人であっても「この人はちゃんと情報発信している」という印象を与えやすくなります。<br>
+    企業や団体にとっては、公式アカウントの真正性を保証する役割も果たし、なりすましや偽情報の拡散を防ぐ効果があります。<br>
+    技術的にも、ドメインの所有証明を通じて分散アイデンティティの仕組みが強化され、将来的に他のサービスやプロトコルとの連携が容易になる可能性を秘めています。<br>
+    つまり、独自ドメインの割り当ては「見栄えの良さ」だけでなく、信頼性・ブランド性・自己主権性を同時に高める重要な要素であり、Blueskyの分散型SNSとしての理念を体現する行為だと言えるでしょう。</p>
+
+   <p>このページをご覧の皆様もブログやサイト運営に関心があるからこそ、この「ドメインを自分のアイデンティティに紐づける」仕組みは響くと思うんです。<br>
+    個人サイト文化と同じように、SNS上でも「自分の場所」を確保することができるわけですね。</p>
+
+  </div>
+
+  <h2>Twitterに関する見解</h2>
+  <p>Twitterそのものは良いのですよ。<br>
+   スーパーアプリも大変けっこうです。<br>
+   夢があって実用的ですらある。<br>
+   しかし今のトップが悪い。Eロンね。<br>
+   何が問題かというと、私は次のように考えています。</p>
+
+  <h4>ログインしなければ閲覧できない</h4>
+
+  <div class="content">
+   <p>これはTwitterが大騒ぎになる前から多少は気配を感じていました。<br>
+    しばらく閲覧しているとログインを促されるんです。<br>
+    正直、数ヶ月前から当Webサイトを稼働したほうが良いか悩んでいたことも事実ですよ…</p>
+   <img src="/another-eden/anaimage/シェンファステータス画面.jpg" alt="シェンファステータス画面" class="graphic right-image fade-in-out">
+   <p>Eロンになってから、定期的にプレーンなブラウザを使って自分のアカウントを閲覧テストしていたんだよね。<br>
+    分かりやすく言い換えると、Twitterのコミュニティそのものが鍵アカウント化しているのですよ。<br>
+    かなりの規模であることは確かですが、Webの大海へ向かって扉を閉ざしている。<br>
+    これだと広がっていく可能性そのものが頭打ちになるんだよね。<br>
+    内輪で何をワーワー主張していても、それは外の人には聞こえないんです。<br>
+    私はなにも有名人になろうとしているわけではありませんが、痩せていくことが予想できる土地を耕し続けるほどお人好しではありません。</p>
+  </div>
+
+  <h4>同業他社や自社の広告主に喧嘩腰である</h4>
+  <p>必要もなく、政治的な配慮もなしに喧嘩する。<br>
+   これも大きなマイナスだと考えます。<br>
+   堂々と対立姿勢を打ち出して得する状況はさほど多くないんだよね。<br>
+   リアルでもそうでしょ？<br>
+   Webは相互のトラフィックも大切なのに…</p>
+
+  <p>そもそも、X（エックス）の評判が悪い。<br>
+   ニュースサイトでTwitterを検索してみると、良いニュースを見かけるほうが少ない状態です。<br>
+   これから良くなっていく未来がちょっと想像できない。<br>
+   現状では、X（元Twitter）へ時間を投資するのはリスクが高いと言わざる得ません。</p>
+
+  <h4>プライバシーを害する恐れのあるTwitterの設定に注意</h4>
+  <p>2024年1月、Twitterに電話が実装されました。<br>
+   使いたくない人はOFFにしておきましょう。</p>
+
+  <img src="/another-eden/anaimage/x電話1.png" alt="X電話" class="graphic fade-in-out">
+
+  <p>１．設定とプライバシー<br>
+   ２．プライバシーと安全<br>
+   まずはこのようにタップしてメニューを進めていきます。</p>
+
+  <img src="/another-eden/anaimage/x電話2.png" alt="X電話" class="graphic fade-in-out">
+
+  <p>３．ダイレクトメッセージ<br>
+   ４．音声通話とビデオ通話を有効にする<br>
+   ここをグレーアウトしておきましょう。</p>
+
+  <h3>fein_AS＠Den_scoth_Mnアカウントの今後について</h3>
+  <p>このページを修正している2025/11/20現在、Twitterにあったレポート類はもうこのWebサイトへ引き上げ済みとなっています。<br>
+   あるいはTwitterが元に戻る可能性もありますよね。<br>
+   倒産してシステムごと消えるようなことはたぶんなさそう？<br>
+   とはいえ、feinのTwitterは今後も稼働し続けます。<br>
+   普通にSNSするだけならまだ使えるからね。<br>
+   DMさえ制限あるけど😥</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_web.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
