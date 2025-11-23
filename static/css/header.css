@@ -62,67 +62,155 @@
  color: #0078D4;
 }
 
-/* ★ヘッダー画像の基本スタイル */
+/* ★ブログ用のグローバルナビゲーションを構成する */
+.animated-link_blog {
+ position: relative;
+ color: #4285F4;
+ font-size: 0.9em;
+}
+
+.animated-link_blog::after {
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(to right,
+   rgba(255, 99, 71, 0.15),
+   /* 赤寄りの橙 (Tomato) */
+   rgba(255, 99, 71, 0)
+   /* 完全透明 */
+  );
+ pointer-events: none;
+ border-radius: 5px;
+}
+
+.animated-link_blog:hover {
+ color: #0078D4;
+}
+
+.den_nav_blog {
+ background: linear-gradient(to bottom,
+   rgba(255, 165, 0, 0.15),
+   /* 薄いオレンジ (上側) */
+   rgba(255, 165, 0, 0)
+   /* 完全透明 (下側) */
+  );
+ color: #4285F4;
+ padding: 10px;
+ border-radius: 20px;
+ font-size: 1em;
+}
+
+.feinhome {
+ width: 45px;
+ margin-left: 3px;
+ margin-top: 3px;
+ display: block;
+ position: relative;
+ top: 3px;
+ left: 3px;
+}
+
+.den_nav_blog ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.den_nav_blog ul li {
+ margin-right: 20px;
+ margin-bottom: 10px;
+}
+
+.den_nav_blog ul li a {
+ color: #4285F4;
+}
+
+.den_nav_blog ul li a:hover {
+ color: #0078D4;
+}
+
+/* ヘッダー画像全体の枠 */
+.header-frame {
+ width: 100%;
+ padding: 5px 0;
+ border-radius: 10px;
+}
+
+/* ヘッダー内のコンテナ*/
+.header-container {
+ width: 95%;
+ margin: 0 auto;
+ text-align: center;
+ position: relative;
+}
+
+/* 上端の細いグラデーション線（画像の直前に表示） */
+.header-container::before {
+ content: "";
+ display: block;
+ width: 100%;
+ height: 3px;
+ margin-bottom: 6px;
+ background: linear-gradient(to right,
+   rgba(200, 200, 200, 0) 0%,
+   rgba(200, 200, 200, 0.4) 50%,
+   rgba(200, 200, 200, 0) 100%);
+}
+
+/* 下端の細いグラデーション線*/
+.header-container::after {
+ content: "";
+ display: block;
+ width: 100%;
+ height: 3px;
+ margin-top: 6px;
+ background: linear-gradient(to right,
+   rgba(200, 200, 200, 0) 0%,
+   rgba(200, 200, 200, 0.4) 50%,
+   rgba(200, 200, 200, 0) 100%);
+}
+
+/* ヘッダー画像 */
 .header-image {
  max-width: 100%;
  height: auto;
  display: block;
- margin: 0 auto;
- padding: 10px;
- border-radius: 15px;
- background: linear-gradient(to bottom, #ffffff, #f0e6d4);
+ margin-left: auto;
+ margin-right: auto;
+ padding: 0;
+ border-radius: 20px;
 }
 
-/* ★画像の額縁スタイル */
-.header-frame {
- padding: 5px;
- border: none;
- border-radius: 15px;
- margin: 20px auto;
- max-width: 95%;
- box-sizing: border-box;
- background: transparent;
- text-align: center;
-}
-
-/* ★背景を個展会場風に */
-.header-container {
- position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
- text-align: center;
- background: radial-gradient(circle at top, rgba(255, 255, 255, 1) 20%, rgba(240, 240, 240, 0.7) 50%, rgba(210, 210, 210, 0.5) 80%);
- padding: 20px 25px;
- border-radius: 25px;
- box-shadow:
-  0 20px 30px rgba(0, 0, 0, 0.6),
-  0 -5px 15px rgba(255, 255, 255, 0.8) inset,
-  0 10px 50px rgba(255, 255, 255, 0.2);
- border: 1px solid #dcdcdc;
- margin: 0 auto;
-}
-
-/* ★ヘッダーテキストデザイン */
+/* ヘッダーテキスト */
 .header-text {
- position: absolute;
- bottom: 10px;
- left: 10px;
- transform: translate(0, 0);
- font-size: 24px;
- color: white;
- background-color: rgba(0, 0, 0, 0.5);
- padding: 5px 15px;
- border-radius: 10px;
- box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ font-size: 140%;
+ color: #0A1F44;
+ text-align: right;
 }
 
 .header-text a {
- color: white;
+ color: #0A1F44;
  text-decoration: none;
  transition: color 0.3s;
 }
 
 .header-text a:hover {
- color: #dcdcdc;
+ color: #3A4A66;
+}
+
+/* fein's blogのレイアウトを整える */
+.feinblog {
+ display: flex;
+ align-items: center;
+}
+
+.feinblog img {
+ width: 45px;
+ margin-left: 3px;
+ margin-top: 3px;
 }
