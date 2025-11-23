@@ -197,7 +197,7 @@
 
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 instance_class: F2
 env_variables:
@@ -219,7 +219,7 @@ script: auto
    このyaml構文を詳しく説明すると、次のようになります。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 # アプリケーションのランタイム環境を指定します。この場合は Python 3.12 を使用します。
 runtime: python312
 
@@ -308,7 +308,7 @@ script: auto
 
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 build_env_variables:
 DATABASE_URL: "mysql://user:password@localhost:3306/mydatabase"
 API_KEY: "your-api-key"
@@ -344,7 +344,7 @@ API_KEY: "your-api-key"
    次に、app.yamlファイルへdefault_expirationを設定した例を示します。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 default_expiration: "4d 5h"
 handlers:
@@ -371,7 +371,7 @@ handlers:
   </div>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 entrypoint: python my_server.py
 
 </code></pre>
@@ -403,7 +403,7 @@ entrypoint: python my_server.py
   <p>例えば、FlaskアプリケーションをGunicornで起動する場合は、以下のようにコマンドを実行します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 gunicorn myapp:app
 
 </code></pre>
@@ -433,7 +433,7 @@ gunicorn myapp:app
   <p>具体的には、次のように app.yaml ファイルに環境変数を定義します。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 env_variables:
 DJANGO_SETTINGS_MODULE: "myapp.settings"
 
@@ -444,7 +444,7 @@ DJANGO_SETTINGS_MODULE: "myapp.settings"
    例えば、上記の環境変数を読み取るには次のようにします。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 # 環境変数の値を取得
@@ -476,7 +476,7 @@ print(settings_module) # "myapp.settings" と表示されるはずです。
 
   <p>app.yamlには次のように記述します。</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 error_handlers:
 - file: default_error.html
 - error_code: over_quota
@@ -529,7 +529,7 @@ file: over_quota.html
   <p>inbound_services セクションを使って warmup を有効にするためのコードを見てみましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 inbound_services:
 - warmup
 
@@ -710,7 +710,7 @@ inbound_services:
    たとえば、以下のように設定します。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 
 </code></pre>
@@ -771,7 +771,7 @@ runtime: python312
 
   <p>app.yamlには次のように書きます。</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 service: service-name
 
 </code></pre>
@@ -799,7 +799,7 @@ service: service-name
   <p>yamlには次のように指定します。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 service_account: my-service-account@my-project-id.iam.gserviceaccount.com
 
 </code></pre>
@@ -832,7 +832,7 @@ service_account: my-service-account@my-project-id.iam.gserviceaccount.com
   <p>yamlでは、次のように書きます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 vpc_access_connector:
   name: "projects/my-project/locations/us-central1/connectors/my-connector"
 
@@ -855,7 +855,7 @@ vpc_access_connector:
 
   <p>yamlには、次のように書きます。</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 vpc_access_connector:
   name: "projects/my-project/locations/us-central1/connectors/my-connector"
   egress_setting: all-traffic
@@ -893,7 +893,7 @@ vpc_access_connector:
   <p>改めてapp.yaml の具体例を見てみます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /static
 static_dir: static
@@ -984,7 +984,7 @@ script: auto
    CSP を YAML 設定ファイルに追加する方法として、次のようなコードが考えられます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /images
 static_dir: static/images
@@ -1017,7 +1017,7 @@ vary: Accept-Encoding
    例えば、スタイルシートやフォントに関するポリシーを追加する場合、次のようなコードが考えられます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 http_headers:
 Content-Security-Policy: "default-src 'self'; img-src 'self' https://example.com; script-src 'self' 'unsafe-inline';
 style-src 'self' 'unsafe-inline'; font-src 'self'"
@@ -1073,7 +1073,7 @@ style-src 'self' 'unsafe-inline'; font-src 'self'"
   <p>Vary ヘッダーを YAML 設定ファイルに追加する方法を書いてみます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /images
 static_dir: static/images
@@ -1103,7 +1103,7 @@ Content-Security-Policy: "default-src 'self'; img-src 'self' https://example.com
   <p>例えば、クライアントが次のようなリクエストを送信した場合はどうなるでしょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-text">
+   <pre><code class="feintyping language-text">
 GET /images/sample.png HTTP/1.1
 Host: example.com
 Accept: image/webp,image/apng,image/*,*/*
@@ -1136,7 +1136,7 @@ Accept-Encoding: gzip, deflate, br
    YAML 設定ファイルに Cache-Control ヘッダーを追加する方法の例を見てみます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /images
 static_dir: static/images
@@ -1165,7 +1165,7 @@ Content-Security-Policy: "default-src 'self'; img-src 'self' https://example.com
    変更されたリソースをすぐに反映させるために no-cache を使用する場合、次のようなコードが考えられます。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 http_headers:
 Cache-Control: no-cache
 
@@ -1176,7 +1176,7 @@ Cache-Control: no-cache
   <p>次の設定は/images URLに対応する静的ファイルディレクトリにアクセスする場合に、いくつかのカスタムHTTPヘッダーを追加するものです。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /images
 static_dir: static/images
@@ -1207,7 +1207,7 @@ vary: Accept-Encoding
    ここでは、Google App Engineを使って、/images URLパスにリクエストがあった場合に静的ファイルを返す静的ファイルハンドラを設定し、その際にCORSのレスポンスヘッダーを返す方法について説明します。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /images
 static_dir: static/images

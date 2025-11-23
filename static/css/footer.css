@@ -150,3 +150,24 @@ svg {
  font-size: 12px;
  margin-top: 10px;
 }
+
+/* ★タイピングエフェクト */
+.feintyping {
+ white-space: pre;
+ /* 改行保持 */
+ overflow: hidden;
+ position: relative;
+}
+
+.cursor {
+ display: inline-block;
+ width: 3px;
+ background: black;
+ animation: blink .7s step-end infinite alternate;
+}
+
+@keyframes blink {
+ 50% {
+  background: transparent;
+ }
+}

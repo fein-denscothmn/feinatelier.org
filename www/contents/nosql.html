@@ -249,7 +249,7 @@
    データを表示させるための枠組みを整えているだけです。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;input type=&quot;text&quot; id=&quot;search-name&quot; placeholder=&quot;名前で検索&quot;&gt;
 &lt;select id=&quot;role-filter&quot;&gt;
     &lt;option value=&quot;&quot;&gt;すべての役割&lt;/option&gt;
@@ -279,7 +279,7 @@
   <h5>入力・選択フォーム部分</h5>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;input type=&quot;text&quot; id=&quot;search-name&quot; placeholder=&quot;名前で検索&quot;&gt;
 
 </code></pre>
@@ -293,7 +293,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;select id=&quot;role-filter&quot;&gt;
 
 </code></pre>
@@ -304,7 +304,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;option value=&quot;&quot;&gt;すべての役割&lt;/option&gt;
 
 </code></pre>
@@ -317,7 +317,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;option value=&quot;admin&quot;&gt;Admin&lt;/option&gt;
 &lt;option value=&quot;editor&quot;&gt;Editor&lt;/option&gt;
 &lt;option value=&quot;user&quot;&gt;User&lt;/option&gt;
@@ -333,7 +333,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;/select&gt;
 
 </code></pre>
@@ -341,7 +341,7 @@
   <p>セレクトボックスの終了タグです。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;select id=&quot;sort-order&quot;&gt;
 
 </code></pre>
@@ -353,7 +353,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;option value=&quot;id-asc&quot;&gt;ID昇順&lt;/option&gt;
 &lt;option value=&quot;id-desc&quot;&gt;ID降順&lt;/option&gt;
 
@@ -363,7 +363,7 @@
   <p>ユーザーIDによる昇順・降順の並び替えを指定する選択肢です。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;option value=&quot;name-asc&quot;&gt;名前昇順&lt;/option&gt;
 &lt;option value=&quot;name-desc&quot;&gt;名前降順&lt;/option&gt;
 
@@ -376,7 +376,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;/select&gt;
 
 </code></pre>
@@ -386,7 +386,7 @@
   <h5>表示領域</h5>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div id=&quot;fein-user-list&quot;&gt;読み込み中...&lt;/div&gt;
 
 </code></pre>
@@ -398,7 +398,7 @@
   </ul>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div id=&quot;role-count&quot;&gt;&lt;/div&gt;
 
 </code></pre>
@@ -413,7 +413,7 @@
   <h5>スクリプトの読み込み</h5>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;script src=&quot;/contents/nosql/feinnosql.js&quot;&gt;&lt;/script&gt;
 
 </code></pre>
@@ -428,7 +428,7 @@
   <h3>JSONの記載例</h3>
   <p>お次はJSONですが、これはワンパターンに書いていくだけですよ。</p>
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 [
  {
   "id": 1,
@@ -470,7 +470,7 @@
 
   <p>データの取得からUIの更新、イベントリスナーの設定までが明確に分割されており、各処理を責務ごとに関数化して保守性を高めています。</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 // データ取得元
 const DATA_URL = '/contents/nosql/feinusers.json';
 
@@ -590,7 +590,7 @@ sortSelect.addEventListener('change', updateView);
   <h5>データ取得元の定義</h5>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const DATA_URL = '/contents/nosql/feinusers.json';
 
 </code></pre>
@@ -610,7 +610,7 @@ const DATA_URL = '/contents/nosql/feinusers.json';
   <h5>DOM要素の取得</h5>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const nameInput = document.getElementById('search-name');
 const roleSelect = document.getElementById('role-filter');
 const sortSelect = document.getElementById('sort-order');
@@ -637,7 +637,7 @@ const roleCount = document.getElementById('role-count');
   <h5>ユーザーデータの保持用変数</h5>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 let users = []; // 外部JSONから読み込んだデータを保持
 
 </code></pre>
@@ -659,7 +659,7 @@ let users = []; // 外部JSONから読み込んだデータを保持
   <p>まず <span class="codecolor">fetch(DATA_URL)</span> を使って外部JSONを取得します。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 fetch(DATA_URL)
   .then(response => {
     if (!response.ok) {
@@ -686,7 +686,7 @@ fetch(DATA_URL)
   <p>ユーザー名を小文字化して部分一致検索を行うのが <span class="codecolor">filterByName</span> 関数です。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function filterByName(keyword) {
   return users.filter(user =>
     user.name.toLowerCase().includes(keyword.toLowerCase())
@@ -702,7 +702,7 @@ function filterByName(keyword) {
   <p>役割フィルタでは、選択肢が空文字なら全リストを返し、特定の役割が選ばれたらその役割だけを抽出します。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function filterByRole(role, list) {
   if (!role) return list;
   return list.filter(user => user.role === role);
@@ -717,7 +717,7 @@ function filterByRole(role, list) {
   <p>ID昇順・降順、名前昇順・降順の4パターンに対応した <span class="codecolor">sortUsers</span> 関数は、元の配列を壊さないようコピーしてソートしています。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function sortUsers(list, order) {
   const sorted = [...list]; // 元の配列を破壊しないようコピー
 
@@ -750,7 +750,7 @@ function sortUsers(list, order) {
     class="codecolor">countRoles</span> 関数です。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function countRoles(filteredUsers) {
   return filteredUsers.reduce((acc, user) => {
     acc[user.role] = (acc[user.role] || 0) + 1;
@@ -768,7 +768,7 @@ function countRoles(filteredUsers) {
    &lt;li&gt;` リストに変換してDOMへ挿入します。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function renderUserList(filteredUsers) {
   userList.innerHTML = '';
 
@@ -797,7 +797,7 @@ function renderUserList(filteredUsers) {
   <p><span class="codecolor">renderRoleCount</span> では、集計オブジェクトから各役割の人数を取り出してテキスト化し、表示エリアにセットします。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function renderRoleCount(filteredUsers) {
   const counts = countRoles(filteredUsers);
   roleCount.textContent = `Admins: ${counts.admin || 0}, Editors: ${counts.editor || 0}, Users: ${counts.user || 0}`;
@@ -819,7 +819,7 @@ function renderRoleCount(filteredUsers) {
   </ol>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function updateView() {
   const keyword = nameInput.value.trim();
   const role = roleSelect.value;
@@ -847,7 +847,7 @@ function updateView() {
   <p>最後に、入力フォームやセレクトボックスに対して <span class="codecolor">updateView</span> を呼び出すイベントリスナーを設定しています。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 nameInput.addEventListener('input', updateView);
 roleSelect.addEventListener('change', updateView);
 sortSelect.addEventListener('change', updateView);

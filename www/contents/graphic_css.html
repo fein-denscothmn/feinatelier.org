@@ -153,7 +153,7 @@
 
   <p class="gra">レスポンシブデザイン：CSSの事例</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 img {
   max-width: 100%;
   height: auto;
@@ -175,7 +175,7 @@ img {
   </dl>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;figure&gt;
   &lt;img src=&quot;example.jpg&quot; alt=&quot;Example Image&quot;&gt;
   &lt;figcaption&gt;この画像の説明&lt;/figcaption&gt;
@@ -216,7 +216,7 @@ img {
    でもやらない理由があって、それは今後も変更される可能性があるからなんだよね。<br>
    まとめてスタイル設定している箇所があると、今後の変更がやりにくくなる可能性があります。</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /*サイトタイトル*/
 img.moray {
     display: block;
@@ -263,7 +263,7 @@ img.moray {
 
   <p class="codegra" id="imagesize_style">画像によって大きさを使い分けるstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* img.biggraphic クラスは、大きな画像のスタイルを定義します */
 img.biggraphic {
  margin: 10px;  /* 画像の周りに10ピクセルの余白を設定 */
@@ -340,7 +340,7 @@ img.fade-in-out.visible {
   <p class="gra">画像のフェードイン＋アウトのアニメーションを作る：feinfade.js</p>
   <span class="small-orange-text">ここではコードのみ掲載します。詳しい説明は上記のリンク先をご覧ください。</span>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('img.fade-in-out');
   const checkVisibility = () => {
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <p>これらのコードを背景として、次のようにhtmlを打ちます。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class="content"&gt;
     &lt;img src="Atelier.jpg" alt="Illustration of the atelier" class="graphic right-image fade-in-out"&gt;
 &lt;/div&gt;
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <p>これはけっこう基本じゃないかな？<br>
    私が持ってた教科書だけじゃなく、Webサイト作成に関する本ならたいてい掲載されている話だと思います。</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* イラストを右にしてテキストを回り込ませる */
 img.right-image {
     float: right;
@@ -447,7 +447,7 @@ div.content {
 
   <p class="codegra" id="grastaimage_style">グラスタ表の火力20倍の話に添える画像style.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .grastaimage {
     display: flex;
     justify-content: space-between;
@@ -484,7 +484,7 @@ div.content {
    ただ、この場合は広すぎるセル内に彩りを添えたいからやってます。</p>
   <p class="codegra" id="tableimage_style">敢えて表の中に画像を入れるstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 div.gtable {
   display: flex;
   flex-direction: column;
@@ -550,7 +550,7 @@ div.gtable {
 
   <p class="gra">写真を飾るためのhtml</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;flowerclearfix&quot;&gt;
   &lt;div class=&quot;flowerfade-out&quot;&gt;
     &lt;img src=&quot;../flower1/flower1(&#9679;&#9679;&#9679;).JPG&quot; alt=&quot;FLOWER&quot;&gt;
@@ -576,7 +576,7 @@ div.gtable {
 
   <p class="gra">コンテンツのグループ化を行っているコードの例</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div&gt;
     &lt;h1&gt;タイトル&lt;/h1&gt;
     &lt;p&gt;段落テキスト&lt;/p&gt;
@@ -593,7 +593,7 @@ div.gtable {
 
   <p class="gra">スタイルの適用を行っているコードの例</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;style&gt;
     .container {
         border: 1px solid #000;
@@ -616,7 +616,7 @@ div.gtable {
 
   <p class="gra">レイアウト構築を行っているコードの例</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;header&quot;&gt;ヘッダー&lt;/div&gt;
 &lt;div class=&quot;main-content&quot;&gt;メインコンテンツ&lt;/div&gt;
 &lt;div class=&quot;footer&quot;&gt;フッター&lt;/div&gt;
@@ -629,7 +629,7 @@ div.gtable {
 
   <p class="codegra" id="flower_css">写真を飾るためのflower.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 @charset "UTF-8";
 
 /* flowerfade-out クラスのスタイル */
@@ -695,7 +695,7 @@ div.gtable {
 
   <p class="gra">position: relative;でleftプロパティを使う例</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .element {
   position: relative;
   left: 20px;
@@ -713,7 +713,7 @@ div.gtable {
 
   <p class="gra">position: relative;でプロパティを使わない例</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .element {
   position: relative;
 }
@@ -729,7 +729,7 @@ div.gtable {
 
   <p class="gra">写真を飾るためのcss（抜粋）</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .flowerfade-out {
   position: relative; /* 要素を相対位置に配置 */
   width: 40%; /* 幅を40%に設定 */
@@ -749,7 +749,7 @@ div.gtable {
 
   <p class="gra">写真を飾るためのcss（positionを抜いたケース）</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .flowerfade-out {
   width: 40%; /* 幅を40%に設定 */
   float: right; /* 右側に配置 */
@@ -806,7 +806,7 @@ div.gtable {
 
   <p class="gra">画像を左に浮動させ、右側にテキストを回り込ませるコード</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 img {
   float: left;
   margin-right: 10px;
@@ -822,7 +822,7 @@ img {
 
   <p class="gra">position: relative;とfloat: right;を使用したコード例</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;box&quot; style=&quot;position: relative; float: right;&quot;&gt;
       浮動するボックス
@@ -841,7 +841,7 @@ img {
 
   <p class="codegra" id="horizon_style">画像を左右に並べるstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* .horizontally-container クラスは、横並びのコンテナを定義します */
 .horizontally-container {
  display: flex;  /* フレックスボックスレイアウトを使用して子要素を横並びに配置 */

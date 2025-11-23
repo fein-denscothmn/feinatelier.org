@@ -339,7 +339,7 @@
 
   <p class="codegra">Pillowライブラリをインストールするコマンド</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 pip install pillow
   </code></pre>
   </div>
@@ -348,7 +348,7 @@ pip install pillow
 
   <p class="codegra" id="textnoise_py">ノイズを加えるプログラムtextnoise.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import random
 from PIL import Image, ImageDraw
 
@@ -778,7 +778,7 @@ process_image(input_image_path, output_image_path)
   <p>robots.txtファイルは、以下のような構成で記述されます。</p>
 
   <div class="code-container">
-   <pre><code class="language-none">
+   <pre><code class="feintyping language-none">
 User-agent: [クローラー名]
 Disallow: [禁止するパス]
 Allow: [許可するパス]
@@ -802,7 +802,7 @@ Sitemap: [サイトマップのURL]
 
   <p class="gra">全てのクローラーに対して全てのページを許可</p>
   <div class="code-container">
-   <pre><code class="language-none">
+   <pre><code class="feintyping language-none">
 User-agent: *
 Disallow:
   </code></pre>
@@ -810,7 +810,7 @@ Disallow:
 
   <p class="gra">全てのクローラーに対して全てのページをブロック</p>
   <div class="code-container">
-   <pre><code class="language-none">
+   <pre><code class="feintyping language-none">
 User-agent: *
 Disallow: /
   </code></pre>
@@ -818,7 +818,7 @@ Disallow: /
 
   <p class="gra">特定のフォルダ（例：/private/）のみをブロック</p>
   <div class="code-container">
-   <pre><code class="language-none">
+   <pre><code class="feintyping language-none">
 User-agent: *
 Disallow: /private/
   </code></pre>
@@ -826,7 +826,7 @@ Disallow: /private/
 
   <p class="gra">特定のファイル形式（例：pdfファイル）をブロック</p>
   <div class="code-container">
-   <pre><code class="language-none">
+   <pre><code class="feintyping language-none">
 User-agent: *
 Disallow: /*.pdf$
   </code></pre>
@@ -903,7 +903,7 @@ Disallow: /*.pdf$
    次のコマンドをコマンドプロンプトに入力します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 pip install stegano
   </code></pre>
   </div>
@@ -921,7 +921,7 @@ pip install stegano
 
   <p class="codegra" id="jpgpng_py">jpgをまとめてpngにするjpgpng.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from PIL import Image
 
@@ -970,7 +970,7 @@ convert_jpg_to_png(input_directory, output_directory)
 
   <p class="codegra" id="1hide_py">１つの画像にメッセージを隠す1hide.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from stegano import lsb
 import base64
 
@@ -990,7 +990,7 @@ print("メッセージを画像に埋め込みました")
 
   <p class="codegra" id="hidemessage_py">隠されたメッセージを確認するhidemessage.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from stegano import lsb
 import base64
 
@@ -1015,7 +1015,7 @@ else:
 
   <p class="codegra" id="all_hide_py">フォルダ内の画像全てにまとめてメッセージを隠すall_hide.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from stegano import lsb
 import base64
@@ -1050,7 +1050,7 @@ hide_message_in_directory(input_directory, output_directory, message)
 
   <p class="codegra" id="all_hidemessage_py">フォルダ内にある全て画像に隠されたメッセージを確認するall_hidemessage.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from stegano import lsb
 import base64
 import os
@@ -1195,7 +1195,7 @@ reveal_message_from_directory(output_directory)
 
   <p class="codegra" id="sliceimg_py">画像をスライスしてhtmlも出力するsliceimg.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from PIL import Image
 
@@ -1352,7 +1352,7 @@ print(f&quot;Images have been split and saved to {output_directory}. HTML file h
 
   <p class="codegra">Pillowライブラリをインストールするコマンド</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 pip install pillow
   </code></pre>
   </div>
@@ -1362,7 +1362,7 @@ pip install pillow
 
   <p class="codegra" id="pngmetadata_py">メタデータをまとめて入力するプログラムpngmetadata.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from PIL import Image, PngImagePlugin
 
@@ -1438,7 +1438,7 @@ add_metadata_to_png_images(input_directory, output_directory, metadata_dict)
 
   <p class="codegra" id="pngmetacheck_py">メタデータをまとめてチェックするpngmetacheck.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from PIL import Image
 
@@ -1548,7 +1548,7 @@ print_png_metadata(input_directory)
   <p>ここではアルファベットのみとしましたが、著作権情報や作者情報を日本語で書きたい場合はどうなるでしょう。<br>
    ファイルを読み書きするときに明示的にエンコーディングを指定することができます。</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 with open('file.txt', 'r', encoding='utf-8') as file:
 content = file.read()
   </code></pre>

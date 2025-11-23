@@ -392,7 +392,7 @@
   <h5>crawler-price ヘッダー</h5>
   <div class="spacer"></div>
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 HTTP 402 Payment Required
 crawler-price: USD 0.05
 
@@ -417,7 +417,7 @@ crawler-price: USD 0.05
   <h5>crawler-charged ヘッダー</h5>
   <div class="spacer"></div>
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 HTTP 200 OK
 crawler-charged: USD 0.05
 
@@ -584,7 +584,7 @@ crawler-charged: USD 0.05
   <p>ここで、公式ブログにあるコードを見てみましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 GET /example.html
 Signature-Agent: "https://signature-agent.example.com"
 Signature-Input: sig2=("@authority" "signature-agent")
@@ -708,7 +708,7 @@ Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZ
    もしそのURLが課金対象の場合、Cloudflareから次のようなレスポンスが返ってきます。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 HTTP 402 Payment Required
 crawler-price: USD 5.00
 
@@ -723,7 +723,7 @@ crawler-price: USD 5.00
    その際に、以下のように<span class="codecolor">crawler-exact-price</span>というヘッダーを追加します。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 GET /example.html
 crawler-exact-price: USD 5.00
 
@@ -737,7 +737,7 @@ crawler-exact-price: USD 5.00
   <p>この方法では、最初のリクエストに「この金額までなら払ってもいい」と伝えます。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 GET /example.html
 crawler-max-price: USD 4.00
 
@@ -747,7 +747,7 @@ crawler-max-price: USD 4.00
   <p>ここで、Cloudflare側が設定しているページの価格が $4.00 以下なら、次のような成功レスポンスが返ります。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 HTTP 200 OK
 crawler-charged: USD 3.50
 server: cloudflare
@@ -761,7 +761,7 @@ server: cloudflare
   <p>ただし、もしページの価格が $6.00 のように提示上限より高かった場合は、再び以下のようなレスポンスが返ります。</p>
 
   <div class="code-container">
-   <pre><code class="language-http">
+   <pre><code class="feintyping language-http">
 HTTP 402 Payment Required
 crawler-price: USD 6.00
 

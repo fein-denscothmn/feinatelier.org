@@ -157,7 +157,7 @@
   <p class="codegra" id="file_space_py">ファイルから半角スペースを削除するfile_space.py</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 directory = r'C:\Users\アレコレ\Desktop\flower3'
@@ -212,7 +212,7 @@ print("ファイル名のリネームが完了しました。")
   <p class="codegra" id="file_sum_py">HTML・CSS・JavaScriptのファイルを数えるfile_sum.py</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 def count_files(directory, extension):
@@ -287,7 +287,7 @@ print(f"{total_js_files} の JavaScriptファイルがあります")
 
   <p class="codegra" id="pwa_py">多数のhtmlファイルにまとめてコードを挿入するpwa.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 directory = 'C:/Users/ユーザー名/Desktop/pwahtml'
@@ -330,7 +330,7 @@ print(&quot;すべてのHTMLファイルにPWAコードを挿入しました。&
 
   <p><strong>1. モジュールのインポート</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 </code></pre>
@@ -341,7 +341,7 @@ import os
 
   <p><strong>2. ディレクトリの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 directory = 'C:/Users/ユーザー名/Desktop/pwahtml'
 
 </code></pre>
@@ -351,7 +351,7 @@ directory = 'C:/Users/ユーザー名/Desktop/pwahtml'
 
   <p><strong>3. 挿入するPWAコードの定義</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 manifest_link = '&lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot;&gt;\n'
 service_worker_script = '''
 &lt;script&gt;
@@ -376,7 +376,7 @@ service_worker_script = '''
 
   <p><strong></strong></p> 4. ディレクトリ内のファイルのループ処理
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for filename in os.listdir(directory):
 
 </code></pre>
@@ -388,7 +388,7 @@ for filename in os.listdir(directory):
 
   <p><strong>5. HTMLファイルの処理</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 if filename.endswith(&quot;.html&quot;):
     file_path = os.path.join(directory, filename)
     with open(file_path, &#39;r&#39;, encoding=&#39;utf-8&#39;) as file:
@@ -425,7 +425,7 @@ if filename.endswith(&quot;.html&quot;):
 
   <p><strong>6. 完了メッセージの表示</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 print("すべてのHTMLファイルにPWAコードを挿入しました。")
 
 </code></pre>

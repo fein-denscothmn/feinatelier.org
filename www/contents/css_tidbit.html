@@ -144,7 +144,7 @@
    そんなタイミングで使います。</p>
   <p class="codegra" id="hrdesign_style">隅に行くほど細く消えかかる罫線を作るstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 hr.atelierflower {
   border: none; /* 枠線を消す */
   height: 10px; /* 要素の高さを設定 */
@@ -200,7 +200,7 @@ hr.atelierflower::before {
 
   <p class="codegra" id="hr_footer">両側が細くなる黒い罫線を作るfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* feinhr IDのスタイル定義 */
 #feinhr {
     border: none; /* 枠線を非表示にする */
@@ -219,7 +219,7 @@ hr.atelierflower::before {
    そういったコンテンツにちょっとした動きを付けるために使ってます。</p>
   <p class="codegra" id="checkdesign_style">タップするとチェックが変化するstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .inline-button {
   display: inline; /* 要素をインライン表示に設定します */
   font-size: 1rem; /* フォントサイズを1remに設定します */
@@ -273,7 +273,7 @@ hr.atelierflower::before {
   <p class="codegra" id="checkdesign_js">タップするとチェックが変化するunderline.js</p>
   <p>underline.jsというのは私の編集都合です。お気になさらず。</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', () => {
  const buttons = document.querySelectorAll('.inline-button');
 
@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p>次にあるコードはDOMを使った簡単な例です。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;ja&quot;&gt;
 &lt;head&gt;
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p>ここで使われている<a href="/contents/codeinfo.html#flexcss">CSSのフレックスボックスレイアウト</a>については、すでに説明してあります。</p>
   <p class="codegra" id="w3c_footer">w3cの小さい画像を横に並べるfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* w3ccheck クラスに対してフレックスボックスを使用して、要素を中央に揃える */
 div.w3ccheck {
     display: flex; /* フレックスボックスを使う */
@@ -474,7 +474,7 @@ div.w3ccheck {
 
   <p class="codegra" id="code_footer">ソースコードを綺麗に表示するfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* コードコンテナのスタイル定義 */
 .code-container {
     background-color: #2d2d2d; /* 背景色を暗い灰色に設定 */
@@ -516,7 +516,7 @@ pre {
 
   <p class="codegra" id="cardlayout">カード型レイアウトを作るcollapsible.cssの一部</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* コンテナ全体の設定 */
 .feinorg-container {
  /* 内部のアイテムを横並び（flexbox）に配置 */
@@ -608,7 +608,7 @@ pre {
 
   <p class="codegra" id="h3underline_js">h3見出しに赤い線を引くunderline.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function () {
  const h3s = document.querySelectorAll("h3");
 
@@ -629,7 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <p class="gra">DOMの読み込み完了後に実行</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function () {
 
 </code></pre>
@@ -641,7 +641,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <p class="gra">h3要素をすべて取得</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const h3s = document.querySelectorAll("h3");
 
 </code></pre>
@@ -651,7 +651,7 @@ const h3s = document.querySelectorAll("h3");
 
   <p class="gra">スクロールイベントリスナーの追加</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 window.addEventListener("scroll", function () {
 
 </code></pre>
@@ -662,7 +662,7 @@ window.addEventListener("scroll", function () {
 
   <p class="gra">各h3要素に対する処理</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 h3s.forEach(function (h3) {
 
 </code></pre>
@@ -671,7 +671,7 @@ h3s.forEach(function (h3) {
 
   <p class="gra">h3要素の位置を取得</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const rect = h3.getBoundingClientRect();
 
 </code></pre>
@@ -681,7 +681,7 @@ const rect = h3.getBoundingClientRect();
 
   <p class="gra">要素がビューポート内にあるかどうかの確認</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
 
 </code></pre>
@@ -691,7 +691,7 @@ if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
 
   <p class="gra">クラスの追加または削除</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 h3.classList.add("visible");
 } else {
 h3.classList.remove("visible");
@@ -715,7 +715,7 @@ h3.classList.remove("visible");
 
   <p class="codegra" id="h3underline_style">h3見出しに赤い線を引くstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* h3要素のスタイル設定 */
 h3 {
     display: block; /* 要素をブロックレベルに変更 */
@@ -756,7 +756,7 @@ h3.visible::after {
 
   <p class="codegra" id="h5underline_style">h5見出しにオレンジ線を引くstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* h5タグのスタイル設定 */
 h5 {
  /* h5タグの文字の大きさを通常の110%に設定 */
@@ -814,7 +814,7 @@ h5::after {
   <h3>特定範囲にテキストを書く</h3>
   <p class="codegra" id="lefttext_footer">特定範囲内にテキスト表示するfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* portal クラスのスタイル定義 */
 .portal {
     text-align: left; /* テキストを左揃えにする */
@@ -832,7 +832,7 @@ h5::after {
   <h3>フッターサイトマップ用のリンク</h3>
   <p class="codegra" id="sitemaplink_footer">フッターに表示するサイトマップリンクを作るfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* .sitemap クラスは、サイトマップのスタイルを定義します */
 .sitemap {
  margin: 0 0 20px 0;  /* 上、右、下、左の順にマージンを設定：上0、右0、下20px、左0 */
@@ -858,7 +858,7 @@ h5::after {
    でも所在は分かるよう、余白を適度に取りつつね。</p>
   <p class="codegra" id="sns_footer">SNSを表示するfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* .social-links と .footer-links クラスは、リンクリストのスタイルを定義します */
 .social-links,
 .footer-links {
@@ -931,7 +931,7 @@ flex-direction: column; /* フレックスボックスの方向を縦に設定 *
   <p class="gra">SVGの基本構造</p>
 
   <div class="code-container">
-   <pre><code class="language-xml">
+   <pre><code class="feintyping language-xml">
 &lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
   &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;3&quot; fill=&quot;red&quot; /&gt;
 &lt;/svg&gt;
@@ -944,7 +944,7 @@ flex-direction: column; /* フレックスボックスの方向を縦に設定 *
    これを私のサイトではSNSアイコンの表示に使っています。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 
@@ -972,7 +972,7 @@ flex-direction: column; /* フレックスボックスの方向を縦に設定 *
    昨今のAI問題など、記憶に新しいところです。</p>
   <p class="codegra" id="copyright_footer">著作権を表示するfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* .copyright クラスは、著作権表示のスタイルを定義します */
 .copyright {
 color: #555; /* テキストの色を薄い灰色に設定 */
@@ -994,7 +994,7 @@ margin-top: 10px; /* 要素の上に10ピクセルの余白を設定 */
    このタイプのロゴをCSSで適切に配置するのはけっこう大変なので…</p>
   <p class="codegra" id="certifications_footer">資格証プレートを表示するfooter.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* .biggraphic クラスは、大きな画像のスタイルを定義します */
 .biggraphic {
 max-width: 100%; /* 画像の最大幅を親要素の100%に設定 */

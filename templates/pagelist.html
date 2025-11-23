@@ -296,7 +296,7 @@
   <p>Pythonコードの例を挙げるなら、次のような感じでしょうかね。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -317,7 +317,7 @@ def sitemap():
    URLの書き方がちょっと特殊ですよね。</p>
   {% raw %}
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;ul&gt;
   {% for page in pages %}
   &lt;li&gt;&lt;a href=&quot;{{ page.url }}&quot;&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
@@ -380,7 +380,7 @@ def sitemap():
    リンクには、ページのURL（リンク先）とページのタイトル（画面に表示される名前）が含まれます。</p>
   <p class="codegra" id="pagelist_py">htmlサイトマップを作るpagelist.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Blueprint, render_template
 from bs4 import BeautifulSoup
@@ -514,7 +514,7 @@ def pagelist():
   <h5>Blueprintの作成</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 pagelist_bp = Blueprint('pagelist', __name__)
 
 </code></pre>
@@ -526,7 +526,7 @@ pagelist_bp = Blueprint('pagelist', __name__)
   <h5>静的ページを取得する関数</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def get_category_pages_with_titles(category_name):
 
 </code></pre>
@@ -541,7 +541,7 @@ def get_category_pages_with_titles(category_name):
   <p>例えば、カテゴリー another-eden に属するHTMLファイルを探し、そのファイルからURLとタイトルを取り出します。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for root, dirs, files in os.walk(static_dir):
 if category_name in root:
 for file in files:
@@ -560,7 +560,7 @@ category_pages.append({'url': f'/{url}', 'title': title})
   <h5>HTMLからタイトルを取得</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def get_page_title(file_path):
 with open(file_path, 'r', encoding='utf-8') as f:
 soup = BeautifulSoup(f, 'html.parser')
@@ -573,7 +573,7 @@ return soup.title.string if soup.title else 'No Title'
 
   <h5>動的ページを取得</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def get_dynamic_pages(app):
 
 </code></pre>
@@ -585,7 +585,7 @@ def get_dynamic_pages(app):
   <h5>サイトマップページの生成</h5>
   <p>最後に、取得したデータを元に、/pagelist というURLでカテゴリーごとのリンクを表示します。</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @pagelist_bp.route('/pagelist')
 def pagelist():
 from main import app
@@ -610,7 +610,7 @@ return render_template('pagelist.html', pages_by_category=pages_by_category)
   <p>このページのような動的サイトマップを作るとき、自分が作っているWebサイトのディレクトリ構造を把握しておいたほうが良いですね。<br>
    例えば私のサイトの場合、次のようになっています。</p>
   <div class="code-container">
-   <pre><code class="language-text">
+   <pre><code class="feintyping language-text">
 FEIN-SITES-DEV1（App EngineにデプロイされているFlaskアプリ）
 │  app.yaml
 │  dispatch.yaml
@@ -683,7 +683,7 @@ FEIN-SITES-DEV1（App EngineにデプロイされているFlaskアプリ）
 
   <p class="codegra" id="sitemap_mainpy">サイトマップ生成を踏まえたmain.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, render_template, send_from_directory, abort
 from sitemap import sitemap_bp
@@ -732,7 +732,7 @@ if __name__ == '__main__':
   <h5>1. アプリケーションの準備</h5>
   <p><strong></strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, render_template, send_from_directory, abort
 from sitemap import sitemap_bp
@@ -746,7 +746,7 @@ from pagelist import pagelist_bp
    この場合、サイトマップ用とページリスト用の機能を取り込んでいます。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 app = Flask(__name__)
 
 </code></pre>
@@ -757,7 +757,7 @@ app = Flask(__name__)
 
   <h5>2. Blueprintの登録</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 app.register_blueprint(sitemap_bp)
 app.register_blueprint(pagelist_bp, url_prefix='/pages')
 
@@ -779,7 +779,7 @@ app.register_blueprint(pagelist_bp, url_prefix='/pages')
   <h5>3. ルート（URL）の定義</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/')
 def serve_static_index():
 return send_from_directory('www', 'index.html')
@@ -791,7 +791,7 @@ return send_from_directory('www', 'index.html')
    静的なファイルをそのまま表示します。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/redirect')
 def serve_redirect():
 return render_template('server/redirect.html')
@@ -802,7 +802,7 @@ return render_template('server/redirect.html')
   <p>/redirect というURLにアクセスすると、templates/server/redirect.html を返します。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/top')
 def serve_flask_content():
 return render_template('top.html')
@@ -815,7 +815,7 @@ return render_template('top.html')
   <h5>4. 動的なページ表示</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/&lt;page_name&gt;')
    def serve_dynamic_content(page_name):
    try:
@@ -831,7 +831,7 @@ return render_template('top.html')
   <h5>5. 静的ファイルの提供</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/&lt;path:filename&gt;')
  def serve_static_files(filename):
  return send_from_directory('www', filename)
@@ -844,7 +844,7 @@ return render_template('top.html')
   <h5>6. アプリケーションの実行</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 if __name__ == '__main__':
 debug_mode = os.getenv('FLASK_DEBUG', 'False') == 'True'
 app.run(debug=debug_mode)
@@ -864,7 +864,7 @@ app.run(debug=debug_mode)
    だから私の手作業が大幅に減るという仕組みなんです。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 {% raw %}
 &lt;h2&gt;FlankによるWebページ&lt;/h2&gt;
   {% for page in pages_by_category['Dynamic'] %}

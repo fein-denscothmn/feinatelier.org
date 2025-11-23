@@ -363,7 +363,7 @@
 
   <p class="codegra" id="manifest_json">PWAのメタデータを定義するmanifest.json</p>
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 {
  "name": "fein's App",
  "short_name": "fein's App",
@@ -570,7 +570,7 @@
 
   <p class="codegra" id="service-worker_js">オフラインキャッシュとバックグラウンドタスクを管理するservice-worker.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const CACHE_NAME = 'fein-cache-v1';
 const urlsToCache = [
  '/index.html'
@@ -695,7 +695,7 @@ self.addEventListener('fetch', event => {
    通常はサービスワーカーが置かれたディレクトリとそのサブディレクトリがスコープに含まれます。例えば、index.htmlに次のように記述する場合を考えてみましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;script&gt;
  if (&#39;serviceWorker&#39; in navigator) {
   navigator.serviceWorker.register(&#39;/service-worker.js&#39;)
@@ -741,7 +741,7 @@ self.addEventListener('fetch', event => {
   <p>次の例では、スコープを明示的に設定しています。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
   .then(registration => {
     console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -788,7 +788,7 @@ navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
 
   <p class="codegra" id="pwahead">PWAのメタデータを設定し、サービスワーカーを登録するためのコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;head&gt;
 &lt;!--他のhead要素は省略--&gt;
  &lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot;&gt;

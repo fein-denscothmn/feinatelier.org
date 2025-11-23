@@ -157,7 +157,7 @@
 
   <p class="codegra" id="tab_style">タブを作るstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* タブのコンテナを作成し、タブを横並びに配置 */
 .fein {
  display: flex; /* フレックスボックスで配置 */
@@ -220,7 +220,7 @@
   <p>このコードでは、タブの内容が切り替わる際に次のようなトランジションが設定されています。</p>
 
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 transform: translateX(0); /* 位置をリセット */
 transition: transform 0.5s ease, opacity 0.5s ease; /* トランジションを設定 */
 
@@ -253,7 +253,7 @@ transition: transform 0.5s ease, opacity 0.5s ease; /* トランジションを�
 
   <p class="codegra" id="tab_js">タブを作るtab.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', () => {
  const tabsFein = document.querySelectorAll('.tab-fein');
  const tabPanesFein = document.querySelectorAll('.tab-pane-fein');
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <p class="gra">1. DOMContentLoadedイベント</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', () => {
 // コードの内容
 });
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <p class="gra">2. 要素の選択</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const tabsFein = document.querySelectorAll('.tab-fein');
 const tabPanesFein = document.querySelectorAll('.tab-pane-fein');
 
@@ -330,7 +330,7 @@ const tabPanesFein = document.querySelectorAll('.tab-pane-fein');
 
   <p class="gra">3. イベントリスナーの追加</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 tabsFein.forEach(tab => {
 tab.addEventListener('click', () => {
 // コードの内容
@@ -350,7 +350,7 @@ tab.addEventListener('click', () => {
 
   <p class="gra">4. クラスの切り替え</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const target = document.getElementById(tab.getAttribute('data-tab'));
 
 tabsFein.forEach(tab => {
@@ -378,7 +378,7 @@ target.classList.add('active');
 
   <p class="gra">5. 初期状態の設定</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.querySelector('.tab-fein').classList.add('active');
 document.getElementById('pane1-fein').classList.add('active');
 
@@ -425,7 +425,7 @@ document.getElementById('pane1-fein').classList.add('active');
    ひとまず実行環境を用意してあげないと、Pythonがブラウザ上で動作しません。</p>
   <p class="codegra" id="pythontab_html1">Brythonをhtmlファイルと関連付けるコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;head&gt;
  &lt;script src=&quot;/script/brython.js&quot;&gt;&lt;/script&gt;
  &lt;script src=&quot;/script/brython_stdlib.js&quot;&gt;&lt;/script&gt;
@@ -475,7 +475,7 @@ document.getElementById('pane1-fein').classList.add('active');
 
   <p class="codegra" id="pythontab_html2">タブUIの骨組みとなるhtmlコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;atelier-container&quot;&gt;
  &lt;div class=&quot;atelier-tabs&quot;&gt;
   &lt;div class=&quot;atelier-tab&quot; data-tab=&quot;1&quot;&gt;Tab 1&lt;/div&gt;
@@ -577,7 +577,7 @@ python部分はここではいったん省略
 
   <p class="codegra" id="pythontab_python">タブUIを作るPythonコード</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from browser import document, timer
 
 def show_tab(event):
@@ -626,7 +626,7 @@ for container in document.select('.atelier-container'):
   <p class="gra">必要なモジュールをインポート</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from browser import document, timer
 
 </code></pre>
@@ -643,7 +643,7 @@ from browser import document, timer
   <p class="gra">タブを表示する関数を定義</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def show_tab(event):
     container = event.target.closest('.atelier-container')
     tabs = container.select('.atelier-tab')
@@ -672,7 +672,7 @@ def show_tab(event):
   <p class="gra">現在のアクティブなタブとコンテンツを非アクティブにする</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for tab in tabs:
     tab.classList.remove('atelier-active-tab')
 for content in contents:
@@ -698,7 +698,7 @@ for content in contents:
   <p class="gra">クリックされたタブをアクティブにし、対応するコンテンツを表示</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 event.target.classList.add('atelier-active-tab')
 tab_id = event.target.getAttribute('data-tab')
 active_content = container.select(f'[data-content="{tab_id}"]')[0]
@@ -724,7 +724,7 @@ active_content.classList.add('atelier-active-content')
   <p class="gra">遅延してコンテンツを表示</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def show_content():
     active_content.style.visibility = 'visible'
     active_content.style.opacity = '1'
@@ -745,7 +745,7 @@ timer.set_timeout(show_content, 50)
 
   <p class="gra">最後のforから始まっている部分</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for container in document.select('.atelier-container'):
  tabs = container.select('.atelier-tab')
  if tabs:
@@ -764,7 +764,7 @@ for container in document.select('.atelier-container'):
 
   <p><strong>ウェブページ内のすべてのatelier-containerをループ</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for container in document.select('.atelier-container'):
 
 </code></pre>
@@ -775,7 +775,7 @@ for container in document.select('.atelier-container'):
 
   <p><strong>初期設定として、最初のタブとタブコンテンツをアクティブに</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 if tabs:
     tabs[0].classList.add('atelier-active-tab')
     container.select('.atelier-tab-content')[0].classList.add('atelier-active-content')
@@ -790,7 +790,7 @@ if tabs:
 
   <p><strong>各タブにクリックイベントをバインドし、タブがクリックされたときに show_tab 関数を実行します</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for tab in tabs:
     tab.bind('click', show_tab)
 
@@ -806,7 +806,7 @@ for tab in tabs:
 
   <p class="codegra" id="pythontab_style">タブUIを装飾するstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* タブのスタイル */
 .atelier-tab {
  display: inline-block; /* タブをインラインブロックに設定 */

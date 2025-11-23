@@ -638,7 +638,7 @@
 
   <p class="gra">Flaskの一般的なディレクトリ構造</p>
   <div class="code-container">
-   <pre><code class="language-txt">
+   <pre><code class="feintyping language-txt">
 my_flask_app/
 │
 ├── app/
@@ -733,7 +733,7 @@ my_flask_app/
   <p class="codegra" id="feinsappFlask">fein's app のFlaskフレームワーク</p>
 
   <div class="code-container">
-   <pre><code class="language-txt">
+   <pre><code class="feintyping language-txt">
 FEIN-SITES-DEV1/
 │  app.yaml          # App Engine の設定ファイル。デプロイと実行環境の設定を定義
 │  main.py           # Flask アプリケーションのメインファイル。ルートやサーバーの設定が含まれる
@@ -879,7 +879,7 @@ FEIN-SITES-DEV1/
    このファイルは、プロジェクトの依存関係を管理し、他の開発者やデプロイ環境で同じパッケージを簡単にインストールできるようにするために使われます。</p>
   <p class="codegra" id="flaskrequirements_txt">依存関係を管理するrequirements.txt</p>
   <div class="code-container">
-   <pre><code class="language-txt">
+   <pre><code class="feintyping language-txt">
 Flask==2.3.2
 gunicorn==20.1.0
 
@@ -890,7 +890,7 @@ gunicorn==20.1.0
    このファイルを使って依存関係をインストールするには、コマンドラインで以下のコマンドを実行します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 pip install -r requirements.txt
 
 </code></pre>
@@ -950,7 +950,7 @@ pip install -r requirements.txt
   </div>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python39
 entrypoint: gunicorn -b :$PORT main:app
 
@@ -993,7 +993,7 @@ script: auto
 
   <p class="codegra" id="flaskmain_py">Flaskのメインファイルとなるmain.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, render_template, send_from_directory
 
@@ -1026,7 +1026,7 @@ if __name__ == '__main__':
 
   <p><strong>1. インポートとアプリケーションの初期化</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, render_template, send_from_directory
 
@@ -1051,7 +1051,7 @@ app = Flask(__name__)
 
   <p><strong>2. ルート / で index.html を提供</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/')
 def serve_static_index():
 return send_from_directory('www', 'index.html')
@@ -1073,7 +1073,7 @@ return send_from_directory('www', 'index.html')
 
   <p><strong>3. 静的ファイルの提供</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/&lt;path:filename&gt;')
 def serve_static_files(filename):
 return send_from_directory('www', filename)
@@ -1093,7 +1093,7 @@ return send_from_directory('www', filename)
 
   <p><strong>4. Flask の動的コンテンツの提供</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/top')
 def serve_flask_content():
 return render_template('top.html')
@@ -1113,7 +1113,7 @@ return render_template('top.html')
 
   <p><strong>5. アプリケーションの実行</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 if __name__ == '__main__':
 debug_mode = os.getenv('FLASK_DEBUG', 'False') == 'True'
 app.run(debug=debug_mode)
@@ -1161,7 +1161,7 @@ app.run(debug=debug_mode)
 
   <p class="codegra" id="flaskapp_yaml">Flaskを構築するためのapp.yaml</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 instance_class: F1
 env: standard
@@ -1307,7 +1307,7 @@ entrypoint: gunicorn -b :$PORT main:app
   <p>上述したapp.yamlで普通とは違う部分があるとすれば、次のハンドラー設定でしょうか。</p>
 
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
   - url: /
   static_files: www/index.html
   upload: www/index.html
@@ -1332,7 +1332,7 @@ entrypoint: gunicorn -b :$PORT main:app
   <p>例えば、次のようなFlaskアプリケーションがあるとしましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 # main.py
 from flask import Flask
 
@@ -1348,7 +1348,7 @@ return 'こんにちは、世界！'
   <p>テンプレート内で、このhello関数へのリンクを作成するには、次のようにします。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 {% raw %}&lt;!-- テンプレートファイル（例：templates/index.html） --&gt;
   &lt;a href=&quot;{{ url_for(&#39;hello&#39;) }}&quot;&gt;挨拶ページへ&lt;/a&gt;
 {% endraw %}
@@ -1362,7 +1362,7 @@ return 'こんにちは、世界！'
    静的ファイルへのリンクを作成するには、次のようにします。</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 {% raw %}&lt;img src=&quot;{{ url_for(&#39;static&#39;, filename=&#39;images/logo.png&#39;) }}&quot; alt=&quot;ロゴ&quot;&gt;
 {% endraw %}
 </code></pre>
@@ -1383,7 +1383,7 @@ return 'こんにちは、世界！'
   </dl>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/user/&lt;username&gt;')
 def profile(username):
 return f'{username}さんのプロフィール'
@@ -1392,7 +1392,7 @@ return f'{username}さんのプロフィール'
   </div>
   <div class="spacer"></div>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 {% raw %}&lt;a href=&quot;{{ url_for(&#39;profile&#39;, username=&#39;fein&#39;) }}&quot;&gt;feinさんのプロフィールを見る&lt;/a&gt;
 {% endraw %}
 </code></pre>
@@ -1428,7 +1428,7 @@ return f'{username}さんのプロフィール'
   </div>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;a href=&quot;/index.html&quot;&gt;ホーム&lt;/a&gt;
 
 </code></pre>
@@ -1443,7 +1443,7 @@ return f'{username}さんのプロフィール'
 
   <p class="codegra" id="flasktasks_json">作業を省力化するtasks.json</p>
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 {
  "version": "2.0.0",
  "tasks": [
@@ -1560,7 +1560,7 @@ return f'{username}さんのプロフィール'
    argsの内容は次の通りです。</p>
 
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 [
 "/c",
 "\"\"C:\\Users\\ユーザー名\\AppData\\Local\\Google\\Cloud SDK\\cloud_env.bat\" && cd
@@ -1613,7 +1613,7 @@ return f'{username}さんのプロフィール'
    argsの内容は次の通りです。</p>
 
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 [
 "/C",
 "\"cd C:\\Users\\ユーザー名\\OneDrive\\_fein\\google cloud\\fein-sites-dev1 && set FLASK_APP=main.py && set
@@ -1671,7 +1671,7 @@ FLASK_ENV=development && set FLASK_DEBUG=1 && flask run\""
    argsの内容は次の通りです。</p>
 
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 [
 "/C",
 "timeout /T 5 & start msedge \"http://127.0.0.1:5000/\""
@@ -1729,7 +1729,7 @@ FLASK_ENV=development && set FLASK_DEBUG=1 && flask run\""
   </p>
 
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 {
 "echo": false,
 "reveal": "never",
@@ -1760,7 +1760,7 @@ FLASK_ENV=development && set FLASK_DEBUG=1 && flask run\""
   <p>もしくは、次のように run_flask.bat みたいな名前のbatファイルを作ってもいいでしょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 @echo off
 cd "C:\Users\ユーザー名\OneDrive\_fein\google cloud\fein-sites-dev1"
 set FLASK_APP=main.py

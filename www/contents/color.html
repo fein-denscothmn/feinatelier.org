@@ -171,7 +171,7 @@
    やってて楽しくない<strong>業務</strong>は、可能な限りパソコンにやらせるのが鉄則でしょ。</p>
   <p class="codegra" id="105trimming_py">左側のみ105ピクセル分トリミングする105trimming.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from PIL import Image
 
@@ -202,7 +202,7 @@ trim_images(directory_path)
    ここらへんは学生時代に使っていたものをそのまま流用しています。</p>
   <p class="codegra" id="file_list_py">画像のファイル名をまとめて確保するfile_list.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 
 def list_files_in_directory(directory, output_file):
@@ -225,7 +225,7 @@ print(f"ファイルリストが{output_file}に出力されました")
 
   <p class="codegra" id="image_aspect_compression_middle50_py">画像のサイズをまとめて縮小するimage_aspect_compression_middle50.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from PIL import Image
 import os
 
@@ -306,7 +306,7 @@ print("すべての画像がリサイズされました。")
 
   <p class="codegra" id="color_js">Webセーフカラーを作るcolor.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const colors = [
  '00', '33', '66', '99', 'CC', 'FF'
 ];
@@ -344,7 +344,7 @@ colors.forEach(r => {
 
   <p class="gra">1. 色の定義</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const colors = ['00', '33', '66', '99', 'CC', 'FF'];
 
 </code></pre>
@@ -353,7 +353,7 @@ const colors = ['00', '33', '66', '99', 'CC', 'FF'];
 
   <p class="gra">2. パレットの取得</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const palette = document.getElementById('palette');
 
 </code></pre>
@@ -363,7 +363,7 @@ const palette = document.getElementById('palette');
 
   <p class="gra">3. 色の組み合わせを生成</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 colors.forEach(r => {
     colors.forEach(g => {
         colors.forEach(b => {
@@ -378,7 +378,7 @@ colors.forEach(r => {
 
   <p class="gra">4. 色のボックスを作成</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const colorBox = document.createElement('div');
 colorBox.className = 'color-box';
 colorBox.style.backgroundColor = color;
@@ -391,7 +391,7 @@ colorBox.style.backgroundColor = color;
 
   <p class="gra">5. 色コードの表示</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const colorCode = document.createElement('div');
 colorCode.className = 'color-code';
 colorCode.textContent = color;
@@ -404,7 +404,7 @@ colorCode.textContent = color;
 
   <p class="gra">6. 色ボックスに色コードを追加</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 colorBox.appendChild(colorCode);
    palette.appendChild(colorBox);
 
@@ -415,7 +415,7 @@ colorBox.appendChild(colorCode);
 
   <p class="gra">7. クリックイベントの追加</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 colorBox.addEventListener('click', () => {
     navigator.clipboard.writeText(color).then(() => {
         alert(`Color code copied.: ${color}`);
@@ -432,7 +432,7 @@ colorBox.addEventListener('click', () => {
 
   <p class="codegra" id="color_css">Webセーフカラーを作るcolor.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 @charset "UTF-8"; /* ファイルの文字コードをUTF-8に指定 */
 
 /* 色のボックスのスタイル設定 */
@@ -484,7 +484,7 @@ colorBox.addEventListener('click', () => {
   <p class="gra">「定義リスト」（Description List）タグ</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;dl&gt;
   &lt;dt&gt;用語1&lt;/dt&gt;
     &lt;dd&gt;定義1の内容&lt;/dd&gt;
@@ -505,7 +505,7 @@ colorBox.addEventListener('click', () => {
 
   <p class="gra">sectionタグを使った基本的なコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;section&gt;
  &lt;h2&gt;会社情報&lt;/h2&gt;
  &lt;p&gt;私たちは1980年に設立され...&lt;/p&gt;
@@ -530,7 +530,7 @@ colorBox.addEventListener('click', () => {
 
   <p class="gra">sectionタグにクラスを振ったコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;section class=&quot;about-us&quot;&gt;
  &lt;h2&gt;会社情報&lt;/h2&gt;
  &lt;p&gt;私たちは1980年に設立され...&lt;/p&gt;
@@ -549,7 +549,7 @@ colorBox.addEventListener('click', () => {
    つまらない作業はぜーんぶパソコンにやらせて、人間は「より楽しめるための判断」だけをすることを目指すのです。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 dir /b C:\example &gt; D:\output\filelist.txt
 
 </code></pre>
@@ -599,7 +599,7 @@ dir /b C:\example &gt; D:\output\filelist.txt
    フォルダの階層構造を一目で把握できるので、全体のレイアウトを理解するのに役立ちます。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 tree C:\Users\YourName\Documents /F > C:\Users\YourName\Output\directory_structure.txt
 
 </code></pre>
@@ -611,7 +611,7 @@ tree C:\Users\YourName\Documents /F > C:\Users\YourName\Output\directory_structu
    用途に応じて使い分けると良いですね。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 dir C:\Users\YourName\Documents > C:\Users\YourName\Output\directory_contents.txt
 
 </code></pre>

@@ -179,7 +179,7 @@
 
   <p class="gra">Pillowをインストール</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 pip install Pillow
             </code></pre>
   </div>
@@ -195,7 +195,7 @@ pip install Pillow
 
   <p class="codegra" id="image_size_py">複数画像の大きさをまとめて調査するimage_size.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os  # OSモジュールをインポートして、ファイルやディレクトリの操作を行います
 from PIL import Image  # PIL（Python Imaging Library）からImageクラスをインポートして、画像を操作します
 
@@ -291,7 +291,7 @@ if __name__ == "__main__":
   <p class="codegra" id="flower_resize_py">複数画像のファイルサイズをまとめて変更するflower_resize.py</p>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os  # ファイルやディレクトリの操作を行うための標準ライブラリ
 from PIL import Image  # 画像を開いたり、保存したりするためのライブラリ
 
@@ -377,7 +377,7 @@ print("画像の処理が完了しました。")  # 処理完了のメッセー�
   <p>ちなみにこんなに長いファイル名にするのはお勧めしないです😅<br>
    運用面で混乱しないことを最優先にしているから、こうなるってだけですよ。</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 # PIL (Python Imaging Library) の Image モジュールと os モジュールをインポート
 from PIL import Image
 import os
@@ -421,7 +421,7 @@ print("すべての画像がリサイズされました。")
   <p class="codegra" id="image_aspect_compression_middle50_py2">複数画像をまとめて50%小さくするimage_aspect_compression_middle50.py
   </p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from PIL import Image
 import os
 
@@ -462,7 +462,7 @@ print("すべての画像がリサイズされました。")
 
   <h5>１．ライブラリのインポート</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from PIL import Image
 import os
                 </code></pre>
@@ -473,7 +473,7 @@ import os
   <h5>２．画像ファイルのパスをリストとして定義</h5>
 
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 image_paths = [
     r"C:\Users\red.png",
     r"C:\Users\blue.png",
@@ -486,7 +486,7 @@ image_paths = [
 
   <h5>３．画像をリサイズする関数を定義</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 def resize_image(image_path, scale=0.5):
     with Image.open(image_path) as img:
         width, height = img.size
@@ -504,7 +504,7 @@ def resize_image(image_path, scale=0.5):
 
   <h5>４．各画像ファイルに対してリサイズ関数を実行</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 for image_path in image_paths:
     resize_image(image_path)
                     </code></pre>
@@ -513,7 +513,7 @@ for image_path in image_paths:
 
   <h5>５．完了メッセージを表示</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 print("すべての画像がリサイズされました。")
                 </code></pre>
   </div>
@@ -543,7 +543,7 @@ print("すべての画像がリサイズされました。")
 
   <p class="codegra" id="image_add_py">複数の画像が並ぶWebページを作成するimage_add.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 # 'filelist.txt' というファイルを読み込み、UTF-8 エンコーディングで開く
 with open('filelist.txt', 'r', encoding='utf-8') as file:
     # ファイルの各行を読み込み、改行を削除してリストに格納
@@ -584,7 +584,7 @@ print("HTMLコードを生成しました。")
 
   <h5>１．ファイルを読み込む</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 with open('filelist.txt', 'r', encoding='utf-8') as file:
 filenames = [line.strip() for line in file.readlines()]
             </code></pre>
@@ -595,7 +595,7 @@ filenames = [line.strip() for line in file.readlines()]
 
   <h5>２．HTMLテンプレートを定義する</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 html_template = """
 &lt;div class=&quot;content&quot;&gt;
 &lt;img src=&quot;icon/{0}&quot; alt=&quot;{1}&quot; class=&quot;graphicmini right-image fade-in-out&quot;&gt;
@@ -610,7 +610,7 @@ html_template = """
 
   <h5>３．HTMLコードを生成する</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 html_output = ""
 for filename in filenames:
     name, _ = filename.rsplit('.', 1)
@@ -629,7 +629,7 @@ for filename in filenames:
 
   <h5>４．生成したHTMLコードを書き込む</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 with open('output.html', 'w', encoding='utf-8') as output_file:
 output_file.write(html_output)
             </code></pre>
@@ -639,7 +639,7 @@ output_file.write(html_output)
 
   <h5>５．メッセージを表示する</h5>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 print("HTMLコードを生成しました。")
             </code></pre>
   </div>
@@ -655,7 +655,7 @@ print("HTMLコードを生成しました。")
 
   <p class="codegra" id="photo_sum_py">画像同士を結合するphoto_sum.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 from PIL import Image
 
 image1 = Image.open(r'C:\Users\ユーザー名\Downloads\photos001\カルナジェネシスの影勝利.jpg')

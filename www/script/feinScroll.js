@@ -19,3 +19,59 @@ function scrollToTop() {
   }
  }, 15);
 }
+
+// ★タイピングエフェクト
+document.addEventListener("DOMContentLoaded", function () {
+ const codeBlocks = document.querySelectorAll("code.feintyping");
+
+ const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+   if (entry.isIntersecting) {
+    const codeEl = entry.target;
+    if (codeEl.dataset.typed) return; // 二重実行防止
+    codeEl.dataset.typed = "true";
+
+    const text = codeEl.textContent.trim();
+    codeEl.textContent = ""; // 一旦空にしてからタイプ開始
+
+    // カーソル用の span を追加
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    codeEl.appendChild(cursor);
+
+    // 1秒遅延してからタイプ開始
+    setTimeout(() => {
+     let i = 0;
+     function typeChar() {
+      if (i < text.length) {
+       // カーソルの前に文字を挿入
+       cursor.insertAdjacentText("beforebegin", text[i]);
+       i++;
+
+       // 基本のランダム打鍵速度を倍速に
+       let delay = 15 + Math.random() * 60;
+
+       // 改行後は少し長めに待つ
+       if (text[i - 1] === "\n") {
+        delay += 200;
+       }
+
+       // 時々「考えている間」のように止まる
+       if (Math.random() < 0.02) {
+        delay += 400;
+       }
+
+       setTimeout(typeChar, delay);
+      } else {
+       cursor.remove(); // タイピング終了後カーソル削除
+       Prism.highlightElement(codeEl); // ハイライト適用
+      }
+     }
+     typeChar();
+    }, 1000); // 1秒待ってから開始
+   }
+  });
+ }, { threshold: 0.3 }); // 30%見えたら発火
+
+ codeBlocks.forEach((block) => observer.observe(block));
+});

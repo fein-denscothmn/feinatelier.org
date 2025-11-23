@@ -206,7 +206,7 @@
    柔軟な仕様変更にも対応できるよう、初めから仕込んでおくのがお勧めです。
   </p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;!--JavaScript--&gt;
     &lt;script src=&quot;script/feinfade.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;script/collapsible.js&quot;&gt;&lt;/script&gt;
@@ -291,7 +291,7 @@
 
   <p class="codegra" id="fadeanimation_style">フェードインとフェードアウトの画像アニメーションstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 img.fade-in-out {
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -331,7 +331,7 @@ img.fade-in-out.visible {
 
   <p class="codegra" id="feinfade_js">画像のフェードイン＋アウトのアニメーションを作るfeinfade.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img.fade-in-out');
     const checkVisibility = () => {
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
    つまり、DOMContentLoadedイベントが発生したときに実行される関数を指定しているということです。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', function() { ... });
         </code></pre>
   </div>
@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() { ... });
    例えば、画像の上端が100ピクセルの位置にあり、画像の高さが200ピクセルの場合、画像の中心位置は次のように計算されます。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const imageCenter = 100 + 200 / 2; // 100 + 100 = 200
         </code></pre>
   </div>
@@ -471,7 +471,7 @@ const imageCenter = 100 + 200 / 2; // 100 + 100 = 200
 
   <p class="codegra" id="collapsible_css">折り畳みエリアを作るcollapsible.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .collapsible {
   background-color: #f1f1f1;
   color: #444;
@@ -578,7 +578,7 @@ const imageCenter = 100 + 200 / 2; // 100 + 100 = 200
    ループ攻略ですね！</p>
   <p class="codegra" id="collapsible_js">折り畳みエリアを作るcollapsible.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function() {
     var coll = document.getElementsByClassName("collapsible");
     for (var i = 0; i &lt; coll.length; i++) {
@@ -669,7 +669,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   <p class="codegra" id="imagescroll_feinScroll_js">ヘッダーのロゴ画像をスクロールするfeinScroll.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function() {
     const headerImage = document.querySelector('.header-image'); // ヘッダー画像の要素を取得
 
@@ -689,7 +689,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <p><strong>1. イベントリスナーの設定</strong><br>
    Webページのコンテンツが完全に読み込まれたときに実行される関数を設定しています。</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
    document.addEventListener("DOMContentLoaded", function () {
 
 </code></pre>
@@ -698,7 +698,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <p><strong>2. 対象要素の取得</strong><br>
    クラス名が.header-imageの要素を取得し、headerImage変数に格納しています。</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
    const headerImage = document.querySelector('.header-image');
 
 </code></pre>
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function() {
    画像の不透明度（opacity）を0に設定し、初期位置を右方向に100%ずらしています。<br>
    つまり、画像は最初は表示されません。</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
    headerImage.style.opacity = 0;
    headerImage.style.transform = 'translateX(100%)';
 
@@ -723,7 +723,7 @@ document.addEventListener("DOMContentLoaded", function() {
    学生時代の私に聞きに行きたいですね（笑）</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
    setTimeout(() => {
        headerImage.style.opacity = 1;
        headerImage.style.transform = 'translateX(0)';

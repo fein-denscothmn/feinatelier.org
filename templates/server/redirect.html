@@ -197,7 +197,7 @@
    私の場合、Google App Engineにデプロイされていて、動的Webサイト（Flask使用）と静的Webサイトが混在しているのが特徴となっています。</p>
 
   <div class="code-container">
-   <pre><code class="language-txt">
+   <pre><code class="feintyping language-txt">
 FEIN-SITES-DEV1
 │  app.yaml           # メインサービスの App Engine 設定ファイル（ランタイム・ルート定義など）
 │  dispatch.yaml      # サービス間のルーティング規則を定義するファイル
@@ -286,7 +286,7 @@ FEIN-SITES-DEV1
 
   <p class="codegra" id="redirect_python">リダイレクト設定を行うredirect.py</p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, request, redirect
 
@@ -318,7 +318,7 @@ if __name__ == '__main__':
 
   <p><strong>ライブラリの読み込み</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 import os
 from flask import Flask, request, redirect
 
@@ -344,7 +344,7 @@ from flask import Flask, request, redirect
 
   <p><strong>Flaskアプリの初期化</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 app = Flask(__name__)
 
 </code></pre>
@@ -358,7 +358,7 @@ app = Flask(__name__)
 
   <p><strong>リダイレクトのルート設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 @app.route('/', defaults={'path': ''})
 @app.route('/&lt;path:path&gt;')
  def redirect_all(path):
@@ -378,7 +378,7 @@ app = Flask(__name__)
 
   <p><strong>関数の中身</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 new_url = request.url.replace(request.host, 'feinatelier.org', 1)
 return redirect(new_url, code=301)
 
@@ -401,7 +401,7 @@ return redirect(new_url, code=301)
 
   <p><strong>アプリの起動</strong></p>
   <div class="code-container">
-   <pre><code class="language-python">
+   <pre><code class="feintyping language-python">
 if __name__ == '__main__':
 port = int(os.environ.get('PORT', 8080))
 debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
@@ -459,7 +459,7 @@ app.run(host='0.0.0.0', port=port, debug=debug_mode)
 
   <p class="codegra" id="redirect_dispatch">リダイレクト設定を行うdispatch.yaml</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 dispatch:
   - url: "fein-sites-dev1.ew.r.appspot.com/*"
     service: redirect-service
@@ -510,7 +510,7 @@ dispatch:
 
   <p class="codegra" id="redirect_requirements">リダイレクト設定に使うrequirements.txt</p>
   <div class="code-container">
-   <pre><code class="language-txt">
+   <pre><code class="feintyping language-txt">
 Flask==2.3.2
 gunicorn==20.1.0
 
@@ -574,7 +574,7 @@ gunicorn==20.1.0
 
   <p class="codegra" id="redirect_app">リダイレクト設定を行うapp.yaml</p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 service: redirect-service
 
@@ -609,7 +609,7 @@ entrypoint: gunicorn -b :$PORT redirect:app
 
   <p><strong>1. ランタイムとサービス名の設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 runtime: python312
 service: redirect-service
 
@@ -629,7 +629,7 @@ service: redirect-service
 
   <p><strong>2. インスタンスの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 instance_class: F1
 env: standard
 
@@ -646,7 +646,7 @@ env: standard
 
   <p><strong>3. 自動スケーリングの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 automatic_scaling:
 min_idle_instances: 0
 max_idle_instances: 2
@@ -668,7 +668,7 @@ max_concurrent_requests: 200
 
   <p><strong>4. ハンドラー（リクエストのルール）</strong></p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 handlers:
 - url: /(.*)
 script: auto
@@ -687,7 +687,7 @@ script: auto
 
   <p><strong>5. 実行エントリポイントの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-yaml">
+   <pre><code class="feintyping language-yaml">
 entrypoint: gunicorn -b :$PORT redirect:app
 
 </code></pre>
@@ -757,7 +757,7 @@ entrypoint: gunicorn -b :$PORT redirect:app
   <p>さて、ここまで書けたら、App Engineへのデプロイしましょう。</p>
   <p>リダイレクト専用サービスのフォルダ redirect-service へ移動してデプロイしてください。</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ gcloud app deploy app.yaml
 
 </code></pre>
@@ -765,7 +765,7 @@ $ gcloud app deploy app.yaml
 
   <p>次はプロジェクトのルートへ移動してから、そこに配置した dispatch.yaml をデプロイします。</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ gcloud app deploy dispatch.yaml
 
 </code></pre>
@@ -810,7 +810,7 @@ $ gcloud app deploy dispatch.yaml
    デプロイ後は、ログなどでリダイレクトが正しく実施されているかを自分で確認しましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ gcloud app services list
 
 SERVICE NUM_VERSIONS
@@ -842,7 +842,7 @@ redirect-service 1
    例えば、以下のコマンドでリアルタイムのログを確認できます。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ gcloud app logs tail -s redirect-service
 
 </code></pre>
@@ -858,7 +858,7 @@ $ gcloud app logs tail -s redirect-service
    ここで、あるURL https://example.com のヘッダー情報を取得してみましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ curl -I https://example.com
 
 </code></pre>
@@ -867,7 +867,7 @@ $ curl -I https://example.com
    これを独自ドメインのリダイレクト設定チェックに使うなら、次のようにターミナルやコマンドプロンプトから以下のコマンドを実行します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 $ curl -I https://fein-sites-dev1.ew.r.appspot.com/
 
 HTTP/1.1 301 Moved Permanently

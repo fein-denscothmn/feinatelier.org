@@ -281,7 +281,7 @@
   </ol>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 node -v
 npm -v
 
@@ -338,7 +338,7 @@ npm -v
 
   <p>引き続き、コマンドプロンプトでの作業です。</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 mkdir fein_launcher
 cd fein_launcher
 
@@ -357,7 +357,7 @@ cd fein_launcher
 
   <p><strong>npmプロジェクトの初期化</strong></p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm init -y
 
 </code></pre>
@@ -404,7 +404,7 @@ npm init -y
   <p>久しぶりにやったんだけど、やけに時間がかかりましたねー。<br>
    実際にチャレンジされる方は、このコマンドを入れてからお風呂に入ると良いかも？</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm install electron --save-dev
 
 </code></pre>
@@ -493,7 +493,7 @@ npm install electron --save-dev
    少し余計な記述もあるんだけど、これは私が後日ランチャーを拡張したくなったときのために書いてあるだけです。</p>
   <p class="codegra" id="launcher_indexhtml">ユーザーインターフェースを定義するindex.html</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="ja"&gt;
 &lt;head&gt;
@@ -559,7 +559,7 @@ npm install electron --save-dev
 
   <p class="codegra" id="launcher_renderer">ユーザーの操作や表示を制御するrenderer.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const { exec } = require('child_process');
 
 function openVSCode() {
@@ -650,7 +650,7 @@ document.querySelectorAll('#menu-content > ul > li').forEach((item) => {
 
   <p><strong>1. モジュールのインポート</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const { exec } = require('child_process');
 
 </code></pre>
@@ -679,7 +679,7 @@ const { exec } = require('child_process');
 
   <p><strong>Ⅰ. 関数の定義</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function openVSCode() {
 
 </code></pre>
@@ -689,7 +689,7 @@ function openVSCode() {
 
   <p><strong>Ⅱ. exec関数の呼び出し</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 exec('"C:\\Users\\ユーザー名\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"', (error, stdout, stderr) => {
 
 </code></pre>
@@ -714,7 +714,7 @@ exec('"C:\\Users\\ユーザー名\\AppData\\Local\\Programs\\Microsoft VS Code\\
 
   <p><strong>Ⅳ. エラーチェック</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (error) {
   console.error(`Error opening VS Code: ${error.message}`);
   return;
@@ -726,7 +726,7 @@ if (error) {
 
   <p><strong></strong>Ⅴ. 標準出力のログ出力</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 console.log(`VS Code output: ${stdout}`);
 
 </code></pre>
@@ -737,7 +737,7 @@ console.log(`VS Code output: ${stdout}`);
 
   <p><strong>3. Edgeを開く関数</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function openEdge() {
   exec('"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"', (error, stdout, stderr) => {
     if (error) {
@@ -756,7 +756,7 @@ function openEdge() {
 
   <p><strong>4. ファイルを開く関数</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function openFile(filePath) {
   const command = `start "" "${filePath}"`;
   exec(command, (error, stdout, stderr) => {
@@ -776,7 +776,7 @@ function openFile(filePath) {
 
   <p><strong>5. fein's appを新しいタブで開く関数</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function openFeinsApp() {
   window.open('https://feinatelier.org/', '_blank');
 }
@@ -787,7 +787,7 @@ function openFeinsApp() {
 
   <p><strong>6. fein's PortalをEdgeで開く関数</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function openFeinsPortal() {
   const command = '"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" https://portal.feinatelier.org/';
   exec(command, (error, stdout, stderr) => {
@@ -816,7 +816,7 @@ function openFeinsPortal() {
 
   <p><strong>Ⅰ. HTML要素の取得</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const startButton = document.getElementById('start-button');
 const menuContent = document.getElementById('menu-content');
 
@@ -828,7 +828,7 @@ const menuContent = document.getElementById('menu-content');
 
   <p><strong>Ⅱ. ボタンの位置の設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 startButton.style.position = 'fixed';
 startButton.style.right = '10px';
 startButton.style.top = '10px';
@@ -840,7 +840,7 @@ startButton.style.top = '10px';
 
   <p><strong>Ⅲ. ボタンのクリックイベントの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 startButton.addEventListener('click', () => {
   if (menuContent.classList.contains('hidden')) {
     menuContent.classList.remove('hidden');
@@ -863,7 +863,7 @@ startButton.addEventListener('click', () => {
 
   <p><strong>Ⅳ. サブメニューのクリックイベントの設定</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.querySelectorAll('#menu-content > ul > li').forEach((item) => {
   const subMenu = item.querySelector('ul');
   if (subMenu) {
@@ -899,7 +899,7 @@ document.querySelectorAll('#menu-content > ul > li').forEach((item) => {
    でもWindows11のスタートボタンもアニメーションはほとんど付いていないし、悩ましいところです。</p>
   <p class="codegra" id="launcher_style">ランチャーソフトの見た目を設定するstyle.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* 全体の幅と高さを100%に設定し、余白とオーバーフローをリセット */
 body,
 html {
@@ -1010,7 +1010,7 @@ a:hover {
   <p>このコードはElectronを使用してシンプルなデスクトップアプリケーションを作成し、そのウィンドウの動作を制御します。</p>
   <p class="codegra" id="launcher_main">エレクトロンアプリ全体の動作を制御するmain.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
@@ -1063,7 +1063,7 @@ app.whenReady().then(() => {
 
   <p><strong>Ⅰ. モジュールのインポート</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
@@ -1080,7 +1080,7 @@ const path = require('path');
 
   <p><strong>Ⅱ. ウィンドウを作成する関数の定義</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function createWindow() {
     const { screen } = require('electron');
     const display = screen.getPrimaryDisplay();
@@ -1127,7 +1127,7 @@ function createWindow() {
 
   <p><strong>Ⅲ. 全てのウィンドウが閉じられたときの処理</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 app.on('window-all-closed', () => {
     app.quit();
 });
@@ -1138,7 +1138,7 @@ app.on('window-all-closed', () => {
 
   <p><strong>Ⅳ. アプリケーションの準備ができたときの処理</strong></p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 app.whenReady().then(() => {
     createWindow();
 
@@ -1230,7 +1230,7 @@ app.whenReady().then(() => {
    次のコードをご覧ください。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 webPreferences: {
  preload: path.join(__dirname, 'preload.js'),
  nodeIntegration: true, // ここでノード統合を有効にしている
@@ -1261,7 +1261,7 @@ webPreferences: {
    そうすればセキュリティを利かせつつ、このページで掲載している renderer.js も動作します。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const { contextBridge, ipcRenderer } = require('electron');
 const { exec } = require('child_process');
 
@@ -1293,7 +1293,7 @@ contextBridge.exposeInMainWorld('api', {
    このpackage.jsonも重要なコードであり、ちゃんと書かないとソフトウェアとしてまともに機能しません。</p>
   <p class="codegra" id="launcher_package">プロジェクトの設定情報を管理するpackage.json</p>
   <div class="code-container">
-   <pre><code class="language-json">
+   <pre><code class="feintyping language-json">
 {
  "name": "fein_launcher",
  "version": "1.0.0",
@@ -1398,7 +1398,7 @@ contextBridge.exposeInMainWorld('api', {
    開発を進めるには、上記のファイルにソースコードを記載しつつ、機能を追加していきます。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm start
 
 </code></pre>
@@ -1469,7 +1469,7 @@ npm start
    ターミナルで、プロジェクトのルートディレクトリに移動し、次のコマンドを実行します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm install electron-packager --save-dev
 
 </code></pre>
@@ -1482,7 +1482,7 @@ npm install electron-packager --save-dev
    package.jsonに記述したコマンドは npm scripts として登録されているので、次のように簡単に実行できます。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm run &lt;script名&gt;
 
 </code></pre>
@@ -1491,7 +1491,7 @@ npm run &lt;script名&gt;
   <p>例えば、Windows版をビルドする場合は、次のコマンドです。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm run package-win
 
 </code></pre>
@@ -1520,7 +1520,7 @@ npm run package-win
   <p>同様に、Linux版、Mac版をビルドする場合は、それぞれ次のコマンドを実行します。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 npm run package-linux
 npm run package-mac
 
@@ -1532,7 +1532,7 @@ npm run package-mac
    私はやらないんだけどねー。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 "build": "npm run package-win && npm run package-linux && npm run package-mac"
 
 </code></pre>
@@ -1586,7 +1586,7 @@ npm run package-mac
   <p>例えば、Windows向け実行ファイルの生成は次のようにコマンドします。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 electron-packager . myapp --platform=win32 --arch=x64 --out=dist
 
 </code></pre>

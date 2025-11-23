@@ -315,7 +315,7 @@
   <p class="codegra">fengari-web.jsを組み込むhtmlコード</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;script src=&quot;/script/fengari-web.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 
 </code></pre>
@@ -450,7 +450,7 @@
   <p class="codegra">HTMLにLuaを書く：プルダウンメニュー１</p>
 
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;scoth-dropdown&quot;&gt;
    &lt;button onclick=&quot;toggleDropdown(&#39;menu1&#39;)&quot;&gt;WFSゲームの公式サイトリスト&lt;/button&gt;
    &lt;div class=&quot;scoth-dropdown-content&quot; id=&quot;menu1&quot;&gt;&lt;/div&gt;
@@ -568,7 +568,7 @@
    ひとまずLuaの部分だけ書いてみましょう。</p>
 
   <div class="code-container">
-   <pre><code class="language-lua">
+   <pre><code class="feintyping language-lua">
 const luaCode1 = `
     local items = {
         {name = &quot;アナザーエデン&quot;, link = &quot;https://another-eden.jp/&quot;},
@@ -618,7 +618,7 @@ const luaCode1 = `
   <p>上記のLuaコードの後、JavaScriptの部分でこのLuaコードを実行し、生成されたHTMLをドロップダウンメニューに挿入する形としました。</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 const L1 = fengari.load(luaCode1);
 const result1 = L1();
 
@@ -638,7 +638,7 @@ document.getElementById('menu1').innerHTML = result1;
    全部Luaで制御することもできると思うんだけど、ちょっと今の私には厳しい…</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
  const L1 = fengari.load(luaCode1);
  const result1 = L1();
 
@@ -775,7 +775,7 @@ document.getElementById('menu1').innerHTML = result1;
 
   <p class="gra">イベントリスナーの例：html</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;button id=&quot;myButton&quot;&gt;クリックしてね！&lt;/button&gt;
 
 </code></pre>
@@ -783,7 +783,7 @@ document.getElementById('menu1').innerHTML = result1;
 
   <p class="gra">イベントリスナーの例：JavaScript</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 // ボタン要素を取得
 var button = document.getElementById("myButton");
 
@@ -854,7 +854,7 @@ alert("ボタンがクリックされました！");
 
   <p class="codegra" id="lua_css">Luaによるプルダウンメニューをサポートするlus.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* lua.css */
 /* ドロップダウンメニューのスタイルを定義 */
 .scoth-dropdown {
@@ -1001,7 +1001,7 @@ alert("ボタンがクリックされました！");
 
   <p class="codegra">HTMLにLuaを書く：プルダウンメニュー２</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;scoth-dropdown&quot;&gt;
    &lt;button onclick=&quot;toggleDropdown('menu2')&quot;&gt;フロントエンド技術とLuaの公式サイトリスト&lt;/button&gt;
    &lt;div class=&quot;scoth-dropdown-content&quot; id=&quot;menu2&quot;&gt;&lt;/div&gt;

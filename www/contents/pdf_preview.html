@@ -201,7 +201,7 @@
 
    <p class="gra">デフォルトでPDFをプレビュー表示するhtml</p>
    <div class="code-container">
-    <pre><code class="language-html">
+    <pre><code class="feintyping language-html">
 &lt;!--head内部のCSS--&gt;
     &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/pdf.css&quot;&gt;
 &lt;!--head内部のJavaScript--&gt;
@@ -304,7 +304,7 @@
 
    <p class="codegra" id="pdf_css">デフォルトでPDFをプレビュー表示するpdf.css</p>
    <div class="code-container">
-    <pre><code class="language-css">
+    <pre><code class="feintyping language-css">
 @charset "UTF-8";
 
 .feinpdf-container {
@@ -466,7 +466,7 @@
     思い切ってコメントアウトのみにしてみましょうか！</p>
    <p class="codegra" id="pdf_js">デフォルトでPDFをプレビュー表示するpdf.js</p>
    <div class="code-container">
-    <pre><code class="language-javascript">
+    <pre><code class="feintyping language-javascript">
 // HTMLからPDFファイルのURLを取得
 const container = document.querySelector('.feinpdf-container');
 const url = container.getAttribute('data-url'); // HTMLコードで指定したPDFファイルのURLを取得
@@ -592,7 +592,7 @@ document.getElementById('next-page').addEventListener('click', () => {
 
    <p class="codegra" id="addpdf_css">複数のPDFがある場合のaddpdf.css</p>
    <div class="code-container">
-    <pre><code class="language-css">
+    <pre><code class="feintyping language-css">
 @charset "UTF-8";
 
 .addpdfhidden {
@@ -719,7 +719,7 @@ document.getElementById('next-page').addEventListener('click', () => {
 
    <p class="codegra" id="addpdf_js">複数のPDFがある場合のaddpdf.js</p>
    <div class="code-container">
-    <pre><code class="language-javascript">
+    <pre><code class="feintyping language-javascript">
 const pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js'; /* PDF.jsのワーカーのURLを設定します。 */
 
@@ -830,7 +830,7 @@ function loadPDF(url, container, viewer, prevButton, nextButton, pageNumElement,
    <h5>PDF.jsの設定</h5>
    <p class="gra">ライブラリを読み込むJavaScript</p>
    <div class="code-container">
-    <pre><code class="language-javascript">
+    <pre><code class="feintyping language-javascript">
 const pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
     </code></pre>
@@ -840,7 +840,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs
    <h5>リンクのクリックイベント設定</h5>
    <p class="gra">クリックイベントを設定するJavaScript</p>
    <div class="code-container">
-    <pre><code class="language-javascript">
+    <pre><code class="feintyping language-javascript">
 document.querySelectorAll('.pdf-link-add').forEach((link, index) => {
     let isOpen = false;
     link.addEventListener('click', function () {
@@ -878,7 +878,7 @@ document.querySelectorAll('.pdf-link-add').forEach((link, index) => {
 
    <p class="gra">PDFを表示するJavaScript</p>
    <div class="code-container">
-    <pre><code class="language-javascript">
+    <pre><code class="feintyping language-javascript">
 function loadPDF(url, container, viewer, prevButton, nextButton, pageNumElement, pageCountElement) {
     const canvas = document.createElement('canvas');
     viewer.innerHTML = '';

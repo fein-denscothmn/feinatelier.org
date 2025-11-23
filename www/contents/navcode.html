@@ -189,7 +189,7 @@
 
   <p class="codegra" id="fainpan_html">パンくずリストを作るhtmlコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div&gt;
    &lt;ol class=&quot;breadcrumb&quot;&gt;
     &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;/&quot;&gt;Home（グラスタの場所一覧表〜入手範囲別〜）&lt;/a&gt;&lt;/li&gt;
@@ -238,7 +238,7 @@
   <h3>パンくずリストを作るCSS</h3>
   <p class="codegra" id="fainpan_css">パンくずリストを作るfainpan.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* パンくずリスト全体のスタイル */
 .breadcrumb {
     display: flex; /* フレックスボックスで横並びに配置 */
@@ -294,7 +294,7 @@
   </div>
 
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .breadcrumb {
 display: flex; /* フレックスボックスで横並びに配置 */
 list-style: none; /* リストのスタイルをなしにする */
@@ -316,7 +316,7 @@ font-size: 0.7em;
    検索システムなんてそうそう簡単に作れるもんじゃないし、作ったら作ったで面倒な要望案件の原因になります。</p>
   <p class="codegra" id="fainpangoogle_css">検索ボックスを整えるfainpan.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* 検索コンテナのスタイル */
 .search-container {
     width: 50%; /* 横幅を50%に設定 */
@@ -357,7 +357,7 @@ input.gsc-search-button {
 
   <p class="codegra" id="feinheadline_html">アコーディオン型の見出しを差し込むhtmlコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;button id=&quot;generate-headings&quot; data-open-text=&quot;ナビゲーションメニューをCSS・JavaScriptで用意するの目次を開く ▼&quot;
    data-close-text=&quot;ナビゲーションメニューをCSS・JavaScriptで用意するの目次を閉じる ▲&quot;&gt;ナビゲーションメニューをCSS・JavaScriptで用意するの目次を開く
    ▼&lt;/button&gt;
@@ -400,7 +400,7 @@ input.gsc-search-button {
    閲覧者の動きがよりスムーズになるよう、工夫する必要があります。</p>
   <p class="codegra" id="feinheadline_css">アコーディオン型の見出しを作るfeinheadline.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 @charset "UTF-8";
 
 /* 目次アイテムの基本スタイル */
@@ -540,7 +540,7 @@ input.gsc-search-button {
 
   <p class="codegra" id="feinheadline1_js">アコーディオン型の見出しを作るfeinheadline1.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function () {
  let headingsGenerated = false;
  document.getElementById("generate-headings").addEventListener("click", function () {
@@ -662,7 +662,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <h5>1. DOMの読み込み完了を待つ</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function () {
     </code></pre>
   </div>
@@ -672,7 +672,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <h5>2. 状態の初期化</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 let headingsGenerated = false;
     </code></pre>
   </div>
@@ -682,7 +682,7 @@ let headingsGenerated = false;
 
   <h5>3. ボタンのクリックイベントを追加</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.getElementById("generate-headings").addEventListener("click", function () {
     </code></pre>
   </div>
@@ -694,7 +694,7 @@ document.getElementById("generate-headings").addEventListener("click", function 
 
   <h5>4. 目次コンテナの取得</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 let tocContainer = document.getElementById("toc-container");
 let button = document.getElementById("generate-headings");
     </code></pre>
@@ -706,7 +706,7 @@ let button = document.getElementById("generate-headings");
 
   <h5>5. 目次コンテナが既に存在するか確認</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (!headingsGenerated) {
     if (!tocContainer) {
         tocContainer = document.createElement("div");
@@ -724,7 +724,7 @@ if (!headingsGenerated) {
 
   <h5>6. 全ての見出し要素（h1〜h6）を取得</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 let headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
     </code></pre>
   </div>
@@ -737,7 +737,7 @@ let headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
   <h5>7. 各見出し要素に対して目次アイテムを作成</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 headings.forEach((heading, index) => {
     let id = `heading-${index + 1}`;
     heading.id = id;
@@ -751,7 +751,7 @@ headings.forEach((heading, index) => {
 
   <h5>8. 見出しのタグに応じて目次アイテムにクラスを追加</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 switch (heading.tagName.toLowerCase()) {
     case "h1":
         tocItem.classList.add("toc-item-h1");
@@ -779,7 +779,7 @@ switch (heading.tagName.toLowerCase()) {
 
   <h5>9. リンクを作成して目次アイテムに追加</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 let link = document.createElement("a");
 link.href = `#${id}`;
 link.textContent = heading.textContent;
@@ -792,7 +792,7 @@ tocContainer.appendChild(tocItem);
 
   <h5>10. 目次コンテナをボタンの後に挿入</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.getElementById("generate-headings").insertAdjacentElement('afterend', tocContainer);
 headingsGenerated = true;
     </code></pre>
@@ -809,7 +809,7 @@ headingsGenerated = true;
 
   <h5>11. 目次コンテナの表示状態をチェック</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (tocContainer.classList.contains("show")) {
     tocContainer.style.height = "0";
     button.textContent = button.getAttribute("data-open-text");
@@ -825,7 +825,7 @@ if (tocContainer.classList.contains("show")) {
 
   <h5>12. トグルで目次コンテナの表示/非表示を切り替え</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 setTimeout(() => {
     tocContainer.classList.toggle("show");
 }, 10);
@@ -854,7 +854,7 @@ setTimeout(() => {
 
   <p class="codegra" id="menu_html">ハンバーガーメニューを差し込むhtmlコード</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;div class=&quot;fden-hamburger-menu&quot;&gt;
    &lt;button class=&quot;fden-hamburger-button&quot; id=&quot;fden-hamburger-button&quot; onclick=&quot;toggleMenu()&quot;&gt;☰ メニューを開く
     ▼&lt;/button&gt;
@@ -872,7 +872,7 @@ setTimeout(() => {
 
   <p class="codegra" id="menumaker_html">ハンバーガーメニューを作るmenu.html</p>
   <div class="code-container">
-   <pre><code class="language-html">
+   <pre><code class="feintyping language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;ja&quot;&gt;
 
@@ -941,7 +941,7 @@ setTimeout(() => {
 
   <p class="codegra" id="menu_css">ハンバーガーメニューを作るmenu.css</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 /* ハンバーガーメニューのコンテナスタイル */
 .fden-hamburger-menu {
     position: relative; /* 相対位置を指定 */
@@ -1053,7 +1053,7 @@ setTimeout(() => {
 
   <h5>ハンバーガーボタンのアニメーション</h5>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* 背景色と文字色の変化にアニメーションを追加 */
 
 </code></pre>
@@ -1070,7 +1070,7 @@ transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* 背景色と
 
   <p class="gra">初期状態</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 opacity: 0; /* 初期状態で透明 */
 transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
 transform: translateY(-10px); /* 初期状態で少し上に移動 */
@@ -1088,7 +1088,7 @@ transform: translateY(-10px); /* 初期状態で少し上に移動 */
 
   <p class="gra">表示状態</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .fden-menu.show {
     display: block; /* 表示 */
     opacity: 1; /* 不透明に設定 */
@@ -1107,7 +1107,7 @@ transform: translateY(-10px); /* 初期状態で少し上に移動 */
 
   <h5>メニュー内のリンクのアニメーション</h5>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 transition: background 0.3s ease-in-out; /* 背景色の変化にアニメーションを追加 */
 
 </code></pre>
@@ -1124,7 +1124,7 @@ transition: background 0.3s ease-in-out; /* 背景色の変化にアニメーシ
 
   <p class="gra">初期状態</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 opacity: 0; /* 初期状態で透明 */
 transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
 transform: translateY(-10px); /* 初期状態で少し上に移動 */
@@ -1142,7 +1142,7 @@ transform: translateY(-10px); /* 初期状態で少し上に移動 */
 
   <p class="gra">表示状態</p>
   <div class="code-container">
-   <pre><code class="language-css">
+   <pre><code class="feintyping language-css">
 .fden-submenu.show {
     display: block; /* 表示 */
     opacity: 1; /* 不透明に設定 */
@@ -1176,7 +1176,7 @@ transform: translateY(-10px); /* 初期状態で少し上に移動 */
 
   <p class="codegra" id="menu_js">ハンバーガーメニューを作るmenu.js</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function toggleMenu() {
  var menu = document.getElementById('fden-menu');
  var button = document.getElementById('fden-hamburger-button');
@@ -1282,7 +1282,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <h5>toggleMenu関数</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function toggleMenu() {
  var menu = document.getElementById('fden-menu');
  var button = document.getElementById('fden-hamburger-button');
@@ -1306,7 +1306,7 @@ function toggleMenu() {
 
   <p class="gra">1. メニューとボタンの取得</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 var menu = document.getElementById('fden-menu');
 var button = document.getElementById('fden-hamburger-button');
    </code></pre>
@@ -1317,7 +1317,7 @@ var button = document.getElementById('fden-hamburger-button');
 
   <p class="gra">2. メニューの表示/非表示を切り替え</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (menu.classList.contains('show')) {
  menu.classList.remove('show');
  button.innerHTML = '☰ メニューを開く ▼';
@@ -1340,7 +1340,7 @@ if (menu.classList.contains('show')) {
 
   <h5>toggleSubMenu関数</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 function toggleSubMenu(id, buttonId) {
  var submenu = document.getElementById(id);
  var button = document.getElementById(buttonId);
@@ -1364,7 +1364,7 @@ function toggleSubMenu(id, buttonId) {
 
   <p class="gra">1. サブメニューとボタンの取得</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 var submenu = document.getElementById(id);
 var button = document.getElementById(buttonId);
    </code></pre>
@@ -1375,7 +1375,7 @@ var button = document.getElementById(buttonId);
 
   <p class="gra">2. サブメニューの表示/非表示を切り替え</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 if (submenu.classList.contains('show')) {
  submenu.classList.remove('show');
  button.innerHTML = button.innerHTML.replace('▲', '▼');
@@ -1397,7 +1397,7 @@ if (submenu.classList.contains('show')) {
 
   <h5>DOMContentLoadedイベントとその他のイベントリスナー</h5>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', function () {
  fetch('../menu/menu.html')
   .then(response => response.text())
@@ -1424,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <p class="gra">1. DOMContentLoaded イベント</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('DOMContentLoaded', function () {
  fetch('../menu/menu.html')
   .then(response => response.text())
@@ -1440,7 +1440,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <p class="gra">2. クリックイベント</p>
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener('click', function (event) {
  var menu = document.getElementById('fden-menu');
  var button = document.getElementById('fden-hamburger-button');
@@ -1492,7 +1492,7 @@ document.addEventListener('click', function (event) {
   <p class="codegra" id="globalmenu_js">グローバルナビゲーションを目立たせるmenu.js</p>
 
   <div class="code-container">
-   <pre><code class="language-javascript">
+   <pre><code class="feintyping language-javascript">
 document.addEventListener("DOMContentLoaded", function () {
  const links = document.querySelectorAll(".animated-link");
  links.forEach(link => {

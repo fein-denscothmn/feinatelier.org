@@ -483,7 +483,7 @@
   <p><strong>2.グローバルなユーザー名とメールアドレスの設定</strong></p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git config --global user.name "your_name"
 git config --global user.email "your_email@example.com"
 
@@ -493,7 +493,7 @@ git config --global user.email "your_email@example.com"
   <p><strong>3. 設定の確認</strong></p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git config --global --list
 
 </code></pre>
@@ -520,7 +520,7 @@ git config --global --list
   </div>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git init
 git add .
 git commit -m "Initial commit"
@@ -558,7 +558,7 @@ git push -u origin main
   <p>まず、次のように「.gitignore」へ公開したくないファイルやディレクトリを記載します。<br>
    .gitignoreファイルはルートディレクトリに設置しましょう。</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 # 特定のファイルを除外
 /www/himitu1.xml
 /www/himitu2.txt
@@ -576,7 +576,7 @@ www/paint/
   <p class="gra">.gitignoreを上げる</p>
   <p>後からでも良いのですが、この段階で「.gitignore」をリモートレポジトリへプッシュしてしまいます。</p>
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git add .gitignore
 git commit -m "Update .gitignore to exclude specific files and directories"
 git push origin main
@@ -623,7 +623,7 @@ git push origin main
 
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git add .gitignore
 git commit -m "Update .gitignore to exclude specific files and directories"
 git push origin main
@@ -675,7 +675,7 @@ git push origin main
    これをリモートレポジトリへプッシュします。</p>
 
   <div class="code-container">
-   <pre><code class="language-bash">
+   <pre><code class="feintyping language-bash">
 git add .
 git commit -m "Update repository with .gitignore in place"
 git push origin main
