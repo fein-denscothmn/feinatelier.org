@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>ファンサイト制作 〜 困った時に開くノート 〜</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="ファンサイトに限らず、Web開発で困った時に開くノートを初心者向けに書いています。">
+ <meta name="keywords" content="アナザーエデン, 自己紹介, Twitterアカウント">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="ファンサイト制作 〜 困った時に開くノート 〜">
+ <meta property="og:description" content="ファンサイトに限らず、Web開発で困った時に開くノートを初心者向けに書いています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_fansitenote.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ファンサイト制作 〜 困った時に開くノート 〜",
+      "url": "https://feinatelier.org/another-eden/anaden_fansitenote.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="/script/collapsible.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <!-- prismの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">ファンサイト制作 〜 困った時に開くノート 〜</li>
+   </ol>
+  </div>
+
+  <div class="search-container">
+   <script async src="https://cse.google.com/cse.js?cx=07df877a5cdad4ece">
+   </script>
+   <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/another-eden/anaimage/時層研究観測所.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="ファンサイト制作 〜 困った時に開くノート 〜の目次を開く ▼"
+   data-close-text="ファンサイト制作 〜 困った時に開くノート 〜の目次を閉じる ▲">ファンサイト制作 〜 困った時に開くノート 〜の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>ファンサイト制作 〜 困った時に開くノート 〜</span></h1>
+
+  <p>アナザーエデンのファンサイトを稼働させた当初、次のようにわたくしfeinは動いてきました。<br>
+   ご案内パンフレット、Bloggerというサービスを例にした作り方、そしてトラブルを未然に防ぐ方法について。<br>
+   このページでは、実際に制作するときにぶつかりそうな「壁」について、順次ご案内していきます。</p>
+
+  <h2>独自ドメインやサーバにお金をかけない</h2>
+
+  <p>結論から言うと、独自ドメインとかサーバとか、自分専用のものを契約しなくても良いです。<br>
+   お金かかりますよ？<br>
+   個人の自由ですが、私もしばらく契約してなかったです。</p>
+
+  <p>サーバはクラウドがあるからともかくとして、独自ドメインにしちゃうと後々になって身動き取りにくくなることが多いのです。<br>
+   Webサイトが本格的に大きくなってきてからでも間に合うことを、既に知っていたからね。<br>
+   少なくともゲームのファンサイト、言い換えると小さい個人サイトレベルという文脈の中で語るのであれば、私の立場からは非推奨ですねー…<br>
+   そういうふうにお話させて頂ければと思います。</p>
+
+  <img src="/another-eden/anaimage/フィーネHDD.jpg" alt="フィーネHDD" class="graphic fade-in-out">
+
+  <p>現在はこのサイトも<a href="https://portal.feinatelier.org/">fein's portal</a>も独自ドメインになっているので、詳細が知りたい方は<a
+    href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a>など、<a href="/contents/site_create.html">Personal Website
+    Creation（個人サイト制作）</a>のエリアの各Webページをご参照ください。</p>
+
+  <p>ここではITライクな難しい表現を避け、噛み砕いた文章で説明をしてみます。<br>
+   もし専門的に勉強したい方がおられましたら、<a href="https://developer.mozilla.org/ja/docs/Glossary/URL">MDN Web Docs 用語集: ウェブ関連用語の定義 >
+    URL</a>が良い参考資料となるでしょう。</p>
+
+  <h3>独自ドメインやサーバってなに？</h3>
+  <p>例えばアナザーエデン公式サイトであれば<a href="https://another-eden.jp/">https://another-eden.jp/</a><br>
+   一方、ヘブンバーンズレッド公式サイトであれば<a href="https://heaven-burns-red.com/">https://heaven-burns-red.com/</a></p>
+
+  <p>こんな感じで、固有のURLがあります。<br>
+   英数字で構成され、各々のWebサイトの住所となっています。<br>
+   リアルの世界で住所があるのと同じように、インターネットの世界でも住所があります。<br>
+   その住所の中でも、アナザーエデン公式専用だったりヘブンバーンズレッド公式専用のものを独自ドメインと呼んでいます。<br>
+   次に、住所があるということはお家もあります。</p>
+
+  <p>そのお家となっているのが、サーバです。<br>
+   「Webサイトを閲覧する」という行為は、各自が持っているスマホなどからインターネットを通して相手のサーバにある公開情報を見に行っているのです。</p>
+
+  <h3>独自ドメインやサーバを契約するってどういうこと？</h3>
+  <p>上記で、固有のURLがWebサイトの住所であり、それが独自ドメインと呼ばれること。<br>
+   それらを収めているお家がサーバであることを説明しました。<br>
+   リアルの世界で人が暮らす家というのは、大きく分けて次の2種類があるでしょうね？</p>
+
+  <ul>
+   <li>一戸建て：住所はアナデン市ヘブバン町2-5-1</li>
+   <li>集合住宅：住所はアナデン市ヘブバン町2-5-2 オサカナマンション403号室</li>
+  </ul>
+
+  <p>ITあれこれ理論を細々と気にする必要はありません。<br>
+   キリがないし。<br>
+   独自ドメインやサーバを契約するというのは、リアルで言うところの「一戸建てを借りて住む」とか、「マンションの一室を区分所有する」みたいなイメージを持っていただけると。<br>
+   いずれにしても、借りる＆買うからには家賃がかかります。<br>
+   独自ドメインやサーバを用意している会社に、お金を支払わなければなりません。</p>
+
+  <img src="/another-eden/anaimage/無駄な口上.jpg" alt="無駄な口上" class="graphic fade-in-out">
+
+  <p>─ とにかく初心者さんに感触を掴んで欲しいと思って書いてます。<br>
+   詳しい人は<a href="/redirect">独自ドメイン設定後にリダイレクト機能を追加する</a>など、Python コードの解説ページ等のほうがおもしろいでしょう。─</p>
+
+  <h4>独自ドメインやサーバを契約するメリット</h4>
+  <p>個人レベルのWebサイトで、経費に見合うメリットを享受するのはおそらく難しいでしょう。<br>
+   よっぽど気合いを入れて大規模なWebサイトにするつもりなら契約してから初めても良いでしょうけど、実際に大規模なWebサイトになってからでも遅くはありません。─ 繰り返し、私の場合は初めっから全て計画済みだっただけよ。 ─<br>
+   独自ドメインやサーバを借りてWebサイトを運営していると、それだけ目立ちやすく有利だと考えていただければけっこうです。<br>
+   Twitterでも「ruffg47＠fjsfjjswf」なんて名前にするより、「ab123＠cdfg4567」という名前のほうが覚えてもらいやすいでしょ？<br>
+   それと同じですよね。</p>
+
+  <p>しかし、TwitterのようなSNSとWebサイトとでは、公開範囲やその規模・性質が大きく違うんです。<br>
+   作りたての「♪アナデンファン・ミニサイト♪」ならいざ知らず、もし続けることができて大規模なWebサイトになってきた時のことを考えておく必要があります。</p>
+
+  <h4>独自ドメインやサーバを契約するデメリット</h4>
+  <p>冒頭で書いたように、ITライクな難しい説明はしません。<br>
+   感覚的に捉えていただければ十分でもある。</p>
+
+  <ul>
+   <li>そもそもいろんな設定に手間がかかります</li>
+   <li>続けられなければ経費がかかるだけで終わってしまう</li>
+   <li>引っ越ししたくなった時に身動きが取りにくい</li>
+   <li>話題やテーマを変えたくなっても動きにくい</li>
+  </ul>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネエルピス.jpg" alt="フィーネエルピス" class="graphic right-image fade-in-out">
+
+   <p>人間の気持ちって変わるんですよ。<br>
+    初めは燃えていても、飽きたりする可能性もあります。<br>
+    「アナデンファンサイト専用」としてWebサイトを作っていく中で、「アナデンファンサイト＋秋葉原お勧めマップ」としたくなるかもしれません。<br>
+    Bloggerというブログサービスを使っていく中でいろいろ要望が出てきて、Jimdoに乗り換えたくなるケースだってあるでしょう。<br>
+    そういう時、契約している独自ドメインやサーバが足枷となる可能性が出てきます。─ 実際にはそうでもないけど、ややこしいかもよ？ ─<br>
+    独自ドメインやサーバを契約せずWebサイト作成サービスを間借りするだけにしておけば、ハイパーリンクを上手く使うだけで自由に身動きができます。</p>
+
+   <p>要するに中身なんですよね。<br>
+    結局のところ。<br>
+    お金出して独自ドメインやサーバを契約して外側だけ立派にしていても、肝心のWebサイト本体が充実していなければ閲覧者は増えません。<br>
+    逆に無料のブログ作成サービスを使っていようと、中身が充実していておもしろいものなら、閲覧者は増え続けます。<br>
+    それに、無報酬かつ趣味でやってる個人Webサイトを維持するために、独自ドメインやサーバの料金を支払い続けるのは…お金もったいないと思う。</p>
+
+  </div>
+
+  <p>加えて、商用Webサイトは大変ですよ？<br>
+   広告を付ける付けないの話題が良く出るけどさ😆ww</p>
+  <p>Twitterで良く見られる方向性に「○○したほうが良い」とか「○○にすべき」というものがあります。<br>
+   独自ドメインやサーバを契約すべきというのは、アクセス数を稼ぎ出さねばならない商用Webサイトのケースと考えていただいてけっこうです。<br>
+   初めから稼ぐつもりでWebサイト運営をするなら、独自ドメインやサーバを契約したほうが良いでしょうね。<br>
+   もっとも、それ以外にもいろいろすごい手間がかかるけど。<br>
+   技術も必要です。<br>
+   この系統の話題に興味があれば、<a href="/contents/monetize.html">個人サイトによる小遣い稼ぎ</a>をどうぞ。</p>
+
+  <h2>ハイパーリンクという言葉を知っておこう！</h2>
+  <p>このセクションは一つだけ、とっても大切なIT用語を一つだけ知って欲しいという気持ちで書きました。<br>
+   アナザーエデン・ファンサイトだけではなく、「ブログとかやってみたいけど、何が何だか分からない…」という人であれば誰にでも当てはまる内容となっています。<br>
+   ハイパーリンクで道を作ると、見る人に優しいWebサイトになるのですよ。<br>
+   相互リンクを貼るときなどに大切になってくる考え方ですね。</p>
+
+  <h3>&lt;a href=""&gt;&lt;/a&gt;とハイパーリンク</h3>
+  <div class="content">
+   <img src="/another-eden/anaimage/ライザ強敵戦.jpg" alt="ライザ強敵戦" class="graphic right-image fade-in-out">
+
+   <p>HTMLの中で、少なくともこれだけは知っておきましょう。<br>
+    これを書くのではありません。<br>
+    この文字列の意味を知って欲しいのです。<br>
+    ハイパーリンクというものを作るために使いますが、普通ならブログ作成サービスが自動生成してくれます。<br>
+    Twitter、デジタル魚図鑑、Yahooニュース、そしてアナザーエデンの公式サイト。<br>
+    このようにインターネットにあるいろんなものを結び付けているのが、ハイパーリンクです。<br>
+    そのハイパーリンクを作る基本的な形が、&lt;a href=""&gt;&lt;/a&gt;というものなんです。</p>
+
+   <p>URLというのは、Webサイトの住所です。<br>
+    ハイパーリンクで結び付けるために、行き先の住所を知る必要があります。<br>
+    例えばアナザーエデンの公式サイトなら「https://another-eden.jp/」となります。<br>
+    以上です。<br>
+    本格的にWebサイト制作をする人以外は、このくらいを知っておけば十分と思われます。<br>
+    詳しくお勉強したい方は次のWebページなんかお勧めですね。</p>
+
+  </div>
+
+  <ul>
+   <li>MDN Web Docs：<a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/a">&lt;a&gt;: アンカー要素</a></li>
+   <li>MDN Web Docs：<a href="https://developer.mozilla.org/ja/docs/Web/HTML">HTML (HyperText Markup Language)</a></li>
+  </ul>
+
+  <h3>ハイパーリンクで結び付ける</h3>
+  <p>ハイパーリンクを使えば、こんな風に私のWebサイトから<a href="https://another-eden.jp/">アナザーエデンの公式サイト</a>へ繋がる道を用意できます。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/キンモクセイ.jpg" alt="キンモクセイ" class="graphic right-image fade-in-out">
+
+   <p>HTMLの書き方はこうです。<br>
+    &lt;a href="https://another-eden.jp/"&gt;アナザーエデンの公式サイト&lt;/a&gt;</p>
+
+   <p>他には、こんな風に私のWebサイトから<a href="https://www.msc.org/jp">MSC（海洋管理協議会）のWebサイト</a>へ繋がる道を用意できます。</p>
+
+   <p></p>HTMLの書き方はこうです。<br>
+   &lt;a href="https://www.msc.org/jp"&gt;MSC（海洋管理協議会）のWebサイト&lt;/a&gt;
+
+   <p>はたまた、このページからこんな風に私のWebサイト内のいろんな場所へ繋がる道を用意できます。</p>
+
+   <ul>
+    <li><a href="/another-eden/anaden_web.html">feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</a></li>
+    <li><a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a></li>
+   </ul>
+
+   <p>このように、ハイパーリンクで結び付ければ、自分のWebサイトをいろんな場所へ結び付けることができるのです。</p>
+
+  </div>
+
+  <p>関係ないけど、右上にあるキンモクセイの花の写真、綺麗じゃない？<br>
+   硬くなりがちなWebサイト制作のページに合うかなーと思って。<br>
+   特にプログラミング満載のページなんかでは、ちょくちょく草花の写真を添えているのです。</p>
+
+  <h2>イマイチ意識してもらえないブラウザ</h2>
+  <p>ブラウザというのは、例えばインターネットでアナザーエデン公式サイトを閲覧するときに使うソフトウェアのことです。<br>
+   普段はそんな意識されないけどね。<br>
+   これについてちょっと知っておくと、Webサイト制作はやりやすいことがあります。</p>
+
+  <p>Twitterでアプリ版とWeb版があるから、あるいはご存じの方も多いかもしれません。<br>
+   Twitterアプリから出ることなくそのまま閲覧できる設定にしてある方の場合、Twitterアプリの内蔵ブラウザを使ってアナザーエデン公式サイトを閲覧していることになります。</p>
+
+  <p>これに関しては、パソコンとスマホの種類に応じて書いてみましょう。<br>
+   ご自身が使っているIT環境について改めて知る機会となるかもしれません。</p>
+
+  <h4>Windowsパソコンの場合</h4>
+  <p>Windowsの場合、デフォルトのブラウザはMicrosoft Edgeです。<br>
+   Google Chromeと同じ仕組みに基づいて構築されていることでも有名ですよね。<br>
+   いろいろ調べると、Chromiumとの関係を解説していることもあります。<br>
+   Google ChromeとChromiumは似たようなもんだと思っていただければ。</p>
+
+  <p>関連URL👉 <a
+    href="https://www.microsoft.com/ja-jp/edge?form=MA13FJ">https://www.microsoft.com/ja-jp/edge?form=MA13FJ</a></p>
+
+  <h4>macOSパソコン・iOSの場合</h4>
+  <p>macOSとiOSの場合、デフォルトのブラウザはSafariです。<br>
+   パソコンとモバイルの違いはありますが、どちらもSafari。<br>
+   いわゆるAppleのやつだよね。<br>
+   私も両親のお下がりなら使ったことがあります。<br>
+   Wifi環境下で動かして遊んでました。</p>
+
+  <p>関連URL👉 <a href="https://www.apple.com/jp/safari/">https://www.apple.com/jp/safari/</a></p>
+
+  <h4>Androidの場合</h4>
+  <p>Androidの場合、デフォルトのブラウザはGoogle Chromeです。<br>
+   先日、アナデン運営が行ったアンケートと同じ仕組みを使って私もアンケートをしましたね？<br>
+   あのようなGoogle関連機能と相性が良くて便利なんです。<br>
+   私はパソコン２台とスマホ２台を全部同期させて使ってます。<br>
+   写真とかメモや書類、いろいろ同期させられる。</p>
+
+  <p><a href="/another-eden/anaden_feinpdf_siterta.html">アナザーエデン・ファンサイト制作RTA</a>なんてつまらない冗談が書いてあるけど😆ww<br>
+   このブラウザの同期機能を使って次々とデータを移しながら一気にWebサイト構築を行ったのです。</p>
+
+  <p>関連URL👉 <a href="https://www.google.com/intl/ja/chrome">https://www.google.com/intl/ja/chrome</a></p>
+
+  <h4>幅広く使えるFirefox</h4>
+  <p>Firefoxはシェアこそ低いものの、いろんな強い要素を持っています。<br>
+   これまで挙げてきたWindows、macOS・iOS、Androidの全部で使える。<br>
+   こういうの、マルチプラットフォームと呼ばれます。<br>
+   また、Web標準に準拠しているのも強いですよね。<br>
+   他のブラウザもそうだけど、非営利団体が開発しててオープンソースであるMozilla Firefoxへの信頼感は大きいです。</p>
+
+  <p>関連URL👉 <a href="https://www.mozilla.org/ja/firefox/browsers/">https://www.mozilla.org/ja/firefox/browsers/</a></p>
+
+  <p>他にもOperaとかいろいろあるけどさ。<br>
+   とりあえず代表的なMicrosoft Edge、Safari、Google Chrome、Firefoxを押さえておけば十分です。<br>
+   あとは…パソコンに慣れてくれば、WindowsでSafariやGoogle Chromeが使えることも分かってくると思います。<br>
+   OSとブラウザの関係ってやつですね。</p>
+
+  <h4>短縮URLの作り方</h4>
+  <p>長いURLは短縮しないと、思うようにTweetできなかったりします。<br>
+   そこでTwitterにはデフォルトでt.coというリンクサービスが付いているのですが、これまた先日バグってるとか動作しないとか、騒ぎになっていましたね。<br>
+   t.coというものについては、次のTwitter公式ヘルプをご覧いただくのが早いです。</p>
+
+  <p>👉 <a href="https://help.x.com/ja/using-x/url-shortener">Twitterのリンクサービス（http://t.co）について</a></p>
+
+  <p>このt.coが信用できない機能となった場合、どのようにしてURLを短縮すれば良いかお話しします。<br>
+   決まった方法があるわけではありません。<br>
+   例えば私であれば、Google Chromeの機能を使って短縮URLを作っています。<br>
+   以前のTwitterのプロフィールにグラスタ一覧表のURLを貼っていたのですが、これなんかその一つですよね。</p>
+
+  <img src="/another-eden/anaimage/昔のTwiiterプロフ.png" alt="昔のTwiiterプロフ" class="graphic fade-in-out">
+
+  <p>上の画像にある「tinyURL.com…」がそう。<br>
+   赤ペンが付いている部分です。<br>
+   本来のURLはもっと長いものですが、Twitterのプロフィール用に短くしたのです。</p>
+
+  <p>URLの短縮サービスはいろんなものがあります。<br>
+   一番手っ取り早いのは、お持ちのブラウザに従って次のようにGoogle検索していただく方法です。</p>
+
+  <ul>
+   <li>Microsoft Edge 短縮URL</li>
+   <li>Safari 短縮URL</li>
+   <li>Google Chrome 短縮url</li>
+   <li>Firefox 短縮url</li>
+  </ul>
+
+  <p>このようにすれば、該当するブラウザに合ったURL短縮方法が簡単に見つかるでしょう。</p>
+
+  <p>Twitterは毎週のように騒ぎになっています。<br>
+   でもちょっとだけITのことを知れば、さほど重要な問題でないことも確かなんです。<br>
+   当Webサイトでご紹介している「<a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a>」もその一環と考えることができますね。<br>
+   まずは自分の思うようにアナデンについて表現して楽しむのが第一。<br>
+   ついでに、Eロンによって引き起こされるTwitterの諸問題へ対応できるようになる感じです。</p>
+
+  <h5>ブラウザでもSNSでも、シェアは大切</h5>
+  <p>このページはブラウザについて語っているので、ブラウザのシェアを見てみましょうか。<br>
+   まずは「<a href="https://gs.statcounter.com/">StatCounter</a>」というWebサイトを覗いてみましょう。<br>
+   英語だけど、雰囲気でどんなサイトか分かると思います。<br>
+   2025年11月現在、世界的なシェアは次のようになっているみたいですよ？</p>
+
+  <ul>
+   <li>Chrome＝68.29%</li>
+   <li>Safari＝21.84%</li>
+   <li>Edge＝8.69%</li>
+   <li>Opera＝2.01%</li>
+   <li>Firefox＝3.87%</li>
+   <li>Samsung Internet＝3.46%</li>
+  </ul>
+
+  <p>でも、これが日本国内だと違う数字になるんですよ？</p>
+
+  <ul>
+   <li>Chrome＝57.81%</li>
+   <li>Safari＝23.61%</li>
+   <li>Edge＝11.22%</li>
+   <li>Firefox＝3.31%</li>
+   <li>Opera＝（主要順位外）</li>
+   <li>Samsung Internet＝0.76%</li>
+   <li>Brave＝1.09%</li>
+  </ul>
+
+  <p>Google Chrome、Safari、Microsoft Edge、Firefoxの順番にシェアを獲得していることが分かりますね。<br>
+   このように、多くの人が使っているものに合わせるのも、コツの一つです。</p>
+
+  <h2>ブログ＆Webサイト作成サービスを乗り換えたい…</h2>
+  <p>「Bloggerで始めてみたけど合わなかった」とか「アメーバブログよりBloggerのほうが良さそうだ」とか、引っ越しをしたくなるケースも出てきます。<br>
+   そんなときに閲覧者へ負担をかけない方法についてご案内しています。<br>
+   他には「○○サービスを使っていたけど、サ終しちゃう…」とかね？<br>
+   だから、ブログ＆Webサイト作成サービスの選択は、失敗を繰り返して良いのです。</p>
+
+  <h4>たっぷりと移行期間を設ける</h4>
+  <p>一気に内容を移さなくて良いです。<br>
+   とりあえず移行先でWebサイトを作り始めましょう。<br>
+   古いサービスのWebサイトも消さなくて良いです。<br>
+   新しいWebサイトを作り始めたら、古いWebサイトへのハイパーリンクを分かりやすい場所に作りましょう。<br>
+   同時に、古いWebサイトにも新しいWebサイトへのハイパーリンクを作ります。<br>
+   次の例のようにしましょう。<br>
+   この例は、私がBloggerから今のサービスへ乗り換えるシチュエーションをイメージしています。</p>
+
+  <img src="/another-eden/anaimage/古いWebサイトはここfeinsblog.png" alt="古いWebサイトはここfeinsblog" class="graphic fade-in-out">
+
+  <p>上の画像をご覧ください。<br>
+   新しいWebサイトに、古いWebサイトへの案内を掲載しています。<br>
+   このように「古いWebサイトはここ→fein's blog」と書き、ハイパーリンクを作ります。</p>
+
+  <img src="/another-eden/anaimage/新しいWebサイトはここfeinsportal.png" alt="新しいWebサイトはここfeinsportal"
+   class="graphic fade-in-out">
+
+  <p>次のステップです。<br>
+   上の画像をご覧ください。<br>
+   古いWebサイトには、新しいWebサイトへの案内を掲載しています。<br>
+   上の画像のように「新しいWebサイトはここ→fein's portal」と書き、ハイパーリンクを作ります。</p>
+
+  <p>これで閲覧者は相互を行き来することができますね。<br>
+   あとは徐々に古いWebサイトから新しいWebサイトへ内容を移していけば良いだけ。<br>
+   時間をかけて良いです。<br>
+   ていうか閲覧者のためにも、ぜひとも長い時間をかけてジリジリと移行したほうが良いと私は思うんですよね。<br>
+   古いWebサイトのサービスがサ終するのなら、サ終ギリギリまで粘るつもりで。<br>
+   いきなり全部丸ごと引っ越ししないほうがいい。</p>
+
+  <p>実際、私の場合も上記のように fein's portal から Fein Atelier - org へ引っ越ししていますが、特に支障はないです。</p>
+
+  <h3>SNSに貼るURLはどうすれば？</h3>
+  <p>黙って新しいWebサイトのURLにしちゃいましょう。<br>
+   すでに上記の「たっぷりと移行期間を設ける」という部分で、閲覧者は古いWebサイトと新しいWebサイトを行き来できるようになっているのですから、気にする必要はありません。<br>
+   「新しいWebサイトはここです～」と、お知らせする必要もありません。<br>
+   もちろんご挨拶としてお知らせしても良いけど…SNSは何であれ情報が流れ去ってしまいます。<br>
+   あんまり意味がないかも？<br>
+   だから、閲覧者が相互を行き来できるようハイパーリンクを作ったのです。</p>
+
+  <p>ちなみに、この手法を使えば複数のWebサイトやブログを2つも3つも同時に運用することが可能です。<br>
+   話題によって分けてもいいし。<br>
+   私の母はそうやってますね。<br>
+   私としては一つのWebサイトに全てをまとめる派なんだけども。</p>
+
+  <h2>サイト更新は月１回でも十分</h2>
+  <p>モチベーションがあるなら毎日100ページ更新しても良いけど😆ww<br>
+   サイト更新は月１回でも十分というのは、ちゃんと理由があるんです。<br>
+   連日連夜のように更新を続ける必要があるのはアフィリエイトサイトのように、商用目的のWebサイトの話なんですよね。<br>
+   少なくともゲームのファンサイトのような趣味で作っているサイトには当てはまりません。<br>
+   もちろん多くの人に見て欲しいなら頑張れば良いのですが…<br>
+   ほどほどにしておかないと、疲れちゃって続きませんよ？</p>
+
+  <h4>WebサイトとTwitterは性質が異なる</h4>
+  <div class="content">
+   <img src="/another-eden/anaimage/お気に入り僥倖.jpg" alt="お気に入り僥倖" class="graphic right-image fade-in-out">
+
+   <p>Webサイトやブログは、Twitterと決定的に違う点が少なくとも一つあります。<br>
+    それは、作成したコンテンツが流れ去っていかずに留まることです。<br>
+    Twitterの場合、頑張って書いたTweetでも流れ去ります。<br>
+    そういうシステムだからね。<br>
+    Webサイトやブログの場合、いい加減に書いたページであっても留まります。<br>
+    SNSではないのですから、当然のことです。<br>
+    つまらない話をしているように聞こえます？<br>
+    でもこれが、サイト更新は月1回でも十分という理由の一つなんです。<br>
+    少しずつ、次のような雰囲気でWebサイトは成長していきます。</p>
+
+   <ol>
+    <li>生まれたてのサイトは、Twitterのフォロワーさんに見てもらえる感じです。</li>
+    <li>更新を続けていくと、徐々に検索流入者が増えていきます。</li>
+    <li>さらに更新を続けていくと、検索流入者がほとんどを占めるようになります。</li>
+   </ol>
+
+  </div>
+
+  <p>リアルのお店と同じですよね。<br>
+   開店当初は近所の知り合いや、友人が訪れる。<br>
+   でも少しずつ、通りを歩く人が入ってくるようになるでしょう。<br>
+   成長したWebサイトだと、SNSからの流入は少ないのですよ。<br>
+   むしろWebサイト経由で、SNSのフォロワーが増えていくようになります。</p>
+
+  <h2>雑多サイトも大いにお勧め</h2>
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネ猫抱え.png" alt="フィーネ猫抱え" class="graphic right-image fade-in-out">
+
+   <p>これは個人的見解でもあるんですけど。<br>
+    アナデンだけに拘らず、趣味や日常ネタなんかも散りばめていくと良いと思います。<br>
+    例えば私なら、アウトドアコーナーに日曜大工の話題まで入れちゃおうと計画してます。<br>
+    話題を紡いで災害対策について語ってみたり。<br>
+    ネタなんか何でも良いですよね。<br>
+    こういうのもTwitterとの違いでしょう。<br>
+    Twitterだと「アナザーエデン垢」「スカイダイビング垢」などと話題に応じてある程度はアカウントを分ける必要があるケースも出てきます。<br>
+    しかしWebサイトはそうではありません。<br>
+    「アナザーエデンコーナー」「スカイダイビングコーナー」と明確に区分けしておくだけで、閲覧者に負担をかけることなく、何でも取り込んでいけます。<br>
+    個人が趣味でやってるものなんですから、もっとフリーに考えていいくらいです。</p>
+
+  </div>
+
+  <h2>サイトを作りながら綺麗にしていくのも超お勧め</h2>
+  <p>商用サイトなら話は別だけどね？<br>
+   アフィリエイトして金を稼ぐなら、明確な成果と数字が必要です。<br>
+   HTMLさえ書けないようなら、そんな小銭稼ぎ無理なんだと割り切ってくださいませ。<br>
+   どっちみち壮絶な苦労をすることになります。</p>
+
+  <p>でも、個人がやるレベルの趣味サイトやファンサイトなら、作りながらレイアウトを整えたりしていったほうが良いと思います🖊<br>
+   ここでは楽しみながらWebサイトを育てるという視点に立ち、私のやり方をご紹介していきます。</p>
+
+  <h4>初めのうちはただ書いてれば十分</h4>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネ研究室.jpg" alt="フィーネ研究室" class="graphic right-image fade-in-out">
+
+   <p>私のサイトなんか公開時はトップの1枚ペラがあるだけでしたね。<br>
+    公開直後は検索エンジンにも引っかからないから、やりながら考えようと思っていて。<br>
+    そして気付いたら大規模なWebサイトになっていました。─ 正直に言えば収拾がつかない状態になった。それもあって、より強いGCPによる Fein Atelier - org を作ったのよね。 ─
+    そういう雰囲気で良いんですよ。</p>
+
+   <p>デザインやら見た目なんか後回し。<br>
+    ひたすら書いていきます。<br>
+    私の場合は6年間作り続けたアナデンPDFレポートを次々とWebサイトへ放り込んでいきました。<br>
+    Twitterからデータを救出することも目的だったから。<br>
+    サイトマップなんかも後から作りました。<br>
+    もうぐちゃぐちゃ。<br>
+    どこに何が書いてあるかも分からない状態。<br>
+    後から見直しつつ、自己紹介・戦闘レポート・ファンサイト案内・魚料理…という感じにエリアを分けていったのです。<br>
+    見る人のためというか、自分が見直しやすいようにするためですよね。<br>
+    どっちみち生まれたてのWebサイトは注目されません。<br>
+    時間をかけて育てていくものです。</p>
+
+  </div>
+
+  <h4>書けば書くほどネタが見つかる</h4>
+  <p>これは人の性格によるんじゃないかな？<br>
+   私の場合は書けば書くほどネタが見つかるのです。<br>
+   例えばカマスの塩焼きについて書いたら、刺し身にしていたことを思い出したとか。<br>
+   ウクアージについて書いたら顕現のことを思い出したとか。<br>
+   こんな話をしていたらキリがないけど、書けば書くほど、書くことが次々と見つかっていきます。<br>
+   それを片っ端からWebサイトへ書き込んでいけば自然と大規模なサイトになっていき、そして人が集まるようになっていくんです。</p>
+
+  <p>アナザーエデンの天冥上げと同じですよ。<br>
+   地道に続けるだけです。<br>
+   だから、他人に関係なく自分自身が楽しめないと続きません。</p>
+
+  <h4>公開直後の大成功を目指しても良いけど…</h4>
+  <p>Webサイトに「完成」という状態は存在しないと思うんだけどな。<br>
+   出し切ったなんて有り得ないと思うよ？<br>
+   だってデザインや文章は無限に修正できるし、追加できるのですから。<br>
+   少なくとも私の場合、いつまでも完成しないでしょう。<br>
+   なので私はこのWebサイトをトップページのペラからいきなり公開しちゃいました。<br>
+   それから1か月かけて今の規模へ作り上げてきたのです。<br>
+   そしてこれから何年もかけてこのサイトを少しずつ育てていきます。<br>
+   ただこういうのは人の性格にもよるからね。<br>
+   もしWebサイト公開に伴うメンタル面で心配事があれば、このページの下の方にあるセクションを見ると参考になる考え方があるかも。</p>
+
+  <h4>私はスクショ倉庫としても使ってるよ？</h4>
+  <div class="content">
+   <img src="/another-eden/anaimage/チランドシア.png" alt="チランドシア" class="graphic right-image fade-in-out">
+   <p>私はこのサイトを「アナデンいろいろ倉庫」にする気満々です。<br>
+    想い出深いスクショとかを飾っておいてさ。<br>
+    ていうか既に自分用のメモまで入れてます。<br>
+    ネタバレの懸念があるものはページタイトルに「ネタバレ注意」と書いていくつもり。</p>
+
+   <p>もっとも…そもそもネタバレを本音で、本当に気にする人は、Webサイトを隅々まで閲覧しないと思うけどね？</p>
+
+   <p>今はGoogleフォトやOneDriveを使っているのですが、魚の写真とかも今後は増えていくのですよ。<br>
+    アナデンのスクショで埋め尽くされていたら使いにくいから。<br>
+    Webサイトと言うと多くの人に閲覧されることを目指すコツばかり語られますが、自分のための倉庫だったり、気付いたことのノートにしたり。<br>
+    なんだってやれます。<br>
+    ただし、これに関しては話題や目的を狭い範囲で絞っていないサイト限定の話ですよ？</p>
+
+  </div>
+  <p>ちなみに右上の花、チランドシアというらしい。<br>
+   気に入ったから貼ってみた。</p>
+
+  <h2>Webサイトとブログの違い</h2>
+  <p>違いなんてそもそもないと思います。<br>
+   <a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a>
+   でもお話していますが、単に情報の整理方法の違いです。<br>
+   Webサイトという言葉は広い意味を持てるので、表現としては便利かもしれません。<br>
+   しかし、それだけです。<br>
+   ブログははっきりしていて、時系列による表示に優れた形なのです。<br>
+   日記や歴史を記述するにはブログのほうが有利ですよね。<br>
+   年月日と時間を明記した上でコンテンツを投稿でき、かつそれらは時系列で整理されるからです。<br>
+   試しに私がBloggerを使ってテストブログを作ってみたので、ハイパーリンクを使ってブログをWebサイト化する考え方などを見ていきましょう。
+  </p>
+
+  <h3>ブログのWebサイト化</h3>
+  <p>Web制作に詳しい人が見たら「❓😅❓」となってしまうタイトルですが、ブログをWebサイト風に仕立てることもできます。<br>
+   多くのブログサービスには「ページ」という機能があります。<br>
+   これは複数ある日記帳の表紙をイメージしていただけると分かりやすいです。<br>
+   その「ページ」に、次のように記載していきます。</p>
+
+  <p>魚のページ一覧<br>
+   魚に関するコンテンツ目次です<br>
+   ・イワシと名乗る魚が多すぎる<br>
+   ・サバと共に泳いでみた</p>
+
+  <p>画像では下のようになりますが、実際に<a href="https://feinportal.blogspot.com/p/web.html">魚のページ一覧</a>を見てもらったほうが早いと思う。</p>
+
+  <img src="/another-eden/anaimage/魚一覧.png" alt="魚一覧" class="graphic fade-in-out">
+
+  <p>次に、同じように「ページ」機能に下のように書き込みます。</p>
+  <p>鳥のページ一覧<br>
+   鳥に関するコンテンツ目次です<br>
+   スズメの群れは何匹か<br>
+   カラスの飛行速度を考察する</p>
+
+  <p>画像では下のようになりますが、実際に<a href="https://feinportal.blogspot.com/p/blog-page.html">鳥のページ一覧</a>を見てもらったほうが早いと思う。</p>
+
+  <img src="/another-eden/anaimage/鳥一覧.png" alt="鳥一覧" class="graphic fade-in-out">
+
+  <p>次に、「イワシと名乗る魚が多すぎる」と「サバと共に泳いでみた」という部分に、それぞれのコンテンツへのハイパーリンクを設定します。<br>
+   さらに、「スズメの群れは何匹か」と「カラスの飛行速度を考察する」という部分に、それぞれのコンテンツへのハイパーリンクを設定します。<br>
+   これで、ブログをWebサイトのように扱えます。<br>
+   機能的にもWebサイトそのものです。<br>
+   乗っかっているシステムに左右されることなく、ページや各種コンテンツの階層構造をブログ内部に作ることできます。<br>
+   では、実例を見てみましょう。</p>
+
+  <p>次のハイパーリンクをクリックしてください。<br>
+   仮説ブログを行き来しますが、ちゃんとこのwebサイトへ戻って来れるようになっています。</p>
+
+  <ul>
+   <li><a href="https://feinportal.blogspot.com/p/web.html">魚のページ一覧</a></li>
+   <li><a href="https://feinportal.blogspot.com/p/blog-page.html">鳥のページ一覧</a></li>
+  </ul>
+
+  <p>このように、ハイパーリンクの扱い方次第でブログのWebサイト化が可能です。<br>
+   レイアウトやデザインを工夫すれば、もっと充実した綺麗なものとなるでしょう。<br>
+   こういう意味でも、Webページ同士をジャンプできる「ハイパーリンク」という言葉はちゃんと覚えて頂いたほうが良いと思います。</p>
+
+  <h3>Webサイトのブログ化</h3>
+  <p>逆に、Webサイトをブログのように見せることもできます。<br>
+   これに関しては私がすでに当Webサイトで作っているので、次の枠内にあるブログをご覧ください。</p>
+
+  <div class="feinorg-container">
+   <div class="feinorg-card">
+    <p class="feinorg-row">
+    <div class="feinblog">
+     <span><a href="/fish/blog.html">fein's blog</a></span>
+     <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク">
+    </div>
+    <p>The developer of this web application, 'fein.den_scoth_mn,' enjoys outdoor activities such as fishing and
+     occasionally writes a blog.</p>
+   </div>
+  </div>
+
+  <p>時系列の情報が並び、ページ冒頭には見出しが付いています。<br>
+   閲覧者は時系列で内容を閲覧することになるでしょう。</p>
+
+  <p>ここまで、ブログをWebサイト化し、そしてWebサイトをブログ化する例を見てきました。<br>
+   扱う情報の性質によって形態を分けることに意味があるのです。<br>
+   よって、このページのタイトルである「Webサイトとブログの違い」という考え方そのものが、ほぼ意味を持たないと私は思っています。</p>
+
+  <h2>スプレッドシート（表のこと）は極力避けてる</h2>
+  <p>この話で重要なキーワードは「モバイルデバイス」なんですよ。<br>
+   スマホから見る人の方が多いです。<br>
+   パソコン向けのレイアウトは後回しでも支障ありません。<br>
+   やっちゃいけないというわけではありませんが…<br>
+   私は意識して次の画像にあるような「表」を避けてます。<br>
+   理由をお話しましょう。</p>
+
+  <img src="/another-eden/anaimage/表は避ける.png" alt="表は避ける" class="graphic fade-in-out">
+
+  <p>特に、スプレッドシートをWebサイトに埋め込んだりするのは避けてます。<br>
+   Webサイトのページ送りをするためにあるスクロールバーとは別に、そのページ内部にさらにスクロールバーが出ることがある。<br>
+   さらに横に長い表だと、横方向へのスクロールバーまで出ることがあるのです。<br>
+   そういうのも調整できますが、特にモバイルデバイスの閲覧者にとって優しくないUIとなります。</p>
+
+  <p>次にあるグラスタ表の一部のように、&lt;table&gt;というコードを使って表を作ることができるのですよ。<br>
+   昔はこれでレイアウトを整えていたりしたようですが、お勧めできません。</p>
+
+  <img src="/another-eden/anaimage/使いにくい表.png" alt="使いにくい表" class="graphic fade-in-out">
+
+  <p>table（表）として認識させる必要があるケースもあるんだけどね。<br>
+   Webページは基本原則としてスクロールするものです。<br>
+   上の画像を見ると、スクロールバーが見えますよね？<br>
+   スクロールバーの中にスクロールバーがあり、見た目が悪い上に操作感も悪い。<br>
+   このサイトでも表は使っていますが、上の画像のようにならぬよう、注意して実装しています。</p>
+
+  <p>ちょっと話が難しくなっちゃいましたね。<br>
+   とりあえず「スマホ閲覧者が多いから、なるべく表は使わないようにしよう」と考えて頂ければ無難かと思われます。</p>
+
+  <h2>気持ちというかメンタル方向のお話</h2>
+  <p>さすがにここまで来るとあまり意味はないと思いますが…<br>
+   いや、そんなことないな。<br>
+   SNSはねー…「メンツ」を気にする人がとても多い印象があるんですよ。<br>
+   やっぱ念のため書き置きしておきますか。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネシェンファ.jpg" alt="フィーネシェンファ" class="graphic right-image fade-in-out">
+
+   <p>私がTwitterを中心に活動していた頃のフォロワー様がちょっと多めだったので、あるいは「Webサイトを作らないより作った方が良いのかな…😥」と考えてしまう方がおられた可能性もゼロではありませんよね。<br>
+    そんなことはない。<br>
+    個人の好みや事情で好きな形を取って良いと思いますよ？<br>
+    私の場合はどちらかというと、作る必要性に迫られたというほうが表現としては正しいのです。<br>
+    EロンだってTwitterを潰そうとはしていないのですから、SNSやYoutubeだけで情報発信しててもぜんぜん良いと思います。</p>
+
+   <p>ただ、「アナデンだけー！」とか「ウツボだけー！」とか、そういう狭い範囲のWebサイトはともかくとして…<br>
+    広範囲にいろんな話題を取り扱うWebサイトが継続して更新され続けた場合、将来的に拡散力がとても大きくなっていくことが容易に予測できます。<br>
+    そこだけは事前に考えておいたほうがいい。<br>
+    サイトが成長してからびっくりしないようにね？</p>
+
+  </div>
+
+
+  <h5>よく分かんないけど楽しそう♪という方へ</h5>
+  <p>公序良俗に反しないように書くとか、最低限のアレコレだけは守りつつね。<br>
+   大いにWebサイト制作を楽しんでください😆ww<br>
+   私はこのタイプです。<br>
+   そもそも冒険する性格ですから。<br>
+   そうでなかったらアウトドアなんか趣味にしてないよ。<br>
+   「よく分かんないけど楽しそう♪」とか思って、学生時代に中二病プログラム満載の糞Webサイトを作りまくりました。</p>
+
+  <p>ここから先は、そういう感じではないタイプの皆様向けに書いた文章です。</p>
+
+  <h5>Webサイトは制作者の性格がモロに出ます</h5>
+  <p>Webサイトはその人の性格が出ます。<br>
+   テーマ・デザインやレイアウト・文章・更新頻度などなど、制作者の考え方が表に出ます。<br>
+   例えば私のこのWebサイトであれば、目標達成至上主義かつ持続運用重視のシンプルスタイル。<br>
+   細かいデザイン等は後回しといった特徴があるでしょう。<br>
+   私の性格や考え方を反映しており、そのとおりに表示されていくものです。<br>
+   これは、白黒付けたりどっちが良い悪いの話ではないんですよね。</p>
+
+  <h5>Webサイトが最強の表現方法とは限りません</h5>
+  <p>世の常として、Webサイトという言葉からは速攻かつ即座にプログラミングが連想される傾向にあります。<br>
+   しかし、私はぜんぜん違う視点を持っています。<br>
+   これまた良い悪いの話ではないんです。<br>
+   IT関連知識がなくても向いているというケースがあると思うし、IT関連知識があっても向いていないケースがあるでしょう。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/シェンファライザ.jpg" alt="シェンファライザ" class="graphic right-image fade-in-out">
+
+   <p>とりあえず…とても強く次のようなことを気にかけるタイプの方は、やめておいたほうがいいかもしれません。<br>
+    何かを表現する方法はWebサイトじゃなくてもいいし、Webサイトは最強ツールでも何でもありませんからね。</p>
+
+   <ul>
+    <li>こんなことを書いちゃって、どう思われるだろう？</li>
+    <li>見てもらえるかな…見てもらえるのかな…</li>
+    <li>失敗したらどうしよう、変な奴って思われたらどうしよう…</li>
+    <li>私はあの人みたいにできない…こんなの、パソコン音痴って思われちゃう…</li>
+    <li>人々のニーズを満たせるようにしないと、ダメなんだよね…？</li>
+    <li>うまく言えないけど、とにかく不安…みんなに見られるのは怖い…</li>
+   </ul>
+
+   <p><a
+     href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a>で「皆が作り始めたら自分もやったほうが良いのでしょうか？」という一文から始めている理由が、まさにこれなのです。
+   </p>
+
+  </div>
+
+  <p>人間には性格というものがあって、それは白黒や良い悪いではないと思うのですよ。<br>
+   上記のようなことを気にかけるのは良いことだと私は感じています。<br>
+   いろんなリスクを避けることができる人ですよね。<br>
+   ただ、とても強く気にかけるタイプの方は、Webサイトではない表現の道を探すほうが良いだろうと…私は率直に思っているということです。</p>
+
+  <h5>Webサイトは365日四六時中、公開され続けます</h5>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネシェンファライザ.jpg" alt="フィーネシェンファライザ" class="graphic right-image fade-in-out">
+
+   <p>これは覚えておきましょう。<br>
+    サイト作成サービスの中には非公開設定が可能なものもありますが、TwitterのようなSNSとは公開される範囲そのものがまったく違います。<br>
+    単純かつ素朴なお話として「やってみたい！」という気持ちより「怖い…」という気持ちが勝るなら、SNSだけにしておいたほうが良いかも。<br>
+    何よりも「怖い…心配…」といった気持ちを抑え込んだままやっていても、楽しくないと思います。<br>
+    どっちみち続かないでしょう。<br>
+    Webサイトを公開しちゃった後に不安な気持ちが膨らみ、SNSでネガティヴなことを言い始めちゃうとか。<br>
+    そういったよろしくない方向へ進んでいく可能性さえありますよ？</p>
+
+  </div>
+
+  <h5>トラブルを未然に防ぎましょう</h5>
+  <p>ファンサイトのコーナーにわざわざ<a href="/contents/monetize.html">個人サイトによる小遣い稼ぎ</a>なんていうページを用意したのは、トラブル防止のためです。<br>
+   お勧めしているからではありません。<br>
+   他人様のやっていることに干渉はしませんが、私はアフィリエイトやYouTube広告などをやっていません。<br>
+   お金に繋がるルートをどこにも作らないことが大切だと判断しているからです。</p>
+
+  <p>さて…<br>
+   ちょっとコラムを挟んで。<br>
+   そろそろこのWebページを締め括りましょうか！</p>
+
+  <h4>★column★ ネットに詳しい俺様はカッコいいのか？！</h4>
+
+  <p>インターネット黎明期などと呼ばれる時代があったようです。<br>
+   父曰く、まずは個人サイトがあり、それから匿名掲示板、SNS、そしてスマートフォンの流行へと繋がっていったのだとか。<br>
+   昔はプログラミングができること自体、ステータスだったみたいですよ？<br>
+   下にある タップして開く ▼ をタップすれば、総務省の詳しいWebサイトと共に本文をご覧いただけます。</p>
+  <button class="collapsible">タップして開く ▼</button>
+  <div class="collapsiblecontent">
+
+   <p>まずは下記のサイトをご覧いただくとよろしいかと。<br>
+    私は知らない用語もあるのですが、日本国内でのインターネット黎明期がよく分かります。</p>
+
+   <p>参照サイト：👉<a
+     href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r01/html/nd111120.html">https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r01/html/nd111120.html</a><br>
+    総務省トップ > 政策 > 白書 > 令和元年版 > インターネットの登場・普及とコミュニケーションの変化<br>
+    第1部　特集　進化するデジタル経済とその先にあるSociety 5.0<br>
+    第1節　デジタル経済史としての平成時代を振り返る<br>
+    （2）インターネットの登場・普及とコミュニケーションの変化</p>
+
+   <p>私は「Internet Explorer 6の時代」と呼んでいるんですけどね。<br>
+    Internet Explorer 6（以下、IE6）というのは古いブラウザで、Web標準からずいぶん離れた仕様を持っていたそうです。<br>
+    正しくHTMLコーディングを行ってもWebサイトのレイアウトは崩れ、IE6専用のコードを書き加える必要があったとか。<br>
+    でも当時の主流OSであったWindows XPにIE6がインストールされていたことで、Web制作をする人たちはIE6に付き合わざる得なかったんですって。<br>
+    私がWebサイトに「表」を入れるのを避けるのは、父から教わったことでもあるのです。<br>
+    現在のブラウザは表も正常に表示するものの、当時はIE6への対応として表を用いてWebサイトのレイアウトを整える手法が流行ったそうです。<br>
+    非常に古いWebサイトには依然としてそのようなコーディングが残っているみたいですよ？<br>
+    この慣習を、父は嫌っていました。<br>
+    具体的にはtableタグを使って左側にテキストを入れ、右側に画像を入れるようなやり方です。<br>
+    IE6を使ったことがない私でも、このやり方はWeb標準から外れていることが分かります。<br>
+    tableは表として定義されており、それをブラウザを読み込みます。<br>
+    表というのものがどのような目的で使用されるかを考えたとき、それは縦と横の情報を整理するためであって、テキストと画像を型にはめ込み無理やりレイアウトを整える目的でtableタグを使うべきではありません。<br>
+    これは単なる美学ではなく、あれやこれやな実害があります。─ 細かすぎるIT話は省略しますね ─</p>
+
+   <p>一方、このインターネット黎明期はとっても楽しい時代でもあったようです。<br>
+    いろんな人が個人サイトを作って掲示板で交流したり。<br>
+    この当時は今ほどサイト作成支援ツールがなかったようで、Webサイトを作るにはHTML、CSS、JavaScript、果てはPHPやPerlのようなサーバーサイドスクリプトまで書いていたんですって。<br>
+    このあたりから、俗に言うところの「情強の俺様かっけー！！」という風潮が生まれたらしいね😆ww<br>
+    Excelの数式は情強の証。<br>
+    上には上がいてJavaScriptでWebサイトを動的にできる。<br>
+    その上がいてCGIも自由自在みたいな。<br>
+    父が忌み嫌っているところのアフィリエイトというのは、そういう流れから流行り始めたと聞きます。<br>
+    情強であれば自らの手で金を生めるのだと。<br>
+    実際のところ、どうなんでしょうね？</p>
+
+  </div>
+
+  <h2>WebサイトとInstagram、及びTwitter</h2>
+  ここは私個人のお話です。<br>
+  もしくは私の意見です。<br>
+  なんでこのようなWebサイトを稼働させたのか。<br>
+  なぜ他のSNSではなくInstagramを選んだのか。<br>
+  そのようなことが書いてあります。
+
+  関連ページ：👉 <a href="/another-eden/anaden_web.html">feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</a>
+
+  <h4>なぜ他のSNSじゃなくて自分のWebサイトなの？</h4>
+
+  <p>Twitterの不確実性が増した今、アナザーエデンに限らずこのタイプのWebサイトは増えてくることが予想されます。<br>
+   移行先のSNSに迷っている人たちにとって、インターネット上での自宅になるからですよ。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/フィーネが合格.png" alt="フィーネが合格" class="graphic right-image fade-in-out">
+
+   <p>自分のWebサイトにURLを貼っておけば、どこの繋がりであろうとその人との連絡手段が常時確保されます。<br>
+    自己紹介カードを添付したり、自作のイラストや写真・小説を展示したり、Webサイトは自分のアイデア次第で無限に何でもできるのです。<br>
+    だから、Twitterが大障害を起こした瞬間、いち早く私はこのWebサイトを稼働させました。<br>
+    同じような活動がいろんな界隈で見られるでしょうね。<br>
+    ゲームに限らず。</p>
+
+   <p>「インターネット上での自宅」という表現は単なる例え話ですし、そもそも不要な方も多いでしょう。<br>
+    私の場合、アナザーエデンがエンディングを迎えた後に未利用魚の調理に関するWebサイトを稼働させるつもりで、準備をしてきたのです。<br>
+    ここに書いてあることも以前に書いた原稿が手元にあるんですよね。<br>
+    私は魚釣りや料理についてのいろんなブログ＆Webサイトとコミットして、相互リンクを作っていく構想を立てていました。<br>
+    その時、このようなWebサイト制作に関するガイドブックが自分のWebサイト上にあれば、相互リンク先のいろんな方々へ便宜を図れると考えていたのです。<br>
+    けれどもTwitterの不確実性が増したから、こうして予定より何年も早く稼働開始しただけってことだよね。</p>
+
+  </div>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_fansitenote.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
