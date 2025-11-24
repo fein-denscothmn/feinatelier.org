@@ -1,3 +1,38 @@
+// グローバルナビゲーションの動き
+document.addEventListener("DOMContentLoaded", () => {
+ const nav = document.querySelector(".den_nav");
+
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    nav.classList.add("visible");   // 画面に入ったらフェードイン
+   } else {
+    nav.classList.remove("visible"); // 画面から外れたらリセット
+   }
+  });
+ });
+
+ observer.observe(nav);
+});
+
+// ブログ用グローバルナビゲーションの動き
+document.addEventListener("DOMContentLoaded", () => {
+ const nav = document.querySelector(".den_nav_blog");
+
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    nav.classList.add("visible");   // 画面に入ったらフェードイン
+   } else {
+    nav.classList.remove("visible"); // 画面から外れたらリセット
+   }
+  });
+ });
+
+ observer.observe(nav);
+});
+
+// ハンバーガーメニューの動き
 function toggleMenu() {
  var menu = document.getElementById('fden-menu');
  var button = document.getElementById('fden-hamburger-button');
