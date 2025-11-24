@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>ファンサイト制作の環境設定例</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="ファンサイトに限らず、Web制作で使うパソコンの初期設定について書いています。">
+ <meta name="keywords" content="アナザーエデン, 自己紹介, Twitterアカウント">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="ファンサイト制作の環境設定例">
+ <meta property="og:description" content="ファンサイトに限らず、Web制作で使うパソコンの初期設定について書いています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/another-eden/anaden_fansitepc.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/video.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+ <link rel="stylesheet" type="text/css" href="/css/addpdf.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ファンサイト制作の環境設定例",
+      "url": "https://feinatelier.org/another-eden/anaden_fansitepc.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+    }
+    </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="/script/video.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+ <script src="/script/addpdf.js" defer></script>
+ <script src="/script/collapsible.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+ <!-- prismの読み込み -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">ファンサイト制作の環境設定例</li>
+   </ol>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="/image/cloudsitetitle.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="ファンサイト制作の環境設定例の目次を開く ▼"
+   data-close-text="ファンサイト制作の環境設定例の目次を閉じる ▲">ファンサイト制作の環境設定例の目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>ファンサイト制作の環境設定例</span></h1>
+
+  <p>ここはもともと私のメモページだったのですが、Microsoft Edgeが想定以上に自由度の高いものだったので、環境設定例のページにしました。<br>
+   使っているOSはWindows 11 Home in S modeです。<br>
+   「いやいや、こんな初心者向けの話じゃなくて、Web開発の環境設定ってそういうんじゃないだろ？」という方は<a href="/contents/vscode.html">Visual Studio
+    Codeを触ってみよう</a>などのページをどうぞ。<br>
+   他にも<a href="/contents/site_create.html">Personal Website Creation（個人サイト制作）</a>にはローカルサーバの立て方など、さまざまなページがございます。</p>
+
+  <h2>Windows11のSモードとは</h2>
+  <p>セキュリティとパフォーマンスに特化して合理化された Windows 11 のバージョンです。<br>
+   Microsoftのチェックに通ったソフト以外はインストールすることができず、PCに慣れた人にとっては不便に感じるかもしれません。<br>
+   Edgeが規定のブラウザーなので、これを活かすことを考えてみました。</p>
+
+  <p>参考サイト：👉<a
+    href="https://support.microsoft.com/ja-jp/windows/s-%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE-windows-10-%E3%81%8A%E3%82%88%E3%81%B3-windows-11-%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%81%94%E8%B3%AA%E5%95%8F-851057d6-1ee9-b9e5-c30b-93baebeebc85#WindowsVersion=Windows_11">S
+    モードの Windows 10 および Windows 11 に関するよくあるご質問</a></p>
+
+  <p>※Sモードを解除することもできるけどね。パフォーマンスに特化という部分に惹かれてそのまま使ってみてます。</p>
+
+  <h2>基本原則：むやみにインストールしない</h2>
+  <p>賛否両論だと思われますが…<br>
+   私はパソコンにせよスマホにせよ、アプリのインストールは必要最低限に留めます。<br>
+   入れれば入れるほど調子悪くなるからね。<br>
+   そして調子が悪くなった原因究明をする時間があるならWebサイト更新に当てたほうが得だと考えます。</p>
+
+  <p>特にパソコンの場合、かなりの作業がクラウドでこなせるのです。<br>
+   ローカルに環境構築をする必要はないと思う。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例1.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>極端な話でも何でもなく、ファンサイトくらいのレベルであれば、ツールとしてBlogger1本でも十分過ぎるというか過剰過ぎるほど強力です。<br>
+   私の場合は多重に保険＋バックアップ＋柔軟性を確保するために今のやり方に収まっているだけです。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例2.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>Microsoft Azure等でやろうとすると、ちょっと初心者向けとは言い難いかも？<br>
+   それでも勉強すればGoogle Cloudと互角レベルに多彩なWebサイトが作成できます。<br>
+   でもそれはコードの記述を要求されることが多いですよ？</p>
+
+  <h3>コントロールパネルや設定</h3>
+  <p>まず、OS本体の設定を行います。<br>
+   ある程度の自由は効きますが、深いレベルのカスタマイズはできないでしょう。<br>
+   でも、コントロールパネルと設定から快適な環境を構築することができました。</p>
+
+  <h4>時刻合わせ</h4>
+  <ol>
+   <li>タスクバーの日時エリアで右クリックする。</li>
+   <li>「日時を調整する」を選択する。</li>
+   <li>タイムゾーンを確認する。</li>
+   <li>「今すぐ同期する」をクリックする。</li>
+  </ol>
+
+  <p>購入したPCによっては最初から合ってるかもしれません。<br>
+   実際の時刻と違っていると、OSの基幹レベルで支障が出る可能性があるのでご注意を。</p>
+
+  <h4>電源ボタン管理</h4>
+
+  <ol>
+   <li>タスクバーの検索から「コントロールパネル」を開く。</li>
+   <li>「電源ボタンの定義とパスワード保護の有効化」を選択する。</li>
+   <li>「電源ボタンを押したときの動作」を設定する。</li>
+   <li>「スリープボタンを押したときの動作」を設定する。</li>
+   <li>バッテリ駆動・電源接続ともに「何もしない」に設定する。</li>
+  </ol>
+
+  <p>私はPCを外出先で開かないし、自分以外の人間には開かせないからね。<br>
+   サイト制作の途中でお茶いれたりもするから、スリープモード系は使わない設定にしました。</p>
+
+  <h4>タッチパッドの設定</h4>
+
+  <ol>
+   <li>スタートボタンから「設定」を開く。</li>
+   <li>「Bluetoothとデバイス」を選択する。</li>
+   <li>「タッチパッド」をクリックする。</li>
+   <li>必要に応じてタッチパッドの設定を変更する。</li>
+  </ol>
+
+  <p>マウスも良いけど、私はだいたいタッチパッドで作業する人です。<br>
+   左右にモバイルデバイスや書籍を置いて作るからね。<br>
+   このタッチパッドの設定箇所がちょっと分かりにくい名称だったから書いておきます。</p>
+
+  <h4>セキュリティーの設定</h4>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例3.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>ユーザー情報や操作の追跡に基づいた便利機能は一律でOFFにします。<br>
+   ONにして個人情報が漏れるわけではありませんが、いちいちお勧めとか表示されても鬱陶しいからね。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例4.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>同様に、アクティビティの履歴もOFFにします。<br>
+   便利な作業環境の構築はクラウドベースでリンク集でも作れば良いと考えます。<br>
+   といいますか、この Fein Atelier - org そのものが私のデスクそのものです。<br>
+   そういう形で機能するようWebサイト構築をしてて…<br>
+   例えば<a href="/contents/policy.html">サイトポリシー</a>には Google と Microsoft のサポートについてご紹介があります。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例5.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>Windows11にはデフォルトでウィルス対策やファイアウォールが設定されています。<br>
+   不安なら別途インストールしても良いけど、私の用途の範囲ではそこまで必要ない。</p>
+
+  <h4>メモ帳の設定</h4>
+  <p>Windows11ではデフォルトのままだとメモ帳が二重に開きます。<br>
+   例えば「日記.txt」をダブルクリックします。<br>
+   すると、「日記.txt」が1つ開くのですよ。<br>
+   1つのタブとなって開き、上書き保存がやりにくいのなんの！<br>
+   これは既知の不具合の影響を受けている可能性もありますが、いずれにしても非常に扱いにくいため対処する必要があります。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例6.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>次のように設定します。</p>
+
+  <ol>
+   <li>メモ帳を開く。</li>
+   <li>右上の設定ボタン（歯車アイコン）をクリックする。</li>
+   <li>「メモ帳の起動時」をクリックする。</li>
+   <li>「前のセッションからコンテンツを開く」が選択されている場合、「新しいウィンドウで開く」を選択する。</li>
+  </ol>
+
+  <p>このように設定変更すれば、次回からはメモ帳が二重で開くことはなくなります。<br>
+   これでも解決しない場合、Microsoftの対応待ちかも。<br>
+   私はファイルを開く方法も新しいウィンドウで開くを設定しています。</p>
+
+  <h3>Microsoft Edgeの設定</h3>
+  <p>これですよ。Microsoft Edge…<br>
+   このブラウザと奮闘していました。<br>
+   Sモードを使うのが初めてだったのでGoogle ChromeやFirefoxをインストールできるかどうか定かではなかったし、おそらくある程度ならカスタマイズできるだろうと踏んで触ってみました。</p>
+
+  <h4>アドレスバーの検索エンジン設定</h4>
+  <p>まずはここでハマりました。<br>
+   なんとSモードではBingから変更が不可なんです。<br>
+   本当はアドレスバーから直接Google検索といきたいところですが、他人のWebサイトをコピペする気もないので、Bingでも用は足ります。<br>
+   どうしてもGoogle検索したいときはいったんGoogle を開いてから検索すればいいかなって。</p>
+
+  <h4>Microsoft startのニュースをOFF</h4>
+  <p>ネットでニュースを見たいときは別に検索するから、ホームへ移るたびに表示してくれなくていい。<br>
+   MSニュースは次の手順でOFFにさせてもらいました。<br>
+   ついでにこのMicrosoftホームによく使うサイトを登録しておくことで、簡単にジャンプできるようになっています。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例7.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>歯車アイコンでレイアウトをカスタマイズへ</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例8.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>画像の表示内容欄でニュースを非表示とする</p>
+
+  <h4>サイドバーにショートカットを設置</h4>
+  <p>Linux使ってた時は自分用の内部サイトをローカルに構築していて、そこのリンク集を使っていました。<br>
+   でも久しぶりにWindowsを私用で使う機会でもあったので、Edgeのサイドバー機能を使ってみたのです。<br>
+   これがすごく良かったんですよね。</p>
+
+  <h4>制作中サイトのショートカットを設置</h4>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例9.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>私はモバイル表示できるURLを登録してます。<br>
+   左側の大きいウィンドウで作ってから公開。<br>
+   それから右側のモバイル表示で完成形を確認する。</p>
+
+  <h4>OneDriveテキストエディタのショートカットを設置</h4>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例10.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>これは私の好みというか、事情ですね。<br>
+   GoogleとMicrosoft、両方のアカウントを持っているのです。<br>
+   Twitterで上げていたアナデンレポートはMicrosoftのクラウドツールで作っていました。</p>
+
+  <p>OneDriveは別途アプリをインストールしなくてもデフォルトでテキストエディタが付いているのですよ。<br>
+   これを登録しておくことで、ちょっとしたメモ書きをするときにパッと右側のウィンドウへ書き込めます。<br>
+   こういう細かい一手の削減。大きいですよ？<br>
+   Visual Studio Code でゴリゴリやる人ならともかく、そうでない場合はやりやすいように初めから設定しちゃうのがお勧め。</p>
+
+  <h4>細かいあれこれはWebツールで済ませる</h4>
+  <p>自分がTwitterに上げた過去の動画をダウンロードしたいときがあるのですが、これはChromeじゃなくても可能でした。<br>
+   動画加工は同じくWebツールで代替可能ですし、デフォルトアプリのMicrosoft Clipchampで。<br>
+   画像加工はいかようにでもできます。<br>
+   PDF加工もAdobe公式サイトでやれる。</p>
+
+  <h4>軽微な質疑応答ならBing AIで済ませてもいい</h4>
+  <p>AI使ってインチキしろと言ってるわけじゃないよ？<br>
+   もう、そこらへんは<a href="/another-eden/atelier_studio.html">ファンサイト制作のためのアトリエ</a>の「サイト制作者のAIに対する指針」セクションをご覧ください。<br>
+   SNS対策のためにいちいち説明するの手間なので。<br>
+   さて、AIに「パソコンが苦手なのです。それでもWebサイトを作りたいのですが、勉強する方法を教えてください。」と質問してみました。<br>
+   その回答が次のようなものです。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/webサイト制作の環境設定例11.png" alt="webサイト制作の環境設定例" class="biggraphic fade-in-out">
+  </div>
+
+  <p>自然な日本語でまっとうな回答をしてくれます。<br>
+   AIは現在、その危険性を含めて議論が盛んに行われていますね。<br>
+   これに関する私見としては、とにかく真に受けないことが大切なのではないかと？<br>
+   Twitterを見るときと同じように、目に入ってくる情報を自分でも調べて勉強する。<br>
+   このようなことを心がければ、明日の天気を軽く尋ねるくらい程度なら便利だと思います。</p>
+
+  <h4>★column★ SNSの人間関係にお悩みの方へ：数字に拘るのも悪くないよ？</h4>
+  <p>SNSはその構造上、人間関係に係る諸問題が発生しやすく、それに悩む人も多いかと思われます。<br>
+   でもそれはあくまでもSNS内部での話ですよ。<br>
+   とうの昔に、私のX(以下Twitter)アカウントは Fein Atelier - org にPV（ページビュー）で勝ち目がない状況となっています。<br>
+   TwitterであろうがBlogであろうが、WebコンテンツはWebコンテンツです。<br>
+   ご興味のある方は下にある タップして開く ▼ をタップすれば続きを読めます。</p>
+  <button class="collapsible">タップして開く ▼</button>
+  <div class="collapsiblecontent">
+
+   <p>Twitterはブラウザ編集できる、ブログサービスのミニ版なんだよね。<br>
+    専用アプリのおかげで投稿が容易なだけです。<br>
+    私が注意を向けてるWebサイトとの違いの一つは、その瞬発力にあります。<br>
+    ここに書いているような話題は、どちらかというとTwitter向けではないように思います。<br>
+    時間が経っても通用するものでしょ？</p>
+
+   <p>ページビューという視点から見た時、次のようなことが言えるでしょう。</p>
+
+   <ul>
+    <li>Twitterは瞬発力に秀でるものの長続きせず、Tweet追加が欠かせない。</li>
+    <li>Webサイトは瞬発力に欠けるものの長続きするため、コンテンツ追加をサボってもいい。</li>
+   </ul>
+
+   <p>このことから、話題に応じてWebツールを使い分けると効率的であることがお分かりいただけるかと。</p>
+
+   <p>Twitterはとかく「どちらが強いか？！」という方向へ話が流れがちなように私は感じます。<br>
+    この内容も白黒を付ける意味ではなく、目線を外に向けるという方向性を志向しつつ書いています。<br>
+    Twitterでしばしば話題になる発信力という言葉がどういう意味で使われているのか定かでないけど、Web媒体で広範なページビューを獲得せんとするなら、まずは話題に応じてツールを選んで頂けると良いと思いますね。</p>
+
+   <p>───・───・───・───</p>
+
+   <p>さてここからが本題です。<br>
+    SNSはどっちかと言うと、コンテンツ作成のヒントとして使うほうが長期的に見てより多くの「数」を稼げると思ってるよ。<br>
+    SNSで語られていることを真に受けて悩むのではなく、より強力なツールでコンテンツを作成する際のネタ元として活用するのです。<br>
+    特に私のライフスタイルの場合、マンモスSNSアカウントを育てるよりWebサイトを育てたほうがWebコンテンツを拡大させやすいのです。<br>
+    そうしろとまでは言いませんが、考え方を変える一助になるかと思います。</p>
+
+   <p>この発信力について書かれた文章だって、SNSで強烈に意識され話題沸騰しているのを見て思いついたのだから💡<br>
+    アナザーエデンというゲームの話だったんですけどね。<br>
+    2023年10月に大きな仕様変更がかかり（俗にいう限凸ガチャの実装）、それで場が荒れていたのですよ。<br>
+    そこから発信力とか、アンチとか、そういう話へ発展しておりました。<br>
+    よく聞く話でしょ？</p>
+
+   <p>まず、アンチとは「自分と対立関係にある考え方を発信する人々」と表現しても良いでしょう。<br>
+    そういう存在は時として鬱陶しくもありますが…<br>
+    そこを'お気持ち'ではなく、それこそ発信力という言葉で捉え直してみるのはいかがでしょうか。<br>
+    SNSで言うところの発信力というのはおそらく、SNSの緩いコミュニティーの中で'自分はどんな地位にいるのか'というヒエラルキーを意識したものだと思われます。<br>
+    しかしここでは、敢えて仮に発信力という言葉を文字通りに捉えるとしましょう。</p>
+
+   <p>アンチというのは私のようなWebサイト出身者から見れば、自身のWebツールへ最低限のページビューを保証し、離脱率低下に貢献する上客と言えます。<br>
+    前向きではないだけで、こちらの発信するコンテンツへ強い興味関心を向けている人々ということですからね。<br>
+    とは言え、しょせんはSNSの内部での話。<br>
+    アンチから獲得できるページビューには限りがあるんですよね。<br>
+    私も昔アフィリエイトチャレンジしてたときにfacebookでずいぶん工夫したけど、SNS内部の人間関係数に留まる性質がある。<br>
+    早い話がアンチの気を引くべく努力してても大して数を稼げない。<br>
+    ただSNS活動の規模拡大に合わせて必然的に発生する関係性でもあるんです。<br>
+    だったら活用しなきゃ損だと思いませんか？<br>
+    やれリムブロ＆派閥がどーのとか、そういう'お気持ち'を軸に考えても得をしないのですよ。<br>
+    アンチをうざがり喧嘩するのではなく、彼らからページビューを獲得できるよう工夫してみる。<br>
+    それとなく興味を引きそうなキーワードを普段のTweetやWebサイトに散りばめるとかね。<br>
+    人間なんて感情の生き物だから、なんていうのかな…嫌いな人ほど気になっちゃうみたいな😆ww<br>
+    そういう心理面をうまーく掴めれば、多少なら…TwitterやWebサイトのページビューを稼ぐことが可能です。<br>
+    アンチとハサミは使いようってことですね。<br>
+    社会通念上の常識を超えるような振る舞いをせず、アンチの興味が自分から離れないよう工夫するのです。<br>
+    もちろん得られるページビューは大したものではないから、時間と金をかけないようにね。</p>
+
+   <p>Twitterを始めてみて思ったのは、素直な人が多いなと。<br>
+    私なんかは何か言われたりしても、そこをテコにPV稼ぎをまず考えます。<br>
+    一方、多くの人は傷付いちゃうよね…<br>
+    そういうSNSの人間模様は「お前の価値観を汚してやるぅ」という取るに足らない悪意なのだから、それが読めている時点で活用を考えるべきだと私は思うのですよ。</p>
+
+   <p>だってさ。<br>
+    SNSで言うところの発信力という言葉がもし本当にコミュニティにおける「ヒエラルキー」を意識しているのであれば…<br>
+    ここで話をしているWebコンテンツのPVという視点から見ても、はたまた道義という視点から見ても、さすがに聞いてて恥ずかしいでしょ😓<br>
+    そんな話、職場の飲み会で語れないよね…どういう人なんだろうと思われちゃいそう。<br>
+    そんなことを意識しているくらいなら、任意のWebコンテンツを示した際の費用対効果や、コンテンツの寿命といった観点について考えたほうが生産的です。<br>
+    仮に1コンテンツ作るのに1万円＋2時間かかるとして、そのコンテンツがどれほどの期間、どれだけの人を惹きつけられるか？<br>
+    これならみっともない話ではないと思う。<br>
+    その道のプロフェッショナルだっているわけで。</p>
+
+   <p>TwitterであれBlogであれ、Webコンテンツの費用対効果と寿命は大切な視点です。<br>
+    この２つが良ければ、それなりに『発信力』を持てるのではないかな？<br>
+    作る側の負荷は低く、時代遅れになりにくい事柄は世の中にいっぱいあると思います。</p>
+
+   <p>───・───・───・───</p>
+
+   <p>まぁ…せっかくSNSというITツールを使っているのなら、人間関係なんかに悩むよりパソコンのお勉強なんかをついでにして頂くのも良いと思いますよ？<br>
+    技術の話ではないんです。<br>
+    自分がどんなモノを使って何をしているか、自覚を持つことに繋がるんですよね。</p>
+
+   <p>ここに書いてきた私の考え方だって、アンチを侮辱する意図はありません。─仮に私のSNSアカウントが、アンチが付くほどの規模だとすれば─<br>
+    彼らには彼らなりの考え方がある。<br>
+    SNSでアンチ活動をするというのはその活動の傾向として党派性が見られるものだし、何かしらのイデオロギーめいたものでコミュニティーを統一せんという試みなのでしょう。<br>
+    それ自体は悪いことではないのですから。<br>
+    とは言え、その活動に合わせる義理がないことも事実です。</p>
+
+   <p>要するに、気にしてても意味がないことが分かっているなら、少しでもPVを獲得するネタにでもすれば？<br>
+    私が話してるのはそういうことですよ。</p>
+
+   <p>ところでここを書いているのは2023年11月下旬なのですが、Eロンがおとなしいよね。<br>
+    「僕の実力と本気はこんなもんじゃない😷」<br>
+    いつものようにイキっていただかないと困ります…<br>
+    せっかくSNSをされているのですから、ネタを私に供給して頂かないと困ります。<br>
+    メリットなしと判断してブロックしちゃいますよ？<br>
+    😆ww</p>
+
+  </div>
+
+  <h3>手早く作業用BGMを作成する</h3>
+  <p>Windows 11 home in s modeではmicrosoftのチェックを通ったソフトウェアしかインストールできません。<br>
+   そこで、標準機能だけで音声コントロールをやってみました。</p>
+
+  <h4>内部音声収録の設定を行う</h4>
+
+  <ol>
+   <li>コントロールパネルを開く: スタートメニューから「コントロールパネル」を開く。</li>
+   <li>サウンドを開く: 「ハードウェアとサウンド」→「サウンド」を選択。</li>
+   <li>録音タブを選択: サウンドのウィンドウで「録音」タブをクリック。</li>
+   <li>ステレオミキサーの状態を確認: 一覧から「ステレオミキサー」を選択し、
+    <ol>
+     <li>オフならオンに切り替え: 右クリック→「有効にする」。</li>
+     <li>規定のデバイスに設定: 右クリック→「既定のデバイスとして設定」。</li>
+    </ol>
+   </li>
+  </ol>
+
+  <p>これでパソコン内部の音声を録音することができるようになりました。</p>
+
+  <h4>サウンドレコーダーを起動</h4>
+
+  <ol>
+   <li>Windows 11で「サウンドレコーダー」を起動する。</li>
+   <li>録音したい音声ファイルを再生する。</li>
+   <li>プレイヤーの設定でリピート再生を有効にする。</li>
+   <li>サウンドレコーダーで録音を開始する。</li>
+   <li>音声ファイルが繰り返し再生されている間、録音を続ける。</li>
+   <li>録音が完了したら停止して保存する。</li>
+  </ol>
+
+  <p>マイミュージックなど、ローカルフォルダに置いておけば良いですね。</p>
+
+  <h4>もちろん音楽にも著作権がある</h4>
+  <p>決して明確な許可なくWeb公開などしないようにしてください。<br>
+   アフィリエイトなど営利目的で用いるのは問題外であるとお考えいただければ。<br>
+   あくまでも、自分だけで楽しむための音声ファイルです。<br>
+   私は集中したいとき、波や渓流の音をよく聞いてますね。<br>
+   規則的な水音は落ち着きます…</p>
+
+  <h3>Linuxについても書きましょう</h3>
+  <p>将来的に私のパソコンはLinuxになるでしょう。<br>
+   Windows11のようにOS標準機能でもやれるかもしれませんが、このパソコンがどこまでその時のLinuxと相性良いか分からないのでコマンドラインを書き残しておきます。</p>
+
+  <h4>CDをLinux PCで手軽に再生できるようにする</h4>
+  <p>LinuxであればCUIで可能</p>
+
+  <p>lameをインストールする<br>
+   sudo apt-get install lame</p>
+
+  <p>対象の音声ファイルを移動しておく</p>
+
+  <p>lameのコマンドとスクリプトを組み合わせてまとめて処理する式を作る。<br>
+   lame [ オプション ] 入力ファイル [ 出力ファイル ]</p>
+
+  <p>最高音質でエンコードするための式<br>
+   lame -b 320 testmusic.wav testmusic.mp3</p>
+
+  <p>for文を書く</p>
+  <p>for 変数 in リスト<br>
+   do<br>
+   処理<br>
+   done</p>
+
+  <p>コマンドの完成形は次の通り<br>
+   for /home/ユーザー名/対象ディレクトリ in *.wav; do lame -b 320 $/home/ユーザー名/対象ディレクトリ; done</p>
+
+  <p>これでMP3ファイルへ一括処理可能。<br>
+   曲名に半角スペースなどが入っていると処理が止まるので注意。</p>
+
+  <p>何でも、昔のLinuxはドライバーを手書きしてたんですって？<br>
+   いやいやそれは厳しいでしょー…<br>
+   私そんなことできないです。<br>
+   せいぜいネットにつなぐために設定ファイルいじる程度かな。</p>
+
+  <p>おとなしくSモード解除するかぁ…と思っていましたが。<br>
+   Edgeのサイドバーが想定以上に快適でした✨<br>
+   しばらく使ってみると、確かにSモードは軽快に動作するんですよ。<br>
+   いろんな作業がWebツールでできるし、クラウド万歳って感じですね🎉<br>
+   クライアント端末の環境に依存しないのは素晴らしい。</p>
+
+  <p>これ以外にも何か見つけたらここに書き加えていきましょう。<br>
+   ずっとLinuxだったけど、Windowsも良いもんだね。</p>
+
+  <h3>あっちこっちハイスペックじゃなくて良い</h3>
+  <p>Webサイトを作るという目的ならね。<br>
+   何でもかんでも大容量やら高速やらを謳ってて、実際にそんな使わないんだよ…<br>
+   学生時代はこだわってたけどさ。<br>
+   ハイスペック機器＋高速インターネットがどうしても必要な状況というのは、動画や音声を伴う活動なんですよね。<br>
+   派手なネトゲやったりデカい動画編集してアップしたり。<br>
+   InstagramやYou tubeでガチのインフルエンサーやるとかなら必要だろうけど、私みたいな釣り人＋Web制作者（Linux派）なんて人間はハイスペック機器＋高速インターネットはいらんのです。<br>
+   使わない機能に出費してるの、お金もったいなくない？</p>
+
+  <h4>自作PCも昔はやってみたけど…</h4>
+  <p>おもしろいけどね。<br>
+   ハードウェア同士の相性とかを考えつつ。<br>
+   でも想定外のトラブルに見舞われることがあって、それの対処が大変なんですよね。<br>
+   組み上げた後でUSBメモリを認識しなかったりとかさ。<br>
+   とにかく手間がかかるんだよ。</p>
+
+  <p>ITの知識ならバカスカ取った資格で十分過ぎるほどリアル世間へ証明できるし…<br>
+   私には自作PCが必要なかったんです。<br>
+   結局、普通にお店で小さいノートパソコンを買う形に落ち着いてます。<br>
+   自分の用途をよく考えて経費が安く済む方向へ頭を使った方が良いと思って、辞めちゃいました。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/another-eden/anaden_fansitepc.html">
+     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>
