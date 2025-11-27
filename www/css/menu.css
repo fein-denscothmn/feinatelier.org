@@ -6,14 +6,12 @@
  font-size: 16px;
  cursor: pointer;
  color: #1A73E8;
- /* Google Blue */
  background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0));
  border: none;
  padding: 10px;
  border-radius: 5px;
  font-weight: bold;
  letter-spacing: 0.3px;
- /* 狭め */
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -53,11 +51,9 @@
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  color: #1A73E8;
- /* Google Blue */
  transition: color 0.3s ease-in-out;
 }
 
-/* hover 共通 → ブルーブラック系 */
 .fden-menu a:hover,
 .fden-submenu a:hover,
 .fden-menu .fden-submenu-toggle1:hover,
@@ -79,7 +75,6 @@
  transform: translateY(0);
 }
 
-/* アクセスランキングTop10▼ → Google Blue */
 .fden-menu .fden-submenu-toggle1 {
  font-weight: bold;
  letter-spacing: 0.3px;
@@ -88,25 +83,22 @@
  cursor: pointer;
 }
 
-/* 制作者からのお便り▼ → Microsoft Blue */
 .fden-menu .fden-submenu-toggle2 {
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #00A2ED;
+ color: #0078D4;
  cursor: pointer;
 }
 
-/* 制作者からのお便り配下リンク群 → Microsoft Blue保持 */
 .fden-submenu#fden-submenu1 a {
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #00A2ED;
+ color: #0078D4;
  transition: color 0.3s ease-in-out;
 }
 
-/* hover 時は共通でブルーブラック系に変化 */
 .fden-submenu#fden-submenu1 a:hover {
  color: #0A1F44;
 }

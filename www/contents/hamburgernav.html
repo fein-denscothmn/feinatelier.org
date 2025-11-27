@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Meta tags -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta name="keywords" content="個人サイト, CSS, 書き方">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="レスポンシブデザインに対応したハンバーガーメニュー">
+ <meta property="og:description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/hamburgernav.html">
+ <!-- Structured Data -->
+ <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "レスポンシブデザインに対応したハンバーガーメニュー",
+      "url": "https://feinatelier.org/contents/hamburgernav.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+  }
+  </script>
+
+ <!-- CSS -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- Page Title -->
+ <title>レスポンシブデザインに対応したハンバーガーメニュー</title>
+
+ <!-- Favicon -->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">レスポンシブデザインに対応したハンバーガーメニュー</li>
+   </ol>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="レスポンシブデザインに対応したハンバーガーメニューの目次を開く ▼"
+   data-close-text="レスポンシブデザインに対応したハンバーガーメニューの目次を閉じる ▲">レスポンシブデザインに対応したハンバーガーメニューの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>レスポンシブデザインに対応したハンバーガーメニュー</span></h1>
+  <p>スマートフォンやタブレットが当たり前になった今、レスポンシブデザインにおけるハンバーガーメニューは単なる装飾ではなく、ユーザー体験を支える重要な仕組みになっています。<br>
+   限られた画面スペースの中で、情報を整理しつつ直感的に操作できる導線を提供することは、サイトの信頼性にも直結します。<br>
+   小さなアイコンをタップするだけでナビゲーションが展開する仕組みは、ユーザーに「迷わず使える」という安心感を与え、同時にデザインの余白やコンテンツの見やすさを確保する役割も果たします。<br>
+   つまりハンバーガーメニューは、レスポンシブデザインの中で「見せたいもの」と「隠すべきもの」のバランスを取るための象徴的な存在かと思うんですよね。</p>
+
+  <p>あ、そうそう…<br>
+   通りが良いからハンバーガーメニューと言っちゃってるけど、正しくは「ナビゲーションドロワーアイコン」とか「メニューアイコン」と呼びます。</p>
+
+  <h3>摺りガラス効果を施したハンバーガーメニュー</h3>
+  <p>上述通り、とっても大切な機能です。<br>
+   しかしタップされた瞬間に画面を占有してしまうから、なかなかデザインが難しい側面があるんですよね。<br>
+   いろんなやり方があると思う。<br>
+   ここでは摺りガラス効果を取り入れたCSSのパターンをご紹介します。</p>
+
+  <p class="codegra" id="menu_css">ハンバーガーメニューを作るmenu.css</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.fden-hamburger-menu {
+ position: relative;
+}
+
+.fden-hamburger-button {
+ font-size: 16px;
+ cursor: pointer;
+ color: #1A73E8;
+ background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0));
+ border: none;
+ padding: 10px;
+ border-radius: 5px;
+ font-weight: bold;
+ letter-spacing: 0.3px;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.fden-hamburger-button:hover {
+ background: linear-gradient(to bottom, rgba(173, 216, 230, 0.2), rgba(173, 216, 230, 0));
+}
+
+.fden-menu {
+ display: none;
+ position: absolute;
+ top: 40px;
+ left: 0;
+ background: rgba(255, 255, 255, 0.1);
+ backdrop-filter: blur(6px);
+ -webkit-backdrop-filter: blur(6px);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+ z-index: 1000;
+ opacity: 0;
+ transition: opacity 0.5s ease, transform 0.5s ease;
+ transform: translateY(-10px);
+ border-radius: 18px;
+}
+
+.fden-menu.show {
+ display: block;
+ opacity: 1;
+ transform: translateY(0);
+}
+
+.fden-menu a {
+ display: block;
+ padding: 15px;
+ text-decoration: none;
+ font-weight: bold;
+ letter-spacing: 0.3px;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ color: #1A73E8;
+ transition: color 0.3s ease-in-out;
+}
+
+.fden-menu a:hover,
+.fden-submenu a:hover,
+.fden-menu .fden-submenu-toggle1:hover,
+.fden-menu .fden-submenu-toggle2:hover {
+ color: #0A1F44;
+}
+
+.fden-submenu {
+ display: none;
+ padding-left: 20px;
+ opacity: 0;
+ transition: opacity 0.5s ease, transform 0.5s ease;
+ transform: translateY(-10px);
+}
+
+.fden-submenu.show {
+ display: block;
+ opacity: 1;
+ transform: translateY(0);
+}
+
+.fden-menu .fden-submenu-toggle1 {
+ font-weight: bold;
+ letter-spacing: 0.3px;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ color: #1A73E8;
+ cursor: pointer;
+}
+
+.fden-menu .fden-submenu-toggle2 {
+ font-weight: bold;
+ letter-spacing: 0.3px;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ color: #0078D4;
+ cursor: pointer;
+}
+
+.fden-submenu#fden-submenu1 a {
+ font-weight: bold;
+ letter-spacing: 0.3px;
+ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ color: #0078D4;
+ transition: color 0.3s ease-in-out;
+}
+
+.fden-submenu#fden-submenu1 a:hover {
+ color: #0A1F44;
+}
+
+@media (max-width: 768px) {
+ .fden-hamburger-button {
+  font-size: 14px;
+  padding: 8px;
+ }
+
+ .fden-menu a {
+  padding: 10px;
+ }
+}
+    </code></pre>
+  </div>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-hamburger-menu</p>
+
+  <dl>
+   <dt><span class="codecolor">position: relative;</span></dt>
+   <dd>
+    親要素を「基準」として扱います。中の子要素（例えばメニュー）を
+    <span class="codecolor">position: absolute;</span> で配置するとき、この親が基準点になります。
+   </dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-hamburger-button</p>
+
+  <dl>
+   <dt><span class="codecolor">font-size: 16px;</span></dt>
+   <dd>文字の大きさを 16px にします。</dd>
+
+   <dt><span class="codecolor">cursor: pointer;</span></dt>
+   <dd>ホバーするとカーソルが手の形になり、クリックできる感じを出します。</dd>
+
+   <dt><span class="codecolor">color: #1A73E8;</span></dt>
+   <dd>文字色を Google系の青にします。</dd>
+
+   <dt><span class="codecolor">background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230,
+     0));</span></dt>
+   <dd>上から下へのグラデーション背景。上側は薄い水色の半透明、下に行くほど透明になります。</dd>
+
+   <dt><span class="codecolor">border: none;</span></dt>
+   <dd>ボタンの枠線を消します。</dd>
+
+   <dt><span class="codecolor">padding: 10px;</span></dt>
+   <dd>内側の余白を 10px にして、クリックしやすく見やすくします。</dd>
+
+   <dt><span class="codecolor">border-radius: 5px;</span></dt>
+   <dd>角を 5px 丸めて、柔らかい印象にします。</dd>
+
+   <dt><span class="codecolor">font-weight: bold;</span></dt>
+   <dd>文字を太字にします。</dd>
+
+   <dt><span class="codecolor">letter-spacing: 0.3px;</span></dt>
+   <dd>文字の間隔をほんの少し広げて、視認性を上げます。</dd>
+
+   <dt><span class="codecolor">text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);</span></dt>
+   <dd>黒の半透明で軽い影を付け、立体感を出します。</dd>
+
+   <dt><span class="codecolor">transition: background 0.3s ease-in-out, color 0.3s ease-in-out;</span></dt>
+   <dd>背景と文字色の変化を 0.3 秒で滑らかにします（ホバー時のアニメに効く）。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-hamburger-button:hover</p>
+
+  <dl>
+   <dt><span class="codecolor">background: linear-gradient(to bottom, rgba(173, 216, 230, 0.2), rgba(173, 216, 230,
+     0));</span></dt>
+   <dd>ホバー時は背景の水色の濃さを少し弱くし、反応を感じさせます。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-menu</p>
+
+  <dl>
+   <dt><span class="codecolor">display: none;</span></dt>
+   <dd>初期状態ではメニューを非表示にします。</dd>
+
+   <dt><span class="codecolor">position: absolute;</span></dt>
+   <dd>親（<span class="codecolor">relative</span> の要素）を基準に、自由配置にします。</dd>
+
+   <dt><span class="codecolor">top: 40px;</span></dt>
+   <dd>基準点から下へ 40px の位置に表示します。</dd>
+
+   <dt><span class="codecolor">left: 0;</span></dt>
+   <dd>左端に揃えます。</dd>
+
+   <dt><span class="codecolor">background: rgba(255, 255, 255, 0.1);</span></dt>
+   <dd>ごく薄い白の半透明背景。後ろが少し透けます。</dd>
+
+   <dt><span class="codecolor">backdrop-filter: blur(6px);</span></dt>
+   <dd>背景（背後のコンテンツ）を 6px ぼかすガラス風効果。</dd>
+
+   <dt><span class="codecolor">-webkit-backdrop-filter: blur(6px);</span></dt>
+   <dd>Safari など一部ブラウザ用の互換指定です。</dd>
+
+   <dt><span class="codecolor">border: 1px solid rgba(255, 255, 255, 0.2);</span></dt>
+   <dd>薄い白の枠線で輪郭を作ります。</dd>
+
+   <dt><span class="codecolor">box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);</span></dt>
+   <dd>ふわっと浮く影を付けます（下方向に 2px、ぼかし 10px）。</dd>
+
+   <dt><span class="codecolor">z-index: 1000;</span></dt>
+   <dd>重なり順を高くして、他の要素より前面に出します。</dd>
+
+   <dt><span class="codecolor">opacity: 0;</span></dt>
+   <dd>透明（見えない）にして、後でアニメ付きで表示させる準備。</dd>
+
+   <dt><span class="codecolor">transition: opacity 0.5s ease, transform 0.5s ease;</span></dt>
+   <dd>透明度と位置変化を 0.5 秒で滑らかにします。</dd>
+
+   <dt><span class="codecolor">transform: translateY(-10px);</span></dt>
+   <dd>初期状態は少し上にずらしておき、表示時に下へスッと出す演出。</dd>
+
+   <dt><span class="codecolor">border-radius: 18px;</span></dt>
+   <dd>角をしっかり丸めてカード風の見た目にします。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-menu.show</p>
+
+  <dl>
+   <dt><span class="codecolor">display: block;</span></dt>
+   <dd>非表示から表示へ切り替えます。</dd>
+
+   <dt><span class="codecolor">opacity: 1;</span></dt>
+   <dd>不透明にします（フェードイン）。</dd>
+
+   <dt><span class="codecolor">transform: translateY(0);</span></dt>
+   <dd>上にずらしていた位置を元に戻し、スライドイン完成。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-menu a</p>
+
+  <dl>
+   <dt><span class="codecolor">display: block;</span></dt>
+   <dd>リンクをブロック要素にして、行全体をクリック可能にします。</dd>
+
+   <dt><span class="codecolor">padding: 15px;</span></dt>
+   <dd>余白を広めに取り、押しやすく読みやすくします。</dd>
+
+   <dt><span class="codecolor">text-decoration: none;</span></dt>
+   <dd>下線を消します。</dd>
+
+   <dt><span class="codecolor">font-weight: bold;</span></dt>
+   <dd>太字で項目を強調します。</dd>
+
+   <dt><span class="codecolor">letter-spacing: 0.3px;</span></dt>
+   <dd>文字間を少し広げます。</dd>
+
+   <dt><span class="codecolor">text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);</span></dt>
+   <dd>軽い影で可読性と立体感を付けます。</dd>
+
+   <dt><span class="codecolor">color: #1A73E8;</span></dt>
+   <dd>項目の文字色を青にします。</dd>
+
+   <dt><span class="codecolor">transition: color 0.3s ease-in-out;</span></dt>
+   <dd>文字色の変化を滑らかにします（ホバー時など）。</dd>
+  </dl>
+
+  <h5>ホバー時の色変化</h5>
+
+  <dl>
+   <dt>
+    <span class="codecolor">
+     .fden-menu a:hover, .fden-submenu a:hover,<br>
+     .fden-menu .fden-submenu-toggle1:hover,<br>
+     .fden-menu .fden-submenu-toggle2:hover { color: #0A1F44; }
+    </span>
+   </dt>
+   <dd>
+    メニュー内のリンクやサブメニューのリンク、トグル部分をホバーしたら濃紺色に変え、反応を明確にします。
+   </dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-submenu</p>
+
+  <dl>
+   <dt><span class="codecolor">display: none;</span></dt>
+   <dd>サブメニューは初期状態では非表示。</dd>
+
+   <dt><span class="codecolor">padding-left: 20px;</span></dt>
+   <dd>左に 20px のインデントを付け、階層を視覚化します。</dd>
+
+   <dt><span class="codecolor">opacity: 0;</span></dt>
+   <dd>透明にして、後でアニメ表示する準備。</dd>
+
+   <dt><span class="codecolor">transition: opacity 0.5s ease, transform 0.5s ease;</span></dt>
+   <dd>フェードと位置のアニメを 0.5 秒で滑らかに。</dd>
+
+   <dt><span class="codecolor">transform: translateY(-10px);</span></dt>
+   <dd>少し上から表示開始して、スッと現れる演出。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-submenu.show</p>
+
+  <dl>
+   <dt><span class="codecolor">display: block;</span></dt>
+   <dd>表示に切り替えます。</dd>
+
+   <dt><span class="codecolor">opacity: 1;</span></dt>
+   <dd>不透明にしてフェードイン。</dd>
+
+   <dt><span class="codecolor">transform: translateY(0);</span></dt>
+   <dd>位置を元に戻してスライドイン。</dd>
+  </dl>
+
+  <h5>トグル要素（サブメニュー開閉用）の見た目</h5>
+
+  <dl>
+   <dt>
+    <span class="codecolor">
+     .fden-menu .fden-submenu-toggle1 {<br>
+     font-weight: bold;<br>
+     letter-spacing: 0.3px;<br>
+     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);<br>
+     color: #1A73E8;<br>
+     cursor: pointer;<br>
+     }
+    </span>
+   </dt>
+   <dd>
+    トグル1は青（Google系）で、太字・わずかな文字間・軽い影。クリックできるようポインター表示。
+   </dd>
+
+   <dt>
+    <span class="codecolor">
+     .fden-menu .fden-submenu-toggle2 {<br>
+     font-weight: bold;<br>
+     letter-spacing: 0.3px;<br>
+     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);<br>
+     color: #0078D4;<br>
+     cursor: pointer;<br>
+     }
+    </span>
+   </dt>
+   <dd>
+    トグル2は別の青（Microsoft系）。同じく太字・影・ポインターで、役割の違いを色で示します。
+   </dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-submenu#fden-submenu1 a</p>
+
+  <dl>
+   <dt><span class="codecolor">font-weight: bold;</span></dt>
+   <dd>サブメニュー1内のリンクを太字に。</dd>
+
+   <dt><span class="codecolor">letter-spacing: 0.3px;</span></dt>
+   <dd>文字間を少し広げます。</dd>
+
+   <dt><span class="codecolor">text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);</span></dt>
+   <dd>軽い影で読みやすく。</dd>
+
+   <dt><span class="codecolor">color: #0078D4;</span></dt>
+   <dd>Microsoft系の青で差別化します。</dd>
+
+   <dt><span class="codecolor">transition: color 0.3s ease-in-out;</span></dt>
+   <dd>色の変化を滑らかに。</dd>
+  </dl>
+
+  <p class="dark-blue-underline">クラスセレクター .fden-submenu#fden-submenu1 a:hover</p>
+
+  <dl>
+   <dt><span class="codecolor">color: #0A1F44;</span></dt>
+   <dd>ホバーで濃紺に変更し、反応を示します。</dd>
+  </dl>
+
+  <h5>メディアクエリ（スマホなど幅768px以下）</h5>
+
+  <dl>
+   <dt><span class="codecolor">@media (max-width: 768px) { ... }</span></dt>
+   <dd>画面幅が 768px 以下のときだけ、次の内側のルールを適用します。</dd>
+  </dl>
+
+
+  <p class="dark-blue-underline">内側のルール</p>
+
+  <dl>
+   <dt>
+    <span class="codecolor">
+     .fden-hamburger-button { font-size: 14px; padding: 8px; }
+    </span>
+   </dt>
+   <dd>
+    ボタンの文字と余白を少し小さくし、モバイルでの収まりを良くします。
+   </dd>
+
+   <dt>
+    <span class="codecolor">
+     .fden-menu a { padding: 10px; }
+    </span>
+   </dt>
+   <dd>
+    メニュー項目の余白をややコンパクトにして、縦の詰まりを最適化します。
+   </dd>
+  </dl>
+
+  <p>こういうCSSの使い方のポイントとしては、次のようなものが挙げられるかと。</p>
+
+  <dl>
+   <dt>表示切替の仕組み:</dt>
+   <dd>
+    <span class="codecolor">.show</span> クラスの付け外しで「非表示→表示」とアニメ（フェード＋スライド）を制御しています。
+    JavaScriptでボタンをクリックしたら <span class="codecolor">.fden-menu</span> や <span class="codecolor">.fden-submenu</span> に
+    <span class="codecolor">.show</span> を付けるのが基本です。
+   </dd>
+
+   <dt>ガラス風の演出:</dt>
+   <dd>
+    <span class="codecolor">background</span> の半透明＋<span class="codecolor">backdrop-filter</span>
+    のぼかしで、モダンな「ガラスモーフィズム」風を実現しています。
+    対応しないブラウザではぼかしが出ない場合もあるため、見た目の劣化が許容されるデザインにしてあります。
+   </dd>
+
+   <dt>色のロジック:</dt>
+   <dd>
+    メイン操作は Google系ブルー（<span class="codecolor">#1A73E8</span>）、階層や役割の差別化に Microsoftブルー（<span
+     class="codecolor">#0078D4</span>）を組み合わせ、
+    ホバーは濃紺（<span class="codecolor">#0A1F44</span>）で一体感を持たせています。
+   </dd>
+  </dl>
+
+  <h4>このCSSはちょっと複雑かも…要するに</h4>
+  <p>あるいは、細かいプロパティを一つずつ追うよりも、まずは「全体の役割」をイメージする方が理解しやすいのかもしれません。<br>
+   私がこのコードを書いたのは学生時代で、当時はワケ分からなかったですよ…<br>
+   最近になって、当サイトに取り入れるために倉庫から引っ張り出していろいろ手を加えたものです。</p>
+
+  <p>んーとね…ちょっと文章で表現してみましょうか！<br>
+   ここで使われているのは「ハンバーガーメニュー」と呼ばれる仕組みで、スマホや小さな画面でよく見かける折りたたみ式のメニューをスタイリッシュに動かすためのスタイルです。<br>
+   青を基調にしたボタンをクリックすると、メニューがふわっと下に現れる──そんなアニメーションが仕込まれています。<br>
+   背景は半透明でぼかしがかかり、まるでガラス越しに見ているような質感を演出。<br>
+   さらに中にはサブメニューがあり、必要なときだけスライドして展開される仕組みなのです。<br>
+   リンクにカーソルを合わせると文字色が濃く変わり、ユーザーは「今ここに触れている」と直感的に感じられるようになっています。<br>
+   そして画面が狭くなると文字サイズや余白が自動で調整され、スマホでも快適に閲覧できるよう工夫されています。<br>
+   要するに、このCSSは「ボタンを押すとガラス風のメニューがアニメーションで開き、階層的なサブメニューも展開できる」という体験を作り出すためのものなのです。</p>
+
+  <h2>ハンバーガーメニューの概要</h2>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower2/flower2(25).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>まずは全体的なコード同士の関わりについて説明が必要です。<br>
+    全てのページに「メニューを開く」をいうボタンがありますよね？<br>
+    その部分はハンバーガーメニューを差し込むhtmlコードです。<br>
+    それをタップするとJavaScriptが動作します。<br>
+    結果として何が起きるかというと、別に用意してある menu.html というメニューの中身を記述しているhtmlが、ハンバーガーメニューの入口である「メニューを開く」というボタンに差し込まれるわけです。<br>
+    そして準備してあるCSSがデザインを担当しています。</p>
+   <p>まずはハンバーガーメニューを差し込むhtmlコードから。<br>
+    これは全てのページに設置する必要があります。</p>
+  </div>
+
+  <p class="codegra" id="menu_html">ハンバーガーメニューを差し込むhtmlコード</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-html">
+&lt;div class=&quot;fden-hamburger-menu&quot;&gt;
+   &lt;button class=&quot;fden-hamburger-button&quot; id=&quot;fden-hamburger-button&quot; onclick=&quot;toggleMenu()&quot;&gt;☰ メニューを開く
+    ▼&lt;/button&gt;
+   &lt;div class=&quot;fden-menu&quot; id=&quot;fden-menu&quot;&gt;
+    &lt;div id=&quot;fden-menu-content&quot;&gt;&lt;/div&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;../script/menu.js&quot;&gt;&lt;/script&gt;
+    </code></pre>
+  </div>
+
+  <p>htmlコードそのものはそんなに複雑ではありません。<br>
+   ていうかなるべくシンプルに書くようにしているんだけどね。<br>
+   次は、ハンバーガーメニューの中身が記述されているhtmlファイルです。</p>
+
+  <p class="codegra" id="menumaker_html">ハンバーガーメニューを作るmenu.html</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+
+&lt;head&gt;
+ &lt;meta charset="UTF-8"&gt;
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+ &lt;title&gt;fein's appのハンバーガーメニュー&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+ &lt;a href="/another-eden/anaden_sitemap.html"&gt;アナザーエデン関連ページ・サイトマップ&lt;/a&gt;
+ &lt;a href="/contents/site_create.html"&gt;個人サイト制作関連ページ・サイトマップ&lt;/a&gt;
+ &lt;a href="/fish/fish_sitemap.html"&gt;アウトドア関連ページ・サイトマップ&lt;/a&gt;
+ &lt;a href="/contents/rss.html"&gt;更新のお知らせ&lt;/a&gt;
+ &lt;a href="/fish/blog.html" style="text-decoration:none;"&gt;
+  fein's blog
+  &lt;img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" style="width:40px; vertical-align:middle; margin-left:5px;"&gt;&lt;/a&gt;
+ &lt;a href="/menu/symbol.html#feininfo"&gt;サイト制作者について&lt;/a&gt;
+ &lt;a href="/contents/policy.html"&gt;サイトのポリシーや仕様&lt;/a&gt;
+ &lt;div id="denmenu"&gt;
+  &lt;a href="#" class="fden-submenu-toggle1" id="toggle-site-content"
+   onclick="toggleSubMenu('fden-submenu2', 'toggle-site-content', event)"&gt;アクセスランキングTop10▼&lt;/a&gt;
+
+  &lt;div class="fden-submenu" id="fden-submenu2"&gt;
+   &lt;a href="/another-eden/atelier_studio.html"&gt;Ⅰ．ファンサイト制作のためのアトリエ&lt;/a&gt;
+   &lt;a href="/another-eden/anaden_fansite.html"&gt;Ⅱ．アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ&lt;/a&gt;
+   &lt;a href="/another-eden/anaden_beginner.html"&gt;Ⅲ．アナザーエデンの初心者向けガイド&lt;/a&gt;
+   &lt;a href="/another-eden/anaden_feinpdf_teyul_menas.html"&gt;Ⅳ．グラスタ表を生んだテユールメナス&lt;/a&gt;
+   &lt;a href="/another-eden/lua.html"&gt;Ⅴ．アナザーエデンのプログラミングを個人サイトで試す&lt;/a&gt;
+   &lt;a href="/contents/aipay.html"&gt;Ⅵ．アクセス課金とWebの設計 ～ AIクローラー課金モデル ～&lt;/a&gt;
+   &lt;a href="/contents/onedrive.html"&gt;Ⅶ．OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点&lt;/a&gt;
+   &lt;a href="/contents/album_script.html"&gt;Ⅷ．JavaScriptでイラストアルバムを作成する&lt;/a&gt;
+   &lt;a href="/top"&gt;Ⅸ．個人サイトへPythonのFlaskを導入する&lt;/a&gt;
+   &lt;a href="/contents/domain.html"&gt;Ⅹ．注意したい独自ドメイン設定手順とルール&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;a href="#" class="fden-submenu-toggle2" id="toggle-popular-pages"
+   onclick="toggleSubMenu('fden-submenu1', 'toggle-popular-pages', event)"&gt;制作者からのお便り▼&lt;/a&gt;
+  &lt;div class="fden-submenu" id="fden-submenu1"&gt;
+   &lt;a href="/contents/pwa.html#Progressive_Web_Application"&gt;このサイトがアプリになりました！&lt;/a&gt;
+   &lt;a href="/contents/x_exoduslink.html"&gt;個人サイトのリンク掲載をご希望の方へ&lt;/a&gt;
+   &lt;a href="/contents/form.html"&gt;お問い合わせはこちら&lt;/a&gt;
+   &lt;a href="https://bsky.app/profile/feinatelier.org"&gt;Bluesky：公式SNS&lt;/a&gt;
+   &lt;a href="https://github.com/fein-denscothmn"&gt;GitHub：ソースコード&lt;/a&gt;
+   &lt;a href="https://portal.feinatelier.org/" style="display: flex; align-items: center; text-decoration: none;"&gt;
+    &lt;img src="/image/anafish.webp" alt="アナザーエデンのバディ_ピスケ" style="width: 6%; height: auto; margin-right: 10px;"&gt;
+    fein's portal：ポータルサイト
+   &lt;/a&gt;
+   &lt;a href="/fish/instagram.html"&gt;※maintenance[アプリ制作者用スペース]&lt;/a&gt;
+   &lt;a href="/another-eden/grasta.html"&gt;Fein Atelier - org&lt;/a&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+    </code></pre>
+  </div>
+
+  <p>単なるリンクのリストですよ。<br>
+   コードもいたってシンプル。<br>
+   これがJavaScriptによって全てのページに差し込まれ、CSSによってデザインされる。<br>
+   そうするとハンバーガーメニューになるわけです。</p>
+
+  <p>では、CSSの説明に移ります。</p>
+
+  <h3>メニューを作るCSS</h3>
+  <p>細々したデザインはそうでもないんだけど、ここの特徴はアニメーション設定になるでしょうか。<br>
+   閲覧者が頻繁にタップするポイントなので、カクカクした動きにならないようにしています。</p>
+  <p><span class="small-orange-text">※ここにあるコードは一昔前のやつです。最新版はこのページの上にあるコードですよ。</span><br>
+   <span class="small-text">大差ないんだけどね。気になる方は<a
+     href="/another-eden/atelier_studio.html">ファンサイト制作のためのアトリエ</a>からジャンプできるコードが最新版です。</span>
+  </p>
+
+  <p class="codegra">ハンバーガーメニューを作るmenu.css</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* ハンバーガーメニューのコンテナスタイル */
+.fden-hamburger-menu {
+    position: relative; /* 相対位置を指定 */
+}
+
+/* ハンバーガーボタンのスタイル */
+.fden-hamburger-button {
+    font-size: 16px; /* フォントサイズを設定 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    color: #1A73E8; /* ボタンの文字色を設定 (Google blue) */
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0)); /* 背景のグラデーションを追加 */
+    border: none; /* ボーダーをなしにする */
+    padding: 10px; /* 内側の余白を設定 */
+    border-radius: 5px; /* 四隅を丸める */
+    font-weight: bold; /* 文字を太字にする */
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* 背景色と文字色の変化にアニメーションを追加 */
+}
+
+/* ハンバーガーボタンをホバーしたときのスタイル */
+.fden-hamburger-button:hover {
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0.2), rgba(173, 216, 230, 0)); /* 背景のグラデーションを変更 */
+}
+
+/* メニューのスタイル */
+.fden-menu {
+    display: none; /* 初期状態で非表示 */
+    position: absolute; /* 絶対位置を指定 */
+    top: 40px; /* 上から40pxの位置に配置 */
+    left: 0; /* 左端に配置 */
+    background-color: white; /* 背景色を白に設定 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    z-index: 1000; /* 重なり順を設定 */
+    opacity: 0; /* 初期状態で透明 */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
+    transform: translateY(-10px); /* 初期状態で少し上に移動 */
+}
+
+/* メニューが表示されたときのスタイル */
+.fden-menu.show {
+    display: block; /* 表示 */
+    opacity: 1; /* 不透明に設定 */
+    transform: translateY(0); /* 元の位置に移動 */
+}
+
+/* メニュー内のリンクのスタイル */
+.fden-menu a {
+    display: block; /* ブロック要素として表示 */
+    padding: 15px; /* 内側の余白を設定 */
+    text-decoration: none; /* 下線をなしにする */
+    color: black; /* 文字色を黒に設定 */
+    transition: background 0.3s ease-in-out; /* 背景色の変化にアニメーションを追加 */
+}
+
+/* メニュー内のリンクをホバーしたときのスタイル */
+.fden-menu a:hover {
+    background-color: #e0e0e0; /* 背景色を変更 */
+}
+
+/* サブメニューのスタイル */
+.fden-submenu {
+    display: none; /* 初期状態で非表示 */
+    padding-left: 20px; /* 左に余白を設定 */
+    opacity: 0; /* 初期状態で透明 */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
+    transform: translateY(-10px); /* 初期状態で少し上に移動 */
+}
+
+/* サブメニューが表示されたときのスタイル */
+.fden-submenu.show {
+    display: block; /* 表示 */
+    opacity: 1; /* 不透明に設定 */
+    transform: translateY(0); /* 元の位置に移動 */
+}
+
+/* サブメニューのトグルボタン1のスタイル */
+.fden-menu .fden-submenu-toggle1 {
+    font-weight: bold; /* 文字を太字にする */
+    color: #1A73E8; /* 文字色を設定 (Google blue) */
+    cursor: pointer; /* カーソルをポインターに変更 */
+}
+
+/* サブメニューのトグルボタン2のスタイル */
+.fden-menu .fden-submenu-toggle2 {
+    font-weight: bold; /* 文字を太字にする */
+    color: #0078D4; /* 文字色を設定 (Microsoft blue) */
+    cursor: pointer; /* カーソルをポインターに変更 */
+}
+
+/* ビューポートの幅が768px以下の場合のスタイル */
+@media (max-width: 768px) {
+    .fden-hamburger-button {
+        font-size: 14px; /* フォントサイズを14pxに設定 */
+        padding: 8px; /* 内側の余白を縮小 */
+    }
+
+    .fden-menu a {
+        padding: 10px; /* 内側の余白を縮小 */
+    }
+}
+    </code></pre>
+  </div>
+
+  <p>このコードにはいくつかのアニメーションが含まれていますが、主に<span class="codecolor">transition</span>プロパティを使用しています。</p>
+
+  <h4>メニューのアニメーション設定</h4>
+  <p>ここはちょっと細かく分かれているんですよね。<br>
+   重要なポイントでありながら、あまり大仰なアニメーションは付けたくないです。<br>
+   今のところ、次のような設定で落ち着いています。</p>
+
+  <h5>ハンバーガーボタンのアニメーション</h5>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* 背景色と文字色の変化にアニメーションを追加 */
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>背景色と文字色のアニメーション</dt>
+   <dd>この<span class="codecolor">transition</span>プロパティ：背景色と文字色が変化する際にアニメーションを追加します。</dd>
+   <dd><span class="codecolor">0.3s</span>はアニメーションの持続時間：変化が0.3秒で完了することを示しています。</dd>
+   <dd><span class="codecolor">ease-in-out</span>はイージング関数：アニメーションの始まりと終わりがスムーズになる効果があります。</dd>
+  </dl>
+
+  <h5>メニューの表示・非表示のアニメーション</h5>
+
+  <p class="gra">初期状態</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+opacity: 0; /* 初期状態で透明 */
+transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
+transform: translateY(-10px); /* 初期状態で少し上に移動 */
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>透明度と変形のアニメーション</dt>
+   <dd><span class="codecolor">opacity: 0;</span>：メニューが初期状態で透明であることを示しています。</dd>
+   <dd><span class="codecolor">transition: opacity 0.5s ease, transform 0.5s ease;</span>：透明度と位置の変化に0.5秒のアニメーションを追加します。
+   </dd>
+   <dd><span class="codecolor">transform: translateY(-10px);</span>：メニューが初期状態で少し上に移動していることを示しています。</dd>
+  </dl>
+
+  <p class="gra">表示状態</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.fden-menu.show {
+    display: block; /* 表示 */
+    opacity: 1; /* 不透明に設定 */
+    transform: translateY(0); /* 元の位置に移動 */
+}
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>表示時のアニメーション</dt>
+   <dd><span class="codecolor">opacity: 1;</span>：メニューが完全に表示されることを示しています。</dd>
+   <dd><span class="codecolor">transform: translateY(0);</span>：メニューが元の位置に移動していることを示しています。</dd>
+   <dd><span class="codecolor">transition</span>プロパティ：これらの変化がスムーズにアニメーションされます。</dd>
+  </dl>
+
+  <h5>メニュー内のリンクのアニメーション</h5>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+transition: background 0.3s ease-in-out; /* 背景色の変化にアニメーションを追加 */
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>背景色のアニメーション</dt>
+   <dd><span class="codecolor">transition: background 0.3s ease-in-out;</span>：リンクの背景色が変化する際にアニメーションを追加します。</dd>
+   <dd><span class="codecolor">0.3s</span>はアニメーションの持続時間：変化が0.3秒で完了することを示しています。</dd>
+   <dd><span class="codecolor">ease-in-out</span>はイージング関数：アニメーションの始まりと終わりがスムーズになる効果があります。</dd>
+  </dl>
+
+  <h5>サブメニューのアニメーション</h5>
+
+  <p class="gra">初期状態</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+opacity: 0; /* 初期状態で透明 */
+transition: opacity 0.5s ease, transform 0.5s ease; /* 透明度と変形にアニメーションを追加 */
+transform: translateY(-10px); /* 初期状態で少し上に移動 */
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>透明度と変形のアニメーション</dt>
+   <dd><span class="codecolor">opacity: 0;</span>：サブメニューが初期状態で透明であることを示しています。</dd>
+   <dd><span class="codecolor">transition: opacity 0.5s ease, transform 0.5s ease;</span>：透明度と位置の変化に0.5秒のアニメーションを追加します。
+   </dd>
+   <dd><span class="codecolor">transform: translateY(-10px);</span>：サブメニューが初期状態で少し上に移動していることを示しています。</dd>
+  </dl>
+
+  <p class="gra">表示状態</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.fden-submenu.show {
+    display: block; /* 表示 */
+    opacity: 1; /* 不透明に設定 */
+    transform: translateY(0); /* 元の位置に移動 */
+}
+
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>表示時のアニメーション</dt>
+   <dd><span class="codecolor">opacity: 1;</span>：サブメニューが完全に表示されることを示しています。</dd>
+   <dd><span class="codecolor">transform: translateY(0);</span>：サブメニューが元の位置に移動していることを示しています。</dd>
+   <dd><span class="codecolor">transition</span>プロパティ：これらの変化がスムーズにアニメーションされます。</dd>
+  </dl>
+
+  <p>全体的に、もう少し遅いほうが良いのかもしれない。<br>
+   あと、このハンバーガーメニューはワンタッチで移動できるサブメニューのような役割を果たしています。<br>
+   ページ移動のメインになるのはグローバルナビゲーションとサイトマップ。<br>
+   だからあまり多くのリンクを設定しないようにしていますね。</p>
+
+  <h3>メニューを作るJavaScript</h3>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower2/flower2(26).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>上述したけども、個人でサイトを作ろうとしたときに必ずと言って良いほど話題になるのが、このサイトにもある「メニュー」です。<br>
+    CSSだけで組むこともできますが、素直にJavaScriptを交えたほうがラクかと思いますね。<br>
+    このサイトではグローバルナビゲーションをメインとして、このハンバーガーメニューはサブメニューとして活躍してもらってます。</p>
+  </div>
+
+  <p class="codegra" id="menu_js">ハンバーガーメニューを作るmenu.js</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+function toggleMenu() {
+ var menu = document.getElementById('fden-menu');
+ var button = document.getElementById('fden-hamburger-button');
+ if (menu.classList.contains('show')) {
+  menu.classList.remove('show');
+  button.innerHTML = '☰ メニューを開く ▼';
+  setTimeout(function () {
+   menu.style.display = 'none';
+  }, 300);
+ } else {
+  menu.style.display = 'block';
+  button.innerHTML = '× メニューを閉じる ▲';
+  setTimeout(function () {
+   menu.classList.add('show');
+  }, 10);
+ }
+}
+
+function toggleSubMenu(id, buttonId) {
+ var submenu = document.getElementById(id);
+ var button = document.getElementById(buttonId);
+ if (submenu.classList.contains('show')) {
+  submenu.classList.remove('show');
+  button.innerHTML = button.innerHTML.replace('▲', '▼');
+  setTimeout(function () {
+   submenu.style.display = 'none';
+  }, 300);
+ } else {
+  submenu.style.display = 'block';
+  button.innerHTML = button.innerHTML.replace('▼', '▲');
+  setTimeout(function () {
+   submenu.classList.add('show');
+  }, 10);
+ }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+ fetch('../menu/menu.html')
+  .then(response => response.text())
+  .then(data => {
+   document.getElementById('fden-menu-content').innerHTML = data;
+  });
+
+ document.addEventListener('click', function (event) {
+  var menu = document.getElementById('fden-menu');
+  var button = document.getElementById('fden-hamburger-button');
+  var isClickInside = menu.contains(event.target) || button.contains(event.target);
+  if (!isClickInside && menu.classList.contains('show')) {
+   menu.classList.remove('show');
+   button.innerHTML = '☰ メニューを開く ▼';
+   setTimeout(function () {
+    menu.style.display = 'none';
+   }, 300);
+  }
+ });
+});
+    </code></pre>
+  </div>
+
+  <h4>全てのページのメニューを手作りするの？！</h4>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower2/flower2(27).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>さっきも似たようなこと書いたけど。<br>
+    いやいや…現実味がないと思いますよ？<br>
+    全てのページで内容を統一しなければいけないのに。<br>
+    一応Visual Studio Codeは複数ファイルの一括置換ができますが、あまり長いコードを多数のファイルで置換させていると、あるいはどこかでミスが出ていても気付けない可能性があります。<br>
+    私はグローバルナビゲーションでしか一括置換はやっていないですね。<br>
+    SEOの観点からもhtmlコードの直接記述であることが望ましいからです。<br>
+    しかし、閲覧者の利便性を確保するのがハンバーガーメニューの目的なのですから、ここは何かしらの方法でスクリプトによる自動生成をしたほうが良いでしょう。</p>
+  </div>
+
+
+  <h4>メニューのJavaScript概要</h4>
+  <p>では、このスクリプトについて詳細な説明を行います。</p>
+
+  <p class="gra">メニューを開閉する機能</p>
+  <p>
+   ボタンをクリックすると、メニューが開いたり閉じたりします。<br>
+   メニューが表示されている場合は、<span class="codecolor">'show'</span> クラスを削除し、300ミリ秒後にメニューを非表示にします。<br>
+   メニューが非表示の場合は、メニューを表示し、<span class="codecolor">'show'</span> クラスを追加します。ボタンのテキストも適宜変更されます。
+  </p>
+
+  <p class="gra">サブメニューを開閉する機能</p>
+  <p>
+   サブメニューの開閉もメインメニューと同様に動作します。<br>
+   指定されたIDのサブメニューが表示されている場合は、<span class="codecolor">'show'</span> クラスを削除し、300ミリ秒後に非表示にします。<br>
+   非表示の場合は、サブメニューを表示し、<span class="codecolor">'show'</span> クラスを追加します。ボタンのテキストも適宜変更されます。
+  </p>
+
+  <p class="gra">ページの読み込み完了後の処理</p>
+  <p>
+   ページが完全に読み込まれた後、指定されたURLからメニューのHTMLファイルを取得し、その内容をメニューコンテンツに挿入します。
+  </p>
+
+  <p class="gra">クリックイベントの処理</p>
+  <p>
+   ページ内でクリックが発生すると、そのクリックがメニューやボタンの内部で発生したかどうかをチェックします。<br>
+   もしメニューやボタンの外部でクリックが発生し、メニューが表示されている場合は、メニューを閉じます。
+  </p>
+
+
+  <h5>toggleMenu関数</h5>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+function toggleMenu() {
+ var menu = document.getElementById('fden-menu');
+ var button = document.getElementById('fden-hamburger-button');
+ if (menu.classList.contains('show')) {
+  menu.classList.remove('show');
+  button.innerHTML = '☰ メニューを開く ▼';
+  setTimeout(function () {
+   menu.style.display = 'none';
+  }, 300);
+ } else {
+  menu.style.display = 'block';
+  button.innerHTML = '× メニューを閉じる ▲';
+  setTimeout(function () {
+   menu.classList.add('show');
+  }, 10);
+ }
+}
+
+</code></pre>
+  </div>
+
+  <p class="gra">1. メニューとボタンの取得</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+var menu = document.getElementById('fden-menu');
+var button = document.getElementById('fden-hamburger-button');
+   </code></pre>
+  </div>
+  <p><span class="codecolor">menu</span> にはIDが <span class="codecolor">'fden-menu'</span> の要素を取得します。<br>
+   <span class="codecolor">button</span> にはIDが <span class="codecolor">'fden-hamburger-button'</span> の要素を取得します。
+  </p>
+
+  <p class="gra">2. メニューの表示/非表示を切り替え</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+if (menu.classList.contains('show')) {
+ menu.classList.remove('show');
+ button.innerHTML = '☰ メニューを開く ▼';
+ setTimeout(function () {
+  menu.style.display = 'none';
+ }, 300);
+} else {
+ menu.style.display = 'block';
+ button.innerHTML = '× メニューを閉じる ▲';
+ setTimeout(function () {
+  menu.classList.add('show');
+ }, 10);
+}
+
+   </code></pre>
+  </div>
+  <p>メニューのクラスリストに <span class="codecolor">'show'</span> が含まれているかをチェックします。<br>
+   含まれている場合、メニューから <span class="codecolor">'show'</span> クラスを削除し、ボタンのテキストを変更し、300ミリ秒後にメニューを非表示にします。<br>
+   含まれていない場合、メニューを表示し、ボタンのテキストを変更し、10ミリ秒後にメニューに <span class="codecolor">'show'</span> クラスを追加します。</p>
+
+  <h5>toggleSubMenu関数</h5>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+function toggleSubMenu(id, buttonId) {
+ var submenu = document.getElementById(id);
+ var button = document.getElementById(buttonId);
+ if (submenu.classList.contains('show')) {
+  submenu.classList.remove('show');
+  button.innerHTML = button.innerHTML.replace('▲', '▼');
+  setTimeout(function () {
+   submenu.style.display = 'none';
+  }, 300);
+ } else {
+  submenu.style.display = 'block';
+  button.innerHTML = button.innerHTML.replace('▼', '▲');
+  setTimeout(function () {
+   submenu.classList.add('show');
+  }, 10);
+ }
+}
+
+</code></pre>
+  </div>
+
+  <p class="gra">1. サブメニューとボタンの取得</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+var submenu = document.getElementById(id);
+var button = document.getElementById(buttonId);
+   </code></pre>
+  </div>
+  <p><span class="codecolor">submenu</span> には指定されたIDの要素を取得します。<br>
+   <span class="codecolor">button</span> には指定されたIDのボタン要素を取得します。
+  </p>
+
+  <p class="gra">2. サブメニューの表示/非表示を切り替え</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+if (submenu.classList.contains('show')) {
+ submenu.classList.remove('show');
+ button.innerHTML = button.innerHTML.replace('▲', '▼');
+ setTimeout(function () {
+  submenu.style.display = 'none';
+ }, 300);
+} else {
+ submenu.style.display = 'block';
+ button.innerHTML = button.innerHTML.replace('▼', '▲');
+ setTimeout(function () {
+  submenu.classList.add('show');
+ }, 10);
+}
+   </code></pre>
+  </div>
+  <p>サブメニューのクラスリストに <span class="codecolor">'show'</span> が含まれているかをチェックします。<br>
+   含まれている場合、サブメニューから <span class="codecolor">'show'</span> クラスを削除し、ボタンのテキストを変更し、300ミリ秒後にサブメニューを非表示にします。<br>
+   含まれていない場合、サブメニューを表示し、ボタンのテキストを変更し、10ミリ秒後にサブメニューに <span class="codecolor">'show'</span> クラスを追加します。</p>
+
+  <h5>DOMContentLoadedイベントとその他のイベントリスナー</h5>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+document.addEventListener('DOMContentLoaded', function () {
+ fetch('../menu/menu.html')
+  .then(response => response.text())
+  .then(data => {
+   document.getElementById('fden-menu-content').innerHTML = data;
+  });
+
+ document.addEventListener('click', function (event) {
+  var menu = document.getElementById('fden-menu');
+  var button = document.getElementById('fden-hamburger-button');
+  var isClickInside = menu.contains(event.target) || button.contains(event.target);
+  if (!isClickInside && menu.classList.contains('show')) {
+   menu.classList.remove('show');
+   button.innerHTML = '☰ メニューを開く ▼';
+   setTimeout(function () {
+    menu.style.display = 'none';
+   }, 300);
+  }
+ });
+});
+
+</code></pre>
+  </div>
+
+  <p class="gra">1. DOMContentLoaded イベント</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+document.addEventListener('DOMContentLoaded', function () {
+ fetch('../menu/menu.html')
+  .then(response => response.text())
+  .then(data => {
+   document.getElementById('fden-menu-content').innerHTML = data;
+  });
+   </code></pre>
+  </div>
+  <p>ページのDOMが完全に読み込まれた後に実行される関数を設定します。<br>
+   <span class="codecolor">fetch</span> メソッドで <span class="codecolor">../menu/menu.html</span> ファイルを取得し、その内容を <span
+    class="codecolor">fden-menu-content</span> 要素に挿入します。
+  </p>
+
+  <p class="gra">2. クリックイベント</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+document.addEventListener('click', function (event) {
+ var menu = document.getElementById('fden-menu');
+ var button = document.getElementById('fden-hamburger-button');
+ var isClickInside = menu.contains(event.target) || button.contains(event.target);
+ if (!isClickInside && menu.classList.contains('show')) {
+  menu.classList.remove('show');
+  button.innerHTML = '☰ メニューを開く ▼';
+  setTimeout(function () {
+   menu.style.display = 'none';
+  }, 300);
+ }
+});
+   </code></pre>
+  </div>
+  <p>ドキュメント全体に対してクリックイベントリスナーを追加します。<br>
+   クリックがメニューまたはボタンの内部でない場合、メニューを閉じる処理を行います。</p>
+
+  <h4>htmlファイルを多数のWebページで共有する</h4>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower3/flower3(1).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>このハンバーガーメニューでやっているのは、htmlファイルを多数のWebページで共有するというものです。<br>
+    これをやらないと、メンテナンスに異常に時間がかかるWebサイトになってしまうんですよね。<br>
+    メニューの中身となるhtmlファイルを別途用意しておいて、それをJavaScriptを用いて各ページに差し込んでいく。<br>
+    そうすることで、メニューの中身となるhtmlファイルを書き換えれば全てのWebページに中身が反映されます。<br>
+    特にこういうハンバーガーメニューみたいな階層構造になっているメニューの場合、そのように作り込んでおけば、後がラクでしょ？</p>
+  </div>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/hamburgernav.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Meta tags -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta name="keywords" content="個人サイト, CSS, 書き方">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="レスポンシブデザインに対応したグローバルナビゲーション">
+ <meta property="og:description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/globalnav.html">
+ <!-- Structured Data -->
+ <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "レスポンシブデザインに対応したグローバルナビゲーション",
+      "url": "https://feinatelier.org/contents/globalnav.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+  }
+  </script>
+
+ <!-- CSS -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- Page Title -->
+ <title>レスポンシブデザインに対応したグローバルナビゲーション</title>
+
+ <!-- Favicon -->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">レスポンシブデザインに対応したグローバルナビゲーション</li>
+   </ol>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="レスポンシブデザインに対応したグローバルナビゲーションの目次を開く ▼"
+   data-close-text="レスポンシブデザインに対応したグローバルナビゲーションの目次を閉じる ▲">レスポンシブデザインに対応したグローバルナビゲーションの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>レスポンシブデザインに対応したグローバルナビゲーション</span></h1>
+  <p>レスポンシブデザインに対応したグローバルナビゲーションとは、画面サイズやデバイスの種類に応じて柔軟に形を変えるナビゲーションメニューのことです。<br>
+   大きなディスプレイでは横並びのメニューとして表示され、ユーザーが一目で全体構造を把握できるように設計されます。<br>
+   一方でスマートフォンやタブレットのような小さな画面では、ハンバーガーメニューやドロワー形式に切り替わり、限られたスペースでも操作できるよう工夫しますよね。<br>
+   こうした仕組みによって、同じサイトをどの環境から閲覧しても一貫した操作性が保たれ、ユーザーは迷うことなく目的のページへアクセスできます。<br>
+   レスポンシブ対応のグローバルナビゲーションは、現代のWebにおいて必須の要素といえるでしょう。</p>
+
+  <p>…と、ここまでは教科書的な一般論なんですけど。<br>
+   当サイトの場合、グローバルナビゲーションはそのままスマホでも小さめに表示されるようにしてあり、ハンバーガーメニューやドロワー形式のメニューは別途用意してあります。<br>
+   1つのサイトに複数のカテゴリーがあるので、常にメインのサイトマップが目につくようにしてあるのです。</p>
+
+
+  <h2>グローバルナビゲーションを作るためのhtml</h2>
+  <p>普通のHTMLですから、特に難しいことはないです。</p>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-html">
+&lt;nav class=&quot;den_nav&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://feinatelier.org/&quot;&gt;&lt;img src=&quot;/menu/mspass.webp&quot; alt=&quot;このサイトのシンボルマーク&quot; class=&quot;feinhome&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/&quot; class=&quot;animated-link&quot;&gt;ホーム&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/another-eden/anaden_sitemap.html&quot; class=&quot;animated-link&quot;&gt;アナザーエデン&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/fish/fish_sitemap.html&quot; class=&quot;animated-link&quot;&gt;アウトドアのエリア&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/contents/site_create.html&quot; class=&quot;animated-link&quot;&gt;個人サイト制作&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/contents/protect.html&quot; class=&quot;animated-link&quot;&gt;AI学習を防ぐ工夫&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/contents/rss.html&quot; class=&quot;animated-link&quot;&gt;更新のお知らせ&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+  </div>
+
+  <p>唯一言えることがあるとすれば、あんまりグローバルナビゲーションに多くの項目を付けないようにしていますね。<br>
+   当サイトであれば、カテゴリー分けされたサイトマップ＋α程度。<br>
+   その他はすべて他のメニューに委ねています。</p>
+
+  <h2>グローバルナビゲーションを作るためのCSS</h2>
+
+  <p>このCSSは「グローバルナビゲーション（上部メニュー）」の見た目と動きを作るためのものです。<br>
+   主にリンクの下線アニメーション、半透明のナビ背景、ロゴのホバー効果、リストの横並びを実現しています。</p>
+
+  <p>基本の役割としては、次のような感じでしょうかね。</p>
+  <ul>
+   <li><span class="codecolor">.animated-link</span>：<br>
+    リンクの基本スタイル。
+    <span class="codecolor">position:
+     relative</span>で疑似要素を位置決めできるようにしています。
+   </li>
+   <li><span class="codecolor">.animated-link::after</span>：<br>
+    リンクの下に伸びるアンダーラインを疑似要素で作成。</li>
+   <li><span class="codecolor">content:
+     ""</span>でHTMLを増やさず装飾を追加しています。<br>
+    疑似要素は要素の前後に仮想的な要素を挿入できる仕組みです。</li>
+  </ul>
+
+  <p>各ルールについて、ちょっと説明してみましょう。</p>
+
+  <dl>
+   <dt>リンクの見た目とアニメーション</dt>
+   <dd><span class="codecolor">.animated-link</span> は文字色や太さ、色変化のトランジションを設定。<span class="codecolor">transition: color
+     0.3s</span>で色が滑らかに変わります。</dd>
+   <dd><span class="codecolor">.animated-link::after</span> は絶対配置で要素の下に高さ<span
+     class="codecolor">2px</span>の線を作り、初期幅を<span class="codecolor">0%</span>にしておきます。ホバー時に幅を<span
+     class="codecolor">100%</span>にすることで左から右へ伸びる下線アニメになります。</dd>
+
+   <dt>ナビ全体の背景と表示アニメ</dt>
+   <dd><span class="codecolor">.den_nav</span> は半透明のグラデーション背景とバックドロップブラー（<span
+     class="codecolor">backdrop-filter</span>）で背景をぼかす。角丸とパディングで見た目を整えています。</dd>
+   <dd>初期状態は<span class="codecolor">opacity: 0</span>と<span class="codecolor">translateY(-20px)</span>で隠れており、<span
+     class="codecolor">.visible</span>を付けるとフェードインして下からスッと出る動きになります。</dd>
+
+   <dt>ロゴとリスト</dt>
+   <dd><span class="codecolor">.feinhome</span> はロゴ画像のサイズとホバー時の拡大・影（<span class="codecolor">drop-shadow</span>）を設定。</dd>
+   <dd><span class="codecolor">.den_nav ul</span> は<span class="codecolor">display: flex</span>で横並びにし、<span
+     class="codecolor">flex-wrap: wrap</span>で狭い画面では折り返します。リストの余白は<span class="codecolor">li</span>で調整。</dd>
+  </dl>
+
+  <p>疑似要素で装飾を追加するとHTMLを汚さずに表現できるんですよね。<br>
+   <span class="codecolor">transition</span>と<span class="codecolor">transform</span>で自然なアニメーションを作るようにしてます。<br>
+   ただ、<span class="codecolor">backdrop-filter</span>で背景をぼかす時にはブラウザの対応状況だけ確認したほうが良いかも。<br>
+   そろそろコードに移りますか。
+  </p>
+
+  <p class="codegra" id="headerglobal_css">グローバルナビゲーションを構成するheader.css</p>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* ★グローバルナビゲーションを構成する */
+.animated-link {
+ position: relative;
+ color: #e3f2fd;
+ font-weight: 500;
+ text-decoration: none;
+ transition: color 0.3s ease;
+}
+
+.animated-link:hover {
+ color: #ffffff;
+}
+
+.animated-link::after {
+ content: "";
+ position: absolute;
+ left: 0;
+ bottom: -3px;
+ width: 0%;
+ height: 2px;
+ background: linear-gradient(to right, #42a5f5, #80d8ff);
+ transition: width 0.3s ease;
+}
+
+.animated-link:hover::after {
+ width: 100%;
+}
+
+.den_nav {
+ background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0));
+ backdrop-filter: blur(12px);
+ -webkit-backdrop-filter: blur(12px);
+ padding: 12px 20px;
+ border-radius: 20px;
+
+ opacity: 0;
+ transform: translateY(-20px);
+ transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.den_nav.visible {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+.feinhome {
+ width: 45px;
+ transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.feinhome:hover {
+ transform: scale(1.1);
+ filter: drop-shadow(0 0 6px rgba(128, 216, 255, 0.6));
+}
+
+.den_nav ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.den_nav ul li {
+ margin-right: 20px;
+ margin-bottom: 10px;
+}
+
+.den_nav ul li a {
+ color: #1A73E8;
+}
+
+.den_nav ul li a:hover {
+ color: #0078D4;
+}
+</code></pre>
+  </div>
+
+  <h5>グローバルナビゲーションのリンク装飾</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.animated-link {
+  position: relative;
+  color: #e3f2fd;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>position</dt>
+   <dd>親要素としての位置基準を作ります。後で使う「::after」の線を、この要素を基準に配置できます。</dd>
+
+   <dt>color</dt>
+   <dd>文字色を薄い水色にします。優しく見える初期色です。</dd>
+
+   <dt>font-weight</dt>
+   <dd>文字の太さをやや太めにします。見出しリンクとして少し強調されます。</dd>
+
+   <dt>text-decoration</dt>
+   <dd>デフォルトの下線を消します。代わりに擬似要素で線を作ります。</dd>
+
+   <dt>transition</dt>
+   <dd>文字色が変わるときのアニメ時間と動き方を指定します。0.3秒でなめらかに変わります。</dd>
+  </dl>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.animated-link:hover {
+  color: #ffffff;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>hover時のcolor</dt>
+   <dd>マウスを乗せると白に変わります。コントラストが上がり、アクティブ感が出ます。</dd>
+  </dl>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.animated-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #42a5f5, #80d8ff);
+  transition: width 0.3s ease;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>content</dt>
+   <dd>空の内容で擬似要素を作ります。線の箱を用意するイメージです。</dd>
+
+   <dt>position</dt>
+   <dd>擬似要素をこのリンクの中で絶対配置します。親のrelativeが基準になります。</dd>
+
+   <dt>left</dt>
+   <dd>左端に揃えます。線の開始位置です。</dd>
+
+   <dt>bottom</dt>
+   <dd>テキストの少し下に配置します。-3pxで文字の下から少し離します。</dd>
+
+   <dt>width</dt>
+   <dd>初期幅を0%にします。最初は線が見えません。</dd>
+
+   <dt>height</dt>
+   <dd>線の太さを2pxにします。細めの下線です。</dd>
+
+   <dt>background</dt>
+   <dd>右方向に向かうグラデーションの色です。青からライトブルーへ変化します。</dd>
+
+   <dt>transition</dt>
+   <dd>幅が変わるときのアニメ設定です。0.3秒でスッと伸びます。</dd>
+  </dl>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.animated-link:hover::after {
+  width: 100%;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>hover時のwidth</dt>
+   <dd>マウスを乗せると線が左から右へ100%まで伸びます。ホバーの気持ちよさを演出します。</dd>
+  </dl>
+
+  <h5>グローバルナビ本体の見た目と表示アニメ</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav {
+  background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 20px;
+  border-radius: 20px;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>background</dt>
+   <dd>上から下に薄い水色の透明グラデーション。ガラス風の柔らかい背景になります。</dd>
+
+   <dt>backdrop-filter</dt>
+   <dd>背景全体を12pxぼかします。半透明のガラス効果です。</dd>
+
+   <dt>-webkit-backdrop-filter</dt>
+   <dd>SafariなどWebKit用の互換指定です。同じぼかしを効かせます。</dd>
+
+   <dt>padding</dt>
+   <dd>内側の余白を上下12px、左右20pxにします。中身が詰まり過ぎないようにします。</dd>
+
+   <dt>border-radius</dt>
+   <dd>角を20px丸めます。やさしい印象のカード形状です。</dd>
+
+   <dt>opacity</dt>
+   <dd>初期は透明にします。後でクラス切り替えでフェードインします。</dd>
+
+   <dt>transform</dt>
+   <dd>初期位置を上に20pxずらします。出現時に下へスライドさせます。</dd>
+
+   <dt>transition</dt>
+   <dd>透明度と位置の変化を0.8秒でなめらかにします。フェード＋スライドのアニメを統合します。</dd>
+  </dl>
+
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>visible時のopacity</dt>
+   <dd>完全に表示します。0から1へフェードインします。</dd>
+
+   <dt>visible時のtransform</dt>
+   <dd>縦位置を元に戻します。上からふわっと降りてくる感じになります。</dd>
+  </dl>
+
+  <h5>ホームアイコン（お魚マーク）のホバー演出</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.feinhome {
+  width: 45px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>width</dt>
+   <dd>画像やアイコンの幅を45pxに固定します。ナビに収まりやすいサイズです。</dd>
+
+   <dt>transition</dt>
+   <dd>拡大と影の変化を0.3秒で同期させます。反応が自然になります。</dd>
+  </dl>
+
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.feinhome:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(128, 216, 255, 0.6));
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>transform</dt>
+   <dd>マウス乗せで1.1倍に拡大します。クリックしたくなる視覚的誘導です。</dd>
+
+   <dt>filter</dt>
+   <dd>明るい水色の発光風ドロップシャドウを付けます。存在感を軽く強調します。</dd>
+  </dl>
+
+  <h5>ナビ内のリストレイアウト</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>list-style-type</dt>
+   <dd>デフォルトの黒点などの箇条書き記号を消します。ナビに不要な装飾を外します。</dd>
+
+   <dt>margin</dt>
+   <dd>外側余白をゼロにします。親との空き調整をCSSで統一します。</dd>
+
+   <dt>padding</dt>
+   <dd>内側余白もゼロにします。行頭のずれをなくします。</dd>
+
+   <dt>display</dt>
+   <dd>フレックスボックスで横並びのレイアウトにします。ナビ項目を並べやすくします。</dd>
+
+   <dt>flex-wrap</dt>
+   <dd>横幅が狭いときは折り返します。スマホでのレイアウト崩れを防ぎます。</dd>
+  </dl>
+
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav ul li {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>margin-right</dt>
+   <dd>項目同士の横の間隔を20px空けます。詰まりを防ぎます。</dd>
+
+   <dt>margin-bottom</dt>
+   <dd>折り返したときの縦の間隔を10px確保します。複数段でも読みやすくします。</dd>
+  </dl>
+
+  <h5>ナビのリンク色とホバー</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav ul li a {
+  color: #1A73E8;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>color</dt>
+   <dd>通常時のリンク色を鮮やかなブルーにします。ブランド感や可読性を両立します。</dd>
+  </dl>
+
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.den_nav ul li a:hover {
+  color: #0078D4;
+}
+</code></pre>
+  </div>
+
+  <dl>
+   <dt>hover時のcolor</dt>
+   <dd>少し深いブルーに切り替えます。ホバーで状態変化を明確に伝えます。</dd>
+  </dl>
+
+  <p>次はブログ用のCSSを掲載しますが、これは単に色を変えただけで、他の機能的な部分は全て同じですよ。</p>
+  <p class="codegra" id="headerglobalblog_css">ブログ用のグローバルナビゲーションを構成するheader.css</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* ★ブログ用のグローバルナビゲーションを構成する */
+.animated-link_blog {
+ position: relative;
+ color: #1A73E8;
+ font-weight: 500;
+ text-decoration: none;
+ transition: color 0.3s ease;
+ font-size: 0.95em;
+}
+
+.animated-link_blog:hover {
+ color: #0d47a1;
+}
+
+.animated-link_blog::after {
+ content: "";
+ position: absolute;
+ left: 0;
+ bottom: -3px;
+ width: 0%;
+ height: 2px;
+ background: linear-gradient(to right, #42a5f5, #80d8ff);
+ transition: width 0.3s ease;
+}
+
+.animated-link_blog:hover::after {
+ width: 100%;
+}
+
+.den_nav_blog {
+ background: linear-gradient(to bottom,
+   rgba(255, 165, 0, 0.15),
+   rgba(255, 165, 0, 0));
+ backdrop-filter: blur(14px);
+ -webkit-backdrop-filter: blur(14px);
+ border-radius: 20px;
+ padding: 12px 20px;
+
+ opacity: 0;
+ transform: translateY(-20px);
+ transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.den_nav_blog.visible {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+.feinhome {
+ width: 45px;
+ transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.feinhome:hover {
+ transform: scale(1.1);
+ filter: drop-shadow(0 0 6px rgba(66, 133, 244, 0.5));
+}
+
+.den_nav_blog ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.den_nav_blog ul li {
+ margin-right: 20px;
+ margin-bottom: 10px;
+}
+
+.den_nav_blog ul li a {
+ color: #1A73E8;
+}
+
+.den_nav_blog ul li a:hover {
+ color: #0d47a1;
+}
+</code></pre>
+  </div>
+
+  <p>次はJavaScriptの解説ですが、グローバルナビゲーションのものは大したことやってないから、そんなに長くはならないです。</p>
+
+  <h2>グローバルナビゲーションを作るためのJavaScript</h2>
+
+  <p>このスクリプトが何をしているかというと、まずはナビが画面に見えたら <span class="codecolor">visible</span> クラスを付け、見えなくなったら外しています。<br>
+   <span class="codecolor">IntersectionObserver</span> が「画面との交差」をイベントのように教えてくれるようになってる。<br>
+   フェードイン・スライドインなどのCSS演出を、見えるタイミングで発火させているわけですね。<br>
+   さっそくスクリプトを見ていきましょう。
+  </p>
+
+  <p class="codegra" id="globalmenu_js">グローバルナビゲーションを目立たせるmenu.js</p>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+// グローバルナビゲーションの動き
+document.addEventListener("DOMContentLoaded", () => {
+const nav = document.querySelector(".den_nav");
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+nav.classList.add("visible");
+} else {
+nav.classList.remove("visible");
+}
+});
+});
+
+observer.observe(nav);
+});
+    </code></pre>
+  </div>
+
+  <h5>DOM の準備ができたら実行</h5>
+  <dl>
+   <dt>イベント登録</dt>
+   <dd><span class="codecolor">document.addEventListener("DOMContentLoaded", () => {</span></dd>
+   <dd>ページのHTMLが読み込まれて、要素が使える状態になったタイミングで、中の処理を実行します。画像などの読み込み完了は待たず、HTMLだけ準備されたら動きます。</dd>
+  </dl>
+
+  <h5>ターゲット要素を取得</h5>
+  <dl>
+   <dt>要素取得</dt>
+   <dd><span class="codecolor">const nav = document.querySelector(".den_nav");</span></dd>
+   <dd>クラス名 <span class="codecolor">den_nav</span> の要素（グローバルナビ）をページから1つ探して取得します。見つかった要素を <span
+     class="codecolor">nav</span> という変数に入れます。</dd>
+  </dl>
+
+  <h5>交差監視（IntersectionObserver）を作成</h5>
+  <dl>
+   <dt>オブザーバー作成</dt>
+   <dd><span class="codecolor">const observer = new IntersectionObserver(entries => {</span></dd>
+   <dd>画面（ビューポート）と対象要素が「交差しているか」を監視する仕組みを作ります。交差状況が変わるたびに、後ろの関数が呼ばれます。</dd>
+
+   <dt>コールバック引数</dt>
+   <dd><span class="codecolor">entries => {</span></dd>
+   <dd>監視結果の配列 <span class="codecolor">entries</span> が渡されます。配列の中には、監視中の各要素の状態（見えているかなど）が入っています。</dd>
+  </dl>
+
+  <h5>監視結果を1つずつ処理</h5>
+  <dl>
+   <dt>ループ</dt>
+   <dd><span class="codecolor">entries.forEach(entry => {</span></dd>
+   <dd>監視対象（ここでは <span class="codecolor">nav</span>）ごとの状態を1件ずつ取り出して処理します。</dd>
+
+   <dt>可視判定</dt>
+   <dd><span class="codecolor">if (entry.isIntersecting) {</span></dd>
+   <dd>対象要素が画面内に入っている（交差している＝見えている）かを判定します。見えていれば <span class="codecolor">true</span> です。</dd>
+
+   <dt>表示用クラス付与</dt>
+   <dd><span class="codecolor">nav.classList.add("visible");</span></dd>
+   <dd>画面に見えているとき、ナビ要素に <span class="codecolor">visible</span>
+    というクラスを付けます。CSS側でこのクラスにアニメーションや不透明度変更などを設定しておくと「見えたときの動き」が実現できます。</dd>
+
+   <dt>クラス除去</dt>
+   <dd><span class="codecolor">} else { nav.classList.remove("visible"); }</span></dd>
+   <dd>画面から外れた（見えていない）ときは、<span class="codecolor">visible</span> クラスを外します。これで「隠れているときの状態」に戻せます。</dd>
+
+   <dt>コールバック終了</dt>
+   <dd><span class="codecolor">});</span></dd>
+   <dd>1件の監視結果処理を終えます。</dd>
+
+   <dt>オブザーバー作成終了</dt>
+   <dd><span class="codecolor">});</span></dd>
+   <dd>IntersectionObserver の設定を終えます。</dd>
+  </dl>
+
+  <h5>監視を開始</h5>
+  <dl>
+   <dt>監視開始</dt>
+   <dd><span class="codecolor">observer.observe(nav);</span></dd>
+   <dd>先ほど取得したナビ要素 <span class="codecolor">nav</span> を監視対象として登録します。これで、ナビが画面に入る／出るたびに上の判定とクラス付けが動きます。</dd>
+  </dl>
+
+  <h5>DOMContentLoaded の関数終了</h5>
+  <dl>
+   <dt>終了括弧</dt>
+   <dd><span class="codecolor">});</span></dd>
+   <dd>「DOMが読み込まれたら実行する」関数の終わりです。ここまでの処理が、ページ読み込み直後にセットされます。</dd>
+  </dl>
+
+  <p>他に何かあるかなー…<br>
+   一応補足としてお話しするなら、次のようなポイントがあるかも。</p>
+  <dl>
+   <dt>CSSが鍵</dt>
+   <dd><span class="codecolor">visible</span> クラスに対して、例として <span class="codecolor">opacity: 1; transform: translateY(0);
+     transition: .3s;</span> などのスタイルを用意すると、見えた瞬間にふわっと表示できます。初期状態（<span class="codecolor">den_nav</span>）側では <span
+     class="codecolor">opacity: 0; transform: translateY(-8px);</span> のようにしておくと、切り替えがわかりやすいです。</dd>
+
+   <dt>安全対策</dt>
+   <dd><span class="codecolor">.den_nav</span> が存在しない場合は <span class="codecolor">observer.observe(nav);</span>
+    でエラーになります。初心者向けには、<span class="codecolor">if (!nav) return;</span> を要素取得直後に入れると安心です。</dd>
+
+   <dt>細かい設定</dt>
+   <dd><span class="codecolor">IntersectionObserver</span> はしきい値やルート余白も設定できます（例: <span class="codecolor">new
+     IntersectionObserver(cb, { threshold: 0.5 })</span> で半分見えたら発火）。動きのタイミングを調整したいときに便利です。</dd>
+  </dl>
+
+  <p>次はブログ用のJavaScriptですが、これは<span class="codecolor">den_nav_blog</span>の部分が違うだけで、カラーの異なるCSSに合わせているだけです。</p>
+
+  <p class="codegra" id="globalmenublog_js">ブログ用のグローバルナビゲーションを目立たせるmenu.js</p>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+// ブログ用グローバルナビゲーションの動き
+document.addEventListener("DOMContentLoaded", () => {
+const nav = document.querySelector(".den_nav_blog");
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+nav.classList.add("visible");
+} else {
+nav.classList.remove("visible");
+}
+});
+});
+
+observer.observe(nav);
+});
+    </code></pre>
+  </div>
+
+  <p>このようにして、当サイトのグローバルナビゲーションはCSSとJavaScriptが連携して動いているわけです。<br>
+   一口にグローバルナビゲーションといってもいろんなデザインパターンや動きがあると思うから、以前に使っていたコードも残しておきますね。</p>
+
+  <h3>グローバルナビゲーションのコード例</h3>
+
+  <p>このスタイルはリンクにホバーしたり特定のクラスが追加されたりすると、アンダーラインがアニメーションで表示されるという効果を作り出しています。<br>
+   グローバルナビゲーションとして稼働させるには、別途JavaScriptが必要な場合もあります。<br>
+   このサイトではグローバルナビゲーション用の専用UIを実装するのではなく、アンダーラインのアニメーションを添えることで、少し目立たせるに留めています。</p>
+
+  <p class="codegra">グローバルナビゲーションを構成するCSS事例</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* アンダーラインアニメーションのキーフレームを定義 */
+@keyframes underline-animation {
+ from {
+  width: 0; /* 初期幅は0 */
+  background: #00CC00; /* 初期背景色は緑 */
+ }
+ to {
+  width: 100%; /* 最終幅は100% */
+  background: #1A73E8; /* 最終背景色は青 */
+ }
+}
+
+/* アニメーション対象のリンク要素の基本スタイル */
+.animated-link {
+ position: relative; /* 要素を相対位置に設定 */
+ color: #1A73E8; /* リンクのテキスト色を青に設定 */
+ text-decoration: none; /* テキストの下線を削除 */
+}
+
+/* アニメーション対象のリンク要素の擬似要素::afterを定義 */
+.animated-link::after {
+ content: ""; /* 擬似要素の内容を空に設定 */
+ position: absolute; /* 要素を絶対位置に設定 */
+ left: 0; /* 擬似要素の左端を親要素に揃える */
+ bottom: -2px; /* 擬似要素の下端を親要素から少し下げる */
+ width: 0; /* 初期幅を0に設定 */
+ height: 2px; /* 高さを2pxに設定 */
+ background: #00CC00; /* 初期背景色を緑に設定 */
+ transition: width 0.5s; /* 幅の変化を0.5秒でアニメーション */
+}
+
+/* "loaded" クラスが追加されたリンク要素の擬似要素::afterを定義 */
+.animated-link.loaded::after {
+ width: 100%; /* 幅を100%に設定 */
+ background: #1A73E8; /* 背景色を青に変更 */
+ animation: underline-animation 2s forwards; /* アンダーラインアニメーションを2秒間かけて実行 */
+}
+
+/* ナビゲーションバーのスタイル */
+.den_nav {
+ background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0)); /* 背景をグラデーションに設定 */
+ color: #1A73E8; /* テキスト色を青に設定 */
+ padding: 10px; /* 内側の余白を10pxに設定 */
+ border-radius: 20px; /* 角を丸くする */
+}
+
+/* ホームアイコンのスタイル */
+.feinhome {
+ width: 50px; /* 幅を50pxに設定 */
+ margin-left: 3px; /* 左マージンを3pxに設定 */
+ margin-top: 3px; /* 上マージンを3pxに設定 */
+ display: block; /* ブロック要素として表示 */
+ position: relative; /* 相対位置に設定 */
+ top: 3px; /* 上から3pxに位置 */
+ left: 3px; /* 左から3pxに位置 */
+}
+
+/* ナビゲーションメニューのスタイル */
+.den_nav ul {
+ list-style-type: none; /* リストのデフォルトの箇条書きを削除 */
+ margin: 0; /* 外側の余白をなしに設定 */
+ padding: 0; /* 内側の余白をなしに設定 */
+ display: flex; /* 子要素を横並びに表示 */
+ flex-wrap: wrap; /* 子要素を折り返す */
+}
+
+/* リスト項目のスタイル */
+.den_nav ul li {
+ margin-right: 20px; /* 右マージンを20pxに設定 */
+ margin-bottom: 10px; /* 下マージンを10pxに設定 */
+}
+
+/* リスト内のリンクのスタイル */
+.den_nav ul li a {
+ color: #1A73E8; /* リンクのテキスト色を青に設定 */
+}
+
+/* リンクにホバーしたときのスタイル */
+.den_nav ul li a:hover {
+ color: #0078D4; /* リンクのテキスト色を濃い青に変更 */
+}
+
+</code></pre>
+  </div>
+
+  <h3 id="flexcss">CSSのフレックスボックスレイアウト</h3>
+  <p>display: flex; は、CSSのフレックスボックスレイアウトを有効にするプロパティです。<br>
+   これを使うと、要素の配置やサイズ変更が柔軟に行えるようになります。<br>
+   けっこう大切なプロパティなので、詳しく説明していきますね。</p>
+
+  <h4>フレックスボックスの基本</h4>
+  <p>フレックスボックスは、親要素（コンテナ）とその子要素（アイテム）で構成されます。<br>
+   display: flex; を親要素に適用すると、その子要素がフレックスコンテナ内で配置されます。</p>
+
+  <dl>
+   <dt>方向の設定</dt>
+   <dd>デフォルトでは、子要素は横方向（row）に配置されます。</dd>
+   <dd>flex-direction プロパティを使って、縦方向（column）に変更することもできます。</dd>
+   <dt>配置の制御</dt>
+   <dd>justify-content プロパティで、子要素の主軸（横方向）の配置を制御できます（例：中央揃え、スペースの均等配分など）。
+   </dd>
+   <dd>align-items プロパティで、子要素の交差軸（縦方向）の配置を制御できます（例：中央揃え、上下揃えなど）。</dd>
+   <dt>サイズの調整</dt>
+   <dd>子要素に flex-grow, flex-shrink, flex-basis プロパティを使って、成長や縮小の割合、基準サイズを設定できます。</dd>
+  </dl>
+
+  <p>具体例となるコードを書いてみますね。</p>
+
+  <p class="gra">CSSのフレックスボックスレイアウト例</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-html">
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 1&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 2&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+  </div>
+
+  <p>フレックスボックスを使うと、レイアウトの調整が非常に簡単になります。</p>
+
+  <p class="gra">CSSのフレックスボックスレイアウト例</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.container {
+  display: flex; /* フレックスコンテナを設定 */
+  justify-content: center; /* 子要素を中央揃え */
+  align-items: center; /* 子要素を上下中央揃え */
+}
+
+.item {
+  flex: 1; /* 子要素が均等にスペースを取る */
+}
+
+</code></pre>
+  </div>
+
+  <h3>グローバルナビゲーションを作るJavaScriptのコード例</h3>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower3/flower3(2).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>このサイトは次のように一連のナビゲーションを設置しています。</p>
+   <ol>
+    <li>一番上にあるグローバルナビゲーション</li>
+    <li>次に来るパンくずリスト</li>
+    <li>パンくずリスト直下に検索ボックス</li>
+    <li>検索ボックス直下にハンバーガーメニュー</li>
+    <li>ページトップの画像の直下にアコーディオン型の見出し</li>
+    <li>ページ下部にあるサイトマップは、見出しからジャンプできる</li>
+   </ol>
+   <p>そして閲覧者がスクロールしていくと、スクロールトップボタンが出現し、いつでもページトップに戻れるようになっています。</p>
+   <p>ページの行き来を左右とするなら、ページの読み進めを上下運動として、それぞれ行き止まりにぶつからないようにしているんだよね。<br>
+    このグローバルナビゲーションにつけた小さなアニメーションは、それを目にすることで大きなリンクテキストを際立たせる効果があります。</p>
+  </div>
+
+  <p class="codegra">グローバルナビゲーションを目立たせるJavaScriptの例</p>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-javascript">
+document.addEventListener("DOMContentLoaded", function () {
+ const links = document.querySelectorAll(".animated-link");
+ links.forEach(link => {
+  link.classList.add("loaded");
+ });
+});
+    </code></pre>
+  </div>
+
+  <p>このサイトではグローバルナビゲーション用の専用UIを実装するのではなく、アンダーラインのアニメーションを添えることで、少し目立たせるに留めています。<br>
+   グローバルナビゲーションとして稼働させるには、もちろんCSSが別途必要です。<br>
+   では、JavaScriptの説明に移ります。</p>
+
+  <p><span class="codecolor">document.addEventListener("DOMContentLoaded", function () { ... });</span></p>
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower3/flower3(3).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+
+   <ul>
+    <li>ドキュメント（ウェブページ）の内容が完全に読み込まれ、DOM（ドキュメントオブジェクトモデル）が構築されたときに実行される関数を設定しています。</li>
+    <li><span class="codecolor">"DOMContentLoaded"</span>
+     イベントは、すべてのスクリプトやスタイルシートが読み込まれる前にトリガーされるため、ページの要素を操作するために安全なタイミングです。</li>
+   </ul>
+
+   <p><span class="codecolor">const links = document.querySelectorAll(".animated-link");</span></p>
+
+   <ul>
+    <li><span class="codecolor">document.querySelectorAll</span> メソッドを使って、クラス名 <span
+      class="codecolor">".animated-link"</span> を持つすべての要素を選択し、それらを <span class="codecolor">links</span> という変数に格納します。
+    </li>
+    <li><span class="codecolor">links</span> には、選択された要素のリストが NodeList オブジェクトとして保存されます。</li>
+   </ul>
+  </div>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower3/flower3(4).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>ここで、一つ注意点があります。<br>
+    上述の NodeList はJavaScriptのデータ構造の一つです。<br>
+    querySelectorAll メソッドの結果として返されるもので、選択されたDOM要素のリストを保持します。<br>
+    NodeListは配列に似ていますが、一部の配列メソッドは使用できません。<br>
+    このように、querySelectorAll メソッドによって返されるオブジェクトは NodeList と呼ばれるデータ構造です。<br>
+    これで複数の要素に対してループ処理を行うことができます。</p>
+  </div>
+
+  <p>ここらへんを書き込もうとすると、かなりの物量になりそうですね…<br>
+   querySelectorAll メソッドについても、どこかで触れていきたいと思います。<br>
+   ここで簡単に説明すると、querySelectorAll
+   メソッドはJavaScriptで使用されるメソッドの一つで、指定されたCSSセレクターに一致するすべての要素を選択するために使います。<br>
+   ドキュメント内の特定の条件を満たす全ての要素を検索し、その結果を NodeList
+   というオブジェクトとして返してるんだよね。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower3/flower3(6).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p><span class="codecolor">links.forEach(link => { link.classList.add("loaded"); });</span></p>
+   <ul>
+    <li><span class="codecolor">links</span> 内の各要素（ここでは <span class="codecolor">link</span> と呼ばれる）に対して、<span
+      class="codecolor">forEach</span> ループを使用して繰り返し処理を行います。</li>
+    <li>ループ内で、各要素に対して <span class="codecolor">classList.add("loaded")</span> メソッドを呼び出し、その要素に <span
+      class="codecolor">"loaded"</span> というクラスを追加します。</li>
+   </ul>
+  </div>
+
+  <p>このスクリプトの役割は、ページのDOMが完全に読み込まれた後、特定のアニメーションを持つリンク要素に <span class="codecolor">"loaded"</span>
+   クラスを追加することです。<br>
+   これと併せて、CSSを用いることでスタイルやアニメーションを制御できるようになります。</p>
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/globalnav.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

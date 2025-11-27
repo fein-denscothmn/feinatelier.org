@@ -156,11 +156,22 @@
    </div>
   </div>
 
-  <p class="feintag">ソースコードに関する特設ページ</p><br>
-
   <button id="generate-headings" data-open-text="ファンサイト制作のためのアトリエの目次を開く ▼"
    data-close-text="ファンサイト制作のためのアトリエの目次を閉じる ▲">ファンサイト制作のためのアトリエの目次を開く ▼</button><!--目次の自動生成-->
   <div class="spacer"></div>
+
+  <div class="denblack-card-container">
+   <div class="denblack-card">
+    <p>作成当初からたくさんの来訪者があり、深く感謝しています。<br>
+     このページが何なのかというと、結論から言うと次の通りです。</p>
+    <ul>
+     <li>個人サイト制作に必要なソースコード・マニュアル</li>
+     <li>同時に、私のためのソースコード管理ノート</li>
+    </ul>
+    <p>つまり、大きな個人サイトを作るために必要な材料を、すべて解説付きで公開してますよ～ということですね。</p>
+   </div>
+  </div>
+
   <p>ゲームの話は見出しに🎮マークを付けています。<br>
    それ以外は無印か🌟マークが付いています。</p>
   <p><a href="anaden_sitemap.html">アナザーエデン関連ページ・サイトマップへ戻る</a></p>
@@ -305,6 +316,42 @@
   <h3 id="target_atelier">🌟ソースコードのアトリエ</h3>
   <p>このサイトを構成するのに必要なCSSと、プログラムの解説ページへジャンプできるリンクです。<br>
    こんな感じでソースコードを書いていけば、このレベルのWebサイトであれば個人で作ることができますよ。</p>
+  <p>まずはWebサイトの主要部品であるグローバルナビゲーション・ハンバーガーメニュー・パンくずリストについて、コードを紹介します。</p>
+
+  <h5>グローバルナビゲーション</h5>
+  <dl>
+   <dt>header.css</dt>
+   <dd><a href="/contents/globalnav.html#headerglobal_css">グローバルナビゲーションを構成する</a></dd>
+   <dd><a href="/contents/globalnav.html#headerglobalblog_css">ブログ用のグローバルナビゲーションを構成する</a></dd>
+
+   <dt>menu.js</dt>
+   <dd><a href="/contents/globalnav.html#globalmenu_js">グローバルナビゲーションを目立たせる</a></dd>
+   <dd><a href="/contents/globalnav.html#globalmenublog_js">ブログ用のグローバルナビゲーションを目立たせる</a></dd>
+  </dl>
+
+  <h5>ハンバーガーメニュー</h5>
+  <p>通りが良いからハンバーガーメニューと言っちゃってるけど、正しくは「ナビゲーションドロワーアイコン」とか「メニューアイコン」と呼びます。</p>
+  <dt>menu.css</dt>
+  <dd><a href="/contents/hamburgernav.html#menu_html">ハンバーガーメニューを差し込むhtmlコード</a><br>
+   <span class="small-orange-text">差し込み先のhtmlコードです。</span>
+  </dd>
+  <dd><a href="/contents/hamburgernav.html#menumaker_html">ハンバーガーメニューを作るmenu.html</a><br>
+   <span class="small-orange-text">差し込まれるタイプの特別なhtmlファイルです。</span>
+  </dd>
+  <dd><a href="/contents/hamburgernav.html#menu_css">ハンバーガーメニューを作る</a></dd>
+
+  <dl>
+   <dt>menu.js</dt>
+   <dd><a href="/contents/hamburgernav.html#menu_js">ハンバーガーメニューを作る</a></dd>
+  </dl>
+
+  <h5>パンくずリスト</h5>
+  <dl>
+   <dt>fainpan.css</dt>
+   <dd><a href="/contents/breadcrumbsnav.html#fainpan_css">パンくずリストを作る</a></dd>
+  </dl>
+
+  <p><span class="small-text">🔼All checks were completed on 20251127.</span></p>
 
   <h4>Recipe for CSS and Programs</h4>
   <p>今は「アナザーエデンのファンサイト」ですからアフィリエイト目的で使うのはダメです。<br>
@@ -352,12 +399,7 @@
       <dd><a href="/contents/videopage.html#normal_video_css">通常版の動画を掲載する</a></dd>
       <dd><a href="/contents/videopage.html#google_video_css">Google Drive版の動画を掲載する</a></dd>
 
-      <dt>header.css</dt>
-      <dd><a href="/contents/codeinfo.html#headeranimation_css">ヘッダー画像にアニメーションを付ける</a></dd>
-      <dd><a href="/contents/codeinfo.html#headerglobal_css">グローバルナビゲーションを構成する</a></dd>
-
       <dt>fainpan.css</dt>
-      <dd><a href="/contents/navcode.html#fainpan_css">パンくずリストを作る</a></dd>
       <dd><a href="/contents/navcode.html#fainpangoogle_css">検索ボックスを整える</a></dd>
 
       <dt>feinheadline.css</dt>
@@ -365,15 +407,6 @@
        <span class="small-orange-text">差し込み先のhtmlコードです。</span>
       </dd>
       <dd><a href="/contents/navcode.html#feinheadline_css">アコーディオン型の見出しを作る</a></dd>
-
-      <dt>menu.css</dt>
-      <dd><a href="/contents/navcode.html#menu_html">ハンバーガーメニューを差し込むhtmlコード</a><br>
-       <span class="small-orange-text">差し込み先のhtmlコードです。</span>
-      </dd>
-      <dd><a href="/contents/navcode.html#menumaker_html">ハンバーガーメニューを作るmenu.html</a><br>
-       <span class="small-orange-text">差し込まれるタイプの特別なhtmlファイルです。</span>
-      </dd>
-      <dd><a href="/contents/navcode.html#menu_css">ハンバーガーメニューを作る</a></dd>
 
       <dt>footer.css</dt>
       <dd><a href="/contents/javascript_footer.html#scrollbutton_footer_css">スクロールトップボタン</a></dd>
@@ -435,10 +468,6 @@
       <dd><a href="/contents/css_tidbit.html#checkdesign_js">タップするとチェックが変化する</a></dd>
       <dd><a href="/contents/css_tidbit.html#h3underline_js">h3見出しに赤い線を引く</a></dd>
 
-      <dt>menu.js</dt>
-      <dd><a href="/contents/navcode.html#menu_js">ハンバーガーメニューを作る</a></dd>
-      <dd><a href="/contents/navcode.html#globalmenu_js">グローバルナビゲーションを目立たせる</a></dd>
-     </dl>
     </div>
 
 
@@ -1482,7 +1511,7 @@ img.horizontally {
 }
 
 .custom-link:hover {
- color: #00A2ED;
+ color: #0078D4;
  text-decoration: underline;
 }
 
@@ -1492,7 +1521,7 @@ a {
 }
 
 a:hover {
- color: #00A2ED;
+ color: #0078D4;
 }
 
 /* ★タブを作る */
@@ -1616,374 +1645,477 @@ hr.atelierflower::before {
 
   </div>
 
-  <h2>🌟道具を組み合わせるWeb制作と錬金術</h2>
+  <p>補足情報として、Google blue と Microsoft blue について書いておいた方が良いでしょうね。<br>
+   ちょっと変わった青色テキストを使っているものですから。</p>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ天上げ.webp" loading="lazy" alt="ライザ天上げ"
-    class="graphicsaki right-image fade-in-out">
-   <p>ライザの様子を見ていて思ったのは、Web制作と錬金術って似ている側面が多いなということなんです。<br>
-    どちらも材料を組み合わせて調合し、何かしらの形を作っていきます。<br>
-    何を選ぶかは自由が利くこともあるし、そうでないこともある。<br>
-    レベルが上がれば上がるほどいろんなことができるようになって…<br>
-    そんなことを感じながらアナデンのライザコラボを夢中でプレイしていました。</p>
-
-   <p>せっかくなら、思いっきりライザにあやかったWebページの在り方にしてみたいと思ったんだよね。</p>
+  <div class="custom-table-container">
+   <h3 class="grastah3">Google blue & Microsoft blue</h3>
+   <table class="weapon-table">
+    <caption>Google blue & Microsoft blue</caption>
+    <thead>
+     <tr class="weapon-table header-blue">
+      <th>ブランド</th>
+      <th>代表ブルー</th>
+      <th>用途・備考</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>Google</td>
+      <td>#4285F4</td>
+      <td>ロゴ・ブランド／鮮やかでアイコン的</td>
+     </tr>
+     <tr>
+      <td>Google</td>
+      <td>#1A73E8</td>
+      <td>UI要素／落ち着いた操作色</td>
+     </tr>
+     <tr>
+      <td>Microsoft</td>
+      <td>#00A2ED / #00A4EF</td>
+      <td>ロゴ・ブランド／明るいブルー</td>
+     </tr>
+     <tr>
+      <td>Microsoft</td>
+      <td>#0078D4</td>
+      <td>UI要素／Fluent UI 標準色</td>
+     </tr>
+    </tbody>
+   </table>
   </div>
 
-  <h4>File and System Management</h4>
-  <p>ライザの 「何を入れるのがいいかなぁー・これでいいかな！・やったぁー！ できた！」 という3段階のセリフは、何かをクリエイトする時の人間の気持ちそのまんまだと思うのですよ。</p>
-  <div class="spacer"></div>
-  <div class="atelier-container">
-   <div class="atelier-tabs">
-    <div class="atelier-tab" data-tab="1">Alchemy</div>
-    <div class="atelier-tab" data-tab="2">Image</div>
-    <div class="atelier-tab" data-tab="3">System</div>
+  <p>当Webサイトでは、基本原則としてリンクテキストを Google blue か Microsoft blue に統一しています。</p>
+
+  <p class="feintag">Google blue</p>
+
+  <dl>
+   <dt>#4285F4</dt>
+   <dd>Googleロゴの「G」に使われる代表的なブルー。<br>
+    ブランドアイデンティティを強調する鮮やかな色。</dd>
+
+   <dt>#1A73E8</dt>
+   <dd>GoogleのUI（ボタンやリンクなど）でよく使われるブルー。<br>
+    ロゴ色より落ち着いていて、UIに馴染みやすい。</dd>
+  </dl>
+
+  <p>ロゴやブランド感を強調するなら #4285F4、UIや操作要素に自然に馴染ませたいなら #1A73E8 となりますね。</p>
+
+  <p class="feintag">Microsoft blue</p>
+
+  <dl>
+   <dt>#00A2ED</dt>
+   <dd>「Microsoft Blue」として知られる代表色。鮮やかで明るいブルー。</dd>
+
+   <dt>#00A4EF</dt>
+   <dd>Microsoftロゴや公式資料でよく使われる近似色。#00A2EDと同系統。</dd>
+
+   <dt>#0078D4</dt>
+   <dd>Fluent UI（Microsoft 365やWindowsのUI）で使われる濃いブルー。ボタンやリンク色に採用される。</dd>
+  </dl>
+
+  <p>ブランド色としては #00A2ED / #00A4EF が代表的です。<br>
+   UI要素に使うなら #0078D4 が自然でしょう。</p>
+
+  <p>まとめると、次のようになります。</p>
+
+  <dl>
+   <dt>ブランド感を強調したい場合</dt>
+   <dd>Googleなら <span style="color:#4285F4">#4285F4</span>、Microsoftなら <span style="color:#00A2ED">#00A2ED</span> /
+    <span style="color:#00A4EF">#00A4EF</span> を選ぶ。
+   </dd>
+
+   <dt>UIの自然さを優先したい場合</dt>
+   <dd>Googleなら <span style="color:#1A73E8">#1A73E8</span>、Microsoftなら <span style="color:#0078D4">#0078D4</span>
+    を選ぶ。<br>
+    当サイトに取り入れているのは、こちらのほうです。
+   </dd>
+
+   <p>GoogleブルーやMicrosoftブルーのようなブランドカラーを自分のサイトに取り入れることは、基本的に著作権侵害にはあたりません。<br>
+    色コードそのものは単なる数値情報であり、創作性を持つ表現ではないため著作権の対象外だからです。<br>
+    たとえば #4285F4 や #00A4EF といった色指定は、RGB値を16進数で表しただけの技術的な記述であり、自由に利用できます。</p>
+
+   <p>ただし注意すべき点は、色そのものではなく「ブランドの識別性」に関わる部分です。<br>
+    GoogleやMicrosoftのロゴや公式デザインをそのまま模倣すると商標権や不正競争防止法に抵触する可能性があります。<br>
+    つまり、色をアクセントとして使うことは問題ありませんが、サイト全体を公式サイトそっくりに見せてユーザーに誤認させるような使い方は避けるべきです。</p>
+
+   <p>実務的には、ブランドカラーを参考にしてUIやリンク色に取り入れることは一般的で、法律的にも安全です。<br>
+    むしろ重要なのはサイト全体の一貫性であり、どの色を選ぶかよりも「どう統一して使うか」がユーザー体験に直結します。<br>
+    したがって、GoogleブルーやMicrosoftブルーをアクセントカラーとして取り入れることは安心して行えますが、ブランドを偽装するようなデザインは避けるのが最善と言えましょう。</p>
+
+   <h2>🌟道具を組み合わせるWeb制作と錬金術</h2>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ天上げ.webp" loading="lazy" alt="ライザ天上げ"
+     class="graphicsaki right-image fade-in-out">
+    <p>ライザの様子を見ていて思ったのは、Web制作と錬金術って似ている側面が多いなということなんです。<br>
+     どちらも材料を組み合わせて調合し、何かしらの形を作っていきます。<br>
+     何を選ぶかは自由が利くこともあるし、そうでないこともある。<br>
+     レベルが上がれば上がるほどいろんなことができるようになって…<br>
+     そんなことを感じながらアナデンのライザコラボを夢中でプレイしていました。</p>
+
+    <p>せっかくなら、思いっきりライザにあやかったWebページの在り方にしてみたいと思ったんだよね。</p>
    </div>
-   <div class="atelier-tab-content" data-content="1">
 
-    <p>時間が経っても役に立つWebページって、どういうものでしょうね？</p>
-
-    <p class="gra">何を入れるのがいいかなぁー</p>
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ錬成中1.webp" loading="lazy" alt="ライザ錬成中1"
-      class="graphicsaki right-image fade-in-out">
-     <ol>
-      <li>錬金術はできないけど、その代わりにWeb制作のジャンルでライザごっこ</li>
-      <li>ライザのアトリエコラボのゲームコンテンツ</li>
-     </ol>
-     <p>HTML・CSS・JavaScript・Python・Lua、Google Cloud App Engine・Azure Static Web Appsなどなど。<br>
-      Web制作に使える材料はたくさんあります。<br>
-      その中から必要なものを選んで錬成していく過程は、ライザごっこにぴったりじゃない？！</p>
+   <h4>File and System Management</h4>
+   <p>ライザの 「何を入れるのがいいかなぁー・これでいいかな！・やったぁー！ できた！」 という3段階のセリフは、何かをクリエイトする時の人間の気持ちそのまんまだと思うのですよ。</p>
+   <div class="spacer"></div>
+   <div class="atelier-container">
+    <div class="atelier-tabs">
+     <div class="atelier-tab" data-tab="1">Alchemy</div>
+     <div class="atelier-tab" data-tab="2">Image</div>
+     <div class="atelier-tab" data-tab="3">System</div>
     </div>
+    <div class="atelier-tab-content" data-content="1">
 
-    <p class="gra">これでいいかな！</p>
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ錬成中2.webp" loading="lazy" alt="ライザ錬成中2"
-      class="graphicsaki right-image fade-in-out">
-     <p>ちゃんと裏ボスなりストーリーなり、直接ゲームのことも書いてありますよ。<br>
-      フォロワーさんの中には「忙しくてまだプレイできていない…」という人もいたから、まずはWeb制作について書いていました。</p>
-     <p>何より私がライザごっこやりたくて仕方なかったからね😆ww<br>
-      錬金術はファンタジーですが、Web制作と重なる部分がとても多いと感じるんだよ。<br>
-      大きな鍋がWebサーバーだもん。</p>
+     <p>時間が経っても役に立つWebページって、どういうものでしょうね？</p>
+
+     <p class="gra">何を入れるのがいいかなぁー</p>
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ錬成中1.webp" loading="lazy" alt="ライザ錬成中1"
+       class="graphicsaki right-image fade-in-out">
+      <ol>
+       <li>錬金術はできないけど、その代わりにWeb制作のジャンルでライザごっこ</li>
+       <li>ライザのアトリエコラボのゲームコンテンツ</li>
+      </ol>
+      <p>HTML・CSS・JavaScript・Python・Lua、Google Cloud App Engine・Azure Static Web Appsなどなど。<br>
+       Web制作に使える材料はたくさんあります。<br>
+       その中から必要なものを選んで錬成していく過程は、ライザごっこにぴったりじゃない？！</p>
+     </div>
+
+     <p class="gra">これでいいかな！</p>
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ錬成中2.webp" loading="lazy" alt="ライザ錬成中2"
+       class="graphicsaki right-image fade-in-out">
+      <p>ちゃんと裏ボスなりストーリーなり、直接ゲームのことも書いてありますよ。<br>
+       フォロワーさんの中には「忙しくてまだプレイできていない…」という人もいたから、まずはWeb制作について書いていました。</p>
+      <p>何より私がライザごっこやりたくて仕方なかったからね😆ww<br>
+       錬金術はファンタジーですが、Web制作と重なる部分がとても多いと感じるんだよ。<br>
+       大きな鍋がWebサーバーだもん。</p>
+     </div>
+
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ錬成中3.webp" loading="lazy" alt="ライザ錬成中3"
+       class="graphicsaki right-image fade-in-out">
+      <p>ゲーム部分の攻略情報などは、時間を経るとどうしても色褪せてしまいます。<br>
+       ライブサービスゲームだからそれは仕方ないんだけど、旬なうちに楽しむということは、旬が過ぎればそれまでということでもある。<br>
+       ネタバレの懸念も薄まるように、そして自分にとって良い思い出となるように、時間の経過を見つつ順次ゲームネタを加えていきました。</p>
+     </div>
+
+     <p class="gra">やったぁー！ できた！</p>
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ錬成中4.webp" loading="lazy" alt="ライザ錬成中4"
+       class="graphicsaki right-image fade-in-out">
+      <p>このサイトを構成しているソースコードは、学生時代の勉強ノートから引っ張ってきたものです。<br>
+       当時はコードを書けても、私がフロントエンド・バックエンドの関連性を十分に理解できておらず、実装することができなかったものもありますよ。<br>
+       Pythonなんか自分のパソコンで動作させるのが精一杯。<br>
+       こうしてWeb公開にまで至らなかった。</p>
+     </div>
     </div>
+    <div class="atelier-tab-content" data-content="2">
+     <p>このWebサイトは、ソースコードとシステムを分けて管理しています。<br>
+      昔の私が困ったところは、これから個人サイトを作ろうとする人も困るポイントかと思うのです。<br>
+      このサイトの運用実績を残しつつ、いろんな人の参考になるような仕組みとしていきたいですね。</p>
 
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ錬成中3.webp" loading="lazy" alt="ライザ錬成中3"
-      class="graphicsaki right-image fade-in-out">
-     <p>ゲーム部分の攻略情報などは、時間を経るとどうしても色褪せてしまいます。<br>
-      ライブサービスゲームだからそれは仕方ないんだけど、旬なうちに楽しむということは、旬が過ぎればそれまでということでもある。<br>
-      ネタバレの懸念も薄まるように、そして自分にとって良い思い出となるように、時間の経過を見つつ順次ゲームネタを加えていきました。</p>
-    </div>
-
-    <p class="gra">やったぁー！ できた！</p>
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ錬成中4.webp" loading="lazy" alt="ライザ錬成中4"
-      class="graphicsaki right-image fade-in-out">
-     <p>このサイトを構成しているソースコードは、学生時代の勉強ノートから引っ張ってきたものです。<br>
-      当時はコードを書けても、私がフロントエンド・バックエンドの関連性を十分に理解できておらず、実装することができなかったものもありますよ。<br>
-      Pythonなんか自分のパソコンで動作させるのが精一杯。<br>
-      こうしてWeb公開にまで至らなかった。</p>
-    </div>
-   </div>
-   <div class="atelier-tab-content" data-content="2">
-    <p>このWebサイトは、ソースコードとシステムを分けて管理しています。<br>
-     昔の私が困ったところは、これから個人サイトを作ろうとする人も困るポイントかと思うのです。<br>
-     このサイトの運用実績を残しつつ、いろんな人の参考になるような仕組みとしていきたいですね。</p>
-
-    <p class="gra">画像の管理・バックアップ</p>
-    <dl>
-     <dt><a href="https://photos.google.com/">Googleフォト</a></dt>
-     <dd>スマホのGoogleフォトからWebサイト用のGoogleアカウントとアルバム共有。ここと直接リンクせず、必ずGoogleドライブへ移し替えるか、ダウンロードしてからデプロイし直すプロセスを挟む。</dd>
-     <dt><a href="https://drive.google.com/">Googleドライブ</a></dt>
-     <dd>ソースコード以外の全公開可能データを格納し、いったんGoogle Sitesで公開運用。時間の経過を待ってからこちらのプラットフォームへ移す。</dd>
-     <dt><a href="https://portal.feinatelier.org/">fein's portal</a>(Google Sites)</dt>
-     <dd>最終的に形にならずとも、いったんこちらに公開して目に見えるコンテンツにしておく。Webサイトとしてまとめあげるのはこちらのプラットフォームへ委ねる。</dd>
-     <dt>ゲームのスクリーンショット特有のトリミング</dt>
-     <dd>左右に生まれる空白をPython(<span class="small-orange-text">105trimming.py</span>)でまとめてカットして手作業を回避する。</dd>
-     <dt>画像のファイル名をまとめて確保</dt>
-     <dd>新規Webページを作る時には画像をまとめて連携するため、画像ファイル名をPython(<span
-       class="small-orange-text">file_list.py</span>)で取得。予めimgタグの準備をしておく。</dd>
-     <dt>大きすぎる画像をまとめてリサイズ</dt>
-     <dd>大きすぎる画像はWebページの負荷となるため、Python(<span
-       class="small-orange-text">image_aspect_compression_middle50.pyなど</span>)を用いて、まとめてリサイズする。</dd>
-    </dl>
-
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ考え中.webp" loading="lazy" alt="ライザ考え中"
-      class="graphicsaki right-image fade-in-out">
-     <p>個人用GoogleアカウントとWeb公開用Googleアカウントを分けています。<br>
-      その上でデータ共有はアルバム共有機能等を使い、必ず一手は手作業を挟まないとWebに公開できません。<br>
-      誤操作による画像投稿事故を避けるためです。</p>
-     <p>開発環境データはOneDriveと連携し、意識せずとも常時バックアップできている仕組みとしています。</p>
-    </div>
-
-    <p>人間は必ずミスをするので、そもそもミスができないルートを決めちゃうのが私のやり方です。</p>
-
-   </div>
-   <div class="atelier-tab-content" data-content="3">
-    <p>システムと言っても区分は難しいですけどね？<br>
-     ソースコード以外についてまとめています。</p>
-
-    <dl>
-     <dt>W3Cのvalidator</dt>
-     <dd><a href="https://validator.w3.org/nu/">Nu Html Checker</a></dd>
-     <dd><a href="https://validator.schema.org/">schema.orgのバリデータ</a></dd>
-     <dd><a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html">XMLのバリデーター</a></dd>
-
-     <dt>Google系のツール</dt>
-     <dd><i class="fab fa-google"></i> <a href="/contents/appengine.html">Google App Engine</a>・<a
-       href="/contents/appengine.html#app_yaml">app.yaml</a>
-     </dd>
-     <dd><i class="fab fa-google-drive"></i> <a href="https://sites.google.com/">Google Sites</a></dd>
-     <dd><a href="https://sites.google.com/view/feins-portal/">編集用 feins portal</a>
-     </dd>
-     <dd><a href="https://search.google.com/search-console?resource_id=sc-domain%3Afeinatelier.org">Google Search
-       Console</a>
-     </dd>
-     <dd><a href="https://pagespeed.web.dev/">PageSpeed Insights</a>
-     </dd>
-
-     <dt>Microsoft系のツール</dt>
-     <dd><i class="fa-brands fa-windows"></i> <a href="https://www.microsoft.com/ja-jp/microsoft-365">Microsoft 365</a>
-     </dd>
-     <dd><i class="fa-solid fa-hard-drive"></i> <a href="https://onedrive.live.com/">OneDrive</a></dd>
-     <dd><a href="https://www.bing.com/webmasters/home?siteUrl=https://feinatelier.org/">Bing Webmaster Tools</a>
-     </dd>
-
-     <dt>オープンソース</dt>
-     <dd><a href="https://vscodium.com/">VSCodium</a></dd>
-     <dd><a href="https://jp.ubuntu.com/download">Ubuntuを入手する</a></dd>
-    </dl>
-
-    <p>このアプリがデプロイされているのは、Google App Engineです。<br>
-     app.yamlの詳しい説明は「<a href="/contents/appyaml.html">App Engineのapp.yamlでWebサイトを設定する</a>」にあります。</p>
-
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ頑張る.webp" loading="lazy" alt="ライザ頑張る" class="graphic right-image fade-in-out">
-     <p>クラウドとは、インターネットを通じてサーバ・ストレージ・データベース・ネットワークなどを提供するサービスのことです。<br>
-      このおかげでユーザーは物理的なサーバを所有・管理せずに、必要なときに必要なリソースを利用することができます。<br>
-      重要なのは、リソースのスケーラビリティなんですよ。<br>
-      需要に応じてサーバのスペックを自動的に調整することが可能です。<br>
-      例えば、ウェブサイトにアクセスが急増した場合、クラウドプロバイダーは自動的にリソースを追加して対応します。<br>
-      逆にアクセスが減少した場合には、リソースを削減してコストを節約することもできます。</p>
-    </div>
-    <p>クラウドを利用することで、従来の物理サーバを管理する負担から解放されるとともに、柔軟かつ効率的にリソースを利用できるようになるのです。</p>
-    <p>参考サイト：<a href="https://www.digital.go.jp/news/UsZ6cDXd">ISMAPクラウドサービスリストを公開しました</a>デジタル庁</p>
-
-    <p class="gra"><i class="fa-solid fa-laptop"></i> My favorite PC</p>
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ完成.webp" loading="lazy" alt="ライザ完成"
-      class="graphicsaki right-image fade-in-out">
-     <p>もう10年くらいかな…<br>
-      低スペックのパソコンしか使ってないです。<br>
-      上述のようなクラウドが注目されている今、個人でハイスペックパソコンを購入する必要がある状況は限られたものかと。<br>
-      <a href="https://portal.feinatelier.org/">fein's portal</a>を作っていた時なんか、eMMC (embedded
-      MultiMediaCard) でさえなかったですね。
-     </p>
+     <p class="gra">画像の管理・バックアップ</p>
      <dl>
-      <dt><i class="fa-solid fa-server"></i> CPU Information</dt>
-      <dd>Current Clock Speed: 1114 MHz<br>
-       Name: Intel(R) Celeron(R) N4500 @ 1.10GHz<br>
-       Number of Cores: 2<br></dd>
-      <dt><i class="fa-solid fa-memory"></i> Memory Information</dt>
-      <dd>Capacity: 4 GB (4294967296 bytes)<br>
-       Speed: 3200 MHz<br></dd>
-      <dt><i class="fa-solid fa-database"></i> Disk Information</dt>
-      <dd>Model: Kingston X29128<br>
-       Size: 125 GB (125172311040 bytes)</dd>
+      <dt><a href="https://photos.google.com/">Googleフォト</a></dt>
+      <dd>スマホのGoogleフォトからWebサイト用のGoogleアカウントとアルバム共有。ここと直接リンクせず、必ずGoogleドライブへ移し替えるか、ダウンロードしてからデプロイし直すプロセスを挟む。</dd>
+      <dt><a href="https://drive.google.com/">Googleドライブ</a></dt>
+      <dd>ソースコード以外の全公開可能データを格納し、いったんGoogle Sitesで公開運用。時間の経過を待ってからこちらのプラットフォームへ移す。</dd>
+      <dt><a href="https://portal.feinatelier.org/">fein's portal</a>(Google Sites)</dt>
+      <dd>最終的に形にならずとも、いったんこちらに公開して目に見えるコンテンツにしておく。Webサイトとしてまとめあげるのはこちらのプラットフォームへ委ねる。</dd>
+      <dt>ゲームのスクリーンショット特有のトリミング</dt>
+      <dd>左右に生まれる空白をPython(<span class="small-orange-text">105trimming.py</span>)でまとめてカットして手作業を回避する。</dd>
+      <dt>画像のファイル名をまとめて確保</dt>
+      <dd>新規Webページを作る時には画像をまとめて連携するため、画像ファイル名をPython(<span
+        class="small-orange-text">file_list.py</span>)で取得。予めimgタグの準備をしておく。</dd>
+      <dt>大きすぎる画像をまとめてリサイズ</dt>
+      <dd>大きすぎる画像はWebページの負荷となるため、Python(<span
+        class="small-orange-text">image_aspect_compression_middle50.pyなど</span>)を用いて、まとめてリサイズする。</dd>
      </dl>
+
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ考え中.webp" loading="lazy" alt="ライザ考え中"
+       class="graphicsaki right-image fade-in-out">
+      <p>個人用GoogleアカウントとWeb公開用Googleアカウントを分けています。<br>
+       その上でデータ共有はアルバム共有機能等を使い、必ず一手は手作業を挟まないとWebに公開できません。<br>
+       誤操作による画像投稿事故を避けるためです。</p>
+      <p>開発環境データはOneDriveと連携し、意識せずとも常時バックアップできている仕組みとしています。</p>
+     </div>
+
+     <p>人間は必ずミスをするので、そもそもミスができないルートを決めちゃうのが私のやり方です。</p>
+
     </div>
-    <p class="gra">memo</p>
-    <p>Using VS Code, search for class="codegra".<br>
-     class="gra" is a representation that mimics a heading.</p>
-    <p>Google Sites resumed on July 4, 2023.<br>
-     Google Cloud started on September 15, 2024.</p>
+    <div class="atelier-tab-content" data-content="3">
+     <p>システムと言っても区分は難しいですけどね？<br>
+      ソースコード以外についてまとめています。</p>
+
+     <dl>
+      <dt>W3Cのvalidator</dt>
+      <dd><a href="https://validator.w3.org/nu/">Nu Html Checker</a></dd>
+      <dd><a href="https://validator.schema.org/">schema.orgのバリデータ</a></dd>
+      <dd><a href="https://www.xml-sitemaps.com/validate-xml-sitemap.html">XMLのバリデーター</a></dd>
+
+      <dt>Google系のツール</dt>
+      <dd><i class="fab fa-google"></i> <a href="/contents/appengine.html">Google App Engine</a>・<a
+        href="/contents/appengine.html#app_yaml">app.yaml</a>
+      </dd>
+      <dd><i class="fab fa-google-drive"></i> <a href="https://sites.google.com/">Google Sites</a></dd>
+      <dd><a href="https://sites.google.com/view/feins-portal/">編集用 feins portal</a>
+      </dd>
+      <dd><a href="https://search.google.com/search-console?resource_id=sc-domain%3Afeinatelier.org">Google Search
+        Console</a>
+      </dd>
+      <dd><a href="https://pagespeed.web.dev/">PageSpeed Insights</a>
+      </dd>
+
+      <dt>Microsoft系のツール</dt>
+      <dd><i class="fa-brands fa-windows"></i> <a href="https://www.microsoft.com/ja-jp/microsoft-365">Microsoft 365</a>
+      </dd>
+      <dd><i class="fa-solid fa-hard-drive"></i> <a href="https://onedrive.live.com/">OneDrive</a></dd>
+      <dd><a href="https://www.bing.com/webmasters/home?siteUrl=https://feinatelier.org/">Bing Webmaster Tools</a>
+      </dd>
+
+      <dt>オープンソース</dt>
+      <dd><a href="https://vscodium.com/">VSCodium</a></dd>
+      <dd><a href="https://jp.ubuntu.com/download">Ubuntuを入手する</a></dd>
+     </dl>
+
+     <p>このアプリがデプロイされているのは、Google App Engineです。<br>
+      app.yamlの詳しい説明は「<a href="/contents/appyaml.html">App Engineのapp.yamlでWebサイトを設定する</a>」にあります。</p>
+
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ頑張る.webp" loading="lazy" alt="ライザ頑張る" class="graphic right-image fade-in-out">
+      <p>クラウドとは、インターネットを通じてサーバ・ストレージ・データベース・ネットワークなどを提供するサービスのことです。<br>
+       このおかげでユーザーは物理的なサーバを所有・管理せずに、必要なときに必要なリソースを利用することができます。<br>
+       重要なのは、リソースのスケーラビリティなんですよ。<br>
+       需要に応じてサーバのスペックを自動的に調整することが可能です。<br>
+       例えば、ウェブサイトにアクセスが急増した場合、クラウドプロバイダーは自動的にリソースを追加して対応します。<br>
+       逆にアクセスが減少した場合には、リソースを削減してコストを節約することもできます。</p>
+     </div>
+     <p>クラウドを利用することで、従来の物理サーバを管理する負担から解放されるとともに、柔軟かつ効率的にリソースを利用できるようになるのです。</p>
+     <p>参考サイト：<a href="https://www.digital.go.jp/news/UsZ6cDXd">ISMAPクラウドサービスリストを公開しました</a>デジタル庁</p>
+
+     <p class="gra"><i class="fa-solid fa-laptop"></i> My favorite PC</p>
+     <div class="content">
+      <img src="/another-eden/anaimage/ライザ完成.webp" loading="lazy" alt="ライザ完成"
+       class="graphicsaki right-image fade-in-out">
+      <p>もう10年くらいかな…<br>
+       低スペックのパソコンしか使ってないです。<br>
+       上述のようなクラウドが注目されている今、個人でハイスペックパソコンを購入する必要がある状況は限られたものかと。<br>
+       <a href="https://portal.feinatelier.org/">fein's portal</a>を作っていた時なんか、eMMC (embedded
+       MultiMediaCard) でさえなかったですね。
+      </p>
+      <dl>
+       <dt><i class="fa-solid fa-server"></i> CPU Information</dt>
+       <dd>Current Clock Speed: 1114 MHz<br>
+        Name: Intel(R) Celeron(R) N4500 @ 1.10GHz<br>
+        Number of Cores: 2<br></dd>
+       <dt><i class="fa-solid fa-memory"></i> Memory Information</dt>
+       <dd>Capacity: 4 GB (4294967296 bytes)<br>
+        Speed: 3200 MHz<br></dd>
+       <dt><i class="fa-solid fa-database"></i> Disk Information</dt>
+       <dd>Model: Kingston X29128<br>
+        Size: 125 GB (125172311040 bytes)</dd>
+      </dl>
+     </div>
+     <p class="gra">memo</p>
+     <p>Using VS Code, search for class="codegra".<br>
+      class="gra" is a representation that mimics a heading.</p>
+     <p>Google Sites resumed on July 4, 2023.<br>
+      Google Cloud started on September 15, 2024.</p>
+
+    </div>
+   </div>
+
+   <h3>🌟ソースコードの管理とUI/UX（経験者向けのお話）</h3>
+   <p>このページは、少女趣味なキャラクターごっこそのものでしょう。<br>
+    でも、自分でコードを書いて何かしらの開発をしたことがある人になら、おそらく私の意図が伝わるのではないかと思っています。</p>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/Visual_mariel_Code.webp" loading="lazy" alt="Visual_mariel_Code"
+     class="biggraphic fade-in-out">
+   </div>
+
+   <p>「私自身のコード管理」と「訪問者向けのコード解説」を両立させたUIとして、このページを機能させたかったんだよね。<br>
+    キャラクターごっこの話ではなく、私がやりたかったことをきちんと説明するなら、次のようになります。</p>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザコラボシュゼット.webp" loading="lazy" alt="ライザコラボシュゼット"
+     class="graphicsaki right-image fade-in-out">
+
+    <ol>
+     <li>開発者が自分だけでやるコード管理は杜撰になりがち。</li>
+     <li>いくら決意しようが根性しようが、どーせ徹底されない。</li>
+     <li>でもソースコード管理をちゃんとやらないと、遅かれ早かれWebサイトの拡張に必ず支障が出る。</li>
+     <li>自分だけでやると杜撰になるなら、他人様の目があるところでソースコード管理をしよう。</li>
+    </ol>
+    <p>分かりやすい話だと思いませんか？<br>
+     自分が書いてきたコードの説明文を、外部の人にも分かるようにちゃんと書く。<br>
+     これは仕事の現場でもよく聞く<strong>「マニュアルの整備」</strong>に他なりません。</p>
+   </div>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/錬金術極める.webp" loading="lazy" alt="錬金術極める"
+     class="graphicsaki right-image fade-in-out">
+    <p>このページがあることで、外部向けに広大なWeb制作マニュアルを提供しつつ、私はソースコードの<strong>マニュアル</strong>をいつでも参照できるようになったわけです。<br>
+     ソースコード同士の関係が、自分で分からなくなる。<br>
+     数年前に自分で書いたプログラムを、忘れてしまう。<br>
+     これがあるから新しいUIを作れなくなるし、結果としてUXが下がる。</p>
 
    </div>
-  </div>
+   <p>Webサイトの超長期的な拡大と発展のために考案した、継続可能で自分自身にもメリットがあるこの仕組みを、改めて「Visual Atelier Code」と名付けます。<br>
+    そしてこの仕組みを思い付くきっかけになったのが…ライザリン・シュタウトという、愛らしいキャラクターだったのですよ！</p>
 
-  <h3>🌟ソースコードの管理とUI/UX（経験者向けのお話）</h3>
-  <p>このページは、少女趣味なキャラクターごっこそのものでしょう。<br>
-   でも、自分でコードを書いて何かしらの開発をしたことがある人になら、おそらく私の意図が伝わるのではないかと思っています。</p>
+   <h4>Markdown記法とREADME：このサイトの説明書</h4>
+   <p><a href="https://github.com/fein-denscothmn/fein-sites-dev1/blob/main/README.md">当WebサイトのREADME</a><br>
+    Markdown記法で書かれた、このサイトの説明書です。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザアルマ.webp" loading="lazy" alt="ライザとアルマ"
+     class="graphicsaki right-image fade-in-out">
 
-  <div class="content">
-   <img src="/another-eden/anaimage/Visual_mariel_Code.webp" loading="lazy" alt="Visual_mariel_Code"
-    class="biggraphic fade-in-out">
-  </div>
+    <p>Markdown記法はHTMLより簡単な、構造化されたテキストファイルの書き方です。<br>
+     <span class="codecolor">#</span>の数で見出しを作り、<br>
+     <span class="codecolor">|--|--|</span>を組み合わせて表を作り、<br>
+     <span class="codecolor">*</span>で箇条書きもできて、<br>
+     <span class="codecolor">![代替テキスト](ファイルのパス)</span>によって画像の表示さえできます。
+    </p>
 
-  <p>「私自身のコード管理」と「訪問者向けのコード解説」を両立させたUIとして、このページを機能させたかったんだよね。<br>
-   キャラクターごっこの話ではなく、私がやりたかったことをきちんと説明するなら、次のようになります。</p>
-
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザコラボシュゼット.webp" loading="lazy" alt="ライザコラボシュゼット"
-    class="graphicsaki right-image fade-in-out">
-
-   <ol>
-    <li>開発者が自分だけでやるコード管理は杜撰になりがち。</li>
-    <li>いくら決意しようが根性しようが、どーせ徹底されない。</li>
-    <li>でもソースコード管理をちゃんとやらないと、遅かれ早かれWebサイトの拡張に必ず支障が出る。</li>
-    <li>自分だけでやると杜撰になるなら、他人様の目があるところでソースコード管理をしよう。</li>
-   </ol>
-   <p>分かりやすい話だと思いませんか？<br>
-    自分が書いてきたコードの説明文を、外部の人にも分かるようにちゃんと書く。<br>
-    これは仕事の現場でもよく聞く<strong>「マニュアルの整備」</strong>に他なりません。</p>
-  </div>
-
-  <div class="content">
-   <img src="/another-eden/anaimage/錬金術極める.webp" loading="lazy" alt="錬金術極める"
-    class="graphicsaki right-image fade-in-out">
-   <p>このページがあることで、外部向けに広大なWeb制作マニュアルを提供しつつ、私はソースコードの<strong>マニュアル</strong>をいつでも参照できるようになったわけです。<br>
-    ソースコード同士の関係が、自分で分からなくなる。<br>
-    数年前に自分で書いたプログラムを、忘れてしまう。<br>
-    これがあるから新しいUIを作れなくなるし、結果としてUXが下がる。</p>
-
-  </div>
-  <p>Webサイトの超長期的な拡大と発展のために考案した、継続可能で自分自身にもメリットがあるこの仕組みを、改めて「Visual Atelier Code」と名付けます。<br>
-   そしてこの仕組みを思い付くきっかけになったのが…ライザリン・シュタウトという、愛らしいキャラクターだったのですよ！</p>
-
-  <h4>Markdown記法とREADME：このサイトの説明書</h4>
-  <p><a href="https://github.com/fein-denscothmn/fein-sites-dev1/blob/main/README.md">当WebサイトのREADME</a><br>
-   Markdown記法で書かれた、このサイトの説明書です。</p>
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザアルマ.webp" loading="lazy" alt="ライザとアルマ"
-    class="graphicsaki right-image fade-in-out">
-
-   <p>Markdown記法はHTMLより簡単な、構造化されたテキストファイルの書き方です。<br>
-    <span class="codecolor">#</span>の数で見出しを作り、<br>
-    <span class="codecolor">|--|--|</span>を組み合わせて表を作り、<br>
-    <span class="codecolor">*</span>で箇条書きもできて、<br>
-    <span class="codecolor">![代替テキスト](ファイルのパス)</span>によって画像の表示さえできます。
-   </p>
-
-   <p>そんなに使用頻度は高くないけど、とても便利ですよ。<br>
-    .docxなどのワープロソフトで書かれたファイルは、OSが変わるとうまく表示できなかったりします。<br>
-    しかしMarkdown記法で構造化されたテキストファイルであれば、読みやすいレイアウトを維持したままOSを問わず表示されます。<br>
-    HTML（HyperText Markup Language）はWebページの内容を構造化するためのマークアップ言語ですが、これと似ていますね。<br>
-    Markdown記法で書かれたテキストは、とっても簡単にHTML文書にすることもできる。<br>
-    だからWebページの下書きとしても便利に使えます。</p>
-  </div>
-
-  <h3>🌟独自ドメインの設定（長期運営者向け）</h3>
-
-  <div class="flowerclearfix">
-   <div class="flowerfade-out">
-    <img src="/flower1/forest1(149).jpg" loading="lazy" alt="フェードアウト効果の草花写真">
+    <p>そんなに使用頻度は高くないけど、とても便利ですよ。<br>
+     .docxなどのワープロソフトで書かれたファイルは、OSが変わるとうまく表示できなかったりします。<br>
+     しかしMarkdown記法で構造化されたテキストファイルであれば、読みやすいレイアウトを維持したままOSを問わず表示されます。<br>
+     HTML（HyperText Markup Language）はWebページの内容を構造化するためのマークアップ言語ですが、これと似ていますね。<br>
+     Markdown記法で書かれたテキストは、とっても簡単にHTML文書にすることもできる。<br>
+     だからWebページの下書きとしても便利に使えます。</p>
    </div>
-   <p>2025年3月より、当サイトのURLが <a href="https://feinatelier.org/">https://feinatelier.org/</a> となりました。<br>
-    .orgドメインは個人でも取得でき、信頼性や信憑性が高いと認識されています。<br>
-    福祉や教育など非営利活動、ITネタで言うならオープンソースプロジェクトなど、公益性の高い方向を持っている情報提供サイトに向いているドメインだから、第一印象が良いのですよ。</p>
-   <p>平たく言うと、私はWebサイトをマネタイズする予定がありません。<br>
-    かつ、こうして個人サイトを構築できるソースコードを公開し、解説しています。<br>
-    それなら非営利＋オープンソースということで、.orgドメインがピッタリなんだよね。</p>
-  </div>
 
-  <div class="flowerclearfix">
-   <div class="flowerfade-out">
-    <img src="/flower3/pinkflower.jpg" loading="lazy" alt="フェードアウト効果の草花写真">
+   <h3>🌟独自ドメインの設定（長期運営者向け）</h3>
+
+   <div class="flowerclearfix">
+    <div class="flowerfade-out">
+     <img src="/flower1/forest1(149).jpg" loading="lazy" alt="フェードアウト効果の草花写真">
+    </div>
+    <p>2025年3月より、当サイトのURLが <a href="https://feinatelier.org/">https://feinatelier.org/</a> となりました。<br>
+     .orgドメインは個人でも取得でき、信頼性や信憑性が高いと認識されています。<br>
+     福祉や教育など非営利活動、ITネタで言うならオープンソースプロジェクトなど、公益性の高い方向を持っている情報提供サイトに向いているドメインだから、第一印象が良いのですよ。</p>
+    <p>平たく言うと、私はWebサイトをマネタイズする予定がありません。<br>
+     かつ、こうして個人サイトを構築できるソースコードを公開し、解説しています。<br>
+     それなら非営利＋オープンソースということで、.orgドメインがピッタリなんだよね。</p>
    </div>
-   <p>これが当サイトのリダイレクト設定を管理するコードです。</p>
+
+   <div class="flowerclearfix">
+    <div class="flowerfade-out">
+     <img src="/flower3/pinkflower.jpg" loading="lazy" alt="フェードアウト効果の草花写真">
+    </div>
+    <p>これが当サイトのリダイレクト設定を管理するコードです。</p>
+    <ul>
+     <li><a href="/redirect#redirect_python">リダイレクト設定を行うredirect.py</a></li>
+     <li><a href="/redirect#redirect_dispatch">リダイレクト設定を行うdispatch.yaml</a></li>
+     <li><a href="/redirect#redirect_requirements">リダイレクト設定に使うrequirements.txt</a></li>
+     <li><a href="/redirect#redirect_app">リダイレクト設定を行うapp.yaml</a></li>
+    </ul>
+
+    <p>下記に「アナザーエデン・ファンサイトのご案内」というセクションがあります。<br>
+     例えばこういったサイトに独自ドメインを設定したいと考えた時、どのような手順と注意点があるでしょうか。<br>
+     独自ドメインはお金がかかります。<br>
+     <a href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a> には、このように個人サイト制作で話題になりやすい事柄についても、併せて記載しています。
+    </p>
+   </div>
+
+   <p class="feintag" id="anothereden_site">以前にご用意したパンフレット</p>
+
+   <h2>アナザーエデン・ファンサイトのご案内</h2>
+
+   <div class="denblack-card-container">
+    <div class="denblack-card">
+     <p>私がTwitterにあった各種のコンテンツを全てWebサイトへ移行させた時に作ったものです。<br>
+      このプレビューでも十分かと思いますが、これの詳細版が <a href="/another-eden/anaden_fansite.html"
+       class="ms-link">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a> となります。</p>
+    </div>
+   </div>
+
+   <div class="feinpdf-container" data-url="/another-eden/fein_report/アナザーエデン・ファンサイトのご案内.pdf">
+    <div id="feinpdf-viewer"></div>
+    <div class="feinpdfcontrols">
+     <button id="prev-page">前のページへ</button>
+     <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+     <button id="next-page">次のページへ</button>
+    </div>
+   </div>
+
+   <p>PDF本体をご覧になりたい方は<a href="/another-eden/fein_report/アナザーエデン・ファンサイトのご案内.pdf">アナザーエデン・ファンサイトのご案内.pdf版</a>をどうぞ。<br>
+    大きな画面で閲覧できるのでね。</p>
+
+   <h2>PythonでタブUIを実装してみました</h2>
+
+   <p>このページにも使われている、コンテンツをぎゅっと濃縮できるUIです。<br>
+    詳しい説明とソースコードは、次のリンク先にあります。</p>
+
    <ul>
-    <li><a href="/redirect#redirect_python">リダイレクト設定を行うredirect.py</a></li>
-    <li><a href="/redirect#redirect_dispatch">リダイレクト設定を行うdispatch.yaml</a></li>
-    <li><a href="/redirect#redirect_requirements">リダイレクト設定に使うrequirements.txt</a></li>
-    <li><a href="/redirect#redirect_app">リダイレクト設定を行うapp.yaml</a></li>
+    <li><a href="/contents/tabui.html#pythontab_html1">Brythonをhtmlファイルと関連付けるコード</a></li>
+    <li><a href="/contents/tabui.html#pythontab_html2">タブUIの骨組みとなるhtmlコード</a></li>
+    <li><a href="/contents/tabui.html#pythontab_python">タブUIを作るPythonコード</a></li>
    </ul>
 
-   <p>下記に「アナザーエデン・ファンサイトのご案内」というセクションがあります。<br>
-    例えばこういったサイトに独自ドメインを設定したいと考えた時、どのような手順と注意点があるでしょうか。<br>
-    独自ドメインはお金がかかります。<br>
-    <a href="/contents/domain.html">注意したい独自ドメイン設定手順とルール</a> には、このように個人サイト制作で話題になりやすい事柄についても、併せて記載しています。
-   </p>
-  </div>
+   <p>Pythonは最近とても人気がありますね！<br>
+    これはいくつかの理由がありますが、特に機械学習とデータサイエンスの分野での利用が大きな要因となっています。<br>
+    ただ、もともとPythonはそのシンプルで直感的な構文、豊富なライブラリ、そして活発なコミュニティサポートのおかげで幅広い層に利用されていたんですよね。</p>
 
-  <p class="feintag" id="anothereden_site">以前にご用意したパンフレット</p>
-
-  <h2>アナザーエデン・ファンサイトのご案内</h2>
-  <p>これは、私がTwitterにあった各種のコンテンツを全てWebサイトへ移行させた時に作ったものです。<br>
-   ゲームについて個人サイトを作ろうということなら、ここにあるだけで十分かと思いますね。</p>
-
-  <div class="feinpdf-container" data-url="/another-eden/fein_report/アナザーエデン・ファンサイトのご案内.pdf">
-   <div id="feinpdf-viewer"></div>
-   <div class="feinpdfcontrols">
-    <button id="prev-page">前のページへ</button>
-    <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
-    <button id="next-page">次のページへ</button>
+   <div class="content">
+    <img src="/another-eden/anaimage/ルドヴィカ.webp" loading="lazy" alt="ルドヴィカ" class="graphicsaki right-image fade-in-out">
+    <p>例えばCopilotやGeminiのようなAI（人工知能）も、Pythonと密接に関連しています。<br>
+     Pythonは機械学習・データ処理・自然言語処理などのライブラリが整っていることでAI開発の主要なツールとなっており、書店にも関連書籍が増えているのです。<br>
+     しかし、Pythonだけ書けても、AI開発ができるわけもなく…</p>
+    <p>このアプリケーションがデプロイされている Google Cloud では、AI開発が非常に活発に行われています。─ もちろん Microsoft Azure や Amazon Web Services でも ─<br>
+     「Google CloudのAI開発プラットフォーム」などという言い方をしますね。</p>
    </div>
-  </div>
 
-  <p>PDF本体をご覧になりたい方は<a href="/another-eden/fein_report/アナザーエデン・ファンサイトのご案内.pdf">アナザーエデン・ファンサイトのご案内.pdf版</a>をどうぞ。<br>
-   上部のプレビューでも十分かと思いますが、これの詳細版が<a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a>となります。</p>
+   <p>特にアナデンユーザーなら、Vertex AI という Google Cloud のプラットフォームに注目してみてはいかがでしょう？</p>
 
-  <h2>PythonでタブUIを実装してみました</h2>
+   <h4>Google CloudとWFSのAI開発</h4>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ考え中表情.webp" loading="lazy" alt="ライザ考え中表情"
+     class="graphicmini right-image fade-in-out">
+    <p><a href="https://iret.media/112383">【Google Cloud Next Tokyo 24】Vertex AI Search を使った社内向け AI チャット サービスの構築</a>
+     というページをご覧いただくと、株式会社WFSの先進的な試みについて読むことができます。<br>
+     各ゲームタイトル担当者の生産性向上を目的として、AI開発をしたみたいですね。<br>
+     これは凄いことだと思います。<br>
+     WFSは最先端の情報技術を使っていることになる！</p>
+    <p>あ、そうそう…<br>
+     Vertex AIはAIプロジェクトの構想からデプロイまでをカバーする、コードベースのデータサイエンス開発プラットフォームです。</p>
+   </div>
 
-  <p>このページにも使われている、コンテンツをぎゅっと濃縮できるUIです。<br>
-   詳しい説明とソースコードは、次のリンク先にあります。</p>
+   <p>さて、このようにAIとクラウドというのは、いろいろと関連しているのです。</p>
 
-  <ul>
-   <li><a href="/contents/tabui.html#pythontab_html1">Brythonをhtmlファイルと関連付けるコード</a></li>
-   <li><a href="/contents/tabui.html#pythontab_html2">タブUIの骨組みとなるhtmlコード</a></li>
-   <li><a href="/contents/tabui.html#pythontab_python">タブUIを作るPythonコード</a></li>
-  </ul>
+   <h3>ライブラリとは何か？</h3>
+   <div class="content">
+    <img src="/another-eden/anaimage/ASフィーネとライザ.webp" loading="lazy" alt="ASフィーネとライザ"
+     class="graphicsaki right-image fade-in-out">
+    <p>プログラミングを考えるときに欠かせないのが「ライブラリ」です。<br>
+     ライブラリとは、特定の機能や操作を簡単に実行するための、再利用可能なコードの集まりを意味します。<br>
+     ライブラリを使うことで、開発者はゼロからすべてのコードを書く必要がなくなり、効率的にプログラムを作成することができます。</p>
 
-  <p>Pythonは最近とても人気がありますね！<br>
-   これはいくつかの理由がありますが、特に機械学習とデータサイエンスの分野での利用が大きな要因となっています。<br>
-   ただ、もともとPythonはそのシンプルで直感的な構文、豊富なライブラリ、そして活発なコミュニティサポートのおかげで幅広い層に利用されていたんですよね。</p>
+    <p>例えば上述のように、機械学習やデータ処理、自然言語処理など、さまざまな分野で役立つ関数やクラスがまとめられているライブラリがPythonにはたくさんあります。<br>
+     これらのライブラリを使うことで、特定のタスクを素早く実行できるようになるってことだね。</p>
+   </div>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/ルドヴィカ.webp" loading="lazy" alt="ルドヴィカ" class="graphicsaki right-image fade-in-out">
-   <p>例えばCopilotやGeminiのようなAI（人工知能）も、Pythonと密接に関連しています。<br>
-    Pythonは機械学習・データ処理・自然言語処理などのライブラリが整っていることでAI開発の主要なツールとなっており、書店にも関連書籍が増えているのです。<br>
-    しかし、Pythonだけ書けても、AI開発ができるわけもなく…</p>
-   <p>このアプリケーションがデプロイされている Google Cloud では、AI開発が非常に活発に行われています。─ もちろん Microsoft Azure や Amazon Web Services でも ─<br>
-    「Google CloudのAI開発プラットフォーム」などという言い方をしますね。</p>
-  </div>
+   <p>ライブラリはプログラム開発を効率化するための便利なツールセットであると言ってもいい。</p>
 
-  <p>特にアナデンユーザーなら、Vertex AI という Google Cloud のプラットフォームに注目してみてはいかがでしょう？</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ天上げ拡大.webp" loading="lazy" alt="ライザ天上げ拡大"
+     class="graphicmini right-image fade-in-out">
+    <p>例えばこのサイトで使っている <a href="https://prismjs.com/index.html">Prism.js</a> はコードハイライト用のライブラリです。<br>
+     軽量で効率的に動作し、さまざまなプログラミング言語のコードをシンタックスハイライトすることができます。<br>
+     これを使うことでコードの可読性が向上し、開発者がコードをより簡単に理解できるようになります。</p>
+    <p>ソースコードの色分け表示なんか、いちいちCSSで細かく設定するなんて大変だよ…<br>
+     こういうポイントでライブラリを使うんです。</p>
+   </div>
 
-  <h4>Google CloudとWFSのAI開発</h4>
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ考え中表情.webp" loading="lazy" alt="ライザ考え中表情"
-    class="graphicmini right-image fade-in-out">
-   <p><a href="https://iret.media/112383">【Google Cloud Next Tokyo 24】Vertex AI Search を使った社内向け AI チャット サービスの構築</a>
-    というページをご覧いただくと、株式会社WFSの先進的な試みについて読むことができます。<br>
-    各ゲームタイトル担当者の生産性向上を目的として、AI開発をしたみたいですね。<br>
-    これは凄いことだと思います。<br>
-    WFSは最先端の情報技術を使っていることになる！</p>
-   <p>あ、そうそう…<br>
-    Vertex AIはAIプロジェクトの構想からデプロイまでをカバーする、コードベースのデータサイエンス開発プラットフォームです。</p>
-  </div>
-
-  <p>さて、このようにAIとクラウドというのは、いろいろと関連しているのです。</p>
-
-  <h3>ライブラリとは何か？</h3>
-  <div class="content">
-   <img src="/another-eden/anaimage/ASフィーネとライザ.webp" loading="lazy" alt="ASフィーネとライザ"
-    class="graphicsaki right-image fade-in-out">
-   <p>プログラミングを考えるときに欠かせないのが「ライブラリ」です。<br>
-    ライブラリとは、特定の機能や操作を簡単に実行するための、再利用可能なコードの集まりを意味します。<br>
-    ライブラリを使うことで、開発者はゼロからすべてのコードを書く必要がなくなり、効率的にプログラムを作成することができます。</p>
-
-   <p>例えば上述のように、機械学習やデータ処理、自然言語処理など、さまざまな分野で役立つ関数やクラスがまとめられているライブラリがPythonにはたくさんあります。<br>
-    これらのライブラリを使うことで、特定のタスクを素早く実行できるようになるってことだね。</p>
-  </div>
-
-  <p>ライブラリはプログラム開発を効率化するための便利なツールセットであると言ってもいい。</p>
-
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ天上げ拡大.webp" loading="lazy" alt="ライザ天上げ拡大"
-    class="graphicmini right-image fade-in-out">
-   <p>例えばこのサイトで使っている <a href="https://prismjs.com/index.html">Prism.js</a> はコードハイライト用のライブラリです。<br>
-    軽量で効率的に動作し、さまざまなプログラミング言語のコードをシンタックスハイライトすることができます。<br>
-    これを使うことでコードの可読性が向上し、開発者がコードをより簡単に理解できるようになります。</p>
-   <p>ソースコードの色分け表示なんか、いちいちCSSで細かく設定するなんて大変だよ…<br>
-    こういうポイントでライブラリを使うんです。</p>
-  </div>
-
-  <p>こんな感じで、綺麗にプログラムコードが表示されているでしょ？<br>
-   <a href="/another-eden/lua.html">アナザーエデンのプログラミングを個人サイトで試す</a>で書いた、アナザーエデンで使われているプログラミング言語「Lua」のソースコードです。
-  </p>
-  <div class="code-container">
-   <pre><code class="feintyping language-lua">
+   <p>こんな感じで、綺麗にプログラムコードが表示されているでしょ？<br>
+    <a href="/another-eden/lua.html">アナザーエデンのプログラミングを個人サイトで試す</a>で書いた、アナザーエデンで使われているプログラミング言語「Lua」のソースコードです。
+   </p>
+   <div class="code-container">
+    <pre><code class="feintyping language-lua">
 const luaCode1 = `
     local items = {
         {name = &quot;アナザーエデン&quot;, link = &quot;https://another-eden.jp/&quot;},
@@ -2000,11 +2132,11 @@ const luaCode1 = `
 `;
 
 </code></pre>
-  </div>
-  <p>お次はプログラミング言語「Python」のソースコードです。<br>
-   ちょっと変則的かもしれませんが、このアプリでタブUIを動作させるときに使っています。</p>
-  <div class="code-container">
-   <pre><code class="feintyping language-python">
+   </div>
+   <p>お次はプログラミング言語「Python」のソースコードです。<br>
+    ちょっと変則的かもしれませんが、このアプリでタブUIを動作させるときに使っています。</p>
+   <div class="code-container">
+    <pre><code class="feintyping language-python">
 from browser import document, timer
 
 def show_tab(event):
@@ -2042,321 +2174,323 @@ for container in document.select('.atelier-container'):
       tab.bind('click', show_tab)
 
 </code></pre>
-  </div>
-  <p>このようにライブラリを使うことで、私は余分な手間を省きつつも、見やすくソースコードをこのサイトに表示できています。</p>
+   </div>
+   <p>このようにライブラリを使うことで、私は余分な手間を省きつつも、見やすくソースコードをこのサイトに表示できています。</p>
 
-  <h4>サイト制作者のAIに対する指針</h4>
+   <h4>サイト制作者のAIに対する指針</h4>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ渋顔.webp" loading="lazy" alt="ライザ渋顔" class="graphicmini right-image fade-in-out">
-   <p>私のAIに対する指針についてお話しするなら、次の画像だけで十分かと思いますよ？<br>
-    Google Cloud の Digital Leader という試験における、公式模擬試験からの出題となっております。<br>
-    広い意味で、私の行動原則となっているものです。</p>
-  </div>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ渋顔.webp" loading="lazy" alt="ライザ渋顔" class="graphicmini right-image fade-in-out">
+    <p>私のAIに対する指針についてお話しするなら、次の画像だけで十分かと思いますよ？<br>
+     Google Cloud の Digital Leader という試験における、公式模擬試験からの出題となっております。<br>
+     広い意味で、私の行動原則となっているものです。</p>
+   </div>
 
-  <p><a
-    href="https://cloud.google.com/learn/certification/cloud-digital-leader/?_gl=1*1jigb4l*_up*MQ..&gclid=3e3ee5e4d73418209c90825490e0f0d2&gclsrc=3p.ds">Cloud
-    Digital Leader</a> のWebページにも詳細があります。</p>
+   <p><a
+     href="https://cloud.google.com/learn/certification/cloud-digital-leader/?_gl=1*1jigb4l*_up*MQ..&gclid=3e3ee5e4d73418209c90825490e0f0d2&gclsrc=3p.ds">Cloud
+     Digital Leader</a> のWebページにも詳細があります。</p>
 
-  <img src="/contents/itimages/googlecloud模擬試験.webp" loading="lazy" alt="googlecloud模擬試験"
-   class="biggraphic fade-in-out">
-
-  <p>詳しくは<a href="https://feinatelier.org/contents/x_exodus.html">X（旧：Twitter）の変化にどう対処するか</a>の「生成AIに関する対応」という欄にあります。
-  </p>
-
-  <h2>私のサイトがアプリになりました</h2>
-  <p>詳しくは<a href="/contents/pwa.html">個人サイトをそのまんまアプリにする方法</a>にて。</p>
-  <div class="content">
-   <img src="/contents/itimages/feinapp.webp" loading="lazy" alt="Illustration of the atelier"
+   <img src="/contents/itimages/googlecloud模擬試験.webp" loading="lazy" alt="googlecloud模擬試験"
     class="biggraphic fade-in-out">
-  </div>
 
-  <p>この見出し通りの状況なのですが、ここに詳しく書くのは無理ゲーだよ…<br>
-   ちゃんと別にWebページが必要です。<br>
-   一言お気持ち表明するなら、もう初めっからアプリ化するつもりでした。<br>
-   だって今の時代、普通に考えてアプリのほうが有利じゃん。</p>
+   <p>詳しくは<a href="https://feinatelier.org/contents/x_exodus.html">X（旧：Twitter）の変化にどう対処するか</a>の「生成AIに関する対応」という欄にあります。
+   </p>
 
-  <h4>プログレッシブウェブアプリは「ほーむぺーじ」の利点を生かせる</h4>
-  「Progressive Web App」というのはもちろんアプリなのですが、それでいて静的Webサイトのメリットを捨てていないのですよ。
+   <h2>私のサイトがアプリになりました</h2>
+   <p>詳しくは<a href="/contents/pwa.html">個人サイトをそのまんまアプリにする方法</a>にて。</p>
+   <div class="content">
+    <img src="/contents/itimages/feinapp.webp" loading="lazy" alt="Illustration of the atelier"
+     class="biggraphic fade-in-out">
+   </div>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ喜顔.webp" loading="lazy" alt="Illustration of the atelier"
-    class="graphicmini right-image fade-in-out">
+   <p>この見出し通りの状況なのですが、ここに詳しく書くのは無理ゲーだよ…<br>
+    ちゃんと別にWebページが必要です。<br>
+    一言お気持ち表明するなら、もう初めっからアプリ化するつもりでした。<br>
+    だって今の時代、普通に考えてアプリのほうが有利じゃん。</p>
+
+   <h4>プログレッシブウェブアプリは「ほーむぺーじ」の利点を生かせる</h4>
+   「Progressive Web App」というのはもちろんアプリなのですが、それでいて静的Webサイトのメリットを捨てていないのですよ。
+
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ喜顔.webp" loading="lazy" alt="Illustration of the atelier"
+     class="graphicmini right-image fade-in-out">
+    <ul>
+     <li>アプリなんだけど、俗に言う「ほーむぺーじ」の利点がそのまま残っている。</li>
+     <li>インストールしなくても、中身を自由に閲覧できて触れる。</li>
+     <li>インストールした閲覧者は、その「ほーむぺーじ」をアプリとして見やすい画面で思いっきり活用できる。</li>
+     <li>常にサイレントアップデートだから、閲覧者はアプリのアップデートに付き合わなくていい。</li>
+     <li>アプリだから普通の「ほーむぺーじ」とは違い、Microsoft Store・Google Play・Apple Store・Meta Quest Storeにて配信が可能。</li>
+    </ul>
+   </div>
+
+   <p>必要なソースコードは manifest.json だけではなく、プログレッシブウェブアプリそのものが比較的新しい技術です。<br>
+    そのため、次のソースコードをまとめて掲載しています。</p>
    <ul>
-    <li>アプリなんだけど、俗に言う「ほーむぺーじ」の利点がそのまま残っている。</li>
-    <li>インストールしなくても、中身を自由に閲覧できて触れる。</li>
-    <li>インストールした閲覧者は、その「ほーむぺーじ」をアプリとして見やすい画面で思いっきり活用できる。</li>
-    <li>常にサイレントアップデートだから、閲覧者はアプリのアップデートに付き合わなくていい。</li>
-    <li>アプリだから普通の「ほーむぺーじ」とは違い、Microsoft Store・Google Play・Apple Store・Meta Quest Storeにて配信が可能。</li>
+    <li><a href="/contents/pwa.html#pwahead">PWAのメタデータを設定し、サービスワーカーを登録するためのコード</a></li>
+    <li><a href="/contents/pwa.html#service-worker_js">オフラインキャッシュとバックグラウンドタスクを管理するservice-worker.js</a></li>
+    <li><a href="/contents/pwa.html#manifest_json">PWAのメタデータを定義するmanifest.json</a></li>
    </ul>
-  </div>
 
-  <p>必要なソースコードは manifest.json だけではなく、プログレッシブウェブアプリそのものが比較的新しい技術です。<br>
-   そのため、次のソースコードをまとめて掲載しています。</p>
-  <ul>
-   <li><a href="/contents/pwa.html#pwahead">PWAのメタデータを設定し、サービスワーカーを登録するためのコード</a></li>
-   <li><a href="/contents/pwa.html#service-worker_js">オフラインキャッシュとバックグラウンドタスクを管理するservice-worker.js</a></li>
-   <li><a href="/contents/pwa.html#manifest_json">PWAのメタデータを定義するmanifest.json</a></li>
-  </ul>
+   <h5>🎮ライザのアトリエコラボは大成功だったかと</h5>
+   <p>BGMもいいし、ストーリーもぜんぜん無理がなくて、おまけにばっちり感情移入できて。<br>
+    Twitterのタイムラインは後からさっと追いかけただけでしたが、大好評でしたね。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザコラボエンディング.webp" loading="lazy" alt="ライザコラボエンディング"
+     class="biggraphic fade-in-out">
+   </div>
 
-  <h5>🎮ライザのアトリエコラボは大成功だったかと</h5>
-  <p>BGMもいいし、ストーリーもぜんぜん無理がなくて、おまけにばっちり感情移入できて。<br>
-   Twitterのタイムラインは後からさっと追いかけただけでしたが、大好評でしたね。</p>
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザコラボエンディング.webp" loading="lazy" alt="ライザコラボエンディング" class="biggraphic fade-in-out">
-  </div>
+   <p>可能であれば、続編を強く希望したいです。<br>
+    似たような雰囲気のRPG同士であるからか、アナザーエデンとライザのアトリエは自然に溶けあっていました。<br>
+    戦闘システムも無理がないのですよ。<br>
+    アナデンらしさも損なわず、ライザがまるで普通のアナデンキャラみたいに振る舞っています。</p>
 
-  <p>可能であれば、続編を強く希望したいです。<br>
-   似たような雰囲気のRPG同士であるからか、アナザーエデンとライザのアトリエは自然に溶けあっていました。<br>
-   戦闘システムも無理がないのですよ。<br>
-   アナデンらしさも損なわず、ライザがまるで普通のアナデンキャラみたいに振る舞っています。</p>
+   <h2>マルチプラットフォーム対応のフローティング・ランチャーを作りました</h2>
+   <p>詳しくは<a href="/contents/software.html">Web制作の技術でソフトウェアを作る</a>にて。<br>
+    こういう感じの、壁紙を極力邪魔しないテキストベースのランチャーです。</p>
+   <div class="content">
+    <img src="/contents/itimages/pwainfo/feinlauncher.webp" loading="lazy" alt="feinlauncher"
+     class="biggraphic fade-in-out">
+   </div>
+   <p>上の画像の右上のほう…透き通ったランチャーがあるの、見えますか？<br>
+    これはアプリ化のように計画的なものではなく、完全な思い付きです。<br>
+    ソフトウェア作りに凝ってた頃のソースコードが発掘されたことも大きい。</p>
 
-  <h2>マルチプラットフォーム対応のフローティング・ランチャーを作りました</h2>
-  <p>詳しくは<a href="/contents/software.html">Web制作の技術でソフトウェアを作る</a>にて。<br>
-   こういう感じの、壁紙を極力邪魔しないテキストベースのランチャーです。</p>
-  <div class="content">
-   <img src="/contents/itimages/pwainfo/feinlauncher.webp" loading="lazy" alt="feinlauncher"
-    class="biggraphic fade-in-out">
-  </div>
-  <p>上の画像の右上のほう…透き通ったランチャーがあるの、見えますか？<br>
-   これはアプリ化のように計画的なものではなく、完全な思い付きです。<br>
-   ソフトウェア作りに凝ってた頃のソースコードが発掘されたことも大きい。</p>
+   <ul>
+    <li><a href="/contents/software.html#launcher_indexhtml">ユーザーインターフェースを定義するindex.html</a></li>
+    <li><a href="/contents/software.html#launcher_renderer">ユーザーの操作や表示を制御するrenderer.js</a></li>
+    <li><a href="/contents/software.html#launcher_style">ランチャーソフトの見た目を設定するstyle.css</a></li>
+    <li><a href="/contents/software.html#launcher_main">エレクトロンアプリ全体の動作を制御するmain.js</a></li>
+    <li><a href="/contents/software.html#launcher_package">プロジェクトの設定情報を管理するpackage.json</a></li>
+   </ul>
+   <p>コード資産って…大切なんだと改めて思いました😅<br>
+    これからもバージョンアップしていきましょう！</p>
 
-  <ul>
-   <li><a href="/contents/software.html#launcher_indexhtml">ユーザーインターフェースを定義するindex.html</a></li>
-   <li><a href="/contents/software.html#launcher_renderer">ユーザーの操作や表示を制御するrenderer.js</a></li>
-   <li><a href="/contents/software.html#launcher_style">ランチャーソフトの見た目を設定するstyle.css</a></li>
-   <li><a href="/contents/software.html#launcher_main">エレクトロンアプリ全体の動作を制御するmain.js</a></li>
-   <li><a href="/contents/software.html#launcher_package">プロジェクトの設定情報を管理するpackage.json</a></li>
-  </ul>
-  <p>コード資産って…大切なんだと改めて思いました😅<br>
-   これからもバージョンアップしていきましょう！</p>
+   <hr class="atelierflower">
+   <h5>🎮ルドヴィカの実装希望！ ダメかな…</h5>
+   <p>私以外にも、ルドヴィカのプレイアブル化を希望している人はたくさんいると思うのですが？<br>
+    そういう意味でも、テイルズコラボみたいに続編をやって欲しいですね。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/ルドヴィカ全体.webp" loading="lazy" alt="ルドヴィカ全体" class="biggraphic fade-in-out">
+   </div>
+   <p>ライザの錬金術と、冒険に必要な道筋の開拓。<br>
+    そしてストーリーの進捗と徐々に明らかになっていく古城の秘密。<br>
+    これまでアナザーエデンはいろんなところとコラボしてきましたが、このライザのアトリエコラボが一番好きですね！</p>
+   <hr class="atelierflower">
 
-  <hr class="atelierflower">
-  <h5>🎮ルドヴィカの実装希望！ ダメかな…</h5>
-  <p>私以外にも、ルドヴィカのプレイアブル化を希望している人はたくさんいると思うのですが？<br>
-   そういう意味でも、テイルズコラボみたいに続編をやって欲しいですね。</p>
-  <div class="content">
-   <img src="/another-eden/anaimage/ルドヴィカ全体.webp" loading="lazy" alt="ルドヴィカ全体" class="biggraphic fade-in-out">
-  </div>
-  <p>ライザの錬金術と、冒険に必要な道筋の開拓。<br>
-   そしてストーリーの進捗と徐々に明らかになっていく古城の秘密。<br>
-   これまでアナザーエデンはいろんなところとコラボしてきましたが、このライザのアトリエコラボが一番好きですね！</p>
-  <hr class="atelierflower">
+   <h4>Discordでも使われているエレクトロン製のソフト</h4>
+   <p>上述の私が作ったソフトウェアは、Electronという技術を使っています。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ考え中拡大版.webp" loading="lazy" alt="ライザ考え中拡大版"
+     class="graphicsaki right-image fade-in-out">
+    <p>Electronというのは JavaScript、HTML、CSS を使って、Windows、Mac、Linuxなどの異なるプラットフォームで動作するデスクトップアプリを開発するためのフレームワークです。</p>
 
-  <h4>Discordでも使われているエレクトロン製のソフト</h4>
-  <p>上述の私が作ったソフトウェアは、Electronという技術を使っています。</p>
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ考え中拡大版.webp" loading="lazy" alt="ライザ考え中拡大版"
-    class="graphicsaki right-image fade-in-out">
-   <p>Electronというのは JavaScript、HTML、CSS を使って、Windows、Mac、Linuxなどの異なるプラットフォームで動作するデスクトップアプリを開発するためのフレームワークです。</p>
+    <p>例えば、ゲーマー向けのSNSである Discord は、Electronを使用して開発されたアプリケーションです。<br>
+     マルチプラットフォームに対応しつつ、ネイティブアプリと同等のパフォーマンスを提供します。<br>
+     あと、私が頻用している Visual Studio Code (VS Code) もElectronで作られているんですよ？<br>
+     なんと、Web技術を使って高度な機能を持つ、開発者用のコードエディタまで作成できちゃうんですね。<br>
+     当然のようにマルチプラットフォーム対応であり、いろんな拡張機能でユーザーがカスタマイズできる拡張性まで備えているのです。</p>
+   </div>
 
-   <p>例えば、ゲーマー向けのSNSである Discord は、Electronを使用して開発されたアプリケーションです。<br>
-    マルチプラットフォームに対応しつつ、ネイティブアプリと同等のパフォーマンスを提供します。<br>
-    あと、私が頻用している Visual Studio Code (VS Code) もElectronで作られているんですよ？<br>
-    なんと、Web技術を使って高度な機能を持つ、開発者用のコードエディタまで作成できちゃうんですね。<br>
-    当然のようにマルチプラットフォーム対応であり、いろんな拡張機能でユーザーがカスタマイズできる拡張性まで備えているのです。</p>
-  </div>
+   <p>Visual Studio Codeは、皆様もリスクなく気楽に触れます。<br>
+    <a href="https://vscode.dev/?vscode-lang=ja">Visual Studio Code for the Web</a> をどうぞ。<br>
+    インストールしたソフトウェアとしての Visual Studio Code と、ほっとんど同じ操作感ですよ。
+   </p>
 
-  <p>Visual Studio Codeは、皆様もリスクなく気楽に触れます。<br>
-   <a href="https://vscode.dev/?vscode-lang=ja">Visual Studio Code for the Web</a> をどうぞ。<br>
-   インストールしたソフトウェアとしての Visual Studio Code と、ほっとんど同じ操作感ですよ。
-  </p>
+   <hr class="atelierflower">
 
-  <hr class="atelierflower">
+   <h2>🎮カルナジェネシスの影</h2>
+   <p>アナザーエデン、ライザのアトリエコラボおもしろかったですね！<br>
+    ここから先はゲームそのもののお話です。<br>
+    私はカルナジェネシスの影から真っ先に取り掛かったのですよ。<br>
+    どーせなら錬成コンテンツを全て終わらせてからやれば良かったのかもしれませんが、「ひと夏の冒険者達の星譜」が入手できるとすればおそらく裏ボスだろうと考えました。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/カルナジェネシスの影戦闘シーン.webp" loading="lazy" alt="カルナジェネシスの影戦闘シーン"
+     class="biggraphic fade-in-out">
+   </div>
 
-  <h2>🎮カルナジェネシスの影</h2>
-  <p>アナザーエデン、ライザのアトリエコラボおもしろかったですね！<br>
-   ここから先はゲームそのもののお話です。<br>
-   私はカルナジェネシスの影から真っ先に取り掛かったのですよ。<br>
-   どーせなら錬成コンテンツを全て終わらせてからやれば良かったのかもしれませんが、「ひと夏の冒険者達の星譜」が入手できるとすればおそらく裏ボスだろうと考えました。</p>
-  <div class="content">
-   <img src="/another-eden/anaimage/カルナジェネシスの影戦闘シーン.webp" loading="lazy" alt="カルナジェネシスの影戦闘シーン"
-    class="biggraphic fade-in-out">
-  </div>
+   <p>なかなかの難易度であったと記憶しているけど、ASソイラで敵の攻撃は原則受けるようにしていました。<br>
+    固定ダメージもソイラで受けるのですが、私のソイラは天255なのでね…<br>
+    HPバッジやらも盛った上での話ですよ。<br>
+    オーラ等を見ると魔法パーティーが良さそうだったから、シェンファ＋ASフィーネで攻めることにしました。</p>
 
-  <p>なかなかの難易度であったと記憶しているけど、ASソイラで敵の攻撃は原則受けるようにしていました。<br>
-   固定ダメージもソイラで受けるのですが、私のソイラは天255なのでね…<br>
-   HPバッジやらも盛った上での話ですよ。<br>
-   オーラ等を見ると魔法パーティーが良さそうだったから、シェンファ＋ASフィーネで攻めることにしました。</p>
+   <div class="content">
+    <img src="/another-eden/anaimage/カルナジェネシスの影勝利シーン.webp" loading="lazy" alt="カルナジェネシスの影勝利シーン"
+     class="biggraphic fade-in-out">
+   </div>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/カルナジェネシスの影勝利シーン.webp" loading="lazy" alt="カルナジェネシスの影勝利シーン"
-    class="biggraphic fade-in-out">
-  </div>
-
-  <p>状態異常付与がとにかくめんどうなんだよね。<br>
-   そこもASソイラで受けつつ、テトラで回復する流れを作ったかな。<br>
-   んでもって復活するたびに攻撃が激しくなるから、ステラバーストとアナザーフォースのタイミングを考えるようにして。<br>
-   シェンファのテッセラクト強いですよ。<br>
-   相手のバフをひっくり返すタイミングがここでも重要だった。<br>
-   シェンファとASフィーネは相性良いですよね。</p>
+   <p>状態異常付与がとにかくめんどうなんだよね。<br>
+    そこもASソイラで受けつつ、テトラで回復する流れを作ったかな。<br>
+    んでもって復活するたびに攻撃が激しくなるから、ステラバーストとアナザーフォースのタイミングを考えるようにして。<br>
+    シェンファのテッセラクト強いですよ。<br>
+    相手のバフをひっくり返すタイミングがここでも重要だった。<br>
+    シェンファとASフィーネは相性良いですよね。</p>
 
 
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザ星導覚醒.webp" loading="lazy" alt="ライザ星導覚醒"
-    class="graphicsaki right-image fade-in-out">
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザ星導覚醒.webp" loading="lazy" alt="ライザ星導覚醒"
+     class="graphicsaki right-image fade-in-out">
 
-   <p>倒してみたらなんと、「真・気鋭の錬金術士の証」が手に入ったのです。<br>
-    真っ先にライザリンシュタウトのVCグラスタを入手できて大満足！<br>
-    ちょうどこのページのコード管理を思い付いていたあたりでさ…<br>
-    加えてSE職への部署異動＋港町への引っ越しで多忙な時期だったから、ネタバレどころかTwitterもぜんぜん見る暇がなかった。<br>
-    強敵戦の入手アイテムで驚けるのは、ネタバレ価値観＋大暴れのコンボも良い仕事をしたものだと思ったね😆ww</p>
-  </div>
+    <p>倒してみたらなんと、「真・気鋭の錬金術士の証」が手に入ったのです。<br>
+     真っ先にライザリンシュタウトのVCグラスタを入手できて大満足！<br>
+     ちょうどこのページのコード管理を思い付いていたあたりでさ…<br>
+     加えてSE職への部署異動＋港町への引っ越しで多忙な時期だったから、ネタバレどころかTwitterもぜんぜん見る暇がなかった。<br>
+     強敵戦の入手アイテムで驚けるのは、ネタバレ価値観＋大暴れのコンボも良い仕事をしたものだと思ったね😆ww</p>
+   </div>
 
-  <h2>🎮闇のアルターフォース</h2>
-  <p>ライザコラボは裏ボスも倒し、全てのコアアイテムも錬成済みです。<br>
-   上述の通りライブサービスゲームの攻略記事というのはWebページ自体の寿命も短いので、攻略も簡素に済ませますよ？<br>
-   星導覚醒実装後の敵でもあるし、すぐにインフレ頼みで倒せるようになります。</p>
+   <h2>🎮闇のアルターフォース</h2>
+   <p>ライザコラボは裏ボスも倒し、全てのコアアイテムも錬成済みです。<br>
+    上述の通りライブサービスゲームの攻略記事というのはWebページ自体の寿命も短いので、攻略も簡素に済ませますよ？<br>
+    星導覚醒実装後の敵でもあるし、すぐにインフレ頼みで倒せるようになります。</p>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/闇のアルターフォース画像.webp" loading="lazy" alt="闇のアルターフォース画像" class="biggraphic fade-in-out">
-  </div>
+   <div class="content">
+    <img src="/another-eden/anaimage/闇のアルターフォース画像.webp" loading="lazy" alt="闇のアルターフォース画像"
+     class="biggraphic fade-in-out">
+   </div>
 
-  <p>書きやすいし、箇条書きにしてみましょうか。</p>
-
-  <dl>
-   <dt>バフ8種のオーラ対策</dt>
-   <dd>Pグラスタと装備を制限することで対応しました。<br>
-    やたらと豪華なグラスタと装備を付けないことで、バフが8種を超えないようにしたんだよね。</dd>
-
-   <dt>立ち回り</dt>
-   <dd>シュゼットの魔界の槍撃とライザの英雄の意思、ESマリエルの救済の祈りとシェンファのトリニティ。<br>
-    加えてバディはテュシアとコロボで守り切れます。</dd>
-  </dl>
-
-
-  <div class="content">
-   <img src="/another-eden/anaimage/クラウディア星導覚醒.webp" loading="lazy" alt="クラウディア星導覚醒"
-    class="graphicsaki right-image fade-in-out">
+   <p>書きやすいし、箇条書きにしてみましょうか。</p>
 
    <dl>
-    <dt>ダメージソースはアナザーフォース</dt>
-    <dd>ステラバーストでシェンファのテッセラクトを当ててからアナフォ。<br>
-     これでHPゲージを丸ごと削りました。</dd>
+    <dt>バフ8種のオーラ対策</dt>
+    <dd>Pグラスタと装備を制限することで対応しました。<br>
+     やたらと豪華なグラスタと装備を付けないことで、バフが8種を超えないようにしたんだよね。</dd>
 
-    <dt>復活後のゲージ</dt>
-    <dd>無理に壊さずとも対応できましたね。<br>
-     最終局面も過度にターン数をかけなければ大丈夫です。</dd>
+    <dt>立ち回り</dt>
+    <dd>シュゼットの魔界の槍撃とライザの英雄の意思、ESマリエルの救済の祈りとシェンファのトリニティ。<br>
+     加えてバディはテュシアとコロボで守り切れます。</dd>
    </dl>
 
-   <p>でも、私の場合はシェンファ・シュゼット・マリエル・ガリアード・クラルテともに天冥255です。<br>
-    デバフ耐性グラスタも腕速知・属性・物理の3つを完備できたこともあるでしょう。</p>
-  </div>
-  <p>長く続けてればね。<br>
-   頻用するキャラに関しては、自ずと255になっていたりするもんです。</p>
 
-  <div class="custom-google-drive-container">
-   <h4>🎮闇のアルターフォースの動画</h4>
-   <p>倒した当時のアナザーフォースを再現しました。<br>
-    ライザの天が上がっているのと、細かい装備を覚えておらず、まったく同一とはいかなかったけど。<br>
-    でもだいたい同じです。</p>
-   <iframe src="https://drive.google.com/file/d/1dIurGSSleiflTA0vUzHkQ0zFKdf8JA-B/preview"
-    class="custom-google-drive-iframe" allow="autoplay" title="バフ8種のオーラ対策"></iframe>
-   <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
-  </div>
+   <div class="content">
+    <img src="/another-eden/anaimage/クラウディア星導覚醒.webp" loading="lazy" alt="クラウディア星導覚醒"
+     class="graphicsaki right-image fade-in-out">
 
-  <p>倒すとクラウディアの真・VCグラスタがもらえますよ。<br>
-   クラウディアもどこかで天255にしようかな🎵</p>
+    <dl>
+     <dt>ダメージソースはアナザーフォース</dt>
+     <dd>ステラバーストでシェンファのテッセラクトを当ててからアナフォ。<br>
+      これでHPゲージを丸ごと削りました。</dd>
 
-  <div class="content">
-   <img src="/another-eden/anaimage/クラウディア天上げ.webp" loading="lazy" alt="クラウディア天上げ"
-    class="graphicsaki right-image fade-in-out">
-   <p>2024年12月から2025年1月にかけて、上述のようにすっごく忙しくて💦<br>
-    この闇のアルターフォースにしても、新幹線の中でプレイしていたような記憶がありますね。<br>
-    Twitterは皆様のネタバレ価値観を尊重することが優先ですから、スマホを開くときにはだいたいライザコラボという状態😆ww</p>
-  </div>
+     <dt>復活後のゲージ</dt>
+     <dd>無理に壊さずとも対応できましたね。<br>
+      最終局面も過度にターン数をかけなければ大丈夫です。</dd>
+    </dl>
 
-  <p>なので、早期にいろいろクリアできました。<br>
-   私はいつもそうですが、ネタバレ・センシティブ期間中はSNSに浮かないほうが、ゲームに集中できますよ？<br>
-   別に配信後すぐに片っ端からクリアしなくても良いけど🥱<br>
-   今にして思えば、あのスクショやこのスクショを残しておけば良かったなどと考えているところです。</p>
-
-  <hr class="atelierflower">
-
-  <h3>少しの非効率がモチベを奪う</h3>
-  <div class="content">
-   <img src="/another-eden/anaimage/ライザコラボfear終盤.webp" loading="lazy" alt="ライザコラボfear終盤"
-    class="graphicsaki right-image fade-in-out">
-   <p>ソースコードや記事資産が手元にない場合、Webサイト制作は大仕事となります。<br>
-    また、SNSでは「俺のほうがもっとスゲェことできる!!」というドヤりあいが頻繁に発生し、そういう風土が知識&技術を習得する際の妨げとなります。<br>
-    特にこうして自らコードを書いてWebアプリケーションを構築していくような「Web開発」の領域に首を突っ込んだ場合、SNSからくる競争意識の悪影響を受けていると、学びも遊びも中途半端になってしまう…</p>
-   <p>大いにゲームで遊び、大いに自分の学びを進められる環境を作るためにもね？<br>
-    単純作業は極力パソコンにやってもらった方が良いでしょう。<br>
-    このページからジャンプできるソースコードはWeb開発に必要な知識のうちのほんの一部に過ぎませんが…<br>
-    誰かの役に立てば嬉しいです🎵</p>
-  </div>
-
-  <!-- ●ここから人間用のフッター● -->
-  <hr id="feinhr">
-  <div class="spacer"></div>
-
-  <section class="sitemap">
-   <h2 class="sitemap_heading">サイトマップ</h2>
-   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
-    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
-   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
-     アナザーエデン関連ページ・サイトマップ</a></p>
-   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
-    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
-    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
-
-
-   <div class="spacer"></div>
-   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
-     個人サイトのホスティングとコンテンツ作成</a></p>
-   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
-    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
-    Webデザインやレイアウトについても書いてあります。</p>
-   <div class="spacer"></div>
-   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
-   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
-    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
-    アウトドアに関連するコンテンツが詰め込まれています。</p>
-
-  </section>
-
-  <!-- ページ上部へ戻るボタン -->
-  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
-  <script src="/script/feinScroll.js"></script>
-
-  <div class="spacer"></div>
-
-  <footer>
-   <!--common google digital leader-->
-
-   <div id="commongdl"></div>
-   <script src="/externalization/common.js"></script>
-
-   <div class="spacer"></div>
-
-   <!--w3cバリデーターに合格していることを示す-->
-   <div class="w3ccheck">
-    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/atelier_studio.html">
-     <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
-    </a>
-    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
-     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
-    </a>
+    <p>でも、私の場合はシェンファ・シュゼット・マリエル・ガリアード・クラルテともに天冥255です。<br>
+     デバフ耐性グラスタも腕速知・属性・物理の3つを完備できたこともあるでしょう。</p>
    </div>
-   <!--w3cバリデーターに合格していることを示す-->
+   <p>長く続けてればね。<br>
+    頻用するキャラに関しては、自ずと255になっていたりするもんです。</p>
+
+   <div class="custom-google-drive-container">
+    <h4>🎮闇のアルターフォースの動画</h4>
+    <p>倒した当時のアナザーフォースを再現しました。<br>
+     ライザの天が上がっているのと、細かい装備を覚えておらず、まったく同一とはいかなかったけど。<br>
+     でもだいたい同じです。</p>
+    <iframe src="https://drive.google.com/file/d/1dIurGSSleiflTA0vUzHkQ0zFKdf8JA-B/preview"
+     class="custom-google-drive-iframe" allow="autoplay" title="バフ8種のオーラ対策"></iframe>
+    <p class="google-drive-text"><i class="fab fa-google-drive"></i>This is a video on Google Drive.</p>
+   </div>
+
+   <p>倒すとクラウディアの真・VCグラスタがもらえますよ。<br>
+    クラウディアもどこかで天255にしようかな🎵</p>
+
+   <div class="content">
+    <img src="/another-eden/anaimage/クラウディア天上げ.webp" loading="lazy" alt="クラウディア天上げ"
+     class="graphicsaki right-image fade-in-out">
+    <p>2024年12月から2025年1月にかけて、上述のようにすっごく忙しくて💦<br>
+     この闇のアルターフォースにしても、新幹線の中でプレイしていたような記憶がありますね。<br>
+     Twitterは皆様のネタバレ価値観を尊重することが優先ですから、スマホを開くときにはだいたいライザコラボという状態😆ww</p>
+   </div>
+
+   <p>なので、早期にいろいろクリアできました。<br>
+    私はいつもそうですが、ネタバレ・センシティブ期間中はSNSに浮かないほうが、ゲームに集中できますよ？<br>
+    別に配信後すぐに片っ端からクリアしなくても良いけど🥱<br>
+    今にして思えば、あのスクショやこのスクショを残しておけば良かったなどと考えているところです。</p>
+
+   <hr class="atelierflower">
+
+   <h3>少しの非効率がモチベを奪う</h3>
+   <div class="content">
+    <img src="/another-eden/anaimage/ライザコラボfear終盤.webp" loading="lazy" alt="ライザコラボfear終盤"
+     class="graphicsaki right-image fade-in-out">
+    <p>ソースコードや記事資産が手元にない場合、Webサイト制作は大仕事となります。<br>
+     また、SNSでは「俺のほうがもっとスゲェことできる!!」というドヤりあいが頻繁に発生し、そういう風土が知識&技術を習得する際の妨げとなります。<br>
+     特にこうして自らコードを書いてWebアプリケーションを構築していくような「Web開発」の領域に首を突っ込んだ場合、SNSからくる競争意識の悪影響を受けていると、学びも遊びも中途半端になってしまう…</p>
+    <p>大いにゲームで遊び、大いに自分の学びを進められる環境を作るためにもね？<br>
+     単純作業は極力パソコンにやってもらった方が良いでしょう。<br>
+     このページからジャンプできるソースコードはWeb開発に必要な知識のうちのほんの一部に過ぎませんが…<br>
+     誰かの役に立てば嬉しいです🎵</p>
+   </div>
+
+   <!-- ●ここから人間用のフッター● -->
+   <hr id="feinhr">
+   <div class="spacer"></div>
+
+   <section class="sitemap">
+    <h2 class="sitemap_heading">サイトマップ</h2>
+    <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+     下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+    <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+      アナザーエデン関連ページ・サイトマップ</a></p>
+    <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+     期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+     もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+    <div class="spacer"></div>
+    <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+      個人サイトのホスティングとコンテンツ作成</a></p>
+    <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+     HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+     Webデザインやレイアウトについても書いてあります。</p>
+    <div class="spacer"></div>
+    <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+    <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+     このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+     アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+   </section>
+
+   <!-- ページ上部へ戻るボタン -->
+   <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+   <script src="/script/feinScroll.js"></script>
 
    <div class="spacer"></div>
-   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
-     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
-    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
-   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-     const today = new Date();
-     const year = today.getFullYear();
-     const month = String(today.getMonth() + 1).padStart(2, '0');
-     const day = String(today.getDate()).padStart(2, '0');
-     const dateElement = document.getElementById('updated-date');
-     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
-    });
-   </script>
 
-  </footer>
+   <footer>
+    <!--common google digital leader-->
+
+    <div id="commongdl"></div>
+    <script src="/externalization/common.js"></script>
+
+    <div class="spacer"></div>
+
+    <!--w3cバリデーターに合格していることを示す-->
+    <div class="w3ccheck">
+     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/atelier_studio.html">
+      <img src="/image/HTML5_Logo_64.png" loading="lazy" alt="Valid HTML5" height="31" style="width: auto;">
+     </a>
+     <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+      <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" loading="lazy" alt="正当なCSSです!">
+     </a>
+    </div>
+    <!--w3cバリデーターに合格していることを示す-->
+
+    <div class="spacer"></div>
+    <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+      site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+     を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const dateElement = document.getElementById('updated-date');
+      dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+     });
+    </script>
+
+   </footer>
 
  </div><!--レスポンシブデザイン-->
 

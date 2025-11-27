@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!-- ●ここから人間用のヘッダー● -->
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!-- Meta tags -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta name="keywords" content="個人サイト, CSS, 書き方">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="レスポンシブデザインに対応したパンくずリスト">
+ <meta property="og:description" content="CSSの書き方に関するページ。可能な限り、教科書でもよく見るようなコードのみで構成しています。">
+ <meta property="og:image" content="../image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/breadcrumbsnav.html">
+ <!-- Structured Data -->
+ <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "レスポンシブデザインに対応したパンくずリスト",
+      "url": "https://feinatelier.org/contents/breadcrumbsnav.html",
+      "logo": "https://feinatelier.org/image/barracuda.jpeg"
+  }
+  </script>
+
+ <!-- CSS -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+ <!-- JavaScript -->
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+
+ <!-- Google Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+
+ <!-- Page Title -->
+ <title>レスポンシブデザインに対応したパンくずリスト</title>
+
+ <!-- Favicon -->
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li><a href="https://feinatelier.org/"><img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome"></a></li>
+   <li><a href="/" class="animated-link">ホーム</a></li>
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">アナザーエデン</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">アウトドアのエリア</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">個人サイト制作</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI学習を防ぐ工夫</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">更新のお知らせ</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="site_create.html">個人サイト制作：サイトマップ</a></li>
+    <li class="breadcrumb-item active" aria-current="page">レスポンシブデザインに対応したパンくずリスト</li>
+   </ol>
+  </div>
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="../script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="レスポンシブデザインに対応したパンくずリストの目次を開く ▼"
+   data-close-text="レスポンシブデザインに対応したパンくずリストの目次を閉じる ▲">レスポンシブデザインに対応したパンくずリストの目次を開く
+   ▼</button><!--目次の自動生成-->
+  <div class="spacer"></div>
+  <p><a href="site_create.html">個人サイト制作：サイトマップへ戻る</a></p>
+
+  <!-- ●人間用のヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>レスポンシブデザインに対応したパンくずリスト</span></h1>
+
+  <p>
+   レスポンシブデザインに対応したパンくずリストは、画面の大きさに合わせて形を変える「道しるべ」です。<br>
+   大きなパソコン画面では横にすっと並んで見やすく、小さなスマホ画面では折り返して窮屈にならないように工夫されています。<br>
+   だから、どんな端末を使っていても「いま自分がサイトのどこにいるのか」「次にどこへ進めばいいのか」が迷わず分かるんです。<br>
+   まるで地図が自動で縮んだり広がったりして、常に見やすい形で道案内してくれるようなものですね。
+  </p>
+
+  <h2>モバイルでもレイアウトが整うパンくずリスト</h2>
+
+  <p>これがまた難しいんですよね。<br>
+   パンくずリストそのものはさほどでもないのですが、レスポンシブデザインに対応したものとなると、改行位置とか＞の形をした記号の位置とか。<br>
+   意外にも作らない人が多いから、パンくずリストの意義についても説明したい…<br>
+   ちょっと優しい言葉で、どなたにでも分かるように、このページの解説文について考え直してみました。<br>
+   では、ソースコードを見ていきましょう。</p>
+
+  <p class="codegra" id="fainpan_css">パンくずリストを作るfainpan.css</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* ●パンくずリスト */
+.breadcrumb {
+ display: flex;
+ flex-wrap: wrap;
+ list-style: none;
+ padding: 10px 2%;
+ width: 95%;
+ background-color: #f8f9fa;
+ border-radius: 5px;
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ font-size: 0.7em;
+}
+
+.breadcrumb-item {
+ display: flex;
+ align-items: center;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+ content: "›";
+ color: #6c757d;
+ margin: 0 6px;
+ flex-shrink: 0;
+}
+
+.breadcrumb-item a {
+ text-decoration: none;
+ color: #1A73E8;
+ transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+ color: #0078D4;
+ text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+ font-weight: bold;
+ color: #6c757d;
+}
+    </code></pre>
+  </div>
+
+  <p>全体のコードを見やすくするためにセレクターごとに分け、各プロパティを説明しますね。</p>
+
+  <h5>.breadcrumb（パンくず全体の箱）</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 2%;
+  width: 95%;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 0.7em;
+}
+    </code></pre>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">display: flex</span></dt>
+   <dd>子要素（.breadcrumb-item）を横並びにし、柔軟に配置できる「フレックスレイアウト」を使います。</dd>
+
+   <dt><span class="codecolor">flex-wrap: wrap</span></dt>
+   <dd>横幅に収まりきらないときに、次の行に折り返します。スマホでも崩れにくくなります。</dd>
+
+   <dt><span class="codecolor">list-style: none</span></dt>
+   <dd>ul/olの先頭の「・」「数字」などの箇条書きマーカーを消します。</dd>
+
+   <dt><span class="codecolor">padding: 10px 2%</span></dt>
+   <dd>内側の余白を上・下10px、左右は親幅に対する2%にします。窮屈さを防ぎます。</dd>
+
+   <dt><span class="codecolor">width: 95%</span></dt>
+   <dd>親コンテナに対して横幅を95%に設定。両端に少し余白を残す設計です。</dd>
+
+   <dt><span class="codecolor">background-color: #f8f9fa</span></dt>
+   <dd>薄いグレーの背景色で、コンテンツとの境界をやさしく見せます。</dd>
+
+   <dt><span class="codecolor">border-radius: 5px</span></dt>
+   <dd>角を5pxだけ丸くします。カード風の柔らかい印象になります。</dd>
+
+   <dt><span class="codecolor">box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)</span></dt>
+   <dd>下方向にほんのり影をつけ、浮いて見える立体感を出します。</dd>
+
+   <dt><span class="codecolor">font-size: 0.7em</span></dt>
+   <dd>親要素に対して70%の文字サイズに。パンくずは補助情報なので少し小さめにします。</dd>
+  </dl>
+
+  <h5>.breadcrumb-item（各項目の並び方）</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+    </code></pre>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">display: flex</span></dt>
+   <dd>各項目の内部もフレックスにして、中のテキストや区切り記号との整列を安定させます。</dd>
+
+   <dt><span class="codecolor">align-items: center</span></dt>
+   <dd>垂直方向の中央揃え。高さがズレても文字が真ん中に揃います。</dd>
+  </dl>
+
+  <h5>区切り記号（›）の挿入</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb-item+.breadcrumb-item::before {
+  content: "›";
+  color: #6c757d;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+    </code></pre>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">.breadcrumb-item+.breadcrumb-item::before</span></dt>
+   <dd>直前に別の .breadcrumb-item がある項目の「前」に、装飾（擬似要素）を追加します。つまり項目間の区切りだけに記号を入れます。</dd>
+
+   <dt><span class="codecolor">content: "›"</span></dt>
+   <dd>区切り記号として「›」を表示します。CSSだけで文字を挿入できます。</dd>
+
+   <dt><span class="codecolor">color: #6c757d</span></dt>
+   <dd>区切り記号の色を落ち着いたグレーに。主役ではないため控えめにします。</dd>
+
+   <dt><span class="codecolor">margin: 0 6px</span></dt>
+   <dd>区切り記号の左右に6pxの余白。文字が詰まらず読みやすくなります。</dd>
+
+   <dt><span class="codecolor">flex-shrink: 0</span></dt>
+   <dd>狭い幅でもこの記号が潰れて小さくならないように固定します。</dd>
+  </dl>
+
+  <h5>リンクの見た目とホバー時の演出</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #1A73E8;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: #0078D4;
+  text-decoration: underline;
+}
+    </code></pre>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">text-decoration: none</span></dt>
+   <dd>デフォルトの下線を消します。パンくずの静的表示をスッキリさせます。</dd>
+
+   <dt><span class="codecolor">color: #1A73E8</span></dt>
+   <dd>通常時のリンク色。視認性が良く、クリックできることが伝わります。</dd>
+
+   <dt><span class="codecolor">transition: color 0.3s ease</span></dt>
+   <dd>色の変化を0.3秒でなめらかに。急な切り替えによる違和感を減らします。</dd>
+
+   <dt><span class="codecolor">a:hover color: #0078D4</span></dt>
+   <dd>マウスを載せた時に少し濃いブルーへ。インタラクションの手応えを演出します。</dd>
+
+   <dt><span class="codecolor">a:hover text-decoration: underline</span></dt>
+   <dd>ホバー時だけ下線を出して「今ここに注目している」ことをわかりやすくします。</dd>
+  </dl>
+
+  <h5>現在のページ（アクティブ項目）</h5>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb-item.active {
+  font-weight: bold;
+  color: #6c757d;
+}
+    </code></pre>
+  </div>
+
+  <dl>
+   <dt><span class="codecolor">font-weight: bold</span></dt>
+   <dd>現在地（最後の項目）を太字で強調します。</dd>
+
+   <dt><span class="codecolor">color: #6c757d</span></dt>
+   <dd>クリック不可の「現在位置」はグレーで控えめに。リンクと差別化します。</dd>
+  </dl>
+
+  <p>このコードは「パンくずリスト」という道案内を見やすく整えるための工夫です。<br>
+   文字は横に並んでいて、もし幅が足りなくなったら自然に次の行へ移動します。<br>
+   背景は淡いグレーで、角を丸めて影を落とすことでカードのようにふわっと浮かんで見えるんです。<br>
+   項目の間には「›」という矢印が自動で入り、進む道筋がひと目で理解できます。<br>
+   リンクは青色で表示され、マウスを重ねると濃いブルーに変わり下線も現れるので、クリックできることが直感的に伝わります。<br>
+   最後の項目は太字でグレーにしてあり、「ここが今いる場所だよ」と静かに示してくれる仕掛けになっています。</p>
+
+  <h2>パンくずリストの概要</h2>
+  <p>これは賛否両論なんですが、私は付けるようにしています。<br>
+   私が閲覧者として他のサイトに行くときもパンくずリストを頼りにするからね。</p>
+
+  <p class="codegra" id="fainpan_html">パンくずリストを作るhtmlコード</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-html">
+&lt;div&gt;
+   &lt;ol class=&quot;breadcrumb&quot;&gt;
+    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;/&quot;&gt;Home（グラスタの場所一覧表〜入手範囲別〜）&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;site_create.html&quot;&gt;個人サイト制作：サイトマップ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;breadcrumb-item active&quot; aria-current=&quot;page&quot;&gt;ナビゲーションメニューをCSS・JavaScriptで用意する&lt;/li&gt;
+   &lt;/ol&gt;
+&lt;/div&gt;
+    </code></pre>
+  </div>
+
+  <p>パンくずリストを付けるメリットは、キリがないけどまとめるなら次のようになりますね。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower2/flower2(4).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <dl>
+    <dt>セマンティクスの向上</dt>
+    <dd>リストタグを使用することで、パンくずリストがリスト状のナビゲーション要素であることを明示的に示すことができます。<br>検索エンジンやスクリーンリーダーなどがコンテンツの意味を正しく理解しやすくなります。</dd>
+
+    <dt>アクセシビリティの向上</dt>
+    <dd>スクリーンリーダーなどの補助技術は、リストタグを使って構造化された情報を正確に読み上げることができます。<br>
+     視覚障害者にとって使いやすいWebサイトを作成することができます。<br>
+     アクセシビリティは注意した方が良いですよ？<br>
+     後回しにしないほうが良いと思う。</dd>
+
+    <dt>スタイルの一貫性</dt>
+    <dd>リストタグを使用することで、CSSを用いて統一されたスタイルを簡単に適用できます。<br>
+     例えば、リストアイテム間のスペースや区切り線などのスタイリングが容易になります。<br>
+     私のサイトにあるパンくずリストも、もうちょい工夫してみようかな？<br>
+     でもあんまりゴテゴテしてるデザインは好きじゃないんですよね…<br>
+     やはり自分で見てて満足できるクオリティーじゃないと。</dd>
+
+    <dt>モバイルフレンドリー</dt>
+    <dd>リストタグを使ったパンくずリストは、レスポンシブデザインにも適しています。<br>
+     異なる画面サイズに応じて、リストの表示を柔軟に調整することができます。</dd>
+
+    <dt>コードのシンプル化</dt>
+    <dd>リストタグを使うことで、コードがシンプルで読みやすくなり、メンテナンスや更新がしやすくなります。</dd>
+   </dl>
+
+   <p>次はパンくずリストのCSSですね。<br>
+    これは上記のような理由からリストタグを使いますが、表示の仕方をCSSでコントロールする必要があります。</p>
+  </div>
+
+  <h3>パンくずリストを作るCSS</h3>
+  <p><span class="small-orange-text">※ここにあるコードは一昔前のやつです。最新版はこのページの上にあるコードですよ。</span><br>
+   <span class="small-text">大差ないんだけどね。気になる方は<a
+     href="/another-eden/atelier_studio.html">ファンサイト制作のためのアトリエ</a>からジャンプできるコードが最新版です。</span>
+  </p>
+  <p class="codegra">パンくずリストを作るfainpan.css</p>
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+/* パンくずリスト全体のスタイル */
+.breadcrumb {
+    display: flex; /* フレックスボックスで横並びに配置 */
+    list-style: none; /* リストのスタイルをなしにする */
+    padding: 10px 15px; /* 内側の余白を調整 */
+    margin: 0; /* 外側の余白をなしにする */
+    background-color: #f8f9fa; /* 背景色を追加 */
+    border-radius: 5px; /* 角を丸くする */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    font-size: 0.7em; /* フォントサイズを調整 */
+}
+
+/* 各パンくずリストアイテムの間に区切りを追加 */
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">"; /* 区切り文字を設定 */
+    padding: 0 10px; /* 区切り文字の左右に余白を追加 */
+    color: #6c757d; /* 区切り文字の色を設定 */
+}
+
+/* パンくずリスト内のリンクのスタイル */
+.breadcrumb-item a {
+    text-decoration: none; /* リンクの下線をなしにする */
+    color: #1A73E8; /* リンクの文字色を設定 (Google blue) */
+    transition: color 0.3s ease; /* ホバー時の色変化にアニメーションを追加 */
+}
+
+/* リンクをホバーしたときのスタイル */
+.breadcrumb-item a:hover {
+    color: #0078D4; /* リンクの文字色を変更 (Microsoft blue) */
+    text-decoration: underline; /* リンクに下線を追加 */
+}
+
+/* 現在のページのパンくずリストアイテムのスタイル */
+.breadcrumb-item.active {
+    font-weight: bold; /* 文字を太字にする */
+    color: #6c757d; /* 文字色を設定 */
+}
+    </code></pre>
+  </div>
+
+  <p>リストと言うと、箇条書きを連想しますよね？<br>
+   ここで <span class="codecolor">list-style: none;</span> を使うと、リストアイテムのデフォルトの箇条書きスタイル（通常はディスクや数字のようなマーカー）が取り除かれます。<br>
+   こういうのリストアイテムとか言ったりするけど、パンくずリストでは箇条書きのマーカーなしで表示するのが良いと思います。</p>
+
+  <div class="flowerclearfix">
+   <div class="flowerfade-out">
+    <img src="/flower2/flower2(5).JPG" alt="フェードアウト効果の草花写真">
+   </div>
+   <p>とはいえ、このプロパティはリストアイテムの配置方法には影響しません。<br>
+    そのままではリストのアイテム自体は箇条書き風の縦並びのままです。<br>
+    パンくずリストはアイテムを横並びに配置したいので、追加のCSSスタイルを使用する必要があります。<br>
+    例えば、次のようにフレックスボックスを使ってアイテムを横並びに配置できます。</p>
+  </div>
+
+  <div class="code-container">
+   <pre><code class="feintyping language-css">
+.breadcrumb {
+display: flex; /* フレックスボックスで横並びに配置 */
+list-style: none; /* リストのスタイルをなしにする */
+padding: 10px 15px;
+margin: 0;
+background-color: #f8f9fa;
+border-radius: 5px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+font-size: 0.7em;
+}
+    </code></pre>
+  </div>
+
+  <p>この場合、<span class="codecolor">display: flex;</span> がリストアイテムを横並びに配置する役割を果たします。</p>
+
+
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html"><i class="fas fa-sitemap"></i>
+     アナザーエデン関連ページ・サイトマップ</a></p>
+   <p>アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <div class="spacer"></div>
+   <p><a href="/contents/site_create.html"><i class="fas fa-sitemap"></i>
+     個人サイトのホスティングとコンテンツ作成</a></p>
+   <p>個人でウェブサイトを作るにはどうすればいいか。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <div class="spacer"></div>
+   <p><a href="/fish/fish_sitemap.html"><i class="fas fa-sitemap"></i>魚釣りなどアウトドアのエリア</a></p>
+   <p>ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+   <!--w3cバリデーターに合格していることを示す-->
+   <div class="w3ccheck">
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/contents/breadcrumbsnav.html">
+     <img src="/image/HTML5_Logo_64.png" alt="Valid HTML5" height="31" style="width: auto;">
+    </a>
+    <a href="https://validator.w3.org/nu/?doc=https://feinatelier.org/css/style.css">
+     <img style="border:0;width:88px;height:31px" src="/image/vcss-blue.png" alt="正当なCSSです!">
+    </a>
+   </div>
+   <!--w3cバリデーターに合格していることを示す-->
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

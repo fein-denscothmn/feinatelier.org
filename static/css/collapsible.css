@@ -9,7 +9,6 @@
  width: 100%;
  border: none;
  border-radius: 10px;
- /* 角を丸める */
  text-align: left;
  outline: none;
  font-size: 15px;
@@ -25,7 +24,6 @@
  transition: max-height 0.3s ease, opacity 0.3s ease;
  opacity: 0;
  border-radius: 10px;
- /* 角を丸める */
 }
 
 .collapsiblecontent.show {
@@ -33,7 +31,7 @@
  opacity: 1;
 }
 
-/* カードのデザイン */
+/* ●カードのデザイン● */
 .feinorg-container {
  display: flex;
  flex-wrap: wrap;
@@ -48,10 +46,11 @@
  padding: 2px 15px;
  border-radius: 12px;
  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
- width: 90%;
- max-width: 800px;
+ width: 100%;
+ /* ← 90%ではなく100%に */
+ max-width: none;
+ /* ← 最大幅制限を外す */
  box-sizing: border-box;
- transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feinorg-row {
@@ -66,4 +65,36 @@
  color: #0078d4;
  margin-right: 5px;
  text-align: left;
+}
+
+/* ダークなカード */
+.denblack-card-container {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+ justify-content: flex-start;
+ padding: 5px;
+}
+
+.denblack-card {
+ width: 100%;
+ background: linear-gradient(to right, #000a1f, #0066cc);
+ color: #fff;
+ padding: 15px;
+ border-radius: 6px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.denblack-card>* {
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+
+/* Microsoftブルーを特別に入れたい場合 */
+.ms-link {
+ color: #00A4EF;
+}
+
+.ms-link:hover {
+ color: #1A73E8;
 }

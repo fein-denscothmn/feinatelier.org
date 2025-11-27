@@ -309,153 +309,6 @@ background-color: white;  /* 背景色の設定 */
    このスタイルが適用された要素の後に必ず改ページを挿入します。<br>
    二重に設定しているわけじゃなくて、page-break-afterという部分の後に、このコードによって改ページするよってことです。</p>
 
-  <h2>グローバルナビゲーションの外観を整える</h2>
-
-  <p>このスタイルはリンクにホバーしたり特定のクラスが追加されたりすると、アンダーラインがアニメーションで表示されるという効果を作り出しています。<br>
-   グローバルナビゲーションとして稼働させるには<a href="/contents/navcode.html#globalmenu_js">グローバルナビゲーションを目立たせる</a>にあるJavaScriptが別途必要です。<br>
-   このサイトではグローバルナビゲーション用の専用UIを実装するのではなく、アンダーラインのアニメーションを添えることで、少し目立たせるに留めています。</p>
-
-  <p class="codegra" id="headerglobal_css">グローバルナビゲーションを構成するheader.css</p>
-  <div class="code-container">
-   <pre><code class="feintyping language-css">
-/* アンダーラインアニメーションのキーフレームを定義 */
-@keyframes underline-animation {
- from {
-  width: 0; /* 初期幅は0 */
-  background: #00CC00; /* 初期背景色は緑 */
- }
- to {
-  width: 100%; /* 最終幅は100% */
-  background: #4285F4; /* 最終背景色は青 */
- }
-}
-
-/* アニメーション対象のリンク要素の基本スタイル */
-.animated-link {
- position: relative; /* 要素を相対位置に設定 */
- color: #4285F4; /* リンクのテキスト色を青に設定 */
- text-decoration: none; /* テキストの下線を削除 */
-}
-
-/* アニメーション対象のリンク要素の擬似要素::afterを定義 */
-.animated-link::after {
- content: ""; /* 擬似要素の内容を空に設定 */
- position: absolute; /* 要素を絶対位置に設定 */
- left: 0; /* 擬似要素の左端を親要素に揃える */
- bottom: -2px; /* 擬似要素の下端を親要素から少し下げる */
- width: 0; /* 初期幅を0に設定 */
- height: 2px; /* 高さを2pxに設定 */
- background: #00CC00; /* 初期背景色を緑に設定 */
- transition: width 0.5s; /* 幅の変化を0.5秒でアニメーション */
-}
-
-/* "loaded" クラスが追加されたリンク要素の擬似要素::afterを定義 */
-.animated-link.loaded::after {
- width: 100%; /* 幅を100%に設定 */
- background: #4285F4; /* 背景色を青に変更 */
- animation: underline-animation 2s forwards; /* アンダーラインアニメーションを2秒間かけて実行 */
-}
-
-/* ナビゲーションバーのスタイル */
-.den_nav {
- background: linear-gradient(to bottom, rgba(173, 216, 230, 0.5), rgba(173, 216, 230, 0)); /* 背景をグラデーションに設定 */
- color: #4285F4; /* テキスト色を青に設定 */
- padding: 10px; /* 内側の余白を10pxに設定 */
- border-radius: 20px; /* 角を丸くする */
-}
-
-/* ホームアイコンのスタイル */
-.feinhome {
- width: 50px; /* 幅を50pxに設定 */
- margin-left: 3px; /* 左マージンを3pxに設定 */
- margin-top: 3px; /* 上マージンを3pxに設定 */
- display: block; /* ブロック要素として表示 */
- position: relative; /* 相対位置に設定 */
- top: 3px; /* 上から3pxに位置 */
- left: 3px; /* 左から3pxに位置 */
-}
-
-/* ナビゲーションメニューのスタイル */
-.den_nav ul {
- list-style-type: none; /* リストのデフォルトの箇条書きを削除 */
- margin: 0; /* 外側の余白をなしに設定 */
- padding: 0; /* 内側の余白をなしに設定 */
- display: flex; /* 子要素を横並びに表示 */
- flex-wrap: wrap; /* 子要素を折り返す */
-}
-
-/* リスト項目のスタイル */
-.den_nav ul li {
- margin-right: 20px; /* 右マージンを20pxに設定 */
- margin-bottom: 10px; /* 下マージンを10pxに設定 */
-}
-
-/* リスト内のリンクのスタイル */
-.den_nav ul li a {
- color: #4285F4; /* リンクのテキスト色を青に設定 */
-}
-
-/* リンクにホバーしたときのスタイル */
-.den_nav ul li a:hover {
- color: #0078D4; /* リンクのテキスト色を濃い青に変更 */
-}
-
-</code></pre>
-  </div>
-
-  <h3 id="flexcss">CSSのフレックスボックスレイアウト</h3>
-  <p>display: flex; は、CSSのフレックスボックスレイアウトを有効にするプロパティです。<br>
-   これを使うと、要素の配置やサイズ変更が柔軟に行えるようになります。<br>
-   けっこう大切なプロパティなので、詳しく説明していきますね。</p>
-
-  <h4>フレックスボックスの基本</h4>
-  <p>フレックスボックスは、親要素（コンテナ）とその子要素（アイテム）で構成されます。<br>
-   display: flex; を親要素に適用すると、その子要素がフレックスコンテナ内で配置されます。</p>
-
-  <dl>
-   <dt>方向の設定</dt>
-   <dd>デフォルトでは、子要素は横方向（row）に配置されます。</dd>
-   <dd>flex-direction プロパティを使って、縦方向（column）に変更することもできます。</dd>
-   <dt>配置の制御</dt>
-   <dd>justify-content プロパティで、子要素の主軸（横方向）の配置を制御できます（例：中央揃え、スペースの均等配分など）。
-   </dd>
-   <dd>align-items プロパティで、子要素の交差軸（縦方向）の配置を制御できます（例：中央揃え、上下揃えなど）。</dd>
-   <dt>サイズの調整</dt>
-   <dd>子要素に flex-grow, flex-shrink, flex-basis プロパティを使って、成長や縮小の割合、基準サイズを設定できます。</dd>
-  </dl>
-
-  <p>具体例となるコードを書いてみますね。</p>
-
-  <p class="gra">CSSのフレックスボックスレイアウト例</p>
-  <div class="code-container">
-   <pre><code class="feintyping language-html">
-&lt;div class=&quot;container&quot;&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 1&lt;/div&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 2&lt;/div&gt;
-  &lt;div class=&quot;item&quot;&gt;Item 3&lt;/div&gt;
-&lt;/div&gt;
-
-</code></pre>
-  </div>
-
-  <p>フレックスボックスを使うと、レイアウトの調整が非常に簡単になります。</p>
-
-  <p class="gra">CSSのフレックスボックスレイアウト例</p>
-  <div class="code-container">
-   <pre><code class="feintyping language-css">
-.container {
-  display: flex; /* フレックスコンテナを設定 */
-  justify-content: center; /* 子要素を中央揃え */
-  align-items: center; /* 子要素を上下中央揃え */
-}
-
-.item {
-  flex: 1; /* 子要素が均等にスペースを取る */
-}
-
-</code></pre>
-  </div>
-
   <h2>箇条書きの余白を調整する</h2>
   <p>リストタグはデフォルトだと右に寄り過ぎていると思うんですよね。<br>
    私は左側のマージンを削除しちゃってます。<br>
@@ -1132,7 +985,7 @@ p.codegra {
 }
 
 .custom-link:hover {
-    color: #00A2ED; /* リンクにマウスを乗せたときの文字色を設定します。 */
+    color: #0078D4; /* リンクにマウスを乗せたときの文字色を設定します。 */
     text-decoration: underline; /* リンクにマウスを乗せたときに下線を表示します。 */
 }
 
@@ -1147,7 +1000,7 @@ p.codegra {
 
   <dl>
    <dt>HEXコード</dt>
-   <dd>#4285F4</dd>
+   <dd>#1A73E8</dd>
 
    <dt>RGB値</dt>
    <dd>R:66, G:133, B:244</dd>
@@ -1159,7 +1012,7 @@ p.codegra {
 
   <dl>
    <dt>HEXコード</dt>
-   <dd>#00A2ED</dd>
+   <dd>#0078D4</dd>
 
    <dt>RGB値</dt>
    <dd>R:0, G:162, B:237</dd>
@@ -1202,7 +1055,7 @@ a {
 }
 
 a:hover {
-    color: #00A2ED; /* リンクにマウスを乗せたときの文字色をMicrosoftブルーに設定します。 */
+    color: #0078D4; /* リンクにマウスを乗せたときの文字色をMicrosoftブルーに設定します。 */
 }
 
 /* リンクの統一設定。Googleブルー。ホバー時にMicrosoftブルー。●終了● */

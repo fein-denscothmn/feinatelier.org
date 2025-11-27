@@ -56,7 +56,7 @@ ol {
 
 /* ★手軽に余白を設定する */
 div.spacer {
- height: 20px;
+ height: 15px;
 }
 
 /* ★太字にして定義リストを読みやすくする */
@@ -412,7 +412,7 @@ img.horizontally {
 }
 
 .custom-link:hover {
- color: #00A2ED;
+ color: #0078D4;
  text-decoration: underline;
 }
 
@@ -422,7 +422,7 @@ a {
 }
 
 a:hover {
- color: #00A2ED;
+ color: #0078D4;
 }
 
 /* ★タブを作る */
@@ -576,4 +576,10 @@ hr.atelierflower::before {
 /* イラストレーター回り込むテキストのスタイル */
 .art-description {
  margin: 0;
+}
+
+/* 濃い青の下線を引く */
+.dark-blue-underline {
+ text-decoration: underline;
+ text-decoration-color: #0A1F44;
 }

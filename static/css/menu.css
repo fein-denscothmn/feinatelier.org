@@ -52,7 +52,7 @@
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #1A73E8;
+ color: #0078D4;
  /* Google Blue */
  transition: color 0.3s ease-in-out;
 }
@@ -84,7 +84,7 @@
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #1A73E8;
+ color: #0078D4;
  cursor: pointer;
 }
 
@@ -93,7 +93,7 @@
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #00A2ED;
+ color: #0078D4;
  cursor: pointer;
 }
 
@@ -102,7 +102,7 @@
  font-weight: bold;
  letter-spacing: 0.3px;
  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- color: #00A2ED;
+ color: #0078D4;
  transition: color 0.3s ease-in-out;
 }
 

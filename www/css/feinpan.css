@@ -4,9 +4,7 @@
  flex-wrap: wrap;
  list-style: none;
  padding: 10px 2%;
- /* 左右の余白を広げる */
  width: 95%;
- /* カード自体を画面幅の90%に広げる */
  background-color: #f8f9fa;
  border-radius: 5px;
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -15,18 +13,14 @@
 
 .breadcrumb-item {
  display: flex;
- /* 矢印とテキストを横並びに */
  align-items: center;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
  content: "›";
- /* 矢印をスマートに */
  color: #6c757d;
  margin: 0 6px;
- /* 矢印とテキストの間隔 */
  flex-shrink: 0;
- /* 矢印が潰れないように固定 */
 }
 
 .breadcrumb-item a {
@@ -36,7 +30,7 @@
 }
 
 .breadcrumb-item a:hover {
- color: #00A2ED;
+ color: #0078D4;
  text-decoration: underline;
 }
 

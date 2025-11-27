@@ -56,7 +56,7 @@ ol {
 
 /* ★手軽に余白を設定する */
 div.spacer {
- height: 20px;
+ height: 15px;
 }
 
 /* ★太字にして定義リストを読みやすくする */
@@ -98,7 +98,7 @@ p.feintag {
 
 /* ★統一感を持たせた見出しを作る */
 h1.background-waveimage-heading {
- background-image: url('../images/hone.png');
+ background-image: url('/image/hone.webp');
  background-size: contain;
  background-repeat: no-repeat;
  background-position: left;
@@ -175,6 +175,7 @@ h4 {
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* ★h5見出しにオレンジ線を引く */
 h5 {
  font-size: 110%;
  margin-top: 25px;
@@ -411,7 +412,7 @@ img.horizontally {
 }
 
 .custom-link:hover {
- color: #00A2ED;
+ color: #0078D4;
  text-decoration: underline;
 }
 
@@ -421,7 +422,7 @@ a {
 }
 
 a:hover {
- color: #00A2ED;
+ color: #0078D4;
 }
 
 /* ★タブを作る */
@@ -538,4 +539,41 @@ hr.atelierflower::before {
  cursor: pointer;
  border: none;
  background-color: transparent;
+}
+
+/* イラストレータースタイルを管理 */
+.art-container {
+ overflow: hidden;
+}
+
+/* イラストレーター画像とキャプションの配置を調整 */
+.art-frame {
+ float: right;
+ width: 45%;
+ margin-left: 5px;
+ margin-right: 10px;
+}
+
+/* イラストレーター画像のスタイル */
+.art-image {
+ width: 100%;
+ border-radius: 10px;
+ opacity: 0;
+ transition: opacity 1s ease-in-out;
+}
+
+/* イラストレーターフェードインアニメーションを適用 */
+.art-image.visible {
+ opacity: 1;
+}
+
+/* イラストレーターキャプションのスタイル */
+.art-caption {
+ text-align: right;
+ color: #666;
+}
+
+/* イラストレーター回り込むテキストのスタイル */
+.art-description {
+ margin: 0;
 }

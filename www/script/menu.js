@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
  const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
    if (entry.isIntersecting) {
-    nav.classList.add("visible");   // 画面に入ったらフェードイン
+    nav.classList.add("visible");
    } else {
-    nav.classList.remove("visible"); // 画面から外れたらリセット
+    nav.classList.remove("visible");
    }
   });
  });
@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
  const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
    if (entry.isIntersecting) {
-    nav.classList.add("visible");   // 画面に入ったらフェードイン
+    nav.classList.add("visible");
    } else {
-    nav.classList.remove("visible"); // 画面から外れたらリセット
+    nav.classList.remove("visible");
    }
   });
  });
