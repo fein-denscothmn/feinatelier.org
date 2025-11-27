@@ -8,6 +8,7 @@
 /sitemap.py
 /redirect-service/redirect.py
 /redirect-service/requirements.txt
+/redirect-service/.gcloudignore
 
 # 特定のファイルを除外
 /www/sitemap.xml
