@@ -1,3 +1,0 @@
-dispatch:
-  - url: "fein-sites-dev1.ew.r.appspot.com/*"
-    service: redirect-service
