@@ -1,19 +1,21 @@
 # サーバー設定・機密ファイルを除外
 /app.yaml
 /dispatch.yaml
-/redirect-service/app.yaml
 /requirements.txt
 /main.py
 /pagelist.py
 /sitemap.py
+/.gcloudignore
+/redirect-service/app.yaml
 /redirect-service/redirect.py
 /redirect-service/requirements.txt
 /redirect-service/.gcloudignore
 
 # 特定のファイルを除外
 /www/sitemap.xml
-/www/robots.txt
-/www/d7a93778274747368193589d62e18f10.txt
+/www/.hintrc
+/www/*.txt
+!/www/robots.txt
 /.hintrc
 /.vscode/
 
@@ -40,6 +42,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# フロントエンド関連（必要なら）
+# フロントエンド
 node_modules/
 dist/
