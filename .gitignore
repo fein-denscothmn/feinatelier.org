@@ -1,12 +1,22 @@
+# サーバー設定・機密ファイルを除外
+/app.yaml
+/dispatch.yaml
+/redirect-service/app.yaml
+/requirements.txt
+/main.py
+/pagelist.py
+/sitemap.py
+/redirect-service/redirect.py
+/redirect-service/requirements.txt
+
 # 特定のファイルを除外
 /www/sitemap.xml
 /www/robots.txt
-/.vscode/tasks.json
-/app.yaml
-/redirect-service/app.yaml
 /www/d7a93778274747368193589d62e18f10.txt
+/.hintrc
+/.vscode/
 
-# 特定のディレクトリを除外
+# 特定のディレクトリを除外（画像や内部用）
 www/**/anaimage/
 www/**/icon/
 www/image/
@@ -16,11 +26,19 @@ www/paint/
 __pycache__/
 *.pyc
 *.pyo
+*.egg-info/
+.pytest_cache/
 
 # 一時ファイルやログを除外
 *.log
 *.tmp
+*.bak
+*.swp
 
 # OS依存の不要ファイルを除外
 .DS_Store
 Thumbs.db
+
+# フロントエンド関連（必要なら）
+node_modules/
+dist/

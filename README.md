@@ -46,19 +46,19 @@ https://portal.feinatelier.org/
 つい先日.orgドメインにしたので、それが定着するまではシステム改変はしないつもり。
 
 #### analysis_history
-分析日: 2025-11-27
-ディレクトリ全体のサイズ＝1.68 GB
-HTMLファイル＝138
-CSSファイル＝33
-JavaScriptファイル＝41
-PDFファイル＝221
-Pythonファイル＝4
-YAMLファイル＝3
-XMLファイル＝1
-txtファイル＝4
-JSONファイル＝2
-JPEGファイル＝6
-JPGファイル＝1996
-PNGファイル＝446
-WebPファイル＝164
+分析日: 2025-11-27<br>
+ディレクトリ全体のサイズ＝1.68 GB<br>
+HTMLファイル＝138<br>
+CSSファイル＝33<br>
+JavaScriptファイル＝41<br>
+PDFファイル＝221<br>
+Pythonファイル＝4<br>
+YAMLファイル＝3<br>
+XMLファイル＝1<br>
+txtファイル＝4<br>
+JSONファイル＝2<br>
+JPEGファイル＝6<br>
+JPGファイル＝1996<br>
+PNGファイル＝446<br>
+WebPファイル＝164<br>
 総コード行数＝167882 行
