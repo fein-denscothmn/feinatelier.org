@@ -44,3 +44,21 @@ https://portal.feinatelier.org/
 #### 今後の予定
 とりあえず当面はHTML・CSS・JavaScriptでWebページを作りまくっていきます。<br>
 つい先日.orgドメインにしたので、それが定着するまではシステム改変はしないつもり。
+
+#### analysis_history
+分析日: 2025-11-27
+ディレクトリ全体のサイズ＝1.68 GB
+HTMLファイル＝138
+CSSファイル＝33
+JavaScriptファイル＝41
+PDFファイル＝221
+Pythonファイル＝4
+YAMLファイル＝3
+XMLファイル＝1
+txtファイル＝4
+JSONファイル＝2
+JPEGファイル＝6
+JPGファイル＝1996
+PNGファイル＝446
+WebPファイル＝164
+総コード行数＝167882 行

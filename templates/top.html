@@ -730,35 +730,60 @@ my_flask_app/
 
   <div class="code-container">
    <pre><code class="feintyping language-txt">
-FEIN-SITES-DEV1/
-│  app.yaml          # App Engine の設定ファイル。デプロイと実行環境の設定を定義
-│  main.py           # Flask アプリケーションのメインファイル。ルートやサーバーの設定が含まれる
-│  README.md         # プロジェクトの概要や使い方を記述する説明ファイル
-│  requirements.txt  # アプリケーションが依存する Python パッケージをリストアップするファイル
-│
-├─static/            # 静的ファイル（CSS, JavaScript, 画像など）を配置するディレクトリ
-│   ├─ images/       # 画像ファイルを保存するサブディレクトリ
-│   │     example.jpg  # サンプル画像ファイル
-│   ├─ css/          # CSS ファイルを保存するサブディレクトリ
-│   │     pstyle.css   # プロジェクトのスタイルシート
-│   ├─ js/           # JavaScript ファイルを保存するサブディレクトリ
-│   │     pscript.js   # プロジェクトのスクリプト
-│   └─その他のディレクトリや静的ファイル  # 普通のWebサイトの構造となっている
-│
-├─templates/         # Flask のテンプレートファイル（HTML ファイル）を配置するディレクトリ
-│      top.html      # Flask アプリの動的コンテンツ用 HTML テンプレート
-│
-│   【上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。】
-│   【下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。】
-│
-└─www/               # 静的ウェブサイトのルートディレクトリ。静的な HTML ファイルを配置
-    │  index.html      # 静的ウェブサイトのホームページ
-    │  .hintrc         # HTMLHint の設定ファイル（コード品質チェック用）
-    │  favicon.ico     # ブラウザのタブに表示されるアイコン
-    │  manifest.json   # PWA の設定ファイル。アプリのメタデータを定義
-    │  robots.txt      # 検索エンジンに対するクローリング設定ファイル
-    │  service-worker.js # PWA のサービスワーカー。オフライン対応やキャッシュ管理を実現
-    └─その他のディレクトリや静的ファイル  # 普通のWebサイトの構造となっている
+GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプリ、https://feinatelier.org/)
+├─static
+│  ├─css
+│  ├─externalization
+│  ├─flower1
+│  ├─icons
+│  ├─images
+│  ├─js
+│  ├─menu
+│  └─nature
+├─templates
+│  │  top.html（動的Webサイトのトップページ）
+│   ▲上側がFlaskフレームワーク。サーバーサイドスクリプトを活用した動的Webサイトです。
+│   ▼下側が普通のホームぺージ。フロントエンド3言語による静的Webサイトです。
+├─www
+│  │  favicon.ico
+│  │  index.html（静的Webサイトのトップページ）
+│  │  manifest.json
+│  │  robots.txt
+│  │  service-worker.js
+│  ├─another-eden
+│  │  ├─anaimage
+│  │  │  ├─goods
+│  │  │  ├─heavenburnsred
+│  │  │  ├─oldanaden
+│  │  │  ├─spoiler
+│  │  │  └─vcgrasta
+│  │  ├─fein_report
+│  │  └─icon
+│  ├─contents
+│  │  ├─itimages
+│  │  │  ├─cat_a
+│  │  │  ├─cat_b
+│  │  │  ├─feinne
+│  │  │  ├─metainput
+│  │  │  ├─picture_1hide
+│  │  │  ├─picture_allhide
+│  │  │  │  └─afterhide
+│  │  │  └─pwainfo
+│  ├─css
+│  ├─externalization
+│  ├─fish
+│  ├─fleur1
+│  ├─flower1
+│  ├─flower2
+│  ├─flower3
+│  ├─icons
+│  ├─image
+│  ├─menu
+│  ├─paint
+│  ├─rss
+│  ├─script
+│  ├─sea
+│  └─video
 
 </code></pre>
   </div>
@@ -813,13 +838,8 @@ FEIN-SITES-DEV1/
     非常に有名なフレームワークなので、終息するにしても、利用者のことを考えてくれるでしょう。<br>
     でも未来のことは誰にも分かりません。</p>
 
-   <p>そこで、「フロントエンド3言語による普通のWebサイト」と「Flaskフレームワークによるサーバーサイドスクリプトを活用したWebサイト」を簡単に切り離せる仕組みにしたんです。<br>
-    次の画像なら少しは分かりやすいかも…</p>
+   <p>そこで、「フロントエンド3言語による普通のWebサイト」と「Flaskフレームワークによるサーバーサイドスクリプトを活用したWebサイト」を簡単に切り離せる仕組みにしたんです。</p>
 
-  </div>
-
-  <div class="content">
-   <img src="{{ url_for('static', filename='images/Flaskによる構造.jpg') }}" alt="Flaskによる構造" class="biggraphic fade-in-out">
   </div>
 
   <p>FEIN-SITES-DEV1/ が、App Engine のプロジェクトルートディレクトリに当たります。<br>
