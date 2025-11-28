@@ -11,13 +11,13 @@ README_PATH = os.path.join(BASE_DIR, "README.md")
 def readme():
     with open(README_PATH, encoding="utf-8") as f:
         content = f.read()
-    html = markdown.markdown(content)
+    html = markdown.markdown(content, extensions=["extra", "nl2br"])
     return render_template_string("""
     <!DOCTYPE html>
     <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>README</title>
+        <title>README_GitHub</title>
 
 
  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pstyle.css') }}">
@@ -109,10 +109,10 @@ def readme():
 <p>GitHub には README.md を置くことができ、アプリケーションの仕様が Markdown記法で書かれています。<br>
      これを Python Flask で HTML化して表示させて頂きました。─ やり方については<a href="/contents/py_readme.html">GitHubのREADMEをPythonを使ってWebページにする</a>にあります ─<br>
      こちらのほうが読みやすいでしょう。</p>
-<p>念のため、<a href="https://github.com/fein-denscothmn/fein-sites-dev1/blob/main/README.md">GitHubにあるREADME</a>へのリンクも付けておきますね。</p>
 
         {{ html|safe }}
 
+<p>念のため、<a href="https://github.com/fein-denscothmn/fein-sites-dev1/blob/main/README.md">GitHubにあるREADME</a>へのリンクも付けておきますね。</p>
   <!-- ●ここから人間用のフッター● -->
   <hr id="feinhr">
   <div class="spacer"></div>
