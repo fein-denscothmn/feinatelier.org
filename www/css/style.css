@@ -395,25 +395,25 @@ div.gtable {
 /* ★画像を左右に並べる */
 .horizontally-container {
  display: flex;
- border-radius: 10px;
 }
 
 img.horizontally {
  margin: 10px;
  width: 30%;
  height: auto;
+ border-radius: 10px;
 }
 
 /* ★SNSカードを左右に並べる */
 .snshorizontally-container {
  display: flex;
- border-radius: 5px;
 }
 
 img.snshorizontally {
  margin: 5px;
  width: 47%;
  height: auto;
+ border-radius: 10px;
 }
 
 /* ★サイトマップ用の目立つリンク */
