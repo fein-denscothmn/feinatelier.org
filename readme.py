@@ -107,8 +107,12 @@ def readme():
 
   <h1 class="background-waveimage-heading"><span>README_GitHub</span></h1>
 <p>GitHub には README.md を置くことができ、アプリケーションの仕様が Markdown記法で書かれています。<br>
-     これを Python Flask で HTML化して表示させて頂きました。─ やり方については<a href="/contents/py_readme.html">GitHubのREADMEをPythonを使ってWebページにする</a>にあります ─<br>
+     これを Python Flask で HTML化して表示させて頂きました。<br>
      こちらのほうが読みやすいでしょう。</p>
+<ul>
+<li><a href="https://github.com/fein-denscothmn">feinのGitHubはこちらです</a></li>
+<li>関連ページ：<a href="/contents/py_readme.html">GitHubのREADMEをPythonを使ってWebページにする</a></li>
+</ul>
 
         {{ html|safe }}
 
@@ -133,7 +137,6 @@ def readme():
 個人でウェブサイトを作るなら時間をかけて。<br>
     HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
     Webデザインやレイアウトについても書いてあります。</p>
-   <div class="spacer"></div>
    <p><a href="/fish/fish_sitemap.html">魚釣りなどアウトドアのエリア</a><br>
 ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
     このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
