@@ -404,6 +404,18 @@ img.horizontally {
  height: auto;
 }
 
+/* ★SNSカードを左右に並べる */
+.snshorizontally-container {
+ display: flex;
+ border-radius: 5px;
+}
+
+img.snshorizontally {
+ margin: 5px;
+ width: 47%;
+ height: auto;
+}
+
 /* ★サイトマップ用の目立つリンク */
 .custom-link {
  color: #1A73E8;
