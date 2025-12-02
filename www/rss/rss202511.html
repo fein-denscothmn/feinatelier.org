@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <link rel="manifest" href="/manifest.json">
+
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    })
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <meta charset="UTF-8">
+ <title>2025年11月のブログと更新記録</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="このサイトおよびポータルサイトの更新履歴を書いています。">
+ <meta name="keywords" content="個人サイト, 更新履歴, RSS">
+ <meta name="robots" content="index, follow">
+ <meta property="og:title" content="2025年11月のブログと更新記録">
+ <meta property="og:description" content="このサイトおよびポータルサイトの更新履歴を書いています。">
+ <meta property="og:image" content="/image/アナザーエデンのバディ_ピスケ.png">
+ <meta property="og:url" content="https://feinatelier.org/contents/rss202511.html">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/header.css">
+ <link rel="stylesheet" type="text/css" href="/css/footer.css">
+ <link rel="stylesheet" type="text/css" href="/css/flower.css">
+ <link rel="stylesheet" type="text/css" href="/css/menu.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
+ <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
+ <link rel="stylesheet" type="text/css" href="/css/colors.css">
+
+ <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-827JM6N5CS');
+ </script>
+ <script>
+  (function (c, l, a, r, i, t, y) {
+   c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+   t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+   y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "obazqypsh8");
+ </script>
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "Organization",
+   "name": "2025年11月のブログと更新記録",
+   "url": "https://feinatelier.org/contents/rss202511.html",
+   "logo": "https://feinatelier.org/image/barracuda.jpeg"
+ }
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
+ <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
+ <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
+ <script src="/script/underline.js"></script>
+ <script src="/script/feinfade.js"></script>
+ <script src="/script/feinScroll.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+
+ <script src="/script/fengari-web.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+ <nav class="den_nav">
+  <ul>
+   <li>
+    <a href="/" class="animated-link feinhome-link">
+     <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク" class="feinhome">
+     <span>fein's home</span>
+    </a>
+   </li>
+
+   <li><a href="/another-eden/anaden_sitemap.html" class="animated-link">Another Eden</a></li>
+   <li><a href="/fish/fish_sitemap.html" class="animated-link">Outdoor Activities</a></li>
+   <li><a href="/contents/site_create.html" class="animated-link">Personal Website Creation</a></li>
+   <li><a href="/contents/protect.html" class="animated-link">AI Block</a></li>
+   <li><a href="/contents/rss.html" class="animated-link">Updates</a></li>
+  </ul>
+ </nav>
+
+ <!--レスポンシブデザイン-->
+ <div class="feincontainer">
+
+
+  <!--パンくずリスト-->
+  <div>
+   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a></li>
+    <li class="breadcrumb-item"><a href="/contents/site_create.html">個人サイト制作：サイトマップ
+     </a></li>
+    <li class="breadcrumb-item"><a href="/contents/rss.html">このサイトとポータルサイトの更新履歴</a></li>
+    <li class="breadcrumb-item active" aria-current="page">2025年11月のブログと更新記録</li>
+   </ol>
+  </div>
+
+
+
+  <!-- ハンバーガーメニュー -->
+  <div class="fden-hamburger-menu">
+   <button class="fden-hamburger-button" id="fden-hamburger-button" onclick="toggleMenu()">☰ メニューを開く
+    ▼</button>
+   <div class="fden-menu" id="fden-menu">
+    <!-- メニュー内容は外部ファイルから読み込む -->
+    <div id="fden-menu-content"></div>
+   </div>
+  </div>
+  <script src="/script/menu.js"></script>
+  <!-- ハンバーガーメニューここまで -->
+
+  <!--サイトタイトル-->
+  <div class="header-frame">
+   <div class="header-container">
+    <img src="../image/cloudsitetitle.jpg" alt="Fein Atelier - org" class="header-image">
+    <div class="header-text">
+     <a href="https://feinatelier.org/">Fein Atelier - org</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="spacer"></div>
+  <button id="generate-headings" data-open-text="2025年11月のブログと更新記録の目次を開く ▼"
+   data-close-text="2025年11月のブログと更新記録の目次を閉じる ▲">2025年11月のブログと更新記録の目次を開く ▼</button><!--目次の自動生成-->
+
+
+  <!-- ●ヘッダーここまで。直下でコンテンツ開始● -->
+
+  <h1 class="background-waveimage-heading"><span>2025年11月のブログと更新記録</span></h1>
+  2025年11月分より、ブログと更新履歴を納めていきます。
+
+  <h2>2025年11月のブログ</h2>
+  <p>古いブログはこのようにして深い階層へ残していきます。</p>
+
+  <h2>2025/11/30：ちょっとアウトドア関連ページを増強してみる？！</h2>
+  <p>私のサイトの場合、アナデンやファイナルファンタジーと無関係な人も呼び込める可能性が高いんです。<br>
+   AI論争が勃発するたびにアクセスがぐわっと上がるし、まったく別の界隈にいる人たちも個人サイトを作るからね。<br>
+   Blueskyを見ると、日に日に個人サイトが増えていってます。<br>
+   そもそも制作に時間がかかるから、現在も作っている人たちがいるでしょう。<br>
+   その中にアナデンとファイナルファンタジーをやったことがない人がいても、まったくもって不思議ではありませんよね？</p>
+
+  <p>ただ、私のサイトでは個人サイト関連のWebページはすでに充実しており、どうしようかなと。<br>
+   それなら、意表を突いてアウトドア関連ページをfein's portalから移行させてくるのはどうでしょう？<br>
+   アナデン運営もこの機会に新規プレイヤーを増やしたいと考えているでしょうから、ゲームやアニメと無関係な人たちまで呼び込めたら万歳ですよね。<br>
+   fishディレクトリ以下のWebページへクローラーが頻繁に回ってくるきっかけにもなりますから、これはやってみる価値があるよ。<br>
+   そういえば、カマスの骨抜きでぶわっと人が来たことがあったなぁ…</p>
+
+  <h2>2025/11/29：久しぶりにコロッケ食べた</h2>
+  <p>そんなにしょっちゅうじゃないけど、たまに食べたくなるよね。<br>
+   昨日配信を聞いてて、コロッケの話題が出て。<br>
+   それですごく食べたくなったんです。<br>
+   ちょうどソースを切らしてたから、併せてたっぷり買ってきた。<br>
+   もちろん大根おろし付きですよ？<br>
+   コロッケみたいにドカンと胃袋に入る料理を食べる時は、だいたい大根おろしを付けますね。<br>
+   ジアスターゼというらしいですね。<br>
+   消化酵素が入っていて、本当に胃腸がラクなんです。</p>
+
+  <h2>2025/11/28：メンテページのメンテやった</h2>
+  <p>だんだんSNSの扱いが雑になっていく自分を感じる…<br>
+   露骨なバズ狙いなんかする必要はありませんが、定期的に投稿するくらいはしても良いでしょう。<br>
+   特にブルスカとインスタを放置気味。<br>
+   ツイッターはもっと減らしましょう。<br>
+   どの媒体にテキストを投下していくかってわりと大切でさ。<br>
+   サイトなら投下量も頻度も無限に増やせるけど、SNSはそうはいかない。<br>
+   潜在的なリスクもあるし、全体的に頻度調整をしたいと思ってね。<br>
+   けっこう思い付きで投稿してる側面あるから。<br>
+   リズムが欲しいよね。<br>
+   もしくはルーチン化。<br>
+   そしてルーチンに当てはまらないものは全てサイトへ委ねていくような。<br>
+   そういうインターネットの扱い方をしていれば、無駄な課題も出てこないと思う。</p>
+
+  <h2>2025/11/27：生野菜が好きなんです</h2>
+  <p>「ライタ」って知ってる？<br>
+   インドのヨーグルトサラダ。<br>
+   ぶっちゃけサラダなら何でも好きなんだけど、とくにライタは大好物ですね。<br>
+   日本人の感覚だとヨーグルトはデザートですから、それにスパイスを入れてサラダのドレッシングのように扱うのは、なかなか馴染みがないかも。<br>
+   学生時代にインドから来たSEにお世話になったことがあってね。<br>
+   その人たちに手料理を振る舞ってもらったことがありますよ。<br>
+   現地の文化に合わせて、私も手の指でカレーやサラダを頂きました。<br>
+   新鮮な体験でした。<br>
+   そして美味いのなんのって！<br>
+   カレーはもちろん、そのライタというヨーグルトサラダはマジでクリティカルヒットしたのです！<br>
+   それ以来、我が家の定番サラダとなりました。<br>
+   おかげさまで我が家のヨーグルト消費量は極めて高いですよ…</p>
+
+
+  <h2>2025/11/26：他人様のデザインから学ぶの大切</h2>
+  <p>今日は Visual Studio Code のアップデートをしたんですよ。<br>
+   ちょっと時間が取れたので。<br>
+   そしたらかっこいいリリースノートを見ちゃってさ。<br>
+   深い青に白文字。<br>
+   シックな印象がある。</p>
+  <div class="denblack-card-container">
+   <div class="denblack-card">
+    <p>すっごい目立つから、ピンポイントで使わないとダメだよね。<br>
+     こういうのがあんまりクドいと、うるさいサイトになります。</p>
+   </div>
+  </div>
+  <p>あんまりフォントそのものに装飾をするのが好きじゃないですね。<br>
+   太字にしたり赤字にしたり。<br>
+   野暮ったく見えるし、これまたクドいとうるさいサイトになる。<br>
+   背景カラーとのバランスも悪くなります。<br>
+   上にあるように、CSSでカードデザインを作って括るほうが、私の好みです。</p>
+
+  <h2>2025/11/24：サイト全体に関わる修正やった</h2>
+  <p>アナデンのクロノス石Web Shopを見てね。<br>
+   トップ画像をばーんと置くアイデアが閃いて。<br>
+   ていうかそういうサイトはいっぱいあるんだけど、なかなか「こういうデザインパターンを起用しよう」というものに出逢えなくて。<br>
+   でもなんとアナデン公式が作ったサイトが突破口になりました！<br>
+   このブログページもそうですが、トップ画像の掲載方法を変更しました。</p>
+
+  <p>他にも連鎖的に思い付いてさ。<br>
+   グローバルナビゲーションの表示方法を変えてアニメーション付けたり。<br>
+   ハンバーガーメニューに摺りガラス効果を付けたり。<br>
+   Google検索窓を削除したり。<br>
+   いろいろやりましたよ。</p>
+
+  <p>こういうタイプの修正は普段なかなか思い付かないもので、ふとしたときに湧いて出てくるんだよね。<br>
+   そういう意味でも、Webサイト制作は超が付く長期戦なんですよ。<br>
+   長い長い目で見ながら育てていく感覚がないと、楽しめない。<br>
+   自分自身が、自分のサイトが好きじゃないと続かないよね。</p>
+
+
+  <h2>2025/11/23：マンションの下見に行ってきた</h2>
+  <p>早ければ今年中に引っ越しかな？<br>
+   さすがタワマンだけあって、エレベーターがなんか普通とは違う気がする。<br>
+   でも私は上のほうには住まないけど。<br>
+   今は職場に「5階以上の上は避けて欲しい」と要望出してます。<br>
+   めちゃくちゃ大変ですよ…</p>
+
+  <p>なんで空も飛べないのに、こんなアルコロジーみたいな鉄の建物に住まなければならないのか🥱<br>
+   俗に言うところのブランドを身に纏ってどうのみたいな意識は皆無の女ですから、タワマン上部住みのステータスには興味はないです。<br>
+   ましてや自分の金で家賃出してるわけでもなく、職場の転勤者用住居その１ですからね？<br>
+   細かい事情は知らないけど、空いたところをちょちょっと借りたみたいです。<br>
+   海辺で土地も少ないからかもしれないけど、とりあえずアルコロジー。</p>
+
+  <p>なんにせよ。<br>
+   生活利便性が絶対優先！<br>
+   加えて、アウトドア活動に支障が出ないよう、機動性は維持したいですね。<br>
+   いくら高級な部屋に住んでいたところで、釣りとかサイクリングとか街歩きとか海辺散歩とか、出かけたくなるんだからさ。<br>
+   宇宙行きエレベーターなんて、酔い潰れた友人や家族を連れ帰ることもできないじゃん。─ できるのかもしれないけど、私はイヤです。─<br>
+   ただでさえ私は筋金入りの自炊族だから、日々の買い物も量が多いのですよ。</p>
+
+  <p>とは言え、確かに内装とかは綺麗ですね✨<br>
+   築年数とかは知らないけど、インターネット環境も完備されてて、荒天時の在宅ワークなんかは快適だと思う。<br>
+   海が近いから津波リスクあるのですが、もともとちょっと高地にある上にマンションだから、まぁ高波も大丈夫でしょう。<br>
+   生活利便性さえ損なわないなら、快適な住居だと思いました。</p>
+
+  <h2>2025/11/22：アクセス数なんてキリがないよ</h2>
+  <p>慣れてきたらどんどん適当になっていきます。<br>
+   毎月増えていけば良いのですから、頭打ちにならないようにテキトーにWebページを量産していけば良いのですよ。<br>
+   少なくとも私はそうやってやってる。</p>
+
+  <p>Google Cloudの請求額を見れば、少しずつ増えてるのが分かるしさ。<br>
+   たまーにAnalyticsを見れば、グラフはやはり増えていってる。<br>
+   その状態を維持し続けられれば十分でしょ。</p>
+
+  <p>ふわぁ…さすがにそろそろ眠いですね。<br>
+   おやすみなさい…</p>
+
+  <h4>問い合わせ回答：サーバーサイドスクリプト書けなくても良いってば</h4>
+  <p class="feintag">2025/11/21記</p>
+  <p>サーバーサイドのスクリプトがなくても、美しいウェブサイトを作ることは十分に可能です。<br>
+   なぜなら、ウェブの見た目や体験を決定づける要素の多くは、フロントエンド技術だけで完結するから。<br>
+   HTMLは情報の骨格を整え、CSSは色彩やレイアウトを調整し、フォントや余白の調整によって洗練された印象を与えられます。<br>
+   さらに、JavaScriptを用いれば動きやインタラクションを加えることができ、ユーザーにとって直感的で魅力的な操作感を演出できます。<br>
+   ちょっとオーバーな表現をするなら、私のサイトはほぼそれだけです。</p>
+
+  <p>昔と異なり、今は静的サイトジェネレーターやホスティングサービスが充実しており、サーバーサイドの処理を自分で書かなくても、フォーム送信やブログ記事管理などの機能を外部サービスと連携して実現できます。<br>
+   つまり、デザイン性やユーザー体験を重視したサイトであれば、サーバーサイドのコードに依存せずとも完成度の高いものを作れるってことだよね。</p>
+
+  <p>ちゃんとしたサイトの条件というのも難しい側面あるけど…<br>
+   とりあえず情報が整理され、視覚的に心地よく、使いやすいことを意識してもらえれば。<br>
+   これらはフロントエンドの工夫だけで十分に達成できるため、プログラミングの知識が限定的でも「綺麗なサイト」を作ることは現実的であり、むしろデザインや構成力が大きな鍵となります。</p>
+
+  <p>基礎的なCSSやHTMLの最適化はまさにその核心で、保守性や再利用性を意識した設計を行えば、サーバーサイドに触れなくてもそれなりに綺麗な仕上がりを実現できるのですよ？</p>
+
+  <h4>問い合わせ回答：時系列で見るXの主な不具合・混乱</h4>
+  <p class="feintag">2025/11/19記</p>
+  <p>イーロン・マスクによる買収後のTwitter（X）は、技術的な障害と運営方針の急変が重なり、ユーザー体験に大きな混乱をもたらしたのですよ。<br>
+   特に認証制度の改変とインフラ縮小による不具合は、サービスの信頼性を大きく揺るがしたと思ってます。<br>
+   2022年から現在までに発生した主な不具合は、認証バッジの混乱・偽アカウント大量発生、システム障害による投稿や閲覧の不具合、アルゴリズムや仕様変更に伴う表示不具合、広告や収益化機能の不安定化などですね。</p>
+
+  <p>───＜Twitter/X買収後の不具合（時系列）＞───</p>
+
+  <dl>
+   <dt>2022-10-27</dt>
+   <dd>イーロン・マスクが約440億ドルでTwitter買収を完了。</dd>
+
+   <dt>2022-11-01〜</dt>
+   <dd>大規模な人員削減によりインフラ・監視体制が不安定化。</dd>
+
+   <dt>2022-11-03〜</dt>
+   <dd>「Twitter Blue」有料認証の導入で認証バッジの混乱が発生。<br>
+    一般ユーザーや偽アカウントが青バッジ取得可能になり、なりすましが急増。</dd>
+
+   <dt>2022-11-09〜11-10</dt>
+   <dd> 「公式ラベル（Official）」の導入・撤回を短期間に繰り返し、認証制度の仕様が不安定化。</dd>
+
+   <dt>2023-07</dt>
+   <dd>Twitterから「X」へ改名・ブランド変更。<br>
+    UI/仕様変更に伴い一部ユーザーで挙動不具合や混乱が報告。</dd>
+
+   <dt>2023-08〜2024-06</dt>
+   <dd>タイムラインの「おすすめ／フォロー中」切り替えが不安定化。<br>
+    時系列が崩れる、特定アカウントが過剰表示されるなどアルゴリズム関連の表示不具合が継続。</dd>
+
+   <dt>2024-01〜</dt>
+   <dd>広告主撤退や仕様変更の影響で広告枠の空白・誤表示が増加。<br>
+    収益分配（クリエイタープログラム）で支払い遅延・不透明さが問題化。</dd>
+
+   <dt>2025-11</dt>
+   <dd>外部サービス障害の波及により「エラーが発生しました」「ポストを取得できません」などの大規模表示不具合が発生。</dd>
+  </dl>
+  <p>──────</p>
+
+  <p>ていうか改めて見ると凄くない？！<br>
+   あくまでも「主な」不具合であって、細かいものは全て省略してますからね？ これ！<br>
+   あんまり文句言うのもアレだけど、私がこうしてWebアプリを自分で作って根城にしようとしている理由…<br>
+   察して欲しいです😆ww<br>
+   これで回答になってるかな？</p>
+
+  <h2>2025/11/18：昔から断捨離族です</h2>
+  <p>断捨離の経済効果は、意外と多面的。<br>
+   暮らし全体のコスト構造を見直すきっかけになります。</p>
+
+  <p>まず、直接的な効果として「無駄な出費の抑制」があります。<br>
+   持ち物を整理する過程で、自分がどんなものを買いすぎていたか、どんなものが結局使われずに眠っていたかが見えてきます。<br>
+   このブレーキは凄いですよ？<br>
+   衝動買いが劇的に減ります。</p>
+
+  <p>次に「維持コストの削減」です。<br>
+   物が多ければ収納スペースが必要になり、場合によっては広い住居を選ぶ要因にもなります。<br>
+   断捨離によって持ち物が減れば、収納家具にかける費用を抑えられ、場合によっては家賃や住宅ローンの選択肢にまで影響します。</p>
+
+  <p>そして「時間の節約」も経済効果の一部です。<br>
+   探し物や片付けに費やす時間が減ることで、仕事や趣味に充てられる時間が増えます。<br>
+   時間はお金以上に貴重な資源ですよね。</p>
+
+  <p>最後に「消費の質の向上」があります。<br>
+   断捨離を通じて、自分にとって本当に価値のあるものを選び取る習慣が身につくと、安物買いの失敗が減り、長く使える良品への投資が増えます。<br>
+   みるみる暮らしが良くなっていきますよ？<br>
+   モノを捨てまくってるだけなのに。<br>
+   ぜひ試してみて✨</p>
+
+  <p>こうしてみると、断捨離は単なる片付けではなく、経済的なリセット行為でもあるのです。</p>
+
+  <h2>2025/11/17：高野豆腐はスープジャー弁当の味方</h2>
+  <p>高野豆腐は歴史ある食材だけど、私としては「栄養がしっかり摂れること」と「安くて使いやすいこと」が魅力になっています。<br>
+   乾燥させた豆腐を戻すとスポンジのようにふんわりして、出汁や調味料をぐんぐん吸い込むので、煮物や炒め物などいろんな料理に使いやすいんですよね。<br>
+   植物性たんぱく質が豊富で、カルシウムや鉄分も含まれているので、肉を控えたいときの栄養補給にもぴったり。<br>
+   しかも乾物だから保存がきくので、まとめて買っておいても安心です。 </p>
+
+  <p>お値段も手頃で、スーパーで数百円出せばたっぷり入ったパックが手に入ります。<br>
+   家計に優しいのはもちろん、常備しておけば「あと一品欲しいな」というときにすぐ使えるのがありがたいところ。<br>
+   冷めても味が落ちにくいのでお弁当にも向いていて、煮含めておけば出汁の旨味がじゅわっと広がり、食べるときに満足感があります。<br>
+   形が崩れにくいので見た目もきれいに仕上がり、お弁当箱の中で存在感を放ってくれるのも嬉しいポイント。 </p>
+
+  <p>我が家では高野豆腐を常備してますよ？<br>
+   私の弁当箱は基本スープジャーなんですが、必ずと言って良いほど高野豆腐が入っています。<br>
+   スープジャーを２つ持って行ってますね。<br>
+   １つはご飯＋おかず。<br>
+   もう一つはスープ。<br>
+   これで硬くなったレンチンご飯も美味しく食べられるのですが、ご飯側のスープジャーの隙間を埋めるのに高野豆腐を良く使ってるんですよ。<br>
+   和洋中どんなスープにも合うし、好きな形にカットできるから、扱いやすい。</p>
+
+  <p>やっぱ自宅の味だよね。<br>
+   食べ慣れた味でほっとできて、経済的にも有利な「お弁当常備族」はお勧め。<br>
+   このサイトに専用コーナーを作っちゃおうかな？<br>
+   「釣魚弁当のイロハ」みたいな感じで。</p>
+
+  <h4>問い合わせ回答：マジでかっこつけなくていい</h4>
+  <p class="feintag">2025/11/16記</p>
+  <p>カッコつけた個人サイトがダサく見えてしまう理由はいくつかあります。<br>
+   まず、過剰に「おしゃれさ」や「先進性」を演出しようとすると、見た目ばかりが強調されてしまいがち。<br>
+   訪問者は情報を得たいのに、凝ったアニメーションや派手なフォントに邪魔されて肝心の中身が伝わらないと「見栄えだけで中身がない」と思われてしまいます。</p>
+
+  <p>さらに、個人サイトでありがちな「自己ブランディングの押し付け」も逆効果になりやすいです。<br>
+   やたら横文字を並べたり、過度にスタイリッシュな写真を載せたりすると、かえって背伸びしている印象を与えます。<br>
+   読んでいる人は「等身大の情報」や「実用的なコンテンツ」を求めているのに、自己演出ばかりが目立つと共感を失いやすいのですよ。</p>
+
+  <p>私のサイトなんか、未だに正式名称さえありません😆ww<br>
+   とりあえず「Fein Atelier - org」としていますが、将来的にはドメイン名をそのまんまタイトルにしちゃおうと思ってます。<br>
+   名付けて「feinatelier.org」<br>
+   これで十分でしょ🎵 </p>
+
+  <p>もうひとつの理由は、デザインと運用のバランスが崩れていることです。<br>
+   見た目にこだわりすぎて更新が滞ったり、情報が古いまま放置されていたりすると、どんなにスタイリッシュでも「中身が伴わないサイト」としてダサく映ります。<br>
+   結局のところ、個人サイトの魅力は「その人らしさ」や「役立つ情報」にあるので、見栄えだけを追いかけると本質から外れてしまう。</p>
+
+  <p>つまり、カッコつけた個人サイトがダサいのは、見た目と中身のバランスを欠いているから。<br>
+   自然体で、伝えたいことが素直に伝わるサイトの方が、魅力的に映るのだと思います。<br>
+   私がよく見に行ってる釣り人サイトなんか、まさにそういうタイプのサイトですからね？</p>
+
+  <h2>2025/11/15：引っ越し多いと疲れる</h2>
+  <p>勤め先から急に言われてさ。<br>
+   現在住んでる新築アパートが気に入ってたんだけど、家族連れや女性かつ、勤続年数がある者は職場から少し離れたタワマンに移って欲しいと。<br>
+   そのタワマンは都心にあるような超豪華なものではありませんが、エントランスホールやオートロックがあり、管理人の事務所もあるんです。<br>
+   職場がタワマンを丸ごと借り上げてるわけじゃないよ？<br>
+   そのうちの何部屋かを、職員用として確保したみたい。<br>
+   上述のアパートだけでは転勤者を収容しきれなかった様子。<br>
+   防犯面など安全性を鑑みれば、職場が言ってることも分かるんだけど、短期間に何度も引っ越しすることになって疲れます…</p>
+
+  <p>問題なのは、あまり高層階へ割り当てられてしまうと、日常生活で不便です。<br>
+   エレベーターがないと上がれず、アウトドア活動にも支障が出る。<br>
+   ていうか気軽にスーパー行ったり、そういうのがやりにくいじゃん。<br>
+   せいぜい4Fくらいまでなら自力で階段を上り下りできるから、そのくらいがいいな。<br>
+   まだ正式決定ではないものの、おそらく…そこへ移り住むことになるでしょう。</p>
+
+  <h2>2025/11/14：山の熊さん</h2>
+  <p>
+   熊の被害が続いているというニュースを耳にすると、どうして熊の肉は一般的に食用として流通しないのだろうと考えてしまいます。<br>一部の地域では狩猟文化の中で熊肉が食べられていることもあるようですが、広く市場に並ぶことはほとんどありません。<br>
+   私の感覚では、まず衛生面や安全性の問題が大きいのではないかと思います。<br>
+   野生動物の肉は寄生虫や病原体のリスクが高いとされ、安定した検査や処理の仕組みが整っていないために、安心して流通させるのが難しいのではないでしょうか。<br>
+   また、熊という存在そのものが人々にとって特別なイメージを持っていることも影響しているように感じます。<br>
+   畏怖や保護の対象として語られることが多く、牛や豚のように「食材」としての認識が広がりにくいのかもしれません。</p>
+
+  <p>なんか未利用魚の話に通じるものがあるよね。<br>
+   市場に出回らない魚も、味や栄養に問題があるわけではなく、単に知名度が低かったり、調理法が知られていなかったりするだけで、資源としては十分に価値がありますよ。<br>
+   アイゴなんかしょっちゅう食べてますし。<br>
+   熊肉と未利用魚はまったく異なる存在ではありますが、「食べられるはずなのに流通しない」という点では共通しているように思えます。<br>
+   どちらも人間の文化や習慣、流通の仕組みによって扱いが制限されているという意味で、似た側面があるでしょうね。</p>
+
+  <p>私は専門的な知識を持っているわけではありませんが、こうしたことを考えると、食の世界は単純に「食べられるかどうか」だけで決まるものではなく、心理的な部分が大きく関わっているのだと感じます…<br>
+   熊肉、食べてみたいですね。<br>
+   この前もジビエのお店に行ってみたのですが、熊肉は売っていませんでした。<br>
+   お店の人によれば、仮に売っていてもけっこういいお値段なんだとか。<br>
+   「食べて解決」<br>
+   なかなか難しいです。</p>
+
+  <h2>2025/11/13：バイトテロの拡散ですっかり外食がご無沙汰</h2>
+  <p>外食産業のネガティブなニュースが多過ぎて、どうしても不安な気持ちを抑えきれなくなっています。<br>
+   自分で作ったご飯であれば、安心感があるんだよね。<br>
+   自炊すると食費がかなり抑えられますよ？<br>
+   例えば一食あたり外食だと少なくとも1,000円以上かかることが多いですが、自炊なら材料費を工夫すれば数百円程度で済むこともあります。<br>
+   もちろん調味料や光熱費もあるので単純には比べられませんが、長い目で見ると節約につながっているんですよ。<br>
+   「安心」のために「時間」を支払っているイメージ。</p>
+
+  <p>また、自炊の良さは節約だけではなく栄養面にもあると思います。<br>
+   外食だとどうしても油や塩分が多めになりがちですが、自炊なら自分で調整できる。<br>
+   私は辛いものが好きだから、唐辛子の量を調整したり。<br>
+   ただ栄養バランスを考えるのは、少し難しいこともありますね。<br>
+   私がやっているのは、野菜をまとめて買って下ごしらえして、ビニールに入れて小分け冷凍なんかがあります。<br>
+   そうすると調理の手間が減り、自然と野菜やタンパク質を取り入れやすくなる。<br>
+   管理栄養士が推奨するような理想の食事を作るのは難しいけどねー</p>
+
+  <p>もちろん、99%以上のお店は衛生面に気を使い、バイトテロを防ぐ工夫をしてくれているはずなんですよ。<br>
+   でもこんなちょくちょく見ると、自分がいつ「いたずらされた料理」に当たってしまうか分からない。<br>
+   それが怖くて、ずーっと自炊してます。<br>
+   朝食と夕食はもちろん、休日の昼食でさえ、おにぎりやお弁当を作って持参するんです。<br>
+   自宅の味はほっとしますね！</p>
+
+  <h2>2025年11月の更新記録</h2>
+  <p>古い更新記録はこのようにして深い階層へ残していきます。</p>
+
+  <h5>2025年11月30日の更新</h5>
+  <p><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a> に、FFコラボのご案内及び友達招待キャンペーンの告知を掲載しました。<br>
+   タップするだけで簡単に招待コードを入手できます。<br>
+   加えて、招待コードコピー時に今回のコラボにちなんだメッセージが出るよう、コードを変更しました。</p>
+
+  <div class="content">
+   <img src="/another-eden/anaimage/vcgrasta/amaff9コラボ.png" alt="アナザーエデンとファイナルファンタジー9のコラボ"
+    class="biggraphic fade-in-out">
+  </div>
+
+  <p>今回は特別に、トップページの一番上にページ内リンクを設定しました。<br>
+   上述のセクションへ一瞬でジャンプできます。</p>
+
+  <p>FF9コラボを記念して、<a href="/another-eden/anaden_collaboration.html">アナザーエデンのコラボコンテンツ</a>を公開しました。<br>
+   期間限定があるものと、期間限定がないもの。<br>
+   それぞれを分けて掲載しています。</p>
+
+  <p><a href="/fish/ceviche.html">未利用魚のセビチェ〜ペルーのお刺し身〜</a>を公開しました。<br>
+   アナデンや個人サイトもいいですが…そろそろ？<br>
+   私の本来の趣味にも、取り掛かっていきましょうね。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月29日の更新</h5>
+  <p>フッターの部分について、抜本的に改善を行いました。<br>
+   SNSリンク等を全て削除、さっぱりとした見た目に統一しました。<br>
+   W3Cのアイコンは <a href="/another-eden/grasta.html">Fein Atelier - org</a> のみとしています。</p>
+
+  <p>一方、SNSのリンク先はfein's blogの一部に <a href="/fish/blog.html#bloginsns">SNS・問い合わせ先</a>という欄を作成し、そこにのみ掲載することとしました。
+   メニューには <a href="/fish/blog.html#bloginsns">Social Media</a> というリンクを付けているので、おそらくユーザーが探しあぐねることはないでしょう。</p>
+
+  <p>総じて、<a href="/fish/blog.html" style="text-decoration:none;">
+    fein's blog
+    <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク"
+     style="width:40px; vertical-align:middle; margin-left:5px;"></a>の比重ないし役割が重くなったと言えます。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月28日の更新</h5>
+  <div class="content">
+   <img src="/contents/itimages/readmehtml1.png" alt="readmehtml1" class="wallpaper right-image fade-in-out">
+   <p><a href="/readme">README_GitHub</a>を公開しました。<br>
+    GitHubのREADMEページは少しとっつきにくいものであるため、改めて当サイトのレイアウトに合わせて自動表示されるようにしました。<br>
+    ハンバーガーメニューにも「README_GitHub」を追加してあります。</p>
+
+   <p>併せて、<a href="/contents/py_readme.html">GitHubのREADMEをPythonを使ってWebページにする</a>を公開しました。<br>
+    当サイトはサーバーサイドスクリプトの実行環境も備えているため、Markdown記法で書かれたREADMEを自動的に読み込んでHTML化しつつ、ユーザーに提示することが可能です。<br>
+    その機能を作るためのPythonスクリプト解説ページとなります。</p>
+  </div>
+  <p>このサイトは絵師さんからイラストをご提供いただいており、先日は配信者の方からもリンク掲載許可を頂きました。<br>
+   README（取扱説明書みたいな）の丁寧な掲載は、マナーというかエチケットでもあると思うのでね。<br>
+   IT初心者さんでも読みやすく、そしてアクセスしやすくなるよう、プログラムを組ませて頂きました💻✨</p>
+
+  <p><a href="/another-eden/grasta.html">Fein Atelier - org</a>に「README_GitHub」の紹介文を追記しました。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月27日の更新</h5>
+  <p><a href="/contents/globalnav.html">レスポンシブデザインに対応したグローバルナビゲーション</a>を公開しました。</p>
+  <p><a href="/contents/hamburgernav.html">レスポンシブデザインに対応したハンバーガーメニュー</a>を公開しました。</p>
+  <p><a href="/contents/breadcrumbsnav.html">レスポンシブデザインに対応したパンくずリスト</a>を公開しました。</p>
+  <p><a href="/another-eden/atelier_studio.html">ファンサイト制作のためのアトリエ</a>に下記の調整を加えました。</p>
+  <ul>
+   <li>Google blue と Microsoft blue について、補足資料を追記しました。</li>
+   <li>グローバルナビゲーション・ハンバーガーメニュー・パンくずリストについて、区分けを行いました。</li>
+   <li>コード管理と外部向けマニュアル、一挙両得のWebページであることを強調するダークカードを挿入しました。</li>
+   <li><a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a> への案内文を強調するダークカードを挿入しました。</li>
+  </ul>
+  <p>簡単に言うと、当サイトのソースコード解説は常に新鮮ですよーってこと。<br>
+   そうしないと、私自身のコード管理にもならないからね。</p>
+
+  <p><a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a>に、プログレッシブウェブアプリに関するダークカードを添えました。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月25日の更新</h5>
+  <p><a href="/another-eden/anaden_fansitepc.html">ファンサイト制作の環境設定例</a>を公開しました。<br>
+   簡単なパソコンの初期設定ネタを書いておきましたよ。<br>
+   こんなこと知ってるやい！という方はこちら👉 <a href="https://code.visualstudio.com/download">Download Visual Studio
+    Code</a><br>
+   他にも開発者向けのエディタはたくさんあるので、Emacsとか、試してみてね🎵</p>
+
+  <p><a href="/another-eden/spoiler.html">ネタバレ有_アナザーエデンの思い出全集</a>の加筆を再開しました。<br>
+   併せて、<a href="/another-eden/spoiler_feinne.html">フィーネ★５の瞬間＋α</a>をfein's portalから移行開始しました。</p>
+
+  <p>他に、細かい修正を多数加えました。</p>
+  <ul>
+   <li>ユーザーが視認しやすいよう、グローバルナビゲーションのデザインとアニメーションを変更。</li>
+   <li>各種サイトマップ及び一部のページを除き、Google検索窓を削除。</li>
+   <li>Webページタイトルを自然に読めるよう、パンくずリストのデザインを変更。</li>
+   <li>ハンバーガーメニューのデザイン及び内容を変更。</li>
+  </ul>
+  <p>サイト全体の品質が向上したと思います。<br>
+   引っ越しはあるものの仕事は日々ラクになっているので、自分の時間が増えています。<br>
+   どしどし更新していく所存です。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月24日の更新</h5>
+  <p><a href="/contents/site_create.html">Personal Website
+    Creation（個人サイト制作）</a>のエリアを中心とするソースコードの表示部分に、タイピングアニメーションを実装しました。</p>
+  <p><a href="/another-eden/anaden_fansitenote.html">ファンサイト制作 〜 困った時に開くノート 〜</a>を公開しました。</p>
+  <p><a href="/another-eden/anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a>を大きく変更し、「ファンサイト作って自由に表現しよう」セクションを追加しました。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月23日の更新</h5>
+  <p><a href="/another-eden/anaden_web.html">feinがWebサイトとInstagramを開設した理由、そしてTwitterへの見解</a></p>
+  <p><a href="/another-eden/anaden_fansite.html">アナザーエデンのファンサイト＆ブログ等を作ってみたい方へ</a></p>
+
+  <p>それぞれ公開しました。<br>
+   このように、アナデンのファンサイトを公開した当初の各種記述について、fein's portalから移行開始しました。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月22日の更新</h5>
+  <p>バナーを更新しました。<br>
+   こんな感じで紹介文を作ってあります。</p>
+  <img src="/contents/itimages/バナー紹介文.png" alt="このサイトとポータルサイトのバナー" class="biggraphic fade-in-out">
+  <p>次のような中身の文字列へ変えただけですね。<br>
+   独自ドメイン仕様にしたってこと。</p>
+
+  <p>Fein Atelier - org</p>
+  <p>This site is built using Google Cloud's App Engine.<br>
+   'fein's portal' is my personal portal site.</p>
+  <p><a href="https://portal.feinatelier.org/">https://portal.feinatelier.org/</a></p>
+
+  <p><a href="/menu/symbol.html">このサイトのシンボルマークとバナー</a>か、もしくは<a
+    href="/another-eden/grasta.html">将来のfeinatelier.orgトップページ</a>にも掲載されています。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月19日の更新</h5>
+  <p><a href="/fish/blog.html">fein's blog</a>に「問い合わせ回答：時系列で見るXの主な不具合・混乱」を掲載しました。<br>
+   こちらには都度書きませんとか記述したけど、やっぱダメだね、ちゃんと書きましょう。<br>
+   昨日発生したXの大きな障害で、気が変わった。<br>
+   ちなみに私のアプリは落ちませんでした。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月18日の更新</h5>
+  <p>このサイトの名称を、正式に「Fein Atelier - org」としました。<br>
+   後日、バナーも更新します。</p>
+
+  <p><a href="/fish/blog.html">fein's blog</a>は頻繁な更新が予測されるため、こちらには都度書きません。<br>
+   気が向いたタイミングでご覧いただけたら。<br>
+   でも、普通の雑談だよ？<br>
+   SNSへの連投を避けるための、文章逃がし場という意味も強いからね。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月17日の更新</h5>
+  <p><a href="/fish/blog.html">fein's blog</a>を更新しました。<br>
+   <a href="/contents/form.html">お問い合わせフォーム</a>の回答も、今後はこちらのブログを中心にして記述していきます。
+  </p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月16日の更新</h5>
+  <p><a href="/fish/blog.html" style="color:#1A73E8; text-decoration:none;">
+    fein's blog
+    <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク"
+     style="width:40px; vertical-align:middle; margin-left:5px;"></a>を開設しました。</p>
+
+  <p>サイト制作者の環境が大きく変わった時など、SNSフォロワー様向けの特筆すべき事項をまとめるエリアを作りました。<br>
+   身バレしないように気を付けて投稿していきます。<br>
+   下記のようにそれぞれリンクを付けているので、サイト制作者が活動継続しているかどうか、情報を得ることができます。</p>
+  <ul>
+   <li><a href="/fish/blog.html" style="color:#1A73E8; text-decoration:none;">
+     fein's blog
+     <img src="/menu/mspass.webp" alt="このサイトのシンボルマーク"
+      style="width:40px; vertical-align:middle; margin-left:5px;"></a>というリンクを、ハンバーガーメニューに新設。</li>
+   <li>このブログは<a href="/fish/fish_sitemap.html">魚釣りなどアウトドアのエリア</a>に属するものとし、専用のセクションを新設。</li>
+   <li><a href="/contents/rss.html">このサイトとポータルサイトの更新履歴</a>の上部レイアウトを調整し、当サイト制作者に関するブログという形でセクションを新設。</li>
+   <li><a href="/menu/symbol.html">このサイトのシンボルマークとバナー</a>のページに併設されている<a
+     href="/menu/symbol.html#feininfo">サイト制作者について</a>というセクションに、ブログの紹介文を新設。</li>
+   <li><a href="/another-eden/grasta.html">feinatelier.org</a>にある「SNS Account & Blog」セクションに、ブログの紹介文を新設。─
+    このページは将来的に、当サイトのトップページとなります。 ─</li>
+  </ul>
+
+  <p>一方、<a href="/another-eden/anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a>と<a
+    href="/another-eden/another-eden_feinpdf.html">アナザーエデン：feinが書いたレポート集</a>を整理しました。<br>
+   増え続ける移植ページへの動線を改善したことと、上述のようにブログエリアを新設したことで、サイト全体のレイアウトを整える必要があったのです。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月12日の更新</h5>
+  <p>feinのアナデンレポート全集にて、<a href="/another-eden/anaden_resetmarathon.html">アナザーエデンにリセマラは必要なのか？</a>を形にしました。<br>
+   またページを分けるかもしれませんが、大詰めに入っていることは確かです。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月11日の更新</h5>
+  <p>feinのアナデンレポート全集にて、<a href="/another-eden/anaden_resetmarathon.html">アナザーエデンにリセマラは必要なのか？</a>をfein's
+   portalから移行開始しました。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月10日の更新</h5>
+  <p><a href="/another-eden/anaden_beginner.html">アナザーエデン初心者ガイド：強いアカウント育成の手順</a>に、引き継ぎ設定に関する記載をfein's portalから移してきました。
+  </p>
+
+  <p><a href="/contents/vscode.html">Visual Studio Codeを触ってみよう</a>に、少し手を加えました。<br>
+   setting.jsonとtasks.jsonの完成形コードを掲載しました。</p>
+
+  <div class="spacer"></div>
+
+  <h5>2025年11月9日の更新</h5>
+  <p><a href="/another-eden/anaden_feinpdf_AboutMe.html">アナデンTwitterをしていた頃の自己紹介</a>のついでに、<a
+    href="/another-eden/anaden_feinne.html">最推しキャラのフィーネについて</a>もゴリゴリ追加しています。<br>
+   全てfein's portalにあったものを、こちらへ移してきてますね。<br>
+   さすがに今となっては、こちらのメインサイトのほうが規模が大きいです。</p>
+
+  <div class="spacer"></div>
+
+  <h5>2025年11月5日の更新</h5>
+  <p><a href="/another-eden/anaden_feinpdf_AboutMe.html">アナデンTwitterをしていた頃の自己紹介</a>に、fein's portalからまとめて記述を移行しました。</p>
+
+  <p>この更新履歴のページに「WebサイトとSNSの違い」という文章を、fein's portalから移行しました。</p>
+
+  <div class="spacer"></div>
+
+  <h5>2025年11月4日の更新</h5>
+  <p>急遽、<a href="/contents/x_twitter_fraud.html">Xの詐欺DM事例：アカウントが凍結される？！</a>を公開しました。<br>
+   X（旧：Twitter）の詐欺DMには十分に注意してね！</p>
+
+  <div class="spacer"></div>
+
+  <h5>2025年11月3日の更新</h5>
+  <p><a href="/another-eden/anaden_feinpdf_AboutMe.html">アナデンTwitterをしていた頃の自己紹介</a>に、fein's portalからまとめて記述を移行しました。<br>
+   いろいろ、懐かしい気持ちになりますね。</p>
+
+  <div class="spacer"></div>
+
+  <h5>2025年11月2日の更新</h5>
+  <p><a href="/fish/mahimahi.html">丸ごと１匹のシイラがようやく手に入って調理した話</a>を公開しました。<br>
+   魚釣りのコーナーも、少しずつ作っていきましょうね。</p>
+
+  <div class="spacer"></div>
+  <h5>2025年11月1日の更新</h5>
+  <p><a href="/contents/onedrive.html">OneDriveの基本と落とし穴｜Windows 11での設定・ファイル管理の注意点</a>を公開しました。<br>
+   SNSは便利ですね。<br>
+   注目を集めそうな話題を拾えます。</p>
+
+  <p>また、10月末には<a href="/">Home（グラスタの場所一覧表〜入手範囲別〜）</a>と<a
+    href="/another-eden/anaden_sitemap.html">アナザーエデン関連ページ・サイトマップ</a>に、「じゃもこ様」のイラストを展示させて頂きました。<br>
+   この場を借りて、御礼申し上げます。</p>
+
+  <!-- ●ここから人間用のフッター● -->
+  <hr id="feinhr">
+  <div class="spacer"></div>
+
+  <section class="sitemap">
+   <h2 class="sitemap_heading">サイトマップ</h2>
+   <p><a href="/pages/pagelist">全ページをリスト化したサイトマップ</a>も用意していますが、けっこうなページ数があります。<br>
+    下記の「カテゴリー分けサイトマップ」のほうが使いやすいでしょう。</p>
+   <p><a href="/another-eden/anaden_sitemap.html">
+     アナザーエデン関連ページ・サイトマップ</a><br>
+    アナザーエデンの強敵戦やストーリーコンテンツのリスト、お勧めバッジなどを掲載したコーナーです。<br>
+    期間限定のない普通のRPGですので、初心者でも安心して続けていけるゲームとなっています。<br>
+    もっとも重要なグラスタについては、場所別に網羅した表があります。</p>
+
+
+   <p><a href="/contents/site_create.html">
+     個人サイトのホスティングとコンテンツ作成</a><br>
+    個人でウェブサイトを作るなら時間をかけて。<br>
+    HTML・CSS・JavaScriptの書き方はもちろん、無料かつ広告なしでホームページを作る方法を掲載したコーナーです。<br>
+    Webデザインやレイアウトについても書いてあります。</p>
+   <p><a href="/fish/fish_sitemap.html">魚釣りなどアウトドアのエリア</a><br>
+    ゲームとパソコンだけじゃなく、アウトドアも趣味なんです。<br>
+    このコーナーでは魚釣りの記録とか、魚料理のレシピ、はたまたサイクリングなどなど。<br>
+    アウトドアに関連するコンテンツが詰め込まれています。</p>
+
+  </section>
+
+  <!-- ページ上部へ戻るボタン -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()">ページ上部へ戻る</button>
+  <script src="/script/feinScroll.js"></script>
+
+  <div class="spacer"></div>
+
+  <footer>
+   <!--common google digital leader-->
+
+   <div id="commongdl"></div>
+   <script src="/externalization/common.js"></script>
+
+   <div class="spacer"></div>
+
+
+   <div class="spacer"></div>
+   <p class="portal" id="updated-date">この <a href="https://feinatelier.org/">fein's personal
+     site</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a>
+    を母体として、yyyy/mm/ddに至るまで更新し続けられています。</p>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+     const today = new Date();
+     const year = today.getFullYear();
+     const month = String(today.getMonth() + 1).padStart(2, '0');
+     const day = String(today.getDate()).padStart(2, '0');
+     const dateElement = document.getElementById('updated-date');
+     dateElement.innerHTML = `この <a href="https://feinatelier.org/">Fein Atelier - org</a> は、2023/7/4に開設された <a href="https://portal.feinatelier.org/">fein's portal</a> を母体として、${year}/${month}/${day}に至るまで更新し続けられています。`;
+    });
+   </script>
+
+  </footer>
+
+ </div><!--レスポンシブデザイン-->
+
+ <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
+
+ <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+</body>
+
+</html>

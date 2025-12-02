@@ -4,7 +4,6 @@
 .animated-link {
  position: relative;
  color: #e3f2fd;
- font-weight: bold;
  text-decoration: none;
  transition: color 0.3s ease;
 }
@@ -88,16 +87,12 @@
 .animated-link_blog {
  position: relative;
  color: #e3f2fd;
- /* 通常ナビと同じ色 */
- font-weight: bold;
- /* 太字に統一 */
  text-decoration: none;
  transition: color 0.3s ease;
 }
 
 .animated-link_blog:hover {
  color: #ffffff;
- /* hover時も同じ */
 }
 
 .animated-link_blog::after {
@@ -119,7 +114,6 @@
  background: linear-gradient(to bottom,
    rgba(255, 165, 0, 0.15),
    rgba(255, 165, 0, 0));
- /* 背景カラーはそのまま */
  backdrop-filter: blur(14px);
  -webkit-backdrop-filter: blur(14px);
  border-radius: 20px;
@@ -154,7 +148,6 @@
 
 .den_nav_blog ul li a:hover {
  color: #0078D4;
- /* 通常ナビと同じhover色 */
 }
 
 
