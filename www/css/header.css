@@ -5,7 +5,6 @@
  position: relative;
  color: #e3f2fd;
  font-weight: bold;
- /* 太字を意味する指定に変更 */
  text-decoration: none;
  transition: color 0.3s ease;
 }
@@ -46,22 +45,17 @@
  transform: translateY(0);
 }
 
-/* fein's home を画像とテキスト横並びに */
 .feinhome-link {
  display: flex;
  align-items: center;
- /* 縦位置を揃える */
  gap: 4px;
- /* 余白を少し狭く */
 }
 
 .feinhome {
  width: 45px;
  transition: transform 0.3s ease, filter 0.3s ease;
  border-radius: 6px;
- /* 角丸は残して自然に */
  padding: 2px;
- /* 画像と背景の間に少し余白 */
 }
 
 .feinhome:hover {
@@ -93,15 +87,17 @@
 /* ★ブログ用のグローバルナビゲーションを構成する */
 .animated-link_blog {
  position: relative;
- color: #1A73E8;
- font-weight: 500;
+ color: #e3f2fd;
+ /* 通常ナビと同じ色 */
+ font-weight: bold;
+ /* 太字に統一 */
  text-decoration: none;
  transition: color 0.3s ease;
- font-size: 0.95em;
 }
 
 .animated-link_blog:hover {
- color: #0d47a1;
+ color: #ffffff;
+ /* hover時も同じ */
 }
 
 .animated-link_blog::after {
@@ -123,6 +119,7 @@
  background: linear-gradient(to bottom,
    rgba(255, 165, 0, 0.15),
    rgba(255, 165, 0, 0));
+ /* 背景カラーはそのまま */
  backdrop-filter: blur(14px);
  -webkit-backdrop-filter: blur(14px);
  border-radius: 20px;
@@ -136,16 +133,6 @@
 .den_nav_blog.visible {
  opacity: 1;
  transform: translateY(0);
-}
-
-.feinhome {
- width: 45px;
- transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.feinhome:hover {
- transform: scale(1.1);
- filter: drop-shadow(0 0 6px rgba(66, 133, 244, 0.5));
 }
 
 .den_nav_blog ul {
@@ -166,8 +153,10 @@
 }
 
 .den_nav_blog ul li a:hover {
- color: #0d47a1;
+ color: #0078D4;
+ /* 通常ナビと同じhover色 */
 }
+
 
 /* ●ヘッダー画像全体の枠● */
 .header-frame {
