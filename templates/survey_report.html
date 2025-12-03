@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <meta charset="UTF-8">
+ <title>PageSpeed Survey Report</title>
+ <style>
+  body {
+   font-family: sans-serif;
+   margin: 20px;
+   background: #f9f9f9;
+  }
+
+  h1 {
+   font-size: 1.5em;
+   margin-bottom: 20px;
+  }
+
+  dl {
+   margin-bottom: 25px;
+   padding: 15px;
+   background: #fff;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+  }
+
+  dt {
+   font-weight: bold;
+   margin-top: 8px;
+  }
+
+  dd {
+   margin-left: 20px;
+   margin-bottom: 5px;
+  }
+
+  .url a {
+   color: #0066cc;
+   text-decoration: none;
+  }
+
+  .url a:hover {
+   text-decoration: underline;
+  }
+
+  .score-mobile {
+   color: #d9534f;
+  }
+
+  .score-desktop {
+   color: #5cb85c;
+  }
+ </style>
+</head>
+
+<body>
+ <h1>サイトパフォーマンスレポート</h1>
+ {% for page in pages %}
+ <dl>
+  <dt>URL</dt>
+  <dd class="url"><a href="{{ page.url }}" target="_blank">{{ page.url }}</a></dd>
+
+  <dt>Mobile Score</dt>
+  <dd class="score-mobile">
+   {% if page.mobile.score %}
+   {{ page.mobile.score }}
+   {% else %}
+   Error: {{ page.mobile.error }}
+   {% endif %}
+  </dd>
+
+  <dt>Desktop Score</dt>
+  <dd class="score-desktop">
+   {% if page.desktop.score %}
+   {{ page.desktop.score }}
+   {% else %}
+   Error: {{ page.desktop.error }}
+   {% endif %}
+  </dd>
+
+  <dt>First Contentful Paint (FCP)</dt>
+  <dd>
+   {% if page.mobile.fcp %}{{ page.mobile.fcp }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.fcp %}{{ page.desktop.fcp }}{% else %}Error{% endif %}
+  </dd>
+
+  <dt>Largest Contentful Paint (LCP)</dt>
+  <dd>
+   {% if page.mobile.lcp %}{{ page.mobile.lcp }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.lcp %}{{ page.desktop.lcp }}{% else %}Error{% endif %}
+  </dd>
+
+  <dt>Cumulative Layout Shift (CLS)</dt>
+  <dd>
+   {% if page.mobile.cls %}{{ page.mobile.cls }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.cls %}{{ page.desktop.cls }}{% else %}Error{% endif %}
+  </dd>
+
+  <dt>Total Blocking Time (TBT)</dt>
+  <dd>
+   {% if page.mobile.tbt %}{{ page.mobile.tbt }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.tbt %}{{ page.desktop.tbt }}{% else %}Error{% endif %}
+  </dd>
+
+  <dt>Speed Index</dt>
+  <dd>
+   {% if page.mobile.speed_index %}{{ page.mobile.speed_index }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.speed_index %}{{ page.desktop.speed_index }}{% else %}Error{% endif %}
+  </dd>
+
+  <dt>Time to Interactive (TTI)</dt>
+  <dd>
+   {% if page.mobile.tti %}{{ page.mobile.tti }}{% else %}Error{% endif %}
+   /
+   {% if page.desktop.tti %}{{ page.desktop.tti }}{% else %}Error{% endif %}
+  </dd>
+ </dl>
+ {% endfor %}
+</body>
+
+</html>
