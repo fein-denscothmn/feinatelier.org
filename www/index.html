@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 
 <head>
@@ -12,48 +11,40 @@
   content="アナザーエデンのグラスタ入手場所一覧。難易度やストーリーに基づいた入手場所を列記してあります。加えて、アナデンを進める上で知っておくべき攻略法や便利な情報もコラム形式でまとめています。アナデンはコンテンツ量が非常に多いRPGですが、グラスタを揃えるだけでストーリー進行がスムーズになります。">
  <meta property="og:url" content="https://feinatelier.org/">
 
- <!--検索ヒット時のアイコン-->
- <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "アナザーエデン グラスタの入手場所一覧：完全版 ～アナデン攻略の基礎と冒険のガイド～",
-    "url": "https://feinatelier.org/",
-    "logo": "https://feinatelier.org/image/barracuda.jpeg"
-  }
-  </script>
+ <!-- 構造化データ -->
+ <script
+  type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"アナザーエデン グラスタの入手場所一覧：完全版 ～アナデン攻略の基礎と冒険のガイド～","url":"https://feinatelier.org/","logo":"https://feinatelier.org/image/barracuda.jpeg"}</script>
 
  <link rel="manifest" href="/manifest.json">
 
  <!-- preload -->
  <link rel="preload" as="image" href="/another-eden/anaimage/ESねここキャライラスト_white.webp">
 
- <!-- CSSファイル -->
- <link rel="stylesheet" type="text/css" href="/css/style.css">
- <link rel="stylesheet" type="text/css" href="/css/header.css">
- <link rel="stylesheet" type="text/css" href="/css/footer.css">
- <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
- <link rel="stylesheet" type="text/css" href="/css/menu.css">
- <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
- <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  media="print" onload="this.media='all'">
+ <!-- クリティカルCSS -->
+ <link rel="stylesheet" href="/css/style.css">
+ <link rel="stylesheet" href="/css/header.css">
+ <link rel="stylesheet" href="/css/footer.css">
+ <link rel="stylesheet" href="/css/menu.css">
 
- <!-- Preconnectでサーバー接続を最適化 -->
+ <!-- 非クリティカルCSS（遅延） -->
+ <link rel="stylesheet" href="/css/collapsible.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/feinheadline1.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/feinpan.css" media="print" onload="this.media='all'">
+
+ <!-- フォント -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-
- <!-- Preloadでフォント読み込みを高速化 -->
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:wght@300;400;700&display=swap">
  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:wght@300;400;700&display=swap"
   media="print" onload="this.media='all'">
 
+ <!-- アイコン -->
  <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.webp">
  <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
 
- <!-- Googleタグマネージャー -->
+ <!-- アナリティクス -->
  <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
  <script>
   window.dataLayer = window.dataLayer || [];
@@ -61,8 +52,6 @@
   gtag('js', new Date());
   gtag('config', 'G-827JM6N5CS');
  </script>
-
- <!-- Microsoftタグ -->
  <script>
   (function (c, l, a, r, i, t, y) {
    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -71,59 +60,13 @@
   })(window, document, "clarity", "script", "obazqypsh8");
  </script>
 
- <!-- JavaScriptファイル -->
- <script src="/script/underline.js" defer></script>
- <script src="/script/feinfade.js" defer></script>
- <script src="/script/paintimg.js" defer></script>
- <script src="/script/feinScroll.js" defer></script>
+ <!-- 構造化データ WebSite -->
+ <script
+  type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"feinatelier org","url":"https://feinatelier.org/","potentialAction":{"@type":"SearchAction","target":"https://feinatelier.org/www/search?q={search_term_string}","query-input":"required name=search_term_string"},"sameAs":["https://portal.feinatelier.org/","https://bsky.app/profile/feinatelier.org"]}</script>
 
- <!-- Service Workerの登録 -->
- <script>
-  if ('serviceWorker' in navigator) {
-   navigator.serviceWorker.register('/service-worker.js')
-    .then(registration => {
-     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    })
-    .catch(error => {
-     console.log('ServiceWorker registration failed: ', error);
-    });
-  }
- </script>
-
- <!-- WebSite情報（検索機能やSNS） -->
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "feinatelier org",
-  "url": "https://feinatelier.org/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://feinatelier.org/www/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  },
-  "sameAs": [
-    "https://portal.feinatelier.org/",
-    "https://bsky.app/profile/feinatelier.org"
-  ]
-}
-</script>
-
- <!-- Article情報（記事的な内容をGoogleに伝える） -->
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "アナザーエデン グラスタの入手場所一覧",
-  "author": {
-    "@type": "Person",
-    "name": "fein"
-  },
-  "datePublished": "2025-11-01",
-  "image": "https://feinatelier.org/paint/2024kyabiaimage.webp"
-}
-</script>
-
+ <!-- 構造化データ Article -->
+ <script
+  type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"アナザーエデン グラスタの入手場所一覧","author":{"@type":"Person","name":"fein"},"datePublished":"2025-11-01","image":"https://feinatelier.org/paint/2024kyabiaimage.webp"}</script>
 </head>
 
 <body>
@@ -248,21 +191,25 @@
       でも、それ以上に、あなたと一緒に新しい冒険を楽しめることが何より嬉しいです。<br>
       一緒にアナザーエデン、そしてファイナルファンタジーⅨの新たな章を切り開きましょう！</p>
 
-     <p>お時間がある方は、併せて <a href="/another-eden/anaden_beginner.html">アナザーエデンの初心者向けガイド</a> をご覧いただくのがお勧めです。<br>
-      どなたでも馴染める普通のRPGであるということが、伝わると思います。<br>
-      FF9に限らず、ファイナルファンタジーシリーズとぴったりじゃない？！</p>
+     <div class="content">
+      <img src="/another-eden/anaimage/サキ顔.jpg" alt="サキ顔" class="graphic right-image fade-in-out">
 
-     <p>関連サイト、SNSはこちら▼</p>
-     <ul>
-      <li><a href="https://t.co/FpIaLJBQFK">『アナザーエデン 時空を超える猫』×『FINAL FANTASY IX』コラボPV</a></li>
-      <li><a href="https://another-eden.jp/ffix/">アナザーエデン × ファイナルファンタジーIX 特設サイト</a></li>
-      <li><a href="https://x.com/rpg_AE">アナザーエデン 時空を超える猫 公式Xアカウント</a><br>
-       今回のコラボにちなんだ特典いっぱいあるから、ぜひチェックしてみて！<br>
-       例えば<a
-        href="https://x.com/rpg_AE/status/1994760187325157394?t=42Z8KKjySC8uLFwp_OU2uw&s=19">友達招待キャンペーン</a>のこととか、いろいろですよ。
-      </li>
-     </ul>
+      <p>お時間がある方は、併せて <a href="/another-eden/anaden_beginner.html">アナザーエデンの初心者向けガイド</a> をご覧いただくのがお勧めです。<br>
+       どなたでも馴染める普通のRPGであるということが、伝わると思います。<br>
+       FF9に限らず、ファイナルファンタジーシリーズとぴったりじゃない？！</p>
 
+      <p>関連サイト、SNSはこちら▼</p>
+      <ul>
+       <li><a href="https://t.co/FpIaLJBQFK">『アナザーエデン 時空を超える猫』×『FINAL FANTASY IX』コラボPV</a></li>
+       <li><a href="https://another-eden.jp/ffix/">アナザーエデン × ファイナルファンタジーIX 特設サイト</a></li>
+       <li><a href="https://x.com/rpg_AE">アナザーエデン 時空を超える猫 公式Xアカウント</a><br>
+        今回のコラボにちなんだ特典いっぱいあるから、ぜひチェックしてみて！<br>
+        例えば<a
+         href="https://x.com/rpg_AE/status/1994760187325157394?t=42Z8KKjySC8uLFwp_OU2uw&s=19">友達招待キャンペーン</a>のこととか、いろいろですよ。
+       </li>
+      </ul>
+
+     </div>
     </div>
    </div>
 
@@ -2793,6 +2740,23 @@
  <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
 
  <!-- ●ここまで人間用のフッター。直下でbodyを閉める● -->
+
+ <!-- UI系スクリプト-->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/paintimg.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+
+ <!-- Service Worker -->
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
 </body>
 
 </html>

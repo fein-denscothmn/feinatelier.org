@@ -118,6 +118,8 @@ h2 {
  border-radius: 15px;
  margin-top: 30px;
  margin-bottom: 5px;
+ position: relative;
+ /* ←追加 */
 }
 
 h2.sitemap_heading {
@@ -128,6 +130,8 @@ h2.sitemap_heading {
  border-radius: 15px;
  margin-top: 10px;
  margin-bottom: 5px;
+ position: relative;
+ /* ←追加 */
 }
 
 h3 {
@@ -142,7 +146,9 @@ h3 {
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h3::after {
+h2::after,
+h3::after,
+h4::after {
  content: '';
  position: absolute;
  bottom: -5px;
@@ -155,7 +161,9 @@ h3::after {
  transition: transform 0.5s ease-out;
 }
 
-h3.visible::after {
+h2.visible::after,
+h3.visible::after,
+h4.visible::after {
  transform: scaleX(1);
  transform-origin: bottom left;
 }
@@ -167,6 +175,7 @@ h3.visible::after {
 h4 {
  display: block;
  width: fit-content;
+ position: relative;
  background: linear-gradient(to right, rgba(173, 216, 230, 0.2), rgba(173, 216, 230, 0));
  padding: 10px;
  border-radius: 15px;

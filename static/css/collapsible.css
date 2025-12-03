@@ -53,13 +53,6 @@
  box-sizing: border-box;
 }
 
-.feinorg-row {
- color: #333;
- margin-bottom: 8px;
- line-height: 1.6;
- text-align: left;
-}
-
 .feinorg-label {
  font-weight: 600;
  color: #0078d4;

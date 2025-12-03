@@ -17,46 +17,47 @@
 
  <!-- 構造化データ -->
  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ファンサイト制作のためのアトリエ",
-      "url": "https://feinatelier.org/contents/atelier_studio.html",
-      "logo": "https://feinatelier.org/image/barracuda.jpeg"
-    }
-    </script>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ファンサイト制作のためのアトリエ",
+    "url": "https://feinatelier.org/contents/atelier_studio.html",
+    "logo": "https://feinatelier.org/image/barracuda.jpeg"
+  }
+  </script>
 
- <!-- CSSファイル -->
- <link rel="stylesheet" type="text/css" href="/css/style.css">
- <link rel="stylesheet" type="text/css" href="/css/pdf.css">
- <link rel="stylesheet" type="text/css" href="/css/header.css">
- <link rel="stylesheet" type="text/css" href="/css/footer.css">
- <link rel="stylesheet" type="text/css" href="/css/flower.css">
- <link rel="stylesheet" type="text/css" href="/css/menu.css">
- <link rel="stylesheet" type="text/css" href="/css/collapsible.css">
- <link rel="stylesheet" type="text/css" href="/css/feinpan.css">
- <link rel="stylesheet" type="text/css" href="/css/feinheadline1.css">
- <link rel="stylesheet" type="text/css" href="/css/album.css">
- <link rel="stylesheet" type="text/css" href="/css/lua.css">
- <link rel="stylesheet" type="text/css" href="/css/video.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+ <!-- 1. クリティカルCSS -->
+ <link rel="stylesheet" href="/css/style.css">
+ <link rel="stylesheet" href="/css/header.css">
+ <link rel="stylesheet" href="/css/menu.css">
 
-
- <!-- Preconnectでサーバー接続を最適化 -->
+ <!-- 2. フォント最適化 -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-
- <!-- Preloadでフォント読み込みを高速化 -->
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:wght@300;400;700&display=swap">
  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Lato:wght@300;400;700&display=swap"
   media="print" onload="this.media='all'">
 
+ <!-- 3. 非クリティカルCSS（遅延読み込み） -->
+ <link rel="stylesheet" href="/css/pdf.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/footer.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/flower.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/collapsible.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/feinpan.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/feinheadline1.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/album.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/lua.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="/css/video.css" media="print" onload="this.media='all'">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+  media="print" onload="this.media='all'">
+
+ <!-- アイコン -->
  <link rel="apple-touch-icon" sizes="180x180" href="/icons/appleicon.png">
  <link rel="icon" sizes="32x32" href="/favicon.ico" type="image/x-icon">
 
- <!-- Googleタグマネージャー -->
+ <!-- 4. アナリティクス系スクリプト -->
  <script async src="https://www.googletagmanager.com/gtag/js?id=G-827JM6N5CS"></script>
  <script>
   window.dataLayer = window.dataLayer || [];
@@ -65,45 +66,12 @@
   gtag('config', 'G-827JM6N5CS');
  </script>
 
- <!-- Microsoftタグ -->
  <script>
   (function (c, l, a, r, i, t, y) {
    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
   })(window, document, "clarity", "script", "obazqypsh8");
- </script>
-
- <!-- JavaScriptファイル -->
- <script src="/script/underline.js" defer></script>
- <script src="/script/feinfade.js" defer></script>
- <script src="/script/feinScroll.js" defer></script>
- <script src="/script/tab.js" defer></script>
- <script src="/script/video.js" defer></script>
- <script src="/script/album.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-lua.min.js" defer></script>
- <script src="/script/collapsible.js" defer></script>
- <script src="/script/brython.js" defer></script>
- <script src="/script/brython_stdlib.js" defer></script>
- <script src="/script/fengari-web.js"></script>
- <script src="/script/pdf.js" defer></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-
- <!-- Service Workerの登録 -->
- <script>
-  if ('serviceWorker' in navigator) {
-   navigator.serviceWorker.register('/service-worker.js')
-    .then(registration => {
-     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    })
-    .catch(error => {
-     console.log('ServiceWorker registration failed: ', error);
-    });
-  }
  </script>
 </head>
 
@@ -197,35 +165,52 @@
     まず、ライザのアトリエに関する公式サイトには次のようなものがありますね。</p>
   </div>
 
-
   <div class="scoth-dropdown">
    <button onclick="toggleDropdown('menu1', event)">ライザのアトリエ関連：公式サイトリスト</button>
    <div class="scoth-dropdown-content" id="menu1"></div>
   </div>
 
   <script>
+   // Luaコードを文字列として保持
    const luaCode1 = `
-        local items = {
-            {name = "コーエーテクモゲームス公式サイト", link = "https://www.gamecity.ne.jp/index.html"},
-            {name = "ライザのアトリエ 〜常闇の女王と秘密の隠れ家〜", link = "https://www.gamecity.ne.jp/atelier/ryza/"},
-            {name = "ライザのアトリエ2 〜失われた伝承と秘密の妖精〜", link = "https://www.gamecity.ne.jp/atelier/ryza2/"},
-            {name = "ライザのアトリエ3 〜終わりの錬金術士と秘密の鍵〜", link = "https://www.gamecity.ne.jp/atelier/ryza3/"},
-            {name = "『ライザのアトリエ』 コラボ特設サイト", link = "https://another-eden.jp/atelier/"}
-        }
+    local items = {
+        {name = "コーエーテクモゲームス公式サイト", link = "https://www.gamecity.ne.jp/index.html"},
+        {name = "ライザのアトリエ 〜常闇の女王と秘密の隠れ家〜", link = "https://www.gamecity.ne.jp/atelier/ryza/"},
+        {name = "ライザのアトリエ2 〜失われた伝承と秘密の妖精〜", link = "https://www.gamecity.ne.jp/atelier/ryza2/"},
+        {name = "ライザのアトリエ3 〜終わりの錬金術士と秘密の鍵〜", link = "https://www.gamecity.ne.jp/atelier/ryza3/"},
+        {name = "『ライザのアトリエ』 コラボ特設サイト", link = "https://another-eden.jp/atelier/"}
+    }
 
-        local dropdownHtml = ""
-        for _, item in ipairs(items) do
-            dropdownHtml = dropdownHtml .. '<a href="' .. item.link .. '">' .. item.name .. '</a>'
-        end
+    local dropdownHtml = ""
+    for _, item in ipairs(items) do
+        dropdownHtml = dropdownHtml .. '<a href="' .. item.link .. '">' .. item.name .. '</a>'
+    end
 
-        return dropdownHtml
-    `;
+    return dropdownHtml
+  `;
 
-   const L1 = fengari.load(luaCode1);
-   const result1 = L1();
+   // fengari を動的ロードして Lua を実行
+   function loadFengariAndRender(menuId) {
+    if (window.fengari) {
+     // すでにロード済みならそのまま実行
+     const L1 = fengari.load(luaCode1);
+     const result1 = L1();
+     document.getElementById(menuId).innerHTML = result1;
+     return;
+    }
 
-   document.getElementById('menu1').innerHTML = result1;
+    const s = document.createElement("script");
+    s.src = "/script/fengari-web.js"; // ← fengari のパス
+    s.defer = true;
+    s.onload = () => {
+     const L1 = fengari.load(luaCode1);
+     const result1 = L1();
+     document.getElementById(menuId).innerHTML = result1;
+    };
+    document.body.appendChild(s);
+   }
 
+   // ドロップダウン開閉
    function toggleDropdown(menuId, event) {
     var menu = document.getElementById(menuId);
     if (menu.style.display === "block") {
@@ -234,6 +219,10 @@
       menu.style.display = "none";
      }, 500);
     } else {
+     // 初めて開くときに fengari をロードして中身を生成
+     if (!menu.innerHTML) {
+      loadFengariAndRender(menuId);
+     }
      menu.style.display = "block";
      setTimeout(function () {
       menu.style.opacity = "1";
@@ -242,6 +231,7 @@
     event.stopPropagation();
    }
 
+   // 外側クリックで閉じる処理
    document.addEventListener("click", function () {
     var menus = document.getElementsByClassName("scoth-dropdown-content");
     for (var i = 0; i < menus.length; i++) {
@@ -700,7 +690,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
   <p>ゲームのファンサイトに限らず、Webサイト制作に使うのは HTML・CSS・JavaScript だけではありません。<br>
    手元の運用の工夫だったり、ソースコードの管理やバックアップ、コードエディターのカスタマイズなどなど。<br>
    工夫すればするほど楽しく手間をかけず、そしてお金もかけずに楽しめます。</p>
-  <div class="spacer"></div>
+  <div class="spacer" id="atelierhtml"></div>
   <div class="atelier-container">
    <div class="atelier-tabs">
     <div class="atelier-tab" data-tab="1">Creation</div>
@@ -751,6 +741,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
       <dd>VS Codeのタスク機能で<a href="/contents/vscode.html#tasks_json">Run Google Cloud Commands</a>を実行する</dd>
 
      </dl>
+
     </div>
 
     <div class="content">
@@ -761,49 +752,20 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
      </p>
     </div>
 
+    <p class="gra">公開後の総仕上げチェック</p>
+
+    <p><a href="/another-eden/grasta.html">Fein Atelier -
+      org</a> は Static Website の動作テストに、<br>
+     <a href="/readme">README_GitHub</a> は Dynamic Website の動作テストに用いる。
+    </p>
+
     <p class="gra">GitHubによるコード管理</p>
     <p><a href="https://github.com/fein-denscothmn">GitHub</a>のリポジトリに「fein write...」メッセージを添えつつ、ソースコードをステージ（Stage
      Changes）→コミット（Commit）→プッシュ（Push）する。</p>
     <p>参考ページ👉 <a href="/contents/github.html">Webサイトの共同制作とGitHub</a></p>
 
-    <p class="gra">基礎デザインを作っているstyle.css</p>
-    <p>下部の「CSS elements」をタップすると、コード全体をチェックできます。</p>
-    <div class="content">
-     <img src="/another-eden/anaimage/ライザ杖.webp" loading="lazy" alt="ライザ杖" class="graphicsaki right-image fade-in-out">
-
-     <ul>
-      <li><a href="/contents/codeinfo.html#utf8_style">文字コードをutf-8とする</a></li>
-      <li><a href="/contents/codeinfo.html#body_style">bodyを綺麗に整える</a></li>
-      <li><a href="/contents/codeinfo.html#stickynote_style">立体的な付箋を描く</a></li>
-      <li><a href="/contents/codeinfo.html#spacer_style">手軽に余白を設定する</a></li>
-      <li><a href="/contents/table_css.html#table_style">浮かび上がる表を作る</a></li>
-      <li><a href="/contents/codeinfo.html#link_style">デフォルトの青に少し手を入れたリンク</a></li>
-      <li><a href="/contents/codeinfo.html#sitemaplink_style">サイトマップ用の目立つリンク</a></li>
-      <li><a href="/contents/codeinfo.html#mimics_style">見出しのように使う文字装飾を描く</a></li>
-      <li><a href="/contents/codeinfo.html#bold_style">太字にして定義リストを読みやすくする</a></li>
-      <li><a href="/contents/codeinfo.html#list_style">箇条書きの余分な余白を削除する</a></li>
-      <li><a href="/contents/codeinfo.html#fonesize_style">フォントサイズやカラーを指定する</a></li>
-      <li><a href="/contents/heading_css.html#heading_style">統一感を持たせた見出しを作る</a></li>
-      <li><a href="/contents/css_tidbit.html#h3underline_style">h3見出しに赤い線を引く</a><br>
-       <span class="small-orange-text">JavaScriptによるアニメーション設定が効いているので注意。</span>
-      </li>
-      <li><a href="/contents/css_tidbit.html#h5underline_style">h5見出しにオレンジ線を引くstyle.css</a></li>
-      <li><a href="/contents/graphic_css.html#tableimage_style">敢えて表の中に画像を入れる</a></li>
-      <li><a href="/contents/graphic_css.html#grastaimage_style">グラスタ表の火力20倍の話に添える画像</a></li>
-      <li><a href="/contents/graphic_css.html#imagesize_style">画像によって大きさを使い分ける</a><br>
-       <span class="small-orange-text">JavaScriptによるアニメーション設定が効いているので注意。</span>
-      </li>
-      <li><a href="/contents/graphic_css.html#horizon_style">画像を左右に並べる</a></li>
-      <li><a href="/contents/javascriptinfo.html#fadeanimation_style">フェードインとフェードアウトの画像アニメーション</a></li>
-      <li><a href="/contents/responsive_design.html#responsivedesign_style">レスポンシブデザインを作る</a></li>
-      <li><a href="/contents/tabui.html#tab_style">タブを作る</a></li>
-      <li><a href="/contents/tabui.html#pythontab_style">PythonのタブUIを装飾する</a></li>
-      <li><a href="/contents/css_tidbit.html#checkdesign_style">タップするとチェックが変化する</a></li>
-      <li><a href="/contents/css_tidbit.html#hrdesign_style">隅に行くほど細く消えかかる罫線を作る</a></li>
-     </ul>
-
-    </div>
-    <p><span class="small-text">🔼All checks were completed on 20250104.</span></p>
+    <p>ソースコードを大きく追加もしくは変更したら、このページでマニュアルを整備。<br>
+     仕様変更を伴う場合、READMEも併せて編集する。</p>
 
    </div><!--1タブの分岐点-->
    <div class="atelier-tab-content" data-content="2">
@@ -814,7 +776,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <p class="gra">頻用するHTMLコード</p>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--コードを記載する時の枠--&gt;
 &lt;div class=&quot;code-container&quot;&gt;
     &lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;
@@ -828,7 +790,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--通常サイズの画像とテキスト回り込み--&gt;
 &lt;div class=&quot;content&quot;&gt;
     &lt;img src=&quot;Atelier.jpg&quot; alt=&quot;Illustration of the atelier&quot; class=&quot;graphic right-image fade-in-out&quot;&gt;
@@ -841,7 +803,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--ミニサイズの画像とテキスト回り込み--&gt;
 &lt;div class=&quot;content&quot;&gt;
     &lt;img src=&quot;Atelier.jpg&quot; alt=&quot;Illustration of the atelier&quot; class=&quot;graphicmini right-image fade-in-out&quot;&gt;
@@ -854,7 +816,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--縦長の画像とテキスト回り込み--&gt;
 &lt;div class=&quot;content&quot;&gt;
     &lt;img src=&quot;wallpaper.jpg&quot; alt=&quot;wallpaper&quot; class=&quot;wallpaper right-image fade-in-out&quot;&gt;
@@ -867,7 +829,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--ストレートに画像を掲載し、テキストの回り込みを行わない--&gt;
 &lt;img src=&quot;Atelier.jpg&quot; alt=&quot;Illustration of the atelier&quot; class=&quot;graphic fade-in-out&quot;&gt;
 
@@ -877,7 +839,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--大きな画像を掲載し、テキストの回り込みを行わない--&gt;
 &lt;div class=&quot;content&quot;&gt;
     &lt;img src=&quot;Atelier.png&quot; alt=&quot;Illustration of the atelier&quot; class=&quot;biggraphic fade-in-out&quot;&gt;
@@ -890,7 +852,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--草花の写真を飾る--&gt;
 &lt;div class=&quot;flowerclearfix&quot;&gt;
     &lt;div class=&quot;flowerfade-out&quot;&gt;
@@ -905,7 +867,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--定義リストを作成する--&gt;
 &lt;dl&gt;
   &lt;dt&gt;HTML&lt;/dt&gt;
@@ -924,7 +886,7 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--表を作成する--&gt;
 &lt;section&gt;
    &lt;div class=&quot;custom-table-container&quot;&gt;
@@ -976,22 +938,34 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
     <div class="spacer"></div>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--本文中にコードを記載する場合に使う--&gt;
 &lt;span class=&quot;codecolor&quot;&gt;code &amp; programming&lt;/span&gt;
 
 </code></pre>
     </div>
 
-    <div class="spacer"></div>
+    <p>見出しを避ける協調テキスト</p>
 
     <div class="code-container">
-     <pre><code class="feintyping language-html">
+     <pre><code class="language-html">
 &lt;!--小さめのオレンジテキスト--&gt;
 &lt;span class=&quot;small-orange-text&quot;&gt;orange text&lt;/span&gt;
 
 &lt;!--小さいテキスト--&gt;
 &lt;span class=&quot;small-text&quot;&gt;small text&lt;/span&gt;
+
+&lt;!--ピンクの帯--&gt;
+&lt;p class="gra"&gt;Pink band&lt;/p&gt;
+
+&lt;!--グリーンの帯（コード用）--&gt;
+&lt;p class="codegra"&gt;Green band (for code)&lt;/p&gt;
+
+&lt;!--付箋--&gt;
+&lt;p class="feintag"&gt;Sticky note&lt;/p&gt;
+
+&lt;!--ダークブルーのアンダーライン--&gt;
+&lt;p class="dark-blue-underline"&gt;Dark blue underline&lt;/p&gt;
 
 </code></pre>
     </div>
@@ -1076,6 +1050,46 @@ GOOGLE CLOUD\FEIN-SITES-DEV1(app engineにデプロイされているFlaskアプ
 
    </div><!--3タブの分岐点-->
   </div>
+
+  <h4>Global stylesheet：style.css</h4>
+  <p class="gra">基礎デザインを作っているstyle.css</p>
+  <p>「CSS elements」をタップすると、コード全体をチェックできます。</p>
+  <div class="content">
+   <img src="/another-eden/anaimage/ライザ杖.webp" loading="lazy" alt="ライザ杖" class="graphicsaki right-image fade-in-out">
+
+   <ul>
+    <li><a href="/contents/codeinfo.html#utf8_style">文字コードをutf-8とする</a></li>
+    <li><a href="/contents/codeinfo.html#body_style">bodyを綺麗に整える</a></li>
+    <li><a href="/contents/codeinfo.html#stickynote_style">立体的な付箋を描く</a></li>
+    <li><a href="/contents/codeinfo.html#spacer_style">手軽に余白を設定する</a></li>
+    <li><a href="/contents/table_css.html#table_style">浮かび上がる表を作る</a></li>
+    <li><a href="/contents/codeinfo.html#link_style">デフォルトの青に少し手を入れたリンク</a></li>
+    <li><a href="/contents/codeinfo.html#sitemaplink_style">サイトマップ用の目立つリンク</a></li>
+    <li><a href="/contents/codeinfo.html#mimics_style">見出しのように使う文字装飾を描く</a></li>
+    <li><a href="/contents/codeinfo.html#bold_style">太字にして定義リストを読みやすくする</a></li>
+    <li><a href="/contents/codeinfo.html#list_style">箇条書きの余分な余白を削除する</a></li>
+    <li><a href="/contents/codeinfo.html#fonesize_style">フォントサイズやカラーを指定する</a></li>
+    <li><a href="/contents/heading_css.html#heading_style">統一感を持たせた見出しを作る</a></li>
+    <li><a href="/contents/css_tidbit.html#h3underline_style">h3見出しに赤い線を引く</a><br>
+     <span class="small-orange-text">JavaScriptによるアニメーション設定が効いているので注意。</span>
+    </li>
+    <li><a href="/contents/css_tidbit.html#h5underline_style">h5見出しにオレンジ線を引くstyle.css</a></li>
+    <li><a href="/contents/graphic_css.html#tableimage_style">敢えて表の中に画像を入れる</a></li>
+    <li><a href="/contents/graphic_css.html#grastaimage_style">グラスタ表の火力20倍の話に添える画像</a></li>
+    <li><a href="/contents/graphic_css.html#imagesize_style">画像によって大きさを使い分ける</a><br>
+     <span class="small-orange-text">JavaScriptによるアニメーション設定が効いているので注意。</span>
+    </li>
+    <li><a href="/contents/graphic_css.html#horizon_style">画像を左右に並べる</a></li>
+    <li><a href="/contents/javascriptinfo.html#fadeanimation_style">フェードインとフェードアウトの画像アニメーション</a></li>
+    <li><a href="/contents/responsive_design.html#responsivedesign_style">レスポンシブデザインを作る</a></li>
+    <li><a href="/contents/tabui.html#tab_style">タブを作る</a></li>
+    <li><a href="/contents/tabui.html#pythontab_style">PythonのタブUIを装飾する</a></li>
+    <li><a href="/contents/css_tidbit.html#checkdesign_style">タップするとチェックが変化する</a></li>
+    <li><a href="/contents/css_tidbit.html#hrdesign_style">隅に行くほど細く消えかかる罫線を作る</a></li>
+   </ul>
+
+  </div>
+  <p><span class="small-text">🔼All checks were completed on 20250104.</span></p>
 
   <p class="gra">CSS elements</p>
   <button class="collapsible">タップして開く ▼</button>
@@ -1887,7 +1901,7 @@ hr.atelierflower::before {
      <p>クラウドを利用することで、従来の物理サーバを管理する負担から解放されるとともに、柔軟かつ効率的にリソースを利用できるようになるのです。</p>
      <p>参考サイト：<a href="https://www.digital.go.jp/news/UsZ6cDXd">ISMAPクラウドサービスリストを公開しました</a>デジタル庁</p>
 
-     <p class="gra"><i class="fa-solid fa-laptop"></i> My favorite PC</p>
+     <p class="gra">My favorite PC</p>
      <div class="content">
       <img src="/another-eden/anaimage/ライザ完成.webp" loading="lazy" alt="ライザ完成"
        class="graphicsaki right-image fade-in-out">
@@ -1898,14 +1912,14 @@ hr.atelierflower::before {
        MultiMediaCard) でさえなかったですね。
       </p>
       <dl>
-       <dt><i class="fa-solid fa-server"></i> CPU Information</dt>
+       <dt>CPU Information</dt>
        <dd>Current Clock Speed: 1114 MHz<br>
         Name: Intel(R) Celeron(R) N4500 @ 1.10GHz<br>
         Number of Cores: 2<br></dd>
-       <dt><i class="fa-solid fa-memory"></i> Memory Information</dt>
+       <dt>Memory Information</dt>
        <dd>Capacity: 4 GB (4294967296 bytes)<br>
         Speed: 3200 MHz<br></dd>
-       <dt><i class="fa-solid fa-database"></i> Disk Information</dt>
+       <dt>Disk Information</dt>
        <dd>Model: Kingston X29128<br>
         Size: 125 GB (125172311040 bytes)</dd>
       </dl>
@@ -2473,6 +2487,97 @@ for container in document.select('.atelier-container'):
    </footer>
 
  </div><!--レスポンシブデザイン-->
+
+ <!-- UI系スクリプト（body末尾へ） -->
+ <script src="/script/underline.js" defer></script>
+ <script src="/script/feinfade.js" defer></script>
+ <script src="/script/feinScroll.js" defer></script>
+ <script src="/script/tab.js" defer></script>
+ <script src="/script/video.js" defer></script>
+ <script src="/script/album.js" defer></script>
+ <script src="/script/collapsible.js" defer></script>
+ <script src="/script/pdf.js" defer></script>
+
+ <!-- Prism.js（必要言語すべて保持：python, json, bash, lua） -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js" defer></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-lua.min.js" defer></script>
+
+ <!-- PDF.js-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+
+ <!-- Service Worker -->
+ <script>
+  if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register('/service-worker.js')
+    .catch(error => {
+     console.log('ServiceWorker registration failed: ', error);
+    });
+  }
+ </script>
+
+ <!--★アトリエページ専用のタブUIロード設定★-->
+ <script>
+  // Brythonを動的ロード
+  function loadBrython(callback) {
+   if (window.__BRYTHON__) {
+    callback();
+    return;
+   }
+
+   const s = document.createElement("script");
+   s.src = "/script/brython.js";
+   s.onload = () => {
+    const stdlib = document.createElement("script");
+    stdlib.src = "/script/brython_stdlib.js";
+    stdlib.onload = () => {
+     brython(); // 初期化
+     callback();
+    };
+    document.body.appendChild(stdlib);
+   };
+   document.body.appendChild(s);
+  }
+
+  // 各コンテナごとにタブ切り替え処理を設定
+  document.querySelectorAll('.atelier-container').forEach(container => {
+   const tabs = container.querySelectorAll('.atelier-tab');
+   const contents = container.querySelectorAll('.atelier-tab-content');
+
+   tabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+     const tabId = this.getAttribute('data-tab');
+
+     // このコンテナ内だけ非表示
+     contents.forEach(c => c.style.display = "none");
+
+     // 対応するコンテンツを表示
+     const target = container.querySelector(`.atelier-tab-content[data-content="${tabId}"]`);
+     if (target) target.style.display = "block";
+
+     // Brythonを使うタブならロード
+     if (tabId === "1" || tabId === "2" || tabId === "3") {
+      loadBrython(() => {
+       console.log("Brython ready for tab " + tabId);
+       // ここで <script type="text/python"> を挿入して動かすことも可能
+      });
+     }
+    });
+   });
+
+   // ★ 初期表示でタブ1を表示する処理を追加
+   const firstContent = container.querySelector('.atelier-tab-content[data-content="1"]');
+   if (firstContent) {
+    firstContent.style.display = "block";
+    // Brythonも初期化しておきたいならここで呼ぶ
+    loadBrython(() => {
+     console.log("Brython ready for initial tab 1");
+    });
+   }
+  });
+ </script>
 
  <script src="/script/feinheadline1.js"></script><!--見出しの自動生成-->
 

@@ -1,18 +1,19 @@
 // ★見出しに下線を引く
 document.addEventListener("DOMContentLoaded", function () {
- const h3s = document.querySelectorAll("h3");
+ const headings = document.querySelectorAll("h2, h3, h4");
 
  window.addEventListener("scroll", function () {
-  h3s.forEach(function (h3) {
-   const rect = h3.getBoundingClientRect();
+  headings.forEach(function (heading) {
+   const rect = heading.getBoundingClientRect();
    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-    h3.classList.add("visible");
+    heading.classList.add("visible");
    } else {
-    h3.classList.remove("visible");
+    heading.classList.remove("visible");
    }
   });
  });
 });
+
 
 // ★アトリエページのチェックボタン
 document.addEventListener('DOMContentLoaded', () => {
