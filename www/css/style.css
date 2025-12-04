@@ -426,7 +426,7 @@ img.horizontally {
  height: auto;
 }
 
-.fish-container .caption {
+.fish-container .fish-caption {
  background: rgba(0, 0, 0, 0.05);
  color: #333;
  padding: 10px 8px;
