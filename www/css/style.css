@@ -413,6 +413,29 @@ img.horizontally {
  border-radius: 10px;
 }
 
+/* ★魚写真のキャプション */
+.fish-container {
+ display: inline-block;
+ text-align: left;
+ line-height: 0;
+}
+
+.fish-container img {
+ display: block;
+ max-width: 100%;
+ height: auto;
+}
+
+.fish-container .caption {
+ background: rgba(0, 0, 0, 0.05);
+ color: #333;
+ padding: 10px 8px;
+ border-radius: 4px;
+ display: inline-block;
+ margin-top: 2px;
+ margin-bottom: 20px;
+}
+
 /* ★SNSカードを左右に並べる */
 .snshorizontally-container {
  display: flex;
